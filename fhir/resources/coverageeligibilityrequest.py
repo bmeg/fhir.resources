@@ -435,7 +435,7 @@ class CoverageEligibilityRequestInsurance(backboneelement.BackboneElement):
         element_property=True,
         # note: Listed Resource Type(s) should be allowed as Reference.
         enum_reference_types=["Coverage"],
-        backref="coverage_eligibility_request.insurance_coverage",
+        backref="coverage_eligibility_request_insurance_coverage",
     )
 
     focal: bool = Field(
@@ -507,7 +507,7 @@ class CoverageEligibilityRequestItem(backboneelement.BackboneElement):
         element_property=True,
         # note: Listed Resource Type(s) should be allowed as Reference.
         enum_reference_types=["Resource"],
-        backref="coverage_eligibility_request.item_detail",
+        backref="coverage_eligibility_request_item_detail",
     )
 
     diagnosis: typing.List[
@@ -530,7 +530,7 @@ class CoverageEligibilityRequestItem(backboneelement.BackboneElement):
         element_property=True,
         # note: Listed Resource Type(s) should be allowed as Reference.
         enum_reference_types=["Location", "Organization"],
-        backref="coverage_eligibility_request.item_facility",
+        backref="coverage_eligibility_request_item_facility",
     )
 
     modifier: typing.List[fhirtypes.CodeableConceptType] = Field(
@@ -578,7 +578,7 @@ class CoverageEligibilityRequestItem(backboneelement.BackboneElement):
         element_property=True,
         # note: Listed Resource Type(s) should be allowed as Reference.
         enum_reference_types=["Practitioner", "PractitionerRole"],
-        backref="coverage_eligibility_request.item_provider",
+        backref="coverage_eligibility_request_item_provider",
     )
 
     quantity: fhirtypes.QuantityType = Field(
@@ -690,7 +690,7 @@ class CoverageEligibilityRequestItemDiagnosis(backboneelement.BackboneElement):
         binding_uri="http://hl7.org/fhir/ValueSet/icd-10",
         # note: Listed Resource Type(s) should be allowed as Reference.
         enum_reference_types=["Condition"],
-        backref="coverage_eligibility_request.item.diagnosis_diagnosisReference",
+        backref="coverage_eligibility_request_item_diagnosis_diagnosisReference",
     )
 
     @classmethod
@@ -788,7 +788,7 @@ class CoverageEligibilityRequestSupportingInfo(backboneelement.BackboneElement):
         element_property=True,
         # note: Listed Resource Type(s) should be allowed as Reference.
         enum_reference_types=["Resource"],
-        backref="coverage_eligibility_request.supporting_info_information",
+        backref="coverage_eligibility_request_supporting_info_information",
     )
 
     sequence: fhirtypes.PositiveInt = Field(

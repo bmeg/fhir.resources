@@ -310,7 +310,7 @@ class AccountCoverage(backboneelement.BackboneElement):
         element_property=True,
         # note: Listed Resource Type(s) should be allowed as Reference.
         enum_reference_types=["Coverage"],
-        backref="account.coverage_coverage",
+        backref="account_coverage_coverage",
     )
 
     priority: fhirtypes.PositiveInt = Field(
@@ -370,7 +370,7 @@ class AccountGuarantor(backboneelement.BackboneElement):
         element_property=True,
         # note: Listed Resource Type(s) should be allowed as Reference.
         enum_reference_types=["Patient", "RelatedPerson", "Organization"],
-        backref="account.guarantor_party",
+        backref="account_guarantor_party",
     )
 
     period: fhirtypes.PeriodType = Field(

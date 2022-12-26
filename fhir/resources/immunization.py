@@ -694,7 +694,7 @@ class ImmunizationPerformer(backboneelement.BackboneElement):
         element_property=True,
         # note: Listed Resource Type(s) should be allowed as Reference.
         enum_reference_types=["Practitioner", "PractitionerRole", "Organization"],
-        backref="immunization.performer_actor",
+        backref="immunization_performer_actor",
     )
 
     function: fhirtypes.CodeableConceptType = Field(
@@ -747,7 +747,7 @@ class ImmunizationProtocolApplied(backboneelement.BackboneElement):
         element_property=True,
         # note: Listed Resource Type(s) should be allowed as Reference.
         enum_reference_types=["Organization"],
-        backref="immunization.protocol_applied_authority",
+        backref="immunization_protocol_applied_authority",
     )
 
     doseNumberPositiveInt: fhirtypes.PositiveInt = Field(
@@ -943,7 +943,7 @@ class ImmunizationReaction(backboneelement.BackboneElement):
         element_property=True,
         # note: Listed Resource Type(s) should be allowed as Reference.
         enum_reference_types=["Observation"],
-        backref="immunization.reaction_detail",
+        backref="immunization_reaction_detail",
     )
 
     reported: bool = Field(

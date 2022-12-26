@@ -498,7 +498,7 @@ class EvidenceReportRelatesTo(backboneelement.BackboneElement):
         one_of_many_required=True,
         # note: Listed Resource Type(s) should be allowed as Reference.
         enum_reference_types=["EvidenceReport"],
-        backref="evidence_report.relates_to_targetReference",
+        backref="evidence_report_relates_to_targetReference",
     )
 
     @classmethod
@@ -637,7 +637,7 @@ class EvidenceReportSection(backboneelement.BackboneElement):
         element_property=True,
         # note: Listed Resource Type(s) should be allowed as Reference.
         enum_reference_types=["Person", "Device", "Group", "Organization"],
-        backref="evidence_report.section_author",
+        backref="evidence_report_section_author",
     )
 
     emptyReason: fhirtypes.CodeableConceptType = Field(
@@ -694,7 +694,7 @@ class EvidenceReportSection(backboneelement.BackboneElement):
         element_property=True,
         # note: Listed Resource Type(s) should be allowed as Reference.
         enum_reference_types=["Resource"],
-        backref="evidence_report.section_entryReference",
+        backref="evidence_report_section_entryReference",
     )
 
     focus: fhirtypes.CodeableConceptType = Field(
@@ -726,7 +726,7 @@ class EvidenceReportSection(backboneelement.BackboneElement):
         element_property=True,
         # note: Listed Resource Type(s) should be allowed as Reference.
         enum_reference_types=["Resource"],
-        backref="evidence_report.section_focusReference",
+        backref="evidence_report_section_focusReference",
     )
 
     mode: fhirtypes.Code = Field(
@@ -984,7 +984,7 @@ class EvidenceReportSubjectCharacteristic(backboneelement.BackboneElement):
         one_of_many_required=True,
         # note: Listed Resource Type(s) should be allowed as Reference.
         enum_reference_types=["Resource"],
-        backref="evidence_report.subject.characteristic_valueReference",
+        backref="evidence_report_subject_characteristic_valueReference",
     )
 
     @classmethod

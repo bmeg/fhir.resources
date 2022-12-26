@@ -931,7 +931,7 @@ class ConceptMapGroupElementTargetDependsOn(backboneelement.BackboneElement):
         element_property=True,
         # note: Listed Resource Type(s) should be allowed as Reference.
         enum_reference_types=["CodeSystem"],
-        backref="concept_map.group.element.target.depends_on_system",
+        backref="concept_map_group_element_target_depends_on_system",
     )
     system__ext: fhirtypes.FHIRPrimitiveExtensionType = Field(
         None, alias="_system", title="Extension field for ``system``."
@@ -1117,7 +1117,7 @@ class ConceptMapGroupUnmapped(backboneelement.BackboneElement):
         element_property=True,
         # note: Listed Resource Type(s) should be allowed as Reference.
         enum_reference_types=["ConceptMap"],
-        backref="concept_map.group.unmapped_url",
+        backref="concept_map_group_unmapped_url",
     )
     url__ext: fhirtypes.FHIRPrimitiveExtensionType = Field(
         None, alias="_url", title="Extension field for ``url``."

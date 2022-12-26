@@ -336,7 +336,7 @@ class SupplyDeliverySuppliedItem(backboneelement.BackboneElement):
         binding_uri="http://hl7.org/fhir/ValueSet/supply-item",
         # note: Listed Resource Type(s) should be allowed as Reference.
         enum_reference_types=["Medication", "Substance", "Device"],
-        backref="supply_delivery.supplied_item_itemReference",
+        backref="supply_delivery_supplied_item_itemReference",
     )
 
     quantity: fhirtypes.QuantityType = Field(

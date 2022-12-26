@@ -929,7 +929,7 @@ class MolecularSequenceReferenceSeq(backboneelement.BackboneElement):
         element_property=True,
         # note: Listed Resource Type(s) should be allowed as Reference.
         enum_reference_types=["MolecularSequence"],
-        backref="molecular_sequence.reference_seq_referenceSeqPointer",
+        backref="molecular_sequence_reference_seq_referenceSeqPointer",
     )
 
     referenceSeqString: fhirtypes.String = Field(
@@ -1523,7 +1523,7 @@ class MolecularSequenceVariant(backboneelement.BackboneElement):
         element_property=True,
         # note: Listed Resource Type(s) should be allowed as Reference.
         enum_reference_types=["Observation"],
-        backref="molecular_sequence.variant_variantPointer",
+        backref="molecular_sequence_variant_variantPointer",
     )
 
     @classmethod

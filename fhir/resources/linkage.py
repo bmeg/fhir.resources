@@ -114,7 +114,7 @@ class LinkageItem(backboneelement.BackboneElement):
         element_property=True,
         # note: Listed Resource Type(s) should be allowed as Reference.
         enum_reference_types=["Resource"],
-        backref="linkage.item_resource",
+        backref="linkage_item_resource",
     )
 
     type: fhirtypes.Code = Field(

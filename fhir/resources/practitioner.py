@@ -234,7 +234,7 @@ class PractitionerQualification(backboneelement.BackboneElement):
         element_property=True,
         # note: Listed Resource Type(s) should be allowed as Reference.
         enum_reference_types=["Organization"],
-        backref="practitioner.qualification_issuer",
+        backref="practitioner_qualification_issuer",
     )
 
     period: fhirtypes.PeriodType = Field(

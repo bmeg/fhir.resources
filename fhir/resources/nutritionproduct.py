@@ -289,7 +289,7 @@ class NutritionProductIngredient(backboneelement.BackboneElement):
         element_property=True,
         # note: Listed Resource Type(s) should be allowed as Reference.
         enum_reference_types=["NutritionProduct"],
-        backref="nutrition_product.ingredient_item",
+        backref="nutrition_product_ingredient_item",
     )
 
     @classmethod
@@ -431,7 +431,7 @@ class NutritionProductNutrient(backboneelement.BackboneElement):
         binding_uri="http://hl7.org/fhir/ValueSet/nutrition-product-nutrient",
         # note: Listed Resource Type(s) should be allowed as Reference.
         enum_reference_types=["Substance"],
-        backref="nutrition_product.nutrient_item",
+        backref="nutrition_product_nutrient_item",
     )
 
     @classmethod

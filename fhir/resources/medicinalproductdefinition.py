@@ -721,7 +721,7 @@ class MedicinalProductDefinitionContact(backboneelement.BackboneElement):
         element_property=True,
         # note: Listed Resource Type(s) should be allowed as Reference.
         enum_reference_types=["Organization", "PractitionerRole"],
-        backref="medicinal_product_definition.contact_contact",
+        backref="medicinal_product_definition_contact_contact",
     )
 
     type: fhirtypes.CodeableConceptType = Field(
@@ -774,7 +774,7 @@ class MedicinalProductDefinitionCrossReference(backboneelement.BackboneElement):
         element_property=True,
         # note: Listed Resource Type(s) should be allowed as Reference.
         enum_reference_types=["MedicinalProductDefinition"],
-        backref="medicinal_product_definition.cross_reference_product",
+        backref="medicinal_product_definition_cross_reference_product",
     )
 
     type: fhirtypes.CodeableConceptType = Field(
@@ -1173,7 +1173,7 @@ class MedicinalProductDefinitionOperation(backboneelement.BackboneElement):
         element_property=True,
         # note: Listed Resource Type(s) should be allowed as Reference.
         enum_reference_types=["Organization"],
-        backref="medicinal_product_definition.operation_organization",
+        backref="medicinal_product_definition_operation_organization",
     )
 
     type: fhirtypes.CodeableReferenceType = Field(
@@ -1192,7 +1192,7 @@ class MedicinalProductDefinitionOperation(backboneelement.BackboneElement):
         element_property=True,
         # note: Listed Resource Type(s) should be allowed as Reference.
         enum_reference_types=["ActivityDefinition", "PlanDefinition"],
-        backref="medicinal_product_definition.operation_type",
+        backref="medicinal_product_definition_operation_type",
     )
 
     @classmethod

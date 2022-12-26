@@ -13,7 +13,7 @@ from pydantic import BaseModel, Extra, Field
 from pydantic.class_validators import ROOT_VALIDATOR_CONFIG_KEY, root_validator
 from pydantic.error_wrappers import ErrorWrapper, ValidationError
 from pydantic.errors import ConfigError, PydanticValueError
-from pydantic.fields import ModelField, FieldInfo
+from pydantic.fields import FieldInfo, ModelField
 from pydantic.parse import Protocol
 from pydantic.utils import ROOT_KEY, sequence_like
 
@@ -403,7 +403,7 @@ class FHIRAbstractModel(BaseModel, abc.ABC):
         by_alias: bool = True,
         exclude_none: bool = True,
         exclude_comments: bool = False,
-        field_info: typing.Optional[FieldInfo] = None,
+        field: typing.Optional[FieldInfo] = None,
         **pydantic_extra,
     ) -> OrderedDict:
         """important!
@@ -476,7 +476,12 @@ class FHIRAbstractModel(BaseModel, abc.ABC):
     @classmethod
     @typing.no_type_check
     def _fhir_get_value(
-        cls, v: typing.Any, by_alias: bool, exclude_none: bool, exclude_comments: bool, field: FieldInfo
+        cls,
+        v: typing.Any,
+        by_alias: bool,
+        exclude_none: bool,
+        exclude_comments: bool,
+        field: FieldInfo,
     ) -> typing.Any:
 
         if isinstance(v, (FHIRAbstractModel, BaseModel)):

@@ -272,7 +272,7 @@ class SubscriptionStatusNotificationEvent(backboneelement.BackboneElement):
         element_property=True,
         # note: Listed Resource Type(s) should be allowed as Reference.
         enum_reference_types=["Resource"],
-        backref="subscription_status.notification_event_additionalContext",
+        backref="subscription_status_notification_event_additionalContext",
     )
 
     eventNumber: fhirtypes.String = Field(
@@ -304,7 +304,7 @@ class SubscriptionStatusNotificationEvent(backboneelement.BackboneElement):
         element_property=True,
         # note: Listed Resource Type(s) should be allowed as Reference.
         enum_reference_types=["Resource"],
-        backref="subscription_status.notification_event_focus",
+        backref="subscription_status_notification_event_focus",
     )
 
     timestamp: fhirtypes.Instant = Field(

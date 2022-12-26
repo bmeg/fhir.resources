@@ -388,7 +388,7 @@ class InvoiceLineItem(backboneelement.BackboneElement):
         one_of_many_required=True,
         # note: Listed Resource Type(s) should be allowed as Reference.
         enum_reference_types=["ChargeItem"],
-        backref="invoice.line_item_chargeItemReference",
+        backref="invoice_line_item_chargeItemReference",
     )
 
     priceComponent: typing.List[fhirtypes.InvoiceLineItemPriceComponentType] = Field(
@@ -666,7 +666,7 @@ class InvoiceParticipant(backboneelement.BackboneElement):
             "Device",
             "RelatedPerson",
         ],
-        backref="invoice.participant_actor",
+        backref="invoice_participant_actor",
     )
 
     role: fhirtypes.CodeableConceptType = Field(

@@ -622,7 +622,7 @@ class MessageDefinitionAllowedResponse(backboneelement.BackboneElement):
         element_required=True,
         # note: Listed Resource Type(s) should be allowed as Reference.
         enum_reference_types=["MessageDefinition"],
-        backref="message_definition.allowed_response_message",
+        backref="message_definition_allowed_response_message",
     )
     message__ext: fhirtypes.FHIRPrimitiveExtensionType = Field(
         None, alias="_message", title="Extension field for ``message``."
@@ -790,7 +790,7 @@ class MessageDefinitionFocus(backboneelement.BackboneElement):
         element_property=True,
         # note: Listed Resource Type(s) should be allowed as Reference.
         enum_reference_types=["StructureDefinition"],
-        backref="message_definition.focus_profile",
+        backref="message_definition_focus_profile",
     )
     profile__ext: fhirtypes.FHIRPrimitiveExtensionType = Field(
         None, alias="_profile", title="Extension field for ``profile``."

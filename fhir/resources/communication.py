@@ -572,7 +572,7 @@ class CommunicationPayload(backboneelement.BackboneElement):
         one_of_many_required=True,
         # note: Listed Resource Type(s) should be allowed as Reference.
         enum_reference_types=["Resource"],
-        backref="communication.payload_contentReference",
+        backref="communication_payload_contentReference",
     )
 
     contentString: fhirtypes.String = Field(

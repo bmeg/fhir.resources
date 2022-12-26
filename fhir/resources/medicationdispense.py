@@ -615,7 +615,7 @@ class MedicationDispensePerformer(backboneelement.BackboneElement):
             "Device",
             "RelatedPerson",
         ],
-        backref="medication_dispense.performer_actor",
+        backref="medication_dispense_performer_actor",
     )
 
     function: fhirtypes.CodeableConceptType = Field(
@@ -688,7 +688,7 @@ class MedicationDispenseSubstitution(backboneelement.BackboneElement):
         element_property=True,
         # note: Listed Resource Type(s) should be allowed as Reference.
         enum_reference_types=["Practitioner", "PractitionerRole"],
-        backref="medication_dispense.substitution_responsibleParty",
+        backref="medication_dispense_substitution_responsibleParty",
     )
 
     type: fhirtypes.CodeableConceptType = Field(

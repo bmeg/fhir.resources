@@ -345,7 +345,7 @@ class DocumentManifestRelated(backboneelement.BackboneElement):
         element_property=True,
         # note: Listed Resource Type(s) should be allowed as Reference.
         enum_reference_types=["Resource"],
-        backref="document_manifest.related_ref",
+        backref="document_manifest_related_ref",
     )
 
     @classmethod

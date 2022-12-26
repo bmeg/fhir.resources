@@ -450,7 +450,7 @@ class DocumentReferenceContext(backboneelement.BackboneElement):
         element_property=True,
         # note: Listed Resource Type(s) should be allowed as Reference.
         enum_reference_types=["Encounter", "EpisodeOfCare"],
-        backref="document_reference.context_encounter",
+        backref="document_reference_context_encounter",
     )
 
     event: typing.List[fhirtypes.CodeableConceptType] = Field(
@@ -532,7 +532,7 @@ class DocumentReferenceContext(backboneelement.BackboneElement):
         element_property=True,
         # note: Listed Resource Type(s) should be allowed as Reference.
         enum_reference_types=["Resource"],
-        backref="document_reference.context_related",
+        backref="document_reference_context_related",
     )
 
     sourcePatientInfo: fhirtypes.ReferenceType = Field(
@@ -547,7 +547,7 @@ class DocumentReferenceContext(backboneelement.BackboneElement):
         element_property=True,
         # note: Listed Resource Type(s) should be allowed as Reference.
         enum_reference_types=["Patient"],
-        backref="document_reference.context_sourcePatientInfo",
+        backref="document_reference_context_sourcePatientInfo",
     )
 
     @classmethod
@@ -615,7 +615,7 @@ class DocumentReferenceRelatesTo(backboneelement.BackboneElement):
         element_property=True,
         # note: Listed Resource Type(s) should be allowed as Reference.
         enum_reference_types=["DocumentReference"],
-        backref="document_reference.relates_to_target",
+        backref="document_reference_relates_to_target",
     )
 
     @classmethod

@@ -472,7 +472,7 @@ class PatientContact(backboneelement.BackboneElement):
         element_property=True,
         # note: Listed Resource Type(s) should be allowed as Reference.
         enum_reference_types=["Organization"],
-        backref="patient.contact_organization",
+        backref="patient_contact_organization",
     )
 
     period: fhirtypes.PeriodType = Field(
@@ -555,7 +555,7 @@ class PatientLink(backboneelement.BackboneElement):
         element_property=True,
         # note: Listed Resource Type(s) should be allowed as Reference.
         enum_reference_types=["Patient", "RelatedPerson"],
-        backref="patient.link_other",
+        backref="patient_link_other",
     )
 
     type: fhirtypes.Code = Field(

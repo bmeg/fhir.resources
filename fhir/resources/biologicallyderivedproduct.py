@@ -259,7 +259,7 @@ class BiologicallyDerivedProductCollection(backboneelement.BackboneElement):
         element_property=True,
         # note: Listed Resource Type(s) should be allowed as Reference.
         enum_reference_types=["Practitioner", "PractitionerRole"],
-        backref="biologically_derived_product.collection_collector",
+        backref="biologically_derived_product_collection_collector",
     )
 
     source: fhirtypes.ReferenceType = Field(
@@ -274,7 +274,7 @@ class BiologicallyDerivedProductCollection(backboneelement.BackboneElement):
         element_property=True,
         # note: Listed Resource Type(s) should be allowed as Reference.
         enum_reference_types=["Patient", "Organization"],
-        backref="biologically_derived_product.collection_source",
+        backref="biologically_derived_product_collection_source",
     )
 
     @classmethod
@@ -460,7 +460,7 @@ class BiologicallyDerivedProductProcessing(backboneelement.BackboneElement):
         element_property=True,
         # note: Listed Resource Type(s) should be allowed as Reference.
         enum_reference_types=["Substance"],
-        backref="biologically_derived_product.processing_additive",
+        backref="biologically_derived_product_processing_additive",
     )
 
     description: fhirtypes.String = Field(

@@ -740,7 +740,7 @@ class MedicationAdministrationPerformer(backboneelement.BackboneElement):
             "RelatedPerson",
             "Device",
         ],
-        backref="medication_administration.performer_actor",
+        backref="medication_administration_performer_actor",
     )
 
     function: fhirtypes.CodeableConceptType = Field(

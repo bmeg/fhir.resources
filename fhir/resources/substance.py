@@ -207,7 +207,7 @@ class SubstanceIngredient(backboneelement.BackboneElement):
         binding_uri="http://hl7.org/fhir/ValueSet/substance-code",
         # note: Listed Resource Type(s) should be allowed as Reference.
         enum_reference_types=["Substance"],
-        backref="substance.ingredient_substanceReference",
+        backref="substance_ingredient_substanceReference",
     )
 
     @classmethod

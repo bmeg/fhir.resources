@@ -656,7 +656,7 @@ class CapabilityStatementDocument(backboneelement.BackboneElement):
         element_required=True,
         # note: Listed Resource Type(s) should be allowed as Reference.
         enum_reference_types=["StructureDefinition"],
-        backref="capability_statement.document_profile",
+        backref="capability_statement_document_profile",
     )
     profile__ext: fhirtypes.FHIRPrimitiveExtensionType = Field(
         None, alias="_profile", title="Extension field for ``profile``."
@@ -762,7 +762,7 @@ class CapabilityStatementImplementation(backboneelement.BackboneElement):
         element_property=True,
         # note: Listed Resource Type(s) should be allowed as Reference.
         enum_reference_types=["Organization"],
-        backref="capability_statement.implementation_custodian",
+        backref="capability_statement_implementation_custodian",
     )
 
     description: fhirtypes.String = Field(
@@ -1095,7 +1095,7 @@ class CapabilityStatementMessagingSupportedMessage(backboneelement.BackboneEleme
         element_required=True,
         # note: Listed Resource Type(s) should be allowed as Reference.
         enum_reference_types=["MessageDefinition"],
-        backref="capability_statement.messaging.supported_message_definition",
+        backref="capability_statement_messaging_supported_message_definition",
     )
     definition__ext: fhirtypes.FHIRPrimitiveExtensionType = Field(
         None, alias="_definition", title="Extension field for ``definition``."
@@ -1217,7 +1217,7 @@ class CapabilityStatementRest(backboneelement.BackboneElement):
         element_property=True,
         # note: Listed Resource Type(s) should be allowed as Reference.
         enum_reference_types=["CompartmentDefinition"],
-        backref="capability_statement.rest_compartment",
+        backref="capability_statement_rest_compartment",
     )
     compartment__ext: typing.List[
         typing.Union[fhirtypes.FHIRPrimitiveExtensionType, None]
@@ -1668,7 +1668,7 @@ class CapabilityStatementRestResource(backboneelement.BackboneElement):
         element_property=True,
         # note: Listed Resource Type(s) should be allowed as Reference.
         enum_reference_types=["StructureDefinition"],
-        backref="capability_statement.rest.resource_profile",
+        backref="capability_statement_rest_resource_profile",
     )
     profile__ext: fhirtypes.FHIRPrimitiveExtensionType = Field(
         None, alias="_profile", title="Extension field for ``profile``."
@@ -1779,7 +1779,7 @@ class CapabilityStatementRestResource(backboneelement.BackboneElement):
         element_property=True,
         # note: Listed Resource Type(s) should be allowed as Reference.
         enum_reference_types=["StructureDefinition"],
-        backref="capability_statement.rest.resource_supportedProfile",
+        backref="capability_statement_rest_resource_supportedProfile",
     )
     supportedProfile__ext: typing.List[
         typing.Union[fhirtypes.FHIRPrimitiveExtensionType, None]
@@ -2110,7 +2110,7 @@ class CapabilityStatementRestResourceOperation(backboneelement.BackboneElement):
         element_required=True,
         # note: Listed Resource Type(s) should be allowed as Reference.
         enum_reference_types=["OperationDefinition"],
-        backref="capability_statement.rest.resource.operation_definition",
+        backref="capability_statement_rest_resource_operation_definition",
     )
     definition__ext: fhirtypes.FHIRPrimitiveExtensionType = Field(
         None, alias="_definition", title="Extension field for ``definition``."
@@ -2254,7 +2254,7 @@ class CapabilityStatementRestResourceSearchParam(backboneelement.BackboneElement
         element_property=True,
         # note: Listed Resource Type(s) should be allowed as Reference.
         enum_reference_types=["SearchParameter"],
-        backref="capability_statement.rest.resource.search_param_definition",
+        backref="capability_statement_rest_resource_search_param_definition",
     )
     definition__ext: fhirtypes.FHIRPrimitiveExtensionType = Field(
         None, alias="_definition", title="Extension field for ``definition``."

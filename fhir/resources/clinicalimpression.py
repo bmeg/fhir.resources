@@ -512,7 +512,7 @@ class ClinicalImpressionFinding(backboneelement.BackboneElement):
         element_property=True,
         # note: Listed Resource Type(s) should be allowed as Reference.
         enum_reference_types=["Condition", "Observation", "Media"],
-        backref="clinical_impression.finding_itemReference",
+        backref="clinical_impression_finding_itemReference",
     )
 
     @classmethod
@@ -582,7 +582,7 @@ class ClinicalImpressionInvestigation(backboneelement.BackboneElement):
             "ImagingStudy",
             "Media",
         ],
-        backref="clinical_impression.investigation_item",
+        backref="clinical_impression_investigation_item",
     )
 
     @classmethod

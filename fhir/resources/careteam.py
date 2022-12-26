@@ -272,7 +272,7 @@ class CareTeamParticipant(backboneelement.BackboneElement):
             "Organization",
             "CareTeam",
         ],
-        backref="care_team.participant_member",
+        backref="care_team_participant_member",
     )
 
     onBehalfOf: fhirtypes.ReferenceType = Field(
@@ -284,7 +284,7 @@ class CareTeamParticipant(backboneelement.BackboneElement):
         element_property=True,
         # note: Listed Resource Type(s) should be allowed as Reference.
         enum_reference_types=["Organization"],
-        backref="care_team.participant_onBehalfOf",
+        backref="care_team_participant_onBehalfOf",
     )
 
     period: fhirtypes.PeriodType = Field(

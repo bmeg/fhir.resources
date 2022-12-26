@@ -399,7 +399,7 @@ class DetectedIssueEvidence(backboneelement.BackboneElement):
         element_property=True,
         # note: Listed Resource Type(s) should be allowed as Reference.
         enum_reference_types=["Resource"],
-        backref="detected_issue.evidence_detail",
+        backref="detected_issue_evidence_detail",
     )
 
     @classmethod
@@ -454,7 +454,7 @@ class DetectedIssueMitigation(backboneelement.BackboneElement):
         element_property=True,
         # note: Listed Resource Type(s) should be allowed as Reference.
         enum_reference_types=["Practitioner", "PractitionerRole"],
-        backref="detected_issue.mitigation_author",
+        backref="detected_issue_mitigation_author",
     )
 
     date: fhirtypes.DateTime = Field(

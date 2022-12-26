@@ -4757,7 +4757,7 @@ class ElementDefinitionBinding(element.Element):
         element_property=True,
         # note: Listed Resource Type(s) should be allowed as Reference.
         enum_reference_types=["ValueSet"],
-        backref="element_definition.binding_valueSet",
+        backref="element_definition_binding_valueSet",
     )
     valueSet__ext: fhirtypes.FHIRPrimitiveExtensionType = Field(
         None, alias="_valueSet", title="Extension field for ``valueSet``."
@@ -4938,7 +4938,7 @@ class ElementDefinitionConstraint(element.Element):
         element_property=True,
         # note: Listed Resource Type(s) should be allowed as Reference.
         enum_reference_types=["StructureDefinition"],
-        backref="element_definition.constraint_source",
+        backref="element_definition_constraint_source",
     )
     source__ext: fhirtypes.FHIRPrimitiveExtensionType = Field(
         None, alias="_source", title="Extension field for ``source``."
@@ -6608,7 +6608,7 @@ class ElementDefinitionType(element.Element):
         element_property=True,
         # note: Listed Resource Type(s) should be allowed as Reference.
         enum_reference_types=["StructureDefinition", "ImplementationGuide"],
-        backref="element_definition.type_profile",
+        backref="element_definition_type_profile",
     )
     profile__ext: typing.List[
         typing.Union[fhirtypes.FHIRPrimitiveExtensionType, None]
@@ -6636,7 +6636,7 @@ class ElementDefinitionType(element.Element):
         element_property=True,
         # note: Listed Resource Type(s) should be allowed as Reference.
         enum_reference_types=["StructureDefinition", "ImplementationGuide"],
-        backref="element_definition.type_targetProfile",
+        backref="element_definition_type_targetProfile",
     )
     targetProfile__ext: typing.List[
         typing.Union[fhirtypes.FHIRPrimitiveExtensionType, None]

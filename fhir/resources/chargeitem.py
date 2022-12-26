@@ -658,7 +658,7 @@ class ChargeItemPerformer(backboneelement.BackboneElement):
             "Device",
             "RelatedPerson",
         ],
-        backref="charge_item.performer_actor",
+        backref="charge_item_performer_actor",
     )
 
     function: fhirtypes.CodeableConceptType = Field(

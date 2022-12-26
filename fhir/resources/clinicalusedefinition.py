@@ -298,7 +298,7 @@ class ClinicalUseDefinitionContraindication(backboneelement.BackboneElement):
         binding_uri="http://hl7.org/fhir/ValueSet/disease-symptom-procedure",
         # note: Listed Resource Type(s) should be allowed as Reference.
         enum_reference_types=["ObservationDefinition"],
-        backref="clinical_use_definition.contraindication_comorbidity",
+        backref="clinical_use_definition_contraindication_comorbidity",
     )
 
     diseaseStatus: fhirtypes.CodeableReferenceType = Field(
@@ -318,7 +318,7 @@ class ClinicalUseDefinitionContraindication(backboneelement.BackboneElement):
         binding_uri="http://hl7.org/fhir/ValueSet/disease-status",
         # note: Listed Resource Type(s) should be allowed as Reference.
         enum_reference_types=["ObservationDefinition"],
-        backref="clinical_use_definition.contraindication_diseaseStatus",
+        backref="clinical_use_definition_contraindication_diseaseStatus",
     )
 
     diseaseSymptomProcedure: fhirtypes.CodeableReferenceType = Field(
@@ -337,7 +337,7 @@ class ClinicalUseDefinitionContraindication(backboneelement.BackboneElement):
         binding_uri="http://hl7.org/fhir/ValueSet/disease-symptom-procedure",
         # note: Listed Resource Type(s) should be allowed as Reference.
         enum_reference_types=["ObservationDefinition"],
-        backref="clinical_use_definition.contraindication_diseaseSymptomProcedure",
+        backref="clinical_use_definition_contraindication_diseaseSymptomProcedure",
     )
 
     indication: typing.List[fhirtypes.ReferenceType] = Field(
@@ -349,7 +349,7 @@ class ClinicalUseDefinitionContraindication(backboneelement.BackboneElement):
         element_property=True,
         # note: Listed Resource Type(s) should be allowed as Reference.
         enum_reference_types=["ClinicalUseDefinition"],
-        backref="clinical_use_definition.contraindication_indication",
+        backref="clinical_use_definition_contraindication_indication",
     )
 
     otherTherapy: typing.List[
@@ -450,7 +450,7 @@ class ClinicalUseDefinitionContraindicationOtherTherapy(
             "SubstanceDefinition",
             "ActivityDefinition",
         ],
-        backref="clinical_use_definition.contraindication.other_therapy_therapy",
+        backref="clinical_use_definition_contraindication_other_therapy_therapy",
     )
 
     @classmethod
@@ -488,7 +488,7 @@ class ClinicalUseDefinitionIndication(backboneelement.BackboneElement):
         binding_uri="http://hl7.org/fhir/ValueSet/disease-symptom-procedure",
         # note: Listed Resource Type(s) should be allowed as Reference.
         enum_reference_types=["ObservationDefinition"],
-        backref="clinical_use_definition.indication_comorbidity",
+        backref="clinical_use_definition_indication_comorbidity",
     )
 
     diseaseStatus: fhirtypes.CodeableReferenceType = Field(
@@ -508,7 +508,7 @@ class ClinicalUseDefinitionIndication(backboneelement.BackboneElement):
         binding_uri="http://hl7.org/fhir/ValueSet/disease-status",
         # note: Listed Resource Type(s) should be allowed as Reference.
         enum_reference_types=["ObservationDefinition"],
-        backref="clinical_use_definition.indication_diseaseStatus",
+        backref="clinical_use_definition_indication_diseaseStatus",
     )
 
     diseaseSymptomProcedure: fhirtypes.CodeableReferenceType = Field(
@@ -524,7 +524,7 @@ class ClinicalUseDefinitionIndication(backboneelement.BackboneElement):
         binding_uri="http://hl7.org/fhir/ValueSet/disease-symptom-procedure",
         # note: Listed Resource Type(s) should be allowed as Reference.
         enum_reference_types=["ObservationDefinition"],
-        backref="clinical_use_definition.indication_diseaseSymptomProcedure",
+        backref="clinical_use_definition_indication_diseaseSymptomProcedure",
     )
 
     durationRange: fhirtypes.RangeType = Field(
@@ -577,7 +577,7 @@ class ClinicalUseDefinitionIndication(backboneelement.BackboneElement):
         binding_uri="http://hl7.org/fhir/ValueSet/product-intended-use",
         # note: Listed Resource Type(s) should be allowed as Reference.
         enum_reference_types=["ObservationDefinition"],
-        backref="clinical_use_definition.indication_intendedEffect",
+        backref="clinical_use_definition_indication_intendedEffect",
     )
 
     otherTherapy: typing.List[
@@ -612,7 +612,7 @@ class ClinicalUseDefinitionIndication(backboneelement.BackboneElement):
         element_property=True,
         # note: Listed Resource Type(s) should be allowed as Reference.
         enum_reference_types=["ClinicalUseDefinition"],
-        backref="clinical_use_definition.indication_undesirableEffect",
+        backref="clinical_use_definition_indication_undesirableEffect",
     )
 
     @classmethod
@@ -700,7 +700,7 @@ class ClinicalUseDefinitionInteraction(backboneelement.BackboneElement):
         binding_uri="http://hl7.org/fhir/ValueSet/interaction-effect",
         # note: Listed Resource Type(s) should be allowed as Reference.
         enum_reference_types=["ObservationDefinition"],
-        backref="clinical_use_definition.interaction_effect",
+        backref="clinical_use_definition_interaction_effect",
     )
 
     incidence: fhirtypes.CodeableConceptType = Field(
@@ -828,7 +828,7 @@ class ClinicalUseDefinitionInteractionInteractant(backboneelement.BackboneElemen
             "Substance",
             "ObservationDefinition",
         ],
-        backref="clinical_use_definition.interaction.interactant_itemReference",
+        backref="clinical_use_definition_interaction_interactant_itemReference",
     )
 
     @classmethod
@@ -935,7 +935,7 @@ class ClinicalUseDefinitionUndesirableEffect(backboneelement.BackboneElement):
         binding_uri="http://hl7.org/fhir/ValueSet/undesirable-effect-symptom",
         # note: Listed Resource Type(s) should be allowed as Reference.
         enum_reference_types=["ObservationDefinition"],
-        backref="clinical_use_definition.undesirable_effect_symptomConditionEffect",
+        backref="clinical_use_definition_undesirable_effect_symptomConditionEffect",
     )
 
     @classmethod

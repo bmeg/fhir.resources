@@ -524,7 +524,7 @@ class AdverseEventSuspectEntity(backboneelement.BackboneElement):
             "MedicationStatement",
             "Device",
         ],
-        backref="adverse_event.suspect_entity_instance",
+        backref="adverse_event_suspect_entity_instance",
     )
 
     @classmethod
@@ -568,7 +568,7 @@ class AdverseEventSuspectEntityCausality(backboneelement.BackboneElement):
         element_property=True,
         # note: Listed Resource Type(s) should be allowed as Reference.
         enum_reference_types=["Practitioner", "PractitionerRole"],
-        backref="adverse_event.suspect_entity.causality_author",
+        backref="adverse_event_suspect_entity_causality_author",
     )
 
     method: fhirtypes.CodeableConceptType = Field(

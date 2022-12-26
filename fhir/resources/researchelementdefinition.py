@@ -779,7 +779,7 @@ class ResearchElementDefinitionCharacteristic(backboneelement.BackboneElement):
         one_of_many_required=True,
         # note: Listed Resource Type(s) should be allowed as Reference.
         enum_reference_types=["ValueSet"],
-        backref="research_element_definition.characteristic_definitionCanonical",
+        backref="research_element_definition_characteristic_definitionCanonical",
     )
     definitionCanonical__ext: fhirtypes.FHIRPrimitiveExtensionType = Field(
         None,

@@ -429,7 +429,7 @@ class PackagedProductDefinitionPackage(backboneelement.BackboneElement):
         element_property=True,
         # note: Listed Resource Type(s) should be allowed as Reference.
         enum_reference_types=["Organization"],
-        backref="packaged_product_definition.package_manufacturer",
+        backref="packaged_product_definition_package_manufacturer",
     )
 
     material: typing.List[fhirtypes.CodeableConceptType] = Field(
@@ -584,7 +584,7 @@ class PackagedProductDefinitionPackageContainedItem(backboneelement.BackboneElem
             "BiologicallyDerivedProduct",
             "NutritionProduct",
         ],
-        backref="packaged_product_definition.package.contained_item_item",
+        backref="packaged_product_definition_package_contained_item_item",
     )
 
     @classmethod

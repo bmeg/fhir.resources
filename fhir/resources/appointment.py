@@ -522,7 +522,7 @@ class AppointmentParticipant(backboneelement.BackboneElement):
             "HealthcareService",
             "Location",
         ],
-        backref="appointment.participant_actor",
+        backref="appointment_participant_actor",
     )
 
     period: fhirtypes.PeriodType = Field(

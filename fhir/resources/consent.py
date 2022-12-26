@@ -677,7 +677,7 @@ class ConsentProvisionActor(backboneelement.BackboneElement):
             "RelatedPerson",
             "PractitionerRole",
         ],
-        backref="consent.provision.actor_reference",
+        backref="consent_provision_actor_reference",
     )
 
     role: fhirtypes.CodeableConceptType = Field(
@@ -753,7 +753,7 @@ class ConsentProvisionData(backboneelement.BackboneElement):
         element_property=True,
         # note: Listed Resource Type(s) should be allowed as Reference.
         enum_reference_types=["Resource"],
-        backref="consent.provision.data_reference",
+        backref="consent_provision_data_reference",
     )
 
     @classmethod
@@ -875,7 +875,7 @@ class ConsentVerification(backboneelement.BackboneElement):
         element_property=True,
         # note: Listed Resource Type(s) should be allowed as Reference.
         enum_reference_types=["Patient", "RelatedPerson"],
-        backref="consent.verification_verifiedWith",
+        backref="consent_verification_verifiedWith",
     )
 
     @classmethod

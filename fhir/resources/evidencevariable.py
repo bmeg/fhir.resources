@@ -650,7 +650,7 @@ class EvidenceVariableCharacteristic(backboneelement.BackboneElement):
         one_of_many_required=True,
         # note: Listed Resource Type(s) should be allowed as Reference.
         enum_reference_types=["Resource"],
-        backref="evidence_variable.characteristic_definitionCanonical",
+        backref="evidence_variable_characteristic_definitionCanonical",
     )
     definitionCanonical__ext: fhirtypes.FHIRPrimitiveExtensionType = Field(
         None,
@@ -709,7 +709,7 @@ class EvidenceVariableCharacteristic(backboneelement.BackboneElement):
         one_of_many_required=True,
         # note: Listed Resource Type(s) should be allowed as Reference.
         enum_reference_types=["Group", "EvidenceVariable"],
-        backref="evidence_variable.characteristic_definitionReference",
+        backref="evidence_variable_characteristic_definitionReference",
     )
 
     description: fhirtypes.String = Field(
@@ -736,7 +736,7 @@ class EvidenceVariableCharacteristic(backboneelement.BackboneElement):
         element_property=True,
         # note: Listed Resource Type(s) should be allowed as Reference.
         enum_reference_types=["Device", "DeviceMetric"],
-        backref="evidence_variable.characteristic_device",
+        backref="evidence_variable_characteristic_device",
     )
 
     exclude: bool = Field(

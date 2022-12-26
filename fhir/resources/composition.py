@@ -417,7 +417,7 @@ class CompositionAttester(backboneelement.BackboneElement):
             "PractitionerRole",
             "Organization",
         ],
-        backref="composition.attester_party",
+        backref="composition_attester_party",
     )
 
     time: fhirtypes.DateTime = Field(
@@ -545,7 +545,7 @@ class CompositionEvent(backboneelement.BackboneElement):
         element_property=True,
         # note: Listed Resource Type(s) should be allowed as Reference.
         enum_reference_types=["Resource"],
-        backref="composition.event_detail",
+        backref="composition_event_detail",
     )
 
     period: fhirtypes.PeriodType = Field(
@@ -631,7 +631,7 @@ class CompositionRelatesTo(backboneelement.BackboneElement):
         one_of_many_required=True,
         # note: Listed Resource Type(s) should be allowed as Reference.
         enum_reference_types=["Composition"],
-        backref="composition.relates_to_targetReference",
+        backref="composition_relates_to_targetReference",
     )
 
     @classmethod
@@ -777,7 +777,7 @@ class CompositionSection(backboneelement.BackboneElement):
             "RelatedPerson",
             "Organization",
         ],
-        backref="composition.section_author",
+        backref="composition_section_author",
     )
 
     code: fhirtypes.CodeableConceptType = Field(
@@ -826,7 +826,7 @@ class CompositionSection(backboneelement.BackboneElement):
         element_property=True,
         # note: Listed Resource Type(s) should be allowed as Reference.
         enum_reference_types=["Resource"],
-        backref="composition.section_entry",
+        backref="composition_section_entry",
     )
 
     focus: fhirtypes.ReferenceType = Field(
@@ -851,7 +851,7 @@ class CompositionSection(backboneelement.BackboneElement):
         element_property=True,
         # note: Listed Resource Type(s) should be allowed as Reference.
         enum_reference_types=["Resource"],
-        backref="composition.section_focus",
+        backref="composition_section_focus",
     )
 
     mode: fhirtypes.Code = Field(

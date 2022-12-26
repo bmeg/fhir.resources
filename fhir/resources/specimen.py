@@ -305,7 +305,7 @@ class SpecimenCollection(backboneelement.BackboneElement):
         element_property=True,
         # note: Listed Resource Type(s) should be allowed as Reference.
         enum_reference_types=["Practitioner", "PractitionerRole"],
-        backref="specimen.collection_collector",
+        backref="specimen_collection_collector",
     )
 
     duration: fhirtypes.DurationType = Field(
@@ -500,7 +500,7 @@ class SpecimenContainer(backboneelement.BackboneElement):
         binding_uri="http://terminology.hl7.org/ValueSet/v2-0371",
         # note: Listed Resource Type(s) should be allowed as Reference.
         enum_reference_types=["Substance"],
-        backref="specimen.container_additiveReference",
+        backref="specimen_container_additiveReference",
     )
 
     capacity: fhirtypes.QuantityType = Field(
@@ -646,7 +646,7 @@ class SpecimenProcessing(backboneelement.BackboneElement):
         element_property=True,
         # note: Listed Resource Type(s) should be allowed as Reference.
         enum_reference_types=["Substance"],
-        backref="specimen.processing_additive",
+        backref="specimen_processing_additive",
     )
 
     description: fhirtypes.String = Field(

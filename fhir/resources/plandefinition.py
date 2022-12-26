@@ -854,7 +854,7 @@ class PlanDefinitionAction(backboneelement.BackboneElement):
         one_of_many_required=False,
         # note: Listed Resource Type(s) should be allowed as Reference.
         enum_reference_types=["ActivityDefinition", "PlanDefinition", "Questionnaire"],
-        backref="plan_definition.action_definitionCanonical",
+        backref="plan_definition_action_definitionCanonical",
     )
     definitionCanonical__ext: fhirtypes.FHIRPrimitiveExtensionType = Field(
         None,
@@ -1219,7 +1219,7 @@ class PlanDefinitionAction(backboneelement.BackboneElement):
         binding_uri="http://hl7.org/fhir/ValueSet/subject-type",
         # note: Listed Resource Type(s) should be allowed as Reference.
         enum_reference_types=["Group"],
-        backref="plan_definition.action_subjectReference",
+        backref="plan_definition_action_subjectReference",
     )
 
     textEquivalent: fhirtypes.String = Field(
@@ -1346,7 +1346,7 @@ class PlanDefinitionAction(backboneelement.BackboneElement):
         element_property=True,
         # note: Listed Resource Type(s) should be allowed as Reference.
         enum_reference_types=["StructureMap"],
-        backref="plan_definition.action_transform",
+        backref="plan_definition_action_transform",
     )
     transform__ext: fhirtypes.FHIRPrimitiveExtensionType = Field(
         None, alias="_transform", title="Extension field for ``transform``."

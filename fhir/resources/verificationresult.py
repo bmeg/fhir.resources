@@ -377,7 +377,7 @@ class VerificationResultAttestation(backboneelement.BackboneElement):
         element_property=True,
         # note: Listed Resource Type(s) should be allowed as Reference.
         enum_reference_types=["Organization", "Practitioner", "PractitionerRole"],
-        backref="verification_result.attestation_onBehalfOf",
+        backref="verification_result_attestation_onBehalfOf",
     )
 
     proxyIdentityCertificate: fhirtypes.String = Field(
@@ -445,7 +445,7 @@ class VerificationResultAttestation(backboneelement.BackboneElement):
         element_property=True,
         # note: Listed Resource Type(s) should be allowed as Reference.
         enum_reference_types=["Practitioner", "PractitionerRole", "Organization"],
-        backref="verification_result.attestation_who",
+        backref="verification_result_attestation_who",
     )
 
     @classmethod
@@ -596,7 +596,7 @@ class VerificationResultPrimarySource(backboneelement.BackboneElement):
         element_property=True,
         # note: Listed Resource Type(s) should be allowed as Reference.
         enum_reference_types=["Organization", "Practitioner", "PractitionerRole"],
-        backref="verification_result.primary_source_who",
+        backref="verification_result_primary_source_who",
     )
 
     @classmethod
@@ -664,7 +664,7 @@ class VerificationResultValidator(backboneelement.BackboneElement):
         element_property=True,
         # note: Listed Resource Type(s) should be allowed as Reference.
         enum_reference_types=["Organization"],
-        backref="verification_result.validator_organization",
+        backref="verification_result_validator_organization",
     )
 
     @classmethod

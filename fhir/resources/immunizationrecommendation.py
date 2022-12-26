@@ -355,7 +355,7 @@ class ImmunizationRecommendationRecommendation(backboneelement.BackboneElement):
         element_property=True,
         # note: Listed Resource Type(s) should be allowed as Reference.
         enum_reference_types=["Immunization", "ImmunizationEvaluation"],
-        backref="immunization_recommendation.recommendation_supportingImmunization",
+        backref="immunization_recommendation_recommendation_supportingImmunization",
     )
 
     supportingPatientInformation: typing.List[fhirtypes.ReferenceType] = Field(
@@ -371,7 +371,7 @@ class ImmunizationRecommendationRecommendation(backboneelement.BackboneElement):
         element_property=True,
         # note: Listed Resource Type(s) should be allowed as Reference.
         enum_reference_types=["Resource"],
-        backref="immunization_recommendation.recommendation_supportingPatientInformation",
+        backref="immunization_recommendation_recommendation_supportingPatientInformation",
     )
 
     targetDisease: fhirtypes.CodeableConceptType = Field(

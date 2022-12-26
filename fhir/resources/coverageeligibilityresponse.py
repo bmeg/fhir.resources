@@ -484,7 +484,7 @@ class CoverageEligibilityResponseInsurance(backboneelement.BackboneElement):
         element_property=True,
         # note: Listed Resource Type(s) should be allowed as Reference.
         enum_reference_types=["Coverage"],
-        backref="coverage_eligibility_response.insurance_coverage",
+        backref="coverage_eligibility_response_insurance_coverage",
     )
 
     inforce: bool = Field(
@@ -726,7 +726,7 @@ class CoverageEligibilityResponseInsuranceItem(backboneelement.BackboneElement):
         element_property=True,
         # note: Listed Resource Type(s) should be allowed as Reference.
         enum_reference_types=["Practitioner", "PractitionerRole"],
-        backref="coverage_eligibility_response.insurance.item_provider",
+        backref="coverage_eligibility_response_insurance_item_provider",
     )
 
     term: fhirtypes.CodeableConceptType = Field(

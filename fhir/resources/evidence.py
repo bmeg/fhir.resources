@@ -1040,7 +1040,7 @@ class EvidenceStatisticModelCharacteristicVariable(backboneelement.BackboneEleme
         element_property=True,
         # note: Listed Resource Type(s) should be allowed as Reference.
         enum_reference_types=["Group", "EvidenceVariable"],
-        backref="evidence.statistic.model_characteristic.variable_variableDefinition",
+        backref="evidence_statistic_model_characteristic_variable_variableDefinition",
     )
 
     @classmethod
@@ -1201,7 +1201,7 @@ class EvidenceVariableDefinition(backboneelement.BackboneElement):
         element_property=True,
         # note: Listed Resource Type(s) should be allowed as Reference.
         enum_reference_types=["Group", "EvidenceVariable"],
-        backref="evidence.variable_definition_intended",
+        backref="evidence_variable_definition_intended",
     )
 
     note: typing.List[fhirtypes.AnnotationType] = Field(
@@ -1222,7 +1222,7 @@ class EvidenceVariableDefinition(backboneelement.BackboneElement):
         element_property=True,
         # note: Listed Resource Type(s) should be allowed as Reference.
         enum_reference_types=["Group", "EvidenceVariable"],
-        backref="evidence.variable_definition_observed",
+        backref="evidence_variable_definition_observed",
     )
 
     variableRole: fhirtypes.CodeableConceptType = Field(

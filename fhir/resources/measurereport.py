@@ -464,7 +464,7 @@ class MeasureReportGroupPopulation(backboneelement.BackboneElement):
         element_property=True,
         # note: Listed Resource Type(s) should be allowed as Reference.
         enum_reference_types=["List"],
-        backref="measure_report.group.population_subjectResults",
+        backref="measure_report_group_population_subjectResults",
     )
 
     @classmethod
@@ -745,7 +745,7 @@ class MeasureReportGroupStratifierStratumPopulation(backboneelement.BackboneElem
         element_property=True,
         # note: Listed Resource Type(s) should be allowed as Reference.
         enum_reference_types=["List"],
-        backref="measure_report.group.stratifier.stratum.population_subjectResults",
+        backref="measure_report_group_stratifier_stratum_population_subjectResults",
     )
 
     @classmethod

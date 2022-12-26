@@ -416,7 +416,7 @@ class MedicationKnowledgeAdministrationGuidelines(backboneelement.BackboneElemen
         one_of_many_required=False,
         # note: Listed Resource Type(s) should be allowed as Reference.
         enum_reference_types=["ObservationDefinition"],
-        backref="medication_knowledge.administration_guidelines_indicationReference",
+        backref="medication_knowledge_administration_guidelines_indicationReference",
     )
 
     patientCharacteristics: typing.List[
@@ -918,7 +918,7 @@ class MedicationKnowledgeIngredient(backboneelement.BackboneElement):
         one_of_many_required=True,
         # note: Listed Resource Type(s) should be allowed as Reference.
         enum_reference_types=["Substance"],
-        backref="medication_knowledge.ingredient_itemReference",
+        backref="medication_knowledge_ingredient_itemReference",
     )
 
     strength: fhirtypes.RatioType = Field(
@@ -1150,7 +1150,7 @@ class MedicationKnowledgeMonograph(backboneelement.BackboneElement):
         element_property=True,
         # note: Listed Resource Type(s) should be allowed as Reference.
         enum_reference_types=["DocumentReference", "Media"],
-        backref="medication_knowledge.monograph_source",
+        backref="medication_knowledge_monograph_source",
     )
 
     type: fhirtypes.CodeableConceptType = Field(
@@ -1254,7 +1254,7 @@ class MedicationKnowledgeRegulatory(backboneelement.BackboneElement):
         element_property=True,
         # note: Listed Resource Type(s) should be allowed as Reference.
         enum_reference_types=["Organization"],
-        backref="medication_knowledge.regulatory_regulatoryAuthority",
+        backref="medication_knowledge_regulatory_regulatoryAuthority",
     )
 
     schedule: typing.List[fhirtypes.MedicationKnowledgeRegulatoryScheduleType] = Field(
@@ -1487,7 +1487,7 @@ class MedicationKnowledgeRelatedMedicationKnowledge(backboneelement.BackboneElem
         element_property=True,
         # note: Listed Resource Type(s) should be allowed as Reference.
         enum_reference_types=["MedicationKnowledge"],
-        backref="medication_knowledge.related_medication_knowledge_reference",
+        backref="medication_knowledge_related_medication_knowledge_reference",
     )
 
     type: fhirtypes.CodeableConceptType = Field(

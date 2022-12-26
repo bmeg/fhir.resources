@@ -557,7 +557,7 @@ class RequestGroupAction(backboneelement.BackboneElement):
             "RelatedPerson",
             "Device",
         ],
-        backref="request_group.action_participant",
+        backref="request_group_action_participant",
     )
 
     precheckBehavior: fhirtypes.Code = Field(
@@ -669,7 +669,7 @@ class RequestGroupAction(backboneelement.BackboneElement):
         element_property=True,
         # note: Listed Resource Type(s) should be allowed as Reference.
         enum_reference_types=["Resource"],
-        backref="request_group.action_resource",
+        backref="request_group_action_resource",
     )
 
     selectionBehavior: fhirtypes.Code = Field(

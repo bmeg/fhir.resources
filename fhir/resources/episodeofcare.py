@@ -329,7 +329,7 @@ class EpisodeOfCareDiagnosis(backboneelement.BackboneElement):
         element_property=True,
         # note: Listed Resource Type(s) should be allowed as Reference.
         enum_reference_types=["Condition"],
-        backref="episode_of_care.diagnosis_condition",
+        backref="episode_of_care_diagnosis_condition",
     )
 
     rank: fhirtypes.PositiveInt = Field(

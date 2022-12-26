@@ -527,7 +527,7 @@ class DiagnosticReportMedia(backboneelement.BackboneElement):
         element_property=True,
         # note: Listed Resource Type(s) should be allowed as Reference.
         enum_reference_types=["Media"],
-        backref="diagnostic_report.media_link",
+        backref="diagnostic_report_media_link",
     )
 
     @classmethod

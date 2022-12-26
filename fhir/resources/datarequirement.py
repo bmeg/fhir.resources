@@ -389,7 +389,7 @@ class DataRequirementCodeFilter(element.Element):
         element_property=True,
         # note: Listed Resource Type(s) should be allowed as Reference.
         enum_reference_types=["ValueSet"],
-        backref="data_requirement.code_filter_valueSet",
+        backref="data_requirement_code_filter_valueSet",
     )
     valueSet__ext: fhirtypes.FHIRPrimitiveExtensionType = Field(
         None, alias="_valueSet", title="Extension field for ``valueSet``."

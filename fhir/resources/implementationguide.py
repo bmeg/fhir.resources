@@ -712,7 +712,7 @@ class ImplementationGuideDefinitionPage(backboneelement.BackboneElement):
         one_of_many_required=True,
         # note: Listed Resource Type(s) should be allowed as Reference.
         enum_reference_types=["Binary"],
-        backref="implementation_guide.definition.page_nameReference",
+        backref="implementation_guide_definition_page_nameReference",
     )
 
     nameUrl: fhirtypes.Url = Field(
@@ -1061,7 +1061,7 @@ class ImplementationGuideDefinitionResource(backboneelement.BackboneElement):
         one_of_many_required=False,
         # note: Listed Resource Type(s) should be allowed as Reference.
         enum_reference_types=["StructureDefinition"],
-        backref="implementation_guide.definition.resource_exampleCanonical",
+        backref="implementation_guide_definition_resource_exampleCanonical",
     )
     exampleCanonical__ext: fhirtypes.FHIRPrimitiveExtensionType = Field(
         None,
@@ -1128,7 +1128,7 @@ class ImplementationGuideDefinitionResource(backboneelement.BackboneElement):
         element_property=True,
         # note: Listed Resource Type(s) should be allowed as Reference.
         enum_reference_types=["Resource"],
-        backref="implementation_guide.definition.resource_reference",
+        backref="implementation_guide_definition_resource_reference",
     )
 
     @classmethod
@@ -1343,7 +1343,7 @@ class ImplementationGuideDependsOn(backboneelement.BackboneElement):
         element_required=True,
         # note: Listed Resource Type(s) should be allowed as Reference.
         enum_reference_types=["ImplementationGuide"],
-        backref="implementation_guide.depends_on_uri",
+        backref="implementation_guide_depends_on_uri",
     )
     uri__ext: fhirtypes.FHIRPrimitiveExtensionType = Field(
         None, alias="_uri", title="Extension field for ``uri``."
@@ -1454,7 +1454,7 @@ class ImplementationGuideGlobal(backboneelement.BackboneElement):
         element_required=True,
         # note: Listed Resource Type(s) should be allowed as Reference.
         enum_reference_types=["StructureDefinition"],
-        backref="implementation_guide.global_profile",
+        backref="implementation_guide_global_profile",
     )
     profile__ext: fhirtypes.FHIRPrimitiveExtensionType = Field(
         None, alias="_profile", title="Extension field for ``profile``."
@@ -1810,7 +1810,7 @@ class ImplementationGuideManifestResource(backboneelement.BackboneElement):
         one_of_many_required=False,
         # note: Listed Resource Type(s) should be allowed as Reference.
         enum_reference_types=["StructureDefinition"],
-        backref="implementation_guide.manifest.resource_exampleCanonical",
+        backref="implementation_guide_manifest_resource_exampleCanonical",
     )
     exampleCanonical__ext: fhirtypes.FHIRPrimitiveExtensionType = Field(
         None,
@@ -1827,7 +1827,7 @@ class ImplementationGuideManifestResource(backboneelement.BackboneElement):
         element_property=True,
         # note: Listed Resource Type(s) should be allowed as Reference.
         enum_reference_types=["Resource"],
-        backref="implementation_guide.manifest.resource_reference",
+        backref="implementation_guide_manifest_resource_reference",
     )
 
     relativePath: fhirtypes.Url = Field(

@@ -2336,7 +2336,7 @@ class TaskRestriction(backboneelement.BackboneElement):
             "Group",
             "Organization",
         ],
-        backref="task.restriction_recipient",
+        backref="task_restriction_recipient",
     )
 
     repetitions: fhirtypes.PositiveInt = Field(

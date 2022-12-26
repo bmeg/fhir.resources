@@ -537,7 +537,7 @@ class EncounterDiagnosis(backboneelement.BackboneElement):
         element_property=True,
         # note: Listed Resource Type(s) should be allowed as Reference.
         enum_reference_types=["Condition", "Procedure"],
-        backref="encounter.diagnosis_condition",
+        backref="encounter_diagnosis_condition",
     )
 
     rank: fhirtypes.PositiveInt = Field(
@@ -609,7 +609,7 @@ class EncounterHospitalization(backboneelement.BackboneElement):
         element_property=True,
         # note: Listed Resource Type(s) should be allowed as Reference.
         enum_reference_types=["Location", "Organization"],
-        backref="encounter.hospitalization_destination",
+        backref="encounter_hospitalization_destination",
     )
 
     dietPreference: typing.List[fhirtypes.CodeableConceptType] = Field(
@@ -647,7 +647,7 @@ class EncounterHospitalization(backboneelement.BackboneElement):
         element_property=True,
         # note: Listed Resource Type(s) should be allowed as Reference.
         enum_reference_types=["Location", "Organization"],
-        backref="encounter.hospitalization_origin",
+        backref="encounter_hospitalization_origin",
     )
 
     preAdmissionIdentifier: fhirtypes.IdentifierType = Field(
@@ -751,7 +751,7 @@ class EncounterLocation(backboneelement.BackboneElement):
         element_property=True,
         # note: Listed Resource Type(s) should be allowed as Reference.
         enum_reference_types=["Location"],
-        backref="encounter.location_location",
+        backref="encounter_location_location",
     )
 
     period: fhirtypes.PeriodType = Field(
@@ -845,7 +845,7 @@ class EncounterParticipant(backboneelement.BackboneElement):
         element_property=True,
         # note: Listed Resource Type(s) should be allowed as Reference.
         enum_reference_types=["Practitioner", "PractitionerRole", "RelatedPerson"],
-        backref="encounter.participant_individual",
+        backref="encounter_participant_individual",
     )
 
     period: fhirtypes.PeriodType = Field(

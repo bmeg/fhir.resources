@@ -351,7 +351,7 @@ class InsurancePlanCoverage(backboneelement.BackboneElement):
         element_property=True,
         # note: Listed Resource Type(s) should be allowed as Reference.
         enum_reference_types=["Organization"],
-        backref="insurance_plan.coverage_network",
+        backref="insurance_plan_coverage_network",
     )
 
     type: fhirtypes.CodeableConceptType = Field(
@@ -491,7 +491,7 @@ class InsurancePlanPlan(backboneelement.BackboneElement):
         element_property=True,
         # note: Listed Resource Type(s) should be allowed as Reference.
         enum_reference_types=["Location"],
-        backref="insurance_plan.plan_coverageArea",
+        backref="insurance_plan_plan_coverageArea",
     )
 
     generalCost: typing.List[fhirtypes.InsurancePlanPlanGeneralCostType] = Field(
@@ -525,7 +525,7 @@ class InsurancePlanPlan(backboneelement.BackboneElement):
         element_property=True,
         # note: Listed Resource Type(s) should be allowed as Reference.
         enum_reference_types=["Organization"],
-        backref="insurance_plan.plan_network",
+        backref="insurance_plan_plan_network",
     )
 
     specificCost: typing.List[fhirtypes.InsurancePlanPlanSpecificCostType] = Field(

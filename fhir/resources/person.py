@@ -214,7 +214,7 @@ class PersonLink(backboneelement.BackboneElement):
         element_property=True,
         # note: Listed Resource Type(s) should be allowed as Reference.
         enum_reference_types=["Patient", "Practitioner", "RelatedPerson", "Person"],
-        backref="person.link_target",
+        backref="person_link_target",
     )
 
     @classmethod

@@ -382,7 +382,7 @@ class PaymentReconciliationDetail(backboneelement.BackboneElement):
         element_property=True,
         # note: Listed Resource Type(s) should be allowed as Reference.
         enum_reference_types=["Practitioner", "PractitionerRole", "Organization"],
-        backref="payment_reconciliation.detail_payee",
+        backref="payment_reconciliation_detail_payee",
     )
 
     predecessor: fhirtypes.IdentifierType = Field(
@@ -409,7 +409,7 @@ class PaymentReconciliationDetail(backboneelement.BackboneElement):
         element_property=True,
         # note: Listed Resource Type(s) should be allowed as Reference.
         enum_reference_types=["Resource"],
-        backref="payment_reconciliation.detail_request",
+        backref="payment_reconciliation_detail_request",
     )
 
     response: fhirtypes.ReferenceType = Field(
@@ -424,7 +424,7 @@ class PaymentReconciliationDetail(backboneelement.BackboneElement):
         element_property=True,
         # note: Listed Resource Type(s) should be allowed as Reference.
         enum_reference_types=["Resource"],
-        backref="payment_reconciliation.detail_response",
+        backref="payment_reconciliation_detail_response",
     )
 
     responsible: fhirtypes.ReferenceType = Field(
@@ -439,7 +439,7 @@ class PaymentReconciliationDetail(backboneelement.BackboneElement):
         element_property=True,
         # note: Listed Resource Type(s) should be allowed as Reference.
         enum_reference_types=["PractitionerRole"],
-        backref="payment_reconciliation.detail_responsible",
+        backref="payment_reconciliation_detail_responsible",
     )
 
     submitter: fhirtypes.ReferenceType = Field(
@@ -451,7 +451,7 @@ class PaymentReconciliationDetail(backboneelement.BackboneElement):
         element_property=True,
         # note: Listed Resource Type(s) should be allowed as Reference.
         enum_reference_types=["Practitioner", "PractitionerRole", "Organization"],
-        backref="payment_reconciliation.detail_submitter",
+        backref="payment_reconciliation_detail_submitter",
     )
 
     type: fhirtypes.CodeableConceptType = Field(

@@ -307,7 +307,7 @@ class CatalogEntryRelatedEntry(backboneelement.BackboneElement):
         element_property=True,
         # note: Listed Resource Type(s) should be allowed as Reference.
         enum_reference_types=["CatalogEntry"],
-        backref="catalog_entry.related_entry_item",
+        backref="catalog_entry_related_entry_item",
     )
 
     relationtype: fhirtypes.Code = Field(

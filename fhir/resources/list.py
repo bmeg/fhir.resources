@@ -372,7 +372,7 @@ class ListEntry(backboneelement.BackboneElement):
         element_property=True,
         # note: Listed Resource Type(s) should be allowed as Reference.
         enum_reference_types=["Resource"],
-        backref="list.entry_item",
+        backref="list_entry_item",
     )
 
     @classmethod

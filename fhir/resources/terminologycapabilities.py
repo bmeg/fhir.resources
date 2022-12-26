@@ -593,7 +593,7 @@ class TerminologyCapabilitiesCodeSystem(backboneelement.BackboneElement):
         element_property=True,
         # note: Listed Resource Type(s) should be allowed as Reference.
         enum_reference_types=["CodeSystem"],
-        backref="terminology_capabilities.code_system_uri",
+        backref="terminology_capabilities_code_system_uri",
     )
     uri__ext: fhirtypes.FHIRPrimitiveExtensionType = Field(
         None, alias="_uri", title="Extension field for ``uri``."

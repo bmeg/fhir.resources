@@ -768,7 +768,7 @@ class ProcedureFocalDevice(backboneelement.BackboneElement):
         element_property=True,
         # note: Listed Resource Type(s) should be allowed as Reference.
         enum_reference_types=["Device"],
-        backref="procedure.focal_device_manipulated",
+        backref="procedure_focal_device_manipulated",
     )
 
     @classmethod
@@ -807,7 +807,7 @@ class ProcedurePerformer(backboneelement.BackboneElement):
             "RelatedPerson",
             "Device",
         ],
-        backref="procedure.performer_actor",
+        backref="procedure_performer_actor",
     )
 
     function: fhirtypes.CodeableConceptType = Field(
@@ -836,7 +836,7 @@ class ProcedurePerformer(backboneelement.BackboneElement):
         element_property=True,
         # note: Listed Resource Type(s) should be allowed as Reference.
         enum_reference_types=["Organization"],
-        backref="procedure.performer_onBehalfOf",
+        backref="procedure_performer_onBehalfOf",
     )
 
     @classmethod

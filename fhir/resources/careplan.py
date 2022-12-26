@@ -576,7 +576,7 @@ class CarePlanActivity(backboneelement.BackboneElement):
         element_property=True,
         # note: Listed Resource Type(s) should be allowed as Reference.
         enum_reference_types=["Resource"],
-        backref="care_plan.activity_outcomeReference",
+        backref="care_plan_activity_outcomeReference",
     )
 
     progress: typing.List[fhirtypes.AnnotationType] = Field(
@@ -610,7 +610,7 @@ class CarePlanActivity(backboneelement.BackboneElement):
             "VisionPrescription",
             "RequestGroup",
         ],
-        backref="care_plan.activity_reference",
+        backref="care_plan_activity_reference",
     )
 
     @classmethod
@@ -717,7 +717,7 @@ class CarePlanActivityDetail(backboneelement.BackboneElement):
         element_property=True,
         # note: Listed Resource Type(s) should be allowed as Reference.
         enum_reference_types=["Goal"],
-        backref="care_plan.activity.detail_goal",
+        backref="care_plan_activity_detail_goal",
     )
 
     instantiatesCanonical: typing.List[typing.Optional[fhirtypes.Canonical]] = Field(
@@ -739,7 +739,7 @@ class CarePlanActivityDetail(backboneelement.BackboneElement):
             "Measure",
             "OperationDefinition",
         ],
-        backref="care_plan.activity.detail_instantiatesCanonical",
+        backref="care_plan_activity_detail_instantiatesCanonical",
     )
     instantiatesCanonical__ext: typing.List[
         typing.Union[fhirtypes.FHIRPrimitiveExtensionType, None]
@@ -818,7 +818,7 @@ class CarePlanActivityDetail(backboneelement.BackboneElement):
         element_property=True,
         # note: Listed Resource Type(s) should be allowed as Reference.
         enum_reference_types=["Location"],
-        backref="care_plan.activity.detail_location",
+        backref="care_plan_activity_detail_location",
     )
 
     performer: typing.List[fhirtypes.ReferenceType] = Field(
@@ -839,7 +839,7 @@ class CarePlanActivityDetail(backboneelement.BackboneElement):
             "HealthcareService",
             "Device",
         ],
-        backref="care_plan.activity.detail_performer",
+        backref="care_plan_activity_detail_performer",
     )
 
     productCodeableConcept: fhirtypes.CodeableConceptType = Field(
@@ -880,7 +880,7 @@ class CarePlanActivityDetail(backboneelement.BackboneElement):
         binding_uri="http://hl7.org/fhir/ValueSet/medication-codes",
         # note: Listed Resource Type(s) should be allowed as Reference.
         enum_reference_types=["Medication", "Substance"],
-        backref="care_plan.activity.detail_productReference",
+        backref="care_plan_activity_detail_productReference",
     )
 
     quantity: fhirtypes.QuantityType = Field(
@@ -930,7 +930,7 @@ class CarePlanActivityDetail(backboneelement.BackboneElement):
             "DiagnosticReport",
             "DocumentReference",
         ],
-        backref="care_plan.activity.detail_reasonReference",
+        backref="care_plan_activity_detail_reasonReference",
     )
 
     scheduledPeriod: fhirtypes.PeriodType = Field(

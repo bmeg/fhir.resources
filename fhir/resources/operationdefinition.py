@@ -779,7 +779,7 @@ class OperationDefinitionParameter(backboneelement.BackboneElement):
         element_property=True,
         # note: Listed Resource Type(s) should be allowed as Reference.
         enum_reference_types=["StructureDefinition"],
-        backref="operation_definition.parameter_targetProfile",
+        backref="operation_definition_parameter_targetProfile",
     )
     targetProfile__ext: typing.List[
         typing.Union[fhirtypes.FHIRPrimitiveExtensionType, None]
@@ -969,7 +969,7 @@ class OperationDefinitionParameterBinding(backboneelement.BackboneElement):
         element_required=True,
         # note: Listed Resource Type(s) should be allowed as Reference.
         enum_reference_types=["ValueSet"],
-        backref="operation_definition.parameter.binding_valueSet",
+        backref="operation_definition_parameter_binding_valueSet",
     )
     valueSet__ext: fhirtypes.FHIRPrimitiveExtensionType = Field(
         None, alias="_valueSet", title="Extension field for ``valueSet``."

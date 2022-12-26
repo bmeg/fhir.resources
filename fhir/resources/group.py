@@ -577,7 +577,7 @@ class GroupMember(backboneelement.BackboneElement):
             "Substance",
             "Group",
         ],
-        backref="group.member_entity",
+        backref="group_member_entity",
     )
 
     inactive: bool = Field(

@@ -587,7 +587,7 @@ class ConditionEvidence(backboneelement.BackboneElement):
         element_property=True,
         # note: Listed Resource Type(s) should be allowed as Reference.
         enum_reference_types=["Resource"],
-        backref="condition.evidence_detail",
+        backref="condition_evidence_detail",
     )
 
     @classmethod
@@ -623,7 +623,7 @@ class ConditionStage(backboneelement.BackboneElement):
         element_property=True,
         # note: Listed Resource Type(s) should be allowed as Reference.
         enum_reference_types=["ClinicalImpression", "DiagnosticReport", "Observation"],
-        backref="condition.stage_assessment",
+        backref="condition_stage_assessment",
     )
 
     summary: fhirtypes.CodeableConceptType = Field(

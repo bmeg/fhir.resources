@@ -495,7 +495,7 @@ class ImagingStudySeries(backboneelement.BackboneElement):
         element_property=True,
         # note: Listed Resource Type(s) should be allowed as Reference.
         enum_reference_types=["Endpoint"],
-        backref="imaging_study.series_endpoint",
+        backref="imaging_study_series_endpoint",
     )
 
     instance: typing.List[fhirtypes.ImagingStudySeriesInstanceType] = Field(
@@ -594,7 +594,7 @@ class ImagingStudySeries(backboneelement.BackboneElement):
         element_property=True,
         # note: Listed Resource Type(s) should be allowed as Reference.
         enum_reference_types=["Specimen"],
-        backref="imaging_study.series_specimen",
+        backref="imaging_study_series_specimen",
     )
 
     started: fhirtypes.DateTime = Field(
@@ -875,7 +875,7 @@ class ImagingStudySeriesPerformer(backboneelement.BackboneElement):
             "Device",
             "RelatedPerson",
         ],
-        backref="imaging_study.series.performer_actor",
+        backref="imaging_study_series_performer_actor",
     )
 
     function: fhirtypes.CodeableConceptType = Field(

@@ -343,7 +343,7 @@ class ProvenanceAgent(backboneelement.BackboneElement):
             "Device",
             "Organization",
         ],
-        backref="provenance.agent_onBehalfOf",
+        backref="provenance_agent_onBehalfOf",
     )
 
     role: typing.List[fhirtypes.CodeableConceptType] = Field(
@@ -395,7 +395,7 @@ class ProvenanceAgent(backboneelement.BackboneElement):
             "Device",
             "Organization",
         ],
-        backref="provenance.agent_who",
+        backref="provenance_agent_who",
     )
 
     @classmethod
@@ -475,7 +475,7 @@ class ProvenanceEntity(backboneelement.BackboneElement):
         element_property=True,
         # note: Listed Resource Type(s) should be allowed as Reference.
         enum_reference_types=["Resource"],
-        backref="provenance.entity_what",
+        backref="provenance_entity_what",
     )
 
     @classmethod

@@ -663,7 +663,7 @@ class QuestionnaireResponseItemAnswer(backboneelement.BackboneElement):
         binding_uri="http://hl7.org/fhir/ValueSet/questionnaire-answers",
         # note: Listed Resource Type(s) should be allowed as Reference.
         enum_reference_types=["Resource"],
-        backref="questionnaire_response.item.answer_valueReference",
+        backref="questionnaire_response_item_answer_valueReference",
     )
 
     valueString: fhirtypes.String = Field(

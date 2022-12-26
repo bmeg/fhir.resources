@@ -334,7 +334,7 @@ class MessageHeaderDestination(backboneelement.BackboneElement):
         element_property=True,
         # note: Listed Resource Type(s) should be allowed as Reference.
         enum_reference_types=["Practitioner", "PractitionerRole", "Organization"],
-        backref="message_header.destination_receiver",
+        backref="message_header_destination_receiver",
     )
 
     target: fhirtypes.ReferenceType = Field(
@@ -349,7 +349,7 @@ class MessageHeaderDestination(backboneelement.BackboneElement):
         element_property=True,
         # note: Listed Resource Type(s) should be allowed as Reference.
         enum_reference_types=["Device"],
-        backref="message_header.destination_target",
+        backref="message_header_destination_target",
     )
 
     @classmethod
@@ -474,7 +474,7 @@ class MessageHeaderResponse(backboneelement.BackboneElement):
         element_property=True,
         # note: Listed Resource Type(s) should be allowed as Reference.
         enum_reference_types=["OperationOutcome"],
-        backref="message_header.response_details",
+        backref="message_header_response_details",
     )
 
     identifier: fhirtypes.Id = Field(

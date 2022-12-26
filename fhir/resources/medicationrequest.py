@@ -893,7 +893,7 @@ class MedicationRequestDispenseRequest(backboneelement.BackboneElement):
         element_property=True,
         # note: Listed Resource Type(s) should be allowed as Reference.
         enum_reference_types=["Organization"],
-        backref="medication_request.dispense_request_performer",
+        backref="medication_request_dispense_request_performer",
     )
 
     quantity: fhirtypes.QuantityType = Field(
