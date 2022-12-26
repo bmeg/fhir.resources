@@ -64,6 +64,7 @@ class Signature(element.Element):
             "Device",
             "Organization",
         ],
+        backref="signature_onBehalfOf",
     )
 
     sigFormat: fhirtypes.Code = Field(
@@ -74,10 +75,15 @@ class Signature(element.Element):
             "A mime type that indicates the technical format of the signature. "
             "Important mime types are application/signature+xml for X ML DigSig, "
             "application/jose for JWS, and image/* for a graphical image of a "
-            "signature, etc."
+            "signature, etc. See http://hl7.org/fhir/ValueSet/mimetypes"
         ),
         # if property is element of this resource.
         element_property=True,
+        # valueset binding
+        binding_description="BCP 13 (RFCs 2045, 2046, 2047, 4288, 4289 and 2049)",
+        binding_strength="required",
+        binding_uri="http://hl7.org/fhir/ValueSet/mimetypes",
+        binding_version="4.3.0",
     )
     sigFormat__ext: fhirtypes.FHIRPrimitiveExtensionType = Field(
         None, alias="_sigFormat", title="Extension field for ``sigFormat``."
@@ -89,10 +95,16 @@ class Signature(element.Element):
         title="The technical format of the signed resources",
         description=(
             "A mime type that indicates the technical format of the target "
-            "resources signed by the signature."
+            "resources signed by the signature. See "
+            "http://hl7.org/fhir/ValueSet/mimetypes"
         ),
         # if property is element of this resource.
         element_property=True,
+        # valueset binding
+        binding_description="BCP 13 (RFCs 2045, 2046, 2047, 4288, 4289 and 2049)",
+        binding_strength="required",
+        binding_uri="http://hl7.org/fhir/ValueSet/mimetypes",
+        binding_version="4.3.0",
     )
     targetFormat__ext: fhirtypes.FHIRPrimitiveExtensionType = Field(
         None, alias="_targetFormat", title="Extension field for ``targetFormat``."
@@ -106,10 +118,14 @@ class Signature(element.Element):
             "An indication of the reason that the entity signed this document. This"
             " may be explicitly included as part of the signature information and "
             "can be used when determining accountability for various actions "
-            "concerning the document."
+            "concerning the document. See http://hl7.org/fhir/ValueSet/signature-"
+            "type"
         ),
         # if property is element of this resource.
         element_property=True,
+        # valueset binding
+        binding_strength="preferred",
+        binding_uri="http://hl7.org/fhir/ValueSet/signature-type",
     )
 
     when: fhirtypes.Instant = Field(
@@ -144,6 +160,7 @@ class Signature(element.Element):
             "Device",
             "Organization",
         ],
+        backref="signature_who",
     )
 
     @classmethod

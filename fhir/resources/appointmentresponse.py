@@ -46,6 +46,7 @@ class AppointmentResponse(domainresource.DomainResource):
             "HealthcareService",
             "Location",
         ],
+        backref="appointment_response_actor",
     )
 
     appointment: fhirtypes.ReferenceType = Field(
@@ -57,6 +58,7 @@ class AppointmentResponse(domainresource.DomainResource):
         element_property=True,
         # note: Listed Resource Type(s) should be allowed as Reference.
         enum_reference_types=["Appointment"],
+        backref="appointment_response_appointment",
     )
 
     comment: fhirtypes.String = Field(
@@ -110,7 +112,8 @@ class AppointmentResponse(domainresource.DomainResource):
             "or tentative if the start/end times are different to the appointment, "
             "then these times should be interpreted as a requested time change. "
             "When the status is accepted, the times can either be the time of the "
-            "appointment (as a confirmation of the time) or can be empty."
+            "appointment (as a confirmation of the time) or can be empty. See "
+            "http://hl7.org/fhir/ValueSet/participationstatus"
         ),
         # if property is element of this resource.
         element_property=True,
@@ -118,6 +121,11 @@ class AppointmentResponse(domainresource.DomainResource):
         # note: Enum values can be used in validation,
         # but use in your own responsibilities, read official FHIR documentation.
         enum_values=["accepted", "declined", "tentative", "needs-action"],
+        # valueset binding
+        binding_description="The Participation status of an appointment.",
+        binding_strength="required",
+        binding_uri="http://hl7.org/fhir/ValueSet/participationstatus",
+        binding_version="4.3.0",
     )
     participantStatus__ext: fhirtypes.FHIRPrimitiveExtensionType = Field(
         None,
@@ -129,9 +137,13 @@ class AppointmentResponse(domainresource.DomainResource):
         None,
         alias="participantType",
         title="Role of participant in the appointment",
-        description=None,
+        description="See http://hl7.org/fhir/ValueSet/encounter-participant-type",
         # if property is element of this resource.
         element_property=True,
+        # valueset binding
+        binding_description="Role of participant in encounter.",
+        binding_strength="extensible",
+        binding_uri="http://hl7.org/fhir/ValueSet/encounter-participant-type",
     )
 
     start: fhirtypes.Instant = Field(

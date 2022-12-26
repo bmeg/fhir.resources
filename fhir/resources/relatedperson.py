@@ -78,13 +78,19 @@ class RelatedPerson(domainresource.DomainResource):
         title="male | female | other | unknown",
         description=(
             "Administrative Gender - the gender that the person is considered to "
-            "have for administration and record keeping purposes."
+            "have for administration and record keeping purposes. See "
+            "http://hl7.org/fhir/ValueSet/administrative-gender"
         ),
         # if property is element of this resource.
         element_property=True,
         # note: Enum values can be used in validation,
         # but use in your own responsibilities, read official FHIR documentation.
         enum_values=["male", "female", "other", "unknown"],
+        # valueset binding
+        binding_description="The gender of a person used for administrative purposes.",
+        binding_strength="required",
+        binding_uri="http://hl7.org/fhir/ValueSet/administrative-gender",
+        binding_version="4.3.0",
     )
     gender__ext: fhirtypes.FHIRPrimitiveExtensionType = Field(
         None, alias="_gender", title="Extension field for ``gender``."
@@ -117,6 +123,7 @@ class RelatedPerson(domainresource.DomainResource):
         element_property=True,
         # note: Listed Resource Type(s) should be allowed as Reference.
         enum_reference_types=["Patient"],
+        backref="related_person_patient",
     )
 
     period: fhirtypes.PeriodType = Field(
@@ -146,10 +153,15 @@ class RelatedPerson(domainresource.DomainResource):
         title="The nature of the relationship",
         description=(
             "The nature of the relationship between a patient and the related "
-            "person."
+            "person. See http://hl7.org/fhir/ValueSet/relatedperson-"
+            "relationshiptype"
         ),
         # if property is element of this resource.
         element_property=True,
+        # valueset binding
+        binding_description="The nature of the relationship between a patient and the related person.",
+        binding_strength="preferred",
+        binding_uri="http://hl7.org/fhir/ValueSet/relatedperson-relationshiptype",
     )
 
     telecom: typing.List[fhirtypes.ContactPointType] = Field(
@@ -215,10 +227,15 @@ class RelatedPersonCommunication(backboneelement.BackboneElement):
             "The ISO-639-1 alpha 2 code in lower case for the language, optionally "
             "followed by a hyphen and the ISO-3166-1 alpha 2 code for the region in"
             ' upper case; e.g. "en" for English, or "en-US" for American English '
-            'versus "en-EN" for England English.'
+            'versus "en-EN" for England English. See '
+            "http://hl7.org/fhir/ValueSet/languages"
         ),
         # if property is element of this resource.
         element_property=True,
+        # valueset binding
+        binding_description="IETF language tag",
+        binding_strength="preferred",
+        binding_uri="http://hl7.org/fhir/ValueSet/languages",
     )
 
     preferred: bool = Field(

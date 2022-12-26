@@ -54,6 +54,7 @@ class OperationDefinition(domainresource.DomainResource):
         element_property=True,
         # note: Listed Resource Type(s) should be allowed as Reference.
         enum_reference_types=["OperationDefinition"],
+        backref="operation_definition_base",
     )
     base__ext: fhirtypes.FHIRPrimitiveExtensionType = Field(
         None, alias="_base", title="Extension field for ``base``."
@@ -158,6 +159,7 @@ class OperationDefinition(domainresource.DomainResource):
         element_property=True,
         # note: Listed Resource Type(s) should be allowed as Reference.
         enum_reference_types=["StructureDefinition"],
+        backref="operation_definition_inputProfile",
     )
     inputProfile__ext: fhirtypes.FHIRPrimitiveExtensionType = Field(
         None, alias="_inputProfile", title="Extension field for ``inputProfile``."
@@ -185,23 +187,35 @@ class OperationDefinition(domainresource.DomainResource):
         title="Intended jurisdiction for operation definition (if applicable)",
         description=(
             "A legal or geographic region in which the operation definition is "
-            "intended to be used."
+            "intended to be used. See http://hl7.org/fhir/ValueSet/jurisdiction"
         ),
         # if property is element of this resource.
         element_property=True,
+        # valueset binding
+        binding_description="Countries and regions within which this artifact is targeted for use.",
+        binding_strength="extensible",
+        binding_uri="http://hl7.org/fhir/ValueSet/jurisdiction",
     )
 
     kind: fhirtypes.Code = Field(
         None,
         alias="kind",
         title="operation | query",
-        description="Whether this is an operation or a named query.",
+        description=(
+            "Whether this is an operation or a named query. See "
+            "http://hl7.org/fhir/ValueSet/operation-kind"
+        ),
         # if property is element of this resource.
         element_property=True,
         element_required=True,
         # note: Enum values can be used in validation,
         # but use in your own responsibilities, read official FHIR documentation.
         enum_values=["operation", "query"],
+        # valueset binding
+        binding_description="Whether an operation is a normal operation or a query.",
+        binding_strength="required",
+        binding_uri="http://hl7.org/fhir/ValueSet/operation-kind",
+        binding_version="4.3.0",
     )
     kind__ext: fhirtypes.FHIRPrimitiveExtensionType = Field(
         None, alias="_kind", title="Extension field for ``kind``."
@@ -237,6 +251,7 @@ class OperationDefinition(domainresource.DomainResource):
         element_property=True,
         # note: Listed Resource Type(s) should be allowed as Reference.
         enum_reference_types=["StructureDefinition"],
+        backref="operation_definition_outputProfile",
     )
     outputProfile__ext: fhirtypes.FHIRPrimitiveExtensionType = Field(
         None, alias="_outputProfile", title="Extension field for ``outputProfile``."
@@ -298,9 +313,17 @@ class OperationDefinition(domainresource.DomainResource):
         None,
         alias="resource",
         title="Types this operation applies to",
-        description="The types on which this operation can be executed.",
+        description=(
+            "The types on which this operation can be executed. See "
+            "http://hl7.org/fhir/ValueSet/resource-types"
+        ),
         # if property is element of this resource.
         element_property=True,
+        # valueset binding
+        binding_description="One of the resource types defined as part of this version of FHIR.",
+        binding_strength="required",
+        binding_uri="http://hl7.org/fhir/ValueSet/resource-types",
+        binding_version="4.3.0",
     )
     resource__ext: typing.List[
         typing.Union[fhirtypes.FHIRPrimitiveExtensionType, None]
@@ -312,7 +335,8 @@ class OperationDefinition(domainresource.DomainResource):
         title="draft | active | retired | unknown",
         description=(
             "The status of this operation definition. Enables tracking the life-"
-            "cycle of the content."
+            "cycle of the content. See http://hl7.org/fhir/ValueSet/publication-"
+            "status"
         ),
         # if property is element of this resource.
         element_property=True,
@@ -320,6 +344,11 @@ class OperationDefinition(domainresource.DomainResource):
         # note: Enum values can be used in validation,
         # but use in your own responsibilities, read official FHIR documentation.
         enum_values=["draft", "active", "retired", "unknown"],
+        # valueset binding
+        binding_description="The lifecycle status of an artifact.",
+        binding_strength="required",
+        binding_uri="http://hl7.org/fhir/ValueSet/publication-status",
+        binding_version="4.3.0",
     )
     status__ext: fhirtypes.FHIRPrimitiveExtensionType = Field(
         None, alias="_status", title="Extension field for ``status``."
@@ -703,7 +732,8 @@ class OperationDefinitionParameter(backboneelement.BackboneElement):
         ),
         description=(
             "How the parameter is understood as a search parameter. This is only "
-            "used if the parameter type is 'string'."
+            "used if the parameter type is 'string'. See "
+            "http://hl7.org/fhir/ValueSet/search-param-type"
         ),
         # if property is element of this resource.
         element_property=True,
@@ -720,6 +750,11 @@ class OperationDefinitionParameter(backboneelement.BackboneElement):
             "uri",
             "special",
         ],
+        # valueset binding
+        binding_description="Data types allowed to be used for search parameters.",
+        binding_strength="required",
+        binding_uri="http://hl7.org/fhir/ValueSet/search-param-type",
+        binding_version="4.3.0",
     )
     searchType__ext: fhirtypes.FHIRPrimitiveExtensionType = Field(
         None, alias="_searchType", title="Extension field for ``searchType``."
@@ -744,6 +779,7 @@ class OperationDefinitionParameter(backboneelement.BackboneElement):
         element_property=True,
         # note: Listed Resource Type(s) should be allowed as Reference.
         enum_reference_types=["StructureDefinition"],
+        backref="operation_definition.parameter_targetProfile",
     )
     targetProfile__ext: typing.List[
         typing.Union[fhirtypes.FHIRPrimitiveExtensionType, None]
@@ -755,9 +791,16 @@ class OperationDefinitionParameter(backboneelement.BackboneElement):
         None,
         alias="type",
         title="What type this parameter has",
-        description="The type for this parameter.",
+        description=(
+            "The type for this parameter. See http://hl7.org/fhir/ValueSet/all-" "types"
+        ),
         # if property is element of this resource.
         element_property=True,
+        # valueset binding
+        binding_description="A list of all the concrete types defined in this version of the FHIR specification - Abstract Types, Data Types and Resource Types.",
+        binding_strength="required",
+        binding_uri="http://hl7.org/fhir/ValueSet/all-types",
+        binding_version="4.3.0",
     )
     type__ext: fhirtypes.FHIRPrimitiveExtensionType = Field(
         None, alias="_type", title="Extension field for ``type``."
@@ -767,13 +810,21 @@ class OperationDefinitionParameter(backboneelement.BackboneElement):
         None,
         alias="use",
         title="in | out",
-        description="Whether this is an input or an output parameter.",
+        description=(
+            "Whether this is an input or an output parameter. See "
+            "http://hl7.org/fhir/ValueSet/operation-parameter-use"
+        ),
         # if property is element of this resource.
         element_property=True,
         element_required=True,
         # note: Enum values can be used in validation,
         # but use in your own responsibilities, read official FHIR documentation.
         enum_values=["in", "out"],
+        # valueset binding
+        binding_description="Whether an operation parameter is an input or an output parameter.",
+        binding_strength="required",
+        binding_uri="http://hl7.org/fhir/ValueSet/operation-parameter-use",
+        binding_version="4.3.0",
     )
     use__ext: fhirtypes.FHIRPrimitiveExtensionType = Field(
         None, alias="_use", title="Extension field for ``use``."
@@ -886,7 +937,8 @@ class OperationDefinitionParameterBinding(backboneelement.BackboneElement):
         description=(
             "Indicates the degree of conformance expectations associated with this "
             "binding - that is, the degree to which the provided value set must be "
-            "adhered to in the instances."
+            "adhered to in the instances. See http://hl7.org/fhir/ValueSet/binding-"
+            "strength"
         ),
         # if property is element of this resource.
         element_property=True,
@@ -894,6 +946,11 @@ class OperationDefinitionParameterBinding(backboneelement.BackboneElement):
         # note: Enum values can be used in validation,
         # but use in your own responsibilities, read official FHIR documentation.
         enum_values=["required", "extensible", "preferred", "example"],
+        # valueset binding
+        binding_description="Indication of the degree of conformance expectations associated with a binding.",
+        binding_strength="required",
+        binding_uri="http://hl7.org/fhir/ValueSet/binding-strength",
+        binding_version="4.3.0",
     )
     strength__ext: fhirtypes.FHIRPrimitiveExtensionType = Field(
         None, alias="_strength", title="Extension field for ``strength``."
@@ -912,6 +969,7 @@ class OperationDefinitionParameterBinding(backboneelement.BackboneElement):
         element_required=True,
         # note: Listed Resource Type(s) should be allowed as Reference.
         enum_reference_types=["ValueSet"],
+        backref="operation_definition.parameter.binding_valueSet",
     )
     valueSet__ext: fhirtypes.FHIRPrimitiveExtensionType = Field(
         None, alias="_valueSet", title="Extension field for ``valueSet``."

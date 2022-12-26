@@ -29,10 +29,16 @@ class Attachment(element.Element):
         description=(
             "Identifies the type of the data in the attachment and allows a method "
             "to be chosen to interpret or render the data. Includes mime type "
-            "parameters such as charset where appropriate."
+            "parameters such as charset where appropriate. See "
+            "http://hl7.org/fhir/ValueSet/mimetypes"
         ),
         # if property is element of this resource.
         element_property=True,
+        # valueset binding
+        binding_description="BCP 13 (RFCs 2045, 2046, 2047, 4288, 4289 and 2049)",
+        binding_strength="required",
+        binding_uri="http://hl7.org/fhir/ValueSet/mimetypes",
+        binding_version="4.3.0",
     )
     contentType__ext: fhirtypes.FHIRPrimitiveExtensionType = Field(
         None, alias="_contentType", title="Extension field for ``contentType``."
@@ -83,10 +89,14 @@ class Attachment(element.Element):
         title="Human language of the content (BCP-47)",
         description=(
             "The human language of the content. The value can be any valid value "
-            "according to BCP 47."
+            "according to BCP 47. See http://hl7.org/fhir/ValueSet/languages"
         ),
         # if property is element of this resource.
         element_property=True,
+        # valueset binding
+        binding_description="IETF language tag",
+        binding_strength="preferred",
+        binding_uri="http://hl7.org/fhir/ValueSet/languages",
     )
     language__ext: fhirtypes.FHIRPrimitiveExtensionType = Field(
         None, alias="_language", title="Extension field for ``language``."

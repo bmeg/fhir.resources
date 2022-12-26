@@ -221,10 +221,14 @@ class PlanDefinition(domainresource.DomainResource):
         title="Intended jurisdiction for plan definition (if applicable)",
         description=(
             "A legal or geographic region in which the plan definition is intended "
-            "to be used."
+            "to be used. See http://hl7.org/fhir/ValueSet/jurisdiction"
         ),
         # if property is element of this resource.
         element_property=True,
+        # valueset binding
+        binding_description="Countries and regions within which this artifact is targeted for use.",
+        binding_strength="extensible",
+        binding_uri="http://hl7.org/fhir/ValueSet/jurisdiction",
     )
 
     lastReviewDate: fhirtypes.Date = Field(
@@ -255,6 +259,7 @@ class PlanDefinition(domainresource.DomainResource):
         element_property=True,
         # note: Listed Resource Type(s) should be allowed as Reference.
         enum_reference_types=["Library"],
+        backref="plan_definition_library",
     )
     library__ext: typing.List[
         typing.Union[fhirtypes.FHIRPrimitiveExtensionType, None]
@@ -336,7 +341,7 @@ class PlanDefinition(domainresource.DomainResource):
         title="draft | active | retired | unknown",
         description=(
             "The status of this plan definition. Enables tracking the life-cycle of"
-            " the content."
+            " the content. See http://hl7.org/fhir/ValueSet/publication-status"
         ),
         # if property is element of this resource.
         element_property=True,
@@ -344,6 +349,11 @@ class PlanDefinition(domainresource.DomainResource):
         # note: Enum values can be used in validation,
         # but use in your own responsibilities, read official FHIR documentation.
         enum_values=["draft", "active", "retired", "unknown"],
+        # valueset binding
+        binding_description="The lifecycle status of an artifact.",
+        binding_strength="required",
+        binding_uri="http://hl7.org/fhir/ValueSet/publication-status",
+        binding_version="4.3.0",
     )
     status__ext: fhirtypes.FHIRPrimitiveExtensionType = Field(
         None, alias="_status", title="Extension field for ``status``."
@@ -360,13 +370,18 @@ class PlanDefinition(domainresource.DomainResource):
             " and substance quality specifications, and is allowed to reference a "
             "MedicinalProductDefinition, SubstanceDefinition, "
             "AdministrableProductDefinition, ManufacturedItemDefinition, or "
-            "PackagedProductDefinition resource."
+            "PackagedProductDefinition resource. See "
+            "http://hl7.org/fhir/ValueSet/subject-type"
         ),
         # if property is element of this resource.
         element_property=True,
         # Choice of Data Types. i.e subject[x]
         one_of_many="subject",
         one_of_many_required=False,
+        # valueset binding
+        binding_description="The possible types of subjects for a plan definition (E.g. Patient, Practitioner, Organization, Location, etc.).",
+        binding_strength="extensible",
+        binding_uri="http://hl7.org/fhir/ValueSet/subject-type",
         # note: Listed Resource Type(s) should be allowed as Reference.
         enum_reference_types=[
             "MedicinalProductDefinition",
@@ -375,6 +390,7 @@ class PlanDefinition(domainresource.DomainResource):
             "ManufacturedItemDefinition",
             "PackagedProductDefinition",
         ],
+        backref="plan_definition_subjectCanonical",
     )
     subjectCanonical__ext: fhirtypes.FHIRPrimitiveExtensionType = Field(
         None,
@@ -393,13 +409,18 @@ class PlanDefinition(domainresource.DomainResource):
             " and substance quality specifications, and is allowed to reference a "
             "MedicinalProductDefinition, SubstanceDefinition, "
             "AdministrableProductDefinition, ManufacturedItemDefinition, or "
-            "PackagedProductDefinition resource."
+            "PackagedProductDefinition resource. See "
+            "http://hl7.org/fhir/ValueSet/subject-type"
         ),
         # if property is element of this resource.
         element_property=True,
         # Choice of Data Types. i.e subject[x]
         one_of_many="subject",
         one_of_many_required=False,
+        # valueset binding
+        binding_description="The possible types of subjects for a plan definition (E.g. Patient, Practitioner, Organization, Location, etc.).",
+        binding_strength="extensible",
+        binding_uri="http://hl7.org/fhir/ValueSet/subject-type",
     )
 
     subjectReference: fhirtypes.ReferenceType = Field(
@@ -413,15 +434,21 @@ class PlanDefinition(domainresource.DomainResource):
             " and substance quality specifications, and is allowed to reference a "
             "MedicinalProductDefinition, SubstanceDefinition, "
             "AdministrableProductDefinition, ManufacturedItemDefinition, or "
-            "PackagedProductDefinition resource."
+            "PackagedProductDefinition resource. See "
+            "http://hl7.org/fhir/ValueSet/subject-type"
         ),
         # if property is element of this resource.
         element_property=True,
         # Choice of Data Types. i.e subject[x]
         one_of_many="subject",
         one_of_many_required=False,
+        # valueset binding
+        binding_description="The possible types of subjects for a plan definition (E.g. Patient, Practitioner, Organization, Location, etc.).",
+        binding_strength="extensible",
+        binding_uri="http://hl7.org/fhir/ValueSet/subject-type",
         # note: Listed Resource Type(s) should be allowed as Reference.
         enum_reference_types=["Group"],
+        backref="plan_definition_subjectReference",
     )
 
     subtitle: fhirtypes.String = Field(
@@ -458,10 +485,15 @@ class PlanDefinition(domainresource.DomainResource):
         description=(
             "Descriptive topics related to the content of the plan definition. "
             "Topics provide a high-level categorization of the definition that can "
-            "be useful for filtering and searching."
+            "be useful for filtering and searching. See "
+            "http://hl7.org/fhir/ValueSet/definition-topic"
         ),
         # if property is element of this resource.
         element_property=True,
+        # valueset binding
+        binding_description="High-level categorization of the definition, used for searching, sorting, and filtering.",
+        binding_strength="example",
+        binding_uri="http://hl7.org/fhir/ValueSet/definition-topic",
     )
 
     type: fhirtypes.CodeableConceptType = Field(
@@ -470,10 +502,23 @@ class PlanDefinition(domainresource.DomainResource):
         title="order-set | clinical-protocol | eca-rule | workflow-definition",
         description=(
             "A high-level category for the plan definition that distinguishes the "
-            "kinds of systems that would be interested in the plan definition."
+            "kinds of systems that would be interested in the plan definition. See "
+            "http://hl7.org/fhir/ValueSet/plan-definition-type"
         ),
         # if property is element of this resource.
         element_property=True,
+        # note: Enum values can be used in validation,
+        # but use in your own responsibilities, read official FHIR documentation.
+        enum_values=[
+            "order-set",
+            "clinical-protocol",
+            "eca-rule",
+            "workflow-definition",
+        ],
+        # valueset binding
+        binding_description="The type of PlanDefinition.",
+        binding_strength="extensible",
+        binding_uri="http://hl7.org/fhir/ValueSet/plan-definition-type",
     )
 
     url: fhirtypes.Uri = Field(
@@ -741,12 +786,20 @@ class PlanDefinitionAction(backboneelement.BackboneElement):
         None,
         alias="cardinalityBehavior",
         title="single | multiple",
-        description="Defines whether the action can be selected multiple times.",
+        description=(
+            "Defines whether the action can be selected multiple times. See "
+            "http://hl7.org/fhir/ValueSet/action-cardinality-behavior"
+        ),
         # if property is element of this resource.
         element_property=True,
         # note: Enum values can be used in validation,
         # but use in your own responsibilities, read official FHIR documentation.
         enum_values=["single", "multiple"],
+        # valueset binding
+        binding_description="Defines behavior for an action or a group for how many times that item may be repeated.",
+        binding_strength="required",
+        binding_uri="http://hl7.org/fhir/ValueSet/action-cardinality-behavior",
+        binding_version="4.3.0",
     )
     cardinalityBehavior__ext: fhirtypes.FHIRPrimitiveExtensionType = Field(
         None,
@@ -763,10 +816,14 @@ class PlanDefinitionAction(backboneelement.BackboneElement):
             "action or action group. For example, a section may have a LOINC code "
             "for the section of a documentation template. In pharmaceutical "
             "quality, an action (Test) such as pH could be classified as a physical"
-            " property."
+            " property. See http://hl7.org/fhir/ValueSet/action-code"
         ),
         # if property is element of this resource.
         element_property=True,
+        # valueset binding
+        binding_description="Provides examples of actions to be performed.",
+        binding_strength="example",
+        binding_uri="http://hl7.org/fhir/ValueSet/action-code",
     )
 
     condition: typing.List[fhirtypes.PlanDefinitionActionConditionType] = Field(
@@ -797,6 +854,7 @@ class PlanDefinitionAction(backboneelement.BackboneElement):
         one_of_many_required=False,
         # note: Listed Resource Type(s) should be allowed as Reference.
         enum_reference_types=["ActivityDefinition", "PlanDefinition", "Questionnaire"],
+        backref="plan_definition.action_definitionCanonical",
     )
     definitionCanonical__ext: fhirtypes.FHIRPrimitiveExtensionType = Field(
         None,
@@ -888,12 +946,20 @@ class PlanDefinitionAction(backboneelement.BackboneElement):
         None,
         alias="groupingBehavior",
         title="visual-group | logical-group | sentence-group",
-        description="Defines the grouping behavior for the action and its children.",
+        description=(
+            "Defines the grouping behavior for the action and its children. See "
+            "http://hl7.org/fhir/ValueSet/action-grouping-behavior"
+        ),
         # if property is element of this resource.
         element_property=True,
         # note: Enum values can be used in validation,
         # but use in your own responsibilities, read official FHIR documentation.
         enum_values=["visual-group", "logical-group", "sentence-group"],
+        # valueset binding
+        binding_description="Defines organization behavior of a group.",
+        binding_strength="required",
+        binding_uri="http://hl7.org/fhir/ValueSet/action-grouping-behavior",
+        binding_version="4.3.0",
     )
     groupingBehavior__ext: fhirtypes.FHIRPrimitiveExtensionType = Field(
         None,
@@ -932,12 +998,20 @@ class PlanDefinitionAction(backboneelement.BackboneElement):
         None,
         alias="precheckBehavior",
         title="yes | no",
-        description="Defines whether the action should usually be preselected.",
+        description=(
+            "Defines whether the action should usually be preselected. See "
+            "http://hl7.org/fhir/ValueSet/action-precheck-behavior"
+        ),
         # if property is element of this resource.
         element_property=True,
         # note: Enum values can be used in validation,
         # but use in your own responsibilities, read official FHIR documentation.
         enum_values=["yes", "no"],
+        # valueset binding
+        binding_description="Defines selection frequency behavior for an action or group.",
+        binding_strength="required",
+        binding_uri="http://hl7.org/fhir/ValueSet/action-precheck-behavior",
+        binding_version="4.3.0",
     )
     precheckBehavior__ext: fhirtypes.FHIRPrimitiveExtensionType = Field(
         None,
@@ -963,13 +1037,18 @@ class PlanDefinitionAction(backboneelement.BackboneElement):
         title="routine | urgent | asap | stat",
         description=(
             "Indicates how quickly the action should be addressed with respect to "
-            "other actions."
+            "other actions. See http://hl7.org/fhir/ValueSet/request-priority"
         ),
         # if property is element of this resource.
         element_property=True,
         # note: Enum values can be used in validation,
         # but use in your own responsibilities, read official FHIR documentation.
         enum_values=["routine", "urgent", "asap", "stat"],
+        # valueset binding
+        binding_description="Identifies the level of importance to be assigned to actioning the request.",
+        binding_strength="required",
+        binding_uri="http://hl7.org/fhir/ValueSet/request-priority",
+        binding_version="4.3.0",
     )
     priority__ext: fhirtypes.FHIRPrimitiveExtensionType = Field(
         None, alias="_priority", title="Extension field for ``priority``."
@@ -979,9 +1058,16 @@ class PlanDefinitionAction(backboneelement.BackboneElement):
         None,
         alias="reason",
         title="Why the action should be performed",
-        description="A description of why this action is necessary or appropriate.",
+        description=(
+            "A description of why this action is necessary or appropriate. See "
+            "http://hl7.org/fhir/ValueSet/action-reason-code"
+        ),
         # if property is element of this resource.
         element_property=True,
+        # valueset binding
+        binding_description="Provides examples of reasons for actions to be performed.",
+        binding_strength="example",
+        binding_uri="http://hl7.org/fhir/ValueSet/action-reason-code",
     )
 
     relatedAction: typing.List[fhirtypes.PlanDefinitionActionRelatedActionType] = Field(
@@ -1000,12 +1086,20 @@ class PlanDefinitionAction(backboneelement.BackboneElement):
         None,
         alias="requiredBehavior",
         title="must | could | must-unless-documented",
-        description="Defines the required behavior for the action.",
+        description=(
+            "Defines the required behavior for the action. See "
+            "http://hl7.org/fhir/ValueSet/action-required-behavior"
+        ),
         # if property is element of this resource.
         element_property=True,
         # note: Enum values can be used in validation,
         # but use in your own responsibilities, read official FHIR documentation.
         enum_values=["must", "could", "must-unless-documented"],
+        # valueset binding
+        binding_description="Defines expectations around whether an action or action group is required.",
+        binding_strength="required",
+        binding_uri="http://hl7.org/fhir/ValueSet/action-required-behavior",
+        binding_version="4.3.0",
     )
     requiredBehavior__ext: fhirtypes.FHIRPrimitiveExtensionType = Field(
         None,
@@ -1017,7 +1111,10 @@ class PlanDefinitionAction(backboneelement.BackboneElement):
         None,
         alias="selectionBehavior",
         title="any | all | all-or-none | exactly-one | at-most-one | one-or-more",
-        description="Defines the selection behavior for the action and its children.",
+        description=(
+            "Defines the selection behavior for the action and its children. See "
+            "http://hl7.org/fhir/ValueSet/action-selection-behavior"
+        ),
         # if property is element of this resource.
         element_property=True,
         # note: Enum values can be used in validation,
@@ -1030,6 +1127,11 @@ class PlanDefinitionAction(backboneelement.BackboneElement):
             "at-most-one",
             "one-or-more",
         ],
+        # valueset binding
+        binding_description="Defines selection behavior of a group.",
+        binding_strength="required",
+        binding_uri="http://hl7.org/fhir/ValueSet/action-selection-behavior",
+        binding_version="4.3.0",
     )
     selectionBehavior__ext: fhirtypes.FHIRPrimitiveExtensionType = Field(
         None,
@@ -1048,13 +1150,18 @@ class PlanDefinitionAction(backboneelement.BackboneElement):
             " and substance quality specifications, and is allowed to reference a "
             "MedicinalProductDefinition, SubstanceDefinition, "
             "AdministrableProductDefinition, ManufacturedItemDefinition, or "
-            "PackagedProductDefinition resource."
+            "PackagedProductDefinition resource. See "
+            "http://hl7.org/fhir/ValueSet/subject-type"
         ),
         # if property is element of this resource.
         element_property=True,
         # Choice of Data Types. i.e subject[x]
         one_of_many="subject",
         one_of_many_required=False,
+        # valueset binding
+        binding_description="The possible types of subjects for a plan definition (E.g. Patient, Practitioner, Organization, Location, etc.).",
+        binding_strength="extensible",
+        binding_uri="http://hl7.org/fhir/ValueSet/subject-type",
     )
     subjectCanonical__ext: fhirtypes.FHIRPrimitiveExtensionType = Field(
         None,
@@ -1073,13 +1180,18 @@ class PlanDefinitionAction(backboneelement.BackboneElement):
             " and substance quality specifications, and is allowed to reference a "
             "MedicinalProductDefinition, SubstanceDefinition, "
             "AdministrableProductDefinition, ManufacturedItemDefinition, or "
-            "PackagedProductDefinition resource."
+            "PackagedProductDefinition resource. See "
+            "http://hl7.org/fhir/ValueSet/subject-type"
         ),
         # if property is element of this resource.
         element_property=True,
         # Choice of Data Types. i.e subject[x]
         one_of_many="subject",
         one_of_many_required=False,
+        # valueset binding
+        binding_description="The possible types of subjects for a plan definition (E.g. Patient, Practitioner, Organization, Location, etc.).",
+        binding_strength="extensible",
+        binding_uri="http://hl7.org/fhir/ValueSet/subject-type",
     )
 
     subjectReference: fhirtypes.ReferenceType = Field(
@@ -1093,15 +1205,21 @@ class PlanDefinitionAction(backboneelement.BackboneElement):
             " and substance quality specifications, and is allowed to reference a "
             "MedicinalProductDefinition, SubstanceDefinition, "
             "AdministrableProductDefinition, ManufacturedItemDefinition, or "
-            "PackagedProductDefinition resource."
+            "PackagedProductDefinition resource. See "
+            "http://hl7.org/fhir/ValueSet/subject-type"
         ),
         # if property is element of this resource.
         element_property=True,
         # Choice of Data Types. i.e subject[x]
         one_of_many="subject",
         one_of_many_required=False,
+        # valueset binding
+        binding_description="The possible types of subjects for a plan definition (E.g. Patient, Practitioner, Organization, Location, etc.).",
+        binding_strength="extensible",
+        binding_uri="http://hl7.org/fhir/ValueSet/subject-type",
         # note: Listed Resource Type(s) should be allowed as Reference.
         enum_reference_types=["Group"],
+        backref="plan_definition.action_subjectReference",
     )
 
     textEquivalent: fhirtypes.String = Field(
@@ -1228,6 +1346,7 @@ class PlanDefinitionAction(backboneelement.BackboneElement):
         element_property=True,
         # note: Listed Resource Type(s) should be allowed as Reference.
         enum_reference_types=["StructureMap"],
+        backref="plan_definition.action_transform",
     )
     transform__ext: fhirtypes.FHIRPrimitiveExtensionType = Field(
         None, alias="_transform", title="Extension field for ``transform``."
@@ -1246,9 +1365,19 @@ class PlanDefinitionAction(backboneelement.BackboneElement):
         None,
         alias="type",
         title="create | update | remove | fire-event",
-        description="The type of action to perform (create, update, remove).",
+        description=(
+            "The type of action to perform (create, update, remove). See "
+            "http://hl7.org/fhir/ValueSet/action-type"
+        ),
         # if property is element of this resource.
         element_property=True,
+        # note: Enum values can be used in validation,
+        # but use in your own responsibilities, read official FHIR documentation.
+        enum_values=["create", "update", "remove", "fire-event"],
+        # valueset binding
+        binding_description="The type of action to be performed.",
+        binding_strength="extensible",
+        binding_uri="http://hl7.org/fhir/ValueSet/action-type",
     )
 
     @classmethod
@@ -1380,13 +1509,21 @@ class PlanDefinitionActionCondition(backboneelement.BackboneElement):
         None,
         alias="kind",
         title="applicability | start | stop",
-        description="The kind of condition.",
+        description=(
+            "The kind of condition. See http://hl7.org/fhir/ValueSet/action-"
+            "condition-kind"
+        ),
         # if property is element of this resource.
         element_property=True,
         element_required=True,
         # note: Enum values can be used in validation,
         # but use in your own responsibilities, read official FHIR documentation.
         enum_values=["applicability", "start", "stop"],
+        # valueset binding
+        binding_description="Defines the kinds of conditions that can appear on actions.",
+        binding_strength="required",
+        binding_uri="http://hl7.org/fhir/ValueSet/action-condition-kind",
+        binding_version="4.3.0",
     )
     kind__ext: fhirtypes.FHIRPrimitiveExtensionType = Field(
         None, alias="_kind", title="Extension field for ``kind``."
@@ -1532,23 +1669,36 @@ class PlanDefinitionActionParticipant(backboneelement.BackboneElement):
         title="E.g. Nurse, Surgeon, Parent",
         description=(
             "The role the participant should play in performing the described "
-            "action."
+            "action. See http://terminology.hl7.org/ValueSet/action-participant-"
+            "role"
         ),
         # if property is element of this resource.
         element_property=True,
+        # valueset binding
+        binding_description="Defines roles played by participants for the action.",
+        binding_strength="example",
+        binding_uri="http://terminology.hl7.org/ValueSet/action-participant-role",
     )
 
     type: fhirtypes.Code = Field(
         None,
         alias="type",
         title="patient | practitioner | related-person | device",
-        description="The type of participant in the action.",
+        description=(
+            "The type of participant in the action. See "
+            "http://hl7.org/fhir/ValueSet/action-participant-type"
+        ),
         # if property is element of this resource.
         element_property=True,
         element_required=True,
         # note: Enum values can be used in validation,
         # but use in your own responsibilities, read official FHIR documentation.
         enum_values=["patient", "practitioner", "related-person", "device"],
+        # valueset binding
+        binding_description="The type of participant for the action.",
+        binding_strength="required",
+        binding_uri="http://hl7.org/fhir/ValueSet/action-participant-type",
+        binding_version="4.3.0",
     )
     type__ext: fhirtypes.FHIRPrimitiveExtensionType = Field(
         None, alias="_type", title="Extension field for ``type``."
@@ -1684,7 +1834,10 @@ class PlanDefinitionActionRelatedAction(backboneelement.BackboneElement):
             "before-start | before | before-end | concurrent-with-start | "
             "concurrent | concurrent-with-end | after-start | after | after-end"
         ),
-        description="The relationship of this action to the related action.",
+        description=(
+            "The relationship of this action to the related action. See "
+            "http://hl7.org/fhir/ValueSet/action-relationship-type"
+        ),
         # if property is element of this resource.
         element_property=True,
         element_required=True,
@@ -1701,6 +1854,11 @@ class PlanDefinitionActionRelatedAction(backboneelement.BackboneElement):
             "after",
             "after-end",
         ],
+        # valueset binding
+        binding_description="Defines the types of relationships between actions.",
+        binding_strength="required",
+        binding_uri="http://hl7.org/fhir/ValueSet/action-relationship-type",
+        binding_version="4.3.0",
     )
     relationship__ext: fhirtypes.FHIRPrimitiveExtensionType = Field(
         None, alias="_relationship", title="Extension field for ``relationship``."
@@ -1844,19 +2002,30 @@ class PlanDefinitionGoal(backboneelement.BackboneElement):
         title="What does the goal address",
         description=(
             "Identifies problems, conditions, issues, or concerns the goal is "
-            "intended to address."
+            "intended to address. See http://hl7.org/fhir/ValueSet/condition-code"
         ),
         # if property is element of this resource.
         element_property=True,
+        # valueset binding
+        binding_description="Identifies problems, conditions, issues, or concerns that goals may address.",
+        binding_strength="example",
+        binding_uri="http://hl7.org/fhir/ValueSet/condition-code",
     )
 
     category: fhirtypes.CodeableConceptType = Field(
         None,
         alias="category",
         title="E.g. Treatment, dietary, behavioral",
-        description="Indicates a category the goal falls within.",
+        description=(
+            "Indicates a category the goal falls within. See "
+            "http://hl7.org/fhir/ValueSet/goal-category"
+        ),
         # if property is element of this resource.
         element_property=True,
+        # valueset binding
+        binding_description="Example codes for grouping goals for filtering or presentation.",
+        binding_strength="example",
+        binding_uri="http://hl7.org/fhir/ValueSet/goal-category",
     )
 
     description: fhirtypes.CodeableConceptType = Field(
@@ -1866,10 +2035,15 @@ class PlanDefinitionGoal(backboneelement.BackboneElement):
         description=(
             "Human-readable and/or coded description of a specific desired "
             'objective of care, such as "control blood pressure" or "negotiate an '
-            'obstacle course" or "dance with child at wedding".'
+            'obstacle course" or "dance with child at wedding". See '
+            "http://hl7.org/fhir/ValueSet/clinical-findings"
         ),
         # if property is element of this resource.
         element_property=True,
+        # valueset binding
+        binding_description="Describes goals that can be achieved.",
+        binding_strength="example",
+        binding_uri="http://hl7.org/fhir/ValueSet/clinical-findings",
     )
 
     documentation: typing.List[fhirtypes.RelatedArtifactType] = Field(
@@ -1892,19 +2066,34 @@ class PlanDefinitionGoal(backboneelement.BackboneElement):
         title="high-priority | medium-priority | low-priority",
         description=(
             "Identifies the expected level of importance associated with "
-            "reaching/sustaining the defined goal."
+            "reaching/sustaining the defined goal. See "
+            "http://hl7.org/fhir/ValueSet/goal-priority"
         ),
         # if property is element of this resource.
         element_property=True,
+        # note: Enum values can be used in validation,
+        # but use in your own responsibilities, read official FHIR documentation.
+        enum_values=["high-priority", "medium-priority", "low-priority"],
+        # valueset binding
+        binding_description="Indicates the level of importance associated with reaching or sustaining a goal.",
+        binding_strength="preferred",
+        binding_uri="http://hl7.org/fhir/ValueSet/goal-priority",
     )
 
     start: fhirtypes.CodeableConceptType = Field(
         None,
         alias="start",
         title="When goal pursuit begins",
-        description="The event after which the goal should begin being pursued.",
+        description=(
+            "The event after which the goal should begin being pursued. See "
+            "http://hl7.org/fhir/ValueSet/goal-start-event"
+        ),
         # if property is element of this resource.
         element_property=True,
+        # valueset binding
+        binding_description="Identifies the types of events that might trigger the start of a goal.",
+        binding_strength="example",
+        binding_uri="http://hl7.org/fhir/ValueSet/goal-start-event",
     )
 
     target: typing.List[fhirtypes.PlanDefinitionGoalTargetType] = Field(
@@ -2028,10 +2217,15 @@ class PlanDefinitionGoalTarget(backboneelement.BackboneElement):
         title="The parameter whose value is to be tracked",
         description=(
             "The parameter whose value is to be tracked, e.g. body weight, blood "
-            "pressure, or hemoglobin A1c level."
+            "pressure, or hemoglobin A1c level. See "
+            "http://hl7.org/fhir/ValueSet/observation-codes"
         ),
         # if property is element of this resource.
         element_property=True,
+        # valueset binding
+        binding_description="Identifies types of parameters that can be tracked to determine goal achievement.",
+        binding_strength="example",
+        binding_uri="http://hl7.org/fhir/ValueSet/observation-codes",
     )
 
     @classmethod

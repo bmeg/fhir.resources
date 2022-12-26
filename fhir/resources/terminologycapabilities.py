@@ -47,13 +47,19 @@ class TerminologyCapabilities(domainresource.DomainResource):
         title="explicit | all",
         description=(
             "The degree to which the server supports the code search parameter on "
-            "ValueSet, if it is supported."
+            "ValueSet, if it is supported. See http://hl7.org/fhir/ValueSet/code-"
+            "search-support"
         ),
         # if property is element of this resource.
         element_property=True,
         # note: Enum values can be used in validation,
         # but use in your own responsibilities, read official FHIR documentation.
         enum_values=["explicit", "all"],
+        # valueset binding
+        binding_description="The degree to which the server supports the code search parameter on ValueSet, if it is supported.",
+        binding_strength="required",
+        binding_uri="http://hl7.org/fhir/ValueSet/code-search-support",
+        binding_version="4.3.0",
     )
     codeSearch__ext: fhirtypes.FHIRPrimitiveExtensionType = Field(
         None, alias="_codeSearch", title="Extension field for ``codeSearch``."
@@ -184,10 +190,14 @@ class TerminologyCapabilities(domainresource.DomainResource):
         title="Intended jurisdiction for terminology capabilities (if applicable)",
         description=(
             "A legal or geographic region in which the terminology capabilities is "
-            "intended to be used."
+            "intended to be used. See http://hl7.org/fhir/ValueSet/jurisdiction"
         ),
         # if property is element of this resource.
         element_property=True,
+        # valueset binding
+        binding_description="Countries and regions within which this artifact is targeted for use.",
+        binding_strength="extensible",
+        binding_uri="http://hl7.org/fhir/ValueSet/jurisdiction",
     )
 
     kind: fhirtypes.Code = Field(
@@ -198,7 +208,7 @@ class TerminologyCapabilities(domainresource.DomainResource):
             "The way that this statement is intended to be used, to describe an "
             "actual running instance of software, a particular product (kind, not "
             "instance of software) or a class of implementation (e.g. a desired "
-            "purchase)."
+            "purchase). See http://hl7.org/fhir/ValueSet/capability-statement-kind"
         ),
         # if property is element of this resource.
         element_property=True,
@@ -206,6 +216,11 @@ class TerminologyCapabilities(domainresource.DomainResource):
         # note: Enum values can be used in validation,
         # but use in your own responsibilities, read official FHIR documentation.
         enum_values=["instance", "capability", "requirements"],
+        # valueset binding
+        binding_description="How a capability statement is intended to be used.",
+        binding_strength="required",
+        binding_uri="http://hl7.org/fhir/ValueSet/capability-statement-kind",
+        binding_version="4.3.0",
     )
     kind__ext: fhirtypes.FHIRPrimitiveExtensionType = Field(
         None, alias="_kind", title="Extension field for ``kind``."
@@ -288,7 +303,8 @@ class TerminologyCapabilities(domainresource.DomainResource):
         title="draft | active | retired | unknown",
         description=(
             "The status of this terminology capabilities. Enables tracking the "
-            "life-cycle of the content."
+            "life-cycle of the content. See "
+            "http://hl7.org/fhir/ValueSet/publication-status"
         ),
         # if property is element of this resource.
         element_property=True,
@@ -296,6 +312,11 @@ class TerminologyCapabilities(domainresource.DomainResource):
         # note: Enum values can be used in validation,
         # but use in your own responsibilities, read official FHIR documentation.
         enum_values=["draft", "active", "retired", "unknown"],
+        # valueset binding
+        binding_description="The lifecycle status of an artifact.",
+        binding_strength="required",
+        binding_uri="http://hl7.org/fhir/ValueSet/publication-status",
+        binding_version="4.3.0",
     )
     status__ext: fhirtypes.FHIRPrimitiveExtensionType = Field(
         None, alias="_status", title="Extension field for ``status``."
@@ -572,6 +593,7 @@ class TerminologyCapabilitiesCodeSystem(backboneelement.BackboneElement):
         element_property=True,
         # note: Listed Resource Type(s) should be allowed as Reference.
         enum_reference_types=["CodeSystem"],
+        backref="terminology_capabilities.code_system_uri",
     )
     uri__ext: fhirtypes.FHIRPrimitiveExtensionType = Field(
         None, alias="_uri", title="Extension field for ``uri``."

@@ -58,6 +58,7 @@ class MolecularSequence(domainresource.DomainResource):
         element_property=True,
         # note: Listed Resource Type(s) should be allowed as Reference.
         enum_reference_types=["Device"],
+        backref="molecular_sequence_device",
     )
 
     identifier: typing.List[fhirtypes.IdentifierType] = Field(
@@ -97,6 +98,7 @@ class MolecularSequence(domainresource.DomainResource):
         element_property=True,
         # note: Listed Resource Type(s) should be allowed as Reference.
         enum_reference_types=["Patient"],
+        backref="molecular_sequence_patient",
     )
 
     performer: fhirtypes.ReferenceType = Field(
@@ -108,6 +110,7 @@ class MolecularSequence(domainresource.DomainResource):
         element_property=True,
         # note: Listed Resource Type(s) should be allowed as Reference.
         enum_reference_types=["Organization"],
+        backref="molecular_sequence_performer",
     )
 
     pointer: typing.List[fhirtypes.ReferenceType] = Field(
@@ -119,6 +122,7 @@ class MolecularSequence(domainresource.DomainResource):
         element_property=True,
         # note: Listed Resource Type(s) should be allowed as Reference.
         enum_reference_types=["MolecularSequence"],
+        backref="molecular_sequence_pointer",
     )
 
     quality: typing.List[fhirtypes.MolecularSequenceQualityType] = Field(
@@ -198,6 +202,7 @@ class MolecularSequence(domainresource.DomainResource):
         element_property=True,
         # note: Listed Resource Type(s) should be allowed as Reference.
         enum_reference_types=["Specimen"],
+        backref="molecular_sequence_specimen",
     )
 
     structureVariant: typing.List[
@@ -215,12 +220,20 @@ class MolecularSequence(domainresource.DomainResource):
         None,
         alias="type",
         title="aa | dna | rna",
-        description="Amino Acid Sequence/ DNA Sequence / RNA Sequence.",
+        description=(
+            "Amino Acid Sequence/ DNA Sequence / RNA Sequence. See "
+            "http://hl7.org/fhir/ValueSet/sequence-type"
+        ),
         # if property is element of this resource.
         element_property=True,
         # note: Enum values can be used in validation,
         # but use in your own responsibilities, read official FHIR documentation.
         enum_values=["aa", "dna", "rna"],
+        # valueset binding
+        binding_description="Type if a sequence -- DNA, RNA, or amino acid sequence.",
+        binding_strength="required",
+        binding_uri="http://hl7.org/fhir/ValueSet/sequence-type",
+        binding_version="4.3.0",
     )
     type__ext: fhirtypes.FHIRPrimitiveExtensionType = Field(
         None, alias="_type", title="Extension field for ``type``."
@@ -402,9 +415,16 @@ class MolecularSequenceQuality(backboneelement.BackboneElement):
         None,
         alias="method",
         title="Method to get quality",
-        description="Which method is used to get sequence quality.",
+        description=(
+            "Which method is used to get sequence quality. See "
+            "http://hl7.org/fhir/ValueSet/sequence-quality-method"
+        ),
         # if property is element of this resource.
         element_property=True,
+        # valueset binding
+        binding_description="How to get the numerical score",
+        binding_strength="example",
+        binding_uri="http://hl7.org/fhir/ValueSet/sequence-quality-method",
     )
 
     precision: fhirtypes.Decimal = Field(
@@ -495,9 +515,16 @@ class MolecularSequenceQuality(backboneelement.BackboneElement):
         None,
         alias="standardSequence",
         title="Standard sequence for comparison",
-        description="Gold standard sequence used for comparing against.",
+        description=(
+            "Gold standard sequence used for comparing against. See "
+            "http://hl7.org/fhir/ValueSet/sequence-quality-standardSequence"
+        ),
         # if property is element of this resource.
         element_property=True,
+        # valueset binding
+        binding_description="Reference identifier for standard sequence",
+        binding_strength="example",
+        binding_uri="http://hl7.org/fhir/ValueSet/sequence-quality-standardSequence",
     )
 
     start: fhirtypes.Integer = Field(
@@ -555,13 +582,21 @@ class MolecularSequenceQuality(backboneelement.BackboneElement):
         None,
         alias="type",
         title="indel | snp | unknown",
-        description="INDEL / SNP / Undefined variant.",
+        description=(
+            "INDEL / SNP / Undefined variant. See "
+            "http://hl7.org/fhir/ValueSet/quality-type"
+        ),
         # if property is element of this resource.
         element_property=True,
         element_required=True,
         # note: Enum values can be used in validation,
         # but use in your own responsibilities, read official FHIR documentation.
         enum_values=["indel", "snp", "unknown"],
+        # valueset binding
+        binding_description="Type for quality",
+        binding_strength="required",
+        binding_uri="http://hl7.org/fhir/ValueSet/quality-type",
+        binding_version="4.3.0",
     )
     type__ext: fhirtypes.FHIRPrimitiveExtensionType = Field(
         None, alias="_type", title="Extension field for ``type``."
@@ -811,10 +846,15 @@ class MolecularSequenceReferenceSeq(backboneelement.BackboneElement):
             "Structural unit composed of a nucleic acid molecule which controls its"
             " own replication through the interaction of specific proteins at one "
             "or more origins of replication ([SO:0000340](http://www.sequenceontolo"
-            "gy.org/browser/current_svn/term/SO:0000340))."
+            "gy.org/browser/current_svn/term/SO:0000340)). See "
+            "http://hl7.org/fhir/ValueSet/chromosome-human"
         ),
         # if property is element of this resource.
         element_property=True,
+        # valueset binding
+        binding_description="The chromosome containing the genetic finding",
+        binding_strength="example",
+        binding_uri="http://hl7.org/fhir/ValueSet/chromosome-human",
     )
 
     genomeBuild: fhirtypes.String = Field(
@@ -844,13 +884,18 @@ class MolecularSequenceReferenceSeq(backboneelement.BackboneElement):
             "A relative reference to a DNA strand based on gene orientation. The "
             'strand that contains the open reading frame of the gene is the "sense"'
             ' strand, and the opposite complementary strand is the "antisense" '
-            "strand."
+            "strand. See http://hl7.org/fhir/ValueSet/orientation-type"
         ),
         # if property is element of this resource.
         element_property=True,
         # note: Enum values can be used in validation,
         # but use in your own responsibilities, read official FHIR documentation.
         enum_values=["sense", "antisense"],
+        # valueset binding
+        binding_description="Type for orientation",
+        binding_strength="required",
+        binding_uri="http://hl7.org/fhir/ValueSet/orientation-type",
+        binding_version="4.3.0",
     )
     orientation__ext: fhirtypes.FHIRPrimitiveExtensionType = Field(
         None, alias="_orientation", title="Extension field for ``orientation``."
@@ -863,13 +908,16 @@ class MolecularSequenceReferenceSeq(backboneelement.BackboneElement):
         description=(
             "Reference identifier of reference sequence submitted to NCBI. It must "
             "match the type in the MolecularSequence.type field. For example, the "
-            "prefix, \u201cNG_\u201d identifies "
-            "reference sequence for genes, \u201cNM_\u201d for "
-            "messenger RNA transcripts, and \u201cNP_\u201d "
-            "for amino acid sequences."
+            "prefix, \u201cNG_\u201d identifies reference sequence for genes, \u201cNM_\u201d for "
+            "messenger RNA transcripts, and \u201cNP_\u201d for amino acid sequences. See "
+            "http://hl7.org/fhir/ValueSet/sequence-referenceSeq"
         ),
         # if property is element of this resource.
         element_property=True,
+        # valueset binding
+        binding_description="Reference identifier for reference sequence",
+        binding_strength="example",
+        binding_uri="http://hl7.org/fhir/ValueSet/sequence-referenceSeq",
     )
 
     referenceSeqPointer: fhirtypes.ReferenceType = Field(
@@ -881,6 +929,7 @@ class MolecularSequenceReferenceSeq(backboneelement.BackboneElement):
         element_property=True,
         # note: Listed Resource Type(s) should be allowed as Reference.
         enum_reference_types=["MolecularSequence"],
+        backref="molecular_sequence.reference_seq_referenceSeqPointer",
     )
 
     referenceSeqString: fhirtypes.String = Field(
@@ -904,13 +953,19 @@ class MolecularSequenceReferenceSeq(backboneelement.BackboneElement):
         description=(
             "An absolute reference to a strand. The Watson strand is the strand "
             "whose 5'-end is on the short arm of the chromosome, and the Crick "
-            "strand as the one whose 5'-end is on the long arm."
+            "strand as the one whose 5'-end is on the long arm. See "
+            "http://hl7.org/fhir/ValueSet/strand-type"
         ),
         # if property is element of this resource.
         element_property=True,
         # note: Enum values can be used in validation,
         # but use in your own responsibilities, read official FHIR documentation.
         enum_values=["watson", "crick"],
+        # valueset binding
+        binding_description="Type for strand",
+        binding_strength="required",
+        binding_uri="http://hl7.org/fhir/ValueSet/strand-type",
+        binding_version="4.3.0",
     )
     strand__ext: fhirtypes.FHIRPrimitiveExtensionType = Field(
         None, alias="_strand", title="Extension field for ``strand``."
@@ -1033,7 +1088,8 @@ class MolecularSequenceRepository(backboneelement.BackboneElement):
         title="directlink | openapi | login | oauth | other",
         description=(
             "Click and see / RESTful API / Need login to see / RESTful API with "
-            "authentication / Other ways to see resource."
+            "authentication / Other ways to see resource. See "
+            "http://hl7.org/fhir/ValueSet/repository-type"
         ),
         # if property is element of this resource.
         element_property=True,
@@ -1041,6 +1097,11 @@ class MolecularSequenceRepository(backboneelement.BackboneElement):
         # note: Enum values can be used in validation,
         # but use in your own responsibilities, read official FHIR documentation.
         enum_values=["directlink", "openapi", "login", "oauth", "other"],
+        # valueset binding
+        binding_description="Type for repository",
+        binding_strength="required",
+        binding_uri="http://hl7.org/fhir/ValueSet/repository-type",
+        binding_version="4.3.0",
     )
     type__ext: fhirtypes.FHIRPrimitiveExtensionType = Field(
         None, alias="_type", title="Extension field for ``type``."
@@ -1215,9 +1276,17 @@ class MolecularSequenceStructureVariant(backboneelement.BackboneElement):
         None,
         alias="variantType",
         title="Structural variant change type",
-        description="Information about chromosome structure variation DNA change type.",
+        description=(
+            "Information about chromosome structure variation DNA change type. See "
+            "http://loinc.org/vs/LL379-9"
+        ),
         # if property is element of this resource.
         element_property=True,
+        # valueset binding
+        binding_description="DNA change type.",
+        binding_strength="required",
+        binding_uri="http://loinc.org/vs/LL379-9",
+        binding_version="4.3.0",
     )
 
     @classmethod
@@ -1454,6 +1523,7 @@ class MolecularSequenceVariant(backboneelement.BackboneElement):
         element_property=True,
         # note: Listed Resource Type(s) should be allowed as Reference.
         enum_reference_types=["Observation"],
+        backref="molecular_sequence.variant_variantPointer",
     )
 
     @classmethod

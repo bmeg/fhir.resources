@@ -70,6 +70,7 @@ class PaymentNotice(domainresource.DomainResource):
         element_property=True,
         # note: Listed Resource Type(s) should be allowed as Reference.
         enum_reference_types=["Practitioner", "PractitionerRole", "Organization"],
+        backref="payment_notice_payee",
     )
 
     payment: fhirtypes.ReferenceType = Field(
@@ -81,6 +82,7 @@ class PaymentNotice(domainresource.DomainResource):
         element_property=True,
         # note: Listed Resource Type(s) should be allowed as Reference.
         enum_reference_types=["PaymentReconciliation"],
+        backref="payment_notice_payment",
     )
 
     paymentDate: fhirtypes.Date = Field(
@@ -99,9 +101,16 @@ class PaymentNotice(domainresource.DomainResource):
         None,
         alias="paymentStatus",
         title="Issued or cleared Status of the payment",
-        description="A code indicating whether payment has been sent or cleared.",
+        description=(
+            "A code indicating whether payment has been sent or cleared. See "
+            "http://hl7.org/fhir/ValueSet/payment-status"
+        ),
         # if property is element of this resource.
         element_property=True,
+        # valueset binding
+        binding_description="The payment conveyance status codes.",
+        binding_strength="example",
+        binding_uri="http://hl7.org/fhir/ValueSet/payment-status",
     )
 
     provider: fhirtypes.ReferenceType = Field(
@@ -116,6 +125,7 @@ class PaymentNotice(domainresource.DomainResource):
         element_property=True,
         # note: Listed Resource Type(s) should be allowed as Reference.
         enum_reference_types=["Practitioner", "PractitionerRole", "Organization"],
+        backref="payment_notice_provider",
     )
 
     recipient: fhirtypes.ReferenceType = Field(
@@ -127,6 +137,7 @@ class PaymentNotice(domainresource.DomainResource):
         element_property=True,
         # note: Listed Resource Type(s) should be allowed as Reference.
         enum_reference_types=["Organization"],
+        backref="payment_notice_recipient",
     )
 
     request: fhirtypes.ReferenceType = Field(
@@ -138,6 +149,7 @@ class PaymentNotice(domainresource.DomainResource):
         element_property=True,
         # note: Listed Resource Type(s) should be allowed as Reference.
         enum_reference_types=["Resource"],
+        backref="payment_notice_request",
     )
 
     response: fhirtypes.ReferenceType = Field(
@@ -149,19 +161,28 @@ class PaymentNotice(domainresource.DomainResource):
         element_property=True,
         # note: Listed Resource Type(s) should be allowed as Reference.
         enum_reference_types=["Resource"],
+        backref="payment_notice_response",
     )
 
     status: fhirtypes.Code = Field(
         None,
         alias="status",
         title="active | cancelled | draft | entered-in-error",
-        description="The status of the resource instance.",
+        description=(
+            "The status of the resource instance. See "
+            "http://hl7.org/fhir/ValueSet/fm-status"
+        ),
         # if property is element of this resource.
         element_property=True,
         element_required=True,
         # note: Enum values can be used in validation,
         # but use in your own responsibilities, read official FHIR documentation.
         enum_values=["active", "cancelled", "draft", "entered-in-error"],
+        # valueset binding
+        binding_description="A code specifying the state of the resource instance.",
+        binding_strength="required",
+        binding_uri="http://hl7.org/fhir/ValueSet/fm-status",
+        binding_version="4.3.0",
     )
     status__ext: fhirtypes.FHIRPrimitiveExtensionType = Field(
         None, alias="_status", title="Extension field for ``status``."

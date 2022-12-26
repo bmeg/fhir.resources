@@ -46,7 +46,7 @@ class DeviceMetric(domainresource.DomainResource):
         description=(
             "Indicates the category of the observation generation process. A "
             "DeviceMetric can be for example a setting, measurement, or "
-            "calculation."
+            "calculation. See http://hl7.org/fhir/ValueSet/metric-category"
         ),
         # if property is element of this resource.
         element_property=True,
@@ -54,6 +54,11 @@ class DeviceMetric(domainresource.DomainResource):
         # note: Enum values can be used in validation,
         # but use in your own responsibilities, read official FHIR documentation.
         enum_values=["measurement", "setting", "calculation", "unspecified"],
+        # valueset binding
+        binding_description="Describes the category of the metric.",
+        binding_strength="required",
+        binding_uri="http://hl7.org/fhir/ValueSet/metric-category",
+        binding_version="4.3.0",
     )
     category__ext: fhirtypes.FHIRPrimitiveExtensionType = Field(
         None, alias="_category", title="Extension field for ``category``."
@@ -68,7 +73,8 @@ class DeviceMetric(domainresource.DomainResource):
             "to aid clinicians to track and identify parameter types by color. In "
             "practice, consider a Patient Monitor that has ECG/HR and Pleth for "
             "example; the parameters are displayed in different characteristic "
-            "colors, such as HR-blue, BP-green, and PR and SpO2- magenta."
+            "colors, such as HR-blue, BP-green, and PR and SpO2- magenta. See "
+            "http://hl7.org/fhir/ValueSet/metric-color"
         ),
         # if property is element of this resource.
         element_property=True,
@@ -84,6 +90,11 @@ class DeviceMetric(domainresource.DomainResource):
             "cyan",
             "white",
         ],
+        # valueset binding
+        binding_description="Describes the typical color of representation.",
+        binding_strength="required",
+        binding_uri="http://hl7.org/fhir/ValueSet/metric-color",
+        binding_version="4.3.0",
     )
     color__ext: fhirtypes.FHIRPrimitiveExtensionType = Field(
         None, alias="_color", title="Extension field for ``color``."
@@ -127,13 +138,19 @@ class DeviceMetric(domainresource.DomainResource):
         title="on | off | standby | entered-in-error",
         description=(
             "Indicates current operational state of the device. For example: On, "
-            "Off, Standby, etc."
+            "Off, Standby, etc. See http://hl7.org/fhir/ValueSet/metric-"
+            "operational-status"
         ),
         # if property is element of this resource.
         element_property=True,
         # note: Enum values can be used in validation,
         # but use in your own responsibilities, read official FHIR documentation.
         enum_values=["on", "off", "standby", "entered-in-error"],
+        # valueset binding
+        binding_description="Describes the operational status of the DeviceMetric.",
+        binding_strength="required",
+        binding_uri="http://hl7.org/fhir/ValueSet/metric-operational-status",
+        binding_version="4.3.0",
     )
     operationalStatus__ext: fhirtypes.FHIRPrimitiveExtensionType = Field(
         None,
@@ -157,6 +174,7 @@ class DeviceMetric(domainresource.DomainResource):
         element_property=True,
         # note: Listed Resource Type(s) should be allowed as Reference.
         enum_reference_types=["Device"],
+        backref="device_metric_parent",
     )
 
     source: fhirtypes.ReferenceType = Field(
@@ -172,6 +190,7 @@ class DeviceMetric(domainresource.DomainResource):
         element_property=True,
         # note: Listed Resource Type(s) should be allowed as Reference.
         enum_reference_types=["Device"],
+        backref="device_metric_source",
     )
 
     type: fhirtypes.CodeableConceptType = Field(
@@ -180,10 +199,14 @@ class DeviceMetric(domainresource.DomainResource):
         title="Identity of metric, for example Heart Rate or PEEP Setting",
         description=(
             "Describes the type of the metric. For example: Heart Rate, PEEP "
-            "Setting, etc."
+            "Setting, etc. See http://hl7.org/fhir/ValueSet/devicemetric-type"
         ),
         # if property is element of this resource.
         element_property=True,
+        # valueset binding
+        binding_description="IEEE 11073-10101",
+        binding_strength="preferred",
+        binding_uri="http://hl7.org/fhir/ValueSet/devicemetric-type",
     )
 
     unit: fhirtypes.CodeableConceptType = Field(
@@ -192,10 +215,15 @@ class DeviceMetric(domainresource.DomainResource):
         title="Unit of Measure for the Metric",
         description=(
             "Describes the unit that an observed value determined for this metric "
-            "will have. For example: Percent, Seconds, etc."
+            "will have. For example: Percent, Seconds, etc. See "
+            "http://hl7.org/fhir/ValueSet/devicemetric-type"
         ),
         # if property is element of this resource.
         element_property=True,
+        # valueset binding
+        binding_description="IEEE 11073-10101",
+        binding_strength="preferred",
+        binding_uri="http://hl7.org/fhir/ValueSet/devicemetric-type",
     )
 
     @classmethod
@@ -300,7 +328,10 @@ class DeviceMetricCalibration(backboneelement.BackboneElement):
         None,
         alias="state",
         title="not-calibrated | calibration-required | calibrated | unspecified",
-        description="Describes the state of the calibration.",
+        description=(
+            "Describes the state of the calibration. See "
+            "http://hl7.org/fhir/ValueSet/metric-calibration-state"
+        ),
         # if property is element of this resource.
         element_property=True,
         # note: Enum values can be used in validation,
@@ -311,6 +342,11 @@ class DeviceMetricCalibration(backboneelement.BackboneElement):
             "calibrated",
             "unspecified",
         ],
+        # valueset binding
+        binding_description="Describes the state of a metric calibration.",
+        binding_strength="required",
+        binding_uri="http://hl7.org/fhir/ValueSet/metric-calibration-state",
+        binding_version="4.3.0",
     )
     state__ext: fhirtypes.FHIRPrimitiveExtensionType = Field(
         None, alias="_state", title="Extension field for ``state``."
@@ -332,12 +368,20 @@ class DeviceMetricCalibration(backboneelement.BackboneElement):
         None,
         alias="type",
         title="unspecified | offset | gain | two-point",
-        description="Describes the type of the calibration method.",
+        description=(
+            "Describes the type of the calibration method. See "
+            "http://hl7.org/fhir/ValueSet/metric-calibration-type"
+        ),
         # if property is element of this resource.
         element_property=True,
         # note: Enum values can be used in validation,
         # but use in your own responsibilities, read official FHIR documentation.
         enum_values=["unspecified", "offset", "gain", "two-point"],
+        # valueset binding
+        binding_description="Describes the type of a metric calibration.",
+        binding_strength="required",
+        binding_uri="http://hl7.org/fhir/ValueSet/metric-calibration-type",
+        binding_version="4.3.0",
     )
     type__ext: fhirtypes.FHIRPrimitiveExtensionType = Field(
         None, alias="_type", title="Extension field for ``type``."

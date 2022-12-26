@@ -41,6 +41,7 @@ class Basic(domainresource.DomainResource):
             "RelatedPerson",
             "Organization",
         ],
+        backref="basic_author",
     )
 
     code: fhirtypes.CodeableConceptType = Field(
@@ -49,10 +50,15 @@ class Basic(domainresource.DomainResource):
         title="Kind of Resource",
         description=(
             "Identifies the 'type' of resource - equivalent to the resource name "
-            "for other resources."
+            "for other resources. See http://hl7.org/fhir/ValueSet/basic-resource-"
+            "type"
         ),
         # if property is element of this resource.
         element_property=True,
+        # valueset binding
+        binding_description='HL7-maintained set of codes for "Basic" resources',
+        binding_strength="example",
+        binding_uri="http://hl7.org/fhir/ValueSet/basic-resource-type",
     )
 
     created: fhirtypes.Date = Field(
@@ -91,6 +97,7 @@ class Basic(domainresource.DomainResource):
         element_property=True,
         # note: Listed Resource Type(s) should be allowed as Reference.
         enum_reference_types=["Resource"],
+        backref="basic_subject",
     )
 
     @classmethod

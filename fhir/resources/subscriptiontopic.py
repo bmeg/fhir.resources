@@ -117,6 +117,7 @@ class SubscriptionTopic(domainresource.DomainResource):
         element_property=True,
         # note: Listed Resource Type(s) should be allowed as Reference.
         enum_reference_types=["SubscriptionTopic"],
+        backref="subscription_topic_derivedFrom",
     )
     derivedFrom__ext: typing.List[
         typing.Union[fhirtypes.FHIRPrimitiveExtensionType, None]
@@ -191,9 +192,16 @@ class SubscriptionTopic(domainresource.DomainResource):
         None,
         alias="jurisdiction",
         title="Intended jurisdiction of the SubscriptionTopic (if applicable)",
-        description="A jurisdiction in which the Topic is intended to be used.",
+        description=(
+            "A jurisdiction in which the Topic is intended to be used. See "
+            "http://hl7.org/fhir/ValueSet/jurisdiction"
+        ),
         # if property is element of this resource.
         element_property=True,
+        # valueset binding
+        binding_description="Countries and regions within which this artifact is targeted for use.",
+        binding_strength="extensible",
+        binding_uri="http://hl7.org/fhir/ValueSet/jurisdiction",
     )
 
     lastReviewDate: fhirtypes.Date = Field(
@@ -284,13 +292,21 @@ class SubscriptionTopic(domainresource.DomainResource):
         None,
         alias="status",
         title="draft | active | retired | unknown",
-        description="The current state of the SubscriptionTopic.",
+        description=(
+            "The current state of the SubscriptionTopic. See "
+            "http://hl7.org/fhir/ValueSet/publication-status"
+        ),
         # if property is element of this resource.
         element_property=True,
         element_required=True,
         # note: Enum values can be used in validation,
         # but use in your own responsibilities, read official FHIR documentation.
         enum_values=["draft", "active", "retired", "unknown"],
+        # valueset binding
+        binding_description="The lifecycle status of an artifact.",
+        binding_strength="required",
+        binding_uri="http://hl7.org/fhir/ValueSet/publication-status",
+        binding_version="4.3.0",
     )
     status__ext: fhirtypes.FHIRPrimitiveExtensionType = Field(
         None, alias="_status", title="Extension field for ``status``."
@@ -543,7 +559,8 @@ class SubscriptionTopicCanFilterBy(backboneelement.BackboneElement):
             "Allowable operators to apply when determining matches (Search "
             "Modifiers).  If the filterParameter is a SearchParameter, this list of"
             " modifiers SHALL be a strict subset of the modifiers defined on that "
-            "SearchParameter."
+            "SearchParameter. See http://hl7.org/fhir/ValueSet/subscription-search-"
+            "modifier"
         ),
         # if property is element of this resource.
         element_property=True,
@@ -566,6 +583,11 @@ class SubscriptionTopicCanFilterBy(backboneelement.BackboneElement):
             "not-in",
             "of-type",
         ],
+        # valueset binding
+        binding_description="Operator to apply to filter label.",
+        binding_strength="required",
+        binding_uri="http://hl7.org/fhir/ValueSet/subscription-search-modifier",
+        binding_version="4.3.0",
     )
     modifier__ext: typing.List[
         typing.Union[fhirtypes.FHIRPrimitiveExtensionType, None]
@@ -580,10 +602,15 @@ class SubscriptionTopicCanFilterBy(backboneelement.BackboneElement):
             '"focus" of the topic (or one of them if there are more than one). It '
             "will be the same, a generality, or a specificity of "
             "SubscriptionTopic.resourceTrigger.resource or "
-            "SubscriptionTopic.eventTrigger.resource when they are present."
+            "SubscriptionTopic.eventTrigger.resource when they are present. See "
+            "http://hl7.org/fhir/ValueSet/defined-types"
         ),
         # if property is element of this resource.
         element_property=True,
+        # valueset binding
+        binding_description="Either a resource or a data type, including logical model types.",
+        binding_strength="extensible",
+        binding_uri="http://hl7.org/fhir/ValueSet/defined-types",
     )
     resource__ext: fhirtypes.FHIRPrimitiveExtensionType = Field(
         None, alias="_resource", title="Extension field for ``resource``."
@@ -700,10 +727,14 @@ class SubscriptionTopicEventTrigger(backboneelement.BackboneElement):
         title="Event which can trigger a notification from the SubscriptionTopic",
         description=(
             "A well-defined event which can be used to trigger notifications from "
-            "the SubscriptionTopic."
+            "the SubscriptionTopic. See http://terminology.hl7.org/ValueSet/v2-0003"
         ),
         # if property is element of this resource.
         element_property=True,
+        # valueset binding
+        binding_description="FHIR Value set/code system definition for HL7 v2 table 0003 (EVENT TYPE CODE).",
+        binding_strength="example",
+        binding_uri="http://terminology.hl7.org/ValueSet/v2-0003",
     )
 
     resource: fhirtypes.Uri = Field(
@@ -720,11 +751,16 @@ class SubscriptionTopicEventTrigger(backboneelement.BackboneElement):
             'http://hl7.org/fhir/StructureDefinition). For example, "Patient" maps '
             "to http://hl7.org/fhir/StructureDefinition/Patient.  For more "
             'information, see <a href="elementdefinition-definitions.html#ElementDe'
-            'finition.type.code">ElementDefinition.type.code</a>.'
+            'finition.type.code">ElementDefinition.type.code</a>. See '
+            "http://hl7.org/fhir/ValueSet/defined-types"
         ),
         # if property is element of this resource.
         element_property=True,
         element_required=True,
+        # valueset binding
+        binding_description="Either a resource or a data type, including logical model types.",
+        binding_strength="extensible",
+        binding_uri="http://hl7.org/fhir/ValueSet/defined-types",
     )
     resource__ext: fhirtypes.FHIRPrimitiveExtensionType = Field(
         None, alias="_resource", title="Extension field for ``resource``."
@@ -849,11 +885,16 @@ class SubscriptionTopicNotificationShape(backboneelement.BackboneElement):
             "the root resource for this shape definition. It will be the same, a "
             "generality, or a specificity of "
             "SubscriptionTopic.resourceTrigger.resource or "
-            "SubscriptionTopic.eventTrigger.resource when they are present."
+            "SubscriptionTopic.eventTrigger.resource when they are present. See "
+            "http://hl7.org/fhir/ValueSet/defined-types"
         ),
         # if property is element of this resource.
         element_property=True,
         element_required=True,
+        # valueset binding
+        binding_description="Either a resource or a data type, including logical model types.",
+        binding_strength="extensible",
+        binding_uri="http://hl7.org/fhir/ValueSet/defined-types",
     )
     resource__ext: fhirtypes.FHIRPrimitiveExtensionType = Field(
         None, alias="_resource", title="Extension field for ``resource``."
@@ -1026,11 +1067,16 @@ class SubscriptionTopicResourceTrigger(backboneelement.BackboneElement):
             'http://hl7.org/fhir/StructureDefinition). For example, "Patient" maps '
             "to http://hl7.org/fhir/StructureDefinition/Patient.  For more "
             'information, see <a href="elementdefinition-definitions.html#ElementDe'
-            'finition.type.code">ElementDefinition.type.code</a>.'
+            'finition.type.code">ElementDefinition.type.code</a>. See '
+            "http://hl7.org/fhir/ValueSet/defined-types"
         ),
         # if property is element of this resource.
         element_property=True,
         element_required=True,
+        # valueset binding
+        binding_description="Either a resource or a data type, including logical model types.",
+        binding_strength="extensible",
+        binding_uri="http://hl7.org/fhir/ValueSet/defined-types",
     )
     resource__ext: fhirtypes.FHIRPrimitiveExtensionType = Field(
         None, alias="_resource", title="Extension field for ``resource``."
@@ -1043,13 +1089,19 @@ class SubscriptionTopicResourceTrigger(backboneelement.BackboneElement):
         description=(
             "The FHIR RESTful interaction which can be used to trigger a "
             "notification for the SubscriptionTopic. Multiple values are considered"
-            " OR joined (e.g., CREATE or UPDATE)."
+            " OR joined (e.g., CREATE or UPDATE). See "
+            "http://hl7.org/fhir/ValueSet/interaction-trigger"
         ),
         # if property is element of this resource.
         element_property=True,
         # note: Enum values can be used in validation,
         # but use in your own responsibilities, read official FHIR documentation.
         enum_values=["create", "update", "delete"],
+        # valueset binding
+        binding_description="FHIR RESTful interaction used to filter a resource-based SubscriptionTopic trigger.",
+        binding_strength="required",
+        binding_uri="http://hl7.org/fhir/ValueSet/interaction-trigger",
+        binding_version="4.3.0",
     )
     supportedInteraction__ext: typing.List[
         typing.Union[fhirtypes.FHIRPrimitiveExtensionType, None]
@@ -1200,13 +1252,19 @@ class SubscriptionTopicResourceTriggerQueryCriteria(backboneelement.BackboneElem
         title="test-passes | test-fails",
         description=(
             'For "create" interactions, should the "previous" criteria count as an '
-            "automatic pass or an automatic fail."
+            "automatic pass or an automatic fail. See "
+            "http://hl7.org/fhir/ValueSet/subscriptiontopic-cr-behavior"
         ),
         # if property is element of this resource.
         element_property=True,
         # note: Enum values can be used in validation,
         # but use in your own responsibilities, read official FHIR documentation.
         enum_values=["test-passes", "test-fails"],
+        # valueset binding
+        binding_description="Behavior a server can exhibit when a criteria state does not exist (e.g., state prior to a create or after a delete).",
+        binding_strength="required",
+        binding_uri="http://hl7.org/fhir/ValueSet/subscriptiontopic-cr-behavior",
+        binding_version="4.3.0",
     )
     resultForCreate__ext: fhirtypes.FHIRPrimitiveExtensionType = Field(
         None, alias="_resultForCreate", title="Extension field for ``resultForCreate``."
@@ -1218,13 +1276,19 @@ class SubscriptionTopicResourceTriggerQueryCriteria(backboneelement.BackboneElem
         title="test-passes | test-fails",
         description=(
             'For "delete" interactions, should the "current" criteria count as an '
-            "automatic pass or an automatic fail."
+            "automatic pass or an automatic fail. See "
+            "http://hl7.org/fhir/ValueSet/subscriptiontopic-cr-behavior"
         ),
         # if property is element of this resource.
         element_property=True,
         # note: Enum values can be used in validation,
         # but use in your own responsibilities, read official FHIR documentation.
         enum_values=["test-passes", "test-fails"],
+        # valueset binding
+        binding_description="Behavior a server can exhibit when a criteria state does not exist (e.g., state prior to a create or after a delete).",
+        binding_strength="required",
+        binding_uri="http://hl7.org/fhir/ValueSet/subscriptiontopic-cr-behavior",
+        binding_version="4.3.0",
     )
     resultForDelete__ext: fhirtypes.FHIRPrimitiveExtensionType = Field(
         None, alias="_resultForDelete", title="Extension field for ``resultForDelete``."

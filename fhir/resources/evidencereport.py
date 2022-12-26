@@ -67,6 +67,7 @@ class EvidenceReport(domainresource.DomainResource):
         one_of_many_required=False,
         # note: Listed Resource Type(s) should be allowed as Reference.
         enum_reference_types=["Citation"],
+        backref="evidence_report_citeAsReference",
     )
 
     contact: typing.List[fhirtypes.ContactDetailType] = Field(
@@ -205,7 +206,7 @@ class EvidenceReport(domainresource.DomainResource):
         title="draft | active | retired | unknown",
         description=(
             "The status of this summary. Enables tracking the life-cycle of the "
-            "content."
+            "content. See http://hl7.org/fhir/ValueSet/publication-status"
         ),
         # if property is element of this resource.
         element_property=True,
@@ -213,6 +214,11 @@ class EvidenceReport(domainresource.DomainResource):
         # note: Enum values can be used in validation,
         # but use in your own responsibilities, read official FHIR documentation.
         enum_values=["draft", "active", "retired", "unknown"],
+        # valueset binding
+        binding_description="The lifecycle status of an artifact.",
+        binding_strength="required",
+        binding_uri="http://hl7.org/fhir/ValueSet/publication-status",
+        binding_version="4.3.0",
     )
     status__ext: fhirtypes.FHIRPrimitiveExtensionType = Field(
         None, alias="_status", title="Extension field for ``status``."
@@ -236,10 +242,15 @@ class EvidenceReport(domainresource.DomainResource):
         title="Kind of report",
         description=(
             "Specifies the kind of report, such as grouping of classifiers, search "
-            "results, or human-compiled expression."
+            "results, or human-compiled expression. See "
+            "http://hl7.org/fhir/ValueSet/evidence-report-type"
         ),
         # if property is element of this resource.
         element_property=True,
+        # valueset binding
+        binding_description="The kind of report, such as grouping of classifiers, search results, or human-compiled expression.",
+        binding_strength="example",
+        binding_uri="http://hl7.org/fhir/ValueSet/evidence-report-type",
     )
 
     url: fhirtypes.Uri = Field(
@@ -435,7 +446,8 @@ class EvidenceReportRelatesTo(backboneelement.BackboneElement):
         ),
         description=(
             "The type of relationship that this composition has with anther "
-            "composition or document."
+            "composition or document. See http://hl7.org/fhir/ValueSet/report-"
+            "relation-type"
         ),
         # if property is element of this resource.
         element_property=True,
@@ -452,6 +464,11 @@ class EvidenceReportRelatesTo(backboneelement.BackboneElement):
             "appendedWith",
             "transformedWith",
         ],
+        # valueset binding
+        binding_description="The type of relationship between reports.",
+        binding_strength="required",
+        binding_uri="http://hl7.org/fhir/ValueSet/report-relation-type",
+        binding_version="4.3.0",
     )
     code__ext: fhirtypes.FHIRPrimitiveExtensionType = Field(
         None, alias="_code", title="Extension field for ``code``."
@@ -481,6 +498,7 @@ class EvidenceReportRelatesTo(backboneelement.BackboneElement):
         one_of_many_required=True,
         # note: Listed Resource Type(s) should be allowed as Reference.
         enum_reference_types=["EvidenceReport"],
+        backref="evidence_report.relates_to_targetReference",
     )
 
     @classmethod
@@ -619,6 +637,7 @@ class EvidenceReportSection(backboneelement.BackboneElement):
         element_property=True,
         # note: Listed Resource Type(s) should be allowed as Reference.
         enum_reference_types=["Person", "Device", "Group", "Organization"],
+        backref="evidence_report.section_author",
     )
 
     emptyReason: fhirtypes.CodeableConceptType = Field(
@@ -627,19 +646,31 @@ class EvidenceReportSection(backboneelement.BackboneElement):
         title="Why the section is empty",
         description=(
             "If the section is empty, why the list is empty. An empty section "
-            "typically has some text explaining the empty reason."
+            "typically has some text explaining the empty reason. See "
+            "http://hl7.org/fhir/ValueSet/list-empty-reason"
         ),
         # if property is element of this resource.
         element_property=True,
+        # valueset binding
+        binding_description="If a section is empty, why it is empty.",
+        binding_strength="preferred",
+        binding_uri="http://hl7.org/fhir/ValueSet/list-empty-reason",
     )
 
     entryClassifier: typing.List[fhirtypes.CodeableConceptType] = Field(
         None,
         alias="entryClassifier",
         title="Extensible classifiers as content",
-        description="Specifies any type of classification of the evidence report.",
+        description=(
+            "Specifies any type of classification of the evidence report. See "
+            "http://hl7.org/fhir/ValueSet/evidence-classifier-code"
+        ),
         # if property is element of this resource.
         element_property=True,
+        # valueset binding
+        binding_description="Commonly used classifiers for evidence sets.",
+        binding_strength="extensible",
+        binding_uri="http://hl7.org/fhir/ValueSet/evidence-classifier-code",
     )
 
     entryQuantity: typing.List[fhirtypes.QuantityType] = Field(
@@ -663,6 +694,7 @@ class EvidenceReportSection(backboneelement.BackboneElement):
         element_property=True,
         # note: Listed Resource Type(s) should be allowed as Reference.
         enum_reference_types=["Resource"],
+        backref="evidence_report.section_entryReference",
     )
 
     focus: fhirtypes.CodeableConceptType = Field(
@@ -671,10 +703,15 @@ class EvidenceReportSection(backboneelement.BackboneElement):
         title="Classification of section (recommended)",
         description=(
             "A code identifying the kind of content contained within the section. "
-            "This should be consistent with the section title."
+            "This should be consistent with the section title. See "
+            "http://hl7.org/fhir/ValueSet/evidence-report-section"
         ),
         # if property is element of this resource.
         element_property=True,
+        # valueset binding
+        binding_description="Evidence Report Section Type.",
+        binding_strength="extensible",
+        binding_uri="http://hl7.org/fhir/ValueSet/evidence-report-section",
     )
 
     focusReference: fhirtypes.ReferenceType = Field(
@@ -689,6 +726,7 @@ class EvidenceReportSection(backboneelement.BackboneElement):
         element_property=True,
         # note: Listed Resource Type(s) should be allowed as Reference.
         enum_reference_types=["Resource"],
+        backref="evidence_report.section_focusReference",
     )
 
     mode: fhirtypes.Code = Field(
@@ -700,13 +738,18 @@ class EvidenceReportSection(backboneelement.BackboneElement):
             " suitable for being maintained on an ongoing basis, or if it "
             "represents a snapshot of a list of items from another source, or "
             "whether it is a prepared list where items may be marked as added, "
-            "modified or deleted."
+            "modified or deleted. See http://hl7.org/fhir/ValueSet/list-mode"
         ),
         # if property is element of this resource.
         element_property=True,
         # note: Enum values can be used in validation,
         # but use in your own responsibilities, read official FHIR documentation.
         enum_values=["working", "snapshot", "changes"],
+        # valueset binding
+        binding_description="The processing mode that applies to this section.",
+        binding_strength="required",
+        binding_uri="http://hl7.org/fhir/ValueSet/list-mode",
+        binding_version="4.3.0",
     )
     mode__ext: fhirtypes.FHIRPrimitiveExtensionType = Field(
         None, alias="_mode", title="Extension field for ``mode``."
@@ -716,9 +759,16 @@ class EvidenceReportSection(backboneelement.BackboneElement):
         None,
         alias="orderedBy",
         title="Order of section entries",
-        description="Specifies the order applied to the items in the section entries.",
+        description=(
+            "Specifies the order applied to the items in the section entries. See "
+            "http://hl7.org/fhir/ValueSet/list-order"
+        ),
         # if property is element of this resource.
         element_property=True,
+        # valueset binding
+        binding_description="What order applies to the items in the entry.",
+        binding_strength="preferred",
+        binding_uri="http://hl7.org/fhir/ValueSet/list-order",
     )
 
     section: typing.List[fhirtypes.EvidenceReportSectionType] = Field(
@@ -841,9 +891,13 @@ class EvidenceReportSubjectCharacteristic(backboneelement.BackboneElement):
         ...,
         alias="code",
         title="Characteristic code",
-        description=None,
+        description="See http://hl7.org/fhir/ValueSet/focus-characteristic-code",
         # if property is element of this resource.
         element_property=True,
+        # valueset binding
+        binding_description="Evidence focus characteristic code.",
+        binding_strength="extensible",
+        binding_uri="http://hl7.org/fhir/ValueSet/focus-characteristic-code",
     )
 
     exclude: bool = Field(
@@ -930,6 +984,7 @@ class EvidenceReportSubjectCharacteristic(backboneelement.BackboneElement):
         one_of_many_required=True,
         # note: Listed Resource Type(s) should be allowed as Reference.
         enum_reference_types=["Resource"],
+        backref="evidence_report.subject.characteristic_valueReference",
     )
 
     @classmethod

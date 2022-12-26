@@ -42,6 +42,7 @@ class EpisodeOfCare(domainresource.DomainResource):
         element_property=True,
         # note: Listed Resource Type(s) should be allowed as Reference.
         enum_reference_types=["Account"],
+        backref="episode_of_care_account",
     )
 
     careManager: fhirtypes.ReferenceType = Field(
@@ -56,6 +57,7 @@ class EpisodeOfCare(domainresource.DomainResource):
         element_property=True,
         # note: Listed Resource Type(s) should be allowed as Reference.
         enum_reference_types=["Practitioner", "PractitionerRole"],
+        backref="episode_of_care_careManager",
     )
 
     diagnosis: typing.List[fhirtypes.EpisodeOfCareDiagnosisType] = Field(
@@ -92,6 +94,7 @@ class EpisodeOfCare(domainresource.DomainResource):
         element_property=True,
         # note: Listed Resource Type(s) should be allowed as Reference.
         enum_reference_types=["Organization"],
+        backref="episode_of_care_managingOrganization",
     )
 
     patient: fhirtypes.ReferenceType = Field(
@@ -103,6 +106,7 @@ class EpisodeOfCare(domainresource.DomainResource):
         element_property=True,
         # note: Listed Resource Type(s) should be allowed as Reference.
         enum_reference_types=["Patient"],
+        backref="episode_of_care_patient",
     )
 
     period: fhirtypes.PeriodType = Field(
@@ -129,6 +133,7 @@ class EpisodeOfCare(domainresource.DomainResource):
         element_property=True,
         # note: Listed Resource Type(s) should be allowed as Reference.
         enum_reference_types=["ServiceRequest"],
+        backref="episode_of_care_referralRequest",
     )
 
     status: fhirtypes.Code = Field(
@@ -138,7 +143,10 @@ class EpisodeOfCare(domainresource.DomainResource):
             "planned | waitlist | active | onhold | finished | cancelled | entered-"
             "in-error"
         ),
-        description="planned | waitlist | active | onhold | finished | cancelled.",
+        description=(
+            "planned | waitlist | active | onhold | finished | cancelled. See "
+            "http://hl7.org/fhir/ValueSet/episode-of-care-status"
+        ),
         # if property is element of this resource.
         element_property=True,
         element_required=True,
@@ -153,6 +161,11 @@ class EpisodeOfCare(domainresource.DomainResource):
             "cancelled",
             "entered-in-error",
         ],
+        # valueset binding
+        binding_description="The status of the episode of care.",
+        binding_strength="required",
+        binding_uri="http://hl7.org/fhir/ValueSet/episode-of-care-status",
+        binding_version="4.3.0",
     )
     status__ext: fhirtypes.FHIRPrimitiveExtensionType = Field(
         None, alias="_status", title="Extension field for ``status``."
@@ -185,6 +198,7 @@ class EpisodeOfCare(domainresource.DomainResource):
         element_property=True,
         # note: Listed Resource Type(s) should be allowed as Reference.
         enum_reference_types=["CareTeam"],
+        backref="episode_of_care_team",
     )
 
     type: typing.List[fhirtypes.CodeableConceptType] = Field(
@@ -193,10 +207,15 @@ class EpisodeOfCare(domainresource.DomainResource):
         title="Type/class  - e.g. specialist referral, disease management",
         description=(
             "A classification of the type of episode of care; e.g. specialist "
-            "referral, disease management, type of funded care."
+            "referral, disease management, type of funded care. See "
+            "http://hl7.org/fhir/ValueSet/episodeofcare-type"
         ),
         # if property is element of this resource.
         element_property=True,
+        # valueset binding
+        binding_description="The type of the episode of care.",
+        binding_strength="example",
+        binding_uri="http://hl7.org/fhir/ValueSet/episodeofcare-type",
     )
 
     @classmethod
@@ -310,6 +329,7 @@ class EpisodeOfCareDiagnosis(backboneelement.BackboneElement):
         element_property=True,
         # note: Listed Resource Type(s) should be allowed as Reference.
         enum_reference_types=["Condition"],
+        backref="episode_of_care.diagnosis_condition",
     )
 
     rank: fhirtypes.PositiveInt = Field(
@@ -331,9 +351,13 @@ class EpisodeOfCareDiagnosis(backboneelement.BackboneElement):
             "Role that this diagnosis has within the episode of care (e.g. "
             "admission, billing, discharge \u2026)"
         ),
-        description=None,
+        description="See http://hl7.org/fhir/ValueSet/diagnosis-role",
         # if property is element of this resource.
         element_property=True,
+        # valueset binding
+        binding_description="The type of diagnosis this condition represents.",
+        binding_strength="preferred",
+        binding_uri="http://hl7.org/fhir/ValueSet/diagnosis-role",
     )
 
     @classmethod
@@ -374,7 +398,10 @@ class EpisodeOfCareStatusHistory(backboneelement.BackboneElement):
             "planned | waitlist | active | onhold | finished | cancelled | entered-"
             "in-error"
         ),
-        description="planned | waitlist | active | onhold | finished | cancelled.",
+        description=(
+            "planned | waitlist | active | onhold | finished | cancelled. See "
+            "http://hl7.org/fhir/ValueSet/episode-of-care-status"
+        ),
         # if property is element of this resource.
         element_property=True,
         element_required=True,
@@ -389,6 +416,11 @@ class EpisodeOfCareStatusHistory(backboneelement.BackboneElement):
             "cancelled",
             "entered-in-error",
         ],
+        # valueset binding
+        binding_description="The status of the episode of care.",
+        binding_strength="required",
+        binding_uri="http://hl7.org/fhir/ValueSet/episode-of-care-status",
+        binding_version="4.3.0",
     )
     status__ext: fhirtypes.FHIRPrimitiveExtensionType = Field(
         None, alias="_status", title="Extension field for ``status``."

@@ -13,7 +13,7 @@ from pydantic import BaseModel, Extra, Field
 from pydantic.class_validators import ROOT_VALIDATOR_CONFIG_KEY, root_validator
 from pydantic.error_wrappers import ErrorWrapper, ValidationError
 from pydantic.errors import ConfigError, PydanticValueError
-from pydantic.fields import ModelField
+from pydantic.fields import ModelField, FieldInfo
 from pydantic.parse import Protocol
 from pydantic.utils import ROOT_KEY, sequence_like
 
@@ -403,6 +403,7 @@ class FHIRAbstractModel(BaseModel, abc.ABC):
         by_alias: bool = True,
         exclude_none: bool = True,
         exclude_comments: bool = False,
+        field_info: typing.Optional[FieldInfo] = None,
         **pydantic_extra,
     ) -> OrderedDict:
         """important!
@@ -446,6 +447,7 @@ class FHIRAbstractModel(BaseModel, abc.ABC):
                     by_alias=by_alias,
                     exclude_none=exclude_none,
                     exclude_comments=exclude_comments,
+                    field=field,
                 )
 
             if v is not None or (exclude_none is False and v is None):
@@ -462,6 +464,7 @@ class FHIRAbstractModel(BaseModel, abc.ABC):
                         by_alias=by_alias,
                         exclude_none=exclude_none,
                         exclude_comments=exclude_comments,
+                        field=field,
                     )
                     if ext_val is not None and len(ext_val) > 0:
                         yield dict_key_, ext_val
@@ -473,7 +476,7 @@ class FHIRAbstractModel(BaseModel, abc.ABC):
     @classmethod
     @typing.no_type_check
     def _fhir_get_value(
-        cls, v: typing.Any, by_alias: bool, exclude_none: bool, exclude_comments: bool
+        cls, v: typing.Any, by_alias: bool, exclude_none: bool, exclude_comments: bool, field: FieldInfo
     ) -> typing.Any:
 
         if isinstance(v, (FHIRAbstractModel, BaseModel)):
@@ -481,6 +484,7 @@ class FHIRAbstractModel(BaseModel, abc.ABC):
                 by_alias=by_alias,
                 exclude_none=exclude_none,
                 exclude_comments=exclude_comments,
+                field=field,
             )
             if "__root__" in v_dict:
                 return v_dict["__root__"]
@@ -493,6 +497,7 @@ class FHIRAbstractModel(BaseModel, abc.ABC):
                     by_alias=by_alias,
                     exclude_none=exclude_none,
                     exclude_comments=exclude_comments,
+                    field=field,
                 )
                 for k_, v_ in v.items()
             }
@@ -503,6 +508,7 @@ class FHIRAbstractModel(BaseModel, abc.ABC):
                     by_alias=by_alias,
                     exclude_none=exclude_none,
                     exclude_comments=exclude_comments,
+                    field=field,
                 )
                 for v_ in v
             )

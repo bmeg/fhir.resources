@@ -55,6 +55,7 @@ class Linkage(domainresource.DomainResource):
         element_property=True,
         # note: Listed Resource Type(s) should be allowed as Reference.
         enum_reference_types=["Practitioner", "PractitionerRole", "Organization"],
+        backref="linkage_author",
     )
 
     item: typing.List[fhirtypes.LinkageItemType] = Field(
@@ -113,6 +114,7 @@ class LinkageItem(backboneelement.BackboneElement):
         element_property=True,
         # note: Listed Resource Type(s) should be allowed as Reference.
         enum_reference_types=["Resource"],
+        backref="linkage.item_resource",
     )
 
     type: fhirtypes.Code = Field(
@@ -121,7 +123,8 @@ class LinkageItem(backboneelement.BackboneElement):
         title="source | alternate | historical",
         description=(
             'Distinguishes which item is "source of truth" (if any) and which items'
-            " are no longer considered to be current representations."
+            " are no longer considered to be current representations. See "
+            "http://hl7.org/fhir/ValueSet/linkage-type"
         ),
         # if property is element of this resource.
         element_property=True,
@@ -129,6 +132,11 @@ class LinkageItem(backboneelement.BackboneElement):
         # note: Enum values can be used in validation,
         # but use in your own responsibilities, read official FHIR documentation.
         enum_values=["source", "alternate", "historical"],
+        # valueset binding
+        binding_description="Used to distinguish different roles a resource can play within a set of linked resources.",
+        binding_strength="required",
+        binding_uri="http://hl7.org/fhir/ValueSet/linkage-type",
+        binding_version="4.3.0",
     )
     type__ext: fhirtypes.FHIRPrimitiveExtensionType = Field(
         None, alias="_type", title="Extension field for ``type``."

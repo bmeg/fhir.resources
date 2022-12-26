@@ -30,9 +30,16 @@ class SpecimenDefinition(domainresource.DomainResource):
         None,
         alias="collection",
         title="Specimen collection procedure",
-        description="The action to be performed for collecting the specimen.",
+        description=(
+            "The action to be performed for collecting the specimen. See "
+            "http://hl7.org/fhir/ValueSet/specimen-collection"
+        ),
         # if property is element of this resource.
         element_property=True,
+        # valueset binding
+        binding_description="SCT actions and procedures for specimen collection",
+        binding_strength="example",
+        binding_uri="http://hl7.org/fhir/ValueSet/specimen-collection",
     )
 
     identifier: fhirtypes.IdentifierType = Field(
@@ -48,9 +55,16 @@ class SpecimenDefinition(domainresource.DomainResource):
         None,
         alias="patientPreparation",
         title="Patient preparation for collection",
-        description="Preparation of the patient for specimen collection.",
+        description=(
+            "Preparation of the patient for specimen collection. See "
+            "http://hl7.org/fhir/ValueSet/prepare-patient-prior-specimen-collection"
+        ),
         # if property is element of this resource.
         element_property=True,
+        # valueset binding
+        binding_description="SCT descendants of 703763000 |Precondition value (qualifier value)|",
+        binding_strength="example",
+        binding_uri="http://hl7.org/fhir/ValueSet/prepare-patient-prior-specimen-collection",
     )
 
     timeAspect: fhirtypes.String = Field(
@@ -69,9 +83,16 @@ class SpecimenDefinition(domainresource.DomainResource):
         None,
         alias="typeCollected",
         title="Kind of material to collect",
-        description="The kind of material to be collected.",
+        description=(
+            "The kind of material to be collected. See "
+            "http://terminology.hl7.org/ValueSet/v2-0487"
+        ),
         # if property is element of this resource.
         element_property=True,
+        # valueset binding
+        binding_description="The type of the specimen to be collected.",
+        binding_strength="example",
+        binding_uri="http://terminology.hl7.org/ValueSet/v2-0487",
     )
 
     typeTested: typing.List[fhirtypes.SpecimenDefinitionTypeTestedType] = Field(
@@ -158,13 +179,21 @@ class SpecimenDefinitionTypeTested(backboneelement.BackboneElement):
         None,
         alias="preference",
         title="preferred | alternate",
-        description="The preference for this type of conditioned specimen.",
+        description=(
+            "The preference for this type of conditioned specimen. See "
+            "http://hl7.org/fhir/ValueSet/specimen-contained-preference"
+        ),
         # if property is element of this resource.
         element_property=True,
         element_required=True,
         # note: Enum values can be used in validation,
         # but use in your own responsibilities, read official FHIR documentation.
         enum_values=["preferred", "alternate"],
+        # valueset binding
+        binding_description="Degree of preference of a type of conditioned specimen.",
+        binding_strength="required",
+        binding_uri="http://hl7.org/fhir/ValueSet/specimen-contained-preference",
+        binding_version="4.3.0",
     )
     preference__ext: fhirtypes.FHIRPrimitiveExtensionType = Field(
         None, alias="_preference", title="Extension field for ``preference``."
@@ -176,10 +205,14 @@ class SpecimenDefinitionTypeTested(backboneelement.BackboneElement):
         title="Rejection criterion",
         description=(
             "Criterion for rejection of the specimen in its container by the "
-            "laboratory."
+            "laboratory. See http://hl7.org/fhir/ValueSet/rejection-criteria"
         ),
         # if property is element of this resource.
         element_property=True,
+        # valueset binding
+        binding_description="Criterion for rejection of the specimen by laboratory.",
+        binding_strength="example",
+        binding_uri="http://hl7.org/fhir/ValueSet/rejection-criteria",
     )
 
     requirement: fhirtypes.String = Field(
@@ -213,9 +246,16 @@ class SpecimenDefinitionTypeTested(backboneelement.BackboneElement):
         None,
         alias="type",
         title="Type of intended specimen",
-        description="The kind of specimen conditioned for testing expected by lab.",
+        description=(
+            "The kind of specimen conditioned for testing expected by lab. See "
+            "http://terminology.hl7.org/ValueSet/v2-0487"
+        ),
         # if property is element of this resource.
         element_property=True,
+        # valueset binding
+        binding_description="The type of specimen conditioned in a container for lab testing.",
+        binding_strength="example",
+        binding_uri="http://terminology.hl7.org/ValueSet/v2-0487",
     )
 
     @classmethod
@@ -326,9 +366,13 @@ class SpecimenDefinitionTypeTestedContainer(backboneelement.BackboneElement):
         None,
         alias="cap",
         title="Color of container cap",
-        description=None,
+        description="See http://hl7.org/fhir/ValueSet/container-cap",
         # if property is element of this resource.
         element_property=True,
+        # valueset binding
+        binding_description="Color of the container cap.",
+        binding_strength="example",
+        binding_uri="http://hl7.org/fhir/ValueSet/container-cap",
     )
 
     capacity: fhirtypes.QuantityType = Field(
@@ -356,9 +400,16 @@ class SpecimenDefinitionTypeTestedContainer(backboneelement.BackboneElement):
         None,
         alias="material",
         title="Container material",
-        description="The type of material of the container.",
+        description=(
+            "The type of material of the container. See "
+            "http://hl7.org/fhir/ValueSet/container-material"
+        ),
         # if property is element of this resource.
         element_property=True,
+        # valueset binding
+        binding_description="SCT 32039001 |Glass|, 61088005 |Plastic|, 425620007 |Metal|",
+        binding_strength="example",
+        binding_uri="http://hl7.org/fhir/ValueSet/container-material",
     )
 
     minimumVolumeQuantity: fhirtypes.QuantityType = Field(
@@ -409,9 +460,16 @@ class SpecimenDefinitionTypeTestedContainer(backboneelement.BackboneElement):
         None,
         alias="type",
         title="Kind of container associated with the kind of specimen",
-        description="The type of container used to contain this kind of specimen.",
+        description=(
+            "The type of container used to contain this kind of specimen. See "
+            "http://hl7.org/fhir/ValueSet/specimen-container-type"
+        ),
         # if property is element of this resource.
         element_property=True,
+        # valueset binding
+        binding_description="SCT descendants of 706041008 |Device for body fluid and tissue collection/transfer/processing (physical object)|",
+        binding_strength="example",
+        binding_uri="http://hl7.org/fhir/ValueSet/specimen-container-type",
     )
 
     @classmethod
@@ -494,13 +552,18 @@ class SpecimenDefinitionTypeTestedContainerAdditive(backboneelement.BackboneElem
         title="Additive associated with container",
         description=(
             "Substance introduced in the kind of container to preserve, maintain or"
-            " enhance the specimen. Examples: Formalin, Citrate, EDTA."
+            " enhance the specimen. Examples: Formalin, Citrate, EDTA. See "
+            "http://terminology.hl7.org/ValueSet/v2-0371"
         ),
         # if property is element of this resource.
         element_property=True,
         # Choice of Data Types. i.e additive[x]
         one_of_many="additive",
         one_of_many_required=True,
+        # valueset binding
+        binding_description="Substance added to specimen container.",
+        binding_strength="example",
+        binding_uri="http://terminology.hl7.org/ValueSet/v2-0371",
     )
 
     additiveReference: fhirtypes.ReferenceType = Field(
@@ -509,15 +572,21 @@ class SpecimenDefinitionTypeTestedContainerAdditive(backboneelement.BackboneElem
         title="Additive associated with container",
         description=(
             "Substance introduced in the kind of container to preserve, maintain or"
-            " enhance the specimen. Examples: Formalin, Citrate, EDTA."
+            " enhance the specimen. Examples: Formalin, Citrate, EDTA. See "
+            "http://terminology.hl7.org/ValueSet/v2-0371"
         ),
         # if property is element of this resource.
         element_property=True,
         # Choice of Data Types. i.e additive[x]
         one_of_many="additive",
         one_of_many_required=True,
+        # valueset binding
+        binding_description="Substance added to specimen container.",
+        binding_strength="example",
+        binding_uri="http://terminology.hl7.org/ValueSet/v2-0371",
         # note: Listed Resource Type(s) should be allowed as Reference.
         enum_reference_types=["Substance"],
+        backref="specimen_definition.type_tested.container.additive_additiveReference",
     )
 
     @classmethod
@@ -621,10 +690,15 @@ class SpecimenDefinitionTypeTestedHandling(backboneelement.BackboneElement):
         description=(
             "It qualifies the interval of temperature, which characterizes an "
             "occurrence of handling. Conditions that are not related to temperature"
-            " may be handled in the instruction element."
+            " may be handled in the instruction element. See "
+            "http://hl7.org/fhir/ValueSet/handling-condition"
         ),
         # if property is element of this resource.
         element_property=True,
+        # valueset binding
+        binding_description="Set of handling instructions prior testing of the specimen.",
+        binding_strength="example",
+        binding_uri="http://hl7.org/fhir/ValueSet/handling-condition",
     )
 
     temperatureRange: fhirtypes.RangeType = Field(

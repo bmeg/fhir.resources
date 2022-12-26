@@ -43,10 +43,15 @@ class SupplyRequest(domainresource.DomainResource):
         title="The kind of supply (central, non-stock, etc.)",
         description=(
             "Category of supply, e.g.  central, non-stock, etc. This is used to "
-            "support work flows associated with the supply process."
+            "support work flows associated with the supply process. See "
+            "http://hl7.org/fhir/ValueSet/supplyrequest-kind"
         ),
         # if property is element of this resource.
         element_property=True,
+        # valueset binding
+        binding_description="Category of supply request.",
+        binding_strength="example",
+        binding_uri="http://hl7.org/fhir/ValueSet/supplyrequest-kind",
     )
 
     deliverFrom: fhirtypes.ReferenceType = Field(
@@ -58,6 +63,7 @@ class SupplyRequest(domainresource.DomainResource):
         element_property=True,
         # note: Listed Resource Type(s) should be allowed as Reference.
         enum_reference_types=["Organization", "Location"],
+        backref="supply_request_deliverFrom",
     )
 
     deliverTo: fhirtypes.ReferenceType = Field(
@@ -69,6 +75,7 @@ class SupplyRequest(domainresource.DomainResource):
         element_property=True,
         # note: Listed Resource Type(s) should be allowed as Reference.
         enum_reference_types=["Organization", "Location", "Patient"],
+        backref="supply_request_deliverTo",
     )
 
     identifier: typing.List[fhirtypes.IdentifierType] = Field(
@@ -91,13 +98,18 @@ class SupplyRequest(domainresource.DomainResource):
         description=(
             "The item that is requested to be supplied. This is either a link to a "
             "resource representing the details of the item or a code that "
-            "identifies the item from a known list."
+            "identifies the item from a known list. See "
+            "http://hl7.org/fhir/ValueSet/supply-item"
         ),
         # if property is element of this resource.
         element_property=True,
         # Choice of Data Types. i.e item[x]
         one_of_many="item",
         one_of_many_required=True,
+        # valueset binding
+        binding_description="The item that was requested.",
+        binding_strength="example",
+        binding_uri="http://hl7.org/fhir/ValueSet/supply-item",
     )
 
     itemReference: fhirtypes.ReferenceType = Field(
@@ -107,15 +119,21 @@ class SupplyRequest(domainresource.DomainResource):
         description=(
             "The item that is requested to be supplied. This is either a link to a "
             "resource representing the details of the item or a code that "
-            "identifies the item from a known list."
+            "identifies the item from a known list. See "
+            "http://hl7.org/fhir/ValueSet/supply-item"
         ),
         # if property is element of this resource.
         element_property=True,
         # Choice of Data Types. i.e item[x]
         one_of_many="item",
         one_of_many_required=True,
+        # valueset binding
+        binding_description="The item that was requested.",
+        binding_strength="example",
+        binding_uri="http://hl7.org/fhir/ValueSet/supply-item",
         # note: Listed Resource Type(s) should be allowed as Reference.
         enum_reference_types=["Medication", "Substance", "Device"],
+        backref="supply_request_itemReference",
     )
 
     occurrenceDateTime: fhirtypes.DateTime = Field(
@@ -177,13 +195,19 @@ class SupplyRequest(domainresource.DomainResource):
         title="routine | urgent | asap | stat",
         description=(
             "Indicates how quickly this SupplyRequest should be addressed with "
-            "respect to other requests."
+            "respect to other requests. See http://hl7.org/fhir/ValueSet/request-"
+            "priority"
         ),
         # if property is element of this resource.
         element_property=True,
         # note: Enum values can be used in validation,
         # but use in your own responsibilities, read official FHIR documentation.
         enum_values=["routine", "urgent", "asap", "stat"],
+        # valueset binding
+        binding_description="Identifies the level of importance to be assigned to actioning the request.",
+        binding_strength="required",
+        binding_uri="http://hl7.org/fhir/ValueSet/request-priority",
+        binding_version="4.3.0",
     )
     priority__ext: fhirtypes.FHIRPrimitiveExtensionType = Field(
         None, alias="_priority", title="Extension field for ``priority``."
@@ -202,9 +226,13 @@ class SupplyRequest(domainresource.DomainResource):
         None,
         alias="reasonCode",
         title="The reason why the supply item was requested",
-        description=None,
+        description="See http://hl7.org/fhir/ValueSet/supplyrequest-reason",
         # if property is element of this resource.
         element_property=True,
+        # valueset binding
+        binding_description="The reason why the supply item was requested.",
+        binding_strength="example",
+        binding_uri="http://hl7.org/fhir/ValueSet/supplyrequest-reason",
     )
 
     reasonReference: typing.List[fhirtypes.ReferenceType] = Field(
@@ -221,6 +249,7 @@ class SupplyRequest(domainresource.DomainResource):
             "DiagnosticReport",
             "DocumentReference",
         ],
+        backref="supply_request_reasonReference",
     )
 
     requester: fhirtypes.ReferenceType = Field(
@@ -239,18 +268,27 @@ class SupplyRequest(domainresource.DomainResource):
             "RelatedPerson",
             "Device",
         ],
+        backref="supply_request_requester",
     )
 
     status: fhirtypes.Code = Field(
         None,
         alias="status",
         title="draft | active | suspended +",
-        description="Status of the supply request.",
+        description=(
+            "Status of the supply request. See "
+            "http://hl7.org/fhir/ValueSet/supplyrequest-status"
+        ),
         # if property is element of this resource.
         element_property=True,
         # note: Enum values can be used in validation,
         # but use in your own responsibilities, read official FHIR documentation.
         enum_values=["draft", "active", "suspended", "+"],
+        # valueset binding
+        binding_description="Status of the supply request.",
+        binding_strength="required",
+        binding_uri="http://hl7.org/fhir/ValueSet/supplyrequest-status",
+        binding_version="4.3.0",
     )
     status__ext: fhirtypes.FHIRPrimitiveExtensionType = Field(
         None, alias="_status", title="Extension field for ``status``."
@@ -265,6 +303,7 @@ class SupplyRequest(domainresource.DomainResource):
         element_property=True,
         # note: Listed Resource Type(s) should be allowed as Reference.
         enum_reference_types=["Organization", "HealthcareService"],
+        backref="supply_request_supplier",
     )
 
     @classmethod
@@ -367,6 +406,9 @@ class SupplyRequestParameter(backboneelement.BackboneElement):
         description="A code or string that identifies the device detail being asserted.",
         # if property is element of this resource.
         element_property=True,
+        # valueset binding
+        binding_description="A code that identifies the device detail.",
+        binding_strength="example",
     )
 
     valueBoolean: bool = Field(

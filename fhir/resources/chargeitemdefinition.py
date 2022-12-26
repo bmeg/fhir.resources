@@ -62,10 +62,14 @@ class ChargeItemDefinition(domainresource.DomainResource):
         title="Billing codes or product types this definition applies to",
         description=(
             "The defined billing details in this resource pertain to the given "
-            "billing code."
+            "billing code. See http://hl7.org/fhir/ValueSet/chargeitem-billingcodes"
         ),
         # if property is element of this resource.
         element_property=True,
+        # valueset binding
+        binding_description="Billing Code defined by this ChargeItemDefinition.",
+        binding_strength="example",
+        binding_uri="http://hl7.org/fhir/ValueSet/chargeitem-billingcodes",
     )
 
     contact: typing.List[fhirtypes.ContactDetailType] = Field(
@@ -199,6 +203,7 @@ class ChargeItemDefinition(domainresource.DomainResource):
         element_property=True,
         # note: Listed Resource Type(s) should be allowed as Reference.
         enum_reference_types=["Medication", "Substance", "Device"],
+        backref="charge_item_definition_instance",
     )
 
     jurisdiction: typing.List[fhirtypes.CodeableConceptType] = Field(
@@ -207,10 +212,14 @@ class ChargeItemDefinition(domainresource.DomainResource):
         title="Intended jurisdiction for charge item definition (if applicable)",
         description=(
             "A legal or geographic region in which the charge item definition is "
-            "intended to be used."
+            "intended to be used. See http://hl7.org/fhir/ValueSet/jurisdiction"
         ),
         # if property is element of this resource.
         element_property=True,
+        # valueset binding
+        binding_description="Countries and regions within which this artifact is targeted for use.",
+        binding_strength="extensible",
+        binding_uri="http://hl7.org/fhir/ValueSet/jurisdiction",
     )
 
     lastReviewDate: fhirtypes.Date = Field(
@@ -241,6 +250,7 @@ class ChargeItemDefinition(domainresource.DomainResource):
         element_property=True,
         # note: Listed Resource Type(s) should be allowed as Reference.
         enum_reference_types=["ChargeItemDefinition"],
+        backref="charge_item_definition_partOf",
     )
     partOf__ext: typing.List[
         typing.Union[fhirtypes.FHIRPrimitiveExtensionType, None]
@@ -289,6 +299,7 @@ class ChargeItemDefinition(domainresource.DomainResource):
         element_property=True,
         # note: Listed Resource Type(s) should be allowed as Reference.
         enum_reference_types=["ChargeItemDefinition"],
+        backref="charge_item_definition_replaces",
     )
     replaces__ext: typing.List[
         typing.Union[fhirtypes.FHIRPrimitiveExtensionType, None]
@@ -298,13 +309,21 @@ class ChargeItemDefinition(domainresource.DomainResource):
         None,
         alias="status",
         title="draft | active | retired | unknown",
-        description="The current state of the ChargeItemDefinition.",
+        description=(
+            "The current state of the ChargeItemDefinition. See "
+            "http://hl7.org/fhir/ValueSet/publication-status"
+        ),
         # if property is element of this resource.
         element_property=True,
         element_required=True,
         # note: Enum values can be used in validation,
         # but use in your own responsibilities, read official FHIR documentation.
         enum_values=["draft", "active", "retired", "unknown"],
+        # valueset binding
+        binding_description="The lifecycle status of an artifact.",
+        binding_strength="required",
+        binding_uri="http://hl7.org/fhir/ValueSet/publication-status",
+        binding_version="4.3.0",
     )
     status__ext: fhirtypes.FHIRPrimitiveExtensionType = Field(
         None, alias="_status", title="Extension field for ``status``."
@@ -680,7 +699,10 @@ class ChargeItemDefinitionPropertyGroupPriceComponent(backboneelement.BackboneEl
         None,
         alias="type",
         title="base | surcharge | deduction | discount | tax | informational",
-        description="This code identifies the type of the component.",
+        description=(
+            "This code identifies the type of the component. See "
+            "http://hl7.org/fhir/ValueSet/invoice-priceComponentType"
+        ),
         # if property is element of this resource.
         element_property=True,
         element_required=True,
@@ -694,6 +716,11 @@ class ChargeItemDefinitionPropertyGroupPriceComponent(backboneelement.BackboneEl
             "tax",
             "informational",
         ],
+        # valueset binding
+        binding_description="Codes indicating the kind of the price component.",
+        binding_strength="required",
+        binding_uri="http://hl7.org/fhir/ValueSet/invoice-priceComponentType",
+        binding_version="4.3.0",
     )
     type__ext: fhirtypes.FHIRPrimitiveExtensionType = Field(
         None, alias="_type", title="Extension field for ``type``."

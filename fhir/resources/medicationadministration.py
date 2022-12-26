@@ -36,10 +36,15 @@ class MedicationAdministration(domainresource.DomainResource):
         title="Type of medication usage",
         description=(
             "Indicates where the medication is expected to be consumed or "
-            "administered."
+            "administered. See http://hl7.org/fhir/ValueSet/medication-admin-"
+            "category"
         ),
         # if property is element of this resource.
         element_property=True,
+        # valueset binding
+        binding_description="A coded concept describing where the medication administered is expected to occur.",
+        binding_strength="preferred",
+        binding_uri="http://hl7.org/fhir/ValueSet/medication-admin-category",
     )
 
     context: fhirtypes.ReferenceType = Field(
@@ -54,6 +59,7 @@ class MedicationAdministration(domainresource.DomainResource):
         element_property=True,
         # note: Listed Resource Type(s) should be allowed as Reference.
         enum_reference_types=["Encounter", "EpisodeOfCare"],
+        backref="medication_administration_context",
     )
 
     device: typing.List[fhirtypes.ReferenceType] = Field(
@@ -68,6 +74,7 @@ class MedicationAdministration(domainresource.DomainResource):
         element_property=True,
         # note: Listed Resource Type(s) should be allowed as Reference.
         enum_reference_types=["Device"],
+        backref="medication_administration_device",
     )
 
     dosage: fhirtypes.MedicationAdministrationDosageType = Field(
@@ -133,6 +140,7 @@ class MedicationAdministration(domainresource.DomainResource):
         element_property=True,
         # note: Listed Resource Type(s) should be allowed as Reference.
         enum_reference_types=["Provenance"],
+        backref="medication_administration_eventHistory",
     )
 
     identifier: typing.List[fhirtypes.IdentifierType] = Field(
@@ -176,13 +184,17 @@ class MedicationAdministration(domainresource.DomainResource):
             "Identifies the medication that was administered. This is either a link"
             " to a resource representing the details of the medication or a simple "
             "attribute carrying a code that identifies the medication from a known "
-            "list of medications."
+            "list of medications. See http://hl7.org/fhir/ValueSet/medication-codes"
         ),
         # if property is element of this resource.
         element_property=True,
         # Choice of Data Types. i.e medication[x]
         one_of_many="medication",
         one_of_many_required=True,
+        # valueset binding
+        binding_description="Codes identifying substance or product that can be administered.",
+        binding_strength="example",
+        binding_uri="http://hl7.org/fhir/ValueSet/medication-codes",
     )
 
     medicationReference: fhirtypes.ReferenceType = Field(
@@ -193,15 +205,20 @@ class MedicationAdministration(domainresource.DomainResource):
             "Identifies the medication that was administered. This is either a link"
             " to a resource representing the details of the medication or a simple "
             "attribute carrying a code that identifies the medication from a known "
-            "list of medications."
+            "list of medications. See http://hl7.org/fhir/ValueSet/medication-codes"
         ),
         # if property is element of this resource.
         element_property=True,
         # Choice of Data Types. i.e medication[x]
         one_of_many="medication",
         one_of_many_required=True,
+        # valueset binding
+        binding_description="Codes identifying substance or product that can be administered.",
+        binding_strength="example",
+        binding_uri="http://hl7.org/fhir/ValueSet/medication-codes",
         # note: Listed Resource Type(s) should be allowed as Reference.
         enum_reference_types=["Medication"],
+        backref="medication_administration_medicationReference",
     )
 
     note: typing.List[fhirtypes.AnnotationType] = Field(
@@ -225,6 +242,7 @@ class MedicationAdministration(domainresource.DomainResource):
         element_property=True,
         # note: Listed Resource Type(s) should be allowed as Reference.
         enum_reference_types=["MedicationAdministration", "Procedure"],
+        backref="medication_administration_partOf",
     )
 
     performer: typing.List[fhirtypes.MedicationAdministrationPerformerType] = Field(
@@ -243,9 +261,16 @@ class MedicationAdministration(domainresource.DomainResource):
         None,
         alias="reasonCode",
         title="Reason administration performed",
-        description="A code indicating why the medication was given.",
+        description=(
+            "A code indicating why the medication was given. See "
+            "http://hl7.org/fhir/ValueSet/reason-medication-given-codes"
+        ),
         # if property is element of this resource.
         element_property=True,
+        # valueset binding
+        binding_description="A set of codes indicating the reason why the MedicationAdministration was made.",
+        binding_strength="example",
+        binding_uri="http://hl7.org/fhir/ValueSet/reason-medication-given-codes",
     )
 
     reasonReference: typing.List[fhirtypes.ReferenceType] = Field(
@@ -260,6 +285,7 @@ class MedicationAdministration(domainresource.DomainResource):
         element_property=True,
         # note: Listed Resource Type(s) should be allowed as Reference.
         enum_reference_types=["Condition", "Observation", "DiagnosticReport"],
+        backref="medication_administration_reasonReference",
     )
 
     request: fhirtypes.ReferenceType = Field(
@@ -274,6 +300,7 @@ class MedicationAdministration(domainresource.DomainResource):
         element_property=True,
         # note: Listed Resource Type(s) should be allowed as Reference.
         enum_reference_types=["MedicationRequest"],
+        backref="medication_administration_request",
     )
 
     status: fhirtypes.Code = Field(
@@ -287,7 +314,8 @@ class MedicationAdministration(domainresource.DomainResource):
             "Will generally be set to show that the administration has been "
             "completed.  For some long running administrations such as infusions, "
             "it is possible for an administration to be started but not completed "
-            "or it may be paused while some other process is under way."
+            "or it may be paused while some other process is under way. See "
+            "http://hl7.org/fhir/ValueSet/medication-admin-status"
         ),
         # if property is element of this resource.
         element_property=True,
@@ -303,6 +331,11 @@ class MedicationAdministration(domainresource.DomainResource):
             "stopped",
             "unknown",
         ],
+        # valueset binding
+        binding_description="A set of codes indicating the current status of a MedicationAdministration.",
+        binding_strength="required",
+        binding_uri="http://hl7.org/fhir/ValueSet/medication-admin-status",
+        binding_version="4.3.0",
     )
     status__ext: fhirtypes.FHIRPrimitiveExtensionType = Field(
         None, alias="_status", title="Extension field for ``status``."
@@ -312,9 +345,16 @@ class MedicationAdministration(domainresource.DomainResource):
         None,
         alias="statusReason",
         title="Reason administration not performed",
-        description="A code indicating why the administration was not performed.",
+        description=(
+            "A code indicating why the administration was not performed. See "
+            "http://hl7.org/fhir/ValueSet/reason-medication-not-given-codes"
+        ),
         # if property is element of this resource.
         element_property=True,
+        # valueset binding
+        binding_description="A set of codes indicating the reason why the MedicationAdministration is negated.",
+        binding_strength="example",
+        binding_uri="http://hl7.org/fhir/ValueSet/reason-medication-not-given-codes",
     )
 
     subject: fhirtypes.ReferenceType = Field(
@@ -326,6 +366,7 @@ class MedicationAdministration(domainresource.DomainResource):
         element_property=True,
         # note: Listed Resource Type(s) should be allowed as Reference.
         enum_reference_types=["Patient", "Group"],
+        backref="medication_administration_subject",
     )
 
     supportingInformation: typing.List[fhirtypes.ReferenceType] = Field(
@@ -340,6 +381,7 @@ class MedicationAdministration(domainresource.DomainResource):
         element_property=True,
         # note: Listed Resource Type(s) should be allowed as Reference.
         enum_reference_types=["Resource"],
+        backref="medication_administration_supportingInformation",
     )
 
     @classmethod
@@ -514,10 +556,15 @@ class MedicationAdministrationDosage(backboneelement.BackboneElement):
             "A coded value indicating the method by which the medication is "
             "intended to be or was introduced into or on the body.  This attribute "
             "will most often NOT be populated.  It is most commonly used for "
-            "injections.  For example, Slow Push, Deep IV."
+            "injections.  For example, Slow Push, Deep IV. See "
+            "http://hl7.org/fhir/ValueSet/administration-method-codes"
         ),
         # if property is element of this resource.
         element_property=True,
+        # valueset binding
+        binding_description="A coded concept describing the technique by which the medicine is administered.",
+        binding_strength="example",
+        binding_uri="http://hl7.org/fhir/ValueSet/administration-method-codes",
     )
 
     rateQuantity: fhirtypes.QuantityType = Field(
@@ -563,10 +610,14 @@ class MedicationAdministrationDosage(backboneelement.BackboneElement):
         description=(
             "A code specifying the route or physiological path of administration of"
             " a therapeutic agent into or onto the patient.  For example, topical, "
-            "intravenous, etc."
+            "intravenous, etc. See http://hl7.org/fhir/ValueSet/route-codes"
         ),
         # if property is element of this resource.
         element_property=True,
+        # valueset binding
+        binding_description="A coded concept describing the route or physiological path of administration of a therapeutic agent into or onto the body of a subject.",
+        binding_strength="example",
+        binding_uri="http://hl7.org/fhir/ValueSet/route-codes",
     )
 
     site: fhirtypes.CodeableConceptType = Field(
@@ -575,10 +626,15 @@ class MedicationAdministrationDosage(backboneelement.BackboneElement):
         title="Body site administered to",
         description=(
             "A coded specification of the anatomic site where the medication first "
-            'entered the body.  For example, "left arm".'
+            'entered the body.  For example, "left arm". See '
+            "http://hl7.org/fhir/ValueSet/approach-site-codes"
         ),
         # if property is element of this resource.
         element_property=True,
+        # valueset binding
+        binding_description="A coded concept describing the site location the medicine enters into or onto the body.",
+        binding_strength="example",
+        binding_uri="http://hl7.org/fhir/ValueSet/approach-site-codes",
     )
 
     text: fhirtypes.String = Field(
@@ -684,6 +740,7 @@ class MedicationAdministrationPerformer(backboneelement.BackboneElement):
             "RelatedPerson",
             "Device",
         ],
+        backref="medication_administration.performer_actor",
     )
 
     function: fhirtypes.CodeableConceptType = Field(
@@ -692,10 +749,15 @@ class MedicationAdministrationPerformer(backboneelement.BackboneElement):
         title="Type of performance",
         description=(
             "Distinguishes the type of involvement of the performer in the "
-            "medication administration."
+            "medication administration. See http://hl7.org/fhir/ValueSet/med-admin-"
+            "perform-function"
         ),
         # if property is element of this resource.
         element_property=True,
+        # valueset binding
+        binding_description="A code describing the role an individual played in administering the medication.",
+        binding_strength="example",
+        binding_uri="http://hl7.org/fhir/ValueSet/med-admin-perform-function",
     )
 
     @classmethod

@@ -37,6 +37,7 @@ class ImmunizationEvaluation(domainresource.DomainResource):
         element_property=True,
         # note: Listed Resource Type(s) should be allowed as Reference.
         enum_reference_types=["Organization"],
+        backref="immunization_evaluation_authority",
     )
 
     date: fhirtypes.DateTime = Field(
@@ -106,10 +107,15 @@ class ImmunizationEvaluation(domainresource.DomainResource):
         title="Status of the dose relative to published recommendations",
         description=(
             "Indicates if the dose is valid or not valid with respect to the "
-            "published recommendations."
+            "published recommendations. See "
+            "http://hl7.org/fhir/ValueSet/immunization-evaluation-dose-status"
         ),
         # if property is element of this resource.
         element_property=True,
+        # valueset binding
+        binding_description="The status of the administered dose relative to the published recommendations for the target disease.",
+        binding_strength="example",
+        binding_uri="http://hl7.org/fhir/ValueSet/immunization-evaluation-dose-status",
     )
 
     doseStatusReason: typing.List[fhirtypes.CodeableConceptType] = Field(
@@ -118,10 +124,16 @@ class ImmunizationEvaluation(domainresource.DomainResource):
         title="Reason for the dose status",
         description=(
             "Provides an explanation as to why the vaccine administration event is "
-            "valid or not relative to the published recommendations."
+            "valid or not relative to the published recommendations. See "
+            "http://hl7.org/fhir/ValueSet/immunization-evaluation-dose-status-"
+            "reason"
         ),
         # if property is element of this resource.
         element_property=True,
+        # valueset binding
+        binding_description="The reason the dose status was assigned.",
+        binding_strength="example",
+        binding_uri="http://hl7.org/fhir/ValueSet/immunization-evaluation-dose-status-reason",
     )
 
     identifier: typing.List[fhirtypes.IdentifierType] = Field(
@@ -142,6 +154,7 @@ class ImmunizationEvaluation(domainresource.DomainResource):
         element_property=True,
         # note: Listed Resource Type(s) should be allowed as Reference.
         enum_reference_types=["Immunization"],
+        backref="immunization_evaluation_immunizationEvent",
     )
 
     patient: fhirtypes.ReferenceType = Field(
@@ -153,6 +166,7 @@ class ImmunizationEvaluation(domainresource.DomainResource):
         element_property=True,
         # note: Listed Resource Type(s) should be allowed as Reference.
         enum_reference_types=["Patient"],
+        backref="immunization_evaluation_patient",
     )
 
     series: fhirtypes.String = Field(
@@ -210,7 +224,8 @@ class ImmunizationEvaluation(domainresource.DomainResource):
         title="completed | entered-in-error",
         description=(
             "Indicates the current status of the evaluation of the vaccination "
-            "administration event."
+            "administration event. See http://hl7.org/fhir/ValueSet/immunization-"
+            "evaluation-status"
         ),
         # if property is element of this resource.
         element_property=True,
@@ -218,6 +233,11 @@ class ImmunizationEvaluation(domainresource.DomainResource):
         # note: Enum values can be used in validation,
         # but use in your own responsibilities, read official FHIR documentation.
         enum_values=["completed", "entered-in-error"],
+        # valueset binding
+        binding_description="The status of the evaluation being done.",
+        binding_strength="required",
+        binding_uri="http://hl7.org/fhir/ValueSet/immunization-evaluation-status",
+        binding_version="4.3.0",
     )
     status__ext: fhirtypes.FHIRPrimitiveExtensionType = Field(
         None, alias="_status", title="Extension field for ``status``."
@@ -227,9 +247,17 @@ class ImmunizationEvaluation(domainresource.DomainResource):
         ...,
         alias="targetDisease",
         title="Evaluation target disease",
-        description="The vaccine preventable disease the dose is being evaluated against.",
+        description=(
+            "The vaccine preventable disease the dose is being evaluated against. "
+            "See http://hl7.org/fhir/ValueSet/immunization-evaluation-target-"
+            "disease"
+        ),
         # if property is element of this resource.
         element_property=True,
+        # valueset binding
+        binding_description="The vaccine preventable disease the dose is being evaluated against.",
+        binding_strength="example",
+        binding_uri="http://hl7.org/fhir/ValueSet/immunization-evaluation-target-disease",
     )
 
     @classmethod

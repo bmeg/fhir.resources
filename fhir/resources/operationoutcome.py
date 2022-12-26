@@ -78,11 +78,17 @@ class OperationOutcomeIssue(backboneelement.BackboneElement):
             "Describes the type of the issue. The system that creates an "
             "OperationOutcome SHALL choose the most applicable code from the "
             "IssueType value set, and may additional provide its own code for the "
-            "error in the details element."
+            "error in the details element. See http://hl7.org/fhir/ValueSet/issue-"
+            "type"
         ),
         # if property is element of this resource.
         element_property=True,
         element_required=True,
+        # valueset binding
+        binding_description="A code that describes the type of issue.",
+        binding_strength="required",
+        binding_uri="http://hl7.org/fhir/ValueSet/issue-type",
+        binding_version="4.3.0",
     )
     code__ext: fhirtypes.FHIRPrimitiveExtensionType = Field(
         None, alias="_code", title="Extension field for ``code``."
@@ -94,10 +100,15 @@ class OperationOutcomeIssue(backboneelement.BackboneElement):
         title="Additional details about the error",
         description=(
             "Additional details about the error. This may be a text description of "
-            "the error or a system code that identifies the error."
+            "the error or a system code that identifies the error. See "
+            "http://hl7.org/fhir/ValueSet/operation-outcome"
         ),
         # if property is element of this resource.
         element_property=True,
+        # valueset binding
+        binding_description="A code that provides details as the exact issue.",
+        binding_strength="example",
+        binding_uri="http://hl7.org/fhir/ValueSet/operation-outcome",
     )
 
     diagnostics: fhirtypes.String = Field(
@@ -155,7 +166,7 @@ class OperationOutcomeIssue(backboneelement.BackboneElement):
         title="fatal | error | warning | information",
         description=(
             "Indicates whether the issue indicates a variation from successful "
-            "processing."
+            "processing. See http://hl7.org/fhir/ValueSet/issue-severity"
         ),
         # if property is element of this resource.
         element_property=True,
@@ -163,6 +174,11 @@ class OperationOutcomeIssue(backboneelement.BackboneElement):
         # note: Enum values can be used in validation,
         # but use in your own responsibilities, read official FHIR documentation.
         enum_values=["fatal", "error", "warning", "information"],
+        # valueset binding
+        binding_description="How the issue affects the success of the action.",
+        binding_strength="required",
+        binding_uri="http://hl7.org/fhir/ValueSet/issue-severity",
+        binding_version="4.3.0",
     )
     severity__ext: fhirtypes.FHIRPrimitiveExtensionType = Field(
         None, alias="_severity", title="Extension field for ``severity``."

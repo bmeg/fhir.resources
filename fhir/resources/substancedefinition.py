@@ -69,9 +69,13 @@ class SubstanceDefinition(domainresource.DomainResource):
         None,
         alias="domain",
         title="If the substance applies to human or veterinary use",
-        description=None,
+        description="See http://hl7.org/fhir/ValueSet/medicinal-product-domain",
         # if property is element of this resource.
         element_property=True,
+        # valueset binding
+        binding_description="Applicable domain for this product (e.g. human, veterinary).",
+        binding_strength="example",
+        binding_uri="http://hl7.org/fhir/ValueSet/medicinal-product-domain",
     )
 
     grade: typing.List[fhirtypes.CodeableConceptType] = Field(
@@ -83,10 +87,15 @@ class SubstanceDefinition(domainresource.DomainResource):
         ),
         description=(
             "The quality standard, established benchmark, to which substance "
-            "complies (e.g. USP/NF, Ph. Eur, JP, BP, Company Standard)."
+            "complies (e.g. USP/NF, Ph. Eur, JP, BP, Company Standard). See "
+            "http://hl7.org/fhir/ValueSet/substance-grade"
         ),
         # if property is element of this resource.
         element_property=True,
+        # valueset binding
+        binding_description="The quality standard, established benchmark, to which a substance complies",
+        binding_strength="example",
+        binding_uri="http://hl7.org/fhir/ValueSet/substance-grade",
     )
 
     identifier: typing.List[fhirtypes.IdentifierType] = Field(
@@ -107,6 +116,7 @@ class SubstanceDefinition(domainresource.DomainResource):
         element_property=True,
         # note: Listed Resource Type(s) should be allowed as Reference.
         enum_reference_types=["Citation"],
+        backref="substance_definition_informationSource",
     )
 
     manufacturer: typing.List[fhirtypes.ReferenceType] = Field(
@@ -122,6 +132,7 @@ class SubstanceDefinition(domainresource.DomainResource):
         element_property=True,
         # note: Listed Resource Type(s) should be allowed as Reference.
         enum_reference_types=["Organization"],
+        backref="substance_definition_manufacturer",
     )
 
     moiety: typing.List[fhirtypes.SubstanceDefinitionMoietyType] = Field(
@@ -199,9 +210,13 @@ class SubstanceDefinition(domainresource.DomainResource):
         None,
         alias="status",
         title="Status of substance within the catalogue e.g. active, retired",
-        description=None,
+        description="See http://hl7.org/fhir/ValueSet/publication-status",
         # if property is element of this resource.
         element_property=True,
+        # valueset binding
+        binding_description="The lifecycle status of an artifact.",
+        binding_strength="preferred",
+        binding_uri="http://hl7.org/fhir/ValueSet/publication-status",
     )
 
     structure: fhirtypes.SubstanceDefinitionStructureType = Field(
@@ -228,6 +243,7 @@ class SubstanceDefinition(domainresource.DomainResource):
         element_property=True,
         # note: Listed Resource Type(s) should be allowed as Reference.
         enum_reference_types=["Organization"],
+        backref="substance_definition_supplier",
     )
 
     version: fhirtypes.String = Field(
@@ -316,15 +332,20 @@ class SubstanceDefinitionCode(backboneelement.BackboneElement):
         element_property=True,
         # note: Listed Resource Type(s) should be allowed as Reference.
         enum_reference_types=["DocumentReference"],
+        backref="substance_definition.code_source",
     )
 
     status: fhirtypes.CodeableConceptType = Field(
         None,
         alias="status",
         title="Status of the code assignment, for example 'provisional', 'approved'",
-        description=None,
+        description="See http://hl7.org/fhir/ValueSet/publication-status",
         # if property is element of this resource.
         element_property=True,
+        # valueset binding
+        binding_description="The lifecycle status of an artifact.",
+        binding_strength="preferred",
+        binding_uri="http://hl7.org/fhir/ValueSet/publication-status",
     )
 
     statusDate: fhirtypes.DateTime = Field(
@@ -414,10 +435,15 @@ class SubstanceDefinitionMoiety(backboneelement.BackboneElement):
             "The measurement type of the quantitative value. In capturing the "
             "actual relative amounts of substances or molecular fragments it may be"
             " necessary to indicate whether the amount refers to, for example, a "
-            "mole ratio or weight ratio."
+            "mole ratio or weight ratio. See "
+            "http://hl7.org/fhir/ValueSet/substance-amount-type"
         ),
         # if property is element of this resource.
         element_property=True,
+        # valueset binding
+        binding_description="The relationship between two substance types.",
+        binding_strength="example",
+        binding_uri="http://hl7.org/fhir/ValueSet/substance-amount-type",
     )
 
     molecularFormula: fhirtypes.String = Field(
@@ -453,9 +479,13 @@ class SubstanceDefinitionMoiety(backboneelement.BackboneElement):
         None,
         alias="opticalActivity",
         title="Optical activity type",
-        description=None,
+        description="See http://hl7.org/fhir/ValueSet/substance-optical-activity",
         # if property is element of this resource.
         element_property=True,
+        # valueset binding
+        binding_description="The optical rotation type of a substance.",
+        binding_strength="example",
+        binding_uri="http://hl7.org/fhir/ValueSet/substance-optical-activity",
     )
 
     role: fhirtypes.CodeableConceptType = Field(
@@ -471,9 +501,13 @@ class SubstanceDefinitionMoiety(backboneelement.BackboneElement):
         None,
         alias="stereochemistry",
         title="Stereochemistry type",
-        description=None,
+        description="See http://hl7.org/fhir/ValueSet/substance-stereochemistry",
         # if property is element of this resource.
         element_property=True,
+        # valueset binding
+        binding_description="The optical rotation type of a substance.",
+        binding_strength="example",
+        binding_uri="http://hl7.org/fhir/ValueSet/substance-stereochemistry",
     )
 
     @classmethod
@@ -566,9 +600,16 @@ class SubstanceDefinitionMolecularWeight(backboneelement.BackboneElement):
         None,
         alias="method",
         title="The method by which the weight was determined",
-        description="The method by which the molecular weight was determined.",
+        description=(
+            "The method by which the molecular weight was determined. See "
+            "http://hl7.org/fhir/ValueSet/substance-weight-method"
+        ),
         # if property is element of this resource.
         element_property=True,
+        # valueset binding
+        binding_description="The method by which the substance weight was measured.",
+        binding_strength="example",
+        binding_uri="http://hl7.org/fhir/ValueSet/substance-weight-method",
     )
 
     type: fhirtypes.CodeableConceptType = Field(
@@ -577,10 +618,15 @@ class SubstanceDefinitionMolecularWeight(backboneelement.BackboneElement):
         title="Type of molecular weight e.g. exact, average, weight average",
         description=(
             "Type of molecular weight such as exact, average (also known as. number"
-            " average), weight average."
+            " average), weight average. See http://hl7.org/fhir/ValueSet/substance-"
+            "weight-type"
         ),
         # if property is element of this resource.
         element_property=True,
+        # valueset binding
+        binding_description="The type of substance weight measurement.",
+        binding_strength="example",
+        binding_uri="http://hl7.org/fhir/ValueSet/substance-weight-type",
     )
 
     @classmethod
@@ -611,28 +657,41 @@ class SubstanceDefinitionName(backboneelement.BackboneElement):
         ),
         description=(
             "The use context of this name for example if there is a different name "
-            "a drug active ingredient as opposed to a food colour additive."
+            "a drug active ingredient as opposed to a food colour additive. See "
+            "http://hl7.org/fhir/ValueSet/substance-name-domain"
         ),
         # if property is element of this resource.
         element_property=True,
+        # valueset binding
+        binding_description="The use context of a substance name for example if there is a different name when used as a drug active ingredient as opposed to a food colour additive.",
+        binding_strength="example",
+        binding_uri="http://hl7.org/fhir/ValueSet/substance-name-domain",
     )
 
     jurisdiction: typing.List[fhirtypes.CodeableConceptType] = Field(
         None,
         alias="jurisdiction",
         title="The jurisdiction where this name applies",
-        description=None,
+        description="See http://hl7.org/fhir/ValueSet/jurisdiction",
         # if property is element of this resource.
         element_property=True,
+        # valueset binding
+        binding_description="Jurisdiction codes",
+        binding_strength="example",
+        binding_uri="http://hl7.org/fhir/ValueSet/jurisdiction",
     )
 
     language: typing.List[fhirtypes.CodeableConceptType] = Field(
         None,
         alias="language",
         title="Human language that the name is written in",
-        description=None,
+        description="See http://hl7.org/fhir/ValueSet/languages",
         # if property is element of this resource.
         element_property=True,
+        # valueset binding
+        binding_description="IETF language tag",
+        binding_strength="preferred",
+        binding_uri="http://hl7.org/fhir/ValueSet/languages",
     )
 
     name: fhirtypes.String = Field(
@@ -678,15 +737,23 @@ class SubstanceDefinitionName(backboneelement.BackboneElement):
         element_property=True,
         # note: Listed Resource Type(s) should be allowed as Reference.
         enum_reference_types=["DocumentReference"],
+        backref="substance_definition.name_source",
     )
 
     status: fhirtypes.CodeableConceptType = Field(
         None,
         alias="status",
         title="The status of the name e.g. 'current', 'proposed'",
-        description="The status of the name, for example 'current', 'proposed'.",
+        description=(
+            "The status of the name, for example 'current', 'proposed'. See "
+            "http://hl7.org/fhir/ValueSet/publication-status"
+        ),
         # if property is element of this resource.
         element_property=True,
+        # valueset binding
+        binding_description="The lifecycle status of an artifact.",
+        binding_strength="preferred",
+        binding_uri="http://hl7.org/fhir/ValueSet/publication-status",
     )
 
     synonym: typing.List[fhirtypes.SubstanceDefinitionNameType] = Field(
@@ -713,9 +780,16 @@ class SubstanceDefinitionName(backboneelement.BackboneElement):
         None,
         alias="type",
         title="Name type e.g. 'systematic',  'scientific, 'brand'",
-        description="Name type, for example 'systematic',  'scientific, 'brand'.",
+        description=(
+            "Name type, for example 'systematic',  'scientific, 'brand'. See "
+            "http://hl7.org/fhir/ValueSet/substance-name-type"
+        ),
         # if property is element of this resource.
         element_property=True,
+        # valueset binding
+        binding_description="The type of a name given to a substance.",
+        binding_strength="example",
+        binding_uri="http://hl7.org/fhir/ValueSet/substance-name-type",
     )
 
     @classmethod
@@ -815,9 +889,13 @@ class SubstanceDefinitionNameOfficial(backboneelement.BackboneElement):
         None,
         alias="authority",
         title="Which authority uses this official name",
-        description=None,
+        description="See http://hl7.org/fhir/ValueSet/substance-name-authority",
         # if property is element of this resource.
         element_property=True,
+        # valueset binding
+        binding_description="An authority that officates substance names.",
+        binding_strength="preferred",
+        binding_uri="http://hl7.org/fhir/ValueSet/substance-name-authority",
     )
 
     date: fhirtypes.DateTime = Field(
@@ -838,10 +916,14 @@ class SubstanceDefinitionNameOfficial(backboneelement.BackboneElement):
         title="The status of the official name, for example 'draft', 'active'",
         description=(
             "The status of the official name, for example 'draft', 'active', "
-            "'retired'."
+            "'retired'. See http://hl7.org/fhir/ValueSet/publication-status"
         ),
         # if property is element of this resource.
         element_property=True,
+        # valueset binding
+        binding_description="The lifecycle status of an artifact.",
+        binding_strength="preferred",
+        binding_uri="http://hl7.org/fhir/ValueSet/publication-status",
     )
 
     @classmethod
@@ -867,9 +949,13 @@ class SubstanceDefinitionProperty(backboneelement.BackboneElement):
         ...,
         alias="type",
         title="A code expressing the type of property",
-        description=None,
+        description="See http://hl7.org/fhir/ValueSet/product-characteristic-codes",
         # if property is element of this resource.
         element_property=True,
+        # valueset binding
+        binding_description="This value set includes all observable entity codes from SNOMED CT - provided as an exemplar value set.",
+        binding_strength="example",
+        binding_uri="http://hl7.org/fhir/ValueSet/product-characteristic-codes",
     )
 
     valueAttachment: fhirtypes.AttachmentType = Field(
@@ -1082,9 +1168,13 @@ class SubstanceDefinitionRelationship(backboneelement.BackboneElement):
             'An operator for the amount, for example "average", "approximately", '
             '"less than"'
         ),
-        description=None,
+        description="See http://hl7.org/fhir/ValueSet/substance-amount-type",
         # if property is element of this resource.
         element_property=True,
+        # valueset binding
+        binding_description="The relationship between two substance types.",
+        binding_strength="example",
+        binding_uri="http://hl7.org/fhir/ValueSet/substance-amount-type",
     )
 
     isDefining: bool = Field(
@@ -1125,6 +1215,7 @@ class SubstanceDefinitionRelationship(backboneelement.BackboneElement):
         element_property=True,
         # note: Listed Resource Type(s) should be allowed as Reference.
         enum_reference_types=["DocumentReference"],
+        backref="substance_definition.relationship_source",
     )
 
     substanceDefinitionCodeableConcept: fhirtypes.CodeableConceptType = Field(
@@ -1163,6 +1254,7 @@ class SubstanceDefinitionRelationship(backboneelement.BackboneElement):
         one_of_many_required=False,
         # note: Listed Resource Type(s) should be allowed as Reference.
         enum_reference_types=["SubstanceDefinition"],
+        backref="substance_definition.relationship_substanceDefinitionReference",
     )
 
     type: fhirtypes.CodeableConceptType = Field(
@@ -1171,10 +1263,15 @@ class SubstanceDefinitionRelationship(backboneelement.BackboneElement):
         title='For example "salt to parent", "active moiety"',
         description=(
             'For example "salt to parent", "active moiety", "starting material", '
-            '"polymorph", "impurity of".'
+            '"polymorph", "impurity of". See '
+            "http://hl7.org/fhir/ValueSet/substance-relationship-type"
         ),
         # if property is element of this resource.
         element_property=True,
+        # valueset binding
+        binding_description="The relationship between two substance types.",
+        binding_strength="example",
+        binding_uri="http://hl7.org/fhir/ValueSet/substance-relationship-type",
     )
 
     @classmethod
@@ -1259,9 +1356,14 @@ class SubstanceDefinitionSourceMaterial(backboneelement.BackboneElement):
         None,
         alias="countryOfOrigin",
         title="The country or countries where the material is harvested",
-        description=None,
+        description="See http://hl7.org/fhir/ValueSet/country",
         # if property is element of this resource.
         element_property=True,
+        # valueset binding
+        binding_description="Jurisdiction codes",
+        binding_strength="required",
+        binding_uri="http://hl7.org/fhir/ValueSet/country",
+        binding_version="4.3.0",
     )
 
     genus: fhirtypes.CodeableConceptType = Field(
@@ -1273,19 +1375,28 @@ class SubstanceDefinitionSourceMaterial(backboneelement.BackboneElement):
         ),
         description=(
             "The genus of an organism, typically referring to the Latin epithet of "
-            "the genus element of the plant/animal scientific name."
+            "the genus element of the plant/animal scientific name. See "
+            "http://hl7.org/fhir/ValueSet/substance-source-material-genus"
         ),
         # if property is element of this resource.
         element_property=True,
+        # valueset binding
+        binding_description="The genus of an organism, typically referring to the Latin epithet of the genus element of the plant/animal scientific name.",
+        binding_strength="example",
+        binding_uri="http://hl7.org/fhir/ValueSet/substance-source-material-genus",
     )
 
     part: fhirtypes.CodeableConceptType = Field(
         None,
         alias="part",
         title="An anatomical origin of the source material within an organism",
-        description=None,
+        description="See http://hl7.org/fhir/ValueSet/substance-source-material-part",
         # if property is element of this resource.
         element_property=True,
+        # valueset binding
+        binding_description="An anatomical origin of the source material within an organism.",
+        binding_strength="example",
+        binding_uri="http://hl7.org/fhir/ValueSet/substance-source-material-part",
     )
 
     species: fhirtypes.CodeableConceptType = Field(
@@ -1297,10 +1408,15 @@ class SubstanceDefinitionSourceMaterial(backboneelement.BackboneElement):
         ),
         description=(
             "The species of an organism, typically referring to the Latin epithet "
-            "of the species of the plant/animal."
+            "of the species of the plant/animal. See "
+            "http://hl7.org/fhir/ValueSet/substance-source-material-species"
         ),
         # if property is element of this resource.
         element_property=True,
+        # valueset binding
+        binding_description="A species of origin a substance raw material.",
+        binding_strength="example",
+        binding_uri="http://hl7.org/fhir/ValueSet/substance-source-material-species",
     )
 
     type: fhirtypes.CodeableConceptType = Field(
@@ -1312,10 +1428,15 @@ class SubstanceDefinitionSourceMaterial(backboneelement.BackboneElement):
         ),
         description=(
             "A classification that provides the origin of the raw material. "
-            "Example: cat hair would be an Animal source type."
+            "Example: cat hair would be an Animal source type. See "
+            "http://hl7.org/fhir/ValueSet/substance-source-material-type"
         ),
         # if property is element of this resource.
         element_property=True,
+        # valueset binding
+        binding_description="A classification that provides the origin of the substance raw material.",
+        binding_strength="example",
+        binding_uri="http://hl7.org/fhir/ValueSet/substance-source-material-type",
     )
 
     @classmethod
@@ -1393,9 +1514,13 @@ class SubstanceDefinitionStructure(backboneelement.BackboneElement):
         None,
         alias="opticalActivity",
         title="Optical activity type",
-        description=None,
+        description="See http://hl7.org/fhir/ValueSet/substance-optical-activity",
         # if property is element of this resource.
         element_property=True,
+        # valueset binding
+        binding_description="The optical rotation type of a substance.",
+        binding_strength="example",
+        binding_uri="http://hl7.org/fhir/ValueSet/substance-optical-activity",
     )
 
     representation: typing.List[
@@ -1418,15 +1543,20 @@ class SubstanceDefinitionStructure(backboneelement.BackboneElement):
         element_property=True,
         # note: Listed Resource Type(s) should be allowed as Reference.
         enum_reference_types=["DocumentReference"],
+        backref="substance_definition.structure_sourceDocument",
     )
 
     stereochemistry: fhirtypes.CodeableConceptType = Field(
         None,
         alias="stereochemistry",
         title="Stereochemistry type",
-        description=None,
+        description="See http://hl7.org/fhir/ValueSet/substance-stereochemistry",
         # if property is element of this resource.
         element_property=True,
+        # valueset binding
+        binding_description="The optical rotation type of a substance.",
+        binding_strength="example",
+        binding_uri="http://hl7.org/fhir/ValueSet/substance-stereochemistry",
     )
 
     technique: typing.List[fhirtypes.CodeableConceptType] = Field(
@@ -1436,10 +1566,15 @@ class SubstanceDefinitionStructure(backboneelement.BackboneElement):
         description=(
             "The method used to elucidate the structure or characterization of the "
             "drug substance. Examples: X-ray, HPLC, NMR, Peptide mapping, Ligand "
-            "binding assay."
+            "binding assay. See http://hl7.org/fhir/ValueSet/substance-structure-"
+            "technique"
         ),
         # if property is element of this resource.
         element_property=True,
+        # valueset binding
+        binding_description="The method used to elucidate the structure or characterization of the drug substance.",
+        binding_strength="example",
+        binding_uri="http://hl7.org/fhir/ValueSet/substance-structure-technique",
     )
 
     @classmethod
@@ -1489,6 +1624,7 @@ class SubstanceDefinitionStructureRepresentation(backboneelement.BackboneElement
         element_property=True,
         # note: Listed Resource Type(s) should be allowed as Reference.
         enum_reference_types=["DocumentReference"],
+        backref="substance_definition.structure.representation_document",
     )
 
     format: fhirtypes.CodeableConceptType = Field(
@@ -1501,10 +1637,15 @@ class SubstanceDefinitionStructureRepresentation(backboneelement.BackboneElement
         description=(
             "The format of the representation e.g. InChI, SMILES, MOLFILE, CDX, "
             "SDF, PDB, mmCIF. The logical content type rather than the physical "
-            "file format of a document."
+            "file format of a document. See http://hl7.org/fhir/ValueSet/substance-"
+            "representation-format"
         ),
         # if property is element of this resource.
         element_property=True,
+        # valueset binding
+        binding_description="A format of a substance representation.",
+        binding_strength="example",
+        binding_uri="http://hl7.org/fhir/ValueSet/substance-representation-format",
     )
 
     representation: fhirtypes.String = Field(
@@ -1526,9 +1667,13 @@ class SubstanceDefinitionStructureRepresentation(backboneelement.BackboneElement
         None,
         alias="type",
         title="The kind of structural representation (e.g. full, partial)",
-        description=None,
+        description="See http://hl7.org/fhir/ValueSet/substance-representation-type",
         # if property is element of this resource.
         element_property=True,
+        # valueset binding
+        binding_description="A format of a substance representation.",
+        binding_strength="example",
+        binding_uri="http://hl7.org/fhir/ValueSet/substance-representation-type",
     )
 
     @classmethod

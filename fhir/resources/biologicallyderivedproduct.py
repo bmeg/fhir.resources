@@ -72,6 +72,7 @@ class BiologicallyDerivedProduct(domainresource.DomainResource):
         element_property=True,
         # note: Listed Resource Type(s) should be allowed as Reference.
         enum_reference_types=["BiologicallyDerivedProduct"],
+        backref="biologically_derived_product_parent",
     )
 
     processing: typing.List[fhirtypes.BiologicallyDerivedProductProcessingType] = Field(
@@ -91,12 +92,20 @@ class BiologicallyDerivedProduct(domainresource.DomainResource):
         None,
         alias="productCategory",
         title="organ | tissue | fluid | cells | biologicalAgent",
-        description="Broad category of this product.",
+        description=(
+            "Broad category of this product. See "
+            "http://hl7.org/fhir/ValueSet/product-category"
+        ),
         # if property is element of this resource.
         element_property=True,
         # note: Enum values can be used in validation,
         # but use in your own responsibilities, read official FHIR documentation.
         enum_values=["organ", "tissue", "fluid", "cells", "biologicalAgent"],
+        # valueset binding
+        binding_description="Biologically Derived Product Category.",
+        binding_strength="required",
+        binding_uri="http://hl7.org/fhir/ValueSet/product-category",
+        binding_version="4.3.0",
     )
     productCategory__ext: fhirtypes.FHIRPrimitiveExtensionType = Field(
         None, alias="_productCategory", title="Extension field for ``productCategory``."
@@ -112,6 +121,9 @@ class BiologicallyDerivedProduct(domainresource.DomainResource):
         ),
         # if property is element of this resource.
         element_property=True,
+        # valueset binding
+        binding_description="Biologically Derived Product Code.",
+        binding_strength="example",
     )
 
     quantity: fhirtypes.Integer = Field(
@@ -135,18 +147,27 @@ class BiologicallyDerivedProduct(domainresource.DomainResource):
         element_property=True,
         # note: Listed Resource Type(s) should be allowed as Reference.
         enum_reference_types=["ServiceRequest"],
+        backref="biologically_derived_product_request",
     )
 
     status: fhirtypes.Code = Field(
         None,
         alias="status",
         title="available | unavailable",
-        description="Whether the product is currently available.",
+        description=(
+            "Whether the product is currently available. See "
+            "http://hl7.org/fhir/ValueSet/product-status"
+        ),
         # if property is element of this resource.
         element_property=True,
         # note: Enum values can be used in validation,
         # but use in your own responsibilities, read official FHIR documentation.
         enum_values=["available", "unavailable"],
+        # valueset binding
+        binding_description="Biologically Derived Product Status.",
+        binding_strength="required",
+        binding_uri="http://hl7.org/fhir/ValueSet/product-status",
+        binding_version="4.3.0",
     )
     status__ext: fhirtypes.FHIRPrimitiveExtensionType = Field(
         None, alias="_status", title="Extension field for ``status``."
@@ -238,6 +259,7 @@ class BiologicallyDerivedProductCollection(backboneelement.BackboneElement):
         element_property=True,
         # note: Listed Resource Type(s) should be allowed as Reference.
         enum_reference_types=["Practitioner", "PractitionerRole"],
+        backref="biologically_derived_product.collection_collector",
     )
 
     source: fhirtypes.ReferenceType = Field(
@@ -252,6 +274,7 @@ class BiologicallyDerivedProductCollection(backboneelement.BackboneElement):
         element_property=True,
         # note: Listed Resource Type(s) should be allowed as Reference.
         enum_reference_types=["Patient", "Organization"],
+        backref="biologically_derived_product.collection_source",
     )
 
     @classmethod
@@ -437,6 +460,7 @@ class BiologicallyDerivedProductProcessing(backboneelement.BackboneElement):
         element_property=True,
         # note: Listed Resource Type(s) should be allowed as Reference.
         enum_reference_types=["Substance"],
+        backref="biologically_derived_product.processing_additive",
     )
 
     description: fhirtypes.String = Field(
@@ -455,9 +479,13 @@ class BiologicallyDerivedProductProcessing(backboneelement.BackboneElement):
         None,
         alias="procedure",
         title="Procesing code",
-        description=None,
+        description="See http://hl7.org/fhir/ValueSet/procedure-code",
         # if property is element of this resource.
         element_property=True,
+        # valueset binding
+        binding_description="Biologically Derived Product Procedure.",
+        binding_strength="example",
+        binding_uri="http://hl7.org/fhir/ValueSet/procedure-code",
     )
 
     timeDateTime: fhirtypes.DateTime = Field(
@@ -578,12 +606,20 @@ class BiologicallyDerivedProductStorage(backboneelement.BackboneElement):
         None,
         alias="scale",
         title="farenheit | celsius | kelvin",
-        description="Temperature scale used.",
+        description=(
+            "Temperature scale used. See http://hl7.org/fhir/ValueSet/product-"
+            "storage-scale"
+        ),
         # if property is element of this resource.
         element_property=True,
         # note: Enum values can be used in validation,
         # but use in your own responsibilities, read official FHIR documentation.
         enum_values=["farenheit", "celsius", "kelvin"],
+        # valueset binding
+        binding_description="BiologicallyDerived Product Storage Scale.",
+        binding_strength="required",
+        binding_uri="http://hl7.org/fhir/ValueSet/product-storage-scale",
+        binding_version="4.3.0",
     )
     scale__ext: fhirtypes.FHIRPrimitiveExtensionType = Field(
         None, alias="_scale", title="Extension field for ``scale``."

@@ -32,6 +32,7 @@ class Identifier(element.Element):
         element_property=True,
         # note: Listed Resource Type(s) should be allowed as Reference.
         enum_reference_types=["Organization"],
+        backref="identifier_assigner",
     )
 
     period: fhirtypes.PeriodType = Field(
@@ -64,22 +65,33 @@ class Identifier(element.Element):
         title="Description of identifier",
         description=(
             "A coded type for the identifier that can be used to determine which "
-            "identifier to use for a specific purpose."
+            "identifier to use for a specific purpose. See "
+            "http://hl7.org/fhir/ValueSet/identifier-type"
         ),
         # if property is element of this resource.
         element_property=True,
+        # valueset binding
+        binding_strength="extensible",
+        binding_uri="http://hl7.org/fhir/ValueSet/identifier-type",
     )
 
     use: fhirtypes.Code = Field(
         None,
         alias="use",
         title="usual | official | temp | secondary | old (If known)",
-        description="The purpose of this identifier.",
+        description=(
+            "The purpose of this identifier. See "
+            "http://hl7.org/fhir/ValueSet/identifier-use"
+        ),
         # if property is element of this resource.
         element_property=True,
         # note: Enum values can be used in validation,
         # but use in your own responsibilities, read official FHIR documentation.
         enum_values=["usual", "official", "temp", "secondary", "old"],
+        # valueset binding
+        binding_strength="required",
+        binding_uri="http://hl7.org/fhir/ValueSet/identifier-use",
+        binding_version="4.3.0",
     )
     use__ext: fhirtypes.FHIRPrimitiveExtensionType = Field(
         None, alias="_use", title="Extension field for ``use``."

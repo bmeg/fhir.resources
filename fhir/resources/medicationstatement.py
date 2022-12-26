@@ -61,6 +61,7 @@ class MedicationStatement(domainresource.DomainResource):
         element_property=True,
         # note: Listed Resource Type(s) should be allowed as Reference.
         enum_reference_types=["MedicationRequest", "CarePlan", "ServiceRequest"],
+        backref="medication_statement_basedOn",
     )
 
     category: fhirtypes.CodeableConceptType = Field(
@@ -69,10 +70,15 @@ class MedicationStatement(domainresource.DomainResource):
         title="Type of medication usage",
         description=(
             "Indicates where the medication is expected to be consumed or "
-            "administered."
+            "administered. See http://hl7.org/fhir/ValueSet/medication-statement-"
+            "category"
         ),
         # if property is element of this resource.
         element_property=True,
+        # valueset binding
+        binding_description="A coded concept identifying where the medication included in the MedicationStatement is expected to be consumed or administered.",
+        binding_strength="preferred",
+        binding_uri="http://hl7.org/fhir/ValueSet/medication-statement-category",
     )
 
     context: fhirtypes.ReferenceType = Field(
@@ -87,6 +93,7 @@ class MedicationStatement(domainresource.DomainResource):
         element_property=True,
         # note: Listed Resource Type(s) should be allowed as Reference.
         enum_reference_types=["Encounter", "EpisodeOfCare"],
+        backref="medication_statement_context",
     )
 
     dateAsserted: fhirtypes.DateTime = Field(
@@ -117,6 +124,7 @@ class MedicationStatement(domainresource.DomainResource):
         element_property=True,
         # note: Listed Resource Type(s) should be allowed as Reference.
         enum_reference_types=["Resource"],
+        backref="medication_statement_derivedFrom",
     )
 
     dosage: typing.List[fhirtypes.DosageType] = Field(
@@ -204,6 +212,7 @@ class MedicationStatement(domainresource.DomainResource):
             "RelatedPerson",
             "Organization",
         ],
+        backref="medication_statement_informationSource",
     )
 
     medicationCodeableConcept: fhirtypes.CodeableConceptType = Field(
@@ -214,13 +223,17 @@ class MedicationStatement(domainresource.DomainResource):
             "Identifies the medication being administered. This is either a link to"
             " a resource representing the details of the medication or a simple "
             "attribute carrying a code that identifies the medication from a known "
-            "list of medications."
+            "list of medications. See http://hl7.org/fhir/ValueSet/medication-codes"
         ),
         # if property is element of this resource.
         element_property=True,
         # Choice of Data Types. i.e medication[x]
         one_of_many="medication",
         one_of_many_required=True,
+        # valueset binding
+        binding_description="A coded concept identifying the substance or product being taken.",
+        binding_strength="example",
+        binding_uri="http://hl7.org/fhir/ValueSet/medication-codes",
     )
 
     medicationReference: fhirtypes.ReferenceType = Field(
@@ -231,15 +244,20 @@ class MedicationStatement(domainresource.DomainResource):
             "Identifies the medication being administered. This is either a link to"
             " a resource representing the details of the medication or a simple "
             "attribute carrying a code that identifies the medication from a known "
-            "list of medications."
+            "list of medications. See http://hl7.org/fhir/ValueSet/medication-codes"
         ),
         # if property is element of this resource.
         element_property=True,
         # Choice of Data Types. i.e medication[x]
         one_of_many="medication",
         one_of_many_required=True,
+        # valueset binding
+        binding_description="A coded concept identifying the substance or product being taken.",
+        binding_strength="example",
+        binding_uri="http://hl7.org/fhir/ValueSet/medication-codes",
         # note: Listed Resource Type(s) should be allowed as Reference.
         enum_reference_types=["Medication"],
+        backref="medication_statement_medicationReference",
     )
 
     note: typing.List[fhirtypes.AnnotationType] = Field(
@@ -269,15 +287,23 @@ class MedicationStatement(domainresource.DomainResource):
             "Procedure",
             "Observation",
         ],
+        backref="medication_statement_partOf",
     )
 
     reasonCode: typing.List[fhirtypes.CodeableConceptType] = Field(
         None,
         alias="reasonCode",
         title="Reason for why the medication is being/was taken",
-        description="A reason for why the medication is being/was taken.",
+        description=(
+            "A reason for why the medication is being/was taken. See "
+            "http://hl7.org/fhir/ValueSet/condition-code"
+        ),
         # if property is element of this resource.
         element_property=True,
+        # valueset binding
+        binding_description="A coded concept identifying why the medication is being taken.",
+        binding_strength="example",
+        binding_uri="http://hl7.org/fhir/ValueSet/condition-code",
     )
 
     reasonReference: typing.List[fhirtypes.ReferenceType] = Field(
@@ -292,6 +318,7 @@ class MedicationStatement(domainresource.DomainResource):
         element_property=True,
         # note: Listed Resource Type(s) should be allowed as Reference.
         enum_reference_types=["Condition", "Observation", "DiagnosticReport"],
+        backref="medication_statement_reasonReference",
     )
 
     status: fhirtypes.Code = Field(
@@ -304,7 +331,8 @@ class MedicationStatement(domainresource.DomainResource):
         description=(
             "A code representing the patient or other source's judgment about the "
             "state of the medication used that this statement is about.  Generally,"
-            " this will be active or completed."
+            " this will be active or completed. See "
+            "http://hl7.org/fhir/ValueSet/medication-statement-status"
         ),
         # if property is element of this resource.
         element_property=True,
@@ -321,6 +349,11 @@ class MedicationStatement(domainresource.DomainResource):
             "unknown",
             "not-taken",
         ],
+        # valueset binding
+        binding_description="A coded concept indicating the current status of a MedicationStatement.",
+        binding_strength="required",
+        binding_uri="http://hl7.org/fhir/ValueSet/medication-statement-status",
+        binding_version="4.3.0",
     )
     status__ext: fhirtypes.FHIRPrimitiveExtensionType = Field(
         None, alias="_status", title="Extension field for ``status``."
@@ -330,9 +363,16 @@ class MedicationStatement(domainresource.DomainResource):
         None,
         alias="statusReason",
         title="Reason for current status",
-        description="Captures the reason for the current state of the MedicationStatement.",
+        description=(
+            "Captures the reason for the current state of the MedicationStatement. "
+            "See http://hl7.org/fhir/ValueSet/reason-medication-status-codes"
+        ),
         # if property is element of this resource.
         element_property=True,
+        # valueset binding
+        binding_description="A coded concept indicating the reason for the status of the statement.",
+        binding_strength="example",
+        binding_uri="http://hl7.org/fhir/ValueSet/reason-medication-status-codes",
     )
 
     subject: fhirtypes.ReferenceType = Field(
@@ -344,6 +384,7 @@ class MedicationStatement(domainresource.DomainResource):
         element_property=True,
         # note: Listed Resource Type(s) should be allowed as Reference.
         enum_reference_types=["Patient", "Group"],
+        backref="medication_statement_subject",
     )
 
     @classmethod

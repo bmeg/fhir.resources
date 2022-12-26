@@ -37,7 +37,8 @@ class AdverseEvent(domainresource.DomainResource):
         description=(
             "Whether the event actually happened, or just had the potential to. "
             "Note that this is independent of whether anyone was affected or harmed"
-            " or how severely."
+            " or how severely. See http://hl7.org/fhir/ValueSet/adverse-event-"
+            "actuality"
         ),
         # if property is element of this resource.
         element_property=True,
@@ -45,6 +46,11 @@ class AdverseEvent(domainresource.DomainResource):
         # note: Enum values can be used in validation,
         # but use in your own responsibilities, read official FHIR documentation.
         enum_values=["actual", "potential"],
+        # valueset binding
+        binding_description="Overall nature of the adverse event, e.g. real or potential.",
+        binding_strength="required",
+        binding_uri="http://hl7.org/fhir/ValueSet/adverse-event-actuality",
+        binding_version="4.3.0",
     )
     actuality__ext: fhirtypes.FHIRPrimitiveExtensionType = Field(
         None, alias="_actuality", title="Extension field for ``actuality``."
@@ -60,9 +66,34 @@ class AdverseEvent(domainresource.DomainResource):
             "drug | medical-device-use-error | problem-different-manufacturer | "
             "unsafe-physical-environment"
         ),
-        description="The overall type of event, intended for search and filtering purposes.",
+        description=(
+            "The overall type of event, intended for search and filtering purposes."
+            " See http://hl7.org/fhir/ValueSet/adverse-event-category"
+        ),
         # if property is element of this resource.
         element_property=True,
+        # note: Enum values can be used in validation,
+        # but use in your own responsibilities, read official FHIR documentation.
+        enum_values=[
+            "product-problem",
+            "product-quality",
+            "product-use-error",
+            "wrong-dose",
+            "incorrect-prescribing-information",
+            "wrong-technique",
+            "wrong-route-of-administration",
+            "wrong-rate",
+            "wrong-duration",
+            "wrong-time",
+            "expired-drug",
+            "medical-device-use-error",
+            "problem-different-manufacturer",
+            "unsafe-physical-environment",
+        ],
+        # valueset binding
+        binding_description="Overall categorization of the event, e.g. product-related or situational.",
+        binding_strength="extensible",
+        binding_uri="http://hl7.org/fhir/ValueSet/adverse-event-category",
     )
 
     contributor: typing.List[fhirtypes.ReferenceType] = Field(
@@ -82,6 +113,7 @@ class AdverseEvent(domainresource.DomainResource):
         element_property=True,
         # note: Listed Resource Type(s) should be allowed as Reference.
         enum_reference_types=["Practitioner", "PractitionerRole", "Device"],
+        backref="adverse_event_contributor",
     )
 
     date: fhirtypes.DateTime = Field(
@@ -123,6 +155,7 @@ class AdverseEvent(domainresource.DomainResource):
         element_property=True,
         # note: Listed Resource Type(s) should be allowed as Reference.
         enum_reference_types=["Encounter"],
+        backref="adverse_event_encounter",
     )
 
     event: fhirtypes.CodeableConceptType = Field(
@@ -131,10 +164,15 @@ class AdverseEvent(domainresource.DomainResource):
         title="Type of the event itself in relation to the subject",
         description=(
             "This element defines the specific type of event that occurred or that "
-            "was prevented from occurring."
+            "was prevented from occurring. See "
+            "http://hl7.org/fhir/ValueSet/adverse-event-type"
         ),
         # if property is element of this resource.
         element_property=True,
+        # valueset binding
+        binding_description="Detailed type of event.",
+        binding_strength="example",
+        binding_uri="http://hl7.org/fhir/ValueSet/adverse-event-type",
     )
 
     identifier: fhirtypes.IdentifierType = Field(
@@ -159,6 +197,7 @@ class AdverseEvent(domainresource.DomainResource):
         element_property=True,
         # note: Listed Resource Type(s) should be allowed as Reference.
         enum_reference_types=["Location"],
+        backref="adverse_event_location",
     )
 
     outcome: fhirtypes.CodeableConceptType = Field(
@@ -168,9 +207,27 @@ class AdverseEvent(domainresource.DomainResource):
             "resolved | recovering | ongoing | resolvedWithSequelae | fatal | "
             "unknown"
         ),
-        description="Describes the type of outcome from the adverse event.",
+        description=(
+            "Describes the type of outcome from the adverse event. See "
+            "http://hl7.org/fhir/ValueSet/adverse-event-outcome"
+        ),
         # if property is element of this resource.
         element_property=True,
+        # note: Enum values can be used in validation,
+        # but use in your own responsibilities, read official FHIR documentation.
+        enum_values=[
+            "resolved",
+            "recovering",
+            "ongoing",
+            "resolvedWithSequelae",
+            "fatal",
+            "unknown",
+        ],
+        # valueset binding
+        binding_description="TODO (and should this be required?).",
+        binding_strength="required",
+        binding_uri="http://hl7.org/fhir/ValueSet/adverse-event-outcome",
+        binding_version="4.3.0",
     )
 
     recordedDate: fhirtypes.DateTime = Field(
@@ -204,6 +261,7 @@ class AdverseEvent(domainresource.DomainResource):
             "PractitionerRole",
             "RelatedPerson",
         ],
+        backref="adverse_event_recorder",
     )
 
     referenceDocument: typing.List[fhirtypes.ReferenceType] = Field(
@@ -215,6 +273,7 @@ class AdverseEvent(domainresource.DomainResource):
         element_property=True,
         # note: Listed Resource Type(s) should be allowed as Reference.
         enum_reference_types=["DocumentReference"],
+        backref="adverse_event_referenceDocument",
     )
 
     resultingCondition: typing.List[fhirtypes.ReferenceType] = Field(
@@ -229,15 +288,23 @@ class AdverseEvent(domainresource.DomainResource):
         element_property=True,
         # note: Listed Resource Type(s) should be allowed as Reference.
         enum_reference_types=["Condition"],
+        backref="adverse_event_resultingCondition",
     )
 
     seriousness: fhirtypes.CodeableConceptType = Field(
         None,
         alias="seriousness",
         title="Seriousness of the event",
-        description="Assessment whether this event was of real importance.",
+        description=(
+            "Assessment whether this event was of real importance. See "
+            "http://hl7.org/fhir/ValueSet/adverse-event-seriousness"
+        ),
         # if property is element of this resource.
         element_property=True,
+        # valueset binding
+        binding_description="Overall seriousness of this event for the patient.",
+        binding_strength="example",
+        binding_uri="http://hl7.org/fhir/ValueSet/adverse-event-seriousness",
     )
 
     severity: fhirtypes.CodeableConceptType = Field(
@@ -247,10 +314,19 @@ class AdverseEvent(domainresource.DomainResource):
         description=(
             "Describes the severity of the adverse event, in relation to the "
             "subject. Contrast to AdverseEvent.seriousness - a severe rash might "
-            "not be serious, but a mild heart problem is."
+            "not be serious, but a mild heart problem is. See "
+            "http://hl7.org/fhir/ValueSet/adverse-event-severity"
         ),
         # if property is element of this resource.
         element_property=True,
+        # note: Enum values can be used in validation,
+        # but use in your own responsibilities, read official FHIR documentation.
+        enum_values=["mild", "moderate", "severe"],
+        # valueset binding
+        binding_description="The severity of the adverse event itself, in direct relation to the subject.",
+        binding_strength="required",
+        binding_uri="http://hl7.org/fhir/ValueSet/adverse-event-severity",
+        binding_version="4.3.0",
     )
 
     study: typing.List[fhirtypes.ReferenceType] = Field(
@@ -262,6 +338,7 @@ class AdverseEvent(domainresource.DomainResource):
         element_property=True,
         # note: Listed Resource Type(s) should be allowed as Reference.
         enum_reference_types=["ResearchStudy"],
+        backref="adverse_event_study",
     )
 
     subject: fhirtypes.ReferenceType = Field(
@@ -273,6 +350,7 @@ class AdverseEvent(domainresource.DomainResource):
         element_property=True,
         # note: Listed Resource Type(s) should be allowed as Reference.
         enum_reference_types=["Patient", "Group", "Practitioner", "RelatedPerson"],
+        backref="adverse_event_subject",
     )
 
     subjectMedicalHistory: typing.List[fhirtypes.ReferenceType] = Field(
@@ -293,6 +371,7 @@ class AdverseEvent(domainresource.DomainResource):
             "Media",
             "DocumentReference",
         ],
+        backref="adverse_event_subjectMedicalHistory",
     )
 
     suspectEntity: typing.List[fhirtypes.AdverseEventSuspectEntityType] = Field(
@@ -445,6 +524,7 @@ class AdverseEventSuspectEntity(backboneelement.BackboneElement):
             "MedicationStatement",
             "Device",
         ],
+        backref="adverse_event.suspect_entity_instance",
     )
 
     @classmethod
@@ -470,9 +550,13 @@ class AdverseEventSuspectEntityCausality(backboneelement.BackboneElement):
         None,
         alias="assessment",
         title="Assessment of if the entity caused the event",
-        description=None,
+        description="See http://hl7.org/fhir/ValueSet/adverse-event-causality-assess",
         # if property is element of this resource.
         element_property=True,
+        # valueset binding
+        binding_description="Codes for the assessment of whether the entity caused the event.",
+        binding_strength="example",
+        binding_uri="http://hl7.org/fhir/ValueSet/adverse-event-causality-assess",
     )
 
     author: fhirtypes.ReferenceType = Field(
@@ -484,15 +568,23 @@ class AdverseEventSuspectEntityCausality(backboneelement.BackboneElement):
         element_property=True,
         # note: Listed Resource Type(s) should be allowed as Reference.
         enum_reference_types=["Practitioner", "PractitionerRole"],
+        backref="adverse_event.suspect_entity.causality_author",
     )
 
     method: fhirtypes.CodeableConceptType = Field(
         None,
         alias="method",
         title="ProbabilityScale | Bayesian | Checklist",
-        description=None,
+        description="See http://hl7.org/fhir/ValueSet/adverse-event-causality-method",
         # if property is element of this resource.
         element_property=True,
+        # note: Enum values can be used in validation,
+        # but use in your own responsibilities, read official FHIR documentation.
+        enum_values=["ProbabilityScale", "Bayesian", "Checklist"],
+        # valueset binding
+        binding_description="TODO.",
+        binding_strength="example",
+        binding_uri="http://hl7.org/fhir/ValueSet/adverse-event-causality-method",
     )
 
     productRelatedness: fhirtypes.String = Field(

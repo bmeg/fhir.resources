@@ -42,10 +42,14 @@ class OrganizationAffiliation(domainresource.DomainResource):
         title="Definition of the role the participatingOrganization plays",
         description=(
             "Definition of the role the participatingOrganization plays in the "
-            "association."
+            "association. See http://hl7.org/fhir/ValueSet/organization-role"
         ),
         # if property is element of this resource.
         element_property=True,
+        # valueset binding
+        binding_description="The role the participating organization providing services to the primary organization.",
+        binding_strength="example",
+        binding_uri="http://hl7.org/fhir/ValueSet/organization-role",
     )
 
     endpoint: typing.List[fhirtypes.ReferenceType] = Field(
@@ -59,6 +63,7 @@ class OrganizationAffiliation(domainresource.DomainResource):
         element_property=True,
         # note: Listed Resource Type(s) should be allowed as Reference.
         enum_reference_types=["Endpoint"],
+        backref="organization_affiliation_endpoint",
     )
 
     healthcareService: typing.List[fhirtypes.ReferenceType] = Field(
@@ -70,6 +75,7 @@ class OrganizationAffiliation(domainresource.DomainResource):
         element_property=True,
         # note: Listed Resource Type(s) should be allowed as Reference.
         enum_reference_types=["HealthcareService"],
+        backref="organization_affiliation_healthcareService",
     )
 
     identifier: typing.List[fhirtypes.IdentifierType] = Field(
@@ -90,6 +96,7 @@ class OrganizationAffiliation(domainresource.DomainResource):
         element_property=True,
         # note: Listed Resource Type(s) should be allowed as Reference.
         enum_reference_types=["Location"],
+        backref="organization_affiliation_location",
     )
 
     network: typing.List[fhirtypes.ReferenceType] = Field(
@@ -105,6 +112,7 @@ class OrganizationAffiliation(domainresource.DomainResource):
         element_property=True,
         # note: Listed Resource Type(s) should be allowed as Reference.
         enum_reference_types=["Organization"],
+        backref="organization_affiliation_network",
     )
 
     organization: fhirtypes.ReferenceType = Field(
@@ -119,6 +127,7 @@ class OrganizationAffiliation(domainresource.DomainResource):
         element_property=True,
         # note: Listed Resource Type(s) should be allowed as Reference.
         enum_reference_types=["Organization"],
+        backref="organization_affiliation_organization",
     )
 
     participatingOrganization: fhirtypes.ReferenceType = Field(
@@ -137,6 +146,7 @@ class OrganizationAffiliation(domainresource.DomainResource):
         element_property=True,
         # note: Listed Resource Type(s) should be allowed as Reference.
         enum_reference_types=["Organization"],
+        backref="organization_affiliation_participatingOrganization",
     )
 
     period: fhirtypes.PeriodType = Field(
@@ -158,9 +168,13 @@ class OrganizationAffiliation(domainresource.DomainResource):
             "Specific specialty of the participatingOrganization in the context of "
             "the role"
         ),
-        description=None,
+        description="See http://hl7.org/fhir/ValueSet/c80-practice-codes",
         # if property is element of this resource.
         element_property=True,
+        # valueset binding
+        binding_description="Specific specialty associated with the participating organization.",
+        binding_strength="preferred",
+        binding_uri="http://hl7.org/fhir/ValueSet/c80-practice-codes",
     )
 
     telecom: typing.List[fhirtypes.ContactPointType] = Field(

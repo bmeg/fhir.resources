@@ -60,6 +60,7 @@ class ClaimResponse(domainresource.DomainResource):
         element_property=True,
         # note: Listed Resource Type(s) should be allowed as Reference.
         enum_reference_types=["CommunicationRequest"],
+        backref="claim_response_communicationRequest",
     )
 
     created: fhirtypes.DateTime = Field(
@@ -112,9 +113,16 @@ class ClaimResponse(domainresource.DomainResource):
         None,
         alias="formCode",
         title="Printed form identifier",
-        description="A code for the form to be used for printing the content.",
+        description=(
+            "A code for the form to be used for printing the content. See "
+            "http://hl7.org/fhir/ValueSet/forms"
+        ),
         # if property is element of this resource.
         element_property=True,
+        # valueset binding
+        binding_description="The forms codes.",
+        binding_strength="example",
+        binding_uri="http://hl7.org/fhir/ValueSet/forms",
     )
 
     fundsReserve: fhirtypes.CodeableConceptType = Field(
@@ -123,10 +131,15 @@ class ClaimResponse(domainresource.DomainResource):
         title="Funds reserved status",
         description=(
             "A code, used only on a response to a preauthorization, to indicate "
-            "whether the benefits payable have been reserved and for whom."
+            "whether the benefits payable have been reserved and for whom. See "
+            "http://hl7.org/fhir/ValueSet/fundsreserve"
         ),
         # if property is element of this resource.
         element_property=True,
+        # valueset binding
+        binding_description="For whom funds are to be reserved: (Patient, Provider, None).",
+        binding_strength="example",
+        binding_uri="http://hl7.org/fhir/ValueSet/fundsreserve",
     )
 
     identifier: typing.List[fhirtypes.IdentifierType] = Field(
@@ -162,6 +175,7 @@ class ClaimResponse(domainresource.DomainResource):
         element_property=True,
         # note: Listed Resource Type(s) should be allowed as Reference.
         enum_reference_types=["Organization"],
+        backref="claim_response_insurer",
     )
 
     item: typing.List[fhirtypes.ClaimResponseItemType] = Field(
@@ -182,7 +196,7 @@ class ClaimResponse(domainresource.DomainResource):
         title="queued | complete | error | partial",
         description=(
             "The outcome of the claim, predetermination, or preauthorization "
-            "processing."
+            "processing. See http://hl7.org/fhir/ValueSet/remittance-outcome"
         ),
         # if property is element of this resource.
         element_property=True,
@@ -190,6 +204,11 @@ class ClaimResponse(domainresource.DomainResource):
         # note: Enum values can be used in validation,
         # but use in your own responsibilities, read official FHIR documentation.
         enum_values=["queued", "complete", "error", "partial"],
+        # valueset binding
+        binding_description="The result of the claim processing.",
+        binding_strength="required",
+        binding_uri="http://hl7.org/fhir/ValueSet/remittance-outcome",
+        binding_version="4.3.0",
     )
     outcome__ext: fhirtypes.FHIRPrimitiveExtensionType = Field(
         None, alias="_outcome", title="Extension field for ``outcome``."
@@ -208,15 +227,23 @@ class ClaimResponse(domainresource.DomainResource):
         element_property=True,
         # note: Listed Resource Type(s) should be allowed as Reference.
         enum_reference_types=["Patient"],
+        backref="claim_response_patient",
     )
 
     payeeType: fhirtypes.CodeableConceptType = Field(
         None,
         alias="payeeType",
         title="Party to be paid any benefits payable",
-        description="Type of Party to be reimbursed: subscriber, provider, other.",
+        description=(
+            "Type of Party to be reimbursed: subscriber, provider, other. See "
+            "http://hl7.org/fhir/ValueSet/payeetype"
+        ),
         # if property is element of this resource.
         element_property=True,
+        # valueset binding
+        binding_description="A code for the party to be reimbursed.",
+        binding_strength="example",
+        binding_uri="http://hl7.org/fhir/ValueSet/payeetype",
     )
 
     payment: fhirtypes.ClaimResponsePaymentType = Field(
@@ -273,6 +300,7 @@ class ClaimResponse(domainresource.DomainResource):
         element_property=True,
         # note: Listed Resource Type(s) should be allowed as Reference.
         enum_reference_types=["Claim"],
+        backref="claim_response_request",
     )
 
     requestor: fhirtypes.ReferenceType = Field(
@@ -287,19 +315,28 @@ class ClaimResponse(domainresource.DomainResource):
         element_property=True,
         # note: Listed Resource Type(s) should be allowed as Reference.
         enum_reference_types=["Practitioner", "PractitionerRole", "Organization"],
+        backref="claim_response_requestor",
     )
 
     status: fhirtypes.Code = Field(
         None,
         alias="status",
         title="active | cancelled | draft | entered-in-error",
-        description="The status of the resource instance.",
+        description=(
+            "The status of the resource instance. See "
+            "http://hl7.org/fhir/ValueSet/fm-status"
+        ),
         # if property is element of this resource.
         element_property=True,
         element_required=True,
         # note: Enum values can be used in validation,
         # but use in your own responsibilities, read official FHIR documentation.
         enum_values=["active", "cancelled", "draft", "entered-in-error"],
+        # valueset binding
+        binding_description="A code specifying the state of the resource instance.",
+        binding_strength="required",
+        binding_uri="http://hl7.org/fhir/ValueSet/fm-status",
+        binding_version="4.3.0",
     )
     status__ext: fhirtypes.FHIRPrimitiveExtensionType = Field(
         None, alias="_status", title="Extension field for ``status``."
@@ -312,10 +349,14 @@ class ClaimResponse(domainresource.DomainResource):
         description=(
             "A finer grained suite of claim type codes which may convey additional "
             "information such as Inpatient vs Outpatient and/or a specialty "
-            "service."
+            "service. See http://hl7.org/fhir/ValueSet/claim-subtype"
         ),
         # if property is element of this resource.
         element_property=True,
+        # valueset binding
+        binding_description="A more granular claim typecode.",
+        binding_strength="example",
+        binding_uri="http://hl7.org/fhir/ValueSet/claim-subtype",
     )
 
     total: typing.List[fhirtypes.ClaimResponseTotalType] = Field(
@@ -334,10 +375,14 @@ class ClaimResponse(domainresource.DomainResource):
         description=(
             "A finer grained suite of claim type codes which may convey additional "
             "information such as Inpatient vs Outpatient and/or a specialty "
-            "service."
+            "service. See http://hl7.org/fhir/ValueSet/claim-type"
         ),
         # if property is element of this resource.
         element_property=True,
+        # valueset binding
+        binding_description="The type or discipline-style of the claim.",
+        binding_strength="extensible",
+        binding_uri="http://hl7.org/fhir/ValueSet/claim-type",
     )
 
     use: fhirtypes.Code = Field(
@@ -349,7 +394,8 @@ class ClaimResponse(domainresource.DomainResource):
             "adjudication of products and services previously rendered; or "
             "requesting authorization and adjudication for provision in the future;"
             " or requesting the non-binding adjudication of the listed products and"
-            " services which could be provided in the future."
+            " services which could be provided in the future. See "
+            "http://hl7.org/fhir/ValueSet/claim-use"
         ),
         # if property is element of this resource.
         element_property=True,
@@ -357,6 +403,11 @@ class ClaimResponse(domainresource.DomainResource):
         # note: Enum values can be used in validation,
         # but use in your own responsibilities, read official FHIR documentation.
         enum_values=["claim", "preauthorization", "predetermination"],
+        # valueset binding
+        binding_description="Claim, preauthorization, predetermination.",
+        binding_strength="required",
+        binding_uri="http://hl7.org/fhir/ValueSet/claim-use",
+        binding_version="4.3.0",
     )
     use__ext: fhirtypes.FHIRPrimitiveExtensionType = Field(
         None, alias="_use", title="Extension field for ``use``."
@@ -496,9 +547,16 @@ class ClaimResponseAddItem(backboneelement.BackboneElement):
         None,
         alias="bodySite",
         title="Anatomical location",
-        description="Physical service site on the patient (limb, tooth, etc.).",
+        description=(
+            "Physical service site on the patient (limb, tooth, etc.). See "
+            "http://hl7.org/fhir/ValueSet/tooth"
+        ),
         # if property is element of this resource.
         element_property=True,
+        # valueset binding
+        binding_description="The code for the teeth, quadrant, sextant and arch.",
+        binding_strength="example",
+        binding_uri="http://hl7.org/fhir/ValueSet/tooth",
     )
 
     detail: typing.List[fhirtypes.ClaimResponseAddItemDetailType] = Field(
@@ -562,38 +620,60 @@ class ClaimResponseAddItem(backboneelement.BackboneElement):
         None,
         alias="locationAddress",
         title="Place of service or where product was supplied",
-        description="Where the product or service was provided.",
+        description=(
+            "Where the product or service was provided. See "
+            "http://hl7.org/fhir/ValueSet/service-place"
+        ),
         # if property is element of this resource.
         element_property=True,
         # Choice of Data Types. i.e location[x]
         one_of_many="location",
         one_of_many_required=False,
+        # valueset binding
+        binding_description="Place of service: pharmacy, school, prison, etc.",
+        binding_strength="example",
+        binding_uri="http://hl7.org/fhir/ValueSet/service-place",
     )
 
     locationCodeableConcept: fhirtypes.CodeableConceptType = Field(
         None,
         alias="locationCodeableConcept",
         title="Place of service or where product was supplied",
-        description="Where the product or service was provided.",
+        description=(
+            "Where the product or service was provided. See "
+            "http://hl7.org/fhir/ValueSet/service-place"
+        ),
         # if property is element of this resource.
         element_property=True,
         # Choice of Data Types. i.e location[x]
         one_of_many="location",
         one_of_many_required=False,
+        # valueset binding
+        binding_description="Place of service: pharmacy, school, prison, etc.",
+        binding_strength="example",
+        binding_uri="http://hl7.org/fhir/ValueSet/service-place",
     )
 
     locationReference: fhirtypes.ReferenceType = Field(
         None,
         alias="locationReference",
         title="Place of service or where product was supplied",
-        description="Where the product or service was provided.",
+        description=(
+            "Where the product or service was provided. See "
+            "http://hl7.org/fhir/ValueSet/service-place"
+        ),
         # if property is element of this resource.
         element_property=True,
         # Choice of Data Types. i.e location[x]
         one_of_many="location",
         one_of_many_required=False,
+        # valueset binding
+        binding_description="Place of service: pharmacy, school, prison, etc.",
+        binding_strength="example",
+        binding_uri="http://hl7.org/fhir/ValueSet/service-place",
         # note: Listed Resource Type(s) should be allowed as Reference.
         enum_reference_types=["Location"],
+        backref="claim_response.add_item_locationReference",
     )
 
     modifier: typing.List[fhirtypes.CodeableConceptType] = Field(
@@ -602,10 +682,15 @@ class ClaimResponseAddItem(backboneelement.BackboneElement):
         title="Service/Product billing modifiers",
         description=(
             "Item typification or modifiers codes to convey additional context for "
-            "the product or service."
+            "the product or service. See http://hl7.org/fhir/ValueSet/claim-"
+            "modifiers"
         ),
         # if property is element of this resource.
         element_property=True,
+        # valueset binding
+        binding_description="Item type or modifiers codes, eg for Oral whether the treatment is cosmetic or associated with TMJ, or an appliance was lost or stolen.",
+        binding_strength="example",
+        binding_uri="http://hl7.org/fhir/ValueSet/claim-modifiers",
     )
 
     net: fhirtypes.MoneyType = Field(
@@ -642,19 +727,31 @@ class ClaimResponseAddItem(backboneelement.BackboneElement):
         description=(
             "When the value is a group code then this item collects a set of "
             "related claim details, otherwise this contains the product, service, "
-            "drug or other billing code for the item."
+            "drug or other billing code for the item. See "
+            "http://hl7.org/fhir/ValueSet/service-uscls"
         ),
         # if property is element of this resource.
         element_property=True,
+        # valueset binding
+        binding_description="Allowable service and product codes.",
+        binding_strength="example",
+        binding_uri="http://hl7.org/fhir/ValueSet/service-uscls",
     )
 
     programCode: typing.List[fhirtypes.CodeableConceptType] = Field(
         None,
         alias="programCode",
         title="Program the product or service is provided under",
-        description="Identifies the program under which this may be recovered.",
+        description=(
+            "Identifies the program under which this may be recovered. See "
+            "http://hl7.org/fhir/ValueSet/ex-program-code"
+        ),
         # if property is element of this resource.
         element_property=True,
+        # valueset binding
+        binding_description="Program specific reason codes.",
+        binding_strength="example",
+        binding_uri="http://hl7.org/fhir/ValueSet/ex-program-code",
     )
 
     provider: typing.List[fhirtypes.ReferenceType] = Field(
@@ -669,6 +766,7 @@ class ClaimResponseAddItem(backboneelement.BackboneElement):
         element_property=True,
         # note: Listed Resource Type(s) should be allowed as Reference.
         enum_reference_types=["Practitioner", "PractitionerRole", "Organization"],
+        backref="claim_response.add_item_provider",
     )
 
     quantity: fhirtypes.QuantityType = Field(
@@ -719,10 +817,14 @@ class ClaimResponseAddItem(backboneelement.BackboneElement):
         title="Anatomical sub-location",
         description=(
             "A region or surface of the bodySite, e.g. limb region or tooth "
-            "surface(s)."
+            "surface(s). See http://hl7.org/fhir/ValueSet/surface"
         ),
         # if property is element of this resource.
         element_property=True,
+        # valueset binding
+        binding_description="The code for the tooth surface and surface combinations.",
+        binding_strength="example",
+        binding_uri="http://hl7.org/fhir/ValueSet/surface",
     )
 
     subdetailSequence: typing.List[typing.Optional[fhirtypes.PositiveInt]] = Field(
@@ -879,10 +981,15 @@ class ClaimResponseAddItemDetail(backboneelement.BackboneElement):
         title="Service/Product billing modifiers",
         description=(
             "Item typification or modifiers codes to convey additional context for "
-            "the product or service."
+            "the product or service. See http://hl7.org/fhir/ValueSet/claim-"
+            "modifiers"
         ),
         # if property is element of this resource.
         element_property=True,
+        # valueset binding
+        binding_description="Item type or modifiers codes, eg for Oral whether the treatment is cosmetic or associated with TMJ, or an appliance was lost or stolen.",
+        binding_strength="example",
+        binding_uri="http://hl7.org/fhir/ValueSet/claim-modifiers",
     )
 
     net: fhirtypes.MoneyType = Field(
@@ -919,10 +1026,15 @@ class ClaimResponseAddItemDetail(backboneelement.BackboneElement):
         description=(
             "When the value is a group code then this item collects a set of "
             "related claim details, otherwise this contains the product, service, "
-            "drug or other billing code for the item."
+            "drug or other billing code for the item. See "
+            "http://hl7.org/fhir/ValueSet/service-uscls"
         ),
         # if property is element of this resource.
         element_property=True,
+        # valueset binding
+        binding_description="Allowable service and product codes.",
+        binding_strength="example",
+        binding_uri="http://hl7.org/fhir/ValueSet/service-uscls",
     )
 
     quantity: fhirtypes.QuantityType = Field(
@@ -1021,10 +1133,15 @@ class ClaimResponseAddItemDetailSubDetail(backboneelement.BackboneElement):
         title="Service/Product billing modifiers",
         description=(
             "Item typification or modifiers codes to convey additional context for "
-            "the product or service."
+            "the product or service. See http://hl7.org/fhir/ValueSet/claim-"
+            "modifiers"
         ),
         # if property is element of this resource.
         element_property=True,
+        # valueset binding
+        binding_description="Item type or modifiers codes, eg for Oral whether the treatment is cosmetic or associated with TMJ, or an appliance was lost or stolen.",
+        binding_strength="example",
+        binding_uri="http://hl7.org/fhir/ValueSet/claim-modifiers",
     )
 
     net: fhirtypes.MoneyType = Field(
@@ -1061,10 +1178,15 @@ class ClaimResponseAddItemDetailSubDetail(backboneelement.BackboneElement):
         description=(
             "When the value is a group code then this item collects a set of "
             "related claim details, otherwise this contains the product, service, "
-            "drug or other billing code for the item."
+            "drug or other billing code for the item. See "
+            "http://hl7.org/fhir/ValueSet/service-uscls"
         ),
         # if property is element of this resource.
         element_property=True,
+        # valueset binding
+        binding_description="Allowable service and product codes.",
+        binding_strength="example",
+        binding_uri="http://hl7.org/fhir/ValueSet/service-uscls",
     )
 
     quantity: fhirtypes.QuantityType = Field(
@@ -1127,10 +1249,15 @@ class ClaimResponseError(backboneelement.BackboneElement):
         title="Error code detailing processing issues",
         description=(
             "An error code, from a specified code system, which details why the "
-            "claim could not be adjudicated."
+            "claim could not be adjudicated. See "
+            "http://hl7.org/fhir/ValueSet/adjudication-error"
         ),
         # if property is element of this resource.
         element_property=True,
+        # valueset binding
+        binding_description="The adjudication error codes.",
+        binding_strength="example",
+        binding_uri="http://hl7.org/fhir/ValueSet/adjudication-error",
     )
 
     detailSequence: fhirtypes.PositiveInt = Field(
@@ -1241,6 +1368,7 @@ class ClaimResponseInsurance(backboneelement.BackboneElement):
         element_property=True,
         # note: Listed Resource Type(s) should be allowed as Reference.
         enum_reference_types=["ClaimResponse"],
+        backref="claim_response.insurance_claimResponse",
     )
 
     coverage: fhirtypes.ReferenceType = Field(
@@ -1257,6 +1385,7 @@ class ClaimResponseInsurance(backboneelement.BackboneElement):
         element_property=True,
         # note: Listed Resource Type(s) should be allowed as Reference.
         enum_reference_types=["Coverage"],
+        backref="claim_response.insurance_coverage",
     )
 
     focal: bool = Field(
@@ -1541,10 +1670,14 @@ class ClaimResponseItemAdjudication(backboneelement.BackboneElement):
             "percentages allowed or payable under the plan, amounts that: the "
             "patient is responsible for in aggregate or pertaining to this item; "
             "amounts paid by other coverages; and, the benefit payable for this "
-            "item."
+            "item. See http://hl7.org/fhir/ValueSet/adjudication"
         ),
         # if property is element of this resource.
         element_property=True,
+        # valueset binding
+        binding_description="The adjudication codes.",
+        binding_strength="example",
+        binding_uri="http://hl7.org/fhir/ValueSet/adjudication",
     )
 
     reason: fhirtypes.CodeableConceptType = Field(
@@ -1553,10 +1686,15 @@ class ClaimResponseItemAdjudication(backboneelement.BackboneElement):
         title="Explanation of adjudication outcome",
         description=(
             "A code supporting the understanding of the adjudication result and "
-            "explaining variance from expected amount."
+            "explaining variance from expected amount. See "
+            "http://hl7.org/fhir/ValueSet/adjudication-reason"
         ),
         # if property is element of this resource.
         element_property=True,
+        # valueset binding
+        binding_description="The adjudication reason codes.",
+        binding_strength="example",
+        binding_uri="http://hl7.org/fhir/ValueSet/adjudication-reason",
     )
 
     value: fhirtypes.Decimal = Field(
@@ -1877,9 +2015,16 @@ class ClaimResponsePayment(backboneelement.BackboneElement):
         None,
         alias="adjustmentReason",
         title="Explanation for the adjustment",
-        description="Reason for the payment adjustment.",
+        description=(
+            "Reason for the payment adjustment. See "
+            "http://hl7.org/fhir/ValueSet/payment-adjustment-reason"
+        ),
         # if property is element of this resource.
         element_property=True,
+        # valueset binding
+        binding_description="Payment Adjustment reason codes.",
+        binding_strength="example",
+        binding_uri="http://hl7.org/fhir/ValueSet/payment-adjustment-reason",
     )
 
     amount: fhirtypes.MoneyType = Field(
@@ -1921,10 +2066,14 @@ class ClaimResponsePayment(backboneelement.BackboneElement):
         title="Partial or complete payment",
         description=(
             "Whether this represents partial or complete payment of the benefits "
-            "payable."
+            "payable. See http://hl7.org/fhir/ValueSet/ex-paymenttype"
         ),
         # if property is element of this resource.
         element_property=True,
+        # valueset binding
+        binding_description="The type (partial, complete) of the payment.",
+        binding_strength="example",
+        binding_uri="http://hl7.org/fhir/ValueSet/ex-paymenttype",
     )
 
     @classmethod
@@ -1962,9 +2111,16 @@ class ClaimResponseProcessNote(backboneelement.BackboneElement):
         None,
         alias="language",
         title="Language of the text",
-        description="A code to define the language used in the text of the note.",
+        description=(
+            "A code to define the language used in the text of the note. See "
+            "http://hl7.org/fhir/ValueSet/languages"
+        ),
         # if property is element of this resource.
         element_property=True,
+        # valueset binding
+        binding_description="IETF language tag",
+        binding_strength="preferred",
+        binding_uri="http://hl7.org/fhir/ValueSet/languages",
     )
 
     number: fhirtypes.PositiveInt = Field(
@@ -1996,12 +2152,20 @@ class ClaimResponseProcessNote(backboneelement.BackboneElement):
         None,
         alias="type",
         title="display | print | printoper",
-        description="The business purpose of the note text.",
+        description=(
+            "The business purpose of the note text. See "
+            "http://hl7.org/fhir/ValueSet/note-type"
+        ),
         # if property is element of this resource.
         element_property=True,
         # note: Enum values can be used in validation,
         # but use in your own responsibilities, read official FHIR documentation.
         enum_values=["display", "print", "printoper"],
+        # valueset binding
+        binding_description="The presentation types of notes.",
+        binding_strength="required",
+        binding_uri="http://hl7.org/fhir/ValueSet/note-type",
+        binding_version="4.3.0",
     )
     type__ext: fhirtypes.FHIRPrimitiveExtensionType = Field(
         None, alias="_type", title="Extension field for ``type``."
@@ -2113,10 +2277,14 @@ class ClaimResponseTotal(backboneelement.BackboneElement):
             "percentages allowed or payable under the plan, amounts that the "
             "patient is responsible for in aggregate or pertaining to this item, "
             "amounts paid by other coverages, and the benefit payable for this "
-            "item."
+            "item. See http://hl7.org/fhir/ValueSet/adjudication"
         ),
         # if property is element of this resource.
         element_property=True,
+        # valueset binding
+        binding_description="The adjudication codes.",
+        binding_strength="example",
+        binding_uri="http://hl7.org/fhir/ValueSet/adjudication",
     )
 
     @classmethod

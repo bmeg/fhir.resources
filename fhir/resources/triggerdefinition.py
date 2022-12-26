@@ -111,6 +111,7 @@ class TriggerDefinition(element.Element):
         one_of_many_required=False,
         # note: Listed Resource Type(s) should be allowed as Reference.
         enum_reference_types=["Schedule"],
+        backref="trigger_definition_timingReference",
     )
 
     timingTiming: fhirtypes.TimingType = Field(
@@ -132,7 +133,10 @@ class TriggerDefinition(element.Element):
             "named-event | periodic | data-changed | data-added | data-modified | "
             "data-removed | data-accessed | data-access-ended"
         ),
-        description="The type of triggering event.",
+        description=(
+            "The type of triggering event. See "
+            "http://hl7.org/fhir/ValueSet/trigger-type"
+        ),
         # if property is element of this resource.
         element_property=True,
         element_required=True,
@@ -148,6 +152,10 @@ class TriggerDefinition(element.Element):
             "data-accessed",
             "data-access-ended",
         ],
+        # valueset binding
+        binding_strength="required",
+        binding_uri="http://hl7.org/fhir/ValueSet/trigger-type",
+        binding_version="4.3.0",
     )
     type__ext: fhirtypes.FHIRPrimitiveExtensionType = Field(
         None, alias="_type", title="Extension field for ``type``."

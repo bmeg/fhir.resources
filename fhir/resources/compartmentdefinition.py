@@ -31,13 +31,21 @@ class CompartmentDefinition(domainresource.DomainResource):
         None,
         alias="code",
         title="Patient | Encounter | RelatedPerson | Practitioner | Device",
-        description="Which compartment this definition describes.",
+        description=(
+            "Which compartment this definition describes. See "
+            "http://hl7.org/fhir/ValueSet/compartment-type"
+        ),
         # if property is element of this resource.
         element_property=True,
         element_required=True,
         # note: Enum values can be used in validation,
         # but use in your own responsibilities, read official FHIR documentation.
         enum_values=["Patient", "Encounter", "RelatedPerson", "Practitioner", "Device"],
+        # valueset binding
+        binding_description="Which type a compartment definition describes.",
+        binding_strength="required",
+        binding_uri="http://hl7.org/fhir/ValueSet/compartment-type",
+        binding_version="4.3.0",
     )
     code__ext: fhirtypes.FHIRPrimitiveExtensionType = Field(
         None, alias="_code", title="Extension field for ``code``."
@@ -179,7 +187,8 @@ class CompartmentDefinition(domainresource.DomainResource):
         title="draft | active | retired | unknown",
         description=(
             "The status of this compartment definition. Enables tracking the life-"
-            "cycle of the content."
+            "cycle of the content. See http://hl7.org/fhir/ValueSet/publication-"
+            "status"
         ),
         # if property is element of this resource.
         element_property=True,
@@ -187,6 +196,11 @@ class CompartmentDefinition(domainresource.DomainResource):
         # note: Enum values can be used in validation,
         # but use in your own responsibilities, read official FHIR documentation.
         enum_values=["draft", "active", "retired", "unknown"],
+        # valueset binding
+        binding_description="The lifecycle status of an artifact.",
+        binding_strength="required",
+        binding_uri="http://hl7.org/fhir/ValueSet/publication-status",
+        binding_version="4.3.0",
     )
     status__ext: fhirtypes.FHIRPrimitiveExtensionType = Field(
         None, alias="_status", title="Extension field for ``status``."
@@ -365,10 +379,18 @@ class CompartmentDefinitionResource(backboneelement.BackboneElement):
         None,
         alias="code",
         title="Name of resource type",
-        description="The name of a resource supported by the server.",
+        description=(
+            "The name of a resource supported by the server. See "
+            "http://hl7.org/fhir/ValueSet/resource-types"
+        ),
         # if property is element of this resource.
         element_property=True,
         element_required=True,
+        # valueset binding
+        binding_description="One of the resource types defined as part of this version of FHIR.",
+        binding_strength="required",
+        binding_uri="http://hl7.org/fhir/ValueSet/resource-types",
+        binding_version="4.3.0",
     )
     code__ext: fhirtypes.FHIRPrimitiveExtensionType = Field(
         None, alias="_code", title="Extension field for ``code``."

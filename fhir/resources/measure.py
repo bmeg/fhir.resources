@@ -77,10 +77,18 @@ class Measure(domainresource.DomainResource):
         title="opportunity | all-or-nothing | linear | weighted",
         description=(
             "If this is a composite measure, the scoring method used to combine the"
-            " component measures to determine the composite score."
+            " component measures to determine the composite score. See "
+            "http://hl7.org/fhir/ValueSet/composite-measure-scoring"
         ),
         # if property is element of this resource.
         element_property=True,
+        # note: Enum values can be used in validation,
+        # but use in your own responsibilities, read official FHIR documentation.
+        enum_values=["opportunity", "all-or-nothing", "linear", "weighted"],
+        # valueset binding
+        binding_description="The composite scoring method of the measure.",
+        binding_strength="extensible",
+        binding_uri="http://hl7.org/fhir/ValueSet/composite-measure-scoring",
     )
 
     contact: typing.List[fhirtypes.ContactDetailType] = Field(
@@ -267,10 +275,19 @@ class Measure(domainresource.DomainResource):
         description=(
             "Information on whether an increase or decrease in score is the "
             "preferred result (e.g., a higher score indicates better quality OR a "
-            "lower score indicates better quality OR quality is within a range)."
+            "lower score indicates better quality OR quality is within a range). "
+            "See http://hl7.org/fhir/ValueSet/measure-improvement-notation"
         ),
         # if property is element of this resource.
         element_property=True,
+        # note: Enum values can be used in validation,
+        # but use in your own responsibilities, read official FHIR documentation.
+        enum_values=["increase", "decrease"],
+        # valueset binding
+        binding_description="Observation values that indicate what change in a measurement value or score is indicative of an improvement in the measured item or scored issue.",
+        binding_strength="required",
+        binding_uri="http://hl7.org/fhir/ValueSet/measure-improvement-notation",
+        binding_version="4.3.0",
     )
 
     jurisdiction: typing.List[fhirtypes.CodeableConceptType] = Field(
@@ -279,10 +296,14 @@ class Measure(domainresource.DomainResource):
         title="Intended jurisdiction for measure (if applicable)",
         description=(
             "A legal or geographic region in which the measure is intended to be "
-            "used."
+            "used. See http://hl7.org/fhir/ValueSet/jurisdiction"
         ),
         # if property is element of this resource.
         element_property=True,
+        # valueset binding
+        binding_description="Countries and regions within which this artifact is targeted for use.",
+        binding_strength="extensible",
+        binding_uri="http://hl7.org/fhir/ValueSet/jurisdiction",
     )
 
     lastReviewDate: fhirtypes.Date = Field(
@@ -313,6 +334,7 @@ class Measure(domainresource.DomainResource):
         element_property=True,
         # note: Listed Resource Type(s) should be allowed as Reference.
         enum_reference_types=["Library"],
+        backref="measure_library",
     )
     library__ext: typing.List[
         typing.Union[fhirtypes.FHIRPrimitiveExtensionType, None]
@@ -440,10 +462,17 @@ class Measure(domainresource.DomainResource):
             "Indicates how the calculation is performed for the measure, including "
             "proportion, ratio, continuous-variable, and cohort. The value set is "
             "extensible, allowing additional measure scoring types to be "
-            "represented."
+            "represented. See http://hl7.org/fhir/ValueSet/measure-scoring"
         ),
         # if property is element of this resource.
         element_property=True,
+        # note: Enum values can be used in validation,
+        # but use in your own responsibilities, read official FHIR documentation.
+        enum_values=["proportion", "ratio", "continuous-variable", "cohort"],
+        # valueset binding
+        binding_description="The scoring type of the measure.",
+        binding_strength="extensible",
+        binding_uri="http://hl7.org/fhir/ValueSet/measure-scoring",
     )
 
     status: fhirtypes.Code = Field(
@@ -452,7 +481,7 @@ class Measure(domainresource.DomainResource):
         title="draft | active | retired | unknown",
         description=(
             "The status of this measure. Enables tracking the life-cycle of the "
-            "content."
+            "content. See http://hl7.org/fhir/ValueSet/publication-status"
         ),
         # if property is element of this resource.
         element_property=True,
@@ -460,6 +489,11 @@ class Measure(domainresource.DomainResource):
         # note: Enum values can be used in validation,
         # but use in your own responsibilities, read official FHIR documentation.
         enum_values=["draft", "active", "retired", "unknown"],
+        # valueset binding
+        binding_description="The lifecycle status of an artifact.",
+        binding_strength="required",
+        binding_uri="http://hl7.org/fhir/ValueSet/publication-status",
+        binding_version="4.3.0",
     )
     status__ext: fhirtypes.FHIRPrimitiveExtensionType = Field(
         None, alias="_status", title="Extension field for ``status``."
@@ -475,13 +509,17 @@ class Measure(domainresource.DomainResource):
         description=(
             "The intended subjects for the measure. If this element is not "
             "provided, a Patient subject is assumed, but the subject of the measure"
-            " can be anything."
+            " can be anything. See http://hl7.org/fhir/ValueSet/subject-type"
         ),
         # if property is element of this resource.
         element_property=True,
         # Choice of Data Types. i.e subject[x]
         one_of_many="subject",
         one_of_many_required=False,
+        # valueset binding
+        binding_description="The possible types of subjects for a measure (E.g. Patient, Practitioner, Organization, Location, etc.).",
+        binding_strength="extensible",
+        binding_uri="http://hl7.org/fhir/ValueSet/subject-type",
     )
 
     subjectReference: fhirtypes.ReferenceType = Field(
@@ -494,15 +532,20 @@ class Measure(domainresource.DomainResource):
         description=(
             "The intended subjects for the measure. If this element is not "
             "provided, a Patient subject is assumed, but the subject of the measure"
-            " can be anything."
+            " can be anything. See http://hl7.org/fhir/ValueSet/subject-type"
         ),
         # if property is element of this resource.
         element_property=True,
         # Choice of Data Types. i.e subject[x]
         one_of_many="subject",
         one_of_many_required=False,
+        # valueset binding
+        binding_description="The possible types of subjects for a measure (E.g. Patient, Practitioner, Organization, Location, etc.).",
+        binding_strength="extensible",
+        binding_uri="http://hl7.org/fhir/ValueSet/subject-type",
         # note: Listed Resource Type(s) should be allowed as Reference.
         enum_reference_types=["Group"],
+        backref="measure_subjectReference",
     )
 
     subtitle: fhirtypes.String = Field(
@@ -555,10 +598,15 @@ class Measure(domainresource.DomainResource):
         description=(
             "Descriptive topics related to the content of the measure. Topics "
             "provide a high-level categorization grouping types of measures that "
-            "can be useful for filtering and searching."
+            "can be useful for filtering and searching. See "
+            "http://hl7.org/fhir/ValueSet/definition-topic"
         ),
         # if property is element of this resource.
         element_property=True,
+        # valueset binding
+        binding_description="High-level categorization of the definition, used for searching, sorting, and filtering.",
+        binding_strength="example",
+        binding_uri="http://hl7.org/fhir/ValueSet/definition-topic",
     )
 
     type: typing.List[fhirtypes.CodeableConceptType] = Field(
@@ -568,10 +616,23 @@ class Measure(domainresource.DomainResource):
         description=(
             "Indicates whether the measure is used to examine a process, an outcome"
             " over time, a patient-reported outcome, or a structure measure such as"
-            " utilization."
+            " utilization. See http://hl7.org/fhir/ValueSet/measure-type"
         ),
         # if property is element of this resource.
         element_property=True,
+        # note: Enum values can be used in validation,
+        # but use in your own responsibilities, read official FHIR documentation.
+        enum_values=[
+            "process",
+            "outcome",
+            "structure",
+            "patient-reported-outcome",
+            "composite",
+        ],
+        # valueset binding
+        binding_description="The type of measure (includes codes from 2.16.840.1.113883.1.11.20368).",
+        binding_strength="extensible",
+        binding_uri="http://hl7.org/fhir/ValueSet/measure-type",
     )
 
     url: fhirtypes.Uri = Field(
@@ -827,10 +888,14 @@ class MeasureGroup(backboneelement.BackboneElement):
             "Indicates a meaning for the group. This can be as simple as a unique "
             "identifier, or it can establish meaning in a broader context by "
             "drawing from a terminology, allowing groups to be correlated across "
-            "measures."
+            "measures. See http://hl7.org/fhir/ValueSet/measure-group-example"
         ),
         # if property is element of this resource.
         element_property=True,
+        # valueset binding
+        binding_description="Example of measure groups.",
+        binding_strength="example",
+        binding_uri="http://hl7.org/fhir/ValueSet/measure-group-example",
     )
 
     description: fhirtypes.String = Field(
@@ -903,9 +968,29 @@ class MeasureGroupPopulation(backboneelement.BackboneElement):
             "denominator-exclusion | denominator-exception | measure-population | "
             "measure-population-exclusion | measure-observation"
         ),
-        description="The type of population criteria.",
+        description=(
+            "The type of population criteria. See "
+            "http://hl7.org/fhir/ValueSet/measure-population"
+        ),
         # if property is element of this resource.
         element_property=True,
+        # note: Enum values can be used in validation,
+        # but use in your own responsibilities, read official FHIR documentation.
+        enum_values=[
+            "initial-population",
+            "numerator",
+            "numerator-exclusion",
+            "denominator",
+            "denominator-exclusion",
+            "denominator-exception",
+            "measure-population",
+            "measure-population-exclusion",
+            "measure-observation",
+        ],
+        # valueset binding
+        binding_description="The type of population.",
+        binding_strength="extensible",
+        binding_uri="http://hl7.org/fhir/ValueSet/measure-population",
     )
 
     criteria: fhirtypes.ExpressionType = Field(
@@ -969,10 +1054,15 @@ class MeasureGroupStratifier(backboneelement.BackboneElement):
             "Indicates a meaning for the stratifier. This can be as simple as a "
             "unique identifier, or it can establish meaning in a broader context by"
             " drawing from a terminology, allowing stratifiers to be correlated "
-            "across measures."
+            "across measures. See http://hl7.org/fhir/ValueSet/measure-stratifier-"
+            "example"
         ),
         # if property is element of this resource.
         element_property=True,
+        # valueset binding
+        binding_description="Meaning of the stratifier.",
+        binding_strength="example",
+        binding_uri="http://hl7.org/fhir/ValueSet/measure-stratifier-example",
     )
 
     component: typing.List[fhirtypes.MeasureGroupStratifierComponentType] = Field(
@@ -1051,10 +1141,15 @@ class MeasureGroupStratifierComponent(backboneelement.BackboneElement):
             "Indicates a meaning for the stratifier component. This can be as "
             "simple as a unique identifier, or it can establish meaning in a "
             "broader context by drawing from a terminology, allowing stratifiers to"
-            " be correlated across measures."
+            " be correlated across measures. See "
+            "http://hl7.org/fhir/ValueSet/measure-stratifier-example"
         ),
         # if property is element of this resource.
         element_property=True,
+        # valueset binding
+        binding_description="Meaning of the stratifier.",
+        binding_strength="example",
+        binding_uri="http://hl7.org/fhir/ValueSet/measure-stratifier-example",
     )
 
     criteria: fhirtypes.ExpressionType = Field(
@@ -1120,10 +1215,15 @@ class MeasureSupplementalData(backboneelement.BackboneElement):
             "Indicates a meaning for the supplemental data. This can be as simple "
             "as a unique identifier, or it can establish meaning in a broader "
             "context by drawing from a terminology, allowing supplemental data to "
-            "be correlated across measures."
+            "be correlated across measures. See "
+            "http://hl7.org/fhir/ValueSet/measure-supplemental-data-example"
         ),
         # if property is element of this resource.
         element_property=True,
+        # valueset binding
+        binding_description="Meaning of the supplemental data.",
+        binding_strength="example",
+        binding_uri="http://hl7.org/fhir/ValueSet/measure-supplemental-data-example",
     )
 
     criteria: fhirtypes.ExpressionType = Field(
@@ -1162,10 +1262,17 @@ class MeasureSupplementalData(backboneelement.BackboneElement):
             "requested to augment the measure information. Risk adjustment factor "
             "indicates the data is additional information used to calculate risk "
             "adjustment factors when applying a risk model to the measure "
-            "calculation."
+            "calculation. See http://hl7.org/fhir/ValueSet/measure-data-usage"
         ),
         # if property is element of this resource.
         element_property=True,
+        # note: Enum values can be used in validation,
+        # but use in your own responsibilities, read official FHIR documentation.
+        enum_values=["supplemental-data", "risk-adjustment-factor"],
+        # valueset binding
+        binding_description="The intended usage for supplemental data elements in the measure.",
+        binding_strength="extensible",
+        binding_uri="http://hl7.org/fhir/ValueSet/measure-data-usage",
     )
 
     @classmethod

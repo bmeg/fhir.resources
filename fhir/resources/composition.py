@@ -66,6 +66,7 @@ class Composition(domainresource.DomainResource):
             "RelatedPerson",
             "Organization",
         ],
+        backref="composition_author",
     )
 
     category: typing.List[fhirtypes.CodeableConceptType] = Field(
@@ -75,19 +76,32 @@ class Composition(domainresource.DomainResource):
         description=(
             "A categorization for the type of the composition - helps for indexing "
             "and searching. This may be implied by or derived from the code "
-            "specified in the Composition Type."
+            "specified in the Composition Type. See http://terminology.hl7.org/Valu"
+            "eSet/v3-LoincDocumentOntologyInternational"
         ),
         # if property is element of this resource.
         element_property=True,
+        # valueset binding
+        binding_description="High-level kind of a clinical document at a macro level.",
+        binding_strength="example",
+        binding_uri="http://terminology.hl7.org/ValueSet/v3-LoincDocumentOntologyInternational",
     )
 
     confidentiality: fhirtypes.Code = Field(
         None,
         alias="confidentiality",
         title="As defined by affinity domain",
-        description="The code specifying the level of confidentiality of the Composition.",
+        description=(
+            "The code specifying the level of confidentiality of the Composition. "
+            "See http://terminology.hl7.org/ValueSet/v3-Confidentiality"
+        ),
         # if property is element of this resource.
         element_property=True,
+        # valueset binding
+        binding_description="Codes specifying the level of confidentiality of the composition.",
+        binding_strength="required",
+        binding_uri="http://terminology.hl7.org/ValueSet/v3-Confidentiality",
+        binding_version="2.0.0",
     )
     confidentiality__ext: fhirtypes.FHIRPrimitiveExtensionType = Field(
         None, alias="_confidentiality", title="Extension field for ``confidentiality``."
@@ -105,6 +119,7 @@ class Composition(domainresource.DomainResource):
         element_property=True,
         # note: Listed Resource Type(s) should be allowed as Reference.
         enum_reference_types=["Organization"],
+        backref="composition_custodian",
     )
 
     date: fhirtypes.DateTime = Field(
@@ -135,6 +150,7 @@ class Composition(domainresource.DomainResource):
         element_property=True,
         # note: Listed Resource Type(s) should be allowed as Reference.
         enum_reference_types=["Encounter"],
+        backref="composition_encounter",
     )
 
     event: typing.List[fhirtypes.CompositionEventType] = Field(
@@ -188,7 +204,8 @@ class Composition(domainresource.DomainResource):
         title="preliminary | final | amended | entered-in-error",
         description=(
             "The workflow/clinical status of this composition. The status is a "
-            "marker for the clinical standing of the document."
+            "marker for the clinical standing of the document. See "
+            "http://hl7.org/fhir/ValueSet/composition-status"
         ),
         # if property is element of this resource.
         element_property=True,
@@ -196,6 +213,11 @@ class Composition(domainresource.DomainResource):
         # note: Enum values can be used in validation,
         # but use in your own responsibilities, read official FHIR documentation.
         enum_values=["preliminary", "final", "amended", "entered-in-error"],
+        # valueset binding
+        binding_description="The workflow/clinical status of the composition.",
+        binding_strength="required",
+        binding_uri="http://hl7.org/fhir/ValueSet/composition-status",
+        binding_version="4.3.0",
     )
     status__ext: fhirtypes.FHIRPrimitiveExtensionType = Field(
         None, alias="_status", title="Extension field for ``status``."
@@ -215,6 +237,7 @@ class Composition(domainresource.DomainResource):
         element_property=True,
         # note: Listed Resource Type(s) should be allowed as Reference.
         enum_reference_types=["Resource"],
+        backref="composition_subject",
     )
 
     title: fhirtypes.String = Field(
@@ -237,10 +260,15 @@ class Composition(domainresource.DomainResource):
         description=(
             "Specifies the particular kind of composition (e.g. History and "
             "Physical, Discharge Summary, Progress Note). This usually equates to "
-            "the purpose of making the composition."
+            "the purpose of making the composition. See "
+            "http://hl7.org/fhir/ValueSet/doc-typecodes"
         ),
         # if property is element of this resource.
         element_property=True,
+        # valueset binding
+        binding_description="Type of a composition.",
+        binding_strength="preferred",
+        binding_uri="http://hl7.org/fhir/ValueSet/doc-typecodes",
     )
 
     @classmethod
@@ -354,13 +382,21 @@ class CompositionAttester(backboneelement.BackboneElement):
         None,
         alias="mode",
         title="personal | professional | legal | official",
-        description="The type of attestation the authenticator offers.",
+        description=(
+            "The type of attestation the authenticator offers. See "
+            "http://hl7.org/fhir/ValueSet/composition-attestation-mode"
+        ),
         # if property is element of this resource.
         element_property=True,
         element_required=True,
         # note: Enum values can be used in validation,
         # but use in your own responsibilities, read official FHIR documentation.
         enum_values=["personal", "professional", "legal", "official"],
+        # valueset binding
+        binding_description="The way in which a person authenticated a composition.",
+        binding_strength="required",
+        binding_uri="http://hl7.org/fhir/ValueSet/composition-attestation-mode",
+        binding_version="4.3.0",
     )
     mode__ext: fhirtypes.FHIRPrimitiveExtensionType = Field(
         None, alias="_mode", title="Extension field for ``mode``."
@@ -381,6 +417,7 @@ class CompositionAttester(backboneelement.BackboneElement):
             "PractitionerRole",
             "Organization",
         ],
+        backref="composition.attester_party",
     )
 
     time: fhirtypes.DateTime = Field(
@@ -484,10 +521,15 @@ class CompositionEvent(backboneelement.BackboneElement):
             "colonoscopy or an appendectomy, being documented. In some cases, the "
             'event is inherent in the typeCode, such as a "History and Physical '
             'Report" in which the procedure being documented is necessarily a '
-            '"History and Physical" act.'
+            '"History and Physical" act. See '
+            "http://terminology.hl7.org/ValueSet/v3-ActCode"
         ),
         # if property is element of this resource.
         element_property=True,
+        # valueset binding
+        binding_description="This list of codes represents the main clinical acts being documented.",
+        binding_strength="example",
+        binding_uri="http://terminology.hl7.org/ValueSet/v3-ActCode",
     )
 
     detail: typing.List[fhirtypes.ReferenceType] = Field(
@@ -503,6 +545,7 @@ class CompositionEvent(backboneelement.BackboneElement):
         element_property=True,
         # note: Listed Resource Type(s) should be allowed as Reference.
         enum_reference_types=["Resource"],
+        backref="composition.event_detail",
     )
 
     period: fhirtypes.PeriodType = Field(
@@ -545,7 +588,8 @@ class CompositionRelatesTo(backboneelement.BackboneElement):
         title="replaces | transforms | signs | appends",
         description=(
             "The type of relationship that this composition has with anther "
-            "composition or document."
+            "composition or document. See http://hl7.org/fhir/ValueSet/document-"
+            "relationship-type"
         ),
         # if property is element of this resource.
         element_property=True,
@@ -553,6 +597,11 @@ class CompositionRelatesTo(backboneelement.BackboneElement):
         # note: Enum values can be used in validation,
         # but use in your own responsibilities, read official FHIR documentation.
         enum_values=["replaces", "transforms", "signs", "appends"],
+        # valueset binding
+        binding_description="The type of relationship between documents.",
+        binding_strength="required",
+        binding_uri="http://hl7.org/fhir/ValueSet/document-relationship-type",
+        binding_version="4.3.0",
     )
     code__ext: fhirtypes.FHIRPrimitiveExtensionType = Field(
         None, alias="_code", title="Extension field for ``code``."
@@ -582,6 +631,7 @@ class CompositionRelatesTo(backboneelement.BackboneElement):
         one_of_many_required=True,
         # note: Listed Resource Type(s) should be allowed as Reference.
         enum_reference_types=["Composition"],
+        backref="composition.relates_to_targetReference",
     )
 
     @classmethod
@@ -727,6 +777,7 @@ class CompositionSection(backboneelement.BackboneElement):
             "RelatedPerson",
             "Organization",
         ],
+        backref="composition.section_author",
     )
 
     code: fhirtypes.CodeableConceptType = Field(
@@ -735,10 +786,15 @@ class CompositionSection(backboneelement.BackboneElement):
         title="Classification of section (recommended)",
         description=(
             "A code identifying the kind of content contained within the section. "
-            "This must be consistent with the section title."
+            "This must be consistent with the section title. See "
+            "http://hl7.org/fhir/ValueSet/doc-section-codes"
         ),
         # if property is element of this resource.
         element_property=True,
+        # valueset binding
+        binding_description="Classification of a section of a composition/document.",
+        binding_strength="example",
+        binding_uri="http://hl7.org/fhir/ValueSet/doc-section-codes",
     )
 
     emptyReason: fhirtypes.CodeableConceptType = Field(
@@ -747,10 +803,15 @@ class CompositionSection(backboneelement.BackboneElement):
         title="Why the section is empty",
         description=(
             "If the section is empty, why the list is empty. An empty section "
-            "typically has some text explaining the empty reason."
+            "typically has some text explaining the empty reason. See "
+            "http://hl7.org/fhir/ValueSet/list-empty-reason"
         ),
         # if property is element of this resource.
         element_property=True,
+        # valueset binding
+        binding_description="If a section is empty, why it is empty.",
+        binding_strength="preferred",
+        binding_uri="http://hl7.org/fhir/ValueSet/list-empty-reason",
     )
 
     entry: typing.List[fhirtypes.ReferenceType] = Field(
@@ -765,6 +826,7 @@ class CompositionSection(backboneelement.BackboneElement):
         element_property=True,
         # note: Listed Resource Type(s) should be allowed as Reference.
         enum_reference_types=["Resource"],
+        backref="composition.section_entry",
     )
 
     focus: fhirtypes.ReferenceType = Field(
@@ -789,6 +851,7 @@ class CompositionSection(backboneelement.BackboneElement):
         element_property=True,
         # note: Listed Resource Type(s) should be allowed as Reference.
         enum_reference_types=["Resource"],
+        backref="composition.section_focus",
     )
 
     mode: fhirtypes.Code = Field(
@@ -800,13 +863,18 @@ class CompositionSection(backboneelement.BackboneElement):
             " suitable for being maintained on an ongoing basis, or if it "
             "represents a snapshot of a list of items from another source, or "
             "whether it is a prepared list where items may be marked as added, "
-            "modified or deleted."
+            "modified or deleted. See http://hl7.org/fhir/ValueSet/list-mode"
         ),
         # if property is element of this resource.
         element_property=True,
         # note: Enum values can be used in validation,
         # but use in your own responsibilities, read official FHIR documentation.
         enum_values=["working", "snapshot", "changes"],
+        # valueset binding
+        binding_description="The processing mode that applies to this section.",
+        binding_strength="required",
+        binding_uri="http://hl7.org/fhir/ValueSet/list-mode",
+        binding_version="4.3.0",
     )
     mode__ext: fhirtypes.FHIRPrimitiveExtensionType = Field(
         None, alias="_mode", title="Extension field for ``mode``."
@@ -816,9 +884,16 @@ class CompositionSection(backboneelement.BackboneElement):
         None,
         alias="orderedBy",
         title="Order of section entries",
-        description="Specifies the order applied to the items in the section entries.",
+        description=(
+            "Specifies the order applied to the items in the section entries. See "
+            "http://hl7.org/fhir/ValueSet/list-order"
+        ),
         # if property is element of this resource.
         element_property=True,
+        # valueset binding
+        binding_description="What order applies to the items in the entry.",
+        binding_strength="preferred",
+        binding_uri="http://hl7.org/fhir/ValueSet/list-order",
     )
 
     section: typing.List[fhirtypes.CompositionSectionType] = Field(

@@ -33,11 +33,16 @@ class SearchParameter(domainresource.DomainResource):
         title="The resource type(s) this search parameter applies to",
         description=(
             "The base resource type(s) that this search parameter can be used "
-            "against."
+            "against. See http://hl7.org/fhir/ValueSet/resource-types"
         ),
         # if property is element of this resource.
         element_property=True,
         element_required=True,
+        # valueset binding
+        binding_description="One of the resource types defined as part of this version of FHIR.",
+        binding_strength="required",
+        binding_uri="http://hl7.org/fhir/ValueSet/resource-types",
+        binding_version="4.3.0",
     )
     base__ext: typing.List[
         typing.Union[fhirtypes.FHIRPrimitiveExtensionType, None]
@@ -83,12 +88,20 @@ class SearchParameter(domainresource.DomainResource):
         None,
         alias="comparator",
         title="eq | ne | gt | lt | ge | le | sa | eb | ap",
-        description="Comparators supported for the search parameter.",
+        description=(
+            "Comparators supported for the search parameter. See "
+            "http://hl7.org/fhir/ValueSet/search-comparator"
+        ),
         # if property is element of this resource.
         element_property=True,
         # note: Enum values can be used in validation,
         # but use in your own responsibilities, read official FHIR documentation.
         enum_values=["eq", "ne", "gt", "lt", "ge", "le", "sa", "eb", "ap"],
+        # valueset binding
+        binding_description="What Search Comparator Codes are supported in search.",
+        binding_strength="required",
+        binding_uri="http://hl7.org/fhir/ValueSet/search-comparator",
+        binding_version="4.3.0",
     )
     comparator__ext: typing.List[
         typing.Union[fhirtypes.FHIRPrimitiveExtensionType, None]
@@ -147,6 +160,7 @@ class SearchParameter(domainresource.DomainResource):
         element_property=True,
         # note: Listed Resource Type(s) should be allowed as Reference.
         enum_reference_types=["SearchParameter"],
+        backref="search_parameter_derivedFrom",
     )
     derivedFrom__ext: fhirtypes.FHIRPrimitiveExtensionType = Field(
         None, alias="_derivedFrom", title="Extension field for ``derivedFrom``."
@@ -202,10 +216,14 @@ class SearchParameter(domainresource.DomainResource):
         title="Intended jurisdiction for search parameter (if applicable)",
         description=(
             "A legal or geographic region in which the search parameter is intended"
-            " to be used."
+            " to be used. See http://hl7.org/fhir/ValueSet/jurisdiction"
         ),
         # if property is element of this resource.
         element_property=True,
+        # valueset binding
+        binding_description="Countries and regions within which this artifact is targeted for use.",
+        binding_strength="extensible",
+        binding_uri="http://hl7.org/fhir/ValueSet/jurisdiction",
     )
 
     modifier: typing.List[typing.Optional[fhirtypes.Code]] = Field(
@@ -215,7 +233,10 @@ class SearchParameter(domainresource.DomainResource):
             "missing | exact | contains | not | text | in | not-in | below | above "
             "| type | identifier | ofType"
         ),
-        description="A modifier supported for the search parameter.",
+        description=(
+            "A modifier supported for the search parameter. See "
+            "http://hl7.org/fhir/ValueSet/search-modifier-code"
+        ),
         # if property is element of this resource.
         element_property=True,
         # note: Enum values can be used in validation,
@@ -234,6 +255,11 @@ class SearchParameter(domainresource.DomainResource):
             "identifier",
             "ofType",
         ],
+        # valueset binding
+        binding_description="A supported modifier for a search parameter.",
+        binding_strength="required",
+        binding_uri="http://hl7.org/fhir/ValueSet/search-modifier-code",
+        binding_version="4.3.0",
     )
     modifier__ext: typing.List[
         typing.Union[fhirtypes.FHIRPrimitiveExtensionType, None]
@@ -323,7 +349,7 @@ class SearchParameter(domainresource.DomainResource):
         title="draft | active | retired | unknown",
         description=(
             "The status of this search parameter. Enables tracking the life-cycle "
-            "of the content."
+            "of the content. See http://hl7.org/fhir/ValueSet/publication-status"
         ),
         # if property is element of this resource.
         element_property=True,
@@ -331,6 +357,11 @@ class SearchParameter(domainresource.DomainResource):
         # note: Enum values can be used in validation,
         # but use in your own responsibilities, read official FHIR documentation.
         enum_values=["draft", "active", "retired", "unknown"],
+        # valueset binding
+        binding_description="The lifecycle status of an artifact.",
+        binding_strength="required",
+        binding_uri="http://hl7.org/fhir/ValueSet/publication-status",
+        binding_version="4.3.0",
     )
     status__ext: fhirtypes.FHIRPrimitiveExtensionType = Field(
         None, alias="_status", title="Extension field for ``status``."
@@ -340,9 +371,17 @@ class SearchParameter(domainresource.DomainResource):
         None,
         alias="target",
         title="Types of resource (if a resource reference)",
-        description="Types of resource (if a resource is referenced).",
+        description=(
+            "Types of resource (if a resource is referenced). See "
+            "http://hl7.org/fhir/ValueSet/resource-types"
+        ),
         # if property is element of this resource.
         element_property=True,
+        # valueset binding
+        binding_description="One of the resource types defined as part of this version of FHIR.",
+        binding_strength="required",
+        binding_uri="http://hl7.org/fhir/ValueSet/resource-types",
+        binding_version="4.3.0",
     )
     target__ext: typing.List[
         typing.Union[fhirtypes.FHIRPrimitiveExtensionType, None]
@@ -357,7 +396,8 @@ class SearchParameter(domainresource.DomainResource):
         ),
         description=(
             "The type of value that a search parameter may contain, and how the "
-            "content is interpreted."
+            "content is interpreted. See http://hl7.org/fhir/ValueSet/search-param-"
+            "type"
         ),
         # if property is element of this resource.
         element_property=True,
@@ -375,6 +415,11 @@ class SearchParameter(domainresource.DomainResource):
             "uri",
             "special",
         ],
+        # valueset binding
+        binding_description="Data types allowed to be used for search parameters.",
+        binding_strength="required",
+        binding_uri="http://hl7.org/fhir/ValueSet/search-param-type",
+        binding_version="4.3.0",
     )
     type__ext: fhirtypes.FHIRPrimitiveExtensionType = Field(
         None, alias="_type", title="Extension field for ``type``."
@@ -460,13 +505,19 @@ class SearchParameter(domainresource.DomainResource):
         title="normal | phonetic | nearby | distance | other",
         description=(
             "How the search parameter relates to the set of elements returned by "
-            "evaluating the xpath query."
+            "evaluating the xpath query. See http://hl7.org/fhir/ValueSet/search-"
+            "xpath-usage"
         ),
         # if property is element of this resource.
         element_property=True,
         # note: Enum values can be used in validation,
         # but use in your own responsibilities, read official FHIR documentation.
         enum_values=["normal", "phonetic", "nearby", "distance", "other"],
+        # valueset binding
+        binding_description="How a search parameter relates to the set of elements returned by evaluating its xpath query.",
+        binding_strength="required",
+        binding_uri="http://hl7.org/fhir/ValueSet/search-xpath-usage",
+        binding_version="4.3.0",
     )
     xpathUsage__ext: fhirtypes.FHIRPrimitiveExtensionType = Field(
         None, alias="_xpathUsage", title="Extension field for ``xpathUsage``."
@@ -604,6 +655,7 @@ class SearchParameterComponent(backboneelement.BackboneElement):
         element_required=True,
         # note: Listed Resource Type(s) should be allowed as Reference.
         enum_reference_types=["SearchParameter"],
+        backref="search_parameter.component_definition",
     )
     definition__ext: fhirtypes.FHIRPrimitiveExtensionType = Field(
         None, alias="_definition", title="Extension field for ``definition``."

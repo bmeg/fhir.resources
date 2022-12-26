@@ -217,10 +217,14 @@ class ResearchElementDefinition(domainresource.DomainResource):
         title="Intended jurisdiction for research element definition (if applicable)",
         description=(
             "A legal or geographic region in which the research element definition "
-            "is intended to be used."
+            "is intended to be used. See http://hl7.org/fhir/ValueSet/jurisdiction"
         ),
         # if property is element of this resource.
         element_property=True,
+        # valueset binding
+        binding_description="Countries and regions within which this artifact is targeted for use.",
+        binding_strength="extensible",
+        binding_uri="http://hl7.org/fhir/ValueSet/jurisdiction",
     )
 
     lastReviewDate: fhirtypes.Date = Field(
@@ -251,6 +255,7 @@ class ResearchElementDefinition(domainresource.DomainResource):
         element_property=True,
         # note: Listed Resource Type(s) should be allowed as Reference.
         enum_reference_types=["Library"],
+        backref="research_element_definition_library",
     )
     library__ext: typing.List[
         typing.Union[fhirtypes.FHIRPrimitiveExtensionType, None]
@@ -347,7 +352,8 @@ class ResearchElementDefinition(domainresource.DomainResource):
         title="draft | active | retired | unknown",
         description=(
             "The status of this research element definition. Enables tracking the "
-            "life-cycle of the content."
+            "life-cycle of the content. See "
+            "http://hl7.org/fhir/ValueSet/publication-status"
         ),
         # if property is element of this resource.
         element_property=True,
@@ -355,6 +361,11 @@ class ResearchElementDefinition(domainresource.DomainResource):
         # note: Enum values can be used in validation,
         # but use in your own responsibilities, read official FHIR documentation.
         enum_values=["draft", "active", "retired", "unknown"],
+        # valueset binding
+        binding_description="The lifecycle status of an artifact.",
+        binding_strength="required",
+        binding_uri="http://hl7.org/fhir/ValueSet/publication-status",
+        binding_version="4.3.0",
     )
     status__ext: fhirtypes.FHIRPrimitiveExtensionType = Field(
         None, alias="_status", title="Extension field for ``status``."
@@ -370,13 +381,18 @@ class ResearchElementDefinition(domainresource.DomainResource):
         description=(
             "The intended subjects for the ResearchElementDefinition. If this "
             "element is not provided, a Patient subject is assumed, but the subject"
-            " of the ResearchElementDefinition can be anything."
+            " of the ResearchElementDefinition can be anything. See "
+            "http://hl7.org/fhir/ValueSet/subject-type"
         ),
         # if property is element of this resource.
         element_property=True,
         # Choice of Data Types. i.e subject[x]
         one_of_many="subject",
         one_of_many_required=False,
+        # valueset binding
+        binding_description="The possible types of subjects for a measure (E.g. Patient, Practitioner, Organization, Location, etc.).",
+        binding_strength="extensible",
+        binding_uri="http://hl7.org/fhir/ValueSet/subject-type",
     )
 
     subjectReference: fhirtypes.ReferenceType = Field(
@@ -389,15 +405,21 @@ class ResearchElementDefinition(domainresource.DomainResource):
         description=(
             "The intended subjects for the ResearchElementDefinition. If this "
             "element is not provided, a Patient subject is assumed, but the subject"
-            " of the ResearchElementDefinition can be anything."
+            " of the ResearchElementDefinition can be anything. See "
+            "http://hl7.org/fhir/ValueSet/subject-type"
         ),
         # if property is element of this resource.
         element_property=True,
         # Choice of Data Types. i.e subject[x]
         one_of_many="subject",
         one_of_many_required=False,
+        # valueset binding
+        binding_description="The possible types of subjects for a measure (E.g. Patient, Practitioner, Organization, Location, etc.).",
+        binding_strength="extensible",
+        binding_uri="http://hl7.org/fhir/ValueSet/subject-type",
         # note: Listed Resource Type(s) should be allowed as Reference.
         enum_reference_types=["Group"],
+        backref="research_element_definition_subjectReference",
     )
 
     subtitle: fhirtypes.String = Field(
@@ -441,10 +463,15 @@ class ResearchElementDefinition(domainresource.DomainResource):
             "Descriptive topics related to the content of the "
             "ResearchElementDefinition. Topics provide a high-level categorization "
             "grouping types of ResearchElementDefinitions that can be useful for "
-            "filtering and searching."
+            "filtering and searching. See http://hl7.org/fhir/ValueSet/definition-"
+            "topic"
         ),
         # if property is element of this resource.
         element_property=True,
+        # valueset binding
+        binding_description="High-level categorization of the definition, used for searching, sorting, and filtering.",
+        binding_strength="example",
+        binding_uri="http://hl7.org/fhir/ValueSet/definition-topic",
     )
 
     type: fhirtypes.Code = Field(
@@ -452,7 +479,8 @@ class ResearchElementDefinition(domainresource.DomainResource):
         alias="type",
         title="population | exposure | outcome",
         description=(
-            "The type of research element, a population, an exposure, or an " "outcome."
+            "The type of research element, a population, an exposure, or an "
+            "outcome. See http://hl7.org/fhir/ValueSet/research-element-type"
         ),
         # if property is element of this resource.
         element_property=True,
@@ -460,6 +488,11 @@ class ResearchElementDefinition(domainresource.DomainResource):
         # note: Enum values can be used in validation,
         # but use in your own responsibilities, read official FHIR documentation.
         enum_values=["population", "exposure", "outcome"],
+        # valueset binding
+        binding_description="The possible types of research elements (E.g. Population, Exposure, Outcome).",
+        binding_strength="required",
+        binding_uri="http://hl7.org/fhir/ValueSet/research-element-type",
+        binding_version="4.3.0",
     )
     type__ext: fhirtypes.FHIRPrimitiveExtensionType = Field(
         None, alias="_type", title="Extension field for ``type``."
@@ -525,13 +558,19 @@ class ResearchElementDefinition(domainresource.DomainResource):
         alias="variableType",
         title="dichotomous | continuous | descriptive",
         description=(
-            "The type of the outcome (e.g. Dichotomous, Continuous, or " "Descriptive)."
+            "The type of the outcome (e.g. Dichotomous, Continuous, or "
+            "Descriptive). See http://hl7.org/fhir/ValueSet/variable-type"
         ),
         # if property is element of this resource.
         element_property=True,
         # note: Enum values can be used in validation,
         # but use in your own responsibilities, read official FHIR documentation.
         enum_values=["dichotomous", "continuous", "descriptive"],
+        # valueset binding
+        binding_description="The possible types of variables for exposures or outcomes (E.g. Dichotomous, Continuous, Descriptive).",
+        binding_strength="required",
+        binding_uri="http://hl7.org/fhir/ValueSet/variable-type",
+        binding_version="4.3.0",
     )
     variableType__ext: fhirtypes.FHIRPrimitiveExtensionType = Field(
         None, alias="_variableType", title="Extension field for ``variableType``."
@@ -740,6 +779,7 @@ class ResearchElementDefinitionCharacteristic(backboneelement.BackboneElement):
         one_of_many_required=True,
         # note: Listed Resource Type(s) should be allowed as Reference.
         enum_reference_types=["ValueSet"],
+        backref="research_element_definition.characteristic_definitionCanonical",
     )
     definitionCanonical__ext: fhirtypes.FHIRPrimitiveExtensionType = Field(
         None,
@@ -865,7 +905,7 @@ class ResearchElementDefinitionCharacteristic(backboneelement.BackboneElement):
         ),
         description=(
             "Indicates how elements are aggregated within the study effective "
-            "period."
+            "period. See http://hl7.org/fhir/ValueSet/group-measure"
         ),
         # if property is element of this resource.
         element_property=True,
@@ -879,6 +919,11 @@ class ResearchElementDefinitionCharacteristic(backboneelement.BackboneElement):
             "median-of-mean",
             "median-of-median",
         ],
+        # valueset binding
+        binding_description="Possible group measure aggregates (E.g. Mean, Median).",
+        binding_strength="required",
+        binding_uri="http://hl7.org/fhir/ValueSet/group-measure",
+        binding_version="4.3.0",
     )
     participantEffectiveGroupMeasure__ext: fhirtypes.FHIRPrimitiveExtensionType = Field(
         None,
@@ -971,7 +1016,7 @@ class ResearchElementDefinitionCharacteristic(backboneelement.BackboneElement):
         ),
         description=(
             "Indicates how elements are aggregated within the study effective "
-            "period."
+            "period. See http://hl7.org/fhir/ValueSet/group-measure"
         ),
         # if property is element of this resource.
         element_property=True,
@@ -985,6 +1030,11 @@ class ResearchElementDefinitionCharacteristic(backboneelement.BackboneElement):
             "median-of-mean",
             "median-of-median",
         ],
+        # valueset binding
+        binding_description="Possible group measure aggregates (E.g. Mean, Median).",
+        binding_strength="required",
+        binding_uri="http://hl7.org/fhir/ValueSet/group-measure",
+        binding_version="4.3.0",
     )
     studyEffectiveGroupMeasure__ext: fhirtypes.FHIRPrimitiveExtensionType = Field(
         None,
@@ -1029,9 +1079,17 @@ class ResearchElementDefinitionCharacteristic(backboneelement.BackboneElement):
         None,
         alias="unitOfMeasure",
         title="What unit is the outcome described in?",
-        description="Specifies the UCUM unit for the outcome.",
+        description=(
+            "Specifies the UCUM unit for the outcome. See "
+            "http://hl7.org/fhir/ValueSet/ucum-units"
+        ),
         # if property is element of this resource.
         element_property=True,
+        # valueset binding
+        binding_description="Unified Code for Units of Measure (UCUM).",
+        binding_strength="required",
+        binding_uri="http://hl7.org/fhir/ValueSet/ucum-units",
+        binding_version="4.3.0",
     )
 
     usageContext: typing.List[fhirtypes.UsageContextType] = Field(

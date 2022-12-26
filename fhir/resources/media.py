@@ -38,6 +38,7 @@ class Media(domainresource.DomainResource):
         element_property=True,
         # note: Listed Resource Type(s) should be allowed as Reference.
         enum_reference_types=["ServiceRequest", "CarePlan"],
+        backref="media_basedOn",
     )
 
     bodySite: fhirtypes.CodeableConceptType = Field(
@@ -46,10 +47,15 @@ class Media(domainresource.DomainResource):
         title="Observed body part",
         description=(
             "Indicates the site on the subject's body where the observation was "
-            "made (i.e. the target site)."
+            "made (i.e. the target site). See http://hl7.org/fhir/ValueSet/body-"
+            "site"
         ),
         # if property is element of this resource.
         element_property=True,
+        # valueset binding
+        binding_description="SNOMED CT Body site concepts",
+        binding_strength="example",
+        binding_uri="http://hl7.org/fhir/ValueSet/body-site",
     )
 
     content: fhirtypes.AttachmentType = Field(
@@ -100,6 +106,7 @@ class Media(domainresource.DomainResource):
         element_property=True,
         # note: Listed Resource Type(s) should be allowed as Reference.
         enum_reference_types=["Device", "DeviceMetric", "Device"],
+        backref="media_device",
     )
 
     deviceName: fhirtypes.String = Field(
@@ -138,6 +145,7 @@ class Media(domainresource.DomainResource):
         element_property=True,
         # note: Listed Resource Type(s) should be allowed as Reference.
         enum_reference_types=["Encounter"],
+        backref="media_encounter",
     )
 
     frames: fhirtypes.PositiveInt = Field(
@@ -206,10 +214,15 @@ class Media(domainresource.DomainResource):
         description=(
             "Details of the type of the media - usually, how it was acquired (what "
             "type of device). If images sourced from a DICOM system, are wrapped in"
-            " a Media resource, then this is the modality."
+            " a Media resource, then this is the modality. See "
+            "http://hl7.org/fhir/ValueSet/media-modality"
         ),
         # if property is element of this resource.
         element_property=True,
+        # valueset binding
+        binding_description="Detailed information about the type of the image - its kind, purpose, or the kind of equipment used to generate it.",
+        binding_strength="example",
+        binding_uri="http://hl7.org/fhir/ValueSet/media-modality",
     )
 
     note: typing.List[fhirtypes.AnnotationType] = Field(
@@ -241,6 +254,7 @@ class Media(domainresource.DomainResource):
             "Device",
             "RelatedPerson",
         ],
+        backref="media_operator",
     )
 
     partOf: typing.List[fhirtypes.ReferenceType] = Field(
@@ -252,15 +266,23 @@ class Media(domainresource.DomainResource):
         element_property=True,
         # note: Listed Resource Type(s) should be allowed as Reference.
         enum_reference_types=["Resource"],
+        backref="media_partOf",
     )
 
     reasonCode: typing.List[fhirtypes.CodeableConceptType] = Field(
         None,
         alias="reasonCode",
         title="Why was event performed?",
-        description="Describes why the event occurred in coded or textual form.",
+        description=(
+            "Describes why the event occurred in coded or textual form. See "
+            "http://hl7.org/fhir/ValueSet/procedure-reason"
+        ),
         # if property is element of this resource.
         element_property=True,
+        # valueset binding
+        binding_description="The reason for the media.",
+        binding_strength="example",
+        binding_uri="http://hl7.org/fhir/ValueSet/procedure-reason",
     )
 
     status: fhirtypes.Code = Field(
@@ -270,7 +292,10 @@ class Media(domainresource.DomainResource):
             "preparation | in-progress | not-done | on-hold | stopped | completed |"
             " entered-in-error | unknown"
         ),
-        description="The current state of the {{title}}.",
+        description=(
+            "The current state of the {{title}}. See "
+            "http://hl7.org/fhir/ValueSet/event-status"
+        ),
         # if property is element of this resource.
         element_property=True,
         element_required=True,
@@ -286,6 +311,11 @@ class Media(domainresource.DomainResource):
             "entered-in-error",
             "unknown",
         ],
+        # valueset binding
+        binding_description="Codes identifying the lifecycle stage of an event.",
+        binding_strength="required",
+        binding_uri="http://hl7.org/fhir/ValueSet/event-status",
+        binding_version="4.3.0",
     )
     status__ext: fhirtypes.FHIRPrimitiveExtensionType = Field(
         None, alias="_status", title="Extension field for ``status``."
@@ -308,6 +338,7 @@ class Media(domainresource.DomainResource):
             "Specimen",
             "Location",
         ],
+        backref="media_subject",
     )
 
     type: fhirtypes.CodeableConceptType = Field(
@@ -316,19 +347,31 @@ class Media(domainresource.DomainResource):
         title="Classification of media as image, video, or audio",
         description=(
             "A code that classifies whether the media is an image, video or audio "
-            "recording or some other media category."
+            "recording or some other media category. See "
+            "http://hl7.org/fhir/ValueSet/media-type"
         ),
         # if property is element of this resource.
         element_property=True,
+        # valueset binding
+        binding_description="Codes for high level media categories.",
+        binding_strength="extensible",
+        binding_uri="http://hl7.org/fhir/ValueSet/media-type",
     )
 
     view: fhirtypes.CodeableConceptType = Field(
         None,
         alias="view",
         title="Imaging view, e.g. Lateral or Antero-posterior",
-        description="The name of the imaging view e.g. Lateral or Antero-posterior (AP).",
+        description=(
+            "The name of the imaging view e.g. Lateral or Antero-posterior (AP). "
+            "See http://hl7.org/fhir/ValueSet/media-view"
+        ),
         # if property is element of this resource.
         element_property=True,
+        # valueset binding
+        binding_description="Imaging view (projection) used when collecting an image.",
+        binding_strength="example",
+        binding_uri="http://hl7.org/fhir/ValueSet/media-view",
     )
 
     width: fhirtypes.PositiveInt = Field(

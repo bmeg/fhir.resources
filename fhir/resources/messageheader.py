@@ -44,6 +44,7 @@ class MessageHeader(domainresource.DomainResource):
         element_property=True,
         # note: Listed Resource Type(s) should be allowed as Reference.
         enum_reference_types=["Practitioner", "PractitionerRole"],
+        backref="message_header_author",
     )
 
     definition: fhirtypes.Canonical = Field(
@@ -55,6 +56,7 @@ class MessageHeader(domainresource.DomainResource):
         element_property=True,
         # note: Listed Resource Type(s) should be allowed as Reference.
         enum_reference_types=["MessageDefinition"],
+        backref="message_header_definition",
     )
     definition__ext: fhirtypes.FHIRPrimitiveExtensionType = Field(
         None, alias="_definition", title="Extension field for ``definition``."
@@ -82,6 +84,7 @@ class MessageHeader(domainresource.DomainResource):
         element_property=True,
         # note: Listed Resource Type(s) should be allowed as Reference.
         enum_reference_types=["Practitioner", "PractitionerRole"],
+        backref="message_header_enterer",
     )
 
     eventCoding: fhirtypes.CodingType = Field(
@@ -92,13 +95,18 @@ class MessageHeader(domainresource.DomainResource):
             "Code that identifies the event this message represents and connects it"
             " with its definition. Events defined as part of the FHIR specification"
             ' have the system value "http://terminology.hl7.org/CodeSystem/message-'
-            'events".  Alternatively uri to the EventDefinition.'
+            'events".  Alternatively uri to the EventDefinition. See '
+            "http://hl7.org/fhir/ValueSet/message-events"
         ),
         # if property is element of this resource.
         element_property=True,
         # Choice of Data Types. i.e event[x]
         one_of_many="event",
         one_of_many_required=True,
+        # valueset binding
+        binding_description="One of the message events defined as part of this version of FHIR.",
+        binding_strength="example",
+        binding_uri="http://hl7.org/fhir/ValueSet/message-events",
     )
 
     eventUri: fhirtypes.Uri = Field(
@@ -109,13 +117,18 @@ class MessageHeader(domainresource.DomainResource):
             "Code that identifies the event this message represents and connects it"
             " with its definition. Events defined as part of the FHIR specification"
             ' have the system value "http://terminology.hl7.org/CodeSystem/message-'
-            'events".  Alternatively uri to the EventDefinition.'
+            'events".  Alternatively uri to the EventDefinition. See '
+            "http://hl7.org/fhir/ValueSet/message-events"
         ),
         # if property is element of this resource.
         element_property=True,
         # Choice of Data Types. i.e event[x]
         one_of_many="event",
         one_of_many_required=True,
+        # valueset binding
+        binding_description="One of the message events defined as part of this version of FHIR.",
+        binding_strength="example",
+        binding_uri="http://hl7.org/fhir/ValueSet/message-events",
     )
     eventUri__ext: fhirtypes.FHIRPrimitiveExtensionType = Field(
         None, alias="_eventUri", title="Extension field for ``eventUri``."
@@ -133,6 +146,7 @@ class MessageHeader(domainresource.DomainResource):
         element_property=True,
         # note: Listed Resource Type(s) should be allowed as Reference.
         enum_reference_types=["Resource"],
+        backref="message_header_focus",
     )
 
     reason: fhirtypes.CodeableConceptType = Field(
@@ -141,10 +155,15 @@ class MessageHeader(domainresource.DomainResource):
         title="Cause of event",
         description=(
             "Coded indication of the cause for the event - indicates  a reason for "
-            "the occurrence of the event that is a focus of this message."
+            "the occurrence of the event that is a focus of this message. See "
+            "http://hl7.org/fhir/ValueSet/message-reason-encounter"
         ),
         # if property is element of this resource.
         element_property=True,
+        # valueset binding
+        binding_description="Reason for event occurrence.",
+        binding_strength="example",
+        binding_uri="http://hl7.org/fhir/ValueSet/message-reason-encounter",
     )
 
     response: fhirtypes.MessageHeaderResponseType = Field(
@@ -172,6 +191,7 @@ class MessageHeader(domainresource.DomainResource):
         element_property=True,
         # note: Listed Resource Type(s) should be allowed as Reference.
         enum_reference_types=["Practitioner", "PractitionerRole", "Organization"],
+        backref="message_header_responsible",
     )
 
     sender: fhirtypes.ReferenceType = Field(
@@ -185,6 +205,7 @@ class MessageHeader(domainresource.DomainResource):
         element_property=True,
         # note: Listed Resource Type(s) should be allowed as Reference.
         enum_reference_types=["Practitioner", "PractitionerRole", "Organization"],
+        backref="message_header_sender",
     )
 
     source: fhirtypes.MessageHeaderSourceType = Field(
@@ -313,6 +334,7 @@ class MessageHeaderDestination(backboneelement.BackboneElement):
         element_property=True,
         # note: Listed Resource Type(s) should be allowed as Reference.
         enum_reference_types=["Practitioner", "PractitionerRole", "Organization"],
+        backref="message_header.destination_receiver",
     )
 
     target: fhirtypes.ReferenceType = Field(
@@ -327,6 +349,7 @@ class MessageHeaderDestination(backboneelement.BackboneElement):
         element_property=True,
         # note: Listed Resource Type(s) should be allowed as Reference.
         enum_reference_types=["Device"],
+        backref="message_header.destination_target",
     )
 
     @classmethod
@@ -423,7 +446,8 @@ class MessageHeaderResponse(backboneelement.BackboneElement):
         title="ok | transient-error | fatal-error",
         description=(
             "Code that identifies the type of response to the message - whether it "
-            "was successful or not, and whether it should be resent or not."
+            "was successful or not, and whether it should be resent or not. See "
+            "http://hl7.org/fhir/ValueSet/response-code"
         ),
         # if property is element of this resource.
         element_property=True,
@@ -431,6 +455,11 @@ class MessageHeaderResponse(backboneelement.BackboneElement):
         # note: Enum values can be used in validation,
         # but use in your own responsibilities, read official FHIR documentation.
         enum_values=["ok", "transient-error", "fatal-error"],
+        # valueset binding
+        binding_description="The kind of response to a message.",
+        binding_strength="required",
+        binding_uri="http://hl7.org/fhir/ValueSet/response-code",
+        binding_version="4.3.0",
     )
     code__ext: fhirtypes.FHIRPrimitiveExtensionType = Field(
         None, alias="_code", title="Extension field for ``code``."
@@ -445,6 +474,7 @@ class MessageHeaderResponse(backboneelement.BackboneElement):
         element_property=True,
         # note: Listed Resource Type(s) should be allowed as Reference.
         enum_reference_types=["OperationOutcome"],
+        backref="message_header.response_details",
     )
 
     identifier: fhirtypes.Id = Field(

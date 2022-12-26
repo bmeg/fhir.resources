@@ -149,10 +149,14 @@ class TestScript(domainresource.DomainResource):
         title="Intended jurisdiction for test script (if applicable)",
         description=(
             "A legal or geographic region in which the test script is intended to "
-            "be used."
+            "be used. See http://hl7.org/fhir/ValueSet/jurisdiction"
         ),
         # if property is element of this resource.
         element_property=True,
+        # valueset binding
+        binding_description="Countries and regions within which this artifact is targeted for use.",
+        binding_strength="extensible",
+        binding_uri="http://hl7.org/fhir/ValueSet/jurisdiction",
     )
 
     metadata: fhirtypes.TestScriptMetadataType = Field(
@@ -211,6 +215,7 @@ class TestScript(domainresource.DomainResource):
         element_property=True,
         # note: Listed Resource Type(s) should be allowed as Reference.
         enum_reference_types=["Resource"],
+        backref="test_script_profile",
     )
 
     publisher: fhirtypes.String = Field(
@@ -258,7 +263,7 @@ class TestScript(domainresource.DomainResource):
         title="draft | active | retired | unknown",
         description=(
             "The status of this test script. Enables tracking the life-cycle of the"
-            " content."
+            " content. See http://hl7.org/fhir/ValueSet/publication-status"
         ),
         # if property is element of this resource.
         element_property=True,
@@ -266,6 +271,11 @@ class TestScript(domainresource.DomainResource):
         # note: Enum values can be used in validation,
         # but use in your own responsibilities, read official FHIR documentation.
         enum_values=["draft", "active", "retired", "unknown"],
+        # valueset binding
+        binding_description="The lifecycle status of an artifact.",
+        binding_strength="required",
+        binding_uri="http://hl7.org/fhir/ValueSet/publication-status",
+        binding_version="4.3.0",
     )
     status__ext: fhirtypes.FHIRPrimitiveExtensionType = Field(
         None, alias="_status", title="Extension field for ``status``."
@@ -516,9 +526,16 @@ class TestScriptDestination(backboneelement.BackboneElement):
             "FHIR-Server | FHIR-SDC-FormManager | FHIR-SDC-FormReceiver | FHIR-SDC-"
             "FormProcessor"
         ),
-        description="The type of destination profile the test system supports.",
+        description=(
+            "The type of destination profile the test system supports. See "
+            "http://hl7.org/fhir/ValueSet/testscript-profile-destination-types"
+        ),
         # if property is element of this resource.
         element_property=True,
+        # valueset binding
+        binding_description="The type of destination profile the test system supports.",
+        binding_strength="extensible",
+        binding_uri="http://hl7.org/fhir/ValueSet/testscript-profile-destination-types",
     )
 
     @classmethod
@@ -649,6 +666,7 @@ class TestScriptFixture(backboneelement.BackboneElement):
         element_property=True,
         # note: Listed Resource Type(s) should be allowed as Reference.
         enum_reference_types=["Resource"],
+        backref="test_script.fixture_resource",
     )
 
     @classmethod
@@ -802,6 +820,7 @@ class TestScriptMetadataCapability(backboneelement.BackboneElement):
         element_required=True,
         # note: Listed Resource Type(s) should be allowed as Reference.
         enum_reference_types=["CapabilityStatement"],
+        backref="test_script.metadata.capability_capabilities",
     )
     capabilities__ext: fhirtypes.FHIRPrimitiveExtensionType = Field(
         None, alias="_capabilities", title="Extension field for ``capabilities``."
@@ -1115,9 +1134,16 @@ class TestScriptOrigin(backboneelement.BackboneElement):
         ...,
         alias="profile",
         title="FHIR-Client | FHIR-SDC-FormFiller",
-        description="The type of origin profile the test system supports.",
+        description=(
+            "The type of origin profile the test system supports. See "
+            "http://hl7.org/fhir/ValueSet/testscript-profile-origin-types"
+        ),
         # if property is element of this resource.
         element_property=True,
+        # valueset binding
+        binding_description="The type of origin profile the test system supports.",
+        binding_strength="extensible",
+        binding_uri="http://hl7.org/fhir/ValueSet/testscript-profile-origin-types",
     )
 
     @classmethod
@@ -1328,10 +1354,16 @@ class TestScriptSetupActionAssert(backboneelement.BackboneElement):
         title="Mime type to compare against the 'Content-Type' header",
         description=(
             "The mime-type contents to compare against the request or response "
-            "message 'Content-Type' header."
+            "message 'Content-Type' header. See "
+            "http://hl7.org/fhir/ValueSet/mimetypes"
         ),
         # if property is element of this resource.
         element_property=True,
+        # valueset binding
+        binding_description="BCP 13 (RFCs 2045, 2046, 2047, 4288, 4289 and 2049)",
+        binding_strength="required",
+        binding_uri="http://hl7.org/fhir/ValueSet/mimetypes",
+        binding_version="4.3.0",
     )
     contentType__ext: fhirtypes.FHIRPrimitiveExtensionType = Field(
         None, alias="_contentType", title="Extension field for ``contentType``."
@@ -1356,12 +1388,20 @@ class TestScriptSetupActionAssert(backboneelement.BackboneElement):
         None,
         alias="direction",
         title="response | request",
-        description="The direction to use for the assertion.",
+        description=(
+            "The direction to use for the assertion. See "
+            "http://hl7.org/fhir/ValueSet/assert-direction-codes"
+        ),
         # if property is element of this resource.
         element_property=True,
         # note: Enum values can be used in validation,
         # but use in your own responsibilities, read official FHIR documentation.
         enum_values=["response", "request"],
+        # valueset binding
+        binding_description="The direction to use for assertions.",
+        binding_strength="required",
+        binding_uri="http://hl7.org/fhir/ValueSet/assert-direction-codes",
+        binding_version="4.3.0",
     )
     direction__ext: fhirtypes.FHIRPrimitiveExtensionType = Field(
         None, alias="_direction", title="Extension field for ``direction``."
@@ -1445,7 +1485,8 @@ class TestScriptSetupActionAssert(backboneelement.BackboneElement):
         ),
         description=(
             "The operator type defines the conditional behavior of the assert. If "
-            "not defined, the default is equals."
+            "not defined, the default is equals. See "
+            "http://hl7.org/fhir/ValueSet/assert-operator-codes"
         ),
         # if property is element of this resource.
         element_property=True,
@@ -1464,6 +1505,11 @@ class TestScriptSetupActionAssert(backboneelement.BackboneElement):
             "notContains",
             "eval",
         ],
+        # valueset binding
+        binding_description="The type of operator to use for assertions.",
+        binding_strength="required",
+        binding_uri="http://hl7.org/fhir/ValueSet/assert-operator-codes",
+        binding_version="4.3.0",
     )
     operator__ext: fhirtypes.FHIRPrimitiveExtensionType = Field(
         None, alias="_operator", title="Extension field for ``operator``."
@@ -1490,13 +1536,19 @@ class TestScriptSetupActionAssert(backboneelement.BackboneElement):
         title="delete | get | options | patch | post | put | head",
         description=(
             "The request method or HTTP operation code to compare against that used"
-            " by the client system under test."
+            " by the client system under test. See "
+            "http://hl7.org/fhir/ValueSet/http-operations"
         ),
         # if property is element of this resource.
         element_property=True,
         # note: Enum values can be used in validation,
         # but use in your own responsibilities, read official FHIR documentation.
         enum_values=["delete", "get", "options", "patch", "post", "put", "head"],
+        # valueset binding
+        binding_description="The allowable request method or HTTP operation codes.",
+        binding_strength="required",
+        binding_uri="http://hl7.org/fhir/ValueSet/http-operations",
+        binding_version="4.3.0",
     )
     requestMethod__ext: fhirtypes.FHIRPrimitiveExtensionType = Field(
         None, alias="_requestMethod", title="Extension field for ``requestMethod``."
@@ -1519,10 +1571,17 @@ class TestScriptSetupActionAssert(backboneelement.BackboneElement):
         alias="resource",
         title="Resource type",
         description=(
-            "The type of the resource.  See " "http://build.fhir.org/resourcelist.html."
+            "The type of the resource.  See "
+            "http://build.fhir.org/resourcelist.html. See "
+            "http://hl7.org/fhir/ValueSet/defined-types"
         ),
         # if property is element of this resource.
         element_property=True,
+        # valueset binding
+        binding_description="A list of all the concrete types defined in this version of the FHIR specification - Data Types and Resource Types.",
+        binding_strength="required",
+        binding_uri="http://hl7.org/fhir/ValueSet/defined-types",
+        binding_version="4.3.0",
     )
     resource__ext: fhirtypes.FHIRPrimitiveExtensionType = Field(
         None, alias="_resource", title="Extension field for ``resource``."
@@ -1536,7 +1595,7 @@ class TestScriptSetupActionAssert(backboneelement.BackboneElement):
             "| methodNotAllowed | conflict | gone | preconditionFailed | "
             "unprocessable"
         ),
-        description=None,
+        description="See http://hl7.org/fhir/ValueSet/assert-response-code-types",
         # if property is element of this resource.
         element_property=True,
         # note: Enum values can be used in validation,
@@ -1555,6 +1614,11 @@ class TestScriptSetupActionAssert(backboneelement.BackboneElement):
             "preconditionFailed",
             "unprocessable",
         ],
+        # valueset binding
+        binding_description="The response code to expect in the response.",
+        binding_strength="required",
+        binding_uri="http://hl7.org/fhir/ValueSet/assert-response-code-types",
+        binding_version="4.3.0",
     )
     response__ext: fhirtypes.FHIRPrimitiveExtensionType = Field(
         None, alias="_response", title="Extension field for ``response``."
@@ -1738,9 +1802,17 @@ class TestScriptSetupActionOperation(backboneelement.BackboneElement):
         None,
         alias="accept",
         title="Mime type to accept in the payload of the response, with charset etc.",
-        description="The mime-type to use for RESTful operation in the 'Accept' header.",
+        description=(
+            "The mime-type to use for RESTful operation in the 'Accept' header. See"
+            " http://hl7.org/fhir/ValueSet/mimetypes"
+        ),
         # if property is element of this resource.
         element_property=True,
+        # valueset binding
+        binding_description="BCP 13 (RFCs 2045, 2046, 2047, 4288, 4289 and 2049)",
+        binding_strength="required",
+        binding_uri="http://hl7.org/fhir/ValueSet/mimetypes",
+        binding_version="4.3.0",
     )
     accept__ext: fhirtypes.FHIRPrimitiveExtensionType = Field(
         None, alias="_accept", title="Extension field for ``accept``."
@@ -1752,10 +1824,15 @@ class TestScriptSetupActionOperation(backboneelement.BackboneElement):
         title="Mime type of the request payload contents, with charset etc.",
         description=(
             "The mime-type to use for RESTful operation in the 'Content-Type' "
-            "header."
+            "header. See http://hl7.org/fhir/ValueSet/mimetypes"
         ),
         # if property is element of this resource.
         element_property=True,
+        # valueset binding
+        binding_description="BCP 13 (RFCs 2045, 2046, 2047, 4288, 4289 and 2049)",
+        binding_strength="required",
+        binding_uri="http://hl7.org/fhir/ValueSet/mimetypes",
+        binding_version="4.3.0",
     )
     contentType__ext: fhirtypes.FHIRPrimitiveExtensionType = Field(
         None, alias="_contentType", title="Extension field for ``contentType``."
@@ -1829,13 +1906,19 @@ class TestScriptSetupActionOperation(backboneelement.BackboneElement):
         title="delete | get | options | patch | post | put | head",
         description=(
             "The HTTP method the test engine MUST use for this operation regardless"
-            " of any other operation details."
+            " of any other operation details. See "
+            "http://hl7.org/fhir/ValueSet/http-operations"
         ),
         # if property is element of this resource.
         element_property=True,
         # note: Enum values can be used in validation,
         # but use in your own responsibilities, read official FHIR documentation.
         enum_values=["delete", "get", "options", "patch", "post", "put", "head"],
+        # valueset binding
+        binding_description="The allowable request method or HTTP operation codes.",
+        binding_strength="required",
+        binding_uri="http://hl7.org/fhir/ValueSet/http-operations",
+        binding_version="4.3.0",
     )
     method__ext: fhirtypes.FHIRPrimitiveExtensionType = Field(
         None, alias="_method", title="Extension field for ``method``."
@@ -1899,10 +1982,17 @@ class TestScriptSetupActionOperation(backboneelement.BackboneElement):
         alias="resource",
         title="Resource type",
         description=(
-            "The type of the resource.  See " "http://build.fhir.org/resourcelist.html."
+            "The type of the resource.  See "
+            "http://build.fhir.org/resourcelist.html. See "
+            "http://hl7.org/fhir/ValueSet/defined-types"
         ),
         # if property is element of this resource.
         element_property=True,
+        # valueset binding
+        binding_description="A list of all the concrete types defined in this version of the FHIR specification - Data Types and Resource Types.",
+        binding_strength="required",
+        binding_uri="http://hl7.org/fhir/ValueSet/defined-types",
+        binding_version="4.3.0",
     )
     resource__ext: fhirtypes.FHIRPrimitiveExtensionType = Field(
         None, alias="_resource", title="Extension field for ``resource``."
@@ -1951,9 +2041,16 @@ class TestScriptSetupActionOperation(backboneelement.BackboneElement):
         None,
         alias="type",
         title="The operation code type that will be executed",
-        description="Server interaction or operation type.",
+        description=(
+            "Server interaction or operation type. See "
+            "http://hl7.org/fhir/ValueSet/testscript-operation-codes"
+        ),
         # if property is element of this resource.
         element_property=True,
+        # valueset binding
+        binding_description="FHIR Operation Code Types",
+        binding_strength="extensible",
+        binding_uri="http://hl7.org/fhir/ValueSet/testscript-operation-codes",
     )
 
     url: fhirtypes.String = Field(

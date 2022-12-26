@@ -55,9 +55,16 @@ class Resource(fhirresourcemodel.FHIRResourceModel):
         None,
         alias="language",
         title="Language of the resource content",
-        description="The base language in which the resource is written.",
+        description=(
+            "The base language in which the resource is written. See "
+            "http://hl7.org/fhir/ValueSet/languages"
+        ),
         # if property is element of this resource.
         element_property=True,
+        # valueset binding
+        binding_description="IETF language tag",
+        binding_strength="preferred",
+        binding_uri="http://hl7.org/fhir/ValueSet/languages",
     )
     language__ext: fhirtypes.FHIRPrimitiveExtensionType = Field(
         None, alias="_language", title="Extension field for ``language``."

@@ -59,6 +59,7 @@ class Schedule(domainresource.DomainResource):
             "HealthcareService",
             "Location",
         ],
+        backref="schedule_actor",
     )
 
     comment: fhirtypes.String = Field(
@@ -106,19 +107,28 @@ class Schedule(domainresource.DomainResource):
         title="High-level category",
         description=(
             "A broad categorization of the service that is to be performed during "
-            "this appointment."
+            "this appointment. See http://hl7.org/fhir/ValueSet/service-category"
         ),
         # if property is element of this resource.
         element_property=True,
+        # valueset binding
+        binding_strength="example",
+        binding_uri="http://hl7.org/fhir/ValueSet/service-category",
     )
 
     serviceType: typing.List[fhirtypes.CodeableConceptType] = Field(
         None,
         alias="serviceType",
         title="Specific service",
-        description="The specific service that is to be performed during this appointment.",
+        description=(
+            "The specific service that is to be performed during this appointment. "
+            "See http://hl7.org/fhir/ValueSet/service-type"
+        ),
         # if property is element of this resource.
         element_property=True,
+        # valueset binding
+        binding_strength="example",
+        binding_uri="http://hl7.org/fhir/ValueSet/service-type",
     )
 
     specialty: typing.List[fhirtypes.CodeableConceptType] = Field(
@@ -127,10 +137,15 @@ class Schedule(domainresource.DomainResource):
         title="Type of specialty needed",
         description=(
             "The specialty of a practitioner that would be required to perform the "
-            "service requested in this appointment."
+            "service requested in this appointment. See "
+            "http://hl7.org/fhir/ValueSet/c80-practice-codes"
         ),
         # if property is element of this resource.
         element_property=True,
+        # valueset binding
+        binding_description="Additional details about where the content was created (e.g. clinical specialty).",
+        binding_strength="preferred",
+        binding_uri="http://hl7.org/fhir/ValueSet/c80-practice-codes",
     )
 
     @classmethod

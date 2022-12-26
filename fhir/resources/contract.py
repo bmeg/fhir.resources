@@ -69,6 +69,7 @@ class Contract(domainresource.DomainResource):
             "PractitionerRole",
             "Organization",
         ],
+        backref="contract_author",
     )
 
     authority: typing.List[fhirtypes.ReferenceType] = Field(
@@ -85,6 +86,7 @@ class Contract(domainresource.DomainResource):
         element_property=True,
         # note: Listed Resource Type(s) should be allowed as Reference.
         enum_reference_types=["Organization"],
+        backref="contract_authority",
     )
 
     contentDefinition: fhirtypes.ContractContentDefinitionType = Field(
@@ -106,10 +108,15 @@ class Contract(domainresource.DomainResource):
         title="Content derived from the basal information",
         description=(
             "The minimal content derived from the basal information source at a "
-            "specific stage in its lifecycle."
+            "specific stage in its lifecycle. See "
+            "http://hl7.org/fhir/ValueSet/contract-content-derivative"
         ),
         # if property is element of this resource.
         element_property=True,
+        # valueset binding
+        binding_description="This is an example set of Content Derivative type codes, which represent the minimal content derived from the basal information source.",
+        binding_strength="example",
+        binding_uri="http://hl7.org/fhir/ValueSet/contract-content-derivative",
     )
 
     domain: typing.List[fhirtypes.ReferenceType] = Field(
@@ -129,6 +136,7 @@ class Contract(domainresource.DomainResource):
         element_property=True,
         # note: Listed Resource Type(s) should be allowed as Reference.
         enum_reference_types=["Location"],
+        backref="contract_domain",
     )
 
     expirationType: fhirtypes.CodeableConceptType = Field(
@@ -137,10 +145,15 @@ class Contract(domainresource.DomainResource):
         title="Contract cessation cause",
         description=(
             "Event resulting in discontinuation or termination of this Contract "
-            "instance by one or more parties to the contract."
+            "instance by one or more parties to the contract. See "
+            "http://hl7.org/fhir/ValueSet/contract-expiration-type"
         ),
         # if property is element of this resource.
         element_property=True,
+        # valueset binding
+        binding_description="Codes for the Cessation of Contracts.",
+        binding_strength="example",
+        binding_uri="http://hl7.org/fhir/ValueSet/contract-expiration-type",
     )
 
     friendly: typing.List[fhirtypes.ContractFriendlyType] = Field(
@@ -184,6 +197,7 @@ class Contract(domainresource.DomainResource):
         element_property=True,
         # note: Listed Resource Type(s) should be allowed as Reference.
         enum_reference_types=["Contract"],
+        backref="contract_instantiatesCanonical",
     )
 
     instantiatesUri: fhirtypes.Uri = Field(
@@ -231,10 +245,15 @@ class Contract(domainresource.DomainResource):
             "formally executed written document that can be formally attributed to "
             "its author, records and formally expresses a legally enforceable act, "
             "process, or contractual duty, obligation, or right, and therefore "
-            "evidences that act, process, or agreement."
+            "evidences that act, process, or agreement. See "
+            "http://hl7.org/fhir/ValueSet/contract-legalstate"
         ),
         # if property is element of this resource.
         element_property=True,
+        # valueset binding
+        binding_description="Detailed codes for the legal state of a contract.",
+        binding_strength="extensible",
+        binding_uri="http://hl7.org/fhir/ValueSet/contract-legalstate",
     )
 
     legallyBindingAttachment: fhirtypes.AttachmentType = Field(
@@ -276,6 +295,7 @@ class Contract(domainresource.DomainResource):
             "QuestionnaireResponse",
             "Contract",
         ],
+        backref="contract_legallyBindingReference",
     )
 
     name: fhirtypes.String = Field(
@@ -312,6 +332,7 @@ class Contract(domainresource.DomainResource):
         element_property=True,
         # note: Listed Resource Type(s) should be allowed as Reference.
         enum_reference_types=["Provenance"],
+        backref="contract_relevantHistory",
     )
 
     rule: typing.List[fhirtypes.ContractRuleType] = Field(
@@ -332,10 +353,15 @@ class Contract(domainresource.DomainResource):
         title="Range of Legal Concerns",
         description=(
             "A selector of legal concerns for this Contract definition, derivative,"
-            " or instance in any legal state."
+            " or instance in any legal state. See "
+            "http://hl7.org/fhir/ValueSet/contract-scope"
         ),
         # if property is element of this resource.
         element_property=True,
+        # valueset binding
+        binding_description="Codes for the range of legal concerns.",
+        binding_strength="example",
+        binding_uri="http://hl7.org/fhir/ValueSet/contract-scope",
     )
 
     signer: typing.List[fhirtypes.ContractSignerType] = Field(
@@ -361,6 +387,7 @@ class Contract(domainresource.DomainResource):
         element_property=True,
         # note: Listed Resource Type(s) should be allowed as Reference.
         enum_reference_types=["Location"],
+        backref="contract_site",
     )
 
     status: fhirtypes.Code = Field(
@@ -371,7 +398,10 @@ class Contract(domainresource.DomainResource):
             "executable | executed | negotiable | offered | policy | rejected | "
             "renewed | revoked | resolved | terminated"
         ),
-        description="The status of the resource instance.",
+        description=(
+            "The status of the resource instance. See "
+            "http://hl7.org/fhir/ValueSet/contract-status"
+        ),
         # if property is element of this resource.
         element_property=True,
         # note: Enum values can be used in validation,
@@ -393,6 +423,11 @@ class Contract(domainresource.DomainResource):
             "resolved",
             "terminated",
         ],
+        # valueset binding
+        binding_description="A code specifying the state of the resource instance.",
+        binding_strength="required",
+        binding_uri="http://hl7.org/fhir/ValueSet/contract-status",
+        binding_version="4.3.0",
     )
     status__ext: fhirtypes.FHIRPrimitiveExtensionType = Field(
         None, alias="_status", title="Extension field for ``status``."
@@ -405,10 +440,14 @@ class Contract(domainresource.DomainResource):
         description=(
             "Sub-category for the Contract that distinguishes the kinds of systems "
             "that would be interested in the Contract within the context of the "
-            "Contract's scope."
+            "Contract's scope. See http://hl7.org/fhir/ValueSet/contract-subtype"
         ),
         # if property is element of this resource.
         element_property=True,
+        # valueset binding
+        binding_description="Detailed codes within the above.",
+        binding_strength="example",
+        binding_uri="http://hl7.org/fhir/ValueSet/contract-subtype",
     )
 
     subject: typing.List[fhirtypes.ReferenceType] = Field(
@@ -423,6 +462,7 @@ class Contract(domainresource.DomainResource):
         element_property=True,
         # note: Listed Resource Type(s) should be allowed as Reference.
         enum_reference_types=["Resource"],
+        backref="contract_subject",
     )
 
     subtitle: fhirtypes.String = Field(
@@ -453,6 +493,7 @@ class Contract(domainresource.DomainResource):
         element_property=True,
         # note: Listed Resource Type(s) should be allowed as Reference.
         enum_reference_types=["Resource"],
+        backref="contract_supportingInfo",
     )
 
     term: typing.List[fhirtypes.ContractTermType] = Field(
@@ -513,6 +554,7 @@ class Contract(domainresource.DomainResource):
         one_of_many_required=False,
         # note: Listed Resource Type(s) should be allowed as Reference.
         enum_reference_types=["Resource"],
+        backref="contract_topicReference",
     )
 
     type: fhirtypes.CodeableConceptType = Field(
@@ -524,10 +566,15 @@ class Contract(domainresource.DomainResource):
             " a Contract definition, derivative, or instance in any legal state.  "
             "Provides additional information about its content within the context "
             "of the Contract's scope to distinguish the kinds of systems that would"
-            " be interested in the contract."
+            " be interested in the contract. See "
+            "http://hl7.org/fhir/ValueSet/contract-type"
         ),
         # if property is element of this resource.
         element_property=True,
+        # valueset binding
+        binding_description="List of overall contract codes.",
+        binding_strength="example",
+        binding_uri="http://hl7.org/fhir/ValueSet/contract-type",
     )
 
     url: fhirtypes.Uri = Field(
@@ -708,7 +755,7 @@ class ContractContentDefinition(backboneelement.BackboneElement):
             "executable | executed | negotiable | offered | policy | rejected | "
             "renewed | revoked | resolved | terminated"
         ),
-        description=None,
+        description="See http://hl7.org/fhir/ValueSet/contract-publicationstatus",
         # if property is element of this resource.
         element_property=True,
         element_required=True,
@@ -731,6 +778,11 @@ class ContractContentDefinition(backboneelement.BackboneElement):
             "resolved",
             "terminated",
         ],
+        # valueset binding
+        binding_description="Status of the publication of contract content.",
+        binding_strength="required",
+        binding_uri="http://hl7.org/fhir/ValueSet/contract-publicationstatus",
+        binding_version="4.3.0",
     )
     publicationStatus__ext: fhirtypes.FHIRPrimitiveExtensionType = Field(
         None,
@@ -750,15 +802,23 @@ class ContractContentDefinition(backboneelement.BackboneElement):
         element_property=True,
         # note: Listed Resource Type(s) should be allowed as Reference.
         enum_reference_types=["Practitioner", "PractitionerRole", "Organization"],
+        backref="contract.content_definition_publisher",
     )
 
     subType: fhirtypes.CodeableConceptType = Field(
         None,
         alias="subType",
         title="Detailed Content Type Definition",
-        description="Detailed Precusory content type.",
+        description=(
+            "Detailed Precusory content type. See "
+            "http://hl7.org/fhir/ValueSet/contract-definition-subtype"
+        ),
         # if property is element of this resource.
         element_property=True,
+        # valueset binding
+        binding_description="Detailed codes for the additional definition of contracts.",
+        binding_strength="example",
+        binding_uri="http://hl7.org/fhir/ValueSet/contract-definition-subtype",
     )
 
     type: fhirtypes.CodeableConceptType = Field(
@@ -768,10 +828,15 @@ class ContractContentDefinition(backboneelement.BackboneElement):
         description=(
             "Precusory content structure and use, i.e., a boilerplate, template, "
             "application for a contract such as an insurance policy or benefits "
-            "under a program, e.g., workers compensation."
+            "under a program, e.g., workers compensation. See "
+            "http://hl7.org/fhir/ValueSet/contract-definition-type"
         ),
         # if property is element of this resource.
         element_property=True,
+        # valueset binding
+        binding_description="Detailed codes for the definition of contracts.",
+        binding_strength="example",
+        binding_uri="http://hl7.org/fhir/ValueSet/contract-definition-type",
     )
 
     @classmethod
@@ -905,6 +970,7 @@ class ContractFriendly(backboneelement.BackboneElement):
             "DocumentReference",
             "QuestionnaireResponse",
         ],
+        backref="contract.friendly_contentReference",
     )
 
     @classmethod
@@ -999,6 +1065,7 @@ class ContractLegal(backboneelement.BackboneElement):
             "DocumentReference",
             "QuestionnaireResponse",
         ],
+        backref="contract.legal_contentReference",
     )
 
     @classmethod
@@ -1095,6 +1162,7 @@ class ContractRule(backboneelement.BackboneElement):
         one_of_many_required=True,
         # note: Listed Resource Type(s) should be allowed as Reference.
         enum_reference_types=["DocumentReference"],
+        backref="contract.rule_contentReference",
     )
 
     @classmethod
@@ -1179,6 +1247,7 @@ class ContractSigner(backboneelement.BackboneElement):
             "PractitionerRole",
             "RelatedPerson",
         ],
+        backref="contract.signer_party",
     )
 
     signature: typing.List[fhirtypes.SignatureType] = Field(
@@ -1194,9 +1263,16 @@ class ContractSigner(backboneelement.BackboneElement):
         ...,
         alias="type",
         title="Contract Signatory Role",
-        description="Role of this Contract signer, e.g. notary, grantee.",
+        description=(
+            "Role of this Contract signer, e.g. notary, grantee. See "
+            "http://hl7.org/fhir/ValueSet/contract-signer-type"
+        ),
         # if property is element of this resource.
         element_property=True,
+        # valueset binding
+        binding_description="List of parties who may be signing.",
+        binding_strength="preferred",
+        binding_uri="http://hl7.org/fhir/ValueSet/contract-signer-type",
     )
 
     @classmethod
@@ -1312,10 +1388,14 @@ class ContractTerm(backboneelement.BackboneElement):
         title="Contract Term Type specific classification",
         description=(
             "A specialized legal clause or condition based on overarching contract "
-            "type."
+            "type. See http://hl7.org/fhir/ValueSet/contract-term-subtype"
         ),
         # if property is element of this resource.
         element_property=True,
+        # valueset binding
+        binding_description="Detailed codes for the subtypes of contract provisions.",
+        binding_strength="example",
+        binding_uri="http://hl7.org/fhir/ValueSet/contract-term-subtype",
     )
 
     text: fhirtypes.String = Field(
@@ -1354,6 +1434,7 @@ class ContractTerm(backboneelement.BackboneElement):
         one_of_many_required=False,
         # note: Listed Resource Type(s) should be allowed as Reference.
         enum_reference_types=["Resource"],
+        backref="contract.term_topicReference",
     )
 
     type: fhirtypes.CodeableConceptType = Field(
@@ -1364,10 +1445,15 @@ class ContractTerm(backboneelement.BackboneElement):
             "A legal clause or condition contained within a contract that requires "
             "one or both parties to perform a particular requirement by some "
             "specified time or prevents one or both parties from performing a "
-            "particular requirement by some specified time."
+            "particular requirement by some specified time. See "
+            "http://hl7.org/fhir/ValueSet/contract-term-type"
         ),
         # if property is element of this resource.
         element_property=True,
+        # valueset binding
+        binding_description="Detailed codes for the types of contract provisions.",
+        binding_strength="example",
+        binding_uri="http://hl7.org/fhir/ValueSet/contract-term-type",
     )
 
     @classmethod
@@ -1458,6 +1544,7 @@ class ContractTermAction(backboneelement.BackboneElement):
         element_property=True,
         # note: Listed Resource Type(s) should be allowed as Reference.
         enum_reference_types=["Encounter", "EpisodeOfCare"],
+        backref="contract.term.action_context",
     )
 
     contextLinkId: typing.List[typing.Optional[fhirtypes.String]] = Field(
@@ -1495,10 +1582,15 @@ class ContractTermAction(backboneelement.BackboneElement):
         alias="intent",
         title="Purpose for the Contract Term Action",
         description=(
-            "Reason or purpose for the action stipulated by this Contract " "Provision."
+            "Reason or purpose for the action stipulated by this Contract "
+            "Provision. See http://terminology.hl7.org/ValueSet/v3-PurposeOfUse"
         ),
         # if property is element of this resource.
         element_property=True,
+        # valueset binding
+        binding_description="Detailed codes for the contract action reason.",
+        binding_strength="example",
+        binding_uri="http://terminology.hl7.org/ValueSet/v3-PurposeOfUse",
     )
 
     linkId: typing.List[typing.Optional[fhirtypes.String]] = Field(
@@ -1591,6 +1683,7 @@ class ContractTermAction(backboneelement.BackboneElement):
             "Organization",
             "Location",
         ],
+        backref="contract.term.action_performer",
     )
 
     performerLinkId: typing.List[typing.Optional[fhirtypes.String]] = Field(
@@ -1617,10 +1710,15 @@ class ContractTermAction(backboneelement.BackboneElement):
         title="Competency of the performer",
         description=(
             "The type of role or competency of an individual desired or required to"
-            " perform or not perform the action."
+            " perform or not perform the action. See "
+            "http://hl7.org/fhir/ValueSet/provenance-participant-role"
         ),
         # if property is element of this resource.
         element_property=True,
+        # valueset binding
+        binding_description="Codes for the role of the action performer.",
+        binding_strength="example",
+        binding_uri="http://hl7.org/fhir/ValueSet/provenance-participant-role",
     )
 
     performerType: typing.List[fhirtypes.CodeableConceptType] = Field(
@@ -1629,10 +1727,15 @@ class ContractTermAction(backboneelement.BackboneElement):
         title="Kind of service performer",
         description=(
             "The type of individual that is desired or required to perform or not "
-            "perform the action."
+            "perform the action. See http://hl7.org/fhir/ValueSet/provenance-"
+            "participant-type"
         ),
         # if property is element of this resource.
         element_property=True,
+        # valueset binding
+        binding_description="Codes for the types of action perfomer.",
+        binding_strength="example",
+        binding_uri="http://hl7.org/fhir/ValueSet/provenance-participant-type",
     )
 
     reason: typing.List[typing.Optional[fhirtypes.String]] = Field(
@@ -1656,10 +1759,15 @@ class ContractTermAction(backboneelement.BackboneElement):
         title="Why is action (not) needed?",
         description=(
             "Rationale for the action to be performed or not performed. Describes "
-            "why the action is permitted or prohibited."
+            "why the action is permitted or prohibited. See "
+            "http://terminology.hl7.org/ValueSet/v3-PurposeOfUse"
         ),
         # if property is element of this resource.
         element_property=True,
+        # valueset binding
+        binding_description="Detailed codes for the contract action reason.",
+        binding_strength="example",
+        binding_uri="http://terminology.hl7.org/ValueSet/v3-PurposeOfUse",
     )
 
     reasonLinkId: typing.List[typing.Optional[fhirtypes.String]] = Field(
@@ -1699,6 +1807,7 @@ class ContractTermAction(backboneelement.BackboneElement):
             "Questionnaire",
             "QuestionnaireResponse",
         ],
+        backref="contract.term.action_reasonReference",
     )
 
     requester: typing.List[fhirtypes.ReferenceType] = Field(
@@ -1721,6 +1830,7 @@ class ContractTermAction(backboneelement.BackboneElement):
             "Group",
             "Organization",
         ],
+        backref="contract.term.action_requester",
     )
 
     requesterLinkId: typing.List[typing.Optional[fhirtypes.String]] = Field(
@@ -1761,9 +1871,16 @@ class ContractTermAction(backboneelement.BackboneElement):
         ...,
         alias="status",
         title="State of the action",
-        description="Current state of the term action.",
+        description=(
+            "Current state of the term action. See "
+            "http://hl7.org/fhir/ValueSet/contract-actionstatus"
+        ),
         # if property is element of this resource.
         element_property=True,
+        # valueset binding
+        binding_description="Codes for the status of an term action.",
+        binding_strength="example",
+        binding_uri="http://hl7.org/fhir/ValueSet/contract-actionstatus",
     )
 
     subject: typing.List[fhirtypes.ContractTermActionSubjectType] = Field(
@@ -1781,10 +1898,15 @@ class ContractTermAction(backboneelement.BackboneElement):
         title="Type or form of the action",
         description=(
             "Activity or service obligation to be done or not done, performed or "
-            "not performed, effectuated or not by this Contract term."
+            "not performed, effectuated or not by this Contract term. See "
+            "http://hl7.org/fhir/ValueSet/contract-action"
         ),
         # if property is element of this resource.
         element_property=True,
+        # valueset binding
+        binding_description="Detailed codes for the contract action.",
+        binding_strength="example",
+        binding_uri="http://hl7.org/fhir/ValueSet/contract-action",
     )
 
     @classmethod
@@ -1890,15 +2012,23 @@ class ContractTermActionSubject(backboneelement.BackboneElement):
             "Group",
             "Organization",
         ],
+        backref="contract.term.action.subject_reference",
     )
 
     role: fhirtypes.CodeableConceptType = Field(
         None,
         alias="role",
         title="Role type of the agent",
-        description="Role type of agent assigned roles in this Contract.",
+        description=(
+            "Role type of agent assigned roles in this Contract. See "
+            "http://hl7.org/fhir/ValueSet/contract-actorrole"
+        ),
         # if property is element of this resource.
         element_property=True,
+        # valueset binding
+        binding_description="Detailed codes for the contract actor role.",
+        binding_strength="example",
+        binding_uri="http://hl7.org/fhir/ValueSet/contract-actorrole",
     )
 
     @classmethod
@@ -1981,9 +2111,16 @@ class ContractTermAsset(backboneelement.BackboneElement):
         None,
         alias="periodType",
         title="Asset availability types",
-        description="Type of Asset availability for use or ownership.",
+        description=(
+            "Type of Asset availability for use or ownership. See "
+            "http://hl7.org/fhir/ValueSet/asset-availability"
+        ),
         # if property is element of this resource.
         element_property=True,
+        # valueset binding
+        binding_description="Codes for asset availability.",
+        binding_strength="example",
+        binding_uri="http://hl7.org/fhir/ValueSet/asset-availability",
     )
 
     relationship: fhirtypes.CodingType = Field(
@@ -1993,19 +2130,31 @@ class ContractTermAsset(backboneelement.BackboneElement):
         description=(
             "Specifies the applicability of the term to an asset resource instance,"
             " and instances it refers to orinstances that refer to it, and/or are "
-            "owned by the offeree."
+            "owned by the offeree. See http://hl7.org/fhir/ValueSet/consent-"
+            "content-class"
         ),
         # if property is element of this resource.
         element_property=True,
+        # valueset binding
+        binding_description="The class (type) of information a consent rule covers.",
+        binding_strength="extensible",
+        binding_uri="http://hl7.org/fhir/ValueSet/consent-content-class",
     )
 
     scope: fhirtypes.CodeableConceptType = Field(
         None,
         alias="scope",
         title="Range of asset",
-        description="Differentiates the kind of the asset .",
+        description=(
+            "Differentiates the kind of the asset . See "
+            "http://hl7.org/fhir/ValueSet/contract-assetscope"
+        ),
         # if property is element of this resource.
         element_property=True,
+        # valueset binding
+        binding_description="Codes for scoping an asset.",
+        binding_strength="example",
+        binding_uri="http://hl7.org/fhir/ValueSet/contract-assetscope",
     )
 
     securityLabelNumber: typing.List[typing.Optional[fhirtypes.UnsignedInt]] = Field(
@@ -2028,9 +2177,16 @@ class ContractTermAsset(backboneelement.BackboneElement):
         None,
         alias="subtype",
         title="Asset sub-category",
-        description="May be a subtype or part of an offered asset.",
+        description=(
+            "May be a subtype or part of an offered asset. See "
+            "http://hl7.org/fhir/ValueSet/contract-assetsubtype"
+        ),
         # if property is element of this resource.
         element_property=True,
+        # valueset binding
+        binding_description="Condes for the sub-type of an asset.",
+        binding_strength="example",
+        binding_uri="http://hl7.org/fhir/ValueSet/contract-assetsubtype",
     )
 
     text: fhirtypes.String = Field(
@@ -2053,9 +2209,16 @@ class ContractTermAsset(backboneelement.BackboneElement):
         None,
         alias="type",
         title="Asset category",
-        description="Target entity type about which the term may be concerned.",
+        description=(
+            "Target entity type about which the term may be concerned. See "
+            "http://hl7.org/fhir/ValueSet/contract-assettype"
+        ),
         # if property is element of this resource.
         element_property=True,
+        # valueset binding
+        binding_description="Condes for the type of an asset.",
+        binding_strength="example",
+        binding_uri="http://hl7.org/fhir/ValueSet/contract-assettype",
     )
 
     typeReference: typing.List[fhirtypes.ReferenceType] = Field(
@@ -2067,6 +2230,7 @@ class ContractTermAsset(backboneelement.BackboneElement):
         element_property=True,
         # note: Listed Resource Type(s) should be allowed as Reference.
         enum_reference_types=["Resource"],
+        backref="contract.term.asset_typeReference",
     )
 
     usePeriod: typing.List[fhirtypes.PeriodType] = Field(
@@ -2131,10 +2295,15 @@ class ContractTermAssetContext(backboneelement.BackboneElement):
         title="Codeable asset context",
         description=(
             "Coded representation of the context generally or of the Referenced "
-            "entity, such as the asset holder type or location."
+            "entity, such as the asset holder type or location. See "
+            "http://hl7.org/fhir/ValueSet/contract-assetcontext"
         ),
         # if property is element of this resource.
         element_property=True,
+        # valueset binding
+        binding_description="Codes for the context of the asset.",
+        binding_strength="example",
+        binding_uri="http://hl7.org/fhir/ValueSet/contract-assetcontext",
     )
 
     reference: fhirtypes.ReferenceType = Field(
@@ -2150,6 +2319,7 @@ class ContractTermAssetContext(backboneelement.BackboneElement):
         element_property=True,
         # note: Listed Resource Type(s) should be allowed as Reference.
         enum_reference_types=["Resource"],
+        backref="contract.term.asset.context_reference",
     )
 
     text: fhirtypes.String = Field(
@@ -2222,6 +2392,7 @@ class ContractTermAssetValuedItem(backboneelement.BackboneElement):
         one_of_many_required=False,
         # note: Listed Resource Type(s) should be allowed as Reference.
         enum_reference_types=["Resource"],
+        backref="contract.term.asset.valued_item_entityReference",
     )
 
     factor: fhirtypes.Decimal = Field(
@@ -2349,6 +2520,7 @@ class ContractTermAssetValuedItem(backboneelement.BackboneElement):
             "PractitionerRole",
             "RelatedPerson",
         ],
+        backref="contract.term.asset.valued_item_recipient",
     )
 
     responsible: fhirtypes.ReferenceType = Field(
@@ -2366,6 +2538,7 @@ class ContractTermAssetValuedItem(backboneelement.BackboneElement):
             "PractitionerRole",
             "RelatedPerson",
         ],
+        backref="contract.term.asset.valued_item_responsible",
     )
 
     securityLabelNumber: typing.List[typing.Optional[fhirtypes.UnsignedInt]] = Field(
@@ -2488,19 +2661,31 @@ class ContractTermOffer(backboneelement.BackboneElement):
         title="Accepting party choice",
         description=(
             "Type of choice made by accepting party with respect to an offer made "
-            "by an offeror/ grantee."
+            "by an offeror/ grantee. See "
+            "http://terminology.hl7.org/ValueSet/v3-ActConsentDirective"
         ),
         # if property is element of this resource.
         element_property=True,
+        # valueset binding
+        binding_description="The type of decision made by a grantor with respect to an offer made by a grantee.",
+        binding_strength="extensible",
+        binding_uri="http://terminology.hl7.org/ValueSet/v3-ActConsentDirective",
     )
 
     decisionMode: typing.List[fhirtypes.CodeableConceptType] = Field(
         None,
         alias="decisionMode",
         title="How decision is conveyed",
-        description="How the decision about a Contract was conveyed.",
+        description=(
+            "How the decision about a Contract was conveyed. See "
+            "http://hl7.org/fhir/ValueSet/contract-decision-mode"
+        ),
         # if property is element of this resource.
         element_property=True,
+        # valueset binding
+        binding_description="Codes for conveying a decision.",
+        binding_strength="example",
+        binding_uri="http://hl7.org/fhir/ValueSet/contract-decision-mode",
     )
 
     identifier: typing.List[fhirtypes.IdentifierType] = Field(
@@ -2578,6 +2763,7 @@ class ContractTermOffer(backboneelement.BackboneElement):
         element_property=True,
         # note: Listed Resource Type(s) should be allowed as Reference.
         enum_reference_types=["Resource"],
+        backref="contract.term.offer_topic",
     )
 
     type: fhirtypes.CodeableConceptType = Field(
@@ -2586,10 +2772,15 @@ class ContractTermOffer(backboneelement.BackboneElement):
         title="Contract Offer Type or Form",
         description=(
             "Type of Contract Provision such as specific requirements, purposes for"
-            " actions, obligations, prohibitions, e.g. life time maximum benefit."
+            " actions, obligations, prohibitions, e.g. life time maximum benefit. "
+            "See http://hl7.org/fhir/ValueSet/contract-term-type"
         ),
         # if property is element of this resource.
         element_property=True,
+        # valueset binding
+        binding_description="Detailed codes for the types of contract provisions.",
+        binding_strength="example",
+        binding_uri="http://hl7.org/fhir/ValueSet/contract-term-type",
     )
 
     @classmethod
@@ -2793,6 +2984,7 @@ class ContractTermOfferAnswer(backboneelement.BackboneElement):
         one_of_many_required=True,
         # note: Listed Resource Type(s) should be allowed as Reference.
         enum_reference_types=["Resource"],
+        backref="contract.term.offer.answer_valueReference",
     )
 
     valueString: fhirtypes.String = Field(
@@ -2960,15 +3152,23 @@ class ContractTermOfferParty(backboneelement.BackboneElement):
             "Group",
             "Organization",
         ],
+        backref="contract.term.offer.party_reference",
     )
 
     role: fhirtypes.CodeableConceptType = Field(
         ...,
         alias="role",
         title="Participant engagement type",
-        description="How the party participates in the offer.",
+        description=(
+            "How the party participates in the offer. See "
+            "http://hl7.org/fhir/ValueSet/contract-party-role"
+        ),
         # if property is element of this resource.
         element_property=True,
+        # valueset binding
+        binding_description="Codes for offer participant roles.",
+        binding_strength="example",
+        binding_uri="http://hl7.org/fhir/ValueSet/contract-party-role",
     )
 
     @classmethod
@@ -2998,10 +3198,15 @@ class ContractTermSecurityLabel(backboneelement.BackboneElement):
         title="Applicable Policy",
         description=(
             "Security label privacy tag that species the applicable privacy and "
-            "security policies governing this term and/or term elements."
+            "security policies governing this term and/or term elements. See "
+            "http://hl7.org/fhir/ValueSet/contract-security-category"
         ),
         # if property is element of this resource.
         element_property=True,
+        # valueset binding
+        binding_description="Codes for policy category.",
+        binding_strength="example",
+        binding_uri="http://hl7.org/fhir/ValueSet/contract-security-category",
     )
 
     classification: fhirtypes.CodingType = Field(
@@ -3010,10 +3215,15 @@ class ContractTermSecurityLabel(backboneelement.BackboneElement):
         title="Confidentiality Protection",
         description=(
             "Security label privacy tag that species the level of confidentiality "
-            "protection required for this term and/or term elements."
+            "protection required for this term and/or term elements. See "
+            "http://hl7.org/fhir/ValueSet/contract-security-classification"
         ),
         # if property is element of this resource.
         element_property=True,
+        # valueset binding
+        binding_description="Codes for confidentiality protection.",
+        binding_strength="example",
+        binding_uri="http://hl7.org/fhir/ValueSet/contract-security-classification",
     )
 
     control: typing.List[fhirtypes.CodingType] = Field(
@@ -3022,10 +3232,15 @@ class ContractTermSecurityLabel(backboneelement.BackboneElement):
         title="Handling Instructions",
         description=(
             "Security label privacy tag that species the manner in which term "
-            "and/or term elements are to be protected."
+            "and/or term elements are to be protected. See "
+            "http://hl7.org/fhir/ValueSet/contract-security-control"
         ),
         # if property is element of this resource.
         element_property=True,
+        # valueset binding
+        binding_description="Codes for handling instructions.",
+        binding_strength="example",
+        binding_uri="http://hl7.org/fhir/ValueSet/contract-security-control",
     )
 
     number: typing.List[typing.Optional[fhirtypes.UnsignedInt]] = Field(

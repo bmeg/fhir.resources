@@ -57,6 +57,7 @@ class Ingredient(domainresource.DomainResource):
             "AdministrableProductDefinition",
             "ManufacturedItemDefinition",
         ],
+        backref="ingredient_for_fhir",
     )
 
     function: typing.List[fhirtypes.CodeableConceptType] = Field(
@@ -69,10 +70,15 @@ class Ingredient(domainresource.DomainResource):
         description=(
             "A classification of the ingredient identifying its precise purpose(s) "
             "in the drug product. This extends the Ingredient.role to add more "
-            "detail. Example: antioxidant, alkalizing agent."
+            "detail. Example: antioxidant, alkalizing agent. See "
+            "http://hl7.org/fhir/ValueSet/ingredient-function"
         ),
         # if property is element of this resource.
         element_property=True,
+        # valueset binding
+        binding_description="A classification of the ingredient identifying its precise purpose(s) in the drug product (beyond e.g. active/inactive).",
+        binding_strength="example",
+        binding_uri="http://hl7.org/fhir/ValueSet/ingredient-function",
     )
 
     identifier: fhirtypes.IdentifierType = Field(
@@ -110,10 +116,15 @@ class Ingredient(domainresource.DomainResource):
         title="Purpose of the ingredient within the product, e.g. active, inactive",
         description=(
             "A classification of the ingredient identifying its purpose within the "
-            "product, e.g. active, inactive."
+            "product, e.g. active, inactive. See "
+            "http://hl7.org/fhir/ValueSet/ingredient-role"
         ),
         # if property is element of this resource.
         element_property=True,
+        # valueset binding
+        binding_description="A classification of the ingredient identifying its purpose within the product, e.g. active, inactive.",
+        binding_strength="example",
+        binding_uri="http://hl7.org/fhir/ValueSet/ingredient-role",
     )
 
     status: fhirtypes.Code = Field(
@@ -122,7 +133,7 @@ class Ingredient(domainresource.DomainResource):
         title="draft | active | retired | unknown",
         description=(
             "The status of this ingredient. Enables tracking the life-cycle of the "
-            "content."
+            "content. See http://hl7.org/fhir/ValueSet/publication-status"
         ),
         # if property is element of this resource.
         element_property=True,
@@ -130,6 +141,11 @@ class Ingredient(domainresource.DomainResource):
         # note: Enum values can be used in validation,
         # but use in your own responsibilities, read official FHIR documentation.
         enum_values=["draft", "active", "retired", "unknown"],
+        # valueset binding
+        binding_description="The lifecycle status of an artifact.",
+        binding_strength="required",
+        binding_uri="http://hl7.org/fhir/ValueSet/publication-status",
+        binding_version="4.3.0",
     )
     status__ext: fhirtypes.FHIRPrimitiveExtensionType = Field(
         None, alias="_status", title="Extension field for ``status``."
@@ -254,6 +270,7 @@ class IngredientManufacturer(backboneelement.BackboneElement):
         element_property=True,
         # note: Listed Resource Type(s) should be allowed as Reference.
         enum_reference_types=["Organization"],
+        backref="ingredient.manufacturer_manufacturer",
     )
 
     role: fhirtypes.Code = Field(
@@ -264,13 +281,19 @@ class IngredientManufacturer(backboneelement.BackboneElement):
             "The way in which this manufacturer is associated with the ingredient. "
             "For example whether it is a possible one (others allowed), or an "
             "exclusive authorized one for this ingredient. Note that this is not "
-            "the manufacturing process role."
+            "the manufacturing process role. See "
+            "http://hl7.org/fhir/ValueSet/ingredient-manufacturer-role"
         ),
         # if property is element of this resource.
         element_property=True,
         # note: Enum values can be used in validation,
         # but use in your own responsibilities, read official FHIR documentation.
         enum_values=["allowed", "possible", "actual"],
+        # valueset binding
+        binding_description="The way in which this manufacturer is associated with the ingredient.",
+        binding_strength="required",
+        binding_uri="http://hl7.org/fhir/ValueSet/ingredient-manufacturer-role",
+        binding_version="4.3.0",
     )
     role__ext: fhirtypes.FHIRPrimitiveExtensionType = Field(
         None, alias="_role", title="Extension field for ``role``."
@@ -299,11 +322,19 @@ class IngredientSubstance(backboneelement.BackboneElement):
         ...,
         alias="code",
         title="A code or full resource that represents the ingredient substance",
-        description="A code or full resource that represents the ingredient's substance.",
+        description=(
+            "A code or full resource that represents the ingredient's substance. "
+            "See http://hl7.org/fhir/ValueSet/substance-codes"
+        ),
         # if property is element of this resource.
         element_property=True,
+        # valueset binding
+        binding_description="This value set includes all substance codes from SNOMED CT - provided as an exemplar value set.",
+        binding_strength="example",
+        binding_uri="http://hl7.org/fhir/ValueSet/substance-codes",
         # note: Listed Resource Type(s) should be allowed as Reference.
         enum_reference_types=["SubstanceDefinition"],
+        backref="ingredient.substance_code",
     )
 
     strength: typing.List[fhirtypes.IngredientSubstanceStrengthType] = Field(
@@ -376,9 +407,16 @@ class IngredientSubstanceStrength(backboneelement.BackboneElement):
         None,
         alias="country",
         title="Where the strength range applies",
-        description="The country or countries for which the strength range applies.",
+        description=(
+            "The country or countries for which the strength range applies. See "
+            "http://hl7.org/fhir/ValueSet/country"
+        ),
         # if property is element of this resource.
         element_property=True,
+        # valueset binding
+        binding_description="Jurisdiction codes",
+        binding_strength="example",
+        binding_uri="http://hl7.org/fhir/ValueSet/country",
     )
 
     measurementPoint: fhirtypes.String = Field(
@@ -583,9 +621,16 @@ class IngredientSubstanceStrengthReferenceStrength(backboneelement.BackboneEleme
         None,
         alias="country",
         title="Where the strength range applies",
-        description="The country or countries for which the strength range applies.",
+        description=(
+            "The country or countries for which the strength range applies. See "
+            "http://hl7.org/fhir/ValueSet/country"
+        ),
         # if property is element of this resource.
         element_property=True,
+        # valueset binding
+        binding_description="Jurisdiction codes",
+        binding_strength="example",
+        binding_uri="http://hl7.org/fhir/ValueSet/country",
     )
 
     measurementPoint: fhirtypes.String = Field(
@@ -630,11 +675,16 @@ class IngredientSubstanceStrengthReferenceStrength(backboneelement.BackboneEleme
         None,
         alias="substance",
         title="Relevant reference substance",
-        description=None,
+        description="See http://hl7.org/fhir/ValueSet/substance-codes",
         # if property is element of this resource.
         element_property=True,
+        # valueset binding
+        binding_description="This value set includes all substance codes from SNOMED CT - provided as an exemplar value set.",
+        binding_strength="example",
+        binding_uri="http://hl7.org/fhir/ValueSet/substance-codes",
         # note: Listed Resource Type(s) should be allowed as Reference.
         enum_reference_types=["SubstanceDefinition"],
+        backref="ingredient.substance.strength.reference_strength_substance",
     )
 
     @classmethod

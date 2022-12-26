@@ -127,6 +127,7 @@ class CatalogEntry(domainresource.DomainResource):
             "ObservationDefinition",
             "Binary",
         ],
+        backref="catalog_entry_referencedItem",
     )
 
     relatedEntry: typing.List[fhirtypes.CatalogEntryRelatedEntryType] = Field(
@@ -147,13 +148,19 @@ class CatalogEntry(domainresource.DomainResource):
         title="draft | active | retired | unknown",
         description=(
             "Used to support catalog exchange even for unsupported products, e.g. "
-            "getting list of medications even if not prescribable."
+            "getting list of medications even if not prescribable. See "
+            "http://hl7.org/fhir/ValueSet/publication-status"
         ),
         # if property is element of this resource.
         element_property=True,
         # note: Enum values can be used in validation,
         # but use in your own responsibilities, read official FHIR documentation.
         enum_values=["draft", "active", "retired", "unknown"],
+        # valueset binding
+        binding_description="The lifecycle status of an artifact.",
+        binding_strength="required",
+        binding_uri="http://hl7.org/fhir/ValueSet/publication-status",
+        binding_version="4.3.0",
     )
     status__ext: fhirtypes.FHIRPrimitiveExtensionType = Field(
         None, alias="_status", title="Extension field for ``status``."
@@ -300,6 +307,7 @@ class CatalogEntryRelatedEntry(backboneelement.BackboneElement):
         element_property=True,
         # note: Listed Resource Type(s) should be allowed as Reference.
         enum_reference_types=["CatalogEntry"],
+        backref="catalog_entry.related_entry_item",
     )
 
     relationtype: fhirtypes.Code = Field(
@@ -308,7 +316,8 @@ class CatalogEntryRelatedEntry(backboneelement.BackboneElement):
         title="triggers | is-replaced-by",
         description=(
             "The type of relation to the related item: child, parent, "
-            "packageContent, containerPackage, usedIn, uses, requires, etc."
+            "packageContent, containerPackage, usedIn, uses, requires, etc. See "
+            "http://hl7.org/fhir/ValueSet/relation-type"
         ),
         # if property is element of this resource.
         element_property=True,
@@ -316,6 +325,11 @@ class CatalogEntryRelatedEntry(backboneelement.BackboneElement):
         # note: Enum values can be used in validation,
         # but use in your own responsibilities, read official FHIR documentation.
         enum_values=["triggers", "is-replaced-by"],
+        # valueset binding
+        binding_description="The type of relations between entries.",
+        binding_strength="required",
+        binding_uri="http://hl7.org/fhir/ValueSet/relation-type",
+        binding_version="4.3.0",
     )
     relationtype__ext: fhirtypes.FHIRPrimitiveExtensionType = Field(
         None, alias="_relationtype", title="Extension field for ``relationtype``."

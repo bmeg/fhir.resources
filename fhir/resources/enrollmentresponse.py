@@ -70,18 +70,27 @@ class EnrollmentResponse(domainresource.DomainResource):
         element_property=True,
         # note: Listed Resource Type(s) should be allowed as Reference.
         enum_reference_types=["Organization"],
+        backref="enrollment_response_organization",
     )
 
     outcome: fhirtypes.Code = Field(
         None,
         alias="outcome",
         title="queued | complete | error | partial",
-        description="Processing status: error, complete.",
+        description=(
+            "Processing status: error, complete. See "
+            "http://hl7.org/fhir/ValueSet/remittance-outcome"
+        ),
         # if property is element of this resource.
         element_property=True,
         # note: Enum values can be used in validation,
         # but use in your own responsibilities, read official FHIR documentation.
         enum_values=["queued", "complete", "error", "partial"],
+        # valueset binding
+        binding_description="The outcome of the processing.",
+        binding_strength="required",
+        binding_uri="http://hl7.org/fhir/ValueSet/remittance-outcome",
+        binding_version="4.3.0",
     )
     outcome__ext: fhirtypes.FHIRPrimitiveExtensionType = Field(
         None, alias="_outcome", title="Extension field for ``outcome``."
@@ -96,6 +105,7 @@ class EnrollmentResponse(domainresource.DomainResource):
         element_property=True,
         # note: Listed Resource Type(s) should be allowed as Reference.
         enum_reference_types=["EnrollmentRequest"],
+        backref="enrollment_response_request",
     )
 
     requestProvider: fhirtypes.ReferenceType = Field(
@@ -110,18 +120,27 @@ class EnrollmentResponse(domainresource.DomainResource):
         element_property=True,
         # note: Listed Resource Type(s) should be allowed as Reference.
         enum_reference_types=["Practitioner", "PractitionerRole", "Organization"],
+        backref="enrollment_response_requestProvider",
     )
 
     status: fhirtypes.Code = Field(
         None,
         alias="status",
         title="active | cancelled | draft | entered-in-error",
-        description="The status of the resource instance.",
+        description=(
+            "The status of the resource instance. See "
+            "http://hl7.org/fhir/ValueSet/fm-status"
+        ),
         # if property is element of this resource.
         element_property=True,
         # note: Enum values can be used in validation,
         # but use in your own responsibilities, read official FHIR documentation.
         enum_values=["active", "cancelled", "draft", "entered-in-error"],
+        # valueset binding
+        binding_description="A code specifying the state of the resource instance.",
+        binding_strength="required",
+        binding_uri="http://hl7.org/fhir/ValueSet/fm-status",
+        binding_version="4.3.0",
     )
     status__ext: fhirtypes.FHIRPrimitiveExtensionType = Field(
         None, alias="_status", title="Extension field for ``status``."

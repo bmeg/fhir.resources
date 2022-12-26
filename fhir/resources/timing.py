@@ -39,10 +39,17 @@ class Timing(backboneelement.BackboneElement):
             "a complete statement of whatever is specified in the structured timing"
             " data, and either the code or the data may be used to interpret the "
             "Timing, with the exception that .repeat.bounds still applies over the "
-            "code (and is not contained in the code)."
+            "code (and is not contained in the code). See "
+            "http://hl7.org/fhir/ValueSet/timing-abbreviation"
         ),
         # if property is element of this resource.
         element_property=True,
+        # note: Enum values can be used in validation,
+        # but use in your own responsibilities, read official FHIR documentation.
+        enum_values=["BID", "TID", "QID", "AM", "PM", "QD", "QOD", "+"],
+        # valueset binding
+        binding_strength="preferred",
+        binding_uri="http://hl7.org/fhir/ValueSet/timing-abbreviation",
     )
 
     event: typing.List[typing.Optional[fhirtypes.DateTime]] = Field(
@@ -172,13 +179,17 @@ class TimingRepeat(element.Element):
         title="mon | tue | wed | thu | fri | sat | sun",
         description=(
             "If one or more days of week is provided, then the action happens only "
-            "on the specified day(s)."
+            "on the specified day(s). See http://hl7.org/fhir/ValueSet/days-of-week"
         ),
         # if property is element of this resource.
         element_property=True,
         # note: Enum values can be used in validation,
         # but use in your own responsibilities, read official FHIR documentation.
         enum_values=["mon", "tue", "wed", "thu", "fri", "sat", "sun"],
+        # valueset binding
+        binding_strength="required",
+        binding_uri="http://hl7.org/fhir/ValueSet/days-of-week",
+        binding_version="4.3.0",
     )
     dayOfWeek__ext: typing.List[
         typing.Union[fhirtypes.FHIRPrimitiveExtensionType, None]
@@ -219,12 +230,19 @@ class TimingRepeat(element.Element):
         None,
         alias="durationUnit",
         title="s | min | h | d | wk | mo | a - unit of time (UCUM)",
-        description="The units of time for the duration, in UCUM units.",
+        description=(
+            "The units of time for the duration, in UCUM units. See "
+            "http://hl7.org/fhir/ValueSet/units-of-time"
+        ),
         # if property is element of this resource.
         element_property=True,
         # note: Enum values can be used in validation,
         # but use in your own responsibilities, read official FHIR documentation.
         enum_values=["s", "min", "h", "d", "wk", "mo", "a"],
+        # valueset binding
+        binding_strength="required",
+        binding_uri="http://hl7.org/fhir/ValueSet/units-of-time",
+        binding_version="4.3.0",
     )
     durationUnit__ext: fhirtypes.FHIRPrimitiveExtensionType = Field(
         None, alias="_durationUnit", title="Extension field for ``durationUnit``."
@@ -315,12 +333,19 @@ class TimingRepeat(element.Element):
         None,
         alias="periodUnit",
         title="s | min | h | d | wk | mo | a - unit of time (UCUM)",
-        description="The units of time for the period in UCUM units.",
+        description=(
+            "The units of time for the period in UCUM units. See "
+            "http://hl7.org/fhir/ValueSet/units-of-time"
+        ),
         # if property is element of this resource.
         element_property=True,
         # note: Enum values can be used in validation,
         # but use in your own responsibilities, read official FHIR documentation.
         enum_values=["s", "min", "h", "d", "wk", "mo", "a"],
+        # valueset binding
+        binding_strength="required",
+        binding_uri="http://hl7.org/fhir/ValueSet/units-of-time",
+        binding_version="4.3.0",
     )
     periodUnit__ext: fhirtypes.FHIRPrimitiveExtensionType = Field(
         None, alias="_periodUnit", title="Extension field for ``periodUnit``."
@@ -344,10 +369,15 @@ class TimingRepeat(element.Element):
         title="Code for time period of occurrence",
         description=(
             "An approximate time period during the day, potentially linked to an "
-            "event of daily living that indicates when the action should occur."
+            "event of daily living that indicates when the action should occur. See"
+            " http://hl7.org/fhir/ValueSet/event-timing"
         ),
         # if property is element of this resource.
         element_property=True,
+        # valueset binding
+        binding_strength="required",
+        binding_uri="http://hl7.org/fhir/ValueSet/event-timing",
+        binding_version="4.3.0",
     )
     when__ext: typing.List[
         typing.Union[fhirtypes.FHIRPrimitiveExtensionType, None]

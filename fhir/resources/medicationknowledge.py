@@ -66,6 +66,7 @@ class MedicationKnowledge(domainresource.DomainResource):
         element_property=True,
         # note: Listed Resource Type(s) should be allowed as Reference.
         enum_reference_types=["Medication"],
+        backref="medication_knowledge_associatedMedication",
     )
 
     code: fhirtypes.CodeableConceptType = Field(
@@ -77,10 +78,14 @@ class MedicationKnowledge(domainresource.DomainResource):
             "code is available. Usage note: This could be a standard medication "
             "code such as a code from RxNorm, SNOMED CT, IDMP etc. It could also be"
             " a national or local formulary code, optionally with translations to "
-            "other code systems."
+            "other code systems. See http://hl7.org/fhir/ValueSet/medication-codes"
         ),
         # if property is element of this resource.
         element_property=True,
+        # valueset binding
+        binding_description="A coded concept that defines the type of a medication.",
+        binding_strength="example",
+        binding_uri="http://hl7.org/fhir/ValueSet/medication-codes",
     )
 
     contraindication: typing.List[fhirtypes.ReferenceType] = Field(
@@ -96,6 +101,7 @@ class MedicationKnowledge(domainresource.DomainResource):
         element_property=True,
         # note: Listed Resource Type(s) should be allowed as Reference.
         enum_reference_types=["DetectedIssue"],
+        backref="medication_knowledge_contraindication",
     )
 
     cost: typing.List[fhirtypes.MedicationKnowledgeCostType] = Field(
@@ -111,9 +117,19 @@ class MedicationKnowledge(domainresource.DomainResource):
         None,
         alias="doseForm",
         title="powder | tablets | capsule +",
-        description="Describes the form of the item.  Powder; tablets; capsule.",
+        description=(
+            "Describes the form of the item.  Powder; tablets; capsule. See "
+            "http://hl7.org/fhir/ValueSet/medication-form-codes"
+        ),
         # if property is element of this resource.
         element_property=True,
+        # note: Enum values can be used in validation,
+        # but use in your own responsibilities, read official FHIR documentation.
+        enum_values=["powder", "tablets", "capsule", "+"],
+        # valueset binding
+        binding_description="A coded concept defining the form of a medication.",
+        binding_strength="example",
+        binding_uri="http://hl7.org/fhir/ValueSet/medication-form-codes",
     )
 
     drugCharacteristic: typing.List[
@@ -143,9 +159,13 @@ class MedicationKnowledge(domainresource.DomainResource):
         None,
         alias="intendedRoute",
         title="The intended or approved route of administration",
-        description=None,
+        description="See http://hl7.org/fhir/ValueSet/route-codes",
         # if property is element of this resource.
         element_property=True,
+        # valueset binding
+        binding_description="A coded concept defining the intended route of administration.",
+        binding_strength="example",
+        binding_uri="http://hl7.org/fhir/ValueSet/route-codes",
     )
 
     kinetics: typing.List[fhirtypes.MedicationKnowledgeKineticsType] = Field(
@@ -173,6 +193,7 @@ class MedicationKnowledge(domainresource.DomainResource):
         element_property=True,
         # note: Listed Resource Type(s) should be allowed as Reference.
         enum_reference_types=["Organization"],
+        backref="medication_knowledge_manufacturer",
     )
 
     medicineClassification: typing.List[
@@ -271,13 +292,19 @@ class MedicationKnowledge(domainresource.DomainResource):
         description=(
             "A code to indicate if the medication is in active use.  The status "
             "refers to the validity about the information of the medication and not"
-            " to its medicinal properties."
+            " to its medicinal properties. See "
+            "http://hl7.org/fhir/ValueSet/medicationknowledge-status"
         ),
         # if property is element of this resource.
         element_property=True,
         # note: Enum values can be used in validation,
         # but use in your own responsibilities, read official FHIR documentation.
         enum_values=["active", "inactive", "entered-in-error"],
+        # valueset binding
+        binding_description="A coded concept defining if the medication is in active use.",
+        binding_strength="required",
+        binding_uri="http://hl7.org/fhir/ValueSet/medicationknowledge-status",
+        binding_version="4.3.0",
     )
     status__ext: fhirtypes.FHIRPrimitiveExtensionType = Field(
         None, alias="_status", title="Extension field for ``status``."
@@ -389,6 +416,7 @@ class MedicationKnowledgeAdministrationGuidelines(backboneelement.BackboneElemen
         one_of_many_required=False,
         # note: Listed Resource Type(s) should be allowed as Reference.
         enum_reference_types=["ObservationDefinition"],
+        backref="medication_knowledge.administration_guidelines_indicationReference",
     )
 
     patientCharacteristics: typing.List[
@@ -577,8 +605,8 @@ class MedicationKnowledgeAdministrationGuidelinesPatientCharacteristics(
     @classmethod
     def elements_sequence(cls):
         """returning all elements names from
-        ``MedicationKnowledgeAdministrationGuidelinesPatientCharacteristics``
-        according specification, with preserving original sequence order.
+        ``MedicationKnowledgeAdministrationGuidelinesPatientCharacteristics`` according specification,
+        with preserving original sequence order.
         """
         return [
             "id",
@@ -704,10 +732,15 @@ class MedicationKnowledgeDrugCharacteristic(backboneelement.BackboneElement):
         title="Code specifying the type of characteristic of medication",
         description=(
             "A code specifying which characteristic of the medicine is being "
-            "described (for example, colour, shape, imprint)."
+            "described (for example, colour, shape, imprint). See "
+            "http://hl7.org/fhir/ValueSet/medicationknowledge-characteristic"
         ),
         # if property is element of this resource.
         element_property=True,
+        # valueset binding
+        binding_description="A coded concept defining the characteristic types of a medication.",
+        binding_strength="example",
+        binding_uri="http://hl7.org/fhir/ValueSet/medicationknowledge-characteristic",
     )
 
     valueBase64Binary: fhirtypes.Base64Binary = Field(
@@ -885,6 +918,7 @@ class MedicationKnowledgeIngredient(backboneelement.BackboneElement):
         one_of_many_required=True,
         # note: Listed Resource Type(s) should be allowed as Reference.
         enum_reference_types=["Substance"],
+        backref="medication_knowledge.ingredient_itemReference",
     )
 
     strength: fhirtypes.RatioType = Field(
@@ -1116,6 +1150,7 @@ class MedicationKnowledgeMonograph(backboneelement.BackboneElement):
         element_property=True,
         # note: Listed Resource Type(s) should be allowed as Reference.
         enum_reference_types=["DocumentReference", "Media"],
+        backref="medication_knowledge.monograph_source",
     )
 
     type: fhirtypes.CodeableConceptType = Field(
@@ -1168,10 +1203,15 @@ class MedicationKnowledgePackaging(backboneelement.BackboneElement):
         ),
         description=(
             "A code that defines the specific type of packaging that the medication"
-            " can be found in (e.g. blister sleeve, tube, bottle)."
+            " can be found in (e.g. blister sleeve, tube, bottle). See "
+            "http://hl7.org/fhir/ValueSet/medicationknowledge-package-type"
         ),
         # if property is element of this resource.
         element_property=True,
+        # valueset binding
+        binding_description="A coded concept defining the type of packaging of a medication.",
+        binding_strength="example",
+        binding_uri="http://hl7.org/fhir/ValueSet/medicationknowledge-package-type",
     )
 
     @classmethod
@@ -1214,6 +1254,7 @@ class MedicationKnowledgeRegulatory(backboneelement.BackboneElement):
         element_property=True,
         # note: Listed Resource Type(s) should be allowed as Reference.
         enum_reference_types=["Organization"],
+        backref="medication_knowledge.regulatory_regulatoryAuthority",
     )
 
     schedule: typing.List[fhirtypes.MedicationKnowledgeRegulatoryScheduleType] = Field(
@@ -1446,6 +1487,7 @@ class MedicationKnowledgeRelatedMedicationKnowledge(backboneelement.BackboneElem
         element_property=True,
         # note: Listed Resource Type(s) should be allowed as Reference.
         enum_reference_types=["MedicationKnowledge"],
+        backref="medication_knowledge.related_medication_knowledge_reference",
     )
 
     type: fhirtypes.CodeableConceptType = Field(

@@ -42,6 +42,7 @@ class Procedure(domainresource.DomainResource):
             "Practitioner",
             "PractitionerRole",
         ],
+        backref="procedure_asserter",
     )
 
     basedOn: typing.List[fhirtypes.ReferenceType] = Field(
@@ -56,6 +57,7 @@ class Procedure(domainresource.DomainResource):
         element_property=True,
         # note: Listed Resource Type(s) should be allowed as Reference.
         enum_reference_types=["CarePlan", "ServiceRequest"],
+        backref="procedure_basedOn",
     )
 
     bodySite: typing.List[fhirtypes.CodeableConceptType] = Field(
@@ -64,10 +66,15 @@ class Procedure(domainresource.DomainResource):
         title="Target body sites",
         description=(
             "Detailed and structured anatomical location information. Multiple "
-            "locations are allowed - e.g. multiple punch biopsies of a lesion."
+            "locations are allowed - e.g. multiple punch biopsies of a lesion. See "
+            "http://hl7.org/fhir/ValueSet/body-site"
         ),
         # if property is element of this resource.
         element_property=True,
+        # valueset binding
+        binding_description="SNOMED CT Body site concepts",
+        binding_strength="example",
+        binding_uri="http://hl7.org/fhir/ValueSet/body-site",
     )
 
     category: fhirtypes.CodeableConceptType = Field(
@@ -76,10 +83,15 @@ class Procedure(domainresource.DomainResource):
         title="Classification of the procedure",
         description=(
             "A code that classifies the procedure for searching, sorting and "
-            'display purposes (e.g. "Surgical Procedure").'
+            'display purposes (e.g. "Surgical Procedure"). See '
+            "http://hl7.org/fhir/ValueSet/procedure-category"
         ),
         # if property is element of this resource.
         element_property=True,
+        # valueset binding
+        binding_description="A code that classifies a procedure for searching, sorting and display purposes.",
+        binding_strength="example",
+        binding_uri="http://hl7.org/fhir/ValueSet/procedure-category",
     )
 
     code: fhirtypes.CodeableConceptType = Field(
@@ -88,10 +100,15 @@ class Procedure(domainresource.DomainResource):
         title="Identification of the procedure",
         description=(
             "The specific procedure that is performed. Use text if the exact nature"
-            ' of the procedure cannot be coded (e.g. "Laparoscopic Appendectomy").'
+            ' of the procedure cannot be coded (e.g. "Laparoscopic Appendectomy"). '
+            "See http://hl7.org/fhir/ValueSet/procedure-code"
         ),
         # if property is element of this resource.
         element_property=True,
+        # valueset binding
+        binding_description="A code to identify a specific procedure .",
+        binding_strength="example",
+        binding_uri="http://hl7.org/fhir/ValueSet/procedure-code",
     )
 
     complication: typing.List[fhirtypes.CodeableConceptType] = Field(
@@ -102,10 +119,15 @@ class Procedure(domainresource.DomainResource):
             "Any complications that occurred during the procedure, or in the "
             "immediate post-performance period. These are generally tracked "
             "separately from the notes, which will typically describe the procedure"
-            " itself rather than any 'post procedure' issues."
+            " itself rather than any 'post procedure' issues. See "
+            "http://hl7.org/fhir/ValueSet/condition-code"
         ),
         # if property is element of this resource.
         element_property=True,
+        # valueset binding
+        binding_description="Codes describing complications that resulted from a procedure.",
+        binding_strength="example",
+        binding_uri="http://hl7.org/fhir/ValueSet/condition-code",
     )
 
     complicationDetail: typing.List[fhirtypes.ReferenceType] = Field(
@@ -120,6 +142,7 @@ class Procedure(domainresource.DomainResource):
         element_property=True,
         # note: Listed Resource Type(s) should be allowed as Reference.
         enum_reference_types=["Condition"],
+        backref="procedure_complicationDetail",
     )
 
     encounter: fhirtypes.ReferenceType = Field(
@@ -134,6 +157,7 @@ class Procedure(domainresource.DomainResource):
         element_property=True,
         # note: Listed Resource Type(s) should be allowed as Reference.
         enum_reference_types=["Encounter"],
+        backref="procedure_encounter",
     )
 
     focalDevice: typing.List[fhirtypes.ProcedureFocalDeviceType] = Field(
@@ -157,10 +181,14 @@ class Procedure(domainresource.DomainResource):
             "If the procedure required specific follow up - e.g. removal of "
             "sutures. The follow up may be represented as a simple note or could "
             "potentially be more complex, in which case the CarePlan resource can "
-            "be used."
+            "be used. See http://hl7.org/fhir/ValueSet/procedure-followup"
         ),
         # if property is element of this resource.
         element_property=True,
+        # valueset binding
+        binding_description="Specific follow up required for a procedure e.g. removal of sutures.",
+        binding_strength="example",
+        binding_uri="http://hl7.org/fhir/ValueSet/procedure-followup",
     )
 
     identifier: typing.List[fhirtypes.IdentifierType] = Field(
@@ -195,6 +223,7 @@ class Procedure(domainresource.DomainResource):
             "OperationDefinition",
             "Questionnaire",
         ],
+        backref="procedure_instantiatesCanonical",
     )
     instantiatesCanonical__ext: typing.List[
         typing.Union[fhirtypes.FHIRPrimitiveExtensionType, None]
@@ -234,6 +263,7 @@ class Procedure(domainresource.DomainResource):
         element_property=True,
         # note: Listed Resource Type(s) should be allowed as Reference.
         enum_reference_types=["Location"],
+        backref="procedure_location",
     )
 
     note: typing.List[fhirtypes.AnnotationType] = Field(
@@ -251,10 +281,15 @@ class Procedure(domainresource.DomainResource):
         title="The result of procedure",
         description=(
             "The outcome of the procedure - did it resolve the reasons for the "
-            "procedure being performed?"
+            "procedure being performed? See http://hl7.org/fhir/ValueSet/procedure-"
+            "outcome"
         ),
         # if property is element of this resource.
         element_property=True,
+        # valueset binding
+        binding_description="An outcome of a procedure - whether it was resolved or otherwise.",
+        binding_strength="example",
+        binding_uri="http://hl7.org/fhir/ValueSet/procedure-outcome",
     )
 
     partOf: typing.List[fhirtypes.ReferenceType] = Field(
@@ -269,6 +304,7 @@ class Procedure(domainresource.DomainResource):
         element_property=True,
         # note: Listed Resource Type(s) should be allowed as Reference.
         enum_reference_types=["Procedure", "Observation", "MedicationAdministration"],
+        backref="procedure_partOf",
     )
 
     performedAge: fhirtypes.AgeType = Field(
@@ -379,10 +415,15 @@ class Procedure(domainresource.DomainResource):
         title="Coded reason procedure performed",
         description=(
             "The coded reason why the procedure was performed. This may be a coded "
-            "entity of some type, or may simply be present as text."
+            "entity of some type, or may simply be present as text. See "
+            "http://hl7.org/fhir/ValueSet/procedure-reason"
         ),
         # if property is element of this resource.
         element_property=True,
+        # valueset binding
+        binding_description="A code that identifies the reason a procedure is  required.",
+        binding_strength="example",
+        binding_uri="http://hl7.org/fhir/ValueSet/procedure-reason",
     )
 
     reasonReference: typing.List[fhirtypes.ReferenceType] = Field(
@@ -400,6 +441,7 @@ class Procedure(domainresource.DomainResource):
             "DiagnosticReport",
             "DocumentReference",
         ],
+        backref="procedure_reasonReference",
     )
 
     recorder: fhirtypes.ReferenceType = Field(
@@ -419,6 +461,7 @@ class Procedure(domainresource.DomainResource):
             "Practitioner",
             "PractitionerRole",
         ],
+        backref="procedure_recorder",
     )
 
     report: typing.List[fhirtypes.ReferenceType] = Field(
@@ -433,6 +476,7 @@ class Procedure(domainresource.DomainResource):
         element_property=True,
         # note: Listed Resource Type(s) should be allowed as Reference.
         enum_reference_types=["DiagnosticReport", "DocumentReference", "Composition"],
+        backref="procedure_report",
     )
 
     status: fhirtypes.Code = Field(
@@ -444,7 +488,8 @@ class Procedure(domainresource.DomainResource):
         ),
         description=(
             "A code specifying the state of the procedure. Generally, this will be "
-            "the in-progress or completed state."
+            "the in-progress or completed state. See "
+            "http://hl7.org/fhir/ValueSet/event-status"
         ),
         # if property is element of this resource.
         element_property=True,
@@ -461,6 +506,11 @@ class Procedure(domainresource.DomainResource):
             "entered-in-error",
             "unknown",
         ],
+        # valueset binding
+        binding_description="A code specifying the state of the procedure.",
+        binding_strength="required",
+        binding_uri="http://hl7.org/fhir/ValueSet/event-status",
+        binding_version="4.3.0",
     )
     status__ext: fhirtypes.FHIRPrimitiveExtensionType = Field(
         None, alias="_status", title="Extension field for ``status``."
@@ -470,9 +520,16 @@ class Procedure(domainresource.DomainResource):
         None,
         alias="statusReason",
         title="Reason for current status",
-        description="Captures the reason for the current state of the procedure.",
+        description=(
+            "Captures the reason for the current state of the procedure. See "
+            "http://hl7.org/fhir/ValueSet/procedure-not-performed-reason"
+        ),
         # if property is element of this resource.
         element_property=True,
+        # valueset binding
+        binding_description="A code that identifies the reason a procedure was not performed.",
+        binding_strength="example",
+        binding_uri="http://hl7.org/fhir/ValueSet/procedure-not-performed-reason",
     )
 
     subject: fhirtypes.ReferenceType = Field(
@@ -484,15 +541,23 @@ class Procedure(domainresource.DomainResource):
         element_property=True,
         # note: Listed Resource Type(s) should be allowed as Reference.
         enum_reference_types=["Patient", "Group"],
+        backref="procedure_subject",
     )
 
     usedCode: typing.List[fhirtypes.CodeableConceptType] = Field(
         None,
         alias="usedCode",
         title="Coded items used during the procedure",
-        description="Identifies coded items that were used as part of the procedure.",
+        description=(
+            "Identifies coded items that were used as part of the procedure. See "
+            "http://hl7.org/fhir/ValueSet/device-kind"
+        ),
         # if property is element of this resource.
         element_property=True,
+        # valueset binding
+        binding_description="Codes describing items used during a procedure.",
+        binding_strength="example",
+        binding_uri="http://hl7.org/fhir/ValueSet/device-kind",
     )
 
     usedReference: typing.List[fhirtypes.ReferenceType] = Field(
@@ -507,6 +572,7 @@ class Procedure(domainresource.DomainResource):
         element_property=True,
         # note: Listed Resource Type(s) should be allowed as Reference.
         enum_reference_types=["Device", "Medication", "Substance"],
+        backref="procedure_usedReference",
     )
 
     @classmethod
@@ -681,9 +747,16 @@ class ProcedureFocalDevice(backboneelement.BackboneElement):
         None,
         alias="action",
         title="Kind of change to device",
-        description="The kind of change that happened to the device during the procedure.",
+        description=(
+            "The kind of change that happened to the device during the procedure. "
+            "See http://hl7.org/fhir/ValueSet/device-action"
+        ),
         # if property is element of this resource.
         element_property=True,
+        # valueset binding
+        binding_description="A kind of change that happened to the device during the procedure.",
+        binding_strength="preferred",
+        binding_uri="http://hl7.org/fhir/ValueSet/device-action",
     )
 
     manipulated: fhirtypes.ReferenceType = Field(
@@ -695,6 +768,7 @@ class ProcedureFocalDevice(backboneelement.BackboneElement):
         element_property=True,
         # note: Listed Resource Type(s) should be allowed as Reference.
         enum_reference_types=["Device"],
+        backref="procedure.focal_device_manipulated",
     )
 
     @classmethod
@@ -733,6 +807,7 @@ class ProcedurePerformer(backboneelement.BackboneElement):
             "RelatedPerson",
             "Device",
         ],
+        backref="procedure.performer_actor",
     )
 
     function: fhirtypes.CodeableConceptType = Field(
@@ -741,10 +816,15 @@ class ProcedurePerformer(backboneelement.BackboneElement):
         title="Type of performance",
         description=(
             "Distinguishes the type of involvement of the performer in the "
-            "procedure. For example, surgeon, anaesthetist, endoscopist."
+            "procedure. For example, surgeon, anaesthetist, endoscopist. See "
+            "http://hl7.org/fhir/ValueSet/performer-role"
         ),
         # if property is element of this resource.
         element_property=True,
+        # valueset binding
+        binding_description="A code that identifies the role of a performer of the procedure.",
+        binding_strength="example",
+        binding_uri="http://hl7.org/fhir/ValueSet/performer-role",
     )
 
     onBehalfOf: fhirtypes.ReferenceType = Field(
@@ -756,6 +836,7 @@ class ProcedurePerformer(backboneelement.BackboneElement):
         element_property=True,
         # note: Listed Resource Type(s) should be allowed as Reference.
         enum_reference_types=["Organization"],
+        backref="procedure.performer_onBehalfOf",
     )
 
     @classmethod

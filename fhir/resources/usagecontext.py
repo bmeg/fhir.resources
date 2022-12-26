@@ -33,10 +33,13 @@ class UsageContext(element.Element):
         title="Type of context being specified",
         description=(
             "A code that identifies the type of context being specified by this "
-            "usage context."
+            "usage context. See http://hl7.org/fhir/ValueSet/usage-context-type"
         ),
         # if property is element of this resource.
         element_property=True,
+        # valueset binding
+        binding_strength="extensible",
+        binding_uri="http://hl7.org/fhir/ValueSet/usage-context-type",
     )
 
     valueCodeableConcept: fhirtypes.CodeableConceptType = Field(
@@ -45,13 +48,17 @@ class UsageContext(element.Element):
         title="Value that defines the context",
         description=(
             "A value that defines the context specified in this context of use. The"
-            " interpretation of the value is defined by the code."
+            " interpretation of the value is defined by the code. See "
+            "http://hl7.org/fhir/ValueSet/use-context"
         ),
         # if property is element of this resource.
         element_property=True,
         # Choice of Data Types. i.e value[x]
         one_of_many="value",
         one_of_many_required=True,
+        # valueset binding
+        binding_strength="example",
+        binding_uri="http://hl7.org/fhir/ValueSet/use-context",
     )
 
     valueQuantity: fhirtypes.QuantityType = Field(
@@ -60,13 +67,17 @@ class UsageContext(element.Element):
         title="Value that defines the context",
         description=(
             "A value that defines the context specified in this context of use. The"
-            " interpretation of the value is defined by the code."
+            " interpretation of the value is defined by the code. See "
+            "http://hl7.org/fhir/ValueSet/use-context"
         ),
         # if property is element of this resource.
         element_property=True,
         # Choice of Data Types. i.e value[x]
         one_of_many="value",
         one_of_many_required=True,
+        # valueset binding
+        binding_strength="example",
+        binding_uri="http://hl7.org/fhir/ValueSet/use-context",
     )
 
     valueRange: fhirtypes.RangeType = Field(
@@ -75,13 +86,17 @@ class UsageContext(element.Element):
         title="Value that defines the context",
         description=(
             "A value that defines the context specified in this context of use. The"
-            " interpretation of the value is defined by the code."
+            " interpretation of the value is defined by the code. See "
+            "http://hl7.org/fhir/ValueSet/use-context"
         ),
         # if property is element of this resource.
         element_property=True,
         # Choice of Data Types. i.e value[x]
         one_of_many="value",
         one_of_many_required=True,
+        # valueset binding
+        binding_strength="example",
+        binding_uri="http://hl7.org/fhir/ValueSet/use-context",
     )
 
     valueReference: fhirtypes.ReferenceType = Field(
@@ -90,13 +105,17 @@ class UsageContext(element.Element):
         title="Value that defines the context",
         description=(
             "A value that defines the context specified in this context of use. The"
-            " interpretation of the value is defined by the code."
+            " interpretation of the value is defined by the code. See "
+            "http://hl7.org/fhir/ValueSet/use-context"
         ),
         # if property is element of this resource.
         element_property=True,
         # Choice of Data Types. i.e value[x]
         one_of_many="value",
         one_of_many_required=True,
+        # valueset binding
+        binding_strength="example",
+        binding_uri="http://hl7.org/fhir/ValueSet/use-context",
         # note: Listed Resource Type(s) should be allowed as Reference.
         enum_reference_types=[
             "PlanDefinition",
@@ -107,6 +126,7 @@ class UsageContext(element.Element):
             "Location",
             "Organization",
         ],
+        backref="usage_context_valueReference",
     )
 
     @classmethod

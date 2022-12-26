@@ -38,10 +38,27 @@ class Goal(domainresource.DomainResource):
         ),
         description=(
             "Describes the progression, or lack thereof, towards the goal against "
-            "the target."
+            "the target. See http://hl7.org/fhir/ValueSet/goal-achievement"
         ),
         # if property is element of this resource.
         element_property=True,
+        # note: Enum values can be used in validation,
+        # but use in your own responsibilities, read official FHIR documentation.
+        enum_values=[
+            "in-progress",
+            "improving",
+            "worsening",
+            "no-change",
+            "achieved",
+            "sustaining",
+            "not-achieved",
+            "no-progress",
+            "not-attainable",
+        ],
+        # valueset binding
+        binding_description="Indicates the progression, or lack thereof, towards the goal against the target.",
+        binding_strength="preferred",
+        binding_uri="http://hl7.org/fhir/ValueSet/goal-achievement",
     )
 
     addresses: typing.List[fhirtypes.ReferenceType] = Field(
@@ -63,15 +80,23 @@ class Goal(domainresource.DomainResource):
             "ServiceRequest",
             "RiskAssessment",
         ],
+        backref="goal_addresses",
     )
 
     category: typing.List[fhirtypes.CodeableConceptType] = Field(
         None,
         alias="category",
         title="E.g. Treatment, dietary, behavioral, etc.",
-        description="Indicates a category the goal falls within.",
+        description=(
+            "Indicates a category the goal falls within. See "
+            "http://hl7.org/fhir/ValueSet/goal-category"
+        ),
         # if property is element of this resource.
         element_property=True,
+        # valueset binding
+        binding_description="Codes for grouping and sorting goals.",
+        binding_strength="example",
+        binding_uri="http://hl7.org/fhir/ValueSet/goal-category",
     )
 
     description: fhirtypes.CodeableConceptType = Field(
@@ -81,10 +106,15 @@ class Goal(domainresource.DomainResource):
         description=(
             "Human-readable and/or coded description of a specific desired "
             'objective of care, such as "control blood pressure" or "negotiate an '
-            'obstacle course" or "dance with child at wedding".'
+            'obstacle course" or "dance with child at wedding". See '
+            "http://hl7.org/fhir/ValueSet/clinical-findings"
         ),
         # if property is element of this resource.
         element_property=True,
+        # valueset binding
+        binding_description="Codes providing the details of a particular goal.  This will generally be system or implementation guide-specific.  In many systems, only the text element will be used.",
+        binding_strength="example",
+        binding_uri="http://hl7.org/fhir/ValueSet/clinical-findings",
     )
 
     expressedBy: fhirtypes.ReferenceType = Field(
@@ -101,6 +131,7 @@ class Goal(domainresource.DomainResource):
             "PractitionerRole",
             "RelatedPerson",
         ],
+        backref="goal_expressedBy",
     )
 
     identifier: typing.List[fhirtypes.IdentifierType] = Field(
@@ -123,7 +154,10 @@ class Goal(domainresource.DomainResource):
             "proposed | planned | accepted | active | on-hold | completed | "
             "cancelled | entered-in-error | rejected"
         ),
-        description="The state of the goal throughout its lifecycle.",
+        description=(
+            "The state of the goal throughout its lifecycle. See "
+            "http://hl7.org/fhir/ValueSet/goal-status"
+        ),
         # if property is element of this resource.
         element_property=True,
         element_required=True,
@@ -140,6 +174,11 @@ class Goal(domainresource.DomainResource):
             "entered-in-error",
             "rejected",
         ],
+        # valueset binding
+        binding_description="Codes that reflect the current state of a goal and whether the goal is still being targeted.",
+        binding_strength="required",
+        binding_uri="http://hl7.org/fhir/ValueSet/goal-status",
+        binding_version="4.3.0",
     )
     lifecycleStatus__ext: fhirtypes.FHIRPrimitiveExtensionType = Field(
         None, alias="_lifecycleStatus", title="Extension field for ``lifecycleStatus``."
@@ -160,10 +199,15 @@ class Goal(domainresource.DomainResource):
         title="What result was achieved regarding the goal?",
         description=(
             "Identifies the change (or lack of change) at the point when the status"
-            " of the goal is assessed."
+            " of the goal is assessed. See http://hl7.org/fhir/ValueSet/clinical-"
+            "findings"
         ),
         # if property is element of this resource.
         element_property=True,
+        # valueset binding
+        binding_description='The result of the goal; e.g. "25% increase in shoulder mobility", "Anxiety reduced to moderate levels".  "15 kg weight loss sustained over 6 months".',
+        binding_strength="example",
+        binding_uri="http://hl7.org/fhir/ValueSet/clinical-findings",
     )
 
     outcomeReference: typing.List[fhirtypes.ReferenceType] = Field(
@@ -175,6 +219,7 @@ class Goal(domainresource.DomainResource):
         element_property=True,
         # note: Listed Resource Type(s) should be allowed as Reference.
         enum_reference_types=["Observation"],
+        backref="goal_outcomeReference",
     )
 
     priority: fhirtypes.CodeableConceptType = Field(
@@ -183,34 +228,56 @@ class Goal(domainresource.DomainResource):
         title="high-priority | medium-priority | low-priority",
         description=(
             "Identifies the mutually agreed level of importance associated with "
-            "reaching/sustaining the goal."
+            "reaching/sustaining the goal. See http://hl7.org/fhir/ValueSet/goal-"
+            "priority"
         ),
         # if property is element of this resource.
         element_property=True,
+        # note: Enum values can be used in validation,
+        # but use in your own responsibilities, read official FHIR documentation.
+        enum_values=["high-priority", "medium-priority", "low-priority"],
+        # valueset binding
+        binding_description="The level of importance associated with a goal.",
+        binding_strength="preferred",
+        binding_uri="http://hl7.org/fhir/ValueSet/goal-priority",
     )
 
     startCodeableConcept: fhirtypes.CodeableConceptType = Field(
         None,
         alias="startCodeableConcept",
         title="When goal pursuit begins",
-        description="The date or event after which the goal should begin being pursued.",
+        description=(
+            "The date or event after which the goal should begin being pursued. See"
+            " http://hl7.org/fhir/ValueSet/goal-start-event"
+        ),
         # if property is element of this resource.
         element_property=True,
         # Choice of Data Types. i.e start[x]
         one_of_many="start",
         one_of_many_required=False,
+        # valueset binding
+        binding_description="Codes describing events that can trigger the initiation of a goal.",
+        binding_strength="example",
+        binding_uri="http://hl7.org/fhir/ValueSet/goal-start-event",
     )
 
     startDate: fhirtypes.Date = Field(
         None,
         alias="startDate",
         title="When goal pursuit begins",
-        description="The date or event after which the goal should begin being pursued.",
+        description=(
+            "The date or event after which the goal should begin being pursued. See"
+            " http://hl7.org/fhir/ValueSet/goal-start-event"
+        ),
         # if property is element of this resource.
         element_property=True,
         # Choice of Data Types. i.e start[x]
         one_of_many="start",
         one_of_many_required=False,
+        # valueset binding
+        binding_description="Codes describing events that can trigger the initiation of a goal.",
+        binding_strength="example",
+        binding_uri="http://hl7.org/fhir/ValueSet/goal-start-event",
     )
     startDate__ext: fhirtypes.FHIRPrimitiveExtensionType = Field(
         None, alias="_startDate", title="Extension field for ``startDate``."
@@ -255,6 +322,7 @@ class Goal(domainresource.DomainResource):
         element_property=True,
         # note: Listed Resource Type(s) should be allowed as Reference.
         enum_reference_types=["Patient", "Group", "Organization"],
+        backref="goal_subject",
     )
 
     target: typing.List[fhirtypes.GoalTargetType] = Field(
@@ -427,6 +495,9 @@ class GoalTarget(backboneelement.BackboneElement):
         # Choice of Data Types. i.e detail[x]
         one_of_many="detail",
         one_of_many_required=False,
+        # valueset binding
+        binding_description="Codes to identify the target value of the focus to be achieved to signify the fulfillment of the goal.",
+        binding_strength="example",
     )
     detailBoolean__ext: fhirtypes.FHIRPrimitiveExtensionType = Field(
         None, alias="_detailBoolean", title="Extension field for ``detailBoolean``."
@@ -450,6 +521,9 @@ class GoalTarget(backboneelement.BackboneElement):
         # Choice of Data Types. i.e detail[x]
         one_of_many="detail",
         one_of_many_required=False,
+        # valueset binding
+        binding_description="Codes to identify the target value of the focus to be achieved to signify the fulfillment of the goal.",
+        binding_strength="example",
     )
 
     detailInteger: fhirtypes.Integer = Field(
@@ -470,6 +544,9 @@ class GoalTarget(backboneelement.BackboneElement):
         # Choice of Data Types. i.e detail[x]
         one_of_many="detail",
         one_of_many_required=False,
+        # valueset binding
+        binding_description="Codes to identify the target value of the focus to be achieved to signify the fulfillment of the goal.",
+        binding_strength="example",
     )
     detailInteger__ext: fhirtypes.FHIRPrimitiveExtensionType = Field(
         None, alias="_detailInteger", title="Extension field for ``detailInteger``."
@@ -493,6 +570,9 @@ class GoalTarget(backboneelement.BackboneElement):
         # Choice of Data Types. i.e detail[x]
         one_of_many="detail",
         one_of_many_required=False,
+        # valueset binding
+        binding_description="Codes to identify the target value of the focus to be achieved to signify the fulfillment of the goal.",
+        binding_strength="example",
     )
 
     detailRange: fhirtypes.RangeType = Field(
@@ -513,6 +593,9 @@ class GoalTarget(backboneelement.BackboneElement):
         # Choice of Data Types. i.e detail[x]
         one_of_many="detail",
         one_of_many_required=False,
+        # valueset binding
+        binding_description="Codes to identify the target value of the focus to be achieved to signify the fulfillment of the goal.",
+        binding_strength="example",
     )
 
     detailRatio: fhirtypes.RatioType = Field(
@@ -533,6 +616,9 @@ class GoalTarget(backboneelement.BackboneElement):
         # Choice of Data Types. i.e detail[x]
         one_of_many="detail",
         one_of_many_required=False,
+        # valueset binding
+        binding_description="Codes to identify the target value of the focus to be achieved to signify the fulfillment of the goal.",
+        binding_strength="example",
     )
 
     detailString: fhirtypes.String = Field(
@@ -553,6 +639,9 @@ class GoalTarget(backboneelement.BackboneElement):
         # Choice of Data Types. i.e detail[x]
         one_of_many="detail",
         one_of_many_required=False,
+        # valueset binding
+        binding_description="Codes to identify the target value of the focus to be achieved to signify the fulfillment of the goal.",
+        binding_strength="example",
     )
     detailString__ext: fhirtypes.FHIRPrimitiveExtensionType = Field(
         None, alias="_detailString", title="Extension field for ``detailString``."
@@ -597,10 +686,15 @@ class GoalTarget(backboneelement.BackboneElement):
         title="The parameter whose value is being tracked",
         description=(
             "The parameter whose value is being tracked, e.g. body weight, blood "
-            "pressure, or hemoglobin A1c level."
+            "pressure, or hemoglobin A1c level. See "
+            "http://hl7.org/fhir/ValueSet/observation-codes"
         ),
         # if property is element of this resource.
         element_property=True,
+        # valueset binding
+        binding_description="Codes to identify the value being tracked, e.g. body weight, blood pressure, or hemoglobin A1c level.",
+        binding_strength="example",
+        binding_uri="http://hl7.org/fhir/ValueSet/observation-codes",
     )
 
     @classmethod

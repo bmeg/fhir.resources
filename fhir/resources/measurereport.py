@@ -52,6 +52,7 @@ class MeasureReport(domainresource.DomainResource):
         element_property=True,
         # note: Listed Resource Type(s) should be allowed as Reference.
         enum_reference_types=["Resource"],
+        backref="measure_report_evaluatedResource",
     )
 
     group: typing.List[fhirtypes.MeasureReportGroupType] = Field(
@@ -85,10 +86,19 @@ class MeasureReport(domainresource.DomainResource):
         title="increase | decrease",
         description=(
             "Whether improvement in the measure is noted by an increase or decrease"
-            " in the measure score."
+            " in the measure score. See http://hl7.org/fhir/ValueSet/measure-"
+            "improvement-notation"
         ),
         # if property is element of this resource.
         element_property=True,
+        # note: Enum values can be used in validation,
+        # but use in your own responsibilities, read official FHIR documentation.
+        enum_values=["increase", "decrease"],
+        # valueset binding
+        binding_description="The improvement notation of the measure report (e.g. increase or decrease)",
+        binding_strength="required",
+        binding_uri="http://hl7.org/fhir/ValueSet/measure-improvement-notation",
+        binding_version="4.3.0",
     )
 
     measure: fhirtypes.Canonical = Field(
@@ -101,6 +111,7 @@ class MeasureReport(domainresource.DomainResource):
         element_required=True,
         # note: Listed Resource Type(s) should be allowed as Reference.
         enum_reference_types=["Measure"],
+        backref="measure_report_measure",
     )
     measure__ext: fhirtypes.FHIRPrimitiveExtensionType = Field(
         None, alias="_measure", title="Extension field for ``measure``."
@@ -129,6 +140,7 @@ class MeasureReport(domainresource.DomainResource):
             "Location",
             "Organization",
         ],
+        backref="measure_report_reporter",
     )
 
     status: fhirtypes.Code = Field(
@@ -137,7 +149,8 @@ class MeasureReport(domainresource.DomainResource):
         title="complete | pending | error",
         description=(
             "The MeasureReport status. No data will be available until the "
-            "MeasureReport status is complete."
+            "MeasureReport status is complete. See "
+            "http://hl7.org/fhir/ValueSet/measure-report-status"
         ),
         # if property is element of this resource.
         element_property=True,
@@ -145,6 +158,11 @@ class MeasureReport(domainresource.DomainResource):
         # note: Enum values can be used in validation,
         # but use in your own responsibilities, read official FHIR documentation.
         enum_values=["complete", "pending", "error"],
+        # valueset binding
+        binding_description="The status of the measure report (e.g. complete, pending, or error)",
+        binding_strength="required",
+        binding_uri="http://hl7.org/fhir/ValueSet/measure-report-status",
+        binding_version="4.3.0",
     )
     status__ext: fhirtypes.FHIRPrimitiveExtensionType = Field(
         None, alias="_status", title="Extension field for ``status``."
@@ -170,6 +188,7 @@ class MeasureReport(domainresource.DomainResource):
             "RelatedPerson",
             "Group",
         ],
+        backref="measure_report_subject",
     )
 
     type: fhirtypes.Code = Field(
@@ -183,7 +202,8 @@ class MeasureReport(domainresource.DomainResource):
             "meet the various criteria in the measure; a summary report, which "
             "returns a population count for each of the criteria in the measure; or"
             " a data-collection, which enables the MeasureReport to be used to "
-            "exchange the data-of-interest for a quality measure."
+            "exchange the data-of-interest for a quality measure. See "
+            "http://hl7.org/fhir/ValueSet/measure-report-type"
         ),
         # if property is element of this resource.
         element_property=True,
@@ -191,6 +211,11 @@ class MeasureReport(domainresource.DomainResource):
         # note: Enum values can be used in validation,
         # but use in your own responsibilities, read official FHIR documentation.
         enum_values=["individual", "subject-list", "summary", "data-collection"],
+        # valueset binding
+        binding_description="The type of the measure report: individual, patient listing, or summary",
+        binding_strength="required",
+        binding_uri="http://hl7.org/fhir/ValueSet/measure-report-type",
+        binding_version="4.3.0",
     )
     type__ext: fhirtypes.FHIRPrimitiveExtensionType = Field(
         None, alias="_type", title="Extension field for ``type``."
@@ -306,10 +331,14 @@ class MeasureReportGroup(backboneelement.BackboneElement):
         title="Meaning of the group",
         description=(
             "The meaning of the population group as defined in the measure "
-            "definition."
+            "definition. See http://hl7.org/fhir/ValueSet/measure-group-example"
         ),
         # if property is element of this resource.
         element_property=True,
+        # valueset binding
+        binding_description="Example of measure groups.",
+        binding_strength="example",
+        binding_uri="http://hl7.org/fhir/ValueSet/measure-group-example",
     )
 
     measureScore: fhirtypes.QuantityType = Field(
@@ -386,9 +415,29 @@ class MeasureReportGroupPopulation(backboneelement.BackboneElement):
             "denominator-exclusion | denominator-exception | measure-population | "
             "measure-population-exclusion | measure-observation"
         ),
-        description="The type of the population.",
+        description=(
+            "The type of the population. See http://hl7.org/fhir/ValueSet/measure-"
+            "population"
+        ),
         # if property is element of this resource.
         element_property=True,
+        # note: Enum values can be used in validation,
+        # but use in your own responsibilities, read official FHIR documentation.
+        enum_values=[
+            "initial-population",
+            "numerator",
+            "numerator-exclusion",
+            "denominator",
+            "denominator-exclusion",
+            "denominator-exception",
+            "measure-population",
+            "measure-population-exclusion",
+            "measure-observation",
+        ],
+        # valueset binding
+        binding_description="The type of population (e.g. initial, numerator, denominator, etc.).",
+        binding_strength="extensible",
+        binding_uri="http://hl7.org/fhir/ValueSet/measure-population",
     )
 
     count: fhirtypes.Integer = Field(
@@ -415,6 +464,7 @@ class MeasureReportGroupPopulation(backboneelement.BackboneElement):
         element_property=True,
         # note: Listed Resource Type(s) should be allowed as Reference.
         enum_reference_types=["List"],
+        backref="measure_report.group.population_subjectResults",
     )
 
     @classmethod
@@ -449,9 +499,16 @@ class MeasureReportGroupStratifier(backboneelement.BackboneElement):
         None,
         alias="code",
         title="What stratifier of the group",
-        description="The meaning of this stratifier, as defined in the measure definition.",
+        description=(
+            "The meaning of this stratifier, as defined in the measure definition. "
+            "See http://hl7.org/fhir/ValueSet/measure-stratifier-example"
+        ),
         # if property is element of this resource.
         element_property=True,
+        # valueset binding
+        binding_description="Meaning of the stratifier.",
+        binding_strength="example",
+        binding_uri="http://hl7.org/fhir/ValueSet/measure-stratifier-example",
     )
 
     stratum: typing.List[fhirtypes.MeasureReportGroupStratifierStratumType] = Field(
@@ -538,10 +595,16 @@ class MeasureReportGroupStratifierStratum(backboneelement.BackboneElement):
         description=(
             "The value for this stratum, expressed as a CodeableConcept. When "
             "defining stratifiers on complex values, the value must be rendered "
-            "such that the value for each stratum within the stratifier is unique."
+            "such that the value for each stratum within the stratifier is unique. "
+            "See http://hl7.org/fhir/ValueSet/measurereport-stratifier-value-"
+            "example"
         ),
         # if property is element of this resource.
         element_property=True,
+        # valueset binding
+        binding_description="The stratum value.",
+        binding_strength="example",
+        binding_uri="http://hl7.org/fhir/ValueSet/measurereport-stratifier-value-example",
     )
 
     @classmethod
@@ -576,18 +639,32 @@ class MeasureReportGroupStratifierStratumComponent(backboneelement.BackboneEleme
         ...,
         alias="code",
         title="What stratifier component of the group",
-        description="The code for the stratum component value.",
+        description=(
+            "The code for the stratum component value. See "
+            "http://hl7.org/fhir/ValueSet/measure-stratifier-example"
+        ),
         # if property is element of this resource.
         element_property=True,
+        # valueset binding
+        binding_description="Meaning of the stratifier.",
+        binding_strength="example",
+        binding_uri="http://hl7.org/fhir/ValueSet/measure-stratifier-example",
     )
 
     value: fhirtypes.CodeableConceptType = Field(
         ...,
         alias="value",
         title="The stratum component value, e.g. male",
-        description="The stratum component value.",
+        description=(
+            "The stratum component value. See "
+            "http://hl7.org/fhir/ValueSet/measurereport-stratifier-value-example"
+        ),
         # if property is element of this resource.
         element_property=True,
+        # valueset binding
+        binding_description="The stratum value.",
+        binding_strength="example",
+        binding_uri="http://hl7.org/fhir/ValueSet/measurereport-stratifier-value-example",
     )
 
     @classmethod
@@ -619,9 +696,29 @@ class MeasureReportGroupStratifierStratumPopulation(backboneelement.BackboneElem
             "denominator-exclusion | denominator-exception | measure-population | "
             "measure-population-exclusion | measure-observation"
         ),
-        description="The type of the population.",
+        description=(
+            "The type of the population. See http://hl7.org/fhir/ValueSet/measure-"
+            "population"
+        ),
         # if property is element of this resource.
         element_property=True,
+        # note: Enum values can be used in validation,
+        # but use in your own responsibilities, read official FHIR documentation.
+        enum_values=[
+            "initial-population",
+            "numerator",
+            "numerator-exclusion",
+            "denominator",
+            "denominator-exclusion",
+            "denominator-exception",
+            "measure-population",
+            "measure-population-exclusion",
+            "measure-observation",
+        ],
+        # valueset binding
+        binding_description="The type of population (e.g. initial, numerator, denominator, etc.).",
+        binding_strength="extensible",
+        binding_uri="http://hl7.org/fhir/ValueSet/measure-population",
     )
 
     count: fhirtypes.Integer = Field(
@@ -648,6 +745,7 @@ class MeasureReportGroupStratifierStratumPopulation(backboneelement.BackboneElem
         element_property=True,
         # note: Listed Resource Type(s) should be allowed as Reference.
         enum_reference_types=["List"],
+        backref="measure_report.group.stratifier.stratum.population_subjectResults",
     )
 
     @classmethod

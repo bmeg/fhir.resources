@@ -83,6 +83,9 @@ class Group(domainresource.DomainResource):
         ),
         # if property is element of this resource.
         element_property=True,
+        # valueset binding
+        binding_description="Kind of particular resource; e.g. cow, syringe, lake, etc.",
+        binding_strength="example",
     )
 
     identifier: typing.List[fhirtypes.IdentifierType] = Field(
@@ -111,6 +114,7 @@ class Group(domainresource.DomainResource):
             "Practitioner",
             "PractitionerRole",
         ],
+        backref="group_managingEntity",
     )
 
     member: typing.List[fhirtypes.GroupMemberType] = Field(
@@ -157,7 +161,7 @@ class Group(domainresource.DomainResource):
         title="person | animal | practitioner | device | medication | substance",
         description=(
             "Identifies the broad classification of the kind of resources the group"
-            " includes."
+            " includes. See http://hl7.org/fhir/ValueSet/group-type"
         ),
         # if property is element of this resource.
         element_property=True,
@@ -172,6 +176,11 @@ class Group(domainresource.DomainResource):
             "medication",
             "substance",
         ],
+        # valueset binding
+        binding_description="Types of resources that are part of group.",
+        binding_strength="required",
+        binding_uri="http://hl7.org/fhir/ValueSet/group-type",
+        binding_version="4.3.0",
     )
     type__ext: fhirtypes.FHIRPrimitiveExtensionType = Field(
         None, alias="_type", title="Extension field for ``type``."
@@ -283,6 +292,9 @@ class GroupCharacteristic(backboneelement.BackboneElement):
         description="A code that identifies the kind of trait being asserted.",
         # if property is element of this resource.
         element_property=True,
+        # valueset binding
+        binding_description="List of characteristics used to describe group members; e.g. gender, age, owner, location, etc.",
+        binding_strength="example",
     )
 
     exclude: bool = Field(
@@ -326,6 +338,9 @@ class GroupCharacteristic(backboneelement.BackboneElement):
         # Choice of Data Types. i.e value[x]
         one_of_many="value",
         one_of_many_required=True,
+        # valueset binding
+        binding_description="Value of descriptive member characteristic; e.g. red, male, pneumonia, Caucasian, etc.",
+        binding_strength="example",
     )
     valueBoolean__ext: fhirtypes.FHIRPrimitiveExtensionType = Field(
         None, alias="_valueBoolean", title="Extension field for ``valueBoolean``."
@@ -344,6 +359,9 @@ class GroupCharacteristic(backboneelement.BackboneElement):
         # Choice of Data Types. i.e value[x]
         one_of_many="value",
         one_of_many_required=True,
+        # valueset binding
+        binding_description="Value of descriptive member characteristic; e.g. red, male, pneumonia, Caucasian, etc.",
+        binding_strength="example",
     )
 
     valueQuantity: fhirtypes.QuantityType = Field(
@@ -359,6 +377,9 @@ class GroupCharacteristic(backboneelement.BackboneElement):
         # Choice of Data Types. i.e value[x]
         one_of_many="value",
         one_of_many_required=True,
+        # valueset binding
+        binding_description="Value of descriptive member characteristic; e.g. red, male, pneumonia, Caucasian, etc.",
+        binding_strength="example",
     )
 
     valueRange: fhirtypes.RangeType = Field(
@@ -374,6 +395,9 @@ class GroupCharacteristic(backboneelement.BackboneElement):
         # Choice of Data Types. i.e value[x]
         one_of_many="value",
         one_of_many_required=True,
+        # valueset binding
+        binding_description="Value of descriptive member characteristic; e.g. red, male, pneumonia, Caucasian, etc.",
+        binding_strength="example",
     )
 
     valueReference: fhirtypes.ReferenceType = Field(
@@ -389,6 +413,9 @@ class GroupCharacteristic(backboneelement.BackboneElement):
         # Choice of Data Types. i.e value[x]
         one_of_many="value",
         one_of_many_required=True,
+        # valueset binding
+        binding_description="Value of descriptive member characteristic; e.g. red, male, pneumonia, Caucasian, etc.",
+        binding_strength="example",
     )
 
     @classmethod
@@ -550,6 +577,7 @@ class GroupMember(backboneelement.BackboneElement):
             "Substance",
             "Group",
         ],
+        backref="group.member_entity",
     )
 
     inactive: bool = Field(

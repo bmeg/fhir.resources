@@ -59,13 +59,20 @@ class Contributor(element.Element):
         None,
         alias="type",
         title="author | editor | reviewer | endorser",
-        description="The type of contributor.",
+        description=(
+            "The type of contributor. See http://hl7.org/fhir/ValueSet/contributor-"
+            "type"
+        ),
         # if property is element of this resource.
         element_property=True,
         element_required=True,
         # note: Enum values can be used in validation,
         # but use in your own responsibilities, read official FHIR documentation.
         enum_values=["author", "editor", "reviewer", "endorser"],
+        # valueset binding
+        binding_strength="required",
+        binding_uri="http://hl7.org/fhir/ValueSet/contributor-type",
+        binding_version="4.3.0",
     )
     type__ext: fhirtypes.FHIRPrimitiveExtensionType = Field(
         None, alias="_type", title="Extension field for ``type``."

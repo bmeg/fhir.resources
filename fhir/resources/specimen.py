@@ -50,9 +50,16 @@ class Specimen(domainresource.DomainResource):
         None,
         alias="condition",
         title="State of the specimen",
-        description="A mode or state of being that describes the nature of the specimen.",
+        description=(
+            "A mode or state of being that describes the nature of the specimen. "
+            "See http://terminology.hl7.org/ValueSet/v2-0493"
+        ),
         # if property is element of this resource.
         element_property=True,
+        # valueset binding
+        binding_description="Codes describing the state of the specimen.",
+        binding_strength="extensible",
+        binding_uri="http://terminology.hl7.org/ValueSet/v2-0493",
     )
 
     container: typing.List[fhirtypes.SpecimenContainerType] = Field(
@@ -101,6 +108,7 @@ class Specimen(domainresource.DomainResource):
         element_property=True,
         # note: Listed Resource Type(s) should be allowed as Reference.
         enum_reference_types=["Specimen"],
+        backref="specimen_parent",
     )
 
     processing: typing.List[fhirtypes.SpecimenProcessingType] = Field(
@@ -136,18 +144,27 @@ class Specimen(domainresource.DomainResource):
         element_property=True,
         # note: Listed Resource Type(s) should be allowed as Reference.
         enum_reference_types=["ServiceRequest"],
+        backref="specimen_request",
     )
 
     status: fhirtypes.Code = Field(
         None,
         alias="status",
         title="available | unavailable | unsatisfactory | entered-in-error",
-        description="The availability of the specimen.",
+        description=(
+            "The availability of the specimen. See "
+            "http://hl7.org/fhir/ValueSet/specimen-status"
+        ),
         # if property is element of this resource.
         element_property=True,
         # note: Enum values can be used in validation,
         # but use in your own responsibilities, read official FHIR documentation.
         enum_values=["available", "unavailable", "unsatisfactory", "entered-in-error"],
+        # valueset binding
+        binding_description="Codes providing the status/availability of a specimen.",
+        binding_strength="required",
+        binding_uri="http://hl7.org/fhir/ValueSet/specimen-status",
+        binding_version="4.3.0",
     )
     status__ext: fhirtypes.FHIRPrimitiveExtensionType = Field(
         None, alias="_status", title="Extension field for ``status``."
@@ -166,15 +183,23 @@ class Specimen(domainresource.DomainResource):
         element_property=True,
         # note: Listed Resource Type(s) should be allowed as Reference.
         enum_reference_types=["Patient", "Group", "Device", "Substance", "Location"],
+        backref="specimen_subject",
     )
 
     type: fhirtypes.CodeableConceptType = Field(
         None,
         alias="type",
         title="Kind of material that forms the specimen",
-        description="The kind of material that forms the specimen.",
+        description=(
+            "The kind of material that forms the specimen. See "
+            "http://terminology.hl7.org/ValueSet/v2-0487"
+        ),
         # if property is element of this resource.
         element_property=True,
+        # valueset binding
+        binding_description="The type of the specimen.",
+        binding_strength="example",
+        binding_uri="http://terminology.hl7.org/ValueSet/v2-0487",
     )
 
     @classmethod
@@ -226,10 +251,14 @@ class SpecimenCollection(backboneelement.BackboneElement):
         description=(
             "Anatomical location from which the specimen was collected (if subject "
             "is a patient). This is the target site.  This element is not used for "
-            "environmental specimens."
+            "environmental specimens. See http://hl7.org/fhir/ValueSet/body-site"
         ),
         # if property is element of this resource.
         element_property=True,
+        # valueset binding
+        binding_description="SNOMED CT Body site concepts",
+        binding_strength="example",
+        binding_uri="http://hl7.org/fhir/ValueSet/body-site",
     )
 
     collectedDateTime: fhirtypes.DateTime = Field(
@@ -276,6 +305,7 @@ class SpecimenCollection(backboneelement.BackboneElement):
         element_property=True,
         # note: Listed Resource Type(s) should be allowed as Reference.
         enum_reference_types=["Practitioner", "PractitionerRole"],
+        backref="specimen.collection_collector",
     )
 
     duration: fhirtypes.DurationType = Field(
@@ -293,13 +323,18 @@ class SpecimenCollection(backboneelement.BackboneElement):
         title="Whether or how long patient abstained from food and/or drink",
         description=(
             "Abstinence or reduction from some or all food, drink, or both, for a "
-            "period of time prior to sample collection."
+            "period of time prior to sample collection. See "
+            "http://terminology.hl7.org/ValueSet/v2-0916"
         ),
         # if property is element of this resource.
         element_property=True,
         # Choice of Data Types. i.e fastingStatus[x]
         one_of_many="fastingStatus",
         one_of_many_required=False,
+        # valueset binding
+        binding_description="Codes describing the fasting status of the patient.",
+        binding_strength="extensible",
+        binding_uri="http://terminology.hl7.org/ValueSet/v2-0916",
     )
 
     fastingStatusDuration: fhirtypes.DurationType = Field(
@@ -308,13 +343,18 @@ class SpecimenCollection(backboneelement.BackboneElement):
         title="Whether or how long patient abstained from food and/or drink",
         description=(
             "Abstinence or reduction from some or all food, drink, or both, for a "
-            "period of time prior to sample collection."
+            "period of time prior to sample collection. See "
+            "http://terminology.hl7.org/ValueSet/v2-0916"
         ),
         # if property is element of this resource.
         element_property=True,
         # Choice of Data Types. i.e fastingStatus[x]
         one_of_many="fastingStatus",
         one_of_many_required=False,
+        # valueset binding
+        binding_description="Codes describing the fasting status of the patient.",
+        binding_strength="extensible",
+        binding_uri="http://terminology.hl7.org/ValueSet/v2-0916",
     )
 
     method: fhirtypes.CodeableConceptType = Field(
@@ -323,10 +363,14 @@ class SpecimenCollection(backboneelement.BackboneElement):
         title="Technique used to perform collection",
         description=(
             "A coded value specifying the technique that is used to perform the "
-            "procedure."
+            "procedure. See http://hl7.org/fhir/ValueSet/specimen-collection-method"
         ),
         # if property is element of this resource.
         element_property=True,
+        # valueset binding
+        binding_description="The  technique that is used to perform the procedure.",
+        binding_strength="example",
+        binding_uri="http://hl7.org/fhir/ValueSet/specimen-collection-method",
     )
 
     quantity: fhirtypes.QuantityType = Field(
@@ -422,13 +466,18 @@ class SpecimenContainer(backboneelement.BackboneElement):
         title="Additive associated with container",
         description=(
             "Introduced substance to preserve, maintain or enhance the specimen. "
-            "Examples: Formalin, Citrate, EDTA."
+            "Examples: Formalin, Citrate, EDTA. See "
+            "http://terminology.hl7.org/ValueSet/v2-0371"
         ),
         # if property is element of this resource.
         element_property=True,
         # Choice of Data Types. i.e additive[x]
         one_of_many="additive",
         one_of_many_required=False,
+        # valueset binding
+        binding_description="Substance added to specimen container.",
+        binding_strength="example",
+        binding_uri="http://terminology.hl7.org/ValueSet/v2-0371",
     )
 
     additiveReference: fhirtypes.ReferenceType = Field(
@@ -437,15 +486,21 @@ class SpecimenContainer(backboneelement.BackboneElement):
         title="Additive associated with container",
         description=(
             "Introduced substance to preserve, maintain or enhance the specimen. "
-            "Examples: Formalin, Citrate, EDTA."
+            "Examples: Formalin, Citrate, EDTA. See "
+            "http://terminology.hl7.org/ValueSet/v2-0371"
         ),
         # if property is element of this resource.
         element_property=True,
         # Choice of Data Types. i.e additive[x]
         one_of_many="additive",
         one_of_many_required=False,
+        # valueset binding
+        binding_description="Substance added to specimen container.",
+        binding_strength="example",
+        binding_uri="http://terminology.hl7.org/ValueSet/v2-0371",
         # note: Listed Resource Type(s) should be allowed as Reference.
         enum_reference_types=["Substance"],
+        backref="specimen.container_additiveReference",
     )
 
     capacity: fhirtypes.QuantityType = Field(
@@ -500,10 +555,15 @@ class SpecimenContainer(backboneelement.BackboneElement):
         title="Kind of container directly associated with specimen",
         description=(
             "The type of container associated with the specimen (e.g. slide, "
-            "aliquot, etc.)."
+            "aliquot, etc.). See http://hl7.org/fhir/ValueSet/specimen-container-"
+            "type"
         ),
         # if property is element of this resource.
         element_property=True,
+        # valueset binding
+        binding_description="Type of specimen container.",
+        binding_strength="example",
+        binding_uri="http://hl7.org/fhir/ValueSet/specimen-container-type",
     )
 
     @classmethod
@@ -586,6 +646,7 @@ class SpecimenProcessing(backboneelement.BackboneElement):
         element_property=True,
         # note: Listed Resource Type(s) should be allowed as Reference.
         enum_reference_types=["Substance"],
+        backref="specimen.processing_additive",
     )
 
     description: fhirtypes.String = Field(
@@ -604,9 +665,16 @@ class SpecimenProcessing(backboneelement.BackboneElement):
         None,
         alias="procedure",
         title="Indicates the treatment step  applied to the specimen",
-        description="A coded value specifying the procedure used to process the specimen.",
+        description=(
+            "A coded value specifying the procedure used to process the specimen. "
+            "See http://hl7.org/fhir/ValueSet/specimen-processing-procedure"
+        ),
         # if property is element of this resource.
         element_property=True,
+        # valueset binding
+        binding_description="Type indicating the technique used to process the specimen.",
+        binding_strength="example",
+        binding_uri="http://hl7.org/fhir/ValueSet/specimen-processing-procedure",
     )
 
     timeDateTime: fhirtypes.DateTime = Field(

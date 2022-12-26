@@ -34,11 +34,16 @@ class Binary(resource.Resource):
         title="MimeType of the binary content",
         description=(
             "MimeType of the binary content represented as a standard MimeType (BCP"
-            " 13)."
+            " 13). See http://hl7.org/fhir/ValueSet/mimetypes"
         ),
         # if property is element of this resource.
         element_property=True,
         element_required=True,
+        # valueset binding
+        binding_description="BCP 13 (RFCs 2045, 2046, 2047, 4288, 4289 and 2049)",
+        binding_strength="required",
+        binding_uri="http://hl7.org/fhir/ValueSet/mimetypes",
+        binding_version="4.3.0",
     )
     contentType__ext: fhirtypes.FHIRPrimitiveExtensionType = Field(
         None, alias="_contentType", title="Extension field for ``contentType``."
@@ -80,6 +85,7 @@ class Binary(resource.Resource):
         element_property=True,
         # note: Listed Resource Type(s) should be allowed as Reference.
         enum_reference_types=["Resource"],
+        backref="binary_securityContext",
     )
 
     @classmethod

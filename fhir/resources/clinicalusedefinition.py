@@ -36,10 +36,15 @@ class ClinicalUseDefinition(domainresource.DomainResource):
         description=(
             "A categorisation of the issue, primarily for dividing warnings into "
             'subject heading areas such as "Pregnancy and Lactation", "Overdose", '
-            '"Effects on Ability to Drive and Use Machines".'
+            '"Effects on Ability to Drive and Use Machines". See '
+            "http://hl7.org/fhir/ValueSet/clinical-use-definition-category"
         ),
         # if property is element of this resource.
         element_property=True,
+        # valueset binding
+        binding_description="A categorisation for a clinical use information item.",
+        binding_strength="preferred",
+        binding_uri="http://hl7.org/fhir/ValueSet/clinical-use-definition-category",
     )
 
     contraindication: fhirtypes.ClinicalUseDefinitionContraindicationType = Field(
@@ -87,15 +92,20 @@ class ClinicalUseDefinition(domainresource.DomainResource):
         element_property=True,
         # note: Listed Resource Type(s) should be allowed as Reference.
         enum_reference_types=["Group"],
+        backref="clinical_use_definition_population",
     )
 
     status: fhirtypes.CodeableConceptType = Field(
         None,
         alias="status",
         title="Whether this is a current issue or one that has been retired etc",
-        description=None,
+        description="See http://hl7.org/fhir/ValueSet/publication-status",
         # if property is element of this resource.
         element_property=True,
+        # valueset binding
+        binding_description="The lifecycle status of an artifact.",
+        binding_strength="preferred",
+        binding_uri="http://hl7.org/fhir/ValueSet/publication-status",
     )
 
     subject: typing.List[fhirtypes.ReferenceType] = Field(
@@ -115,6 +125,7 @@ class ClinicalUseDefinition(domainresource.DomainResource):
             "DeviceDefinition",
             "Substance",
         ],
+        backref="clinical_use_definition_subject",
     )
 
     type: fhirtypes.Code = Field(
@@ -124,7 +135,7 @@ class ClinicalUseDefinition(domainresource.DomainResource):
             "indication | contraindication | interaction | undesirable-effect | "
             "warning"
         ),
-        description=None,
+        description="See http://hl7.org/fhir/ValueSet/clinical-use-definition-type",
         # if property is element of this resource.
         element_property=True,
         element_required=True,
@@ -137,6 +148,11 @@ class ClinicalUseDefinition(domainresource.DomainResource):
             "undesirable-effect",
             "warning",
         ],
+        # valueset binding
+        binding_description="Overall defining type of this clinical use definition.",
+        binding_strength="required",
+        binding_uri="http://hl7.org/fhir/ValueSet/clinical-use-definition-type",
+        binding_version="4.3.0",
     )
     type__ext: fhirtypes.FHIRPrimitiveExtensionType = Field(
         None, alias="_type", title="Extension field for ``type``."
@@ -273,11 +289,16 @@ class ClinicalUseDefinitionContraindication(backboneelement.BackboneElement):
         None,
         alias="comorbidity",
         title="A comorbidity (concurrent condition) or coinfection",
-        description=None,
+        description="See http://hl7.org/fhir/ValueSet/disease-symptom-procedure",
         # if property is element of this resource.
         element_property=True,
+        # valueset binding
+        binding_description="A symptom, disease or procedure.",
+        binding_strength="example",
+        binding_uri="http://hl7.org/fhir/ValueSet/disease-symptom-procedure",
         # note: Listed Resource Type(s) should be allowed as Reference.
         enum_reference_types=["ObservationDefinition"],
+        backref="clinical_use_definition.contraindication_comorbidity",
     )
 
     diseaseStatus: fhirtypes.CodeableReferenceType = Field(
@@ -286,12 +307,18 @@ class ClinicalUseDefinitionContraindication(backboneelement.BackboneElement):
         title="The status of the disease or symptom for the contraindication",
         description=(
             "The status of the disease or symptom for the contraindication, for "
-            'example "chronic" or "metastatic".'
+            'example "chronic" or "metastatic". See '
+            "http://hl7.org/fhir/ValueSet/disease-status"
         ),
         # if property is element of this resource.
         element_property=True,
+        # valueset binding
+        binding_description="The status of a disease or symptom.",
+        binding_strength="example",
+        binding_uri="http://hl7.org/fhir/ValueSet/disease-status",
         # note: Listed Resource Type(s) should be allowed as Reference.
         enum_reference_types=["ObservationDefinition"],
+        backref="clinical_use_definition.contraindication_diseaseStatus",
     )
 
     diseaseSymptomProcedure: fhirtypes.CodeableReferenceType = Field(
@@ -301,11 +328,16 @@ class ClinicalUseDefinitionContraindication(backboneelement.BackboneElement):
             "The situation that is being documented as contraindicating against "
             "this item"
         ),
-        description=None,
+        description="See http://hl7.org/fhir/ValueSet/disease-symptom-procedure",
         # if property is element of this resource.
         element_property=True,
+        # valueset binding
+        binding_description="A symptom, disease or procedure.",
+        binding_strength="example",
+        binding_uri="http://hl7.org/fhir/ValueSet/disease-symptom-procedure",
         # note: Listed Resource Type(s) should be allowed as Reference.
         enum_reference_types=["ObservationDefinition"],
+        backref="clinical_use_definition.contraindication_diseaseSymptomProcedure",
     )
 
     indication: typing.List[fhirtypes.ReferenceType] = Field(
@@ -317,6 +349,7 @@ class ClinicalUseDefinitionContraindication(backboneelement.BackboneElement):
         element_property=True,
         # note: Listed Resource Type(s) should be allowed as Reference.
         enum_reference_types=["ClinicalUseDefinition"],
+        backref="clinical_use_definition.contraindication_indication",
     )
 
     otherTherapy: typing.List[
@@ -380,10 +413,15 @@ class ClinicalUseDefinitionContraindicationOtherTherapy(
         ),
         description=(
             "The type of relationship between the medicinal product indication or "
-            "contraindication and another therapy."
+            "contraindication and another therapy. See "
+            "http://hl7.org/fhir/ValueSet/therapy-relationship-type"
         ),
         # if property is element of this resource.
         element_property=True,
+        # valueset binding
+        binding_description="Classification of relationship between a therapy and a contraindication or an indication.",
+        binding_strength="preferred",
+        binding_uri="http://hl7.org/fhir/ValueSet/therapy-relationship-type",
     )
 
     therapy: fhirtypes.CodeableReferenceType = Field(
@@ -396,10 +434,14 @@ class ClinicalUseDefinitionContraindicationOtherTherapy(
         description=(
             "Reference to a specific medication (active substance, medicinal "
             "product or class of products) as part of an indication or "
-            "contraindication."
+            "contraindication. See http://hl7.org/fhir/ValueSet/therapy"
         ),
         # if property is element of this resource.
         element_property=True,
+        # valueset binding
+        binding_description="A therapy.",
+        binding_strength="example",
+        binding_uri="http://hl7.org/fhir/ValueSet/therapy",
         # note: Listed Resource Type(s) should be allowed as Reference.
         enum_reference_types=[
             "MedicinalProductDefinition",
@@ -408,6 +450,7 @@ class ClinicalUseDefinitionContraindicationOtherTherapy(
             "SubstanceDefinition",
             "ActivityDefinition",
         ],
+        backref="clinical_use_definition.contraindication.other_therapy_therapy",
     )
 
     @classmethod
@@ -435,12 +478,17 @@ class ClinicalUseDefinitionIndication(backboneelement.BackboneElement):
         title="A comorbidity or coinfection as part of the indication",
         description=(
             "A comorbidity (concurrent condition) or coinfection as part of the "
-            "indication."
+            "indication. See http://hl7.org/fhir/ValueSet/disease-symptom-procedure"
         ),
         # if property is element of this resource.
         element_property=True,
+        # valueset binding
+        binding_description="A symptom, disease or procedure.",
+        binding_strength="example",
+        binding_uri="http://hl7.org/fhir/ValueSet/disease-symptom-procedure",
         # note: Listed Resource Type(s) should be allowed as Reference.
         enum_reference_types=["ObservationDefinition"],
+        backref="clinical_use_definition.indication_comorbidity",
     )
 
     diseaseStatus: fhirtypes.CodeableReferenceType = Field(
@@ -449,23 +497,34 @@ class ClinicalUseDefinitionIndication(backboneelement.BackboneElement):
         title="The status of the disease or symptom for the indication",
         description=(
             "The status of the disease or symptom for the indication, for example "
-            '"chronic" or "metastatic".'
+            '"chronic" or "metastatic". See http://hl7.org/fhir/ValueSet/disease-'
+            "status"
         ),
         # if property is element of this resource.
         element_property=True,
+        # valueset binding
+        binding_description="The status of a disease or symptom.",
+        binding_strength="example",
+        binding_uri="http://hl7.org/fhir/ValueSet/disease-status",
         # note: Listed Resource Type(s) should be allowed as Reference.
         enum_reference_types=["ObservationDefinition"],
+        backref="clinical_use_definition.indication_diseaseStatus",
     )
 
     diseaseSymptomProcedure: fhirtypes.CodeableReferenceType = Field(
         None,
         alias="diseaseSymptomProcedure",
         title="The situation that is being documented as an indicaton for this item",
-        description=None,
+        description="See http://hl7.org/fhir/ValueSet/disease-symptom-procedure",
         # if property is element of this resource.
         element_property=True,
+        # valueset binding
+        binding_description="A symptom, disease or procedure.",
+        binding_strength="example",
+        binding_uri="http://hl7.org/fhir/ValueSet/disease-symptom-procedure",
         # note: Listed Resource Type(s) should be allowed as Reference.
         enum_reference_types=["ObservationDefinition"],
+        backref="clinical_use_definition.indication_diseaseSymptomProcedure",
     )
 
     durationRange: fhirtypes.RangeType = Field(
@@ -509,11 +568,16 @@ class ClinicalUseDefinitionIndication(backboneelement.BackboneElement):
         None,
         alias="intendedEffect",
         title="The intended effect, aim or strategy to be achieved",
-        description=None,
+        description="See http://hl7.org/fhir/ValueSet/product-intended-use",
         # if property is element of this resource.
         element_property=True,
+        # valueset binding
+        binding_description="The overall intended use of a product.",
+        binding_strength="preferred",
+        binding_uri="http://hl7.org/fhir/ValueSet/product-intended-use",
         # note: Listed Resource Type(s) should be allowed as Reference.
         enum_reference_types=["ObservationDefinition"],
+        backref="clinical_use_definition.indication_intendedEffect",
     )
 
     otherTherapy: typing.List[
@@ -548,6 +612,7 @@ class ClinicalUseDefinitionIndication(backboneelement.BackboneElement):
         element_property=True,
         # note: Listed Resource Type(s) should be allowed as Reference.
         enum_reference_types=["ClinicalUseDefinition"],
+        backref="clinical_use_definition.indication_undesirableEffect",
     )
 
     @classmethod
@@ -626,20 +691,29 @@ class ClinicalUseDefinitionInteraction(backboneelement.BackboneElement):
             'The effect of the interaction, for example "reduced gastric absorption'
             ' of primary medication"'
         ),
-        description=None,
+        description="See http://hl7.org/fhir/ValueSet/interaction-effect",
         # if property is element of this resource.
         element_property=True,
+        # valueset binding
+        binding_description="A interaction effect of clinical use of a medication or other substance.",
+        binding_strength="example",
+        binding_uri="http://hl7.org/fhir/ValueSet/interaction-effect",
         # note: Listed Resource Type(s) should be allowed as Reference.
         enum_reference_types=["ObservationDefinition"],
+        backref="clinical_use_definition.interaction_effect",
     )
 
     incidence: fhirtypes.CodeableConceptType = Field(
         None,
         alias="incidence",
         title="The incidence of the interaction, e.g. theoretical, observed",
-        description=None,
+        description="See http://hl7.org/fhir/ValueSet/interaction-incidence",
         # if property is element of this resource.
         element_property=True,
+        # valueset binding
+        binding_description="A categorisation for incidence of occurence of an interaction.",
+        binding_strength="example",
+        binding_uri="http://hl7.org/fhir/ValueSet/interaction-incidence",
     )
 
     interactant: typing.List[
@@ -660,9 +734,13 @@ class ClinicalUseDefinitionInteraction(backboneelement.BackboneElement):
         None,
         alias="management",
         title="Actions for managing the interaction",
-        description=None,
+        description="See http://hl7.org/fhir/ValueSet/interaction-management",
         # if property is element of this resource.
         element_property=True,
+        # valueset binding
+        binding_description="A type of management for an interaction of a medication or other substance.",
+        binding_strength="example",
+        binding_uri="http://hl7.org/fhir/ValueSet/interaction-management",
     )
 
     type: fhirtypes.CodeableConceptType = Field(
@@ -674,10 +752,15 @@ class ClinicalUseDefinitionInteraction(backboneelement.BackboneElement):
         ),
         description=(
             "The type of the interaction e.g. drug-drug interaction, drug-food "
-            "interaction, drug-lab test interaction."
+            "interaction, drug-lab test interaction. See "
+            "http://hl7.org/fhir/ValueSet/interaction-type"
         ),
         # if property is element of this resource.
         element_property=True,
+        # valueset binding
+        binding_description="A categorisation for an interaction between two substances.",
+        binding_strength="example",
+        binding_uri="http://hl7.org/fhir/ValueSet/interaction-type",
     )
 
     @classmethod
@@ -712,24 +795,32 @@ class ClinicalUseDefinitionInteractionInteractant(backboneelement.BackboneElemen
         None,
         alias="itemCodeableConcept",
         title="The specific medication, food or laboratory test that interacts",
-        description=None,
+        description="See http://hl7.org/fhir/ValueSet/interactant",
         # if property is element of this resource.
         element_property=True,
         # Choice of Data Types. i.e item[x]
         one_of_many="item",
         one_of_many_required=True,
+        # valueset binding
+        binding_description="An interactant - a substance that may have an clinically significant effect on another.",
+        binding_strength="example",
+        binding_uri="http://hl7.org/fhir/ValueSet/interactant",
     )
 
     itemReference: fhirtypes.ReferenceType = Field(
         None,
         alias="itemReference",
         title="The specific medication, food or laboratory test that interacts",
-        description=None,
+        description="See http://hl7.org/fhir/ValueSet/interactant",
         # if property is element of this resource.
         element_property=True,
         # Choice of Data Types. i.e item[x]
         one_of_many="item",
         one_of_many_required=True,
+        # valueset binding
+        binding_description="An interactant - a substance that may have an clinically significant effect on another.",
+        binding_strength="example",
+        binding_uri="http://hl7.org/fhir/ValueSet/interactant",
         # note: Listed Resource Type(s) should be allowed as Reference.
         enum_reference_types=[
             "MedicinalProductDefinition",
@@ -737,6 +828,7 @@ class ClinicalUseDefinitionInteractionInteractant(backboneelement.BackboneElemen
             "Substance",
             "ObservationDefinition",
         ],
+        backref="clinical_use_definition.interaction.interactant_itemReference",
     )
 
     @classmethod
@@ -808,29 +900,42 @@ class ClinicalUseDefinitionUndesirableEffect(backboneelement.BackboneElement):
         None,
         alias="classification",
         title="High level classification of the effect",
-        description=None,
+        description="See http://hl7.org/fhir/ValueSet/undesirable-effect-classification",
         # if property is element of this resource.
         element_property=True,
+        # valueset binding
+        binding_description="A categorisation for an undesirable effect.",
+        binding_strength="example",
+        binding_uri="http://hl7.org/fhir/ValueSet/undesirable-effect-classification",
     )
 
     frequencyOfOccurrence: fhirtypes.CodeableConceptType = Field(
         None,
         alias="frequencyOfOccurrence",
         title="How often the effect is seen",
-        description=None,
+        description="See http://hl7.org/fhir/ValueSet/undesirable-effect-frequency",
         # if property is element of this resource.
         element_property=True,
+        # valueset binding
+        binding_description="A categorisation for a frequency of occurence of an undesirable effect.",
+        binding_strength="example",
+        binding_uri="http://hl7.org/fhir/ValueSet/undesirable-effect-frequency",
     )
 
     symptomConditionEffect: fhirtypes.CodeableReferenceType = Field(
         None,
         alias="symptomConditionEffect",
         title="The situation in which the undesirable effect may manifest",
-        description=None,
+        description="See http://hl7.org/fhir/ValueSet/undesirable-effect-symptom",
         # if property is element of this resource.
         element_property=True,
+        # valueset binding
+        binding_description="An undesirable effect of clinical use.",
+        binding_strength="example",
+        binding_uri="http://hl7.org/fhir/ValueSet/undesirable-effect-symptom",
         # note: Listed Resource Type(s) should be allowed as Reference.
         enum_reference_types=["ObservationDefinition"],
+        backref="clinical_use_definition.undesirable_effect_symptomConditionEffect",
     )
 
     @classmethod
@@ -868,9 +973,13 @@ class ClinicalUseDefinitionWarning(backboneelement.BackboneElement):
         None,
         alias="code",
         title="A coded or unformatted textual definition of this warning",
-        description=None,
+        description="See http://hl7.org/fhir/ValueSet/warning-type",
         # if property is element of this resource.
         element_property=True,
+        # valueset binding
+        binding_description="Classification of warning type.",
+        binding_strength="example",
+        binding_uri="http://hl7.org/fhir/ValueSet/warning-type",
     )
 
     description: fhirtypes.Markdown = Field(

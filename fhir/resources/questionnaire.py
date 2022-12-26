@@ -51,10 +51,15 @@ class Questionnaire(domainresource.DomainResource):
         title="Concept that represents the overall questionnaire",
         description=(
             "An identifier for this question or group of questions in a particular "
-            "terminology such as LOINC."
+            "terminology such as LOINC. See "
+            "http://hl7.org/fhir/ValueSet/questionnaire-questions"
         ),
         # if property is element of this resource.
         element_property=True,
+        # valueset binding
+        binding_description="Codes for questionnaires, groups and individual questions.",
+        binding_strength="example",
+        binding_uri="http://hl7.org/fhir/ValueSet/questionnaire-questions",
     )
 
     contact: typing.List[fhirtypes.ContactDetailType] = Field(
@@ -111,6 +116,7 @@ class Questionnaire(domainresource.DomainResource):
         element_property=True,
         # note: Listed Resource Type(s) should be allowed as Reference.
         enum_reference_types=["Questionnaire"],
+        backref="questionnaire_derivedFrom",
     )
     derivedFrom__ext: typing.List[
         typing.Union[fhirtypes.FHIRPrimitiveExtensionType, None]
@@ -190,10 +196,14 @@ class Questionnaire(domainresource.DomainResource):
         title="Intended jurisdiction for questionnaire (if applicable)",
         description=(
             "A legal or geographic region in which the questionnaire is intended to"
-            " be used."
+            " be used. See http://hl7.org/fhir/ValueSet/jurisdiction"
         ),
         # if property is element of this resource.
         element_property=True,
+        # valueset binding
+        binding_description="Countries and regions within which this artifact is targeted for use.",
+        binding_strength="extensible",
+        binding_uri="http://hl7.org/fhir/ValueSet/jurisdiction",
     )
 
     lastReviewDate: fhirtypes.Date = Field(
@@ -264,7 +274,7 @@ class Questionnaire(domainresource.DomainResource):
         title="draft | active | retired | unknown",
         description=(
             "The status of this questionnaire. Enables tracking the life-cycle of "
-            "the content."
+            "the content. See http://hl7.org/fhir/ValueSet/publication-status"
         ),
         # if property is element of this resource.
         element_property=True,
@@ -272,6 +282,11 @@ class Questionnaire(domainresource.DomainResource):
         # note: Enum values can be used in validation,
         # but use in your own responsibilities, read official FHIR documentation.
         enum_values=["draft", "active", "retired", "unknown"],
+        # valueset binding
+        binding_description="The lifecycle status of an artifact.",
+        binding_strength="required",
+        binding_uri="http://hl7.org/fhir/ValueSet/publication-status",
+        binding_version="4.3.0",
     )
     status__ext: fhirtypes.FHIRPrimitiveExtensionType = Field(
         None, alias="_status", title="Extension field for ``status``."
@@ -283,10 +298,15 @@ class Questionnaire(domainresource.DomainResource):
         title="Resource that can be subject of QuestionnaireResponse",
         description=(
             "The types of subjects that can be the subject of responses created for"
-            " the questionnaire."
+            " the questionnaire. See http://hl7.org/fhir/ValueSet/resource-types"
         ),
         # if property is element of this resource.
         element_property=True,
+        # valueset binding
+        binding_description="One of the resource types defined as part of this version of FHIR.",
+        binding_strength="required",
+        binding_uri="http://hl7.org/fhir/ValueSet/resource-types",
+        binding_version="4.3.0",
     )
     subjectType__ext: typing.List[
         typing.Union[fhirtypes.FHIRPrimitiveExtensionType, None]
@@ -494,6 +514,7 @@ class QuestionnaireItem(backboneelement.BackboneElement):
         element_property=True,
         # note: Listed Resource Type(s) should be allowed as Reference.
         enum_reference_types=["ValueSet"],
+        backref="questionnaire.item_answerValueSet",
     )
     answerValueSet__ext: fhirtypes.FHIRPrimitiveExtensionType = Field(
         None, alias="_answerValueSet", title="Extension field for ``answerValueSet``."
@@ -505,10 +526,15 @@ class QuestionnaireItem(backboneelement.BackboneElement):
         title="Corresponding concept for this item in a terminology",
         description=(
             "A terminology code that corresponds to this group or question (e.g. a "
-            "code from LOINC, which defines many questions and answers)."
+            "code from LOINC, which defines many questions and answers). See "
+            "http://hl7.org/fhir/ValueSet/questionnaire-questions"
         ),
         # if property is element of this resource.
         element_property=True,
+        # valueset binding
+        binding_description="Codes for questionnaires, groups and individual questions.",
+        binding_strength="example",
+        binding_uri="http://hl7.org/fhir/ValueSet/questionnaire-questions",
     )
 
     definition: fhirtypes.Uri = Field(
@@ -542,13 +568,19 @@ class QuestionnaireItem(backboneelement.BackboneElement):
         title="all | any",
         description=(
             "Controls how multiple enableWhen values are interpreted -  whether all"
-            " or any must be true."
+            " or any must be true. See http://hl7.org/fhir/ValueSet/questionnaire-"
+            "enable-behavior"
         ),
         # if property is element of this resource.
         element_property=True,
         # note: Enum values can be used in validation,
         # but use in your own responsibilities, read official FHIR documentation.
         enum_values=["all", "any"],
+        # valueset binding
+        binding_description="Controls how multiple enableWhen values are interpreted -  whether all or any must be true.",
+        binding_strength="required",
+        binding_uri="http://hl7.org/fhir/ValueSet/questionnaire-enable-behavior",
+        binding_version="4.3.0",
     )
     enableBehavior__ext: fhirtypes.FHIRPrimitiveExtensionType = Field(
         None, alias="_enableBehavior", title="Extension field for ``enableBehavior``."
@@ -707,7 +739,8 @@ class QuestionnaireItem(backboneelement.BackboneElement):
         description=(
             "The type of questionnaire item this is - whether text for display, a "
             "grouping of other items or a particular type of data to be captured "
-            "(string, integer, coded choice, etc.)."
+            "(string, integer, coded choice, etc.). See "
+            "http://hl7.org/fhir/ValueSet/item-type"
         ),
         # if property is element of this resource.
         element_property=True,
@@ -724,6 +757,11 @@ class QuestionnaireItem(backboneelement.BackboneElement):
             "dateTime",
             "+",
         ],
+        # valueset binding
+        binding_description="Distinguishes groups from questions and display text and indicates data type for questions.",
+        binding_strength="required",
+        binding_uri="http://hl7.org/fhir/ValueSet/item-type",
+        binding_version="4.3.0",
     )
     type__ext: fhirtypes.FHIRPrimitiveExtensionType = Field(
         None, alias="_type", title="Extension field for ``type``."
@@ -847,24 +885,38 @@ class QuestionnaireItemAnswerOption(backboneelement.BackboneElement):
         None,
         alias="valueCoding",
         title="Answer value",
-        description="A potential answer that's allowed as the answer to this question.",
+        description=(
+            "A potential answer that's allowed as the answer to this question. See "
+            "http://hl7.org/fhir/ValueSet/questionnaire-answers"
+        ),
         # if property is element of this resource.
         element_property=True,
         # Choice of Data Types. i.e value[x]
         one_of_many="value",
         one_of_many_required=True,
+        # valueset binding
+        binding_description="Allowed values to answer questions.",
+        binding_strength="example",
+        binding_uri="http://hl7.org/fhir/ValueSet/questionnaire-answers",
     )
 
     valueDate: fhirtypes.Date = Field(
         None,
         alias="valueDate",
         title="Answer value",
-        description="A potential answer that's allowed as the answer to this question.",
+        description=(
+            "A potential answer that's allowed as the answer to this question. See "
+            "http://hl7.org/fhir/ValueSet/questionnaire-answers"
+        ),
         # if property is element of this resource.
         element_property=True,
         # Choice of Data Types. i.e value[x]
         one_of_many="value",
         one_of_many_required=True,
+        # valueset binding
+        binding_description="Allowed values to answer questions.",
+        binding_strength="example",
+        binding_uri="http://hl7.org/fhir/ValueSet/questionnaire-answers",
     )
     valueDate__ext: fhirtypes.FHIRPrimitiveExtensionType = Field(
         None, alias="_valueDate", title="Extension field for ``valueDate``."
@@ -874,12 +926,19 @@ class QuestionnaireItemAnswerOption(backboneelement.BackboneElement):
         None,
         alias="valueInteger",
         title="Answer value",
-        description="A potential answer that's allowed as the answer to this question.",
+        description=(
+            "A potential answer that's allowed as the answer to this question. See "
+            "http://hl7.org/fhir/ValueSet/questionnaire-answers"
+        ),
         # if property is element of this resource.
         element_property=True,
         # Choice of Data Types. i.e value[x]
         one_of_many="value",
         one_of_many_required=True,
+        # valueset binding
+        binding_description="Allowed values to answer questions.",
+        binding_strength="example",
+        binding_uri="http://hl7.org/fhir/ValueSet/questionnaire-answers",
     )
     valueInteger__ext: fhirtypes.FHIRPrimitiveExtensionType = Field(
         None, alias="_valueInteger", title="Extension field for ``valueInteger``."
@@ -889,26 +948,41 @@ class QuestionnaireItemAnswerOption(backboneelement.BackboneElement):
         None,
         alias="valueReference",
         title="Answer value",
-        description="A potential answer that's allowed as the answer to this question.",
+        description=(
+            "A potential answer that's allowed as the answer to this question. See "
+            "http://hl7.org/fhir/ValueSet/questionnaire-answers"
+        ),
         # if property is element of this resource.
         element_property=True,
         # Choice of Data Types. i.e value[x]
         one_of_many="value",
         one_of_many_required=True,
+        # valueset binding
+        binding_description="Allowed values to answer questions.",
+        binding_strength="example",
+        binding_uri="http://hl7.org/fhir/ValueSet/questionnaire-answers",
         # note: Listed Resource Type(s) should be allowed as Reference.
         enum_reference_types=["Resource"],
+        backref="questionnaire.item.answer_option_valueReference",
     )
 
     valueString: fhirtypes.String = Field(
         None,
         alias="valueString",
         title="Answer value",
-        description="A potential answer that's allowed as the answer to this question.",
+        description=(
+            "A potential answer that's allowed as the answer to this question. See "
+            "http://hl7.org/fhir/ValueSet/questionnaire-answers"
+        ),
         # if property is element of this resource.
         element_property=True,
         # Choice of Data Types. i.e value[x]
         one_of_many="value",
         one_of_many_required=True,
+        # valueset binding
+        binding_description="Allowed values to answer questions.",
+        binding_strength="example",
+        binding_uri="http://hl7.org/fhir/ValueSet/questionnaire-answers",
     )
     valueString__ext: fhirtypes.FHIRPrimitiveExtensionType = Field(
         None, alias="_valueString", title="Extension field for ``valueString``."
@@ -918,12 +992,19 @@ class QuestionnaireItemAnswerOption(backboneelement.BackboneElement):
         None,
         alias="valueTime",
         title="Answer value",
-        description="A potential answer that's allowed as the answer to this question.",
+        description=(
+            "A potential answer that's allowed as the answer to this question. See "
+            "http://hl7.org/fhir/ValueSet/questionnaire-answers"
+        ),
         # if property is element of this resource.
         element_property=True,
         # Choice of Data Types. i.e value[x]
         one_of_many="value",
         one_of_many_required=True,
+        # valueset binding
+        binding_description="Allowed values to answer questions.",
+        binding_strength="example",
+        binding_uri="http://hl7.org/fhir/ValueSet/questionnaire-answers",
     )
     valueTime__ext: fhirtypes.FHIRPrimitiveExtensionType = Field(
         None, alias="_valueTime", title="Extension field for ``valueTime``."
@@ -1015,13 +1096,18 @@ class QuestionnaireItemEnableWhen(backboneelement.BackboneElement):
         title="Value for question comparison based on operator",
         description=(
             "A value that the referenced question is tested using the specified "
-            "operator in order for the item to be enabled."
+            "operator in order for the item to be enabled. See "
+            "http://hl7.org/fhir/ValueSet/questionnaire-answers"
         ),
         # if property is element of this resource.
         element_property=True,
         # Choice of Data Types. i.e answer[x]
         one_of_many="answer",
         one_of_many_required=True,
+        # valueset binding
+        binding_description="Allowed values to answer questions.",
+        binding_strength="example",
+        binding_uri="http://hl7.org/fhir/ValueSet/questionnaire-answers",
     )
     answerBoolean__ext: fhirtypes.FHIRPrimitiveExtensionType = Field(
         None, alias="_answerBoolean", title="Extension field for ``answerBoolean``."
@@ -1033,13 +1119,18 @@ class QuestionnaireItemEnableWhen(backboneelement.BackboneElement):
         title="Value for question comparison based on operator",
         description=(
             "A value that the referenced question is tested using the specified "
-            "operator in order for the item to be enabled."
+            "operator in order for the item to be enabled. See "
+            "http://hl7.org/fhir/ValueSet/questionnaire-answers"
         ),
         # if property is element of this resource.
         element_property=True,
         # Choice of Data Types. i.e answer[x]
         one_of_many="answer",
         one_of_many_required=True,
+        # valueset binding
+        binding_description="Allowed values to answer questions.",
+        binding_strength="example",
+        binding_uri="http://hl7.org/fhir/ValueSet/questionnaire-answers",
     )
 
     answerDate: fhirtypes.Date = Field(
@@ -1048,13 +1139,18 @@ class QuestionnaireItemEnableWhen(backboneelement.BackboneElement):
         title="Value for question comparison based on operator",
         description=(
             "A value that the referenced question is tested using the specified "
-            "operator in order for the item to be enabled."
+            "operator in order for the item to be enabled. See "
+            "http://hl7.org/fhir/ValueSet/questionnaire-answers"
         ),
         # if property is element of this resource.
         element_property=True,
         # Choice of Data Types. i.e answer[x]
         one_of_many="answer",
         one_of_many_required=True,
+        # valueset binding
+        binding_description="Allowed values to answer questions.",
+        binding_strength="example",
+        binding_uri="http://hl7.org/fhir/ValueSet/questionnaire-answers",
     )
     answerDate__ext: fhirtypes.FHIRPrimitiveExtensionType = Field(
         None, alias="_answerDate", title="Extension field for ``answerDate``."
@@ -1066,13 +1162,18 @@ class QuestionnaireItemEnableWhen(backboneelement.BackboneElement):
         title="Value for question comparison based on operator",
         description=(
             "A value that the referenced question is tested using the specified "
-            "operator in order for the item to be enabled."
+            "operator in order for the item to be enabled. See "
+            "http://hl7.org/fhir/ValueSet/questionnaire-answers"
         ),
         # if property is element of this resource.
         element_property=True,
         # Choice of Data Types. i.e answer[x]
         one_of_many="answer",
         one_of_many_required=True,
+        # valueset binding
+        binding_description="Allowed values to answer questions.",
+        binding_strength="example",
+        binding_uri="http://hl7.org/fhir/ValueSet/questionnaire-answers",
     )
     answerDateTime__ext: fhirtypes.FHIRPrimitiveExtensionType = Field(
         None, alias="_answerDateTime", title="Extension field for ``answerDateTime``."
@@ -1084,13 +1185,18 @@ class QuestionnaireItemEnableWhen(backboneelement.BackboneElement):
         title="Value for question comparison based on operator",
         description=(
             "A value that the referenced question is tested using the specified "
-            "operator in order for the item to be enabled."
+            "operator in order for the item to be enabled. See "
+            "http://hl7.org/fhir/ValueSet/questionnaire-answers"
         ),
         # if property is element of this resource.
         element_property=True,
         # Choice of Data Types. i.e answer[x]
         one_of_many="answer",
         one_of_many_required=True,
+        # valueset binding
+        binding_description="Allowed values to answer questions.",
+        binding_strength="example",
+        binding_uri="http://hl7.org/fhir/ValueSet/questionnaire-answers",
     )
     answerDecimal__ext: fhirtypes.FHIRPrimitiveExtensionType = Field(
         None, alias="_answerDecimal", title="Extension field for ``answerDecimal``."
@@ -1102,13 +1208,18 @@ class QuestionnaireItemEnableWhen(backboneelement.BackboneElement):
         title="Value for question comparison based on operator",
         description=(
             "A value that the referenced question is tested using the specified "
-            "operator in order for the item to be enabled."
+            "operator in order for the item to be enabled. See "
+            "http://hl7.org/fhir/ValueSet/questionnaire-answers"
         ),
         # if property is element of this resource.
         element_property=True,
         # Choice of Data Types. i.e answer[x]
         one_of_many="answer",
         one_of_many_required=True,
+        # valueset binding
+        binding_description="Allowed values to answer questions.",
+        binding_strength="example",
+        binding_uri="http://hl7.org/fhir/ValueSet/questionnaire-answers",
     )
     answerInteger__ext: fhirtypes.FHIRPrimitiveExtensionType = Field(
         None, alias="_answerInteger", title="Extension field for ``answerInteger``."
@@ -1120,13 +1231,18 @@ class QuestionnaireItemEnableWhen(backboneelement.BackboneElement):
         title="Value for question comparison based on operator",
         description=(
             "A value that the referenced question is tested using the specified "
-            "operator in order for the item to be enabled."
+            "operator in order for the item to be enabled. See "
+            "http://hl7.org/fhir/ValueSet/questionnaire-answers"
         ),
         # if property is element of this resource.
         element_property=True,
         # Choice of Data Types. i.e answer[x]
         one_of_many="answer",
         one_of_many_required=True,
+        # valueset binding
+        binding_description="Allowed values to answer questions.",
+        binding_strength="example",
+        binding_uri="http://hl7.org/fhir/ValueSet/questionnaire-answers",
     )
 
     answerReference: fhirtypes.ReferenceType = Field(
@@ -1135,15 +1251,21 @@ class QuestionnaireItemEnableWhen(backboneelement.BackboneElement):
         title="Value for question comparison based on operator",
         description=(
             "A value that the referenced question is tested using the specified "
-            "operator in order for the item to be enabled."
+            "operator in order for the item to be enabled. See "
+            "http://hl7.org/fhir/ValueSet/questionnaire-answers"
         ),
         # if property is element of this resource.
         element_property=True,
         # Choice of Data Types. i.e answer[x]
         one_of_many="answer",
         one_of_many_required=True,
+        # valueset binding
+        binding_description="Allowed values to answer questions.",
+        binding_strength="example",
+        binding_uri="http://hl7.org/fhir/ValueSet/questionnaire-answers",
         # note: Listed Resource Type(s) should be allowed as Reference.
         enum_reference_types=["Resource"],
+        backref="questionnaire.item.enable_when_answerReference",
     )
 
     answerString: fhirtypes.String = Field(
@@ -1152,13 +1274,18 @@ class QuestionnaireItemEnableWhen(backboneelement.BackboneElement):
         title="Value for question comparison based on operator",
         description=(
             "A value that the referenced question is tested using the specified "
-            "operator in order for the item to be enabled."
+            "operator in order for the item to be enabled. See "
+            "http://hl7.org/fhir/ValueSet/questionnaire-answers"
         ),
         # if property is element of this resource.
         element_property=True,
         # Choice of Data Types. i.e answer[x]
         one_of_many="answer",
         one_of_many_required=True,
+        # valueset binding
+        binding_description="Allowed values to answer questions.",
+        binding_strength="example",
+        binding_uri="http://hl7.org/fhir/ValueSet/questionnaire-answers",
     )
     answerString__ext: fhirtypes.FHIRPrimitiveExtensionType = Field(
         None, alias="_answerString", title="Extension field for ``answerString``."
@@ -1170,13 +1297,18 @@ class QuestionnaireItemEnableWhen(backboneelement.BackboneElement):
         title="Value for question comparison based on operator",
         description=(
             "A value that the referenced question is tested using the specified "
-            "operator in order for the item to be enabled."
+            "operator in order for the item to be enabled. See "
+            "http://hl7.org/fhir/ValueSet/questionnaire-answers"
         ),
         # if property is element of this resource.
         element_property=True,
         # Choice of Data Types. i.e answer[x]
         one_of_many="answer",
         one_of_many_required=True,
+        # valueset binding
+        binding_description="Allowed values to answer questions.",
+        binding_strength="example",
+        binding_uri="http://hl7.org/fhir/ValueSet/questionnaire-answers",
     )
     answerTime__ext: fhirtypes.FHIRPrimitiveExtensionType = Field(
         None, alias="_answerTime", title="Extension field for ``answerTime``."
@@ -1186,13 +1318,21 @@ class QuestionnaireItemEnableWhen(backboneelement.BackboneElement):
         None,
         alias="operator",
         title="exists | = | != | > | < | >= | <=",
-        description="Specifies the criteria by which the question is enabled.",
+        description=(
+            "Specifies the criteria by which the question is enabled. See "
+            "http://hl7.org/fhir/ValueSet/questionnaire-enable-operator"
+        ),
         # if property is element of this resource.
         element_property=True,
         element_required=True,
         # note: Enum values can be used in validation,
         # but use in your own responsibilities, read official FHIR documentation.
         enum_values=["exists", "=", "!=", "\u003e", "\u003c", "\u003e=", "\u003c="],
+        # valueset binding
+        binding_description="The criteria by which a question is enabled.",
+        binding_strength="required",
+        binding_uri="http://hl7.org/fhir/ValueSet/questionnaire-enable-operator",
+        binding_version="4.3.0",
     )
     operator__ext: fhirtypes.FHIRPrimitiveExtensionType = Field(
         None, alias="_operator", title="Extension field for ``operator``."
@@ -1365,24 +1505,38 @@ class QuestionnaireItemInitial(backboneelement.BackboneElement):
         None,
         alias="valueAttachment",
         title="Actual value for initializing the question",
-        description="The actual value to for an initial answer.",
+        description=(
+            "The actual value to for an initial answer. See "
+            "http://hl7.org/fhir/ValueSet/questionnaire-answers"
+        ),
         # if property is element of this resource.
         element_property=True,
         # Choice of Data Types. i.e value[x]
         one_of_many="value",
         one_of_many_required=True,
+        # valueset binding
+        binding_description="Allowed values to answer questions.",
+        binding_strength="example",
+        binding_uri="http://hl7.org/fhir/ValueSet/questionnaire-answers",
     )
 
     valueBoolean: bool = Field(
         None,
         alias="valueBoolean",
         title="Actual value for initializing the question",
-        description="The actual value to for an initial answer.",
+        description=(
+            "The actual value to for an initial answer. See "
+            "http://hl7.org/fhir/ValueSet/questionnaire-answers"
+        ),
         # if property is element of this resource.
         element_property=True,
         # Choice of Data Types. i.e value[x]
         one_of_many="value",
         one_of_many_required=True,
+        # valueset binding
+        binding_description="Allowed values to answer questions.",
+        binding_strength="example",
+        binding_uri="http://hl7.org/fhir/ValueSet/questionnaire-answers",
     )
     valueBoolean__ext: fhirtypes.FHIRPrimitiveExtensionType = Field(
         None, alias="_valueBoolean", title="Extension field for ``valueBoolean``."
@@ -1392,24 +1546,38 @@ class QuestionnaireItemInitial(backboneelement.BackboneElement):
         None,
         alias="valueCoding",
         title="Actual value for initializing the question",
-        description="The actual value to for an initial answer.",
+        description=(
+            "The actual value to for an initial answer. See "
+            "http://hl7.org/fhir/ValueSet/questionnaire-answers"
+        ),
         # if property is element of this resource.
         element_property=True,
         # Choice of Data Types. i.e value[x]
         one_of_many="value",
         one_of_many_required=True,
+        # valueset binding
+        binding_description="Allowed values to answer questions.",
+        binding_strength="example",
+        binding_uri="http://hl7.org/fhir/ValueSet/questionnaire-answers",
     )
 
     valueDate: fhirtypes.Date = Field(
         None,
         alias="valueDate",
         title="Actual value for initializing the question",
-        description="The actual value to for an initial answer.",
+        description=(
+            "The actual value to for an initial answer. See "
+            "http://hl7.org/fhir/ValueSet/questionnaire-answers"
+        ),
         # if property is element of this resource.
         element_property=True,
         # Choice of Data Types. i.e value[x]
         one_of_many="value",
         one_of_many_required=True,
+        # valueset binding
+        binding_description="Allowed values to answer questions.",
+        binding_strength="example",
+        binding_uri="http://hl7.org/fhir/ValueSet/questionnaire-answers",
     )
     valueDate__ext: fhirtypes.FHIRPrimitiveExtensionType = Field(
         None, alias="_valueDate", title="Extension field for ``valueDate``."
@@ -1419,12 +1587,19 @@ class QuestionnaireItemInitial(backboneelement.BackboneElement):
         None,
         alias="valueDateTime",
         title="Actual value for initializing the question",
-        description="The actual value to for an initial answer.",
+        description=(
+            "The actual value to for an initial answer. See "
+            "http://hl7.org/fhir/ValueSet/questionnaire-answers"
+        ),
         # if property is element of this resource.
         element_property=True,
         # Choice of Data Types. i.e value[x]
         one_of_many="value",
         one_of_many_required=True,
+        # valueset binding
+        binding_description="Allowed values to answer questions.",
+        binding_strength="example",
+        binding_uri="http://hl7.org/fhir/ValueSet/questionnaire-answers",
     )
     valueDateTime__ext: fhirtypes.FHIRPrimitiveExtensionType = Field(
         None, alias="_valueDateTime", title="Extension field for ``valueDateTime``."
@@ -1434,12 +1609,19 @@ class QuestionnaireItemInitial(backboneelement.BackboneElement):
         None,
         alias="valueDecimal",
         title="Actual value for initializing the question",
-        description="The actual value to for an initial answer.",
+        description=(
+            "The actual value to for an initial answer. See "
+            "http://hl7.org/fhir/ValueSet/questionnaire-answers"
+        ),
         # if property is element of this resource.
         element_property=True,
         # Choice of Data Types. i.e value[x]
         one_of_many="value",
         one_of_many_required=True,
+        # valueset binding
+        binding_description="Allowed values to answer questions.",
+        binding_strength="example",
+        binding_uri="http://hl7.org/fhir/ValueSet/questionnaire-answers",
     )
     valueDecimal__ext: fhirtypes.FHIRPrimitiveExtensionType = Field(
         None, alias="_valueDecimal", title="Extension field for ``valueDecimal``."
@@ -1449,12 +1631,19 @@ class QuestionnaireItemInitial(backboneelement.BackboneElement):
         None,
         alias="valueInteger",
         title="Actual value for initializing the question",
-        description="The actual value to for an initial answer.",
+        description=(
+            "The actual value to for an initial answer. See "
+            "http://hl7.org/fhir/ValueSet/questionnaire-answers"
+        ),
         # if property is element of this resource.
         element_property=True,
         # Choice of Data Types. i.e value[x]
         one_of_many="value",
         one_of_many_required=True,
+        # valueset binding
+        binding_description="Allowed values to answer questions.",
+        binding_strength="example",
+        binding_uri="http://hl7.org/fhir/ValueSet/questionnaire-answers",
     )
     valueInteger__ext: fhirtypes.FHIRPrimitiveExtensionType = Field(
         None, alias="_valueInteger", title="Extension field for ``valueInteger``."
@@ -1464,38 +1653,60 @@ class QuestionnaireItemInitial(backboneelement.BackboneElement):
         None,
         alias="valueQuantity",
         title="Actual value for initializing the question",
-        description="The actual value to for an initial answer.",
+        description=(
+            "The actual value to for an initial answer. See "
+            "http://hl7.org/fhir/ValueSet/questionnaire-answers"
+        ),
         # if property is element of this resource.
         element_property=True,
         # Choice of Data Types. i.e value[x]
         one_of_many="value",
         one_of_many_required=True,
+        # valueset binding
+        binding_description="Allowed values to answer questions.",
+        binding_strength="example",
+        binding_uri="http://hl7.org/fhir/ValueSet/questionnaire-answers",
     )
 
     valueReference: fhirtypes.ReferenceType = Field(
         None,
         alias="valueReference",
         title="Actual value for initializing the question",
-        description="The actual value to for an initial answer.",
+        description=(
+            "The actual value to for an initial answer. See "
+            "http://hl7.org/fhir/ValueSet/questionnaire-answers"
+        ),
         # if property is element of this resource.
         element_property=True,
         # Choice of Data Types. i.e value[x]
         one_of_many="value",
         one_of_many_required=True,
+        # valueset binding
+        binding_description="Allowed values to answer questions.",
+        binding_strength="example",
+        binding_uri="http://hl7.org/fhir/ValueSet/questionnaire-answers",
         # note: Listed Resource Type(s) should be allowed as Reference.
         enum_reference_types=["Resource"],
+        backref="questionnaire.item.initial_valueReference",
     )
 
     valueString: fhirtypes.String = Field(
         None,
         alias="valueString",
         title="Actual value for initializing the question",
-        description="The actual value to for an initial answer.",
+        description=(
+            "The actual value to for an initial answer. See "
+            "http://hl7.org/fhir/ValueSet/questionnaire-answers"
+        ),
         # if property is element of this resource.
         element_property=True,
         # Choice of Data Types. i.e value[x]
         one_of_many="value",
         one_of_many_required=True,
+        # valueset binding
+        binding_description="Allowed values to answer questions.",
+        binding_strength="example",
+        binding_uri="http://hl7.org/fhir/ValueSet/questionnaire-answers",
     )
     valueString__ext: fhirtypes.FHIRPrimitiveExtensionType = Field(
         None, alias="_valueString", title="Extension field for ``valueString``."
@@ -1505,12 +1716,19 @@ class QuestionnaireItemInitial(backboneelement.BackboneElement):
         None,
         alias="valueTime",
         title="Actual value for initializing the question",
-        description="The actual value to for an initial answer.",
+        description=(
+            "The actual value to for an initial answer. See "
+            "http://hl7.org/fhir/ValueSet/questionnaire-answers"
+        ),
         # if property is element of this resource.
         element_property=True,
         # Choice of Data Types. i.e value[x]
         one_of_many="value",
         one_of_many_required=True,
+        # valueset binding
+        binding_description="Allowed values to answer questions.",
+        binding_strength="example",
+        binding_uri="http://hl7.org/fhir/ValueSet/questionnaire-answers",
     )
     valueTime__ext: fhirtypes.FHIRPrimitiveExtensionType = Field(
         None, alias="_valueTime", title="Extension field for ``valueTime``."
@@ -1520,12 +1738,19 @@ class QuestionnaireItemInitial(backboneelement.BackboneElement):
         None,
         alias="valueUri",
         title="Actual value for initializing the question",
-        description="The actual value to for an initial answer.",
+        description=(
+            "The actual value to for an initial answer. See "
+            "http://hl7.org/fhir/ValueSet/questionnaire-answers"
+        ),
         # if property is element of this resource.
         element_property=True,
         # Choice of Data Types. i.e value[x]
         one_of_many="value",
         one_of_many_required=True,
+        # valueset binding
+        binding_description="Allowed values to answer questions.",
+        binding_strength="example",
+        binding_uri="http://hl7.org/fhir/ValueSet/questionnaire-answers",
     )
     valueUri__ext: fhirtypes.FHIRPrimitiveExtensionType = Field(
         None, alias="_valueUri", title="Extension field for ``valueUri``."

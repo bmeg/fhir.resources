@@ -40,6 +40,7 @@ class Communication(domainresource.DomainResource):
         element_property=True,
         # note: Listed Resource Type(s) should be allowed as Reference.
         enum_reference_types=["Resource"],
+        backref="communication_about",
     )
 
     basedOn: typing.List[fhirtypes.ReferenceType] = Field(
@@ -54,6 +55,7 @@ class Communication(domainresource.DomainResource):
         element_property=True,
         # note: Listed Resource Type(s) should be allowed as Reference.
         enum_reference_types=["Resource"],
+        backref="communication_basedOn",
     )
 
     category: typing.List[fhirtypes.CodeableConceptType] = Field(
@@ -62,10 +64,15 @@ class Communication(domainresource.DomainResource):
         title="Message category",
         description=(
             "The type of message conveyed such as alert, notification, reminder, "
-            "instruction, etc."
+            "instruction, etc. See http://hl7.org/fhir/ValueSet/communication-"
+            "category"
         ),
         # if property is element of this resource.
         element_property=True,
+        # valueset binding
+        binding_description="Codes for general categories of communications such as alerts, instructions, etc.",
+        binding_strength="example",
+        binding_uri="http://hl7.org/fhir/ValueSet/communication-category",
     )
 
     encounter: fhirtypes.ReferenceType = Field(
@@ -80,6 +87,7 @@ class Communication(domainresource.DomainResource):
         element_property=True,
         # note: Listed Resource Type(s) should be allowed as Reference.
         enum_reference_types=["Encounter"],
+        backref="communication_encounter",
     )
 
     identifier: typing.List[fhirtypes.IdentifierType] = Field(
@@ -104,6 +112,7 @@ class Communication(domainresource.DomainResource):
         element_property=True,
         # note: Listed Resource Type(s) should be allowed as Reference.
         enum_reference_types=["Communication"],
+        backref="communication_inResponseTo",
     )
 
     instantiatesCanonical: typing.List[typing.Optional[fhirtypes.Canonical]] = Field(
@@ -125,6 +134,7 @@ class Communication(domainresource.DomainResource):
             "OperationDefinition",
             "Questionnaire",
         ],
+        backref="communication_instantiatesCanonical",
     )
     instantiatesCanonical__ext: typing.List[
         typing.Union[fhirtypes.FHIRPrimitiveExtensionType, None]
@@ -156,9 +166,16 @@ class Communication(domainresource.DomainResource):
         None,
         alias="medium",
         title="A channel of communication",
-        description="A channel that was used for this communication (e.g. email, fax).",
+        description=(
+            "A channel that was used for this communication (e.g. email, fax). See "
+            "http://terminology.hl7.org/ValueSet/v3-ParticipationMode"
+        ),
         # if property is element of this resource.
         element_property=True,
+        # valueset binding
+        binding_description="Codes for communication mediums such as phone, fax, email, in person, etc.",
+        binding_strength="example",
+        binding_uri="http://terminology.hl7.org/ValueSet/v3-ParticipationMode",
     )
 
     note: typing.List[fhirtypes.AnnotationType] = Field(
@@ -182,6 +199,7 @@ class Communication(domainresource.DomainResource):
         element_property=True,
         # note: Listed Resource Type(s) should be allowed as Reference.
         enum_reference_types=["Resource"],
+        backref="communication_partOf",
     )
 
     payload: typing.List[fhirtypes.CommunicationPayloadType] = Field(
@@ -202,13 +220,19 @@ class Communication(domainresource.DomainResource):
         title="routine | urgent | asap | stat",
         description=(
             "Characterizes how quickly the planned or in progress communication "
-            "must be addressed. Includes concepts such as stat, urgent, routine."
+            "must be addressed. Includes concepts such as stat, urgent, routine. "
+            "See http://hl7.org/fhir/ValueSet/request-priority"
         ),
         # if property is element of this resource.
         element_property=True,
         # note: Enum values can be used in validation,
         # but use in your own responsibilities, read official FHIR documentation.
         enum_values=["routine", "urgent", "asap", "stat"],
+        # valueset binding
+        binding_description="Codes indicating the relative importance of a communication.",
+        binding_strength="required",
+        binding_uri="http://hl7.org/fhir/ValueSet/request-priority",
+        binding_version="4.3.0",
     )
     priority__ext: fhirtypes.FHIRPrimitiveExtensionType = Field(
         None, alias="_priority", title="Extension field for ``priority``."
@@ -218,9 +242,16 @@ class Communication(domainresource.DomainResource):
         None,
         alias="reasonCode",
         title="Indication for message",
-        description="The reason or justification for the communication.",
+        description=(
+            "The reason or justification for the communication. See "
+            "http://hl7.org/fhir/ValueSet/clinical-findings"
+        ),
         # if property is element of this resource.
         element_property=True,
+        # valueset binding
+        binding_description="Codes for describing reasons for the occurrence of a communication.",
+        binding_strength="example",
+        binding_uri="http://hl7.org/fhir/ValueSet/clinical-findings",
     )
 
     reasonReference: typing.List[fhirtypes.ReferenceType] = Field(
@@ -240,6 +271,7 @@ class Communication(domainresource.DomainResource):
             "DiagnosticReport",
             "DocumentReference",
         ],
+        backref="communication_reasonReference",
     )
 
     received: fhirtypes.DateTime = Field(
@@ -281,6 +313,7 @@ class Communication(domainresource.DomainResource):
             "CareTeam",
             "HealthcareService",
         ],
+        backref="communication_recipient",
     )
 
     sender: fhirtypes.ReferenceType = Field(
@@ -303,6 +336,7 @@ class Communication(domainresource.DomainResource):
             "RelatedPerson",
             "HealthcareService",
         ],
+        backref="communication_sender",
     )
 
     sent: fhirtypes.DateTime = Field(
@@ -324,7 +358,10 @@ class Communication(domainresource.DomainResource):
             "preparation | in-progress | not-done | on-hold | stopped | completed |"
             " entered-in-error | unknown"
         ),
-        description="The status of the transmission.",
+        description=(
+            "The status of the transmission. See "
+            "http://hl7.org/fhir/ValueSet/event-status"
+        ),
         # if property is element of this resource.
         element_property=True,
         element_required=True,
@@ -340,6 +377,11 @@ class Communication(domainresource.DomainResource):
             "entered-in-error",
             "unknown",
         ],
+        # valueset binding
+        binding_description="The status of the communication.",
+        binding_strength="required",
+        binding_uri="http://hl7.org/fhir/ValueSet/event-status",
+        binding_version="4.3.0",
     )
     status__ext: fhirtypes.FHIRPrimitiveExtensionType = Field(
         None, alias="_status", title="Extension field for ``status``."
@@ -349,9 +391,16 @@ class Communication(domainresource.DomainResource):
         None,
         alias="statusReason",
         title="Reason for current status",
-        description="Captures the reason for the current state of the Communication.",
+        description=(
+            "Captures the reason for the current state of the Communication. See "
+            "http://hl7.org/fhir/ValueSet/communication-not-done-reason"
+        ),
         # if property is element of this resource.
         element_property=True,
+        # valueset binding
+        binding_description="Codes for the reason why a communication did not happen.",
+        binding_strength="example",
+        binding_uri="http://hl7.org/fhir/ValueSet/communication-not-done-reason",
     )
 
     subject: fhirtypes.ReferenceType = Field(
@@ -363,6 +412,7 @@ class Communication(domainresource.DomainResource):
         element_property=True,
         # note: Listed Resource Type(s) should be allowed as Reference.
         enum_reference_types=["Patient", "Group"],
+        backref="communication_subject",
     )
 
     topic: fhirtypes.CodeableConceptType = Field(
@@ -371,10 +421,14 @@ class Communication(domainresource.DomainResource):
         title="Description of the purpose/content",
         description=(
             "Description of the purpose/content, similar to a subject line in an "
-            "email."
+            "email. See http://hl7.org/fhir/ValueSet/communication-topic"
         ),
         # if property is element of this resource.
         element_property=True,
+        # valueset binding
+        binding_description="Codes describing the purpose or content of the communication.",
+        binding_strength="example",
+        binding_uri="http://hl7.org/fhir/ValueSet/communication-topic",
     )
 
     @classmethod
@@ -518,6 +572,7 @@ class CommunicationPayload(backboneelement.BackboneElement):
         one_of_many_required=True,
         # note: Listed Resource Type(s) should be allowed as Reference.
         enum_reference_types=["Resource"],
+        backref="communication.payload_contentReference",
     )
 
     contentString: fhirtypes.String = Field(

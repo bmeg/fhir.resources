@@ -47,6 +47,7 @@ class Observation(domainresource.DomainResource):
             "NutritionOrder",
             "ServiceRequest",
         ],
+        backref="observation_basedOn",
     )
 
     bodySite: fhirtypes.CodeableConceptType = Field(
@@ -55,19 +56,31 @@ class Observation(domainresource.DomainResource):
         title="Observed body part",
         description=(
             "Indicates the site on the subject's body where the observation was "
-            "made (i.e. the target site)."
+            "made (i.e. the target site). See http://hl7.org/fhir/ValueSet/body-"
+            "site"
         ),
         # if property is element of this resource.
         element_property=True,
+        # valueset binding
+        binding_description="SNOMED CT Body site concepts",
+        binding_strength="example",
+        binding_uri="http://hl7.org/fhir/ValueSet/body-site",
     )
 
     category: typing.List[fhirtypes.CodeableConceptType] = Field(
         None,
         alias="category",
         title="Classification of  type of observation",
-        description="A code that classifies the general type of observation being made.",
+        description=(
+            "A code that classifies the general type of observation being made. See"
+            " http://hl7.org/fhir/ValueSet/observation-category"
+        ),
         # if property is element of this resource.
         element_property=True,
+        # valueset binding
+        binding_description="Codes for high level observation categories.",
+        binding_strength="preferred",
+        binding_uri="http://hl7.org/fhir/ValueSet/observation-category",
     )
 
     code: fhirtypes.CodeableConceptType = Field(
@@ -76,10 +89,14 @@ class Observation(domainresource.DomainResource):
         title="Type of observation (code / type)",
         description=(
             "Describes what was observed. Sometimes this is called the observation "
-            '"name".'
+            '"name". See http://hl7.org/fhir/ValueSet/observation-codes'
         ),
         # if property is element of this resource.
         element_property=True,
+        # valueset binding
+        binding_description="Codes identifying names of simple observations.",
+        binding_strength="example",
+        binding_uri="http://hl7.org/fhir/ValueSet/observation-codes",
     )
 
     component: typing.List[fhirtypes.ObservationComponentType] = Field(
@@ -103,10 +120,15 @@ class Observation(domainresource.DomainResource):
         title="Why the result is missing",
         description=(
             "Provides a reason why the expected value in the element "
-            "Observation.value[x] is missing."
+            "Observation.value[x] is missing. See "
+            "http://hl7.org/fhir/ValueSet/data-absent-reason"
         ),
         # if property is element of this resource.
         element_property=True,
+        # valueset binding
+        binding_description="Codes specifying why the result (`Observation.value[x]`) is missing.",
+        binding_strength="extensible",
+        binding_uri="http://hl7.org/fhir/ValueSet/data-absent-reason",
     )
 
     derivedFrom: typing.List[fhirtypes.ReferenceType] = Field(
@@ -129,6 +151,7 @@ class Observation(domainresource.DomainResource):
             "Observation",
             "MolecularSequence",
         ],
+        backref="observation_derivedFrom",
     )
 
     device: fhirtypes.ReferenceType = Field(
@@ -140,6 +163,7 @@ class Observation(domainresource.DomainResource):
         element_property=True,
         # note: Listed Resource Type(s) should be allowed as Reference.
         enum_reference_types=["Device", "DeviceMetric"],
+        backref="observation_device",
     )
 
     effectiveDateTime: fhirtypes.DateTime = Field(
@@ -236,6 +260,7 @@ class Observation(domainresource.DomainResource):
         element_property=True,
         # note: Listed Resource Type(s) should be allowed as Reference.
         enum_reference_types=["Encounter"],
+        backref="observation_encounter",
     )
 
     focus: typing.List[fhirtypes.ReferenceType] = Field(
@@ -261,6 +286,7 @@ class Observation(domainresource.DomainResource):
         element_property=True,
         # note: Listed Resource Type(s) should be allowed as Reference.
         enum_reference_types=["Resource"],
+        backref="observation_focus",
     )
 
     hasMember: typing.List[fhirtypes.ReferenceType] = Field(
@@ -280,6 +306,7 @@ class Observation(domainresource.DomainResource):
             "QuestionnaireResponse",
             "MolecularSequence",
         ],
+        backref="observation_hasMember",
     )
 
     identifier: typing.List[fhirtypes.IdentifierType] = Field(
@@ -297,10 +324,15 @@ class Observation(domainresource.DomainResource):
         title="High, low, normal, etc.",
         description=(
             "A categorical assessment of an observation value.  For example, high, "
-            "low, normal."
+            "low, normal. See http://hl7.org/fhir/ValueSet/observation-"
+            "interpretation"
         ),
         # if property is element of this resource.
         element_property=True,
+        # valueset binding
+        binding_description="Codes identifying interpretations of observations.",
+        binding_strength="extensible",
+        binding_uri="http://hl7.org/fhir/ValueSet/observation-interpretation",
     )
 
     issued: fhirtypes.Instant = Field(
@@ -323,9 +355,16 @@ class Observation(domainresource.DomainResource):
         None,
         alias="method",
         title="How it was done",
-        description="Indicates the mechanism used to perform the observation.",
+        description=(
+            "Indicates the mechanism used to perform the observation. See "
+            "http://hl7.org/fhir/ValueSet/observation-methods"
+        ),
         # if property is element of this resource.
         element_property=True,
+        # valueset binding
+        binding_description="Methods for simple observations.",
+        binding_strength="example",
+        binding_uri="http://hl7.org/fhir/ValueSet/observation-methods",
     )
 
     note: typing.List[fhirtypes.AnnotationType] = Field(
@@ -356,6 +395,7 @@ class Observation(domainresource.DomainResource):
             "Immunization",
             "ImagingStudy",
         ],
+        backref="observation_partOf",
     )
 
     performer: typing.List[fhirtypes.ReferenceType] = Field(
@@ -374,6 +414,7 @@ class Observation(domainresource.DomainResource):
             "Patient",
             "RelatedPerson",
         ],
+        backref="observation_performer",
     )
 
     referenceRange: typing.List[fhirtypes.ObservationReferenceRangeType] = Field(
@@ -399,19 +440,28 @@ class Observation(domainresource.DomainResource):
         element_property=True,
         # note: Listed Resource Type(s) should be allowed as Reference.
         enum_reference_types=["Specimen"],
+        backref="observation_specimen",
     )
 
     status: fhirtypes.Code = Field(
         None,
         alias="status",
         title="registered | preliminary | final | amended +",
-        description="The status of the result value.",
+        description=(
+            "The status of the result value. See "
+            "http://hl7.org/fhir/ValueSet/observation-status"
+        ),
         # if property is element of this resource.
         element_property=True,
         element_required=True,
         # note: Enum values can be used in validation,
         # but use in your own responsibilities, read official FHIR documentation.
         enum_values=["registered", "preliminary", "final", "amended", "+"],
+        # valueset binding
+        binding_description="Codes providing the status of an observation.",
+        binding_strength="required",
+        binding_uri="http://hl7.org/fhir/ValueSet/observation-status",
+        binding_version="4.3.0",
     )
     status__ext: fhirtypes.FHIRPrimitiveExtensionType = Field(
         None, alias="_status", title="Extension field for ``status``."
@@ -442,6 +492,7 @@ class Observation(domainresource.DomainResource):
             "Medication",
             "Substance",
         ],
+        backref="observation_subject",
     )
 
     valueBoolean: bool = Field(
@@ -817,10 +868,14 @@ class ObservationComponent(backboneelement.BackboneElement):
         title="Type of component observation (code / type)",
         description=(
             "Describes what was observed. Sometimes this is called the observation "
-            '"code".'
+            '"code". See http://hl7.org/fhir/ValueSet/observation-codes'
         ),
         # if property is element of this resource.
         element_property=True,
+        # valueset binding
+        binding_description="Codes identifying names of simple observations.",
+        binding_strength="example",
+        binding_uri="http://hl7.org/fhir/ValueSet/observation-codes",
     )
 
     dataAbsentReason: fhirtypes.CodeableConceptType = Field(
@@ -829,10 +884,15 @@ class ObservationComponent(backboneelement.BackboneElement):
         title="Why the component result is missing",
         description=(
             "Provides a reason why the expected value in the element "
-            "Observation.component.value[x] is missing."
+            "Observation.component.value[x] is missing. See "
+            "http://hl7.org/fhir/ValueSet/data-absent-reason"
         ),
         # if property is element of this resource.
         element_property=True,
+        # valueset binding
+        binding_description="Codes specifying why the result (`Observation.value[x]`) is missing.",
+        binding_strength="extensible",
+        binding_uri="http://hl7.org/fhir/ValueSet/data-absent-reason",
     )
 
     interpretation: typing.List[fhirtypes.CodeableConceptType] = Field(
@@ -841,10 +901,15 @@ class ObservationComponent(backboneelement.BackboneElement):
         title="High, low, normal, etc.",
         description=(
             "A categorical assessment of an observation value.  For example, high, "
-            "low, normal."
+            "low, normal. See http://hl7.org/fhir/ValueSet/observation-"
+            "interpretation"
         ),
         # if property is element of this resource.
         element_property=True,
+        # valueset binding
+        binding_description="Codes identifying interpretations of observations.",
+        binding_strength="extensible",
+        binding_uri="http://hl7.org/fhir/ValueSet/observation-interpretation",
     )
 
     referenceRange: typing.List[fhirtypes.ObservationReferenceRangeType] = Field(
@@ -1155,10 +1220,15 @@ class ObservationReferenceRange(backboneelement.BackboneElement):
             "population or a particular sex or race.  Multiple `appliesTo`  are "
             'interpreted as an "AND" of the target populations.  For example, to '
             "represent a target population of African American females, both a code"
-            " of female and a code for African American would be used."
+            " of female and a code for African American would be used. See "
+            "http://hl7.org/fhir/ValueSet/referencerange-appliesto"
         ),
         # if property is element of this resource.
         element_property=True,
+        # valueset binding
+        binding_description="Codes identifying the population the reference range applies to.",
+        binding_strength="example",
+        binding_uri="http://hl7.org/fhir/ValueSet/referencerange-appliesto",
     )
 
     high: fhirtypes.QuantityType = Field(
@@ -1212,10 +1282,15 @@ class ObservationReferenceRange(backboneelement.BackboneElement):
         title="Reference range qualifier",
         description=(
             "Codes to indicate the what part of the targeted reference population "
-            "it applies to. For example, the normal or therapeutic range."
+            "it applies to. For example, the normal or therapeutic range. See "
+            "http://hl7.org/fhir/ValueSet/referencerange-meaning"
         ),
         # if property is element of this resource.
         element_property=True,
+        # valueset binding
+        binding_description="Code for the meaning of a reference range.",
+        binding_strength="preferred",
+        binding_uri="http://hl7.org/fhir/ValueSet/referencerange-meaning",
     )
 
     @classmethod

@@ -126,11 +126,17 @@ class CapabilityStatement(domainresource.DomainResource):
         description=(
             "The version of the FHIR specification that this CapabilityStatement "
             "describes (which SHALL be the same as the FHIR version of the "
-            "CapabilityStatement itself). There is no default value."
+            "CapabilityStatement itself). There is no default value. See "
+            "http://hl7.org/fhir/ValueSet/FHIR-version"
         ),
         # if property is element of this resource.
         element_property=True,
         element_required=True,
+        # valueset binding
+        binding_description="All published FHIR Versions.",
+        binding_strength="required",
+        binding_uri="http://hl7.org/fhir/ValueSet/FHIR-version",
+        binding_version="4.3.0",
     )
     fhirVersion__ext: fhirtypes.FHIRPrimitiveExtensionType = Field(
         None, alias="_fhirVersion", title="Extension field for ``fhirVersion``."
@@ -142,7 +148,7 @@ class CapabilityStatement(domainresource.DomainResource):
         title="formats supported (xml | json | ttl | mime type)",
         description=(
             "A list of the formats supported by this implementation using their "
-            "content types."
+            "content types. See http://hl7.org/fhir/ValueSet/mimetypes"
         ),
         # if property is element of this resource.
         element_property=True,
@@ -150,6 +156,11 @@ class CapabilityStatement(domainresource.DomainResource):
         # note: Enum values can be used in validation,
         # but use in your own responsibilities, read official FHIR documentation.
         enum_values=["formats", "json", "ttl", "mime"],
+        # valueset binding
+        binding_description="BCP 13 (RFCs 2045, 2046, 2047, 4288, 4289 and 2049)",
+        binding_strength="required",
+        binding_uri="http://hl7.org/fhir/ValueSet/mimetypes",
+        binding_version="4.3.0",
     )
     format__ext: typing.List[
         typing.Union[fhirtypes.FHIRPrimitiveExtensionType, None]
@@ -180,6 +191,7 @@ class CapabilityStatement(domainresource.DomainResource):
         element_property=True,
         # note: Listed Resource Type(s) should be allowed as Reference.
         enum_reference_types=["ImplementationGuide"],
+        backref="capability_statement_implementationGuide",
     )
     implementationGuide__ext: typing.List[
         typing.Union[fhirtypes.FHIRPrimitiveExtensionType, None]
@@ -204,6 +216,7 @@ class CapabilityStatement(domainresource.DomainResource):
         element_property=True,
         # note: Listed Resource Type(s) should be allowed as Reference.
         enum_reference_types=["CapabilityStatement"],
+        backref="capability_statement_imports",
     )
     imports__ext: typing.List[
         typing.Union[fhirtypes.FHIRPrimitiveExtensionType, None]
@@ -225,6 +238,7 @@ class CapabilityStatement(domainresource.DomainResource):
         element_property=True,
         # note: Listed Resource Type(s) should be allowed as Reference.
         enum_reference_types=["CapabilityStatement"],
+        backref="capability_statement_instantiates",
     )
     instantiates__ext: typing.List[
         typing.Union[fhirtypes.FHIRPrimitiveExtensionType, None]
@@ -238,10 +252,14 @@ class CapabilityStatement(domainresource.DomainResource):
         title="Intended jurisdiction for capability statement (if applicable)",
         description=(
             "A legal or geographic region in which the capability statement is "
-            "intended to be used."
+            "intended to be used. See http://hl7.org/fhir/ValueSet/jurisdiction"
         ),
         # if property is element of this resource.
         element_property=True,
+        # valueset binding
+        binding_description="Countries and regions within which this artifact is targeted for use.",
+        binding_strength="extensible",
+        binding_uri="http://hl7.org/fhir/ValueSet/jurisdiction",
     )
 
     kind: fhirtypes.Code = Field(
@@ -252,7 +270,7 @@ class CapabilityStatement(domainresource.DomainResource):
             "The way that this statement is intended to be used, to describe an "
             "actual running instance of software, a particular product (kind, not "
             "instance of software) or a class of implementation (e.g. a desired "
-            "purchase)."
+            "purchase). See http://hl7.org/fhir/ValueSet/capability-statement-kind"
         ),
         # if property is element of this resource.
         element_property=True,
@@ -260,6 +278,11 @@ class CapabilityStatement(domainresource.DomainResource):
         # note: Enum values can be used in validation,
         # but use in your own responsibilities, read official FHIR documentation.
         enum_values=["instance", "capability", "requirements"],
+        # valueset binding
+        binding_description="How a capability statement is intended to be used.",
+        binding_strength="required",
+        binding_uri="http://hl7.org/fhir/ValueSet/capability-statement-kind",
+        binding_version="4.3.0",
     )
     kind__ext: fhirtypes.FHIRPrimitiveExtensionType = Field(
         None, alias="_kind", title="Extension field for ``kind``."
@@ -296,10 +319,15 @@ class CapabilityStatement(domainresource.DomainResource):
         title="Patch formats supported",
         description=(
             "A list of the patch formats supported by this implementation using "
-            "their content types."
+            "their content types. See http://hl7.org/fhir/ValueSet/mimetypes"
         ),
         # if property is element of this resource.
         element_property=True,
+        # valueset binding
+        binding_description="BCP 13 (RFCs 2045, 2046, 2047, 4288, 4289 and 2049)",
+        binding_strength="required",
+        binding_uri="http://hl7.org/fhir/ValueSet/mimetypes",
+        binding_version="4.3.0",
     )
     patchFormat__ext: typing.List[
         typing.Union[fhirtypes.FHIRPrimitiveExtensionType, None]
@@ -363,7 +391,8 @@ class CapabilityStatement(domainresource.DomainResource):
         title="draft | active | retired | unknown",
         description=(
             "The status of this capability statement. Enables tracking the life-"
-            "cycle of the content."
+            "cycle of the content. See http://hl7.org/fhir/ValueSet/publication-"
+            "status"
         ),
         # if property is element of this resource.
         element_property=True,
@@ -371,6 +400,11 @@ class CapabilityStatement(domainresource.DomainResource):
         # note: Enum values can be used in validation,
         # but use in your own responsibilities, read official FHIR documentation.
         enum_values=["draft", "active", "retired", "unknown"],
+        # valueset binding
+        binding_description="The lifecycle status of an artifact.",
+        binding_strength="required",
+        binding_uri="http://hl7.org/fhir/ValueSet/publication-status",
+        binding_version="4.3.0",
     )
     status__ext: fhirtypes.FHIRPrimitiveExtensionType = Field(
         None, alias="_status", title="Extension field for ``status``."
@@ -591,7 +625,7 @@ class CapabilityStatementDocument(backboneelement.BackboneElement):
         title="producer | consumer",
         description=(
             "Mode of this document declaration - whether an application is a "
-            "producer or consumer."
+            "producer or consumer. See http://hl7.org/fhir/ValueSet/document-mode"
         ),
         # if property is element of this resource.
         element_property=True,
@@ -599,6 +633,11 @@ class CapabilityStatementDocument(backboneelement.BackboneElement):
         # note: Enum values can be used in validation,
         # but use in your own responsibilities, read official FHIR documentation.
         enum_values=["producer", "consumer"],
+        # valueset binding
+        binding_description="Whether the application produces or consumes documents.",
+        binding_strength="required",
+        binding_uri="http://hl7.org/fhir/ValueSet/document-mode",
+        binding_version="4.3.0",
     )
     mode__ext: fhirtypes.FHIRPrimitiveExtensionType = Field(
         None, alias="_mode", title="Extension field for ``mode``."
@@ -617,6 +656,7 @@ class CapabilityStatementDocument(backboneelement.BackboneElement):
         element_required=True,
         # note: Listed Resource Type(s) should be allowed as Reference.
         enum_reference_types=["StructureDefinition"],
+        backref="capability_statement.document_profile",
     )
     profile__ext: fhirtypes.FHIRPrimitiveExtensionType = Field(
         None, alias="_profile", title="Extension field for ``profile``."
@@ -722,6 +762,7 @@ class CapabilityStatementImplementation(backboneelement.BackboneElement):
         element_property=True,
         # note: Listed Resource Type(s) should be allowed as Reference.
         enum_reference_types=["Organization"],
+        backref="capability_statement.implementation_custodian",
     )
 
     description: fhirtypes.String = Field(
@@ -951,10 +992,14 @@ class CapabilityStatementMessagingEndpoint(backboneelement.BackboneElement):
         title="http | ftp | mllp +",
         description=(
             "A list of the messaging transport protocol(s) identifiers, supported "
-            "by this endpoint."
+            "by this endpoint. See http://hl7.org/fhir/ValueSet/message-transport"
         ),
         # if property is element of this resource.
         element_property=True,
+        # valueset binding
+        binding_description="The protocol used for message transport.",
+        binding_strength="extensible",
+        binding_uri="http://hl7.org/fhir/ValueSet/message-transport",
     )
 
     @classmethod
@@ -1050,6 +1095,7 @@ class CapabilityStatementMessagingSupportedMessage(backboneelement.BackboneEleme
         element_required=True,
         # note: Listed Resource Type(s) should be allowed as Reference.
         enum_reference_types=["MessageDefinition"],
+        backref="capability_statement.messaging.supported_message_definition",
     )
     definition__ext: fhirtypes.FHIRPrimitiveExtensionType = Field(
         None, alias="_definition", title="Extension field for ``definition``."
@@ -1061,7 +1107,7 @@ class CapabilityStatementMessagingSupportedMessage(backboneelement.BackboneEleme
         title="sender | receiver",
         description=(
             "The mode of this event declaration - whether application is sender or "
-            "receiver."
+            "receiver. See http://hl7.org/fhir/ValueSet/event-capability-mode"
         ),
         # if property is element of this resource.
         element_property=True,
@@ -1069,6 +1115,11 @@ class CapabilityStatementMessagingSupportedMessage(backboneelement.BackboneEleme
         # note: Enum values can be used in validation,
         # but use in your own responsibilities, read official FHIR documentation.
         enum_values=["sender", "receiver"],
+        # valueset binding
+        binding_description="The mode of a message capability statement.",
+        binding_strength="required",
+        binding_uri="http://hl7.org/fhir/ValueSet/event-capability-mode",
+        binding_version="4.3.0",
     )
     mode__ext: fhirtypes.FHIRPrimitiveExtensionType = Field(
         None, alias="_mode", title="Extension field for ``mode``."
@@ -1166,6 +1217,7 @@ class CapabilityStatementRest(backboneelement.BackboneElement):
         element_property=True,
         # note: Listed Resource Type(s) should be allowed as Reference.
         enum_reference_types=["CompartmentDefinition"],
+        backref="capability_statement.rest_compartment",
     )
     compartment__ext: typing.List[
         typing.Union[fhirtypes.FHIRPrimitiveExtensionType, None]
@@ -1201,7 +1253,8 @@ class CapabilityStatementRest(backboneelement.BackboneElement):
         title="client | server",
         description=(
             "Identifies whether this portion of the statement is describing the "
-            "ability to initiate or receive restful operations."
+            "ability to initiate or receive restful operations. See "
+            "http://hl7.org/fhir/ValueSet/restful-capability-mode"
         ),
         # if property is element of this resource.
         element_property=True,
@@ -1209,6 +1262,11 @@ class CapabilityStatementRest(backboneelement.BackboneElement):
         # note: Enum values can be used in validation,
         # but use in your own responsibilities, read official FHIR documentation.
         enum_values=["client", "server"],
+        # valueset binding
+        binding_description="The mode of a RESTful capability statement.",
+        binding_strength="required",
+        binding_uri="http://hl7.org/fhir/ValueSet/restful-capability-mode",
+        binding_version="4.3.0",
     )
     mode__ext: fhirtypes.FHIRPrimitiveExtensionType = Field(
         None, alias="_mode", title="Extension field for ``mode``."
@@ -1363,13 +1421,21 @@ class CapabilityStatementRestInteraction(backboneelement.BackboneElement):
         None,
         alias="code",
         title="transaction | batch | search-system | history-system",
-        description="A coded identifier of the operation, supported by the system.",
+        description=(
+            "A coded identifier of the operation, supported by the system. See "
+            "http://hl7.org/fhir/ValueSet/system-restful-interaction"
+        ),
         # if property is element of this resource.
         element_property=True,
         element_required=True,
         # note: Enum values can be used in validation,
         # but use in your own responsibilities, read official FHIR documentation.
         enum_values=["transaction", "batch", "search-system", "history-system"],
+        # valueset binding
+        binding_description="Operations supported by REST at the system level.",
+        binding_strength="required",
+        binding_uri="http://hl7.org/fhir/ValueSet/system-restful-interaction",
+        binding_version="4.3.0",
     )
     code__ext: fhirtypes.FHIRPrimitiveExtensionType = Field(
         None, alias="_code", title="Extension field for ``code``."
@@ -1491,12 +1557,20 @@ class CapabilityStatementRestResource(backboneelement.BackboneElement):
         title=(
             "not-supported | single | multiple - how conditional delete is " "supported"
         ),
-        description="A code that indicates how the server supports conditional delete.",
+        description=(
+            "A code that indicates how the server supports conditional delete. See "
+            "http://hl7.org/fhir/ValueSet/conditional-delete-status"
+        ),
         # if property is element of this resource.
         element_property=True,
         # note: Enum values can be used in validation,
         # but use in your own responsibilities, read official FHIR documentation.
         enum_values=["not-supported", "single", "multiple"],
+        # valueset binding
+        binding_description="A code that indicates how the server supports conditional delete.",
+        binding_strength="required",
+        binding_uri="http://hl7.org/fhir/ValueSet/conditional-delete-status",
+        binding_version="4.3.0",
     )
     conditionalDelete__ext: fhirtypes.FHIRPrimitiveExtensionType = Field(
         None,
@@ -1508,12 +1582,20 @@ class CapabilityStatementRestResource(backboneelement.BackboneElement):
         None,
         alias="conditionalRead",
         title="not-supported | modified-since | not-match | full-support",
-        description="A code that indicates how the server supports conditional read.",
+        description=(
+            "A code that indicates how the server supports conditional read. See "
+            "http://hl7.org/fhir/ValueSet/conditional-read-status"
+        ),
         # if property is element of this resource.
         element_property=True,
         # note: Enum values can be used in validation,
         # but use in your own responsibilities, read official FHIR documentation.
         enum_values=["not-supported", "modified-since", "not-match", "full-support"],
+        # valueset binding
+        binding_description="A code that indicates how the server supports conditional read.",
+        binding_strength="required",
+        binding_uri="http://hl7.org/fhir/ValueSet/conditional-read-status",
+        binding_version="4.3.0",
     )
     conditionalRead__ext: fhirtypes.FHIRPrimitiveExtensionType = Field(
         None, alias="_conditionalRead", title="Extension field for ``conditionalRead``."
@@ -1586,6 +1668,7 @@ class CapabilityStatementRestResource(backboneelement.BackboneElement):
         element_property=True,
         # note: Listed Resource Type(s) should be allowed as Reference.
         enum_reference_types=["StructureDefinition"],
+        backref="capability_statement.rest.resource_profile",
     )
     profile__ext: fhirtypes.FHIRPrimitiveExtensionType = Field(
         None, alias="_profile", title="Extension field for ``profile``."
@@ -1610,12 +1693,20 @@ class CapabilityStatementRestResource(backboneelement.BackboneElement):
         None,
         alias="referencePolicy",
         title="literal | logical | resolves | enforced | local",
-        description="A set of flags that defines how references are supported.",
+        description=(
+            "A set of flags that defines how references are supported. See "
+            "http://hl7.org/fhir/ValueSet/reference-handling-policy"
+        ),
         # if property is element of this resource.
         element_property=True,
         # note: Enum values can be used in validation,
         # but use in your own responsibilities, read official FHIR documentation.
         enum_values=["literal", "logical", "resolves", "enforced", "local"],
+        # valueset binding
+        binding_description="A set of flags that defines how references are supported.",
+        binding_strength="required",
+        binding_uri="http://hl7.org/fhir/ValueSet/reference-handling-policy",
+        binding_version="4.3.0",
     )
     referencePolicy__ext: typing.List[
         typing.Union[fhirtypes.FHIRPrimitiveExtensionType, None]
@@ -1688,6 +1779,7 @@ class CapabilityStatementRestResource(backboneelement.BackboneElement):
         element_property=True,
         # note: Listed Resource Type(s) should be allowed as Reference.
         enum_reference_types=["StructureDefinition"],
+        backref="capability_statement.rest.resource_supportedProfile",
     )
     supportedProfile__ext: typing.List[
         typing.Union[fhirtypes.FHIRPrimitiveExtensionType, None]
@@ -1701,10 +1793,18 @@ class CapabilityStatementRestResource(backboneelement.BackboneElement):
         None,
         alias="type",
         title="A resource type that is supported",
-        description="A type of resource exposed via the restful interface.",
+        description=(
+            "A type of resource exposed via the restful interface. See "
+            "http://hl7.org/fhir/ValueSet/resource-types"
+        ),
         # if property is element of this resource.
         element_property=True,
         element_required=True,
+        # valueset binding
+        binding_description="One of the resource types defined as part of this version of FHIR.",
+        binding_strength="required",
+        binding_uri="http://hl7.org/fhir/ValueSet/resource-types",
+        binding_version="4.3.0",
     )
     type__ext: fhirtypes.FHIRPrimitiveExtensionType = Field(
         None, alias="_type", title="Extension field for ``type``."
@@ -1738,13 +1838,19 @@ class CapabilityStatementRestResource(backboneelement.BackboneElement):
             " this has some other value, the server must at least correctly track "
             "and populate the versionId meta-property on resources. If the value is"
             " 'versioned-update', then the server supports all the versioning "
-            "features, including using e-tags for version integrity in the API."
+            "features, including using e-tags for version integrity in the API. See"
+            " http://hl7.org/fhir/ValueSet/versioning-policy"
         ),
         # if property is element of this resource.
         element_property=True,
         # note: Enum values can be used in validation,
         # but use in your own responsibilities, read official FHIR documentation.
         enum_values=["no-version", "versioned", "versioned-update"],
+        # valueset binding
+        binding_description="How the system supports versioning for a resource.",
+        binding_strength="required",
+        binding_uri="http://hl7.org/fhir/ValueSet/versioning-policy",
+        binding_version="4.3.0",
     )
     versioning__ext: fhirtypes.FHIRPrimitiveExtensionType = Field(
         None, alias="_versioning", title="Extension field for ``versioning``."
@@ -1857,7 +1963,10 @@ class CapabilityStatementRestResourceInteraction(backboneelement.BackboneElement
             "read | vread | update | patch | delete | history-instance | history-"
             "type | create | search-type"
         ),
-        description="Coded identifier of the operation, supported by the system resource.",
+        description=(
+            "Coded identifier of the operation, supported by the system resource. "
+            "See http://hl7.org/fhir/ValueSet/type-restful-interaction"
+        ),
         # if property is element of this resource.
         element_property=True,
         element_required=True,
@@ -1874,6 +1983,11 @@ class CapabilityStatementRestResourceInteraction(backboneelement.BackboneElement
             "create",
             "search-type",
         ],
+        # valueset binding
+        binding_description="Operations supported by REST at the type or instance level.",
+        binding_strength="required",
+        binding_uri="http://hl7.org/fhir/ValueSet/type-restful-interaction",
+        binding_version="4.3.0",
     )
     code__ext: fhirtypes.FHIRPrimitiveExtensionType = Field(
         None, alias="_code", title="Extension field for ``code``."
@@ -1996,6 +2110,7 @@ class CapabilityStatementRestResourceOperation(backboneelement.BackboneElement):
         element_required=True,
         # note: Listed Resource Type(s) should be allowed as Reference.
         enum_reference_types=["OperationDefinition"],
+        backref="capability_statement.rest.resource.operation_definition",
     )
     definition__ext: fhirtypes.FHIRPrimitiveExtensionType = Field(
         None, alias="_definition", title="Extension field for ``definition``."
@@ -2139,6 +2254,7 @@ class CapabilityStatementRestResourceSearchParam(backboneelement.BackboneElement
         element_property=True,
         # note: Listed Resource Type(s) should be allowed as Reference.
         enum_reference_types=["SearchParameter"],
+        backref="capability_statement.rest.resource.search_param_definition",
     )
     definition__ext: fhirtypes.FHIRPrimitiveExtensionType = Field(
         None, alias="_definition", title="Extension field for ``definition``."
@@ -2181,7 +2297,7 @@ class CapabilityStatementRestResourceSearchParam(backboneelement.BackboneElement
         ),
         description=(
             "The type of value a search parameter refers to, and how the content is"
-            " interpreted."
+            " interpreted. See http://hl7.org/fhir/ValueSet/search-param-type"
         ),
         # if property is element of this resource.
         element_property=True,
@@ -2199,6 +2315,11 @@ class CapabilityStatementRestResourceSearchParam(backboneelement.BackboneElement
             "uri",
             "special",
         ],
+        # valueset binding
+        binding_description="Data types allowed to be used for search parameters.",
+        binding_strength="required",
+        binding_uri="http://hl7.org/fhir/ValueSet/search-param-type",
+        binding_version="4.3.0",
     )
     type__ext: fhirtypes.FHIRPrimitiveExtensionType = Field(
         None, alias="_type", title="Extension field for ``type``."
@@ -2323,9 +2444,26 @@ class CapabilityStatementRestSecurity(backboneelement.BackboneElement):
         None,
         alias="service",
         title="OAuth | SMART-on-FHIR | NTLM | Basic | Kerberos | Certificates",
-        description="Types of security services that are supported/required by the system.",
+        description=(
+            "Types of security services that are supported/required by the system. "
+            "See http://hl7.org/fhir/ValueSet/restful-security-service"
+        ),
         # if property is element of this resource.
         element_property=True,
+        # note: Enum values can be used in validation,
+        # but use in your own responsibilities, read official FHIR documentation.
+        enum_values=[
+            "OAuth",
+            "SMART-on-FHIR",
+            "NTLM",
+            "Basic",
+            "Kerberos",
+            "Certificates",
+        ],
+        # valueset binding
+        binding_description="Types of security services used with FHIR.",
+        binding_strength="extensible",
+        binding_uri="http://hl7.org/fhir/ValueSet/restful-security-service",
     )
 
     @classmethod

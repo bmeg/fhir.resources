@@ -105,6 +105,7 @@ class Account(domainresource.DomainResource):
         element_property=True,
         # note: Listed Resource Type(s) should be allowed as Reference.
         enum_reference_types=["Organization"],
+        backref="account_owner",
     )
 
     partOf: fhirtypes.ReferenceType = Field(
@@ -116,6 +117,7 @@ class Account(domainresource.DomainResource):
         element_property=True,
         # note: Listed Resource Type(s) should be allowed as Reference.
         enum_reference_types=["Account"],
+        backref="account_partOf",
     )
 
     servicePeriod: fhirtypes.PeriodType = Field(
@@ -131,13 +133,21 @@ class Account(domainresource.DomainResource):
         None,
         alias="status",
         title="active | inactive | entered-in-error | on-hold | unknown",
-        description="Indicates whether the account is presently used/usable or not.",
+        description=(
+            "Indicates whether the account is presently used/usable or not. See "
+            "http://hl7.org/fhir/ValueSet/account-status"
+        ),
         # if property is element of this resource.
         element_property=True,
         element_required=True,
         # note: Enum values can be used in validation,
         # but use in your own responsibilities, read official FHIR documentation.
         enum_values=["active", "inactive", "entered-in-error", "on-hold", "unknown"],
+        # valueset binding
+        binding_description="Indicates whether the account is available to be used.",
+        binding_strength="required",
+        binding_uri="http://hl7.org/fhir/ValueSet/account-status",
+        binding_version="4.3.0",
     )
     status__ext: fhirtypes.FHIRPrimitiveExtensionType = Field(
         None, alias="_status", title="Extension field for ``status``."
@@ -165,15 +175,23 @@ class Account(domainresource.DomainResource):
             "HealthcareService",
             "Organization",
         ],
+        backref="account_subject",
     )
 
     type: fhirtypes.CodeableConceptType = Field(
         None,
         alias="type",
         title="E.g. patient, expense, depreciation",
-        description="Categorizes the account for reporting and searching purposes.",
+        description=(
+            "Categorizes the account for reporting and searching purposes. See "
+            "http://hl7.org/fhir/ValueSet/account-type"
+        ),
         # if property is element of this resource.
         element_property=True,
+        # valueset binding
+        binding_description="The usage type of this account, permits categorization of accounts.",
+        binding_strength="example",
+        binding_uri="http://hl7.org/fhir/ValueSet/account-type",
     )
 
     @classmethod
@@ -292,6 +310,7 @@ class AccountCoverage(backboneelement.BackboneElement):
         element_property=True,
         # note: Listed Resource Type(s) should be allowed as Reference.
         enum_reference_types=["Coverage"],
+        backref="account.coverage_coverage",
     )
 
     priority: fhirtypes.PositiveInt = Field(
@@ -351,6 +370,7 @@ class AccountGuarantor(backboneelement.BackboneElement):
         element_property=True,
         # note: Listed Resource Type(s) should be allowed as Reference.
         enum_reference_types=["Patient", "RelatedPerson", "Organization"],
+        backref="account.guarantor_party",
     )
 
     period: fhirtypes.PeriodType = Field(

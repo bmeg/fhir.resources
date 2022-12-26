@@ -35,10 +35,15 @@ class NutritionProduct(domainresource.DomainResource):
         ),
         description=(
             "Nutrition products can have different classifications - according to "
-            "its nutritional properties, preparation methods, etc."
+            "its nutritional properties, preparation methods, etc. See "
+            "http://hl7.org/fhir/ValueSet/nutrition-product-category"
         ),
         # if property is element of this resource.
         element_property=True,
+        # valueset binding
+        binding_description="Codes identifying classes of nutrition products.",
+        binding_strength="example",
+        binding_uri="http://hl7.org/fhir/ValueSet/nutrition-product-category",
     )
 
     code: fhirtypes.CodeableConceptType = Field(
@@ -47,10 +52,15 @@ class NutritionProduct(domainresource.DomainResource):
         title="A code designating a specific type of nutritional product",
         description=(
             "The code assigned to the product, for example a manufacturer number or"
-            " other terminology."
+            " other terminology. See http://hl7.org/fhir/ValueSet/edible-substance-"
+            "type"
         ),
         # if property is element of this resource.
         element_property=True,
+        # valueset binding
+        binding_description="Codes identifying specific types of nutrition products.",
+        binding_strength="example",
+        binding_uri="http://hl7.org/fhir/ValueSet/edible-substance-type",
     )
 
     ingredient: typing.List[fhirtypes.NutritionProductIngredientType] = Field(
@@ -83,12 +93,17 @@ class NutritionProduct(domainresource.DomainResource):
         title="Known or suspected allergens that are a part of this product",
         description=(
             "Allergens that are known or suspected to be a part of this nutrition "
-            "product."
+            "product. See http://hl7.org/fhir/ValueSet/allergen-class"
         ),
         # if property is element of this resource.
         element_property=True,
+        # valueset binding
+        binding_description="Codes that identify substances that can be an allergen.",
+        binding_strength="example",
+        binding_uri="http://hl7.org/fhir/ValueSet/allergen-class",
         # note: Listed Resource Type(s) should be allowed as Reference.
         enum_reference_types=["Substance"],
+        backref="nutrition_product_knownAllergen",
     )
 
     manufacturer: typing.List[fhirtypes.ReferenceType] = Field(
@@ -103,6 +118,7 @@ class NutritionProduct(domainresource.DomainResource):
         element_property=True,
         # note: Listed Resource Type(s) should be allowed as Reference.
         enum_reference_types=["Organization"],
+        backref="nutrition_product_manufacturer",
     )
 
     note: typing.List[fhirtypes.AnnotationType] = Field(
@@ -138,13 +154,21 @@ class NutritionProduct(domainresource.DomainResource):
         None,
         alias="status",
         title="active | inactive | entered-in-error",
-        description="The current state of the product.",
+        description=(
+            "The current state of the product. See "
+            "http://hl7.org/fhir/ValueSet/nutritionproduct-status"
+        ),
         # if property is element of this resource.
         element_property=True,
         element_required=True,
         # note: Enum values can be used in validation,
         # but use in your own responsibilities, read official FHIR documentation.
         enum_values=["active", "inactive", "entered-in-error"],
+        # valueset binding
+        binding_description="Codes identifying the lifecycle stage of a product.",
+        binding_strength="required",
+        binding_uri="http://hl7.org/fhir/ValueSet/nutritionproduct-status",
+        binding_version="4.3.0",
     )
     status__ext: fhirtypes.FHIRPrimitiveExtensionType = Field(
         None, alias="_status", title="Extension field for ``status``."
@@ -265,6 +289,7 @@ class NutritionProductIngredient(backboneelement.BackboneElement):
         element_property=True,
         # note: Listed Resource Type(s) should be allowed as Reference.
         enum_reference_types=["NutritionProduct"],
+        backref="nutrition_product.ingredient_item",
     )
 
     @classmethod
@@ -397,11 +422,16 @@ class NutritionProductNutrient(backboneelement.BackboneElement):
         None,
         alias="item",
         title="The (relevant) nutrients in the product",
-        description=None,
+        description="See http://hl7.org/fhir/ValueSet/nutrition-product-nutrient",
         # if property is element of this resource.
         element_property=True,
+        # valueset binding
+        binding_description="Codes that identify nutrients that could be parts of nutrition products.",
+        binding_strength="example",
+        binding_uri="http://hl7.org/fhir/ValueSet/nutrition-product-nutrient",
         # note: Listed Resource Type(s) should be allowed as Reference.
         enum_reference_types=["Substance"],
+        backref="nutrition_product.nutrient_item",
     )
 
     @classmethod
@@ -429,10 +459,15 @@ class NutritionProductProductCharacteristic(backboneelement.BackboneElement):
         title="Code specifying the type of characteristic",
         description=(
             "A code specifying which characteristic of the product is being "
-            "described (for example, colour, shape)."
+            "described (for example, colour, shape). See "
+            "http://hl7.org/fhir/ValueSet/measurement-property"
         ),
         # if property is element of this resource.
         element_property=True,
+        # valueset binding
+        binding_description="Codes that identify properties that can be measured.",
+        binding_strength="example",
+        binding_uri="http://hl7.org/fhir/ValueSet/measurement-property",
     )
 
     valueAttachment: fhirtypes.AttachmentType = Field(

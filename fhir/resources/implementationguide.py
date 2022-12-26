@@ -139,11 +139,17 @@ class ImplementationGuide(domainresource.DomainResource):
             "The version(s) of the FHIR specification that this ImplementationGuide"
             " targets - e.g. describes how to use. The value of this element is the"
             " formal version of the specification, without the revision number, "
-            "e.g. [publication].[major].[minor], which is 4.3.0 for this version."
+            "e.g. [publication].[major].[minor], which is 4.3.0 for this version. "
+            "See http://hl7.org/fhir/ValueSet/FHIR-version"
         ),
         # if property is element of this resource.
         element_property=True,
         element_required=True,
+        # valueset binding
+        binding_description="All published FHIR Versions.",
+        binding_strength="required",
+        binding_uri="http://hl7.org/fhir/ValueSet/FHIR-version",
+        binding_version="4.3.0",
     )
     fhirVersion__ext: typing.List[
         typing.Union[fhirtypes.FHIRPrimitiveExtensionType, None]
@@ -167,10 +173,14 @@ class ImplementationGuide(domainresource.DomainResource):
         title="Intended jurisdiction for implementation guide (if applicable)",
         description=(
             "A legal or geographic region in which the implementation guide is "
-            "intended to be used."
+            "intended to be used. See http://hl7.org/fhir/ValueSet/jurisdiction"
         ),
         # if property is element of this resource.
         element_property=True,
+        # valueset binding
+        binding_description="Countries and regions within which this artifact is targeted for use.",
+        binding_strength="extensible",
+        binding_uri="http://hl7.org/fhir/ValueSet/jurisdiction",
     )
 
     license: fhirtypes.Code = Field(
@@ -179,10 +189,16 @@ class ImplementationGuide(domainresource.DomainResource):
         title="SPDX license code for this IG (or not-open-source)",
         description=(
             "The license that applies to this Implementation Guide, using an SPDX "
-            "license code, or 'not-open-source'."
+            "license code, or 'not-open-source'. See "
+            "http://hl7.org/fhir/ValueSet/spdx-license"
         ),
         # if property is element of this resource.
         element_property=True,
+        # valueset binding
+        binding_description="The license that applies to an Implementation Guide (using an SPDX license Identifiers, or \u0027not-open-source\u0027). The binding is required but new SPDX license Identifiers are allowed to be used (https://spdx.org/licenses/).",
+        binding_strength="required",
+        binding_uri="http://hl7.org/fhir/ValueSet/spdx-license",
+        binding_version="4.3.0",
     )
     license__ext: fhirtypes.FHIRPrimitiveExtensionType = Field(
         None, alias="_license", title="Extension field for ``license``."
@@ -256,7 +272,8 @@ class ImplementationGuide(domainresource.DomainResource):
         title="draft | active | retired | unknown",
         description=(
             "The status of this implementation guide. Enables tracking the life-"
-            "cycle of the content."
+            "cycle of the content. See http://hl7.org/fhir/ValueSet/publication-"
+            "status"
         ),
         # if property is element of this resource.
         element_property=True,
@@ -264,6 +281,11 @@ class ImplementationGuide(domainresource.DomainResource):
         # note: Enum values can be used in validation,
         # but use in your own responsibilities, read official FHIR documentation.
         enum_values=["draft", "active", "retired", "unknown"],
+        # valueset binding
+        binding_description="The lifecycle status of an artifact.",
+        binding_strength="required",
+        binding_uri="http://hl7.org/fhir/ValueSet/publication-status",
+        binding_version="4.3.0",
     )
     status__ext: fhirtypes.FHIRPrimitiveExtensionType = Field(
         None, alias="_status", title="Extension field for ``status``."
@@ -658,13 +680,21 @@ class ImplementationGuideDefinitionPage(backboneelement.BackboneElement):
         None,
         alias="generation",
         title="html | markdown | xml | generated",
-        description="A code that indicates how the page is generated.",
+        description=(
+            "A code that indicates how the page is generated. See "
+            "http://hl7.org/fhir/ValueSet/guide-page-generation"
+        ),
         # if property is element of this resource.
         element_property=True,
         element_required=True,
         # note: Enum values can be used in validation,
         # but use in your own responsibilities, read official FHIR documentation.
         enum_values=["html", "markdown", "xml", "generated"],
+        # valueset binding
+        binding_description="A code that indicates how the page is generated.",
+        binding_strength="required",
+        binding_uri="http://hl7.org/fhir/ValueSet/guide-page-generation",
+        binding_version="4.3.0",
     )
     generation__ext: fhirtypes.FHIRPrimitiveExtensionType = Field(
         None, alias="_generation", title="Extension field for ``generation``."
@@ -682,6 +712,7 @@ class ImplementationGuideDefinitionPage(backboneelement.BackboneElement):
         one_of_many_required=True,
         # note: Listed Resource Type(s) should be allowed as Reference.
         enum_reference_types=["Binary"],
+        backref="implementation_guide.definition.page_nameReference",
     )
 
     nameUrl: fhirtypes.Url = Field(
@@ -857,7 +888,7 @@ class ImplementationGuideDefinitionParameter(backboneelement.BackboneElement):
             "parameter | rule-broken-links | generate-xml | generate-json | "
             "generate-turtle | html-template"
         ),
-        description=None,
+        description="See http://hl7.org/fhir/ValueSet/guide-parameter-code",
         # if property is element of this resource.
         element_property=True,
         element_required=True,
@@ -875,6 +906,11 @@ class ImplementationGuideDefinitionParameter(backboneelement.BackboneElement):
             "generate-turtle",
             "html-template",
         ],
+        # valueset binding
+        binding_description="Code of parameter that is input to the guide.",
+        binding_strength="required",
+        binding_uri="http://hl7.org/fhir/ValueSet/guide-parameter-code",
+        binding_version="4.3.0",
     )
     code__ext: fhirtypes.FHIRPrimitiveExtensionType = Field(
         None, alias="_code", title="Extension field for ``code``."
@@ -1025,6 +1061,7 @@ class ImplementationGuideDefinitionResource(backboneelement.BackboneElement):
         one_of_many_required=False,
         # note: Listed Resource Type(s) should be allowed as Reference.
         enum_reference_types=["StructureDefinition"],
+        backref="implementation_guide.definition.resource_exampleCanonical",
     )
     exampleCanonical__ext: fhirtypes.FHIRPrimitiveExtensionType = Field(
         None,
@@ -1039,10 +1076,16 @@ class ImplementationGuideDefinitionResource(backboneelement.BackboneElement):
         description=(
             "Indicates the FHIR Version(s) this artifact is intended to apply to. "
             "If no versions are specified, the resource is assumed to apply to all "
-            "the versions stated in ImplementationGuide.fhirVersion."
+            "the versions stated in ImplementationGuide.fhirVersion. See "
+            "http://hl7.org/fhir/ValueSet/FHIR-version"
         ),
         # if property is element of this resource.
         element_property=True,
+        # valueset binding
+        binding_description="All published FHIR Versions.",
+        binding_strength="required",
+        binding_uri="http://hl7.org/fhir/ValueSet/FHIR-version",
+        binding_version="4.3.0",
     )
     fhirVersion__ext: typing.List[
         typing.Union[fhirtypes.FHIRPrimitiveExtensionType, None]
@@ -1085,6 +1128,7 @@ class ImplementationGuideDefinitionResource(backboneelement.BackboneElement):
         element_property=True,
         # note: Listed Resource Type(s) should be allowed as Reference.
         enum_reference_types=["Resource"],
+        backref="implementation_guide.definition.resource_reference",
     )
 
     @classmethod
@@ -1299,6 +1343,7 @@ class ImplementationGuideDependsOn(backboneelement.BackboneElement):
         element_required=True,
         # note: Listed Resource Type(s) should be allowed as Reference.
         enum_reference_types=["ImplementationGuide"],
+        backref="implementation_guide.depends_on_uri",
     )
     uri__ext: fhirtypes.FHIRPrimitiveExtensionType = Field(
         None, alias="_uri", title="Extension field for ``uri``."
@@ -1409,6 +1454,7 @@ class ImplementationGuideGlobal(backboneelement.BackboneElement):
         element_required=True,
         # note: Listed Resource Type(s) should be allowed as Reference.
         enum_reference_types=["StructureDefinition"],
+        backref="implementation_guide.global_profile",
     )
     profile__ext: fhirtypes.FHIRPrimitiveExtensionType = Field(
         None, alias="_profile", title="Extension field for ``profile``."
@@ -1418,10 +1464,18 @@ class ImplementationGuideGlobal(backboneelement.BackboneElement):
         None,
         alias="type",
         title="Type this profile applies to",
-        description="The type of resource that all instances must conform to.",
+        description=(
+            "The type of resource that all instances must conform to. See "
+            "http://hl7.org/fhir/ValueSet/resource-types"
+        ),
         # if property is element of this resource.
         element_property=True,
         element_required=True,
+        # valueset binding
+        binding_description="One of the resource types defined as part of this version of FHIR.",
+        binding_strength="required",
+        binding_uri="http://hl7.org/fhir/ValueSet/resource-types",
+        binding_version="4.3.0",
     )
     type__ext: fhirtypes.FHIRPrimitiveExtensionType = Field(
         None, alias="_type", title="Extension field for ``type``."
@@ -1756,6 +1810,7 @@ class ImplementationGuideManifestResource(backboneelement.BackboneElement):
         one_of_many_required=False,
         # note: Listed Resource Type(s) should be allowed as Reference.
         enum_reference_types=["StructureDefinition"],
+        backref="implementation_guide.manifest.resource_exampleCanonical",
     )
     exampleCanonical__ext: fhirtypes.FHIRPrimitiveExtensionType = Field(
         None,
@@ -1772,6 +1827,7 @@ class ImplementationGuideManifestResource(backboneelement.BackboneElement):
         element_property=True,
         # note: Listed Resource Type(s) should be allowed as Reference.
         enum_reference_types=["Resource"],
+        backref="implementation_guide.manifest.resource_reference",
     )
 
     relativePath: fhirtypes.Url = Field(

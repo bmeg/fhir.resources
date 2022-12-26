@@ -76,10 +76,14 @@ class PractitionerRole(domainresource.DomainResource):
         title="Roles which this practitioner may perform",
         description=(
             "Roles which this practitioner is authorized to perform for the "
-            "organization."
+            "organization. See http://hl7.org/fhir/ValueSet/practitioner-role"
         ),
         # if property is element of this resource.
         element_property=True,
+        # valueset binding
+        binding_description="The role a person plays representing an organization.",
+        binding_strength="example",
+        binding_uri="http://hl7.org/fhir/ValueSet/practitioner-role",
     )
 
     endpoint: typing.List[fhirtypes.ReferenceType] = Field(
@@ -94,6 +98,7 @@ class PractitionerRole(domainresource.DomainResource):
         element_property=True,
         # note: Listed Resource Type(s) should be allowed as Reference.
         enum_reference_types=["Endpoint"],
+        backref="practitioner_role_endpoint",
     )
 
     healthcareService: typing.List[fhirtypes.ReferenceType] = Field(
@@ -108,6 +113,7 @@ class PractitionerRole(domainresource.DomainResource):
         element_property=True,
         # note: Listed Resource Type(s) should be allowed as Reference.
         enum_reference_types=["HealthcareService"],
+        backref="practitioner_role_healthcareService",
     )
 
     identifier: typing.List[fhirtypes.IdentifierType] = Field(
@@ -128,6 +134,7 @@ class PractitionerRole(domainresource.DomainResource):
         element_property=True,
         # note: Listed Resource Type(s) should be allowed as Reference.
         enum_reference_types=["Location"],
+        backref="practitioner_role_location",
     )
 
     notAvailable: typing.List[fhirtypes.PractitionerRoleNotAvailableType] = Field(
@@ -151,6 +158,7 @@ class PractitionerRole(domainresource.DomainResource):
         element_property=True,
         # note: Listed Resource Type(s) should be allowed as Reference.
         enum_reference_types=["Organization"],
+        backref="practitioner_role_organization",
     )
 
     period: fhirtypes.PeriodType = Field(
@@ -180,15 +188,20 @@ class PractitionerRole(domainresource.DomainResource):
         element_property=True,
         # note: Listed Resource Type(s) should be allowed as Reference.
         enum_reference_types=["Practitioner"],
+        backref="practitioner_role_practitioner",
     )
 
     specialty: typing.List[fhirtypes.CodeableConceptType] = Field(
         None,
         alias="specialty",
         title="Specific specialty of the practitioner",
-        description=None,
+        description="See http://hl7.org/fhir/ValueSet/c80-practice-codes",
         # if property is element of this resource.
         element_property=True,
+        # valueset binding
+        binding_description="Specific specialty associated with the agency.",
+        binding_strength="preferred",
+        binding_uri="http://hl7.org/fhir/ValueSet/c80-practice-codes",
     )
 
     telecom: typing.List[fhirtypes.ContactPointType] = Field(
@@ -299,13 +312,18 @@ class PractitionerRoleAvailableTime(backboneelement.BackboneElement):
         title="mon | tue | wed | thu | fri | sat | sun",
         description=(
             "Indicates which days of the week are available between the start and "
-            "end Times."
+            "end Times. See http://hl7.org/fhir/ValueSet/days-of-week"
         ),
         # if property is element of this resource.
         element_property=True,
         # note: Enum values can be used in validation,
         # but use in your own responsibilities, read official FHIR documentation.
         enum_values=["mon", "tue", "wed", "thu", "fri", "sat", "sun"],
+        # valueset binding
+        binding_description="The days of the week.",
+        binding_strength="required",
+        binding_uri="http://hl7.org/fhir/ValueSet/days-of-week",
+        binding_version="4.3.0",
     )
     daysOfWeek__ext: typing.List[
         typing.Union[fhirtypes.FHIRPrimitiveExtensionType, None]

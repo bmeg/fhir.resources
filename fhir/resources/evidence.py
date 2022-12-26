@@ -108,6 +108,7 @@ class Evidence(domainresource.DomainResource):
         one_of_many_required=False,
         # note: Listed Resource Type(s) should be allowed as Reference.
         enum_reference_types=["Citation"],
+        backref="evidence_citeAsReference",
     )
 
     contact: typing.List[fhirtypes.ContactDetailType] = Field(
@@ -266,7 +267,7 @@ class Evidence(domainresource.DomainResource):
         title="draft | active | retired | unknown",
         description=(
             "The status of this summary. Enables tracking the life-cycle of the "
-            "content."
+            "content. See http://hl7.org/fhir/ValueSet/publication-status"
         ),
         # if property is element of this resource.
         element_property=True,
@@ -274,6 +275,11 @@ class Evidence(domainresource.DomainResource):
         # note: Enum values can be used in validation,
         # but use in your own responsibilities, read official FHIR documentation.
         enum_values=["draft", "active", "retired", "unknown"],
+        # valueset binding
+        binding_description="The lifecycle status of an artifact.",
+        binding_strength="required",
+        binding_uri="http://hl7.org/fhir/ValueSet/publication-status",
+        binding_version="4.3.0",
     )
     status__ext: fhirtypes.FHIRPrimitiveExtensionType = Field(
         None, alias="_status", title="Extension field for ``status``."
@@ -283,18 +289,26 @@ class Evidence(domainresource.DomainResource):
         None,
         alias="studyType",
         title="The type of study that produced this evidence",
-        description=None,
+        description="See http://hl7.org/fhir/ValueSet/study-type",
         # if property is element of this resource.
         element_property=True,
+        # valueset binding
+        binding_description="The type of study the evidence was derived from.",
+        binding_strength="extensible",
+        binding_uri="http://hl7.org/fhir/ValueSet/study-type",
     )
 
     synthesisType: fhirtypes.CodeableConceptType = Field(
         None,
         alias="synthesisType",
         title="The method to combine studies",
-        description=None,
+        description="See http://hl7.org/fhir/ValueSet/synthesis-type",
         # if property is element of this resource.
         element_property=True,
+        # valueset binding
+        binding_description="Types of combining results from a body of evidence (eg. summary data meta-analysis).",
+        binding_strength="extensible",
+        binding_uri="http://hl7.org/fhir/ValueSet/synthesis-type",
     )
 
     title: fhirtypes.String = Field(
@@ -566,9 +580,13 @@ class EvidenceCertainty(backboneelement.BackboneElement):
         None,
         alias="rating",
         title="Assessment or judgement of the aspect",
-        description=None,
+        description="See http://hl7.org/fhir/ValueSet/certainty-rating",
         # if property is element of this resource.
         element_property=True,
+        # valueset binding
+        binding_description="The assessment of quality, confidence, or certainty.",
+        binding_strength="extensible",
+        binding_uri="http://hl7.org/fhir/ValueSet/certainty-rating",
     )
 
     subcomponent: typing.List[fhirtypes.EvidenceCertaintyType] = Field(
@@ -584,9 +602,13 @@ class EvidenceCertainty(backboneelement.BackboneElement):
         None,
         alias="type",
         title="Aspect of certainty being rated",
-        description=None,
+        description="See http://hl7.org/fhir/ValueSet/certainty-type",
         # if property is element of this resource.
         element_property=True,
+        # valueset binding
+        binding_description="The aspect of quality, confidence, or certainty.",
+        binding_strength="extensible",
+        binding_uri="http://hl7.org/fhir/ValueSet/certainty-type",
     )
 
     @classmethod
@@ -729,9 +751,12 @@ class EvidenceStatistic(backboneelement.BackboneElement):
         None,
         alias="statisticType",
         title="Type of statistic, eg relative risk",
-        description=None,
+        description="See http://hl7.org/fhir/ValueSet/statistic-type",
         # if property is element of this resource.
         element_property=True,
+        # valueset binding
+        binding_strength="extensible",
+        binding_uri="http://hl7.org/fhir/ValueSet/statistic-type",
     )
 
     @classmethod
@@ -842,9 +867,12 @@ class EvidenceStatisticAttributeEstimate(backboneelement.BackboneElement):
         None,
         alias="type",
         title="The type of attribute estimate, eg confidence interval or p value",
-        description=None,
+        description="See http://hl7.org/fhir/ValueSet/attribute-estimate-type",
         # if property is element of this resource.
         element_property=True,
+        # valueset binding
+        binding_strength="extensible",
+        binding_uri="http://hl7.org/fhir/ValueSet/attribute-estimate-type",
     )
 
     @classmethod
@@ -893,9 +921,15 @@ class EvidenceStatisticModelCharacteristic(backboneelement.BackboneElement):
         ...,
         alias="code",
         title="Model specification",
-        description="Description of a component of the method to generate the statistic.",
+        description=(
+            "Description of a component of the method to generate the statistic. "
+            "See http://hl7.org/fhir/ValueSet/statistic-model-code"
+        ),
         # if property is element of this resource.
         element_property=True,
+        # valueset binding
+        binding_strength="extensible",
+        binding_uri="http://hl7.org/fhir/ValueSet/statistic-model-code",
     )
 
     value: fhirtypes.QuantityType = Field(
@@ -952,12 +986,19 @@ class EvidenceStatisticModelCharacteristicVariable(backboneelement.BackboneEleme
         None,
         alias="handling",
         title="continuous | dichotomous | ordinal | polychotomous",
-        description="How the variable is classified for use in adjusted analysis.",
+        description=(
+            "How the variable is classified for use in adjusted analysis. See "
+            "http://hl7.org/fhir/ValueSet/variable-handling"
+        ),
         # if property is element of this resource.
         element_property=True,
         # note: Enum values can be used in validation,
         # but use in your own responsibilities, read official FHIR documentation.
         enum_values=["continuous", "dichotomous", "ordinal", "polychotomous"],
+        # valueset binding
+        binding_strength="required",
+        binding_uri="http://hl7.org/fhir/ValueSet/variable-handling",
+        binding_version="4.3.0",
     )
     handling__ext: fhirtypes.FHIRPrimitiveExtensionType = Field(
         None, alias="_handling", title="Extension field for ``handling``."
@@ -999,6 +1040,7 @@ class EvidenceStatisticModelCharacteristicVariable(backboneelement.BackboneEleme
         element_property=True,
         # note: Listed Resource Type(s) should be allowed as Reference.
         enum_reference_types=["Group", "EvidenceVariable"],
+        backref="evidence.statistic.model_characteristic.variable_variableDefinition",
     )
 
     @classmethod
@@ -1137,10 +1179,17 @@ class EvidenceVariableDefinition(backboneelement.BackboneElement):
         title="low | moderate | high | exact",
         description=(
             "Indication of quality of match between intended variable to actual "
-            "variable."
+            "variable. See http://hl7.org/fhir/ValueSet/directness"
         ),
         # if property is element of this resource.
         element_property=True,
+        # note: Enum values can be used in validation,
+        # but use in your own responsibilities, read official FHIR documentation.
+        enum_values=["low", "moderate", "high", "exact"],
+        # valueset binding
+        binding_description="The quality of how direct the match is.",
+        binding_strength="extensible",
+        binding_uri="http://hl7.org/fhir/ValueSet/directness",
     )
 
     intended: fhirtypes.ReferenceType = Field(
@@ -1152,6 +1201,7 @@ class EvidenceVariableDefinition(backboneelement.BackboneElement):
         element_property=True,
         # note: Listed Resource Type(s) should be allowed as Reference.
         enum_reference_types=["Group", "EvidenceVariable"],
+        backref="evidence.variable_definition_intended",
     )
 
     note: typing.List[fhirtypes.AnnotationType] = Field(
@@ -1172,6 +1222,7 @@ class EvidenceVariableDefinition(backboneelement.BackboneElement):
         element_property=True,
         # note: Listed Resource Type(s) should be allowed as Reference.
         enum_reference_types=["Group", "EvidenceVariable"],
+        backref="evidence.variable_definition_observed",
     )
 
     variableRole: fhirtypes.CodeableConceptType = Field(
@@ -1181,9 +1232,23 @@ class EvidenceVariableDefinition(backboneelement.BackboneElement):
             "population | subpopulation | exposure | referenceExposure | "
             "measuredVariable | confounder"
         ),
-        description=None,
+        description="See http://hl7.org/fhir/ValueSet/variable-role",
         # if property is element of this resource.
         element_property=True,
+        # note: Enum values can be used in validation,
+        # but use in your own responsibilities, read official FHIR documentation.
+        enum_values=[
+            "population",
+            "subpopulation",
+            "exposure",
+            "referenceExposure",
+            "measuredVariable",
+            "confounder",
+        ],
+        # valueset binding
+        binding_description="The role that the assertion variable plays.",
+        binding_strength="extensible",
+        binding_uri="http://hl7.org/fhir/ValueSet/variable-role",
     )
 
     @classmethod

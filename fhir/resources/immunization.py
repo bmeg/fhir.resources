@@ -60,6 +60,7 @@ class Immunization(domainresource.DomainResource):
         element_property=True,
         # note: Listed Resource Type(s) should be allowed as Reference.
         enum_reference_types=["Encounter"],
+        backref="immunization_encounter",
     )
 
     expirationDate: fhirtypes.Date = Field(
@@ -83,10 +84,15 @@ class Immunization(domainresource.DomainResource):
             " different than the patient eligibility (e.g. the patient may be "
             "eligible for a publically purchased vaccine but due to inventory "
             "issues, vaccine purchased with private funds was actually "
-            "administered)."
+            "administered). See http://hl7.org/fhir/ValueSet/immunization-funding-"
+            "source"
         ),
         # if property is element of this resource.
         element_property=True,
+        # valueset binding
+        binding_description="x",
+        binding_strength="example",
+        binding_uri="http://hl7.org/fhir/ValueSet/immunization-funding-source",
     )
 
     identifier: typing.List[fhirtypes.IdentifierType] = Field(
@@ -125,6 +131,7 @@ class Immunization(domainresource.DomainResource):
         element_property=True,
         # note: Listed Resource Type(s) should be allowed as Reference.
         enum_reference_types=["Location"],
+        backref="immunization_location",
     )
 
     lotNumber: fhirtypes.String = Field(
@@ -148,6 +155,7 @@ class Immunization(domainresource.DomainResource):
         element_property=True,
         # note: Listed Resource Type(s) should be allowed as Reference.
         enum_reference_types=["Organization"],
+        backref="immunization_manufacturer",
     )
 
     note: typing.List[fhirtypes.AnnotationType] = Field(
@@ -205,6 +213,7 @@ class Immunization(domainresource.DomainResource):
         element_property=True,
         # note: Listed Resource Type(s) should be allowed as Reference.
         enum_reference_types=["Patient"],
+        backref="immunization_patient",
     )
 
     performer: typing.List[fhirtypes.ImmunizationPerformerType] = Field(
@@ -236,9 +245,16 @@ class Immunization(domainresource.DomainResource):
         None,
         alias="programEligibility",
         title="Patient eligibility for a vaccination program",
-        description="Indicates a patient's eligibility for a funding program.",
+        description=(
+            "Indicates a patient's eligibility for a funding program. See "
+            "http://hl7.org/fhir/ValueSet/immunization-program-eligibility"
+        ),
         # if property is element of this resource.
         element_property=True,
+        # valueset binding
+        binding_description="x",
+        binding_strength="example",
+        binding_uri="http://hl7.org/fhir/ValueSet/immunization-program-eligibility",
     )
 
     protocolApplied: typing.List[fhirtypes.ImmunizationProtocolAppliedType] = Field(
@@ -269,9 +285,16 @@ class Immunization(domainresource.DomainResource):
         None,
         alias="reasonCode",
         title="Why immunization occurred",
-        description="Reasons why the vaccine was administered.",
+        description=(
+            "Reasons why the vaccine was administered. See "
+            "http://hl7.org/fhir/ValueSet/immunization-reason"
+        ),
         # if property is element of this resource.
         element_property=True,
+        # valueset binding
+        binding_description="x",
+        binding_strength="example",
+        binding_uri="http://hl7.org/fhir/ValueSet/immunization-reason",
     )
 
     reasonReference: typing.List[fhirtypes.ReferenceType] = Field(
@@ -286,6 +309,7 @@ class Immunization(domainresource.DomainResource):
         element_property=True,
         # note: Listed Resource Type(s) should be allowed as Reference.
         enum_reference_types=["Condition", "Observation", "DiagnosticReport"],
+        backref="immunization_reasonReference",
     )
 
     recorded: fhirtypes.DateTime = Field(
@@ -310,40 +334,67 @@ class Immunization(domainresource.DomainResource):
         description=(
             "The source of the data when the report of the immunization event is "
             "not based on information from the person who administered the vaccine."
+            " See http://hl7.org/fhir/ValueSet/immunization-origin"
         ),
         # if property is element of this resource.
         element_property=True,
+        # valueset binding
+        binding_description="x",
+        binding_strength="example",
+        binding_uri="http://hl7.org/fhir/ValueSet/immunization-origin",
     )
 
     route: fhirtypes.CodeableConceptType = Field(
         None,
         alias="route",
         title="How vaccine entered body",
-        description="The path by which the vaccine product is taken into the body.",
+        description=(
+            "The path by which the vaccine product is taken into the body. See "
+            "http://hl7.org/fhir/ValueSet/immunization-route"
+        ),
         # if property is element of this resource.
         element_property=True,
+        # valueset binding
+        binding_description="x",
+        binding_strength="example",
+        binding_uri="http://hl7.org/fhir/ValueSet/immunization-route",
     )
 
     site: fhirtypes.CodeableConceptType = Field(
         None,
         alias="site",
         title="Body site vaccine  was administered",
-        description="Body site where vaccine was administered.",
+        description=(
+            "Body site where vaccine was administered. See "
+            "http://hl7.org/fhir/ValueSet/immunization-site"
+        ),
         # if property is element of this resource.
         element_property=True,
+        # valueset binding
+        binding_description="x",
+        binding_strength="example",
+        binding_uri="http://hl7.org/fhir/ValueSet/immunization-site",
     )
 
     status: fhirtypes.Code = Field(
         None,
         alias="status",
         title="completed | entered-in-error | not-done",
-        description="Indicates the current status of the immunization event.",
+        description=(
+            "Indicates the current status of the immunization event. See "
+            "http://hl7.org/fhir/ValueSet/immunization-status"
+        ),
         # if property is element of this resource.
         element_property=True,
         element_required=True,
         # note: Enum values can be used in validation,
         # but use in your own responsibilities, read official FHIR documentation.
         enum_values=["completed", "entered-in-error", "not-done"],
+        # valueset binding
+        binding_description="x",
+        binding_strength="required",
+        binding_uri="http://hl7.org/fhir/ValueSet/immunization-status",
+        binding_version="4.3.0",
     )
     status__ext: fhirtypes.FHIRPrimitiveExtensionType = Field(
         None, alias="_status", title="Extension field for ``status``."
@@ -353,27 +404,48 @@ class Immunization(domainresource.DomainResource):
         None,
         alias="statusReason",
         title="Reason not done",
-        description="Indicates the reason the immunization event was not performed.",
+        description=(
+            "Indicates the reason the immunization event was not performed. See "
+            "http://hl7.org/fhir/ValueSet/immunization-status-reason"
+        ),
         # if property is element of this resource.
         element_property=True,
+        # valueset binding
+        binding_description="x",
+        binding_strength="example",
+        binding_uri="http://hl7.org/fhir/ValueSet/immunization-status-reason",
     )
 
     subpotentReason: typing.List[fhirtypes.CodeableConceptType] = Field(
         None,
         alias="subpotentReason",
         title="Reason for being subpotent",
-        description="Reason why a dose is considered to be subpotent.",
+        description=(
+            "Reason why a dose is considered to be subpotent. See "
+            "http://hl7.org/fhir/ValueSet/immunization-subpotent-reason"
+        ),
         # if property is element of this resource.
         element_property=True,
+        # valueset binding
+        binding_description="The reason why a dose is considered to be subpotent.",
+        binding_strength="example",
+        binding_uri="http://hl7.org/fhir/ValueSet/immunization-subpotent-reason",
     )
 
     vaccineCode: fhirtypes.CodeableConceptType = Field(
         ...,
         alias="vaccineCode",
         title="Vaccine product administered",
-        description="Vaccine that was administered or was to be administered.",
+        description=(
+            "Vaccine that was administered or was to be administered. See "
+            "http://hl7.org/fhir/ValueSet/vaccine-code"
+        ),
         # if property is element of this resource.
         element_property=True,
+        # valueset binding
+        binding_description="x",
+        binding_strength="example",
+        binding_uri="http://hl7.org/fhir/ValueSet/vaccine-code",
     )
 
     @classmethod
@@ -622,6 +694,7 @@ class ImmunizationPerformer(backboneelement.BackboneElement):
         element_property=True,
         # note: Listed Resource Type(s) should be allowed as Reference.
         enum_reference_types=["Practitioner", "PractitionerRole", "Organization"],
+        backref="immunization.performer_actor",
     )
 
     function: fhirtypes.CodeableConceptType = Field(
@@ -630,10 +703,15 @@ class ImmunizationPerformer(backboneelement.BackboneElement):
         title="What type of performance was done",
         description=(
             "Describes the type of performance (e.g. ordering provider, "
-            "administering provider, etc.)."
+            "administering provider, etc.). See "
+            "http://hl7.org/fhir/ValueSet/immunization-function"
         ),
         # if property is element of this resource.
         element_property=True,
+        # valueset binding
+        binding_description="x",
+        binding_strength="extensible",
+        binding_uri="http://hl7.org/fhir/ValueSet/immunization-function",
     )
 
     @classmethod
@@ -669,6 +747,7 @@ class ImmunizationProtocolApplied(backboneelement.BackboneElement):
         element_property=True,
         # note: Listed Resource Type(s) should be allowed as Reference.
         enum_reference_types=["Organization"],
+        backref="immunization.protocol_applied_authority",
     )
 
     doseNumberPositiveInt: fhirtypes.PositiveInt = Field(
@@ -759,10 +838,15 @@ class ImmunizationProtocolApplied(backboneelement.BackboneElement):
         alias="targetDisease",
         title="Vaccine preventatable disease being targetted",
         description=(
-            "The vaccine preventable disease the dose is being administered " "against."
+            "The vaccine preventable disease the dose is being administered "
+            "against. See http://hl7.org/fhir/ValueSet/immunization-target-disease"
         ),
         # if property is element of this resource.
         element_property=True,
+        # valueset binding
+        binding_description="x",
+        binding_strength="example",
+        binding_uri="http://hl7.org/fhir/ValueSet/immunization-target-disease",
     )
 
     @classmethod
@@ -859,6 +943,7 @@ class ImmunizationReaction(backboneelement.BackboneElement):
         element_property=True,
         # note: Listed Resource Type(s) should be allowed as Reference.
         enum_reference_types=["Observation"],
+        backref="immunization.reaction_detail",
     )
 
     reported: bool = Field(

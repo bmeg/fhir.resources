@@ -46,6 +46,7 @@ class DocumentManifest(domainresource.DomainResource):
             "Patient",
             "RelatedPerson",
         ],
+        backref="document_manifest_author",
     )
 
     content: typing.List[fhirtypes.ReferenceType] = Field(
@@ -57,6 +58,7 @@ class DocumentManifest(domainresource.DomainResource):
         element_property=True,
         # note: Listed Resource Type(s) should be allowed as Reference.
         enum_reference_types=["Resource"],
+        backref="document_manifest_content",
     )
 
     created: fhirtypes.DateTime = Field(
@@ -132,6 +134,7 @@ class DocumentManifest(domainresource.DomainResource):
             "RelatedPerson",
             "Organization",
         ],
+        backref="document_manifest_recipient",
     )
 
     related: typing.List[fhirtypes.DocumentManifestRelatedType] = Field(
@@ -162,13 +165,21 @@ class DocumentManifest(domainresource.DomainResource):
         None,
         alias="status",
         title="current | superseded | entered-in-error",
-        description="The status of this document manifest.",
+        description=(
+            "The status of this document manifest. See "
+            "http://hl7.org/fhir/ValueSet/document-reference-status"
+        ),
         # if property is element of this resource.
         element_property=True,
         element_required=True,
         # note: Enum values can be used in validation,
         # but use in your own responsibilities, read official FHIR documentation.
         enum_values=["current", "superseded", "entered-in-error"],
+        # valueset binding
+        binding_description="The status of the document reference.",
+        binding_strength="required",
+        binding_uri="http://hl7.org/fhir/ValueSet/document-reference-status",
+        binding_version="4.3.0",
     )
     status__ext: fhirtypes.FHIRPrimitiveExtensionType = Field(
         None, alias="_status", title="Extension field for ``status``."
@@ -190,6 +201,7 @@ class DocumentManifest(domainresource.DomainResource):
         element_property=True,
         # note: Listed Resource Type(s) should be allowed as Reference.
         enum_reference_types=["Patient", "Practitioner", "Group", "Device"],
+        backref="document_manifest_subject",
     )
 
     type: fhirtypes.CodeableConceptType = Field(
@@ -198,10 +210,15 @@ class DocumentManifest(domainresource.DomainResource):
         title="Kind of document set",
         description=(
             "The code specifying the type of clinical activity that resulted in "
-            "placing the associated content into the DocumentManifest."
+            "placing the associated content into the DocumentManifest. See "
+            "http://terminology.hl7.org/ValueSet/v3-ActCode"
         ),
         # if property is element of this resource.
         element_property=True,
+        # valueset binding
+        binding_description="The activity that caused the DocumentManifest to be created.",
+        binding_strength="example",
+        binding_uri="http://terminology.hl7.org/ValueSet/v3-ActCode",
     )
 
     @classmethod
@@ -328,6 +345,7 @@ class DocumentManifestRelated(backboneelement.BackboneElement):
         element_property=True,
         # note: Listed Resource Type(s) should be allowed as Reference.
         enum_reference_types=["Resource"],
+        backref="document_manifest.related_ref",
     )
 
     @classmethod

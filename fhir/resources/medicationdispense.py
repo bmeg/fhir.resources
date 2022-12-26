@@ -39,6 +39,7 @@ class MedicationDispense(domainresource.DomainResource):
         element_property=True,
         # note: Listed Resource Type(s) should be allowed as Reference.
         enum_reference_types=["MedicationRequest"],
+        backref="medication_dispense_authorizingPrescription",
     )
 
     category: fhirtypes.CodeableConceptType = Field(
@@ -48,10 +49,15 @@ class MedicationDispense(domainresource.DomainResource):
         description=(
             "Indicates the type of medication dispense (for example, where the "
             "medication is expected to be consumed or administered (i.e. inpatient "
-            "or outpatient))."
+            "or outpatient)). See http://hl7.org/fhir/ValueSet/medicationdispense-"
+            "category"
         ),
         # if property is element of this resource.
         element_property=True,
+        # valueset binding
+        binding_description="A code describing where the dispensed medication is expected to be consumed or administered.",
+        binding_strength="preferred",
+        binding_uri="http://hl7.org/fhir/ValueSet/medicationdispense-category",
     )
 
     context: fhirtypes.ReferenceType = Field(
@@ -66,6 +72,7 @@ class MedicationDispense(domainresource.DomainResource):
         element_property=True,
         # note: Listed Resource Type(s) should be allowed as Reference.
         enum_reference_types=["Encounter", "EpisodeOfCare"],
+        backref="medication_dispense_context",
     )
 
     daysSupply: fhirtypes.QuantityType = Field(
@@ -89,6 +96,7 @@ class MedicationDispense(domainresource.DomainResource):
         element_property=True,
         # note: Listed Resource Type(s) should be allowed as Reference.
         enum_reference_types=["Location"],
+        backref="medication_dispense_destination",
     )
 
     detectedIssue: typing.List[fhirtypes.ReferenceType] = Field(
@@ -104,6 +112,7 @@ class MedicationDispense(domainresource.DomainResource):
         element_property=True,
         # note: Listed Resource Type(s) should be allowed as Reference.
         enum_reference_types=["DetectedIssue"],
+        backref="medication_dispense_detectedIssue",
     )
 
     dosageInstruction: typing.List[fhirtypes.DosageType] = Field(
@@ -130,6 +139,7 @@ class MedicationDispense(domainresource.DomainResource):
         element_property=True,
         # note: Listed Resource Type(s) should be allowed as Reference.
         enum_reference_types=["Provenance"],
+        backref="medication_dispense_eventHistory",
     )
 
     identifier: typing.List[fhirtypes.IdentifierType] = Field(
@@ -157,6 +167,7 @@ class MedicationDispense(domainresource.DomainResource):
         element_property=True,
         # note: Listed Resource Type(s) should be allowed as Reference.
         enum_reference_types=["Location"],
+        backref="medication_dispense_location",
     )
 
     medicationCodeableConcept: fhirtypes.CodeableConceptType = Field(
@@ -167,13 +178,17 @@ class MedicationDispense(domainresource.DomainResource):
             "Identifies the medication being administered. This is either a link to"
             " a resource representing the details of the medication or a simple "
             "attribute carrying a code that identifies the medication from a known "
-            "list of medications."
+            "list of medications. See http://hl7.org/fhir/ValueSet/medication-codes"
         ),
         # if property is element of this resource.
         element_property=True,
         # Choice of Data Types. i.e medication[x]
         one_of_many="medication",
         one_of_many_required=True,
+        # valueset binding
+        binding_description="A coded concept identifying which substance or product can be dispensed.",
+        binding_strength="example",
+        binding_uri="http://hl7.org/fhir/ValueSet/medication-codes",
     )
 
     medicationReference: fhirtypes.ReferenceType = Field(
@@ -184,15 +199,20 @@ class MedicationDispense(domainresource.DomainResource):
             "Identifies the medication being administered. This is either a link to"
             " a resource representing the details of the medication or a simple "
             "attribute carrying a code that identifies the medication from a known "
-            "list of medications."
+            "list of medications. See http://hl7.org/fhir/ValueSet/medication-codes"
         ),
         # if property is element of this resource.
         element_property=True,
         # Choice of Data Types. i.e medication[x]
         one_of_many="medication",
         one_of_many_required=True,
+        # valueset binding
+        binding_description="A coded concept identifying which substance or product can be dispensed.",
+        binding_strength="example",
+        binding_uri="http://hl7.org/fhir/ValueSet/medication-codes",
         # note: Listed Resource Type(s) should be allowed as Reference.
         enum_reference_types=["Medication"],
+        backref="medication_dispense_medicationReference",
     )
 
     note: typing.List[fhirtypes.AnnotationType] = Field(
@@ -216,6 +236,7 @@ class MedicationDispense(domainresource.DomainResource):
         element_property=True,
         # note: Listed Resource Type(s) should be allowed as Reference.
         enum_reference_types=["Procedure"],
+        backref="medication_dispense_partOf",
     )
 
     performer: typing.List[fhirtypes.MedicationDispensePerformerType] = Field(
@@ -252,6 +273,7 @@ class MedicationDispense(domainresource.DomainResource):
         element_property=True,
         # note: Listed Resource Type(s) should be allowed as Reference.
         enum_reference_types=["Patient", "Practitioner"],
+        backref="medication_dispense_receiver",
     )
 
     status: fhirtypes.Code = Field(
@@ -261,7 +283,10 @@ class MedicationDispense(domainresource.DomainResource):
             "preparation | in-progress | cancelled | on-hold | completed | entered-"
             "in-error | stopped | declined | unknown"
         ),
-        description="A code specifying the state of the set of dispense events.",
+        description=(
+            "A code specifying the state of the set of dispense events. See "
+            "http://hl7.org/fhir/ValueSet/medicationdispense-status"
+        ),
         # if property is element of this resource.
         element_property=True,
         element_required=True,
@@ -278,6 +303,11 @@ class MedicationDispense(domainresource.DomainResource):
             "declined",
             "unknown",
         ],
+        # valueset binding
+        binding_description="Describes the lifecycle of the dispense.",
+        binding_strength="required",
+        binding_uri="http://hl7.org/fhir/ValueSet/medicationdispense-status",
+        binding_version="4.3.0",
     )
     status__ext: fhirtypes.FHIRPrimitiveExtensionType = Field(
         None, alias="_status", title="Extension field for ``status``."
@@ -287,26 +317,41 @@ class MedicationDispense(domainresource.DomainResource):
         None,
         alias="statusReasonCodeableConcept",
         title="Why a dispense was not performed",
-        description="Indicates the reason why a dispense was not performed.",
+        description=(
+            "Indicates the reason why a dispense was not performed. See "
+            "http://hl7.org/fhir/ValueSet/medicationdispense-status-reason"
+        ),
         # if property is element of this resource.
         element_property=True,
         # Choice of Data Types. i.e statusReason[x]
         one_of_many="statusReason",
         one_of_many_required=False,
+        # valueset binding
+        binding_description="A code describing why a dispense was not performed.",
+        binding_strength="example",
+        binding_uri="http://hl7.org/fhir/ValueSet/medicationdispense-status-reason",
     )
 
     statusReasonReference: fhirtypes.ReferenceType = Field(
         None,
         alias="statusReasonReference",
         title="Why a dispense was not performed",
-        description="Indicates the reason why a dispense was not performed.",
+        description=(
+            "Indicates the reason why a dispense was not performed. See "
+            "http://hl7.org/fhir/ValueSet/medicationdispense-status-reason"
+        ),
         # if property is element of this resource.
         element_property=True,
         # Choice of Data Types. i.e statusReason[x]
         one_of_many="statusReason",
         one_of_many_required=False,
+        # valueset binding
+        binding_description="A code describing why a dispense was not performed.",
+        binding_strength="example",
+        binding_uri="http://hl7.org/fhir/ValueSet/medicationdispense-status-reason",
         # note: Listed Resource Type(s) should be allowed as Reference.
         enum_reference_types=["DetectedIssue"],
+        backref="medication_dispense_statusReasonReference",
     )
 
     subject: fhirtypes.ReferenceType = Field(
@@ -321,6 +366,7 @@ class MedicationDispense(domainresource.DomainResource):
         element_property=True,
         # note: Listed Resource Type(s) should be allowed as Reference.
         enum_reference_types=["Patient", "Group"],
+        backref="medication_dispense_subject",
     )
 
     substitution: fhirtypes.MedicationDispenseSubstitutionType = Field(
@@ -347,6 +393,7 @@ class MedicationDispense(domainresource.DomainResource):
         element_property=True,
         # note: Listed Resource Type(s) should be allowed as Reference.
         enum_reference_types=["Resource"],
+        backref="medication_dispense_supportingInformation",
     )
 
     type: fhirtypes.CodeableConceptType = Field(
@@ -356,10 +403,15 @@ class MedicationDispense(domainresource.DomainResource):
         description=(
             "Indicates the type of dispensing event that is performed. For example,"
             " Trial Fill, Completion of Trial, Partial Fill, Emergency Fill, "
-            "Samples, etc."
+            "Samples, etc. See "
+            "http://terminology.hl7.org/ValueSet/v3-ActPharmacySupplyType"
         ),
         # if property is element of this resource.
         element_property=True,
+        # valueset binding
+        binding_description="ActPharmacySupplyType",
+        binding_strength="example",
+        binding_uri="http://terminology.hl7.org/ValueSet/v3-ActPharmacySupplyType",
     )
 
     whenHandedOver: fhirtypes.DateTime = Field(
@@ -563,6 +615,7 @@ class MedicationDispensePerformer(backboneelement.BackboneElement):
             "Device",
             "RelatedPerson",
         ],
+        backref="medication_dispense.performer_actor",
     )
 
     function: fhirtypes.CodeableConceptType = Field(
@@ -571,10 +624,15 @@ class MedicationDispensePerformer(backboneelement.BackboneElement):
         title="Who performed the dispense and what they did",
         description=(
             "Distinguishes the type of performer in the dispense.  For example, "
-            "date enterer, packager, final checker."
+            "date enterer, packager, final checker. See "
+            "http://hl7.org/fhir/ValueSet/medicationdispense-performer-function"
         ),
         # if property is element of this resource.
         element_property=True,
+        # valueset binding
+        binding_description="A code describing the role an individual played in dispensing a medication.",
+        binding_strength="example",
+        binding_uri="http://hl7.org/fhir/ValueSet/medicationdispense-performer-function",
     )
 
     @classmethod
@@ -607,10 +665,15 @@ class MedicationDispenseSubstitution(backboneelement.BackboneElement):
         title="Why was substitution made",
         description=(
             "Indicates the reason for the substitution (or lack of substitution) "
-            "from what was prescribed."
+            "from what was prescribed. See http://terminology.hl7.org/ValueSet/v3-S"
+            "ubstanceAdminSubstitutionReason"
         ),
         # if property is element of this resource.
         element_property=True,
+        # valueset binding
+        binding_description="SubstanceAdminSubstitutionReason",
+        binding_strength="example",
+        binding_uri="http://terminology.hl7.org/ValueSet/v3-SubstanceAdminSubstitutionReason",
     )
 
     responsibleParty: typing.List[fhirtypes.ReferenceType] = Field(
@@ -625,6 +688,7 @@ class MedicationDispenseSubstitution(backboneelement.BackboneElement):
         element_property=True,
         # note: Listed Resource Type(s) should be allowed as Reference.
         enum_reference_types=["Practitioner", "PractitionerRole"],
+        backref="medication_dispense.substitution_responsibleParty",
     )
 
     type: fhirtypes.CodeableConceptType = Field(
@@ -636,10 +700,15 @@ class MedicationDispenseSubstitution(backboneelement.BackboneElement):
         ),
         description=(
             "A code signifying whether a different drug was dispensed from what was"
-            " prescribed."
+            " prescribed. See http://terminology.hl7.org/ValueSet/v3-ActSubstanceAd"
+            "minSubstitutionCode"
         ),
         # if property is element of this resource.
         element_property=True,
+        # valueset binding
+        binding_description="ActSubstanceAdminSubstitutionCode",
+        binding_strength="example",
+        binding_uri="http://terminology.hl7.org/ValueSet/v3-ActSubstanceAdminSubstitutionCode",
     )
 
     wasSubstituted: bool = Field(

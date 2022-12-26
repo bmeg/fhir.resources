@@ -36,6 +36,7 @@ class RiskAssessment(domainresource.DomainResource):
         element_property=True,
         # note: Listed Resource Type(s) should be allowed as Reference.
         enum_reference_types=["Resource"],
+        backref="risk_assessment_basedOn",
     )
 
     basis: typing.List[fhirtypes.ReferenceType] = Field(
@@ -50,6 +51,7 @@ class RiskAssessment(domainresource.DomainResource):
         element_property=True,
         # note: Listed Resource Type(s) should be allowed as Reference.
         enum_reference_types=["Resource"],
+        backref="risk_assessment_basis",
     )
 
     code: fhirtypes.CodeableConceptType = Field(
@@ -73,6 +75,7 @@ class RiskAssessment(domainresource.DomainResource):
         element_property=True,
         # note: Listed Resource Type(s) should be allowed as Reference.
         enum_reference_types=["Condition"],
+        backref="risk_assessment_condition",
     )
 
     encounter: fhirtypes.ReferenceType = Field(
@@ -84,6 +87,7 @@ class RiskAssessment(domainresource.DomainResource):
         element_property=True,
         # note: Listed Resource Type(s) should be allowed as Reference.
         enum_reference_types=["Encounter"],
+        backref="risk_assessment_encounter",
     )
 
     identifier: typing.List[fhirtypes.IdentifierType] = Field(
@@ -102,6 +106,9 @@ class RiskAssessment(domainresource.DomainResource):
         description="The algorithm, process or mechanism used to evaluate the risk.",
         # if property is element of this resource.
         element_property=True,
+        # valueset binding
+        binding_description="The mechanism or algorithm used to make the assessment; e.g. TIMI, PRISM, Cardiff Type 2 diabetes, etc.",
+        binding_strength="example",
     )
 
     mitigation: fhirtypes.String = Field(
@@ -169,6 +176,7 @@ class RiskAssessment(domainresource.DomainResource):
         element_property=True,
         # note: Listed Resource Type(s) should be allowed as Reference.
         enum_reference_types=["Resource"],
+        backref="risk_assessment_parent",
     )
 
     performer: fhirtypes.ReferenceType = Field(
@@ -180,6 +188,7 @@ class RiskAssessment(domainresource.DomainResource):
         element_property=True,
         # note: Listed Resource Type(s) should be allowed as Reference.
         enum_reference_types=["Practitioner", "PractitionerRole", "Device"],
+        backref="risk_assessment_performer",
     )
 
     prediction: typing.List[fhirtypes.RiskAssessmentPredictionType] = Field(
@@ -214,6 +223,7 @@ class RiskAssessment(domainresource.DomainResource):
             "DiagnosticReport",
             "DocumentReference",
         ],
+        backref="risk_assessment_reasonReference",
     )
 
     status: fhirtypes.Code = Field(
@@ -222,7 +232,7 @@ class RiskAssessment(domainresource.DomainResource):
         title="registered | preliminary | final | amended +",
         description=(
             "The status of the RiskAssessment, using the same statuses as an "
-            "Observation."
+            "Observation. See http://hl7.org/fhir/ValueSet/observation-status"
         ),
         # if property is element of this resource.
         element_property=True,
@@ -230,6 +240,11 @@ class RiskAssessment(domainresource.DomainResource):
         # note: Enum values can be used in validation,
         # but use in your own responsibilities, read official FHIR documentation.
         enum_values=["registered", "preliminary", "final", "amended", "+"],
+        # valueset binding
+        binding_description="The status of the risk assessment; e.g. preliminary, final, amended, etc.",
+        binding_strength="required",
+        binding_uri="http://hl7.org/fhir/ValueSet/observation-status",
+        binding_version="4.3.0",
     )
     status__ext: fhirtypes.FHIRPrimitiveExtensionType = Field(
         None, alias="_status", title="Extension field for ``status``."
@@ -244,6 +259,7 @@ class RiskAssessment(domainresource.DomainResource):
         element_property=True,
         # note: Listed Resource Type(s) should be allowed as Reference.
         enum_reference_types=["Patient", "Group"],
+        backref="risk_assessment_subject",
     )
 
     @classmethod
@@ -400,6 +416,9 @@ class RiskAssessmentPrediction(backboneelement.BackboneElement):
         ),
         # if property is element of this resource.
         element_property=True,
+        # valueset binding
+        binding_description="The condition or other outcome; e.g. death, remission, amputation, infection, etc.",
+        binding_strength="example",
     )
 
     probabilityDecimal: fhirtypes.Decimal = Field(
@@ -437,10 +456,15 @@ class RiskAssessmentPrediction(backboneelement.BackboneElement):
         title="Likelihood of specified outcome as a qualitative value",
         description=(
             "Indicates how likely the outcome is (in the specified timeframe), "
-            "expressed as a qualitative value (e.g. low, medium, or high)."
+            "expressed as a qualitative value (e.g. low, medium, or high). See "
+            "http://hl7.org/fhir/ValueSet/risk-probability"
         ),
         # if property is element of this resource.
         element_property=True,
+        # valueset binding
+        binding_description="The likelihood of the occurrence of a specified outcome.",
+        binding_strength="example",
+        binding_uri="http://hl7.org/fhir/ValueSet/risk-probability",
     )
 
     rationale: fhirtypes.String = Field(

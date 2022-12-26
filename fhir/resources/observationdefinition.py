@@ -40,15 +40,23 @@ class ObservationDefinition(domainresource.DomainResource):
         element_property=True,
         # note: Listed Resource Type(s) should be allowed as Reference.
         enum_reference_types=["ValueSet"],
+        backref="observation_definition_abnormalCodedValueSet",
     )
 
     category: typing.List[fhirtypes.CodeableConceptType] = Field(
         None,
         alias="category",
         title="Category of observation",
-        description="A code that classifies the general type of observation.",
+        description=(
+            "A code that classifies the general type of observation. See "
+            "http://hl7.org/fhir/ValueSet/observation-category"
+        ),
         # if property is element of this resource.
         element_property=True,
+        # valueset binding
+        binding_description="Codes for high level observation categories.",
+        binding_strength="example",
+        binding_uri="http://hl7.org/fhir/ValueSet/observation-category",
     )
 
     code: fhirtypes.CodeableConceptType = Field(
@@ -57,10 +65,14 @@ class ObservationDefinition(domainresource.DomainResource):
         title="Type of observation (code / type)",
         description=(
             "Describes what will be observed. Sometimes this is called the "
-            'observation "name".'
+            'observation "name". See http://hl7.org/fhir/ValueSet/observation-codes'
         ),
         # if property is element of this resource.
         element_property=True,
+        # valueset binding
+        binding_description="Codes identifying names of simple observations.",
+        binding_strength="example",
+        binding_uri="http://hl7.org/fhir/ValueSet/observation-codes",
     )
 
     criticalCodedValueSet: fhirtypes.ReferenceType = Field(
@@ -78,6 +90,7 @@ class ObservationDefinition(domainresource.DomainResource):
         element_property=True,
         # note: Listed Resource Type(s) should be allowed as Reference.
         enum_reference_types=["ValueSet"],
+        backref="observation_definition_criticalCodedValueSet",
     )
 
     identifier: typing.List[fhirtypes.IdentifierType] = Field(
@@ -93,9 +106,16 @@ class ObservationDefinition(domainresource.DomainResource):
         None,
         alias="method",
         title="Method used to produce the observation",
-        description="The method or technique used to perform the observation.",
+        description=(
+            "The method or technique used to perform the observation. See "
+            "http://hl7.org/fhir/ValueSet/observation-methods"
+        ),
         # if property is element of this resource.
         element_property=True,
+        # valueset binding
+        binding_description="Methods for simple observations.",
+        binding_strength="example",
+        binding_uri="http://hl7.org/fhir/ValueSet/observation-methods",
     )
 
     multipleResultsAllowed: bool = Field(
@@ -130,6 +150,7 @@ class ObservationDefinition(domainresource.DomainResource):
         element_property=True,
         # note: Listed Resource Type(s) should be allowed as Reference.
         enum_reference_types=["ValueSet"],
+        backref="observation_definition_normalCodedValueSet",
     )
 
     permittedDataType: typing.List[typing.Optional[fhirtypes.Code]] = Field(
@@ -141,7 +162,8 @@ class ObservationDefinition(domainresource.DomainResource):
         ),
         description=(
             "The data types allowed for the value element of the instance "
-            "observations conforming to this ObservationDefinition."
+            "observations conforming to this ObservationDefinition. See "
+            "http://hl7.org/fhir/ValueSet/permitted-data-type"
         ),
         # if property is element of this resource.
         element_property=True,
@@ -160,6 +182,11 @@ class ObservationDefinition(domainresource.DomainResource):
             "dateTime",
             "Period",
         ],
+        # valueset binding
+        binding_description="Permitted data type for observation value.",
+        binding_strength="required",
+        binding_uri="http://hl7.org/fhir/ValueSet/permitted-data-type",
+        binding_version="4.3.0",
     )
     permittedDataType__ext: typing.List[
         typing.Union[fhirtypes.FHIRPrimitiveExtensionType, None]
@@ -225,6 +252,7 @@ class ObservationDefinition(domainresource.DomainResource):
         element_property=True,
         # note: Listed Resource Type(s) should be allowed as Reference.
         enum_reference_types=["ValueSet"],
+        backref="observation_definition_validCodedValueSet",
     )
 
     @classmethod
@@ -288,10 +316,14 @@ class ObservationDefinitionQualifiedInterval(backboneelement.BackboneElement):
         title="Targetted population of the range",
         description=(
             "Codes to indicate the target population this reference range applies "
-            "to."
+            "to. See http://hl7.org/fhir/ValueSet/referencerange-appliesto"
         ),
         # if property is element of this resource.
         element_property=True,
+        # valueset binding
+        binding_description="Codes identifying the population the reference range applies to.",
+        binding_strength="example",
+        binding_uri="http://hl7.org/fhir/ValueSet/referencerange-appliesto",
     )
 
     category: fhirtypes.Code = Field(
@@ -300,13 +332,19 @@ class ObservationDefinitionQualifiedInterval(backboneelement.BackboneElement):
         title="reference | critical | absolute",
         description=(
             "The category of interval of values for continuous or ordinal "
-            "observations conforming to this ObservationDefinition."
+            "observations conforming to this ObservationDefinition. See "
+            "http://hl7.org/fhir/ValueSet/observation-range-category"
         ),
         # if property is element of this resource.
         element_property=True,
         # note: Enum values can be used in validation,
         # but use in your own responsibilities, read official FHIR documentation.
         enum_values=["reference", "critical", "absolute"],
+        # valueset binding
+        binding_description="Codes identifying the category of observation range.",
+        binding_strength="required",
+        binding_uri="http://hl7.org/fhir/ValueSet/observation-range-category",
+        binding_version="4.3.0",
     )
     category__ext: fhirtypes.FHIRPrimitiveExtensionType = Field(
         None, alias="_category", title="Extension field for ``category``."
@@ -330,22 +368,35 @@ class ObservationDefinitionQualifiedInterval(backboneelement.BackboneElement):
         title="Range context qualifier",
         description=(
             "Codes to indicate the health context the range applies to. For "
-            "example, the normal or therapeutic range."
+            "example, the normal or therapeutic range. See "
+            "http://hl7.org/fhir/ValueSet/referencerange-meaning"
         ),
         # if property is element of this resource.
         element_property=True,
+        # valueset binding
+        binding_description="Code identifying the health context of a range.",
+        binding_strength="extensible",
+        binding_uri="http://hl7.org/fhir/ValueSet/referencerange-meaning",
     )
 
     gender: fhirtypes.Code = Field(
         None,
         alias="gender",
         title="male | female | other | unknown",
-        description="Sex of the population the range applies to.",
+        description=(
+            "Sex of the population the range applies to. See "
+            "http://hl7.org/fhir/ValueSet/administrative-gender"
+        ),
         # if property is element of this resource.
         element_property=True,
         # note: Enum values can be used in validation,
         # but use in your own responsibilities, read official FHIR documentation.
         enum_values=["male", "female", "other", "unknown"],
+        # valueset binding
+        binding_description="The gender of a person used for administrative purposes.",
+        binding_strength="required",
+        binding_uri="http://hl7.org/fhir/ValueSet/administrative-gender",
+        binding_version="4.3.0",
     )
     gender__ext: fhirtypes.FHIRPrimitiveExtensionType = Field(
         None, alias="_gender", title="Extension field for ``gender``."
@@ -430,10 +481,15 @@ class ObservationDefinitionQuantitativeDetails(backboneelement.BackboneElement):
         title="Customary unit for quantitative results",
         description=(
             "Customary unit used to report quantitative results of observations "
-            "conforming to this ObservationDefinition."
+            "conforming to this ObservationDefinition. See "
+            "http://hl7.org/fhir/ValueSet/ucum-units"
         ),
         # if property is element of this resource.
         element_property=True,
+        # valueset binding
+        binding_description="Codes identifying units of measure.",
+        binding_strength="extensible",
+        binding_uri="http://hl7.org/fhir/ValueSet/ucum-units",
     )
 
     decimalPrecision: fhirtypes.Integer = Field(
@@ -459,10 +515,15 @@ class ObservationDefinitionQuantitativeDetails(backboneelement.BackboneElement):
         title="SI unit for quantitative results",
         description=(
             "SI unit used to report quantitative results of observations conforming"
-            " to this ObservationDefinition."
+            " to this ObservationDefinition. See http://hl7.org/fhir/ValueSet/ucum-"
+            "units"
         ),
         # if property is element of this resource.
         element_property=True,
+        # valueset binding
+        binding_description="Codes identifying units of measure.",
+        binding_strength="extensible",
+        binding_uri="http://hl7.org/fhir/ValueSet/ucum-units",
     )
 
     @classmethod

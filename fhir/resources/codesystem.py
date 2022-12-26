@@ -87,7 +87,8 @@ class CodeSystem(domainresource.DomainResource):
         title="not-present | example | fragment | complete | supplement",
         description=(
             "The extent of the content of the code system (the concepts and codes "
-            "it defines) are represented in this resource instance."
+            "it defines) are represented in this resource instance. See "
+            "http://hl7.org/fhir/ValueSet/codesystem-content-mode"
         ),
         # if property is element of this resource.
         element_property=True,
@@ -95,6 +96,11 @@ class CodeSystem(domainresource.DomainResource):
         # note: Enum values can be used in validation,
         # but use in your own responsibilities, read official FHIR documentation.
         enum_values=["not-present", "example", "fragment", "complete", "supplement"],
+        # valueset binding
+        binding_description="The extent of the content of the code system (the concepts and codes it defines) are represented in a code system resource.",
+        binding_strength="required",
+        binding_uri="http://hl7.org/fhir/ValueSet/codesystem-content-mode",
+        binding_version="4.3.0",
     )
     content__ext: fhirtypes.FHIRPrimitiveExtensionType = Field(
         None, alias="_content", title="Extension field for ``content``."
@@ -198,13 +204,19 @@ class CodeSystem(domainresource.DomainResource):
         title="grouped-by | is-a | part-of | classified-with",
         description=(
             "The meaning of the hierarchy of concepts as represented in this "
-            "resource."
+            "resource. See http://hl7.org/fhir/ValueSet/codesystem-hierarchy-"
+            "meaning"
         ),
         # if property is element of this resource.
         element_property=True,
         # note: Enum values can be used in validation,
         # but use in your own responsibilities, read official FHIR documentation.
         enum_values=["grouped-by", "is-a", "part-of", "classified-with"],
+        # valueset binding
+        binding_description="The meaning of the hierarchy of concepts in a code system.",
+        binding_strength="required",
+        binding_uri="http://hl7.org/fhir/ValueSet/codesystem-hierarchy-meaning",
+        binding_version="4.3.0",
     )
     hierarchyMeaning__ext: fhirtypes.FHIRPrimitiveExtensionType = Field(
         None,
@@ -231,10 +243,14 @@ class CodeSystem(domainresource.DomainResource):
         title="Intended jurisdiction for code system (if applicable)",
         description=(
             "A legal or geographic region in which the code system is intended to "
-            "be used."
+            "be used. See http://hl7.org/fhir/ValueSet/jurisdiction"
         ),
         # if property is element of this resource.
         element_property=True,
+        # valueset binding
+        binding_description="Countries and regions within which this artifact is targeted for use.",
+        binding_strength="extensible",
+        binding_uri="http://hl7.org/fhir/ValueSet/jurisdiction",
     )
 
     name: fhirtypes.String = Field(
@@ -301,7 +317,8 @@ class CodeSystem(domainresource.DomainResource):
         title="draft | active | retired | unknown",
         description=(
             "The date (and optionally time) when the code system resource was "
-            "created or revised."
+            "created or revised. See http://hl7.org/fhir/ValueSet/publication-"
+            "status"
         ),
         # if property is element of this resource.
         element_property=True,
@@ -309,6 +326,11 @@ class CodeSystem(domainresource.DomainResource):
         # note: Enum values can be used in validation,
         # but use in your own responsibilities, read official FHIR documentation.
         enum_values=["draft", "active", "retired", "unknown"],
+        # valueset binding
+        binding_description="The lifecycle status of an artifact.",
+        binding_strength="required",
+        binding_uri="http://hl7.org/fhir/ValueSet/publication-status",
+        binding_version="4.3.0",
     )
     status__ext: fhirtypes.FHIRPrimitiveExtensionType = Field(
         None, alias="_status", title="Extension field for ``status``."
@@ -326,6 +348,7 @@ class CodeSystem(domainresource.DomainResource):
         element_property=True,
         # note: Listed Resource Type(s) should be allowed as Reference.
         enum_reference_types=["CodeSystem"],
+        backref="code_system_supplements",
     )
     supplements__ext: fhirtypes.FHIRPrimitiveExtensionType = Field(
         None, alias="_supplements", title="Extension field for ``supplements``."
@@ -394,6 +417,7 @@ class CodeSystem(domainresource.DomainResource):
         element_property=True,
         # note: Listed Resource Type(s) should be allowed as Reference.
         enum_reference_types=["ValueSet"],
+        backref="code_system_valueSet",
     )
     valueSet__ext: fhirtypes.FHIRPrimitiveExtensionType = Field(
         None, alias="_valueSet", title="Extension field for ``valueSet``."
@@ -728,9 +752,16 @@ class CodeSystemConceptDesignation(backboneelement.BackboneElement):
         None,
         alias="language",
         title="Human language of the designation",
-        description="The language this designation is defined for.",
+        description=(
+            "The language this designation is defined for. See "
+            "http://hl7.org/fhir/ValueSet/languages"
+        ),
         # if property is element of this resource.
         element_property=True,
+        # valueset binding
+        binding_description="IETF language tag",
+        binding_strength="preferred",
+        binding_uri="http://hl7.org/fhir/ValueSet/languages",
     )
     language__ext: fhirtypes.FHIRPrimitiveExtensionType = Field(
         None, alias="_language", title="Extension field for ``language``."
@@ -740,9 +771,16 @@ class CodeSystemConceptDesignation(backboneelement.BackboneElement):
         None,
         alias="use",
         title="Details how this designation would be used",
-        description="A code that details how this designation would be used.",
+        description=(
+            "A code that details how this designation would be used. See "
+            "http://hl7.org/fhir/ValueSet/designation-use"
+        ),
         # if property is element of this resource.
         element_property=True,
+        # valueset binding
+        binding_description="Details of how a designation would be used.",
+        binding_strength="extensible",
+        binding_uri="http://hl7.org/fhir/ValueSet/designation-use",
     )
 
     value: fhirtypes.String = Field(
@@ -1127,7 +1165,10 @@ class CodeSystemFilter(backboneelement.BackboneElement):
             "= | is-a | descendent-of | is-not-a | regex | in | not-in | "
             "generalizes | exists"
         ),
-        description="A list of operators that can be used with the filter.",
+        description=(
+            "A list of operators that can be used with the filter. See "
+            "http://hl7.org/fhir/ValueSet/filter-operator"
+        ),
         # if property is element of this resource.
         element_property=True,
         element_required=True,
@@ -1144,6 +1185,11 @@ class CodeSystemFilter(backboneelement.BackboneElement):
             "generalizes",
             "exists",
         ],
+        # valueset binding
+        binding_description="The kind of operation to perform as a part of a property based filter.",
+        binding_strength="required",
+        binding_uri="http://hl7.org/fhir/ValueSet/filter-operator",
+        binding_version="4.3.0",
     )
     operator__ext: typing.List[
         typing.Union[fhirtypes.FHIRPrimitiveExtensionType, None]
@@ -1296,7 +1342,7 @@ class CodeSystemProperty(backboneelement.BackboneElement):
         description=(
             'The type of the property value. Properties of type "code" contain a '
             "code defined by the code system (e.g. a reference to another defined "
-            "concept)."
+            "concept). See http://hl7.org/fhir/ValueSet/concept-property-type"
         ),
         # if property is element of this resource.
         element_property=True,
@@ -1312,6 +1358,11 @@ class CodeSystemProperty(backboneelement.BackboneElement):
             "dateTime",
             "decimal",
         ],
+        # valueset binding
+        binding_description="The type of a property value.",
+        binding_strength="required",
+        binding_uri="http://hl7.org/fhir/ValueSet/concept-property-type",
+        binding_version="4.3.0",
     )
     type__ext: fhirtypes.FHIRPrimitiveExtensionType = Field(
         None, alias="_type", title="Extension field for ``type``."

@@ -45,6 +45,7 @@ class RequestGroup(domainresource.DomainResource):
         element_property=True,
         # note: Listed Resource Type(s) should be allowed as Reference.
         enum_reference_types=["Device", "Practitioner", "PractitionerRole"],
+        backref="request_group_author",
     )
 
     authoredOn: fhirtypes.DateTime = Field(
@@ -71,6 +72,7 @@ class RequestGroup(domainresource.DomainResource):
         element_property=True,
         # note: Listed Resource Type(s) should be allowed as Reference.
         enum_reference_types=["Resource"],
+        backref="request_group_basedOn",
     )
 
     code: fhirtypes.CodeableConceptType = Field(
@@ -91,6 +93,7 @@ class RequestGroup(domainresource.DomainResource):
         element_property=True,
         # note: Listed Resource Type(s) should be allowed as Reference.
         enum_reference_types=["Encounter"],
+        backref="request_group_encounter",
     )
 
     groupIdentifier: fhirtypes.IdentifierType = Field(
@@ -165,7 +168,8 @@ class RequestGroup(domainresource.DomainResource):
         ),
         description=(
             "Indicates the level of authority/intentionality associated with the "
-            "request and where the request fits into the workflow chain."
+            "request and where the request fits into the workflow chain. See "
+            "http://hl7.org/fhir/ValueSet/request-intent"
         ),
         # if property is element of this resource.
         element_property=True,
@@ -183,6 +187,11 @@ class RequestGroup(domainresource.DomainResource):
             "instance-order",
             "option",
         ],
+        # valueset binding
+        binding_description="Codes indicating the degree of authority/intentionality associated with a request.",
+        binding_strength="required",
+        binding_uri="http://hl7.org/fhir/ValueSet/request-intent",
+        binding_version="4.3.0",
     )
     intent__ext: fhirtypes.FHIRPrimitiveExtensionType = Field(
         None, alias="_intent", title="Extension field for ``intent``."
@@ -206,13 +215,18 @@ class RequestGroup(domainresource.DomainResource):
         title="routine | urgent | asap | stat",
         description=(
             "Indicates how quickly the request should be addressed with respect to "
-            "other requests."
+            "other requests. See http://hl7.org/fhir/ValueSet/request-priority"
         ),
         # if property is element of this resource.
         element_property=True,
         # note: Enum values can be used in validation,
         # but use in your own responsibilities, read official FHIR documentation.
         enum_values=["routine", "urgent", "asap", "stat"],
+        # valueset binding
+        binding_description="Identifies the level of importance to be assigned to actioning the request.",
+        binding_strength="required",
+        binding_uri="http://hl7.org/fhir/ValueSet/request-priority",
+        binding_version="4.3.0",
     )
     priority__ext: fhirtypes.FHIRPrimitiveExtensionType = Field(
         None, alias="_priority", title="Extension field for ``priority``."
@@ -244,6 +258,7 @@ class RequestGroup(domainresource.DomainResource):
             "DiagnosticReport",
             "DocumentReference",
         ],
+        backref="request_group_reasonReference",
     )
 
     replaces: typing.List[fhirtypes.ReferenceType] = Field(
@@ -258,6 +273,7 @@ class RequestGroup(domainresource.DomainResource):
         element_property=True,
         # note: Listed Resource Type(s) should be allowed as Reference.
         enum_reference_types=["Resource"],
+        backref="request_group_replaces",
     )
 
     status: fhirtypes.Code = Field(
@@ -269,7 +285,8 @@ class RequestGroup(domainresource.DomainResource):
         ),
         description=(
             "The current state of the request. For request groups, the status "
-            "reflects the status of all the requests in the group."
+            "reflects the status of all the requests in the group. See "
+            "http://hl7.org/fhir/ValueSet/request-status"
         ),
         # if property is element of this resource.
         element_property=True,
@@ -285,6 +302,11 @@ class RequestGroup(domainresource.DomainResource):
             "entered-in-error",
             "unknown",
         ],
+        # valueset binding
+        binding_description="Codes identifying the lifecycle stage of a request.",
+        binding_strength="required",
+        binding_uri="http://hl7.org/fhir/ValueSet/request-status",
+        binding_version="4.3.0",
     )
     status__ext: fhirtypes.FHIRPrimitiveExtensionType = Field(
         None, alias="_status", title="Extension field for ``status``."
@@ -299,6 +321,7 @@ class RequestGroup(domainresource.DomainResource):
         element_property=True,
         # note: Listed Resource Type(s) should be allowed as Reference.
         enum_reference_types=["Patient", "Group"],
+        backref="request_group_subject",
     )
 
     @classmethod
@@ -420,12 +443,20 @@ class RequestGroupAction(backboneelement.BackboneElement):
         None,
         alias="cardinalityBehavior",
         title="single | multiple",
-        description="Defines whether the action can be selected multiple times.",
+        description=(
+            "Defines whether the action can be selected multiple times. See "
+            "http://hl7.org/fhir/ValueSet/action-cardinality-behavior"
+        ),
         # if property is element of this resource.
         element_property=True,
         # note: Enum values can be used in validation,
         # but use in your own responsibilities, read official FHIR documentation.
         enum_values=["single", "multiple"],
+        # valueset binding
+        binding_description="Defines behavior for an action or a group for how many times that item may be repeated.",
+        binding_strength="required",
+        binding_uri="http://hl7.org/fhir/ValueSet/action-cardinality-behavior",
+        binding_version="4.3.0",
     )
     cardinalityBehavior__ext: fhirtypes.FHIRPrimitiveExtensionType = Field(
         None,
@@ -490,12 +521,20 @@ class RequestGroupAction(backboneelement.BackboneElement):
         None,
         alias="groupingBehavior",
         title="visual-group | logical-group | sentence-group",
-        description="Defines the grouping behavior for the action and its children.",
+        description=(
+            "Defines the grouping behavior for the action and its children. See "
+            "http://hl7.org/fhir/ValueSet/action-grouping-behavior"
+        ),
         # if property is element of this resource.
         element_property=True,
         # note: Enum values can be used in validation,
         # but use in your own responsibilities, read official FHIR documentation.
         enum_values=["visual-group", "logical-group", "sentence-group"],
+        # valueset binding
+        binding_description="Defines organization behavior of a group.",
+        binding_strength="required",
+        binding_uri="http://hl7.org/fhir/ValueSet/action-grouping-behavior",
+        binding_version="4.3.0",
     )
     groupingBehavior__ext: fhirtypes.FHIRPrimitiveExtensionType = Field(
         None,
@@ -518,18 +557,27 @@ class RequestGroupAction(backboneelement.BackboneElement):
             "RelatedPerson",
             "Device",
         ],
+        backref="request_group.action_participant",
     )
 
     precheckBehavior: fhirtypes.Code = Field(
         None,
         alias="precheckBehavior",
         title="yes | no",
-        description="Defines whether the action should usually be preselected.",
+        description=(
+            "Defines whether the action should usually be preselected. See "
+            "http://hl7.org/fhir/ValueSet/action-precheck-behavior"
+        ),
         # if property is element of this resource.
         element_property=True,
         # note: Enum values can be used in validation,
         # but use in your own responsibilities, read official FHIR documentation.
         enum_values=["yes", "no"],
+        # valueset binding
+        binding_description="Defines selection frequency behavior for an action or group.",
+        binding_strength="required",
+        binding_uri="http://hl7.org/fhir/ValueSet/action-precheck-behavior",
+        binding_version="4.3.0",
     )
     precheckBehavior__ext: fhirtypes.FHIRPrimitiveExtensionType = Field(
         None,
@@ -555,13 +603,18 @@ class RequestGroupAction(backboneelement.BackboneElement):
         title="routine | urgent | asap | stat",
         description=(
             "Indicates how quickly the action should be addressed with respect to "
-            "other actions."
+            "other actions. See http://hl7.org/fhir/ValueSet/request-priority"
         ),
         # if property is element of this resource.
         element_property=True,
         # note: Enum values can be used in validation,
         # but use in your own responsibilities, read official FHIR documentation.
         enum_values=["routine", "urgent", "asap", "stat"],
+        # valueset binding
+        binding_description="Identifies the level of importance to be assigned to actioning the request.",
+        binding_strength="required",
+        binding_uri="http://hl7.org/fhir/ValueSet/request-priority",
+        binding_version="4.3.0",
     )
     priority__ext: fhirtypes.FHIRPrimitiveExtensionType = Field(
         None, alias="_priority", title="Extension field for ``priority``."
@@ -583,12 +636,20 @@ class RequestGroupAction(backboneelement.BackboneElement):
         None,
         alias="requiredBehavior",
         title="must | could | must-unless-documented",
-        description="Defines expectations around whether an action is required.",
+        description=(
+            "Defines expectations around whether an action is required. See "
+            "http://hl7.org/fhir/ValueSet/action-required-behavior"
+        ),
         # if property is element of this resource.
         element_property=True,
         # note: Enum values can be used in validation,
         # but use in your own responsibilities, read official FHIR documentation.
         enum_values=["must", "could", "must-unless-documented"],
+        # valueset binding
+        binding_description="Defines expectations around whether an action or action group is required.",
+        binding_strength="required",
+        binding_uri="http://hl7.org/fhir/ValueSet/action-required-behavior",
+        binding_version="4.3.0",
     )
     requiredBehavior__ext: fhirtypes.FHIRPrimitiveExtensionType = Field(
         None,
@@ -608,13 +669,17 @@ class RequestGroupAction(backboneelement.BackboneElement):
         element_property=True,
         # note: Listed Resource Type(s) should be allowed as Reference.
         enum_reference_types=["Resource"],
+        backref="request_group.action_resource",
     )
 
     selectionBehavior: fhirtypes.Code = Field(
         None,
         alias="selectionBehavior",
         title="any | all | all-or-none | exactly-one | at-most-one | one-or-more",
-        description="Defines the selection behavior for the action and its children.",
+        description=(
+            "Defines the selection behavior for the action and its children. See "
+            "http://hl7.org/fhir/ValueSet/action-selection-behavior"
+        ),
         # if property is element of this resource.
         element_property=True,
         # note: Enum values can be used in validation,
@@ -627,6 +692,11 @@ class RequestGroupAction(backboneelement.BackboneElement):
             "at-most-one",
             "one-or-more",
         ],
+        # valueset binding
+        binding_description="Defines selection behavior of a group.",
+        binding_strength="required",
+        binding_uri="http://hl7.org/fhir/ValueSet/action-selection-behavior",
+        binding_version="4.3.0",
     )
     selectionBehavior__ext: fhirtypes.FHIRPrimitiveExtensionType = Field(
         None,
@@ -745,9 +815,19 @@ class RequestGroupAction(backboneelement.BackboneElement):
         None,
         alias="type",
         title="create | update | remove | fire-event",
-        description="The type of action to perform (create, update, remove).",
+        description=(
+            "The type of action to perform (create, update, remove). See "
+            "http://hl7.org/fhir/ValueSet/action-type"
+        ),
         # if property is element of this resource.
         element_property=True,
+        # note: Enum values can be used in validation,
+        # but use in your own responsibilities, read official FHIR documentation.
+        enum_values=["create", "update", "remove", "fire-event"],
+        # valueset binding
+        binding_description="The type of action to be performed.",
+        binding_strength="extensible",
+        binding_uri="http://hl7.org/fhir/ValueSet/action-type",
     )
 
     @classmethod
@@ -862,13 +942,21 @@ class RequestGroupActionCondition(backboneelement.BackboneElement):
         None,
         alias="kind",
         title="applicability | start | stop",
-        description="The kind of condition.",
+        description=(
+            "The kind of condition. See http://hl7.org/fhir/ValueSet/action-"
+            "condition-kind"
+        ),
         # if property is element of this resource.
         element_property=True,
         element_required=True,
         # note: Enum values can be used in validation,
         # but use in your own responsibilities, read official FHIR documentation.
         enum_values=["applicability", "start", "stop"],
+        # valueset binding
+        binding_description="The kind of condition for the action.",
+        binding_strength="required",
+        binding_uri="http://hl7.org/fhir/ValueSet/action-condition-kind",
+        binding_version="4.3.0",
     )
     kind__ext: fhirtypes.FHIRPrimitiveExtensionType = Field(
         None, alias="_kind", title="Extension field for ``kind``."
@@ -1004,7 +1092,10 @@ class RequestGroupActionRelatedAction(backboneelement.BackboneElement):
             "before-start | before | before-end | concurrent-with-start | "
             "concurrent | concurrent-with-end | after-start | after | after-end"
         ),
-        description="The relationship of this action to the related action.",
+        description=(
+            "The relationship of this action to the related action. See "
+            "http://hl7.org/fhir/ValueSet/action-relationship-type"
+        ),
         # if property is element of this resource.
         element_property=True,
         element_required=True,
@@ -1021,6 +1112,11 @@ class RequestGroupActionRelatedAction(backboneelement.BackboneElement):
             "after",
             "after-end",
         ],
+        # valueset binding
+        binding_description="Defines the types of relationships between actions.",
+        binding_strength="required",
+        binding_uri="http://hl7.org/fhir/ValueSet/action-relationship-type",
+        binding_version="4.3.0",
     )
     relationship__ext: fhirtypes.FHIRPrimitiveExtensionType = Field(
         None, alias="_relationship", title="Extension field for ``relationship``."

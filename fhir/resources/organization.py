@@ -84,6 +84,7 @@ class Organization(domainresource.DomainResource):
         element_property=True,
         # note: Listed Resource Type(s) should be allowed as Reference.
         enum_reference_types=["Endpoint"],
+        backref="organization_endpoint",
     )
 
     identifier: typing.List[fhirtypes.IdentifierType] = Field(
@@ -119,6 +120,7 @@ class Organization(domainresource.DomainResource):
         element_property=True,
         # note: Listed Resource Type(s) should be allowed as Reference.
         enum_reference_types=["Organization"],
+        backref="organization_partOf",
     )
 
     telecom: typing.List[fhirtypes.ContactPointType] = Field(
@@ -134,9 +136,16 @@ class Organization(domainresource.DomainResource):
         None,
         alias="type",
         title="Kind of organization",
-        description="The kind(s) of organization that this is.",
+        description=(
+            "The kind(s) of organization that this is. See "
+            "http://hl7.org/fhir/ValueSet/organization-type"
+        ),
         # if property is element of this resource.
         element_property=True,
+        # valueset binding
+        binding_description="Used to categorize the organization.",
+        binding_strength="example",
+        binding_uri="http://hl7.org/fhir/ValueSet/organization-type",
     )
 
     @classmethod
@@ -199,9 +208,16 @@ class OrganizationContact(backboneelement.BackboneElement):
         None,
         alias="purpose",
         title="The type of contact",
-        description="Indicates a purpose for which the contact can be reached.",
+        description=(
+            "Indicates a purpose for which the contact can be reached. See "
+            "http://hl7.org/fhir/ValueSet/contactentity-type"
+        ),
         # if property is element of this resource.
         element_property=True,
+        # valueset binding
+        binding_description="The purpose for which you would contact a contact party.",
+        binding_strength="extensible",
+        binding_uri="http://hl7.org/fhir/ValueSet/contactentity-type",
     )
 
     telecom: typing.List[fhirtypes.ContactPointType] = Field(

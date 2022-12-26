@@ -34,6 +34,7 @@ class EnrollmentRequest(domainresource.DomainResource):
         element_property=True,
         # note: Listed Resource Type(s) should be allowed as Reference.
         enum_reference_types=["Patient"],
+        backref="enrollment_request_candidate",
     )
 
     coverage: fhirtypes.ReferenceType = Field(
@@ -45,6 +46,7 @@ class EnrollmentRequest(domainresource.DomainResource):
         element_property=True,
         # note: Listed Resource Type(s) should be allowed as Reference.
         enum_reference_types=["Coverage"],
+        backref="enrollment_request_coverage",
     )
 
     created: fhirtypes.DateTime = Field(
@@ -77,6 +79,7 @@ class EnrollmentRequest(domainresource.DomainResource):
         element_property=True,
         # note: Listed Resource Type(s) should be allowed as Reference.
         enum_reference_types=["Organization"],
+        backref="enrollment_request_insurer",
     )
 
     provider: fhirtypes.ReferenceType = Field(
@@ -91,18 +94,27 @@ class EnrollmentRequest(domainresource.DomainResource):
         element_property=True,
         # note: Listed Resource Type(s) should be allowed as Reference.
         enum_reference_types=["Practitioner", "PractitionerRole", "Organization"],
+        backref="enrollment_request_provider",
     )
 
     status: fhirtypes.Code = Field(
         None,
         alias="status",
         title="active | cancelled | draft | entered-in-error",
-        description="The status of the resource instance.",
+        description=(
+            "The status of the resource instance. See "
+            "http://hl7.org/fhir/ValueSet/fm-status"
+        ),
         # if property is element of this resource.
         element_property=True,
         # note: Enum values can be used in validation,
         # but use in your own responsibilities, read official FHIR documentation.
         enum_values=["active", "cancelled", "draft", "entered-in-error"],
+        # valueset binding
+        binding_description="A code specifying the state of the resource instance.",
+        binding_strength="required",
+        binding_uri="http://hl7.org/fhir/ValueSet/fm-status",
+        binding_version="4.3.0",
     )
     status__ext: fhirtypes.FHIRPrimitiveExtensionType = Field(
         None, alias="_status", title="Extension field for ``status``."

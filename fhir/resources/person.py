@@ -62,12 +62,20 @@ class Person(domainresource.DomainResource):
         None,
         alias="gender",
         title="male | female | other | unknown",
-        description="Administrative Gender.",
+        description=(
+            "Administrative Gender. See "
+            "http://hl7.org/fhir/ValueSet/administrative-gender"
+        ),
         # if property is element of this resource.
         element_property=True,
         # note: Enum values can be used in validation,
         # but use in your own responsibilities, read official FHIR documentation.
         enum_values=["male", "female", "other", "unknown"],
+        # valueset binding
+        binding_description="The gender of a person used for administrative purposes.",
+        binding_strength="required",
+        binding_uri="http://hl7.org/fhir/ValueSet/administrative-gender",
+        binding_version="4.3.0",
     )
     gender__ext: fhirtypes.FHIRPrimitiveExtensionType = Field(
         None, alias="_gender", title="Extension field for ``gender``."
@@ -100,6 +108,7 @@ class Person(domainresource.DomainResource):
         element_property=True,
         # note: Listed Resource Type(s) should be allowed as Reference.
         enum_reference_types=["Organization"],
+        backref="person_managingOrganization",
     )
 
     name: typing.List[fhirtypes.HumanNameType] = Field(
@@ -179,13 +188,18 @@ class PersonLink(backboneelement.BackboneElement):
         title="level1 | level2 | level3 | level4",
         description=(
             "Level of assurance that this link is associated with the target "
-            "resource."
+            "resource. See http://hl7.org/fhir/ValueSet/identity-assuranceLevel"
         ),
         # if property is element of this resource.
         element_property=True,
         # note: Enum values can be used in validation,
         # but use in your own responsibilities, read official FHIR documentation.
         enum_values=["level1", "level2", "level3", "level4"],
+        # valueset binding
+        binding_description="The level of confidence that this link represents the same actual person, based on NIST Authentication Levels.",
+        binding_strength="required",
+        binding_uri="http://hl7.org/fhir/ValueSet/identity-assuranceLevel",
+        binding_version="4.3.0",
     )
     assurance__ext: fhirtypes.FHIRPrimitiveExtensionType = Field(
         None, alias="_assurance", title="Extension field for ``assurance``."
@@ -200,6 +214,7 @@ class PersonLink(backboneelement.BackboneElement):
         element_property=True,
         # note: Listed Resource Type(s) should be allowed as Reference.
         enum_reference_types=["Patient", "Practitioner", "RelatedPerson", "Person"],
+        backref="person.link_target",
     )
 
     @classmethod

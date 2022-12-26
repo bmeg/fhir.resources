@@ -107,6 +107,7 @@ class DataRequirement(element.Element):
         element_property=True,
         # note: Listed Resource Type(s) should be allowed as Reference.
         enum_reference_types=["StructureDefinition"],
+        backref="data_requirement_profile",
     )
     profile__ext: typing.List[
         typing.Union[fhirtypes.FHIRPrimitiveExtensionType, None]
@@ -130,13 +131,17 @@ class DataRequirement(element.Element):
         ),
         description=(
             "The intended subjects of the data requirement. If this element is not "
-            "provided, a Patient subject is assumed."
+            "provided, a Patient subject is assumed. See "
+            "http://hl7.org/fhir/ValueSet/subject-type"
         ),
         # if property is element of this resource.
         element_property=True,
         # Choice of Data Types. i.e subject[x]
         one_of_many="subject",
         one_of_many_required=False,
+        # valueset binding
+        binding_strength="extensible",
+        binding_uri="http://hl7.org/fhir/ValueSet/subject-type",
     )
 
     subjectReference: fhirtypes.ReferenceType = Field(
@@ -148,15 +153,20 @@ class DataRequirement(element.Element):
         ),
         description=(
             "The intended subjects of the data requirement. If this element is not "
-            "provided, a Patient subject is assumed."
+            "provided, a Patient subject is assumed. See "
+            "http://hl7.org/fhir/ValueSet/subject-type"
         ),
         # if property is element of this resource.
         element_property=True,
         # Choice of Data Types. i.e subject[x]
         one_of_many="subject",
         one_of_many_required=False,
+        # valueset binding
+        binding_strength="extensible",
+        binding_uri="http://hl7.org/fhir/ValueSet/subject-type",
         # note: Listed Resource Type(s) should be allowed as Reference.
         enum_reference_types=["Group"],
+        backref="data_requirement_subjectReference",
     )
 
     type: fhirtypes.Code = Field(
@@ -166,11 +176,15 @@ class DataRequirement(element.Element):
         description=(
             "The type of the required data, specified as the type name of a "
             "resource. For profiles, this value is set to the type of the base "
-            "resource of the profile."
+            "resource of the profile. See http://hl7.org/fhir/ValueSet/all-types"
         ),
         # if property is element of this resource.
         element_property=True,
         element_required=True,
+        # valueset binding
+        binding_strength="required",
+        binding_uri="http://hl7.org/fhir/ValueSet/all-types",
+        binding_version="4.3.0",
     )
     type__ext: fhirtypes.FHIRPrimitiveExtensionType = Field(
         None, alias="_type", title="Extension field for ``type``."
@@ -375,6 +389,7 @@ class DataRequirementCodeFilter(element.Element):
         element_property=True,
         # note: Listed Resource Type(s) should be allowed as Reference.
         enum_reference_types=["ValueSet"],
+        backref="data_requirement.code_filter_valueSet",
     )
     valueSet__ext: fhirtypes.FHIRPrimitiveExtensionType = Field(
         None, alias="_valueSet", title="Extension field for ``valueSet``."
@@ -575,13 +590,20 @@ class DataRequirementSort(element.Element):
         None,
         alias="direction",
         title="ascending | descending",
-        description="The direction of the sort, ascending or descending.",
+        description=(
+            "The direction of the sort, ascending or descending. See "
+            "http://hl7.org/fhir/ValueSet/sort-direction"
+        ),
         # if property is element of this resource.
         element_property=True,
         element_required=True,
         # note: Enum values can be used in validation,
         # but use in your own responsibilities, read official FHIR documentation.
         enum_values=["ascending", "descending"],
+        # valueset binding
+        binding_strength="required",
+        binding_uri="http://hl7.org/fhir/ValueSet/sort-direction",
+        binding_version="4.3.0",
     )
     direction__ext: fhirtypes.FHIRPrimitiveExtensionType = Field(
         None, alias="_direction", title="Extension field for ``direction``."

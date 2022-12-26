@@ -124,10 +124,14 @@ class ExampleScenario(domainresource.DomainResource):
         title="Intended jurisdiction for example scenario (if applicable)",
         description=(
             "A legal or geographic region in which the example scenario is intended"
-            " to be used."
+            " to be used. See http://hl7.org/fhir/ValueSet/jurisdiction"
         ),
         # if property is element of this resource.
         element_property=True,
+        # valueset binding
+        binding_description="Countries and regions within which this artifact is targeted for use.",
+        binding_strength="extensible",
+        binding_uri="http://hl7.org/fhir/ValueSet/jurisdiction",
     )
 
     name: fhirtypes.String = Field(
@@ -192,7 +196,7 @@ class ExampleScenario(domainresource.DomainResource):
         title="draft | active | retired | unknown",
         description=(
             "The status of this example scenario. Enables tracking the life-cycle "
-            "of the content."
+            "of the content. See http://hl7.org/fhir/ValueSet/publication-status"
         ),
         # if property is element of this resource.
         element_property=True,
@@ -200,6 +204,11 @@ class ExampleScenario(domainresource.DomainResource):
         # note: Enum values can be used in validation,
         # but use in your own responsibilities, read official FHIR documentation.
         enum_values=["draft", "active", "retired", "unknown"],
+        # valueset binding
+        binding_description="The lifecycle status of an artifact.",
+        binding_strength="required",
+        binding_uri="http://hl7.org/fhir/ValueSet/publication-status",
+        binding_version="4.3.0",
     )
     status__ext: fhirtypes.FHIRPrimitiveExtensionType = Field(
         None, alias="_status", title="Extension field for ``status``."
@@ -272,6 +281,7 @@ class ExampleScenario(domainresource.DomainResource):
         element_property=True,
         # note: Listed Resource Type(s) should be allowed as Reference.
         enum_reference_types=["ExampleScenario"],
+        backref="example_scenario_workflow",
     )
     workflow__ext: typing.List[
         typing.Union[fhirtypes.FHIRPrimitiveExtensionType, None]
@@ -422,13 +432,21 @@ class ExampleScenarioActor(backboneelement.BackboneElement):
         None,
         alias="type",
         title="person | entity",
-        description="The type of actor - person or system.",
+        description=(
+            "The type of actor - person or system. See "
+            "http://hl7.org/fhir/ValueSet/examplescenario-actor-type"
+        ),
         # if property is element of this resource.
         element_property=True,
         element_required=True,
         # note: Enum values can be used in validation,
         # but use in your own responsibilities, read official FHIR documentation.
         enum_values=["person", "entity"],
+        # valueset binding
+        binding_description="The type of actor - system or human.",
+        binding_strength="required",
+        binding_uri="http://hl7.org/fhir/ValueSet/examplescenario-actor-type",
+        binding_version="4.3.0",
     )
     type__ext: fhirtypes.FHIRPrimitiveExtensionType = Field(
         None, alias="_type", title="Extension field for ``type``."
@@ -575,10 +593,15 @@ class ExampleScenarioInstance(backboneelement.BackboneElement):
         None,
         alias="resourceType",
         title="The type of the resource",
-        description=None,
+        description="See http://hl7.org/fhir/ValueSet/resource-types",
         # if property is element of this resource.
         element_property=True,
         element_required=True,
+        # valueset binding
+        binding_description="The type of resource.",
+        binding_strength="required",
+        binding_uri="http://hl7.org/fhir/ValueSet/resource-types",
+        binding_version="4.3.0",
     )
     resourceType__ext: fhirtypes.FHIRPrimitiveExtensionType = Field(
         None, alias="_resourceType", title="Extension field for ``resourceType``."

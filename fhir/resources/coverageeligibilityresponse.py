@@ -65,9 +65,16 @@ class CoverageEligibilityResponse(domainresource.DomainResource):
         None,
         alias="form",
         title="Printed form identifier",
-        description="A code for the form to be used for printing the content.",
+        description=(
+            "A code for the form to be used for printing the content. See "
+            "http://hl7.org/fhir/ValueSet/forms"
+        ),
         # if property is element of this resource.
         element_property=True,
+        # valueset binding
+        binding_description="The forms codes.",
+        binding_strength="example",
+        binding_uri="http://hl7.org/fhir/ValueSet/forms",
     )
 
     identifier: typing.List[fhirtypes.IdentifierType] = Field(
@@ -103,19 +110,28 @@ class CoverageEligibilityResponse(domainresource.DomainResource):
         element_property=True,
         # note: Listed Resource Type(s) should be allowed as Reference.
         enum_reference_types=["Organization"],
+        backref="coverage_eligibility_response_insurer",
     )
 
     outcome: fhirtypes.Code = Field(
         None,
         alias="outcome",
         title="queued | complete | error | partial",
-        description="The outcome of the request processing.",
+        description=(
+            "The outcome of the request processing. See "
+            "http://hl7.org/fhir/ValueSet/remittance-outcome"
+        ),
         # if property is element of this resource.
         element_property=True,
         element_required=True,
         # note: Enum values can be used in validation,
         # but use in your own responsibilities, read official FHIR documentation.
         enum_values=["queued", "complete", "error", "partial"],
+        # valueset binding
+        binding_description="The outcome of the processing.",
+        binding_strength="required",
+        binding_uri="http://hl7.org/fhir/ValueSet/remittance-outcome",
+        binding_version="4.3.0",
     )
     outcome__ext: fhirtypes.FHIRPrimitiveExtensionType = Field(
         None, alias="_outcome", title="Extension field for ``outcome``."
@@ -133,6 +149,7 @@ class CoverageEligibilityResponse(domainresource.DomainResource):
         element_property=True,
         # note: Listed Resource Type(s) should be allowed as Reference.
         enum_reference_types=["Patient"],
+        backref="coverage_eligibility_response_patient",
     )
 
     preAuthRef: fhirtypes.String = Field(
@@ -159,7 +176,8 @@ class CoverageEligibilityResponse(domainresource.DomainResource):
             "for some service categories or billing codes; benefits for coverages "
             "specified or discovered; discovery and return of coverages for the "
             "patient; and/or validation that the specified coverage is in-force at "
-            "the date/period specified or 'now' if not specified."
+            "the date/period specified or 'now' if not specified. See "
+            "http://hl7.org/fhir/ValueSet/eligibilityresponse-purpose"
         ),
         # if property is element of this resource.
         element_property=True,
@@ -167,6 +185,11 @@ class CoverageEligibilityResponse(domainresource.DomainResource):
         # note: Enum values can be used in validation,
         # but use in your own responsibilities, read official FHIR documentation.
         enum_values=["auth-requirements", "benefits", "discovery", "validation"],
+        # valueset binding
+        binding_description="A code specifying the types of information being requested.",
+        binding_strength="required",
+        binding_uri="http://hl7.org/fhir/ValueSet/eligibilityresponse-purpose",
+        binding_version="4.3.0",
     )
     purpose__ext: typing.List[
         typing.Union[fhirtypes.FHIRPrimitiveExtensionType, None]
@@ -181,6 +204,7 @@ class CoverageEligibilityResponse(domainresource.DomainResource):
         element_property=True,
         # note: Listed Resource Type(s) should be allowed as Reference.
         enum_reference_types=["CoverageEligibilityRequest"],
+        backref="coverage_eligibility_response_request",
     )
 
     requestor: fhirtypes.ReferenceType = Field(
@@ -192,6 +216,7 @@ class CoverageEligibilityResponse(domainresource.DomainResource):
         element_property=True,
         # note: Listed Resource Type(s) should be allowed as Reference.
         enum_reference_types=["Practitioner", "PractitionerRole", "Organization"],
+        backref="coverage_eligibility_response_requestor",
     )
 
     servicedDate: fhirtypes.Date = Field(
@@ -231,13 +256,21 @@ class CoverageEligibilityResponse(domainresource.DomainResource):
         None,
         alias="status",
         title="active | cancelled | draft | entered-in-error",
-        description="The status of the resource instance.",
+        description=(
+            "The status of the resource instance. See "
+            "http://hl7.org/fhir/ValueSet/fm-status"
+        ),
         # if property is element of this resource.
         element_property=True,
         element_required=True,
         # note: Enum values can be used in validation,
         # but use in your own responsibilities, read official FHIR documentation.
         enum_values=["active", "cancelled", "draft", "entered-in-error"],
+        # valueset binding
+        binding_description="A code specifying the state of the resource instance.",
+        binding_strength="required",
+        binding_uri="http://hl7.org/fhir/ValueSet/fm-status",
+        binding_version="4.3.0",
     )
     status__ext: fhirtypes.FHIRPrimitiveExtensionType = Field(
         None, alias="_status", title="Extension field for ``status``."
@@ -396,10 +429,15 @@ class CoverageEligibilityResponseError(backboneelement.BackboneElement):
         title="Error code detailing processing issues",
         description=(
             "An error code,from a specified code system, which details why the "
-            "eligibility check could not be performed."
+            "eligibility check could not be performed. See "
+            "http://hl7.org/fhir/ValueSet/adjudication-error"
         ),
         # if property is element of this resource.
         element_property=True,
+        # valueset binding
+        binding_description="The error codes for adjudication processing.",
+        binding_strength="example",
+        binding_uri="http://hl7.org/fhir/ValueSet/adjudication-error",
     )
 
     @classmethod
@@ -446,6 +484,7 @@ class CoverageEligibilityResponseInsurance(backboneelement.BackboneElement):
         element_property=True,
         # note: Listed Resource Type(s) should be allowed as Reference.
         enum_reference_types=["Coverage"],
+        backref="coverage_eligibility_response.insurance_coverage",
     )
 
     inforce: bool = Field(
@@ -528,10 +567,16 @@ class CoverageEligibilityResponseInsuranceItem(backboneelement.BackboneElement):
         title="Type of required supporting materials",
         description=(
             "Codes or comments regarding information or actions associated with the"
-            " preauthorization."
+            " preauthorization. See "
+            "http://hl7.org/fhir/ValueSet/coverageeligibilityresponse-ex-auth-"
+            "support"
         ),
         # if property is element of this resource.
         element_property=True,
+        # valueset binding
+        binding_description="Type of supporting information to provide with a preauthorization.",
+        binding_strength="example",
+        binding_uri="http://hl7.org/fhir/ValueSet/coverageeligibilityresponse-ex-auth-support",
     )
 
     authorizationUrl: fhirtypes.Uri = Field(
@@ -568,10 +613,15 @@ class CoverageEligibilityResponseInsuranceItem(backboneelement.BackboneElement):
         title="Benefit classification",
         description=(
             "Code to identify the general type of benefits under which products and"
-            " services are provided."
+            " services are provided. See http://hl7.org/fhir/ValueSet/ex-"
+            "benefitcategory"
         ),
         # if property is element of this resource.
         element_property=True,
+        # valueset binding
+        binding_description="Benefit categories such as: oral, medical, vision etc.",
+        binding_strength="example",
+        binding_uri="http://hl7.org/fhir/ValueSet/ex-benefitcategory",
     )
 
     description: fhirtypes.String = Field(
@@ -608,10 +658,15 @@ class CoverageEligibilityResponseInsuranceItem(backboneelement.BackboneElement):
         title="Product or service billing modifiers",
         description=(
             "Item typification or modifiers codes to convey additional context for "
-            "the product or service."
+            "the product or service. See http://hl7.org/fhir/ValueSet/claim-"
+            "modifiers"
         ),
         # if property is element of this resource.
         element_property=True,
+        # valueset binding
+        binding_description="Item type or modifiers codes, eg for Oral whether the treatment is cosmetic or associated with TMJ, or an appliance was lost or stolen.",
+        binding_strength="example",
+        binding_uri="http://hl7.org/fhir/ValueSet/claim-modifiers",
     )
 
     name: fhirtypes.String = Field(
@@ -632,10 +687,15 @@ class CoverageEligibilityResponseInsuranceItem(backboneelement.BackboneElement):
         title="In or out of network",
         description=(
             "Is a flag to indicate whether the benefits refer to in-network "
-            "providers or out-of-network providers."
+            "providers or out-of-network providers. See "
+            "http://hl7.org/fhir/ValueSet/benefit-network"
         ),
         # if property is element of this resource.
         element_property=True,
+        # valueset binding
+        binding_description="Code to classify in or out of network services.",
+        binding_strength="example",
+        binding_uri="http://hl7.org/fhir/ValueSet/benefit-network",
     )
 
     productOrService: fhirtypes.CodeableConceptType = Field(
@@ -644,10 +704,14 @@ class CoverageEligibilityResponseInsuranceItem(backboneelement.BackboneElement):
         title="Billing, service, product, or drug code",
         description=(
             "This contains the product, service, drug or other billing code for the"
-            " item."
+            " item. See http://hl7.org/fhir/ValueSet/service-uscls"
         ),
         # if property is element of this resource.
         element_property=True,
+        # valueset binding
+        binding_description="Allowable service and product codes.",
+        binding_strength="example",
+        binding_uri="http://hl7.org/fhir/ValueSet/service-uscls",
     )
 
     provider: fhirtypes.ReferenceType = Field(
@@ -662,6 +726,7 @@ class CoverageEligibilityResponseInsuranceItem(backboneelement.BackboneElement):
         element_property=True,
         # note: Listed Resource Type(s) should be allowed as Reference.
         enum_reference_types=["Practitioner", "PractitionerRole"],
+        backref="coverage_eligibility_response.insurance.item_provider",
     )
 
     term: fhirtypes.CodeableConceptType = Field(
@@ -670,19 +735,31 @@ class CoverageEligibilityResponseInsuranceItem(backboneelement.BackboneElement):
         title="Annual or lifetime",
         description=(
             "The term or period of the values such as 'maximum lifetime benefit' or"
-            " 'maximum annual visits'."
+            " 'maximum annual visits'. See http://hl7.org/fhir/ValueSet/benefit-"
+            "term"
         ),
         # if property is element of this resource.
         element_property=True,
+        # valueset binding
+        binding_description="Coverage unit - annual, lifetime.",
+        binding_strength="example",
+        binding_uri="http://hl7.org/fhir/ValueSet/benefit-term",
     )
 
     unit: fhirtypes.CodeableConceptType = Field(
         None,
         alias="unit",
         title="Individual or family",
-        description="Indicates if the benefits apply to an individual or to the family.",
+        description=(
+            "Indicates if the benefits apply to an individual or to the family. See"
+            " http://hl7.org/fhir/ValueSet/benefit-unit"
+        ),
         # if property is element of this resource.
         element_property=True,
+        # valueset binding
+        binding_description="Unit covered/serviced - individual or family.",
+        binding_strength="example",
+        binding_uri="http://hl7.org/fhir/ValueSet/benefit-unit",
     )
 
     @classmethod
@@ -771,9 +848,16 @@ class CoverageEligibilityResponseInsuranceItemBenefit(backboneelement.BackboneEl
         ...,
         alias="type",
         title="Benefit classification",
-        description="Classification of benefit being provided.",
+        description=(
+            "Classification of benefit being provided. See "
+            "http://hl7.org/fhir/ValueSet/benefit-type"
+        ),
         # if property is element of this resource.
         element_property=True,
+        # valueset binding
+        binding_description="Deductable, visits, co-pay, etc.",
+        binding_strength="example",
+        binding_uri="http://hl7.org/fhir/ValueSet/benefit-type",
     )
 
     usedMoney: fhirtypes.MoneyType = Field(

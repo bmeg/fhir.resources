@@ -135,9 +135,19 @@ class FamilyMemberHistory(domainresource.DomainResource):
         None,
         alias="dataAbsentReason",
         title="subject-unknown | withheld | unable-to-obtain | deferred",
-        description="Describes why the family member's history is not available.",
+        description=(
+            "Describes why the family member's history is not available. See "
+            "http://hl7.org/fhir/ValueSet/history-absent-reason"
+        ),
         # if property is element of this resource.
         element_property=True,
+        # note: Enum values can be used in validation,
+        # but use in your own responsibilities, read official FHIR documentation.
+        enum_values=["subject-unknown", "withheld", "unable-to-obtain", "deferred"],
+        # valueset binding
+        binding_description="Codes describing the reason why a family member\u0027s history is not available.",
+        binding_strength="example",
+        binding_uri="http://hl7.org/fhir/ValueSet/history-absent-reason",
     )
 
     date: fhirtypes.DateTime = Field(
@@ -283,6 +293,7 @@ class FamilyMemberHistory(domainresource.DomainResource):
             "Measure",
             "OperationDefinition",
         ],
+        backref="family_member_history_instantiatesCanonical",
     )
     instantiatesCanonical__ext: typing.List[
         typing.Union[fhirtypes.FHIRPrimitiveExtensionType, None]
@@ -347,6 +358,7 @@ class FamilyMemberHistory(domainresource.DomainResource):
         element_property=True,
         # note: Listed Resource Type(s) should be allowed as Reference.
         enum_reference_types=["Patient"],
+        backref="family_member_history_patient",
     )
 
     reasonCode: typing.List[fhirtypes.CodeableConceptType] = Field(
@@ -355,10 +367,14 @@ class FamilyMemberHistory(domainresource.DomainResource):
         title="Why was family member history performed?",
         description=(
             "Describes why the family member history occurred in coded or textual "
-            "form."
+            "form. See http://hl7.org/fhir/ValueSet/clinical-findings"
         ),
         # if property is element of this resource.
         element_property=True,
+        # valueset binding
+        binding_description="Codes indicating why the family member history was done.",
+        binding_strength="example",
+        binding_uri="http://hl7.org/fhir/ValueSet/clinical-findings",
     )
 
     reasonReference: typing.List[fhirtypes.ReferenceType] = Field(
@@ -380,6 +396,7 @@ class FamilyMemberHistory(domainresource.DomainResource):
             "DiagnosticReport",
             "DocumentReference",
         ],
+        backref="family_member_history_reasonReference",
     )
 
     relationship: fhirtypes.CodeableConceptType = Field(
@@ -388,19 +405,34 @@ class FamilyMemberHistory(domainresource.DomainResource):
         title="Relationship to the subject",
         description=(
             "The type of relationship this person has to the patient (father, "
-            "mother, brother etc.)."
+            "mother, brother etc.). See "
+            "http://terminology.hl7.org/ValueSet/v3-FamilyMember"
         ),
         # if property is element of this resource.
         element_property=True,
+        # valueset binding
+        binding_description="The nature of the relationship between the patient and the related person being described in the family member history.",
+        binding_strength="example",
+        binding_uri="http://terminology.hl7.org/ValueSet/v3-FamilyMember",
     )
 
     sex: fhirtypes.CodeableConceptType = Field(
         None,
         alias="sex",
         title="male | female | other | unknown",
-        description="The birth sex of the family member.",
+        description=(
+            "The birth sex of the family member. See "
+            "http://hl7.org/fhir/ValueSet/administrative-gender"
+        ),
         # if property is element of this resource.
         element_property=True,
+        # note: Enum values can be used in validation,
+        # but use in your own responsibilities, read official FHIR documentation.
+        enum_values=["male", "female", "other", "unknown"],
+        # valueset binding
+        binding_description="Codes describing the sex assigned at birth as documented on the birth registration.",
+        binding_strength="extensible",
+        binding_uri="http://hl7.org/fhir/ValueSet/administrative-gender",
     )
 
     status: fhirtypes.Code = Field(
@@ -409,7 +441,8 @@ class FamilyMemberHistory(domainresource.DomainResource):
         title="partial | completed | entered-in-error | health-unknown",
         description=(
             "A code specifying the status of the record of the family history of a "
-            "specific family member."
+            "specific family member. See http://hl7.org/fhir/ValueSet/history-"
+            "status"
         ),
         # if property is element of this resource.
         element_property=True,
@@ -417,6 +450,11 @@ class FamilyMemberHistory(domainresource.DomainResource):
         # note: Enum values can be used in validation,
         # but use in your own responsibilities, read official FHIR documentation.
         enum_values=["partial", "completed", "entered-in-error", "health-unknown"],
+        # valueset binding
+        binding_description="A code that identifies the status of the family history record.",
+        binding_strength="required",
+        binding_uri="http://hl7.org/fhir/ValueSet/history-status",
+        binding_version="4.3.0",
     )
     status__ext: fhirtypes.FHIRPrimitiveExtensionType = Field(
         None, alias="_status", title="Extension field for ``status``."
@@ -595,10 +633,14 @@ class FamilyMemberHistoryCondition(backboneelement.BackboneElement):
             "The actual condition specified. Could be a coded condition (like MI or"
             " Diabetes) or a less specific string like 'cancer' depending on how "
             "much is known about the condition and the capabilities of the creating"
-            " system."
+            " system. See http://hl7.org/fhir/ValueSet/condition-code"
         ),
         # if property is element of this resource.
         element_property=True,
+        # valueset binding
+        binding_description="Identification of the Condition or diagnosis.",
+        binding_strength="example",
+        binding_uri="http://hl7.org/fhir/ValueSet/condition-code",
     )
 
     contributedToDeath: bool = Field(
@@ -703,10 +745,18 @@ class FamilyMemberHistoryCondition(backboneelement.BackboneElement):
         title="deceased | permanent disability | etc.",
         description=(
             "Indicates what happened following the condition.  If the condition "
-            "resulted in death, deceased date is captured on the relation."
+            "resulted in death, deceased date is captured on the relation. See "
+            "http://hl7.org/fhir/ValueSet/condition-outcome"
         ),
         # if property is element of this resource.
         element_property=True,
+        # note: Enum values can be used in validation,
+        # but use in your own responsibilities, read official FHIR documentation.
+        enum_values=["deceased", "permanent", "etc."],
+        # valueset binding
+        binding_description="The result of the condition for the patient; e.g. death, permanent disability, temporary disability, etc.",
+        binding_strength="example",
+        binding_uri="http://hl7.org/fhir/ValueSet/condition-outcome",
     )
 
     @classmethod

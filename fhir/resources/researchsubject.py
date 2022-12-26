@@ -69,6 +69,7 @@ class ResearchSubject(domainresource.DomainResource):
         element_property=True,
         # note: Listed Resource Type(s) should be allowed as Reference.
         enum_reference_types=["Consent"],
+        backref="research_subject_consent",
     )
 
     identifier: typing.List[fhirtypes.IdentifierType] = Field(
@@ -89,6 +90,7 @@ class ResearchSubject(domainresource.DomainResource):
         element_property=True,
         # note: Listed Resource Type(s) should be allowed as Reference.
         enum_reference_types=["Patient"],
+        backref="research_subject_individual",
     )
 
     period: fhirtypes.PeriodType = Field(
@@ -110,7 +112,10 @@ class ResearchSubject(domainresource.DomainResource):
             "study | on-study | on-study-intervention | on-study-observation | "
             "pending-on-study | potential-candidate | screening | withdrawn"
         ),
-        description="The current state of the subject.",
+        description=(
+            "The current state of the subject. See "
+            "http://hl7.org/fhir/ValueSet/research-subject-status"
+        ),
         # if property is element of this resource.
         element_property=True,
         element_required=True,
@@ -131,6 +136,11 @@ class ResearchSubject(domainresource.DomainResource):
             "screening",
             "withdrawn",
         ],
+        # valueset binding
+        binding_description="Indicates the progression of a study subject through a study.",
+        binding_strength="required",
+        binding_uri="http://hl7.org/fhir/ValueSet/research-subject-status",
+        binding_version="4.3.0",
     )
     status__ext: fhirtypes.FHIRPrimitiveExtensionType = Field(
         None, alias="_status", title="Extension field for ``status``."
@@ -145,6 +155,7 @@ class ResearchSubject(domainresource.DomainResource):
         element_property=True,
         # note: Listed Resource Type(s) should be allowed as Reference.
         enum_reference_types=["ResearchStudy"],
+        backref="research_subject_study",
     )
 
     @classmethod

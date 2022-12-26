@@ -36,6 +36,7 @@ class Invoice(domainresource.DomainResource):
         element_property=True,
         # note: Listed Resource Type(s) should be allowed as Reference.
         enum_reference_types=["Account"],
+        backref="invoice_account",
     )
 
     cancelledReason: fhirtypes.String = Field(
@@ -86,6 +87,7 @@ class Invoice(domainresource.DomainResource):
         element_property=True,
         # note: Listed Resource Type(s) should be allowed as Reference.
         enum_reference_types=["Organization"],
+        backref="invoice_issuer",
     )
 
     lineItem: typing.List[fhirtypes.InvoiceLineItemType] = Field(
@@ -151,19 +153,28 @@ class Invoice(domainresource.DomainResource):
         element_property=True,
         # note: Listed Resource Type(s) should be allowed as Reference.
         enum_reference_types=["Organization", "Patient", "RelatedPerson"],
+        backref="invoice_recipient",
     )
 
     status: fhirtypes.Code = Field(
         None,
         alias="status",
         title="draft | issued | balanced | cancelled | entered-in-error",
-        description="The current state of the Invoice.",
+        description=(
+            "The current state of the Invoice. See "
+            "http://hl7.org/fhir/ValueSet/invoice-status"
+        ),
         # if property is element of this resource.
         element_property=True,
         element_required=True,
         # note: Enum values can be used in validation,
         # but use in your own responsibilities, read official FHIR documentation.
         enum_values=["draft", "issued", "balanced", "cancelled", "entered-in-error"],
+        # valueset binding
+        binding_description="Codes identifying the lifecycle stage of an Invoice.",
+        binding_strength="required",
+        binding_uri="http://hl7.org/fhir/ValueSet/invoice-status",
+        binding_version="4.3.0",
     )
     status__ext: fhirtypes.FHIRPrimitiveExtensionType = Field(
         None, alias="_status", title="Extension field for ``status``."
@@ -181,6 +192,7 @@ class Invoice(domainresource.DomainResource):
         element_property=True,
         # note: Listed Resource Type(s) should be allowed as Reference.
         enum_reference_types=["Patient", "Group"],
+        backref="invoice_subject",
     )
 
     totalGross: fhirtypes.MoneyType = Field(
@@ -376,6 +388,7 @@ class InvoiceLineItem(backboneelement.BackboneElement):
         one_of_many_required=True,
         # note: Listed Resource Type(s) should be allowed as Reference.
         enum_reference_types=["ChargeItem"],
+        backref="invoice.line_item_chargeItemReference",
     )
 
     priceComponent: typing.List[fhirtypes.InvoiceLineItemPriceComponentType] = Field(
@@ -520,7 +533,10 @@ class InvoiceLineItemPriceComponent(backboneelement.BackboneElement):
         None,
         alias="type",
         title="base | surcharge | deduction | discount | tax | informational",
-        description="This code identifies the type of the component.",
+        description=(
+            "This code identifies the type of the component. See "
+            "http://hl7.org/fhir/ValueSet/invoice-priceComponentType"
+        ),
         # if property is element of this resource.
         element_property=True,
         element_required=True,
@@ -534,6 +550,11 @@ class InvoiceLineItemPriceComponent(backboneelement.BackboneElement):
             "tax",
             "informational",
         ],
+        # valueset binding
+        binding_description="Codes indicating the kind of the price component.",
+        binding_strength="required",
+        binding_uri="http://hl7.org/fhir/ValueSet/invoice-priceComponentType",
+        binding_version="4.3.0",
     )
     type__ext: fhirtypes.FHIRPrimitiveExtensionType = Field(
         None, alias="_type", title="Extension field for ``type``."
@@ -645,6 +666,7 @@ class InvoiceParticipant(backboneelement.BackboneElement):
             "Device",
             "RelatedPerson",
         ],
+        backref="invoice.participant_actor",
     )
 
     role: fhirtypes.CodeableConceptType = Field(

@@ -53,6 +53,7 @@ class CarePlan(domainresource.DomainResource):
         element_property=True,
         # note: Listed Resource Type(s) should be allowed as Reference.
         enum_reference_types=["Condition"],
+        backref="care_plan_addresses",
     )
 
     author: fhirtypes.ReferenceType = Field(
@@ -75,6 +76,7 @@ class CarePlan(domainresource.DomainResource):
             "Organization",
             "CareTeam",
         ],
+        backref="care_plan_author",
     )
 
     basedOn: typing.List[fhirtypes.ReferenceType] = Field(
@@ -86,6 +88,7 @@ class CarePlan(domainresource.DomainResource):
         element_property=True,
         # note: Listed Resource Type(s) should be allowed as Reference.
         enum_reference_types=["CarePlan"],
+        backref="care_plan_basedOn",
     )
 
     careTeam: typing.List[fhirtypes.ReferenceType] = Field(
@@ -100,6 +103,7 @@ class CarePlan(domainresource.DomainResource):
         element_property=True,
         # note: Listed Resource Type(s) should be allowed as Reference.
         enum_reference_types=["CareTeam"],
+        backref="care_plan_careTeam",
     )
 
     category: typing.List[fhirtypes.CodeableConceptType] = Field(
@@ -109,10 +113,15 @@ class CarePlan(domainresource.DomainResource):
         description=(
             'Identifies what "kind" of plan this is to support differentiation '
             'between multiple co-existing plans; e.g. "Home health", "psychiatric",'
-            ' "asthma", "disease management", "wellness plan", etc.'
+            ' "asthma", "disease management", "wellness plan", etc. See '
+            "http://hl7.org/fhir/ValueSet/care-plan-category"
         ),
         # if property is element of this resource.
         element_property=True,
+        # valueset binding
+        binding_description='Identifies what "kind" of plan this is to support differentiation between multiple co-existing plans; e.g. "Home health", "psychiatric", "asthma", "disease management", etc.',
+        binding_strength="example",
+        binding_uri="http://hl7.org/fhir/ValueSet/care-plan-category",
     )
 
     contributor: typing.List[fhirtypes.ReferenceType] = Field(
@@ -135,6 +144,7 @@ class CarePlan(domainresource.DomainResource):
             "Organization",
             "CareTeam",
         ],
+        backref="care_plan_contributor",
     )
 
     created: fhirtypes.DateTime = Field(
@@ -176,6 +186,7 @@ class CarePlan(domainresource.DomainResource):
         element_property=True,
         # note: Listed Resource Type(s) should be allowed as Reference.
         enum_reference_types=["Encounter"],
+        backref="care_plan_encounter",
     )
 
     goal: typing.List[fhirtypes.ReferenceType] = Field(
@@ -187,6 +198,7 @@ class CarePlan(domainresource.DomainResource):
         element_property=True,
         # note: Listed Resource Type(s) should be allowed as Reference.
         enum_reference_types=["Goal"],
+        backref="care_plan_goal",
     )
 
     identifier: typing.List[fhirtypes.IdentifierType] = Field(
@@ -221,6 +233,7 @@ class CarePlan(domainresource.DomainResource):
             "ActivityDefinition",
             "OperationDefinition",
         ],
+        backref="care_plan_instantiatesCanonical",
     )
     instantiatesCanonical__ext: typing.List[
         typing.Union[fhirtypes.FHIRPrimitiveExtensionType, None]
@@ -254,7 +267,8 @@ class CarePlan(domainresource.DomainResource):
         title="proposal | plan | order | option",
         description=(
             "Indicates the level of authority/intentionality associated with the "
-            "care plan and where the care plan fits into the workflow chain."
+            "care plan and where the care plan fits into the workflow chain. See "
+            "http://hl7.org/fhir/ValueSet/care-plan-intent"
         ),
         # if property is element of this resource.
         element_property=True,
@@ -262,6 +276,11 @@ class CarePlan(domainresource.DomainResource):
         # note: Enum values can be used in validation,
         # but use in your own responsibilities, read official FHIR documentation.
         enum_values=["proposal", "plan", "order", "option"],
+        # valueset binding
+        binding_description="Codes indicating the degree of authority/intentionality associated with a care plan.",
+        binding_strength="required",
+        binding_uri="http://hl7.org/fhir/ValueSet/care-plan-intent",
+        binding_version="4.3.0",
     )
     intent__ext: fhirtypes.FHIRPrimitiveExtensionType = Field(
         None, alias="_intent", title="Extension field for ``intent``."
@@ -288,6 +307,7 @@ class CarePlan(domainresource.DomainResource):
         element_property=True,
         # note: Listed Resource Type(s) should be allowed as Reference.
         enum_reference_types=["CarePlan"],
+        backref="care_plan_partOf",
     )
 
     period: fhirtypes.PeriodType = Field(
@@ -314,6 +334,7 @@ class CarePlan(domainresource.DomainResource):
         element_property=True,
         # note: Listed Resource Type(s) should be allowed as Reference.
         enum_reference_types=["CarePlan"],
+        backref="care_plan_replaces",
     )
 
     status: fhirtypes.Code = Field(
@@ -325,7 +346,8 @@ class CarePlan(domainresource.DomainResource):
         ),
         description=(
             "Indicates whether the plan is currently being acted upon, represents "
-            "future intentions or is now a historical record."
+            "future intentions or is now a historical record. See "
+            "http://hl7.org/fhir/ValueSet/request-status"
         ),
         # if property is element of this resource.
         element_property=True,
@@ -341,6 +363,11 @@ class CarePlan(domainresource.DomainResource):
             "entered-in-error",
             "unknown",
         ],
+        # valueset binding
+        binding_description="Indicates whether the plan is currently being acted upon, represents future intentions or is now a historical record.",
+        binding_strength="required",
+        binding_uri="http://hl7.org/fhir/ValueSet/request-status",
+        binding_version="4.3.0",
     )
     status__ext: fhirtypes.FHIRPrimitiveExtensionType = Field(
         None, alias="_status", title="Extension field for ``status``."
@@ -358,6 +385,7 @@ class CarePlan(domainresource.DomainResource):
         element_property=True,
         # note: Listed Resource Type(s) should be allowed as Reference.
         enum_reference_types=["Patient", "Group"],
+        backref="care_plan_subject",
     )
 
     supportingInfo: typing.List[fhirtypes.ReferenceType] = Field(
@@ -374,6 +402,7 @@ class CarePlan(domainresource.DomainResource):
         element_property=True,
         # note: Listed Resource Type(s) should be allowed as Reference.
         enum_reference_types=["Resource"],
+        backref="care_plan_supportingInfo",
     )
 
     title: fhirtypes.String = Field(
@@ -521,10 +550,15 @@ class CarePlanActivity(backboneelement.BackboneElement):
         description=(
             "Identifies the outcome at the point when the status of the activity is"
             " assessed.  For example, the outcome of an education activity could be"
-            " patient understands (or not)."
+            " patient understands (or not). See http://hl7.org/fhir/ValueSet/care-"
+            "plan-activity-outcome"
         ),
         # if property is element of this resource.
         element_property=True,
+        # valueset binding
+        binding_description="Identifies the results of the activity.",
+        binding_strength="example",
+        binding_uri="http://hl7.org/fhir/ValueSet/care-plan-activity-outcome",
     )
 
     outcomeReference: typing.List[fhirtypes.ReferenceType] = Field(
@@ -542,6 +576,7 @@ class CarePlanActivity(backboneelement.BackboneElement):
         element_property=True,
         # note: Listed Resource Type(s) should be allowed as Reference.
         enum_reference_types=["Resource"],
+        backref="care_plan.activity_outcomeReference",
     )
 
     progress: typing.List[fhirtypes.AnnotationType] = Field(
@@ -575,6 +610,7 @@ class CarePlanActivity(backboneelement.BackboneElement):
             "VisionPrescription",
             "RequestGroup",
         ],
+        backref="care_plan.activity_reference",
     )
 
     @classmethod
@@ -614,10 +650,15 @@ class CarePlanActivityDetail(backboneelement.BackboneElement):
         title="Detail type of activity",
         description=(
             "Detailed description of the type of planned activity; e.g. what lab "
-            "test, what procedure, what kind of encounter."
+            "test, what procedure, what kind of encounter. See "
+            "http://hl7.org/fhir/ValueSet/procedure-code"
         ),
         # if property is element of this resource.
         element_property=True,
+        # valueset binding
+        binding_description="Detailed description of the type of activity; e.g. What lab test, what procedure, what kind of encounter.",
+        binding_strength="example",
+        binding_uri="http://hl7.org/fhir/ValueSet/procedure-code",
     )
 
     dailyAmount: fhirtypes.QuantityType = Field(
@@ -676,6 +717,7 @@ class CarePlanActivityDetail(backboneelement.BackboneElement):
         element_property=True,
         # note: Listed Resource Type(s) should be allowed as Reference.
         enum_reference_types=["Goal"],
+        backref="care_plan.activity.detail_goal",
     )
 
     instantiatesCanonical: typing.List[typing.Optional[fhirtypes.Canonical]] = Field(
@@ -697,6 +739,7 @@ class CarePlanActivityDetail(backboneelement.BackboneElement):
             "Measure",
             "OperationDefinition",
         ],
+        backref="care_plan.activity.detail_instantiatesCanonical",
     )
     instantiatesCanonical__ext: typing.List[
         typing.Union[fhirtypes.FHIRPrimitiveExtensionType, None]
@@ -736,7 +779,8 @@ class CarePlanActivityDetail(backboneelement.BackboneElement):
             " plan activity is representing.  The CarePlan.activity.detail is an "
             "in-line definition when a resource is not referenced using "
             "CarePlan.activity.reference.  For example, a MedicationRequest, a "
-            "ServiceRequest, or a CommunicationRequest."
+            "ServiceRequest, or a CommunicationRequest. See "
+            "http://hl7.org/fhir/ValueSet/care-plan-activity-kind"
         ),
         # if property is element of this resource.
         element_property=True,
@@ -752,6 +796,11 @@ class CarePlanActivityDetail(backboneelement.BackboneElement):
             "ServiceRequest",
             "VisionPrescription",
         ],
+        # valueset binding
+        binding_description="Resource types defined as part of FHIR that can be represented as in-line definitions of a care plan activity.",
+        binding_strength="required",
+        binding_uri="http://hl7.org/fhir/ValueSet/care-plan-activity-kind",
+        binding_version="4.3.0",
     )
     kind__ext: fhirtypes.FHIRPrimitiveExtensionType = Field(
         None, alias="_kind", title="Extension field for ``kind``."
@@ -769,6 +818,7 @@ class CarePlanActivityDetail(backboneelement.BackboneElement):
         element_property=True,
         # note: Listed Resource Type(s) should be allowed as Reference.
         enum_reference_types=["Location"],
+        backref="care_plan.activity.detail_location",
     )
 
     performer: typing.List[fhirtypes.ReferenceType] = Field(
@@ -789,6 +839,7 @@ class CarePlanActivityDetail(backboneelement.BackboneElement):
             "HealthcareService",
             "Device",
         ],
+        backref="care_plan.activity.detail_performer",
     )
 
     productCodeableConcept: fhirtypes.CodeableConceptType = Field(
@@ -797,13 +848,17 @@ class CarePlanActivityDetail(backboneelement.BackboneElement):
         title="What is to be administered/supplied",
         description=(
             "Identifies the food, drug or other product to be consumed or supplied "
-            "in the activity."
+            "in the activity. See http://hl7.org/fhir/ValueSet/medication-codes"
         ),
         # if property is element of this resource.
         element_property=True,
         # Choice of Data Types. i.e product[x]
         one_of_many="product",
         one_of_many_required=False,
+        # valueset binding
+        binding_description="A product supplied or administered as part of a care plan activity.",
+        binding_strength="example",
+        binding_uri="http://hl7.org/fhir/ValueSet/medication-codes",
     )
 
     productReference: fhirtypes.ReferenceType = Field(
@@ -812,15 +867,20 @@ class CarePlanActivityDetail(backboneelement.BackboneElement):
         title="What is to be administered/supplied",
         description=(
             "Identifies the food, drug or other product to be consumed or supplied "
-            "in the activity."
+            "in the activity. See http://hl7.org/fhir/ValueSet/medication-codes"
         ),
         # if property is element of this resource.
         element_property=True,
         # Choice of Data Types. i.e product[x]
         one_of_many="product",
         one_of_many_required=False,
+        # valueset binding
+        binding_description="A product supplied or administered as part of a care plan activity.",
+        binding_strength="example",
+        binding_uri="http://hl7.org/fhir/ValueSet/medication-codes",
         # note: Listed Resource Type(s) should be allowed as Reference.
         enum_reference_types=["Medication", "Substance"],
+        backref="care_plan.activity.detail_productReference",
     )
 
     quantity: fhirtypes.QuantityType = Field(
@@ -842,10 +902,14 @@ class CarePlanActivityDetail(backboneelement.BackboneElement):
         description=(
             "Provides the rationale that drove the inclusion of this particular "
             "activity as part of the plan or the reason why the activity was "
-            "prohibited."
+            "prohibited. See http://hl7.org/fhir/ValueSet/clinical-findings"
         ),
         # if property is element of this resource.
         element_property=True,
+        # valueset binding
+        binding_description='Identifies why a care plan activity is needed.  Can include any health condition codes as well as such concepts as "general wellness", prophylaxis, surgical preparation, etc.',
+        binding_strength="example",
+        binding_uri="http://hl7.org/fhir/ValueSet/clinical-findings",
     )
 
     reasonReference: typing.List[fhirtypes.ReferenceType] = Field(
@@ -866,6 +930,7 @@ class CarePlanActivityDetail(backboneelement.BackboneElement):
             "DiagnosticReport",
             "DocumentReference",
         ],
+        backref="care_plan.activity.detail_reasonReference",
     )
 
     scheduledPeriod: fhirtypes.PeriodType = Field(
@@ -923,7 +988,10 @@ class CarePlanActivityDetail(backboneelement.BackboneElement):
             "not-started | scheduled | in-progress | on-hold | completed | "
             "cancelled | stopped | unknown | entered-in-error"
         ),
-        description="Identifies what progress is being made for the specific activity.",
+        description=(
+            "Identifies what progress is being made for the specific activity. See "
+            "http://hl7.org/fhir/ValueSet/care-plan-activity-status"
+        ),
         # if property is element of this resource.
         element_property=True,
         element_required=True,
@@ -940,6 +1008,11 @@ class CarePlanActivityDetail(backboneelement.BackboneElement):
             "unknown",
             "entered-in-error",
         ],
+        # valueset binding
+        binding_description="Codes that reflect the current state of a care plan activity within its overall life cycle.",
+        binding_strength="required",
+        binding_uri="http://hl7.org/fhir/ValueSet/care-plan-activity-status",
+        binding_version="4.3.0",
     )
     status__ext: fhirtypes.FHIRPrimitiveExtensionType = Field(
         None, alias="_status", title="Extension field for ``status``."

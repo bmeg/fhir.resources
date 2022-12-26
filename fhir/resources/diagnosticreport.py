@@ -46,6 +46,7 @@ class DiagnosticReport(domainresource.DomainResource):
             "NutritionOrder",
             "ServiceRequest",
         ],
+        backref="diagnostic_report_basedOn",
     )
 
     category: typing.List[fhirtypes.CodeableConceptType] = Field(
@@ -56,19 +57,31 @@ class DiagnosticReport(domainresource.DomainResource):
             "A code that classifies the clinical discipline, department or "
             "diagnostic service that created the report (e.g. cardiology, "
             "biochemistry, hematology, MRI). This is used for searching, sorting "
-            "and display purposes."
+            "and display purposes. See http://hl7.org/fhir/ValueSet/diagnostic-"
+            "service-sections"
         ),
         # if property is element of this resource.
         element_property=True,
+        # valueset binding
+        binding_description="HL7 V2 table 0074",
+        binding_strength="example",
+        binding_uri="http://hl7.org/fhir/ValueSet/diagnostic-service-sections",
     )
 
     code: fhirtypes.CodeableConceptType = Field(
         ...,
         alias="code",
         title="Name/Code for this diagnostic report",
-        description="A code or name that describes this diagnostic report.",
+        description=(
+            "A code or name that describes this diagnostic report. See "
+            "http://hl7.org/fhir/ValueSet/report-codes"
+        ),
         # if property is element of this resource.
         element_property=True,
+        # valueset binding
+        binding_description="LOINC Codes for Diagnostic Reports",
+        binding_strength="preferred",
+        binding_uri="http://hl7.org/fhir/ValueSet/report-codes",
     )
 
     conclusion: fhirtypes.String = Field(
@@ -92,10 +105,15 @@ class DiagnosticReport(domainresource.DomainResource):
         title="Codes for the clinical conclusion of test results",
         description=(
             "One or more codes that represent the summary conclusion "
-            "(interpretation/impression) of the diagnostic report."
+            "(interpretation/impression) of the diagnostic report. See "
+            "http://hl7.org/fhir/ValueSet/clinical-findings"
         ),
         # if property is element of this resource.
         element_property=True,
+        # valueset binding
+        binding_description="SNOMED CT Clinical Findings",
+        binding_strength="example",
+        binding_uri="http://hl7.org/fhir/ValueSet/clinical-findings",
     )
 
     effectiveDateTime: fhirtypes.DateTime = Field(
@@ -149,6 +167,7 @@ class DiagnosticReport(domainresource.DomainResource):
         element_property=True,
         # note: Listed Resource Type(s) should be allowed as Reference.
         enum_reference_types=["Encounter"],
+        backref="diagnostic_report_encounter",
     )
 
     identifier: typing.List[fhirtypes.IdentifierType] = Field(
@@ -178,6 +197,7 @@ class DiagnosticReport(domainresource.DomainResource):
         element_property=True,
         # note: Listed Resource Type(s) should be allowed as Reference.
         enum_reference_types=["ImagingStudy"],
+        backref="diagnostic_report_imagingStudy",
     )
 
     issued: fhirtypes.Instant = Field(
@@ -222,6 +242,7 @@ class DiagnosticReport(domainresource.DomainResource):
             "Organization",
             "CareTeam",
         ],
+        backref="diagnostic_report_performer",
     )
 
     presentedForm: typing.List[fhirtypes.AttachmentType] = Field(
@@ -249,6 +270,7 @@ class DiagnosticReport(domainresource.DomainResource):
         element_property=True,
         # note: Listed Resource Type(s) should be allowed as Reference.
         enum_reference_types=["Observation"],
+        backref="diagnostic_report_result",
     )
 
     resultsInterpreter: typing.List[fhirtypes.ReferenceType] = Field(
@@ -268,6 +290,7 @@ class DiagnosticReport(domainresource.DomainResource):
             "Organization",
             "CareTeam",
         ],
+        backref="diagnostic_report_resultsInterpreter",
     )
 
     specimen: typing.List[fhirtypes.ReferenceType] = Field(
@@ -279,19 +302,28 @@ class DiagnosticReport(domainresource.DomainResource):
         element_property=True,
         # note: Listed Resource Type(s) should be allowed as Reference.
         enum_reference_types=["Specimen"],
+        backref="diagnostic_report_specimen",
     )
 
     status: fhirtypes.Code = Field(
         None,
         alias="status",
         title="registered | partial | preliminary | final +",
-        description="The status of the diagnostic report.",
+        description=(
+            "The status of the diagnostic report. See "
+            "http://hl7.org/fhir/ValueSet/diagnostic-report-status"
+        ),
         # if property is element of this resource.
         element_property=True,
         element_required=True,
         # note: Enum values can be used in validation,
         # but use in your own responsibilities, read official FHIR documentation.
         enum_values=["registered", "partial", "preliminary", "final", "+"],
+        # valueset binding
+        binding_description="The status of the diagnostic report.",
+        binding_strength="required",
+        binding_uri="http://hl7.org/fhir/ValueSet/diagnostic-report-status",
+        binding_version="4.3.0",
     )
     status__ext: fhirtypes.FHIRPrimitiveExtensionType = Field(
         None, alias="_status", title="Extension field for ``status``."
@@ -320,6 +352,7 @@ class DiagnosticReport(domainresource.DomainResource):
             "Medication",
             "Substance",
         ],
+        backref="diagnostic_report_subject",
     )
 
     @classmethod
@@ -494,6 +527,7 @@ class DiagnosticReportMedia(backboneelement.BackboneElement):
         element_property=True,
         # note: Listed Resource Type(s) should be allowed as Reference.
         enum_reference_types=["Media"],
+        backref="diagnostic_report.media_link",
     )
 
     @classmethod

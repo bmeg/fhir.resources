@@ -41,24 +41,36 @@ class ChargeItem(domainresource.DomainResource):
         element_property=True,
         # note: Listed Resource Type(s) should be allowed as Reference.
         enum_reference_types=["Account"],
+        backref="charge_item_account",
     )
 
     bodysite: typing.List[fhirtypes.CodeableConceptType] = Field(
         None,
         alias="bodysite",
         title="Anatomical location, if relevant",
-        description="The anatomical location where the related service has been applied.",
+        description=(
+            "The anatomical location where the related service has been applied. "
+            "See http://hl7.org/fhir/ValueSet/body-site"
+        ),
         # if property is element of this resource.
         element_property=True,
+        # valueset binding
+        binding_description="SNOMED CT Body site concepts",
+        binding_strength="example",
+        binding_uri="http://hl7.org/fhir/ValueSet/body-site",
     )
 
     code: fhirtypes.CodeableConceptType = Field(
         ...,
         alias="code",
         title="A code that identifies the charge, like a billing code",
-        description=None,
+        description="See http://hl7.org/fhir/ValueSet/chargeitem-billingcodes",
         # if property is element of this resource.
         element_property=True,
+        # valueset binding
+        binding_description="Example codes for billing purposes",
+        binding_strength="example",
+        binding_uri="http://hl7.org/fhir/ValueSet/chargeitem-billingcodes",
     )
 
     context: fhirtypes.ReferenceType = Field(
@@ -73,6 +85,7 @@ class ChargeItem(domainresource.DomainResource):
         element_property=True,
         # note: Listed Resource Type(s) should be allowed as Reference.
         enum_reference_types=["Encounter", "EpisodeOfCare"],
+        backref="charge_item_context",
     )
 
     costCenter: fhirtypes.ReferenceType = Field(
@@ -84,6 +97,7 @@ class ChargeItem(domainresource.DomainResource):
         element_property=True,
         # note: Listed Resource Type(s) should be allowed as Reference.
         enum_reference_types=["Organization"],
+        backref="charge_item_costCenter",
     )
 
     definitionCanonical: typing.List[typing.Optional[fhirtypes.Canonical]] = Field(
@@ -98,6 +112,7 @@ class ChargeItem(domainresource.DomainResource):
         element_property=True,
         # note: Listed Resource Type(s) should be allowed as Reference.
         enum_reference_types=["ChargeItemDefinition"],
+        backref="charge_item_definitionCanonical",
     )
     definitionCanonical__ext: typing.List[
         typing.Union[fhirtypes.FHIRPrimitiveExtensionType, None]
@@ -152,6 +167,7 @@ class ChargeItem(domainresource.DomainResource):
             "Device",
             "RelatedPerson",
         ],
+        backref="charge_item_enterer",
     )
 
     factorOverride: fhirtypes.Decimal = Field(
@@ -259,6 +275,7 @@ class ChargeItem(domainresource.DomainResource):
         element_property=True,
         # note: Listed Resource Type(s) should be allowed as Reference.
         enum_reference_types=["ChargeItem"],
+        backref="charge_item_partOf",
     )
 
     performer: typing.List[fhirtypes.ChargeItemPerformerType] = Field(
@@ -281,6 +298,7 @@ class ChargeItem(domainresource.DomainResource):
         element_property=True,
         # note: Listed Resource Type(s) should be allowed as Reference.
         enum_reference_types=["Organization"],
+        backref="charge_item_performingOrganization",
     )
 
     priceOverride: fhirtypes.MoneyType = Field(
@@ -301,13 +319,18 @@ class ChargeItem(domainresource.DomainResource):
         title="Product charged",
         description=(
             "Identifies the device, food, drug or other product being charged "
-            "either by type code or reference to an instance."
+            "either by type code or reference to an instance. See "
+            "http://hl7.org/fhir/ValueSet/device-kind"
         ),
         # if property is element of this resource.
         element_property=True,
         # Choice of Data Types. i.e product[x]
         one_of_many="product",
         one_of_many_required=False,
+        # valueset binding
+        binding_description="Example binding for product type.",
+        binding_strength="example",
+        binding_uri="http://hl7.org/fhir/ValueSet/device-kind",
     )
 
     productReference: fhirtypes.ReferenceType = Field(
@@ -316,15 +339,21 @@ class ChargeItem(domainresource.DomainResource):
         title="Product charged",
         description=(
             "Identifies the device, food, drug or other product being charged "
-            "either by type code or reference to an instance."
+            "either by type code or reference to an instance. See "
+            "http://hl7.org/fhir/ValueSet/device-kind"
         ),
         # if property is element of this resource.
         element_property=True,
         # Choice of Data Types. i.e product[x]
         one_of_many="product",
         one_of_many_required=False,
+        # valueset binding
+        binding_description="Example binding for product type.",
+        binding_strength="example",
+        binding_uri="http://hl7.org/fhir/ValueSet/device-kind",
         # note: Listed Resource Type(s) should be allowed as Reference.
         enum_reference_types=["Device", "Medication", "Substance"],
+        backref="charge_item_productReference",
     )
 
     quantity: fhirtypes.QuantityType = Field(
@@ -340,9 +369,16 @@ class ChargeItem(domainresource.DomainResource):
         None,
         alias="reason",
         title="Why was the charged  service rendered?",
-        description="Describes why the event occurred in coded or textual form.",
+        description=(
+            "Describes why the event occurred in coded or textual form. See "
+            "http://hl7.org/fhir/ValueSet/icd-10"
+        ),
         # if property is element of this resource.
         element_property=True,
+        # valueset binding
+        binding_description="ICD 10 diagnosis codes",
+        binding_strength="example",
+        binding_uri="http://hl7.org/fhir/ValueSet/icd-10",
     )
 
     requestingOrganization: fhirtypes.ReferenceType = Field(
@@ -354,6 +390,7 @@ class ChargeItem(domainresource.DomainResource):
         element_property=True,
         # note: Listed Resource Type(s) should be allowed as Reference.
         enum_reference_types=["Organization"],
+        backref="charge_item_requestingOrganization",
     )
 
     service: typing.List[fhirtypes.ReferenceType] = Field(
@@ -374,6 +411,7 @@ class ChargeItem(domainresource.DomainResource):
             "Procedure",
             "SupplyDelivery",
         ],
+        backref="charge_item_service",
     )
 
     status: fhirtypes.Code = Field(
@@ -383,7 +421,10 @@ class ChargeItem(domainresource.DomainResource):
             "planned | billable | not-billable | aborted | billed | entered-in-"
             "error | unknown"
         ),
-        description="The current state of the ChargeItem.",
+        description=(
+            "The current state of the ChargeItem. See "
+            "http://hl7.org/fhir/ValueSet/chargeitem-status"
+        ),
         # if property is element of this resource.
         element_property=True,
         element_required=True,
@@ -398,6 +439,11 @@ class ChargeItem(domainresource.DomainResource):
             "entered-in-error",
             "unknown",
         ],
+        # valueset binding
+        binding_description="Codes identifying the lifecycle stage of a ChargeItem.",
+        binding_strength="required",
+        binding_uri="http://hl7.org/fhir/ValueSet/chargeitem-status",
+        binding_version="4.3.0",
     )
     status__ext: fhirtypes.FHIRPrimitiveExtensionType = Field(
         None, alias="_status", title="Extension field for ``status``."
@@ -415,6 +461,7 @@ class ChargeItem(domainresource.DomainResource):
         element_property=True,
         # note: Listed Resource Type(s) should be allowed as Reference.
         enum_reference_types=["Patient", "Group"],
+        backref="charge_item_subject",
     )
 
     supportingInformation: typing.List[fhirtypes.ReferenceType] = Field(
@@ -426,6 +473,7 @@ class ChargeItem(domainresource.DomainResource):
         element_property=True,
         # note: Listed Resource Type(s) should be allowed as Reference.
         enum_reference_types=["Resource"],
+        backref="charge_item_supportingInformation",
     )
 
     @classmethod
@@ -610,6 +658,7 @@ class ChargeItemPerformer(backboneelement.BackboneElement):
             "Device",
             "RelatedPerson",
         ],
+        backref="charge_item.performer_actor",
     )
 
     function: fhirtypes.CodeableConceptType = Field(
@@ -618,10 +667,15 @@ class ChargeItemPerformer(backboneelement.BackboneElement):
         title="What type of performance was done",
         description=(
             "Describes the type of performance or participation(e.g. primary "
-            "surgeon, anesthesiologiest, etc.)."
+            "surgeon, anesthesiologiest, etc.). See "
+            "http://hl7.org/fhir/ValueSet/performer-role"
         ),
         # if property is element of this resource.
         element_property=True,
+        # valueset binding
+        binding_description="Codes describing the types of functional roles performers can take on when performing events.",
+        binding_strength="example",
+        binding_uri="http://hl7.org/fhir/ValueSet/performer-role",
     )
 
     @classmethod

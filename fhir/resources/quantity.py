@@ -47,13 +47,19 @@ class Quantity(element.Element):
             "How the value should be understood and represented - whether the "
             "actual value is greater or less than the stated value due to "
             'measurement issues; e.g. if the comparator is "<" , then the real '
-            "value is < stated value."
+            "value is < stated value. See http://hl7.org/fhir/ValueSet/quantity-"
+            "comparator See http://hl7.org/fhir/ValueSet/quantity-comparator See "
+            "http://hl7.org/fhir/ValueSet/quantity-comparator"
         ),
         # if property is element of this resource.
         element_property=True,
         # note: Enum values can be used in validation,
         # but use in your own responsibilities, read official FHIR documentation.
         enum_values=["\u003c", "\u003c=", "\u003e=", "\u003e"],
+        # valueset binding
+        binding_strength="required",
+        binding_uri="http://hl7.org/fhir/ValueSet/quantity-comparator",
+        binding_version="4.3.0",
     )
     comparator__ext: fhirtypes.FHIRPrimitiveExtensionType = Field(
         None, alias="_comparator", title="Extension field for ``comparator``."

@@ -144,13 +144,18 @@ class Address(element.Element):
         description=(
             "Distinguishes between physical addresses (those you can visit) and "
             "mailing addresses (e.g. PO Boxes and care-of addresses). Most "
-            "addresses are both."
+            "addresses are both. See http://hl7.org/fhir/ValueSet/address-type"
         ),
         # if property is element of this resource.
         element_property=True,
         # note: Enum values can be used in validation,
         # but use in your own responsibilities, read official FHIR documentation.
         enum_values=["postal", "physical", "both"],
+        # valueset binding
+        binding_description="The type of an address (physical / postal).",
+        binding_strength="required",
+        binding_uri="http://hl7.org/fhir/ValueSet/address-type",
+        binding_version="4.3.0",
     )
     type__ext: fhirtypes.FHIRPrimitiveExtensionType = Field(
         None, alias="_type", title="Extension field for ``type``."
@@ -160,12 +165,20 @@ class Address(element.Element):
         None,
         alias="use",
         title="home | work | temp | old | billing - purpose of this address",
-        description="The purpose of this address.",
+        description=(
+            "The purpose of this address. See http://hl7.org/fhir/ValueSet/address-"
+            "use"
+        ),
         # if property is element of this resource.
         element_property=True,
         # note: Enum values can be used in validation,
         # but use in your own responsibilities, read official FHIR documentation.
         enum_values=["home", "work", "temp", "old", "billing"],
+        # valueset binding
+        binding_description="The use of an address (home / work / etc.).",
+        binding_strength="required",
+        binding_uri="http://hl7.org/fhir/ValueSet/address-use",
+        binding_version="4.3.0",
     )
     use__ext: fhirtypes.FHIRPrimitiveExtensionType = Field(
         None, alias="_use", title="Extension field for ``use``."

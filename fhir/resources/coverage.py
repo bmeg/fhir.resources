@@ -39,6 +39,7 @@ class Coverage(domainresource.DomainResource):
         element_property=True,
         # note: Listed Resource Type(s) should be allowed as Reference.
         enum_reference_types=["Patient"],
+        backref="coverage_beneficiary",
     )
 
     class_fhir: typing.List[fhirtypes.CoverageClassType] = Field(
@@ -59,6 +60,7 @@ class Coverage(domainresource.DomainResource):
         element_property=True,
         # note: Listed Resource Type(s) should be allowed as Reference.
         enum_reference_types=["Contract"],
+        backref="coverage_contract",
     )
 
     costToBeneficiary: typing.List[fhirtypes.CoverageCostToBeneficiaryType] = Field(
@@ -141,6 +143,7 @@ class Coverage(domainresource.DomainResource):
         element_property=True,
         # note: Listed Resource Type(s) should be allowed as Reference.
         enum_reference_types=["Organization", "Patient", "RelatedPerson"],
+        backref="coverage_payor",
     )
 
     period: fhirtypes.PeriodType = Field(
@@ -165,28 +168,44 @@ class Coverage(domainresource.DomainResource):
         element_property=True,
         # note: Listed Resource Type(s) should be allowed as Reference.
         enum_reference_types=["Patient", "RelatedPerson", "Organization"],
+        backref="coverage_policyHolder",
     )
 
     relationship: fhirtypes.CodeableConceptType = Field(
         None,
         alias="relationship",
         title="Beneficiary relationship to the subscriber",
-        description="The relationship of beneficiary (patient) to the subscriber.",
+        description=(
+            "The relationship of beneficiary (patient) to the subscriber. See "
+            "http://hl7.org/fhir/ValueSet/subscriber-relationship"
+        ),
         # if property is element of this resource.
         element_property=True,
+        # valueset binding
+        binding_description="The relationship between the Subscriber and the Beneficiary (insured/covered party/patient).",
+        binding_strength="extensible",
+        binding_uri="http://hl7.org/fhir/ValueSet/subscriber-relationship",
     )
 
     status: fhirtypes.Code = Field(
         None,
         alias="status",
         title="active | cancelled | draft | entered-in-error",
-        description="The status of the resource instance.",
+        description=(
+            "The status of the resource instance. See "
+            "http://hl7.org/fhir/ValueSet/fm-status"
+        ),
         # if property is element of this resource.
         element_property=True,
         element_required=True,
         # note: Enum values can be used in validation,
         # but use in your own responsibilities, read official FHIR documentation.
         enum_values=["active", "cancelled", "draft", "entered-in-error"],
+        # valueset binding
+        binding_description="A code specifying the state of the resource instance.",
+        binding_strength="required",
+        binding_uri="http://hl7.org/fhir/ValueSet/fm-status",
+        binding_version="4.3.0",
     )
     status__ext: fhirtypes.FHIRPrimitiveExtensionType = Field(
         None, alias="_status", title="Extension field for ``status``."
@@ -221,6 +240,7 @@ class Coverage(domainresource.DomainResource):
         element_property=True,
         # note: Listed Resource Type(s) should be allowed as Reference.
         enum_reference_types=["Patient", "RelatedPerson"],
+        backref="coverage_subscriber",
     )
 
     subscriberId: fhirtypes.String = Field(
@@ -242,10 +262,14 @@ class Coverage(domainresource.DomainResource):
         description=(
             "The type of coverage: social program, medical plan, accident coverage "
             "(workers compensation, auto), group health or payment by an individual"
-            " or organization."
+            " or organization. See http://hl7.org/fhir/ValueSet/coverage-type"
         ),
         # if property is element of this resource.
         element_property=True,
+        # valueset binding
+        binding_description="The type of insurance: public health, worker compensation; private accident, auto, private health, etc.) or a direct payment by an individual or organization.",
+        binding_strength="preferred",
+        binding_uri="http://hl7.org/fhir/ValueSet/coverage-type",
     )
 
     @classmethod
@@ -372,10 +396,15 @@ class CoverageClass(backboneelement.BackboneElement):
         description=(
             "The type of classification for which an insurer-specific class label "
             "or number and optional name is provided, for example may be used to "
-            "identify a class of coverage or employer group, Policy, Plan."
+            "identify a class of coverage or employer group, Policy, Plan. See "
+            "http://hl7.org/fhir/ValueSet/coverage-class"
         ),
         # if property is element of this resource.
         element_property=True,
+        # valueset binding
+        binding_description="The policy classifications, eg. Group, Plan, Class, etc.",
+        binding_strength="extensible",
+        binding_uri="http://hl7.org/fhir/ValueSet/coverage-class",
     )
 
     value: fhirtypes.String = Field(
@@ -490,9 +519,16 @@ class CoverageCostToBeneficiary(backboneelement.BackboneElement):
         None,
         alias="type",
         title="Cost category",
-        description="The category of patient centric costs associated with treatment.",
+        description=(
+            "The category of patient centric costs associated with treatment. See "
+            "http://hl7.org/fhir/ValueSet/coverage-copay-type"
+        ),
         # if property is element of this resource.
         element_property=True,
+        # valueset binding
+        binding_description="The types of services to which patient copayments are specified.",
+        binding_strength="extensible",
+        binding_uri="http://hl7.org/fhir/ValueSet/coverage-copay-type",
     )
 
     valueMoney: fhirtypes.MoneyType = Field(
@@ -599,9 +635,16 @@ class CoverageCostToBeneficiaryException(backboneelement.BackboneElement):
         ...,
         alias="type",
         title="Exception category",
-        description="The code for the specific exception.",
+        description=(
+            "The code for the specific exception. See "
+            "http://hl7.org/fhir/ValueSet/coverage-financial-exception"
+        ),
         # if property is element of this resource.
         element_property=True,
+        # valueset binding
+        binding_description="The types of exceptions from the part or full value of financial obligations such as copays.",
+        binding_strength="example",
+        binding_uri="http://hl7.org/fhir/ValueSet/coverage-financial-exception",
     )
 
     @classmethod

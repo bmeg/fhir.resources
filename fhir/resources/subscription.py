@@ -116,7 +116,8 @@ class Subscription(domainresource.DomainResource):
         title="requested | active | error | off",
         description=(
             "The status of the subscription, which marks the server state for "
-            "managing the subscription."
+            "managing the subscription. See "
+            "http://hl7.org/fhir/ValueSet/subscription-status"
         ),
         # if property is element of this resource.
         element_property=True,
@@ -124,6 +125,11 @@ class Subscription(domainresource.DomainResource):
         # note: Enum values can be used in validation,
         # but use in your own responsibilities, read official FHIR documentation.
         enum_values=["requested", "active", "error", "off"],
+        # valueset binding
+        binding_description="The status of a subscription.",
+        binding_strength="required",
+        binding_uri="http://hl7.org/fhir/ValueSet/subscription-status",
+        binding_version="4.3.0",
     )
     status__ext: fhirtypes.FHIRPrimitiveExtensionType = Field(
         None, alias="_status", title="Extension field for ``status``."
@@ -261,10 +267,16 @@ class SubscriptionChannel(backboneelement.BackboneElement):
             "The mime type to send the payload in - either application/fhir+xml, or"
             " application/fhir+json. If the payload is not present, then there is "
             "no payload in the notification, just a notification. The mime type "
-            '"text/plain" may also be used for Email and SMS subscriptions.'
+            '"text/plain" may also be used for Email and SMS subscriptions. See '
+            "http://hl7.org/fhir/ValueSet/mimetypes"
         ),
         # if property is element of this resource.
         element_property=True,
+        # valueset binding
+        binding_description="BCP 13 (RFCs 2045, 2046, 2047, 4288, 4289 and 2049)",
+        binding_strength="required",
+        binding_uri="http://hl7.org/fhir/ValueSet/mimetypes",
+        binding_version="4.3.0",
     )
     payload__ext: fhirtypes.FHIRPrimitiveExtensionType = Field(
         None, alias="_payload", title="Extension field for ``payload``."
@@ -274,13 +286,21 @@ class SubscriptionChannel(backboneelement.BackboneElement):
         None,
         alias="type",
         title="rest-hook | websocket | email | sms | message",
-        description="The type of channel to send notifications on.",
+        description=(
+            "The type of channel to send notifications on. See "
+            "http://hl7.org/fhir/ValueSet/subscription-channel-type"
+        ),
         # if property is element of this resource.
         element_property=True,
         element_required=True,
         # note: Enum values can be used in validation,
         # but use in your own responsibilities, read official FHIR documentation.
         enum_values=["rest-hook", "websocket", "email", "sms", "message"],
+        # valueset binding
+        binding_description="The type of method used to execute a subscription.",
+        binding_strength="required",
+        binding_uri="http://hl7.org/fhir/ValueSet/subscription-channel-type",
+        binding_version="4.3.0",
     )
     type__ext: fhirtypes.FHIRPrimitiveExtensionType = Field(
         None, alias="_type", title="Extension field for ``type``."

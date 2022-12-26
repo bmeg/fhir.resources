@@ -42,10 +42,15 @@ class Provenance(domainresource.DomainResource):
         description=(
             "An activity is something that occurs over a period of time and acts "
             "upon or with entities; it may include consuming, processing, "
-            "transforming, modifying, relocating, using, or generating entities."
+            "transforming, modifying, relocating, using, or generating entities. "
+            "See http://hl7.org/fhir/ValueSet/provenance-activity-type"
         ),
         # if property is element of this resource.
         element_property=True,
+        # valueset binding
+        binding_description="The activity that took place.",
+        binding_strength="extensible",
+        binding_uri="http://hl7.org/fhir/ValueSet/provenance-activity-type",
     )
 
     agent: typing.List[fhirtypes.ProvenanceAgentType] = Field(
@@ -78,6 +83,7 @@ class Provenance(domainresource.DomainResource):
         element_property=True,
         # note: Listed Resource Type(s) should be allowed as Reference.
         enum_reference_types=["Location"],
+        backref="provenance_location",
     )
 
     occurredDateTime: fhirtypes.DateTime = Field(
@@ -129,9 +135,16 @@ class Provenance(domainresource.DomainResource):
         None,
         alias="reason",
         title="Reason the activity is occurring",
-        description="The reason that the activity was taking place.",
+        description=(
+            "The reason that the activity was taking place. See "
+            "http://terminology.hl7.org/ValueSet/v3-PurposeOfUse"
+        ),
         # if property is element of this resource.
         element_property=True,
+        # valueset binding
+        binding_description="The reason the activity took place.",
+        binding_strength="extensible",
+        binding_uri="http://terminology.hl7.org/ValueSet/v3-PurposeOfUse",
     )
 
     recorded: fhirtypes.Instant = Field(
@@ -173,6 +186,7 @@ class Provenance(domainresource.DomainResource):
         element_property=True,
         # note: Listed Resource Type(s) should be allowed as Reference.
         enum_reference_types=["Resource"],
+        backref="provenance_target",
     )
 
     @classmethod
@@ -329,6 +343,7 @@ class ProvenanceAgent(backboneelement.BackboneElement):
             "Device",
             "Organization",
         ],
+        backref="provenance.agent_onBehalfOf",
     )
 
     role: typing.List[fhirtypes.CodeableConceptType] = Field(
@@ -337,19 +352,31 @@ class ProvenanceAgent(backboneelement.BackboneElement):
         title="What the agents role was",
         description=(
             "The function of the agent with respect to the activity. The security "
-            "role enabling the agent with respect to the activity."
+            "role enabling the agent with respect to the activity. See "
+            "http://hl7.org/fhir/ValueSet/security-role-type"
         ),
         # if property is element of this resource.
         element_property=True,
+        # valueset binding
+        binding_description="The role that a provenance agent played with respect to the activity.",
+        binding_strength="example",
+        binding_uri="http://hl7.org/fhir/ValueSet/security-role-type",
     )
 
     type: fhirtypes.CodeableConceptType = Field(
         None,
         alias="type",
         title="How the agent participated",
-        description="The participation the agent had with respect to the activity.",
+        description=(
+            "The participation the agent had with respect to the activity. See "
+            "http://hl7.org/fhir/ValueSet/provenance-agent-type"
+        ),
         # if property is element of this resource.
         element_property=True,
+        # valueset binding
+        binding_description="The type of participation that a provenance agent played with respect to the activity.",
+        binding_strength="extensible",
+        binding_uri="http://hl7.org/fhir/ValueSet/provenance-agent-type",
     )
 
     who: fhirtypes.ReferenceType = Field(
@@ -368,6 +395,7 @@ class ProvenanceAgent(backboneelement.BackboneElement):
             "Device",
             "Organization",
         ],
+        backref="provenance.agent_who",
     )
 
     @classmethod
@@ -415,13 +443,21 @@ class ProvenanceEntity(backboneelement.BackboneElement):
         None,
         alias="role",
         title="derivation | revision | quotation | source | removal",
-        description="How the entity was used during the activity.",
+        description=(
+            "How the entity was used during the activity. See "
+            "http://hl7.org/fhir/ValueSet/provenance-entity-role"
+        ),
         # if property is element of this resource.
         element_property=True,
         element_required=True,
         # note: Enum values can be used in validation,
         # but use in your own responsibilities, read official FHIR documentation.
         enum_values=["derivation", "revision", "quotation", "source", "removal"],
+        # valueset binding
+        binding_description="How an entity was used in an activity.",
+        binding_strength="required",
+        binding_uri="http://hl7.org/fhir/ValueSet/provenance-entity-role",
+        binding_version="4.3.0",
     )
     role__ext: fhirtypes.FHIRPrimitiveExtensionType = Field(
         None, alias="_role", title="Extension field for ``role``."
@@ -439,6 +475,7 @@ class ProvenanceEntity(backboneelement.BackboneElement):
         element_property=True,
         # note: Listed Resource Type(s) should be allowed as Reference.
         enum_reference_types=["Resource"],
+        backref="provenance.entity_what",
     )
 
     @classmethod

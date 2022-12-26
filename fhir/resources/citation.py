@@ -105,9 +105,12 @@ class Citation(domainresource.DomainResource):
         None,
         alias="currentState",
         title="The status of the citation",
-        description=None,
+        description="See http://hl7.org/fhir/ValueSet/citation-status-type",
         # if property is element of this resource.
         element_property=True,
+        # valueset binding
+        binding_strength="example",
+        binding_uri="http://hl7.org/fhir/ValueSet/citation-status-type",
     )
 
     date: fhirtypes.DateTime = Field(
@@ -207,10 +210,13 @@ class Citation(domainresource.DomainResource):
         title="Intended jurisdiction for citation (if applicable)",
         description=(
             "A legal or geographic region in which the citation is intended to be "
-            "used."
+            "used. See http://hl7.org/fhir/ValueSet/jurisdiction"
         ),
         # if property is element of this resource.
         element_property=True,
+        # valueset binding
+        binding_strength="extensible",
+        binding_uri="http://hl7.org/fhir/ValueSet/jurisdiction",
     )
 
     lastReviewDate: fhirtypes.Date = Field(
@@ -310,7 +316,7 @@ class Citation(domainresource.DomainResource):
         title="draft | active | retired | unknown",
         description=(
             "The status of this summary. Enables tracking the life-cycle of the "
-            "content."
+            "content. See http://hl7.org/fhir/ValueSet/publication-status"
         ),
         # if property is element of this resource.
         element_property=True,
@@ -318,6 +324,10 @@ class Citation(domainresource.DomainResource):
         # note: Enum values can be used in validation,
         # but use in your own responsibilities, read official FHIR documentation.
         enum_values=["draft", "active", "retired", "unknown"],
+        # valueset binding
+        binding_strength="required",
+        binding_uri="http://hl7.org/fhir/ValueSet/publication-status",
+        binding_version="4.3.0",
     )
     status__ext: fhirtypes.FHIRPrimitiveExtensionType = Field(
         None, alias="_status", title="Extension field for ``status``."
@@ -563,9 +573,12 @@ class CitationCitedArtifact(backboneelement.BackboneElement):
         None,
         alias="currentState",
         title="The status of the cited artifact",
-        description=None,
+        description="See http://hl7.org/fhir/ValueSet/cited-artifact-status-type",
         # if property is element of this resource.
         element_property=True,
+        # valueset binding
+        binding_strength="extensible",
+        binding_uri="http://hl7.org/fhir/ValueSet/cited-artifact-status-type",
     )
 
     dateAccessed: fhirtypes.DateTime = Field(
@@ -736,9 +749,12 @@ class CitationCitedArtifactAbstract(backboneelement.BackboneElement):
         None,
         alias="language",
         title="Used to express the specific language",
-        description=None,
+        description="See http://hl7.org/fhir/ValueSet/languages",
         # if property is element of this resource.
         element_property=True,
+        # valueset binding
+        binding_strength="preferred",
+        binding_uri="http://hl7.org/fhir/ValueSet/languages",
     )
 
     text: fhirtypes.Markdown = Field(
@@ -758,9 +774,15 @@ class CitationCitedArtifactAbstract(backboneelement.BackboneElement):
         None,
         alias="type",
         title="The kind of abstract",
-        description="Used to express the reason or specific aspect for the abstract.",
+        description=(
+            "Used to express the reason or specific aspect for the abstract. See "
+            "http://hl7.org/fhir/ValueSet/cited-artifact-abstract-type"
+        ),
         # if property is element of this resource.
         element_property=True,
+        # valueset binding
+        binding_strength="extensible",
+        binding_uri="http://hl7.org/fhir/ValueSet/cited-artifact-abstract-type",
     )
 
     @classmethod
@@ -853,18 +875,24 @@ class CitationCitedArtifactClassification(backboneelement.BackboneElement):
         None,
         alias="classifier",
         title="The specific classification value",
-        description=None,
+        description="See http://hl7.org/fhir/ValueSet/citation-artifact-classifier",
         # if property is element of this resource.
         element_property=True,
+        # valueset binding
+        binding_strength="example",
+        binding_uri="http://hl7.org/fhir/ValueSet/citation-artifact-classifier",
     )
 
     type: fhirtypes.CodeableConceptType = Field(
         None,
         alias="type",
         title="The kind of classifier (e.g. publication type, keyword)",
-        description=None,
+        description="See http://hl7.org/fhir/ValueSet/cited-artifact-classification-type",
         # if property is element of this resource.
         element_property=True,
+        # valueset binding
+        binding_strength="extensible",
+        binding_uri="http://hl7.org/fhir/ValueSet/cited-artifact-classification-type",
     )
 
     whoClassified: fhirtypes.CitationCitedArtifactClassificationWhoClassifiedType = Field(
@@ -939,6 +967,7 @@ class CitationCitedArtifactClassificationWhoClassified(backboneelement.BackboneE
         element_property=True,
         # note: Listed Resource Type(s) should be allowed as Reference.
         enum_reference_types=["Organization"],
+        backref="citation.cited_artifact.classification.who_classified_organization",
     )
 
     person: fhirtypes.ReferenceType = Field(
@@ -950,6 +979,7 @@ class CitationCitedArtifactClassificationWhoClassified(backboneelement.BackboneE
         element_property=True,
         # note: Listed Resource Type(s) should be allowed as Reference.
         enum_reference_types=["Person", "Practitioner"],
+        backref="citation.cited_artifact.classification.who_classified_person",
     )
 
     publisher: fhirtypes.ReferenceType = Field(
@@ -964,6 +994,7 @@ class CitationCitedArtifactClassificationWhoClassified(backboneelement.BackboneE
         element_property=True,
         # note: Listed Resource Type(s) should be allowed as Reference.
         enum_reference_types=["Organization"],
+        backref="citation.cited_artifact.classification.who_classified_publisher",
     )
 
     @classmethod
@@ -1100,10 +1131,14 @@ class CitationCitedArtifactContributorshipEntry(backboneelement.BackboneElement)
         title="The specific contribution",
         description=(
             "This element identifies the specific nature of an individual\u2019s "
-            "contribution with respect to the cited work."
+            "contribution with respect to the cited work. See "
+            "http://hl7.org/fhir/ValueSet/artifact-contribution-type"
         ),
         # if property is element of this resource.
         element_property=True,
+        # valueset binding
+        binding_strength="extensible",
+        binding_uri="http://hl7.org/fhir/ValueSet/artifact-contribution-type",
     )
 
     correspondingContact: bool = Field(
@@ -1169,9 +1204,12 @@ class CitationCitedArtifactContributorshipEntry(backboneelement.BackboneElement)
         None,
         alias="role",
         title="The role of the contributor (e.g. author, editor, reviewer)",
-        description=None,
+        description="See http://hl7.org/fhir/ValueSet/contributor-role",
         # if property is element of this resource.
         element_property=True,
+        # valueset binding
+        binding_strength="extensible",
+        binding_uri="http://hl7.org/fhir/ValueSet/contributor-role",
     )
 
     telecom: typing.List[fhirtypes.ContactPointType] = Field(
@@ -1302,16 +1340,18 @@ class CitationCitedArtifactContributorshipEntryContributionInstance(
         ...,
         alias="type",
         title="The specific contribution",
-        description=None,
+        description="See http://hl7.org/fhir/ValueSet/artifact-contribution-instance-type",
         # if property is element of this resource.
         element_property=True,
+        # valueset binding
+        binding_strength="extensible",
+        binding_uri="http://hl7.org/fhir/ValueSet/artifact-contribution-instance-type",
     )
 
     @classmethod
     def elements_sequence(cls):
         """returning all elements names from
-        ``CitationCitedArtifactContributorship
-        EntryContributionInstance`` according specification,
+        ``CitationCitedArtifactContributorshipEntryContributionInstance`` according specification,
         with preserving original sequence order.
         """
         return ["id", "extension", "modifierExtension", "type", "time"]
@@ -1332,18 +1372,24 @@ class CitationCitedArtifactContributorshipSummary(backboneelement.BackboneElemen
         None,
         alias="source",
         title="Used to code the producer or rule for creating the display string",
-        description=None,
+        description="See http://hl7.org/fhir/ValueSet/contributor-summary-source",
         # if property is element of this resource.
         element_property=True,
+        # valueset binding
+        binding_strength="extensible",
+        binding_uri="http://hl7.org/fhir/ValueSet/contributor-summary-source",
     )
 
     style: fhirtypes.CodeableConceptType = Field(
         None,
         alias="style",
         title="The format for the display string",
-        description=None,
+        description="See http://hl7.org/fhir/ValueSet/contributor-summary-style",
         # if property is element of this resource.
         element_property=True,
+        # valueset binding
+        binding_strength="extensible",
+        binding_uri="http://hl7.org/fhir/ValueSet/contributor-summary-style",
     )
 
     type: fhirtypes.CodeableConceptType = Field(
@@ -1352,10 +1398,13 @@ class CitationCitedArtifactContributorshipSummary(backboneelement.BackboneElemen
         title="Either authorList or contributorshipStatement",
         description=(
             "Used most commonly to express an author list or a contributorship "
-            "statement."
+            "statement. See http://hl7.org/fhir/ValueSet/contributor-summary-type"
         ),
         # if property is element of this resource.
         element_property=True,
+        # valueset binding
+        binding_strength="extensible",
+        binding_uri="http://hl7.org/fhir/ValueSet/contributor-summary-type",
     )
 
     value: fhirtypes.Markdown = Field(
@@ -1469,15 +1518,19 @@ class CitationCitedArtifactPart(backboneelement.BackboneElement):
         element_property=True,
         # note: Listed Resource Type(s) should be allowed as Reference.
         enum_reference_types=["Citation"],
+        backref="citation.cited_artifact.part_baseCitation",
     )
 
     type: fhirtypes.CodeableConceptType = Field(
         None,
         alias="type",
         title="The kind of component",
-        description=None,
+        description="See http://hl7.org/fhir/ValueSet/cited-artifact-part-type",
         # if property is element of this resource.
         element_property=True,
+        # valueset binding
+        binding_strength="extensible",
+        binding_uri="http://hl7.org/fhir/ValueSet/cited-artifact-part-type",
     )
 
     value: fhirtypes.String = Field(
@@ -1571,9 +1624,12 @@ class CitationCitedArtifactPublicationForm(backboneelement.BackboneElement):
         None,
         alias="language",
         title="Language in which this form of the article is published",
-        description=None,
+        description="See http://hl7.org/fhir/ValueSet/languages",
         # if property is element of this resource.
         element_property=True,
+        # valueset binding
+        binding_strength="preferred",
+        binding_uri="http://hl7.org/fhir/ValueSet/languages",
     )
 
     lastPage: fhirtypes.String = Field(
@@ -1688,13 +1744,16 @@ class CitationCitedArtifactPublicationFormPeriodicRelease(
         title="Internet or Print",
         description=(
             'Describes the form of the medium cited. Common codes are "Internet" or'
-            ' "Print".'
+            ' "Print". See http://hl7.org/fhir/ValueSet/cited-medium'
         ),
         # if property is element of this resource.
         element_property=True,
+        # valueset binding
+        binding_strength="extensible",
+        binding_uri="http://hl7.org/fhir/ValueSet/cited-medium",
     )
 
-    dateOfPublication: fhirtypes.CitationCitedArtifactPublicationFormPeriodicReleaseDateOfPublicationType = Field(  # noqa: B950
+    dateOfPublication: fhirtypes.CitationCitedArtifactPublicationFormPeriodicReleaseDateOfPublicationType = Field(
         None,
         alias="dateOfPublication",
         title="Defining the date on which the issue of the journal was published",
@@ -1837,8 +1896,7 @@ class CitationCitedArtifactPublicationFormPeriodicReleaseDateOfPublication(
     @classmethod
     def elements_sequence(cls):
         """returning all elements names from
-        ``CitationCitedArtifactPublication
-        FormPeriodicReleaseDateOfPublication`` according specification,
+        ``CitationCitedArtifactPublicationFormPeriodicReleaseDateOfPublication`` according specification,
         with preserving original sequence order.
         """
         return [
@@ -1885,6 +1943,7 @@ class CitationCitedArtifactPublicationFormPublishedIn(backboneelement.BackboneEl
         element_property=True,
         # note: Listed Resource Type(s) should be allowed as Reference.
         enum_reference_types=["Organization"],
+        backref="citation.cited_artifact.publication_form.published_in_publisher",
     )
 
     publisherLocation: fhirtypes.String = Field(
@@ -1917,9 +1976,12 @@ class CitationCitedArtifactPublicationFormPublishedIn(backboneelement.BackboneEl
         None,
         alias="type",
         title="Kind of container (e.g. Periodical, database, or book)",
-        description=None,
+        description="See http://hl7.org/fhir/ValueSet/published-in-type",
         # if property is element of this resource.
         element_property=True,
+        # valueset binding
+        binding_strength="extensible",
+        binding_uri="http://hl7.org/fhir/ValueSet/published-in-type",
     )
 
     @classmethod
@@ -1954,9 +2016,12 @@ class CitationCitedArtifactRelatesTo(backboneelement.BackboneElement):
         ...,
         alias="relationshipType",
         title="How the cited artifact relates to the target artifact",
-        description=None,
+        description="See http://hl7.org/fhir/ValueSet/artifact-relationship-type",
         # if property is element of this resource.
         element_property=True,
+        # valueset binding
+        binding_strength="extensible",
+        binding_uri="http://hl7.org/fhir/ValueSet/artifact-relationship-type",
     )
 
     targetAttachment: fhirtypes.AttachmentType = Field(
@@ -1975,9 +2040,12 @@ class CitationCitedArtifactRelatesTo(backboneelement.BackboneElement):
         None,
         alias="targetClassifier",
         title="The clasification of the related artifact",
-        description=None,
+        description="See http://hl7.org/fhir/ValueSet/citation-artifact-classifier",
         # if property is element of this resource.
         element_property=True,
+        # valueset binding
+        binding_strength="example",
+        binding_uri="http://hl7.org/fhir/ValueSet/citation-artifact-classifier",
     )
 
     targetIdentifier: fhirtypes.IdentifierType = Field(
@@ -2004,6 +2072,7 @@ class CitationCitedArtifactRelatesTo(backboneelement.BackboneElement):
         one_of_many_required=True,
         # note: Listed Resource Type(s) should be allowed as Reference.
         enum_reference_types=["Resource"],
+        backref="citation.cited_artifact.relates_to_targetReference",
     )
 
     targetUri: fhirtypes.Uri = Field(
@@ -2099,9 +2168,12 @@ class CitationCitedArtifactStatusDate(backboneelement.BackboneElement):
         ...,
         alias="activity",
         title="Classification of the status",
-        description=None,
+        description="See http://hl7.org/fhir/ValueSet/cited-artifact-status-type",
         # if property is element of this resource.
         element_property=True,
+        # valueset binding
+        binding_strength="extensible",
+        binding_uri="http://hl7.org/fhir/ValueSet/cited-artifact-status-type",
     )
 
     actual: bool = Field(
@@ -2148,9 +2220,12 @@ class CitationCitedArtifactTitle(backboneelement.BackboneElement):
         None,
         alias="language",
         title="Used to express the specific language",
-        description=None,
+        description="See http://hl7.org/fhir/ValueSet/languages",
         # if property is element of this resource.
         element_property=True,
+        # valueset binding
+        binding_strength="preferred",
+        binding_uri="http://hl7.org/fhir/ValueSet/languages",
     )
 
     text: fhirtypes.Markdown = Field(
@@ -2170,9 +2245,15 @@ class CitationCitedArtifactTitle(backboneelement.BackboneElement):
         None,
         alias="type",
         title="The kind of title",
-        description="Used to express the reason or specific aspect for the title.",
+        description=(
+            "Used to express the reason or specific aspect for the title. See "
+            "http://hl7.org/fhir/ValueSet/title-type"
+        ),
         # if property is element of this resource.
         element_property=True,
+        # valueset binding
+        binding_strength="extensible",
+        binding_uri="http://hl7.org/fhir/ValueSet/title-type",
     )
 
     @classmethod
@@ -2262,6 +2343,7 @@ class CitationCitedArtifactVersion(backboneelement.BackboneElement):
         element_property=True,
         # note: Listed Resource Type(s) should be allowed as Reference.
         enum_reference_types=["Citation"],
+        backref="citation.cited_artifact.version_baseCitation",
     )
 
     value: fhirtypes.String = Field(
@@ -2359,9 +2441,12 @@ class CitationCitedArtifactWebLocation(backboneelement.BackboneElement):
         None,
         alias="type",
         title="Code the reason for different URLs, e.g. abstract and full-text",
-        description=None,
+        description="See http://hl7.org/fhir/ValueSet/article-url-type",
         # if property is element of this resource.
         element_property=True,
+        # valueset binding
+        binding_strength="extensible",
+        binding_uri="http://hl7.org/fhir/ValueSet/article-url-type",
     )
 
     url: fhirtypes.Uri = Field(
@@ -2399,18 +2484,24 @@ class CitationClassification(backboneelement.BackboneElement):
         None,
         alias="classifier",
         title="The specific classification value",
-        description=None,
+        description="See http://hl7.org/fhir/ValueSet/citation-artifact-classifier",
         # if property is element of this resource.
         element_property=True,
+        # valueset binding
+        binding_strength="example",
+        binding_uri="http://hl7.org/fhir/ValueSet/citation-artifact-classifier",
     )
 
     type: fhirtypes.CodeableConceptType = Field(
         None,
         alias="type",
         title="The kind of classifier (e.g. publication type, keyword)",
-        description=None,
+        description="See http://hl7.org/fhir/ValueSet/citation-classification-type",
         # if property is element of this resource.
         element_property=True,
+        # valueset binding
+        binding_strength="extensible",
+        binding_uri="http://hl7.org/fhir/ValueSet/citation-classification-type",
     )
 
     @classmethod
@@ -2436,9 +2527,12 @@ class CitationRelatesTo(backboneelement.BackboneElement):
         ...,
         alias="relationshipType",
         title="How the Citation resource relates to the target artifact",
-        description=None,
+        description="See http://hl7.org/fhir/ValueSet/artifact-relationship-type",
         # if property is element of this resource.
         element_property=True,
+        # valueset binding
+        binding_strength="extensible",
+        binding_uri="http://hl7.org/fhir/ValueSet/artifact-relationship-type",
     )
 
     targetAttachment: fhirtypes.AttachmentType = Field(
@@ -2457,9 +2551,12 @@ class CitationRelatesTo(backboneelement.BackboneElement):
         None,
         alias="targetClassifier",
         title="The clasification of the related artifact",
-        description=None,
+        description="See http://hl7.org/fhir/ValueSet/citation-artifact-classifier",
         # if property is element of this resource.
         element_property=True,
+        # valueset binding
+        binding_strength="example",
+        binding_uri="http://hl7.org/fhir/ValueSet/citation-artifact-classifier",
     )
 
     targetIdentifier: fhirtypes.IdentifierType = Field(
@@ -2486,6 +2583,7 @@ class CitationRelatesTo(backboneelement.BackboneElement):
         one_of_many_required=True,
         # note: Listed Resource Type(s) should be allowed as Reference.
         enum_reference_types=["Resource"],
+        backref="citation.relates_to_targetReference",
     )
 
     targetUri: fhirtypes.Uri = Field(
@@ -2581,9 +2679,12 @@ class CitationStatusDate(backboneelement.BackboneElement):
         ...,
         alias="activity",
         title="Classification of the status",
-        description=None,
+        description="See http://hl7.org/fhir/ValueSet/citation-status-type",
         # if property is element of this resource.
         element_property=True,
+        # valueset binding
+        binding_strength="example",
+        binding_uri="http://hl7.org/fhir/ValueSet/citation-status-type",
     )
 
     actual: bool = Field(
@@ -2630,9 +2731,12 @@ class CitationSummary(backboneelement.BackboneElement):
         None,
         alias="style",
         title="Format for display of the citation",
-        description=None,
+        description="See http://hl7.org/fhir/ValueSet/citation-summary-style",
         # if property is element of this resource.
         element_property=True,
+        # valueset binding
+        binding_strength="extensible",
+        binding_uri="http://hl7.org/fhir/ValueSet/citation-summary-style",
     )
 
     text: fhirtypes.Markdown = Field(

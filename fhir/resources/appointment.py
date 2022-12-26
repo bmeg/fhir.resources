@@ -34,9 +34,12 @@ class Appointment(domainresource.DomainResource):
             "The style of appointment or patient that has been booked in the slot "
             "(not service type)"
         ),
-        description=None,
+        description="See http://terminology.hl7.org/ValueSet/v2-0276",
         # if property is element of this resource.
         element_property=True,
+        # valueset binding
+        binding_strength="preferred",
+        binding_uri="http://terminology.hl7.org/ValueSet/v2-0276",
     )
 
     basedOn: typing.List[fhirtypes.ReferenceType] = Field(
@@ -51,6 +54,7 @@ class Appointment(domainresource.DomainResource):
         element_property=True,
         # note: Listed Resource Type(s) should be allowed as Reference.
         enum_reference_types=["ServiceRequest"],
+        backref="appointment_basedOn",
     )
 
     cancelationReason: fhirtypes.CodeableConceptType = Field(
@@ -60,10 +64,14 @@ class Appointment(domainresource.DomainResource):
         description=(
             "The coded reason for the appointment being cancelled. This is often "
             "used in reporting/billing/futher processing to determine if further "
-            "actions are required, or specific fees apply."
+            "actions are required, or specific fees apply. See "
+            "http://hl7.org/fhir/ValueSet/appointment-cancellation-reason"
         ),
         # if property is element of this resource.
         element_property=True,
+        # valueset binding
+        binding_strength="example",
+        binding_uri="http://hl7.org/fhir/ValueSet/appointment-cancellation-reason",
     )
 
     comment: fhirtypes.String = Field(
@@ -207,10 +215,15 @@ class Appointment(domainresource.DomainResource):
         title="Coded reason this appointment is scheduled",
         description=(
             "The coded reason that this appointment is being scheduled. This is "
-            "more clinical than administrative."
+            "more clinical than administrative. See "
+            "http://hl7.org/fhir/ValueSet/encounter-reason"
         ),
         # if property is element of this resource.
         element_property=True,
+        # valueset binding
+        binding_description="The Reason for the appointment to take place.",
+        binding_strength="preferred",
+        binding_uri="http://hl7.org/fhir/ValueSet/encounter-reason",
     )
 
     reasonReference: typing.List[fhirtypes.ReferenceType] = Field(
@@ -233,6 +246,7 @@ class Appointment(domainresource.DomainResource):
             "Observation",
             "ImmunizationRecommendation",
         ],
+        backref="appointment_reasonReference",
     )
 
     requestedPeriod: typing.List[fhirtypes.PeriodType] = Field(
@@ -261,18 +275,24 @@ class Appointment(domainresource.DomainResource):
             "A broad categorization of the service that is to be performed during "
             "this appointment"
         ),
-        description=None,
+        description="See http://hl7.org/fhir/ValueSet/service-category",
         # if property is element of this resource.
         element_property=True,
+        # valueset binding
+        binding_strength="example",
+        binding_uri="http://hl7.org/fhir/ValueSet/service-category",
     )
 
     serviceType: typing.List[fhirtypes.CodeableConceptType] = Field(
         None,
         alias="serviceType",
         title="The specific service that is to be performed during this appointment",
-        description=None,
+        description="See http://hl7.org/fhir/ValueSet/service-type",
         # if property is element of this resource.
         element_property=True,
+        # valueset binding
+        binding_strength="example",
+        binding_uri="http://hl7.org/fhir/ValueSet/service-type",
     )
 
     slot: typing.List[fhirtypes.ReferenceType] = Field(
@@ -287,6 +307,7 @@ class Appointment(domainresource.DomainResource):
         element_property=True,
         # note: Listed Resource Type(s) should be allowed as Reference.
         enum_reference_types=["Slot"],
+        backref="appointment_slot",
     )
 
     specialty: typing.List[fhirtypes.CodeableConceptType] = Field(
@@ -296,9 +317,12 @@ class Appointment(domainresource.DomainResource):
             "The specialty of a practitioner that would be required to perform the "
             "service requested in this appointment"
         ),
-        description=None,
+        description="See http://hl7.org/fhir/ValueSet/c80-practice-codes",
         # if property is element of this resource.
         element_property=True,
+        # valueset binding
+        binding_strength="preferred",
+        binding_uri="http://hl7.org/fhir/ValueSet/c80-practice-codes",
     )
 
     start: fhirtypes.Instant = Field(
@@ -323,7 +347,8 @@ class Appointment(domainresource.DomainResource):
         description=(
             "The overall status of the Appointment. Each of the participants has "
             "their own participation status which indicates their involvement in "
-            "the process, however this status indicates the shared status."
+            "the process, however this status indicates the shared status. See "
+            "http://hl7.org/fhir/ValueSet/appointmentstatus"
         ),
         # if property is element of this resource.
         element_property=True,
@@ -342,6 +367,11 @@ class Appointment(domainresource.DomainResource):
             "checked-in",
             "waitlist",
         ],
+        # valueset binding
+        binding_description="The free/busy status of an appointment.",
+        binding_strength="required",
+        binding_uri="http://hl7.org/fhir/ValueSet/appointmentstatus",
+        binding_version="4.3.0",
     )
     status__ext: fhirtypes.FHIRPrimitiveExtensionType = Field(
         None, alias="_status", title="Extension field for ``status``."
@@ -359,6 +389,7 @@ class Appointment(domainresource.DomainResource):
         element_property=True,
         # note: Listed Resource Type(s) should be allowed as Reference.
         enum_reference_types=["Resource"],
+        backref="appointment_supportingInformation",
     )
 
     @classmethod
@@ -491,6 +522,7 @@ class AppointmentParticipant(backboneelement.BackboneElement):
             "HealthcareService",
             "Location",
         ],
+        backref="appointment.participant_actor",
     )
 
     period: fhirtypes.PeriodType = Field(
@@ -510,13 +542,18 @@ class AppointmentParticipant(backboneelement.BackboneElement):
             "Whether this participant is required to be present at the meeting. "
             "This covers a use-case where two doctors need to meet to discuss the "
             "results for a specific patient, and the patient is not required to be "
-            "present."
+            "present. See http://hl7.org/fhir/ValueSet/participantrequired"
         ),
         # if property is element of this resource.
         element_property=True,
         # note: Enum values can be used in validation,
         # but use in your own responsibilities, read official FHIR documentation.
         enum_values=["required", "optional", "information-only"],
+        # valueset binding
+        binding_description="Is the Participant required to attend the appointment.",
+        binding_strength="required",
+        binding_uri="http://hl7.org/fhir/ValueSet/participantrequired",
+        binding_version="4.3.0",
     )
     required__ext: fhirtypes.FHIRPrimitiveExtensionType = Field(
         None, alias="_required", title="Extension field for ``required``."
@@ -526,13 +563,21 @@ class AppointmentParticipant(backboneelement.BackboneElement):
         None,
         alias="status",
         title="accepted | declined | tentative | needs-action",
-        description="Participation status of the actor.",
+        description=(
+            "Participation status of the actor. See "
+            "http://hl7.org/fhir/ValueSet/participationstatus"
+        ),
         # if property is element of this resource.
         element_property=True,
         element_required=True,
         # note: Enum values can be used in validation,
         # but use in your own responsibilities, read official FHIR documentation.
         enum_values=["accepted", "declined", "tentative", "needs-action"],
+        # valueset binding
+        binding_description="The Participation status of an appointment.",
+        binding_strength="required",
+        binding_uri="http://hl7.org/fhir/ValueSet/participationstatus",
+        binding_version="4.3.0",
     )
     status__ext: fhirtypes.FHIRPrimitiveExtensionType = Field(
         None, alias="_status", title="Extension field for ``status``."
@@ -542,9 +587,13 @@ class AppointmentParticipant(backboneelement.BackboneElement):
         None,
         alias="type",
         title="Role of participant in the appointment",
-        description=None,
+        description="See http://hl7.org/fhir/ValueSet/encounter-participant-type",
         # if property is element of this resource.
         element_property=True,
+        # valueset binding
+        binding_description="Role of participant in encounter.",
+        binding_strength="extensible",
+        binding_uri="http://hl7.org/fhir/ValueSet/encounter-participant-type",
     )
 
     @classmethod

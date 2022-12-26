@@ -25,9 +25,13 @@ class Money(element.Element):
         None,
         alias="currency",
         title="ISO 4217 Currency Code",
-        description=None,
+        description="See http://hl7.org/fhir/ValueSet/currencies",
         # if property is element of this resource.
         element_property=True,
+        # valueset binding
+        binding_strength="required",
+        binding_uri="http://hl7.org/fhir/ValueSet/currencies",
+        binding_version="4.3.0",
     )
     currency__ext: fhirtypes.FHIRPrimitiveExtensionType = Field(
         None, alias="_currency", title="Extension field for ``currency``."

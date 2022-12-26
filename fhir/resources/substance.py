@@ -29,19 +29,31 @@ class Substance(domainresource.DomainResource):
         title="What class/type of substance this is",
         description=(
             "A code that classifies the general type of substance.  This is used  "
-            "for searching, sorting and display purposes."
+            "for searching, sorting and display purposes. See "
+            "http://hl7.org/fhir/ValueSet/substance-category"
         ),
         # if property is element of this resource.
         element_property=True,
+        # valueset binding
+        binding_description="Category or classification of substance.",
+        binding_strength="extensible",
+        binding_uri="http://hl7.org/fhir/ValueSet/substance-category",
     )
 
     code: fhirtypes.CodeableConceptType = Field(
         ...,
         alias="code",
         title="What substance this is",
-        description="A code (or set of codes) that identify this substance.",
+        description=(
+            "A code (or set of codes) that identify this substance. See "
+            "http://hl7.org/fhir/ValueSet/substance-code"
+        ),
         # if property is element of this resource.
         element_property=True,
+        # valueset binding
+        binding_description="Substance codes.",
+        binding_strength="example",
+        binding_uri="http://hl7.org/fhir/ValueSet/substance-code",
     )
 
     description: fhirtypes.String = Field(
@@ -93,12 +105,20 @@ class Substance(domainresource.DomainResource):
         None,
         alias="status",
         title="active | inactive | entered-in-error",
-        description="A code to indicate if the substance is actively used.",
+        description=(
+            "A code to indicate if the substance is actively used. See "
+            "http://hl7.org/fhir/ValueSet/substance-status"
+        ),
         # if property is element of this resource.
         element_property=True,
         # note: Enum values can be used in validation,
         # but use in your own responsibilities, read official FHIR documentation.
         enum_values=["active", "inactive", "entered-in-error"],
+        # valueset binding
+        binding_description="A code to indicate if the substance is actively used.",
+        binding_strength="required",
+        binding_uri="http://hl7.org/fhir/ValueSet/substance-status",
+        binding_version="4.3.0",
     )
     status__ext: fhirtypes.FHIRPrimitiveExtensionType = Field(
         None, alias="_status", title="Extension field for ``status``."
@@ -153,26 +173,41 @@ class SubstanceIngredient(backboneelement.BackboneElement):
         None,
         alias="substanceCodeableConcept",
         title="A component of the substance",
-        description="Another substance that is a component of this substance.",
+        description=(
+            "Another substance that is a component of this substance. See "
+            "http://hl7.org/fhir/ValueSet/substance-code"
+        ),
         # if property is element of this resource.
         element_property=True,
         # Choice of Data Types. i.e substance[x]
         one_of_many="substance",
         one_of_many_required=True,
+        # valueset binding
+        binding_description="Substance Ingredient codes.",
+        binding_strength="example",
+        binding_uri="http://hl7.org/fhir/ValueSet/substance-code",
     )
 
     substanceReference: fhirtypes.ReferenceType = Field(
         None,
         alias="substanceReference",
         title="A component of the substance",
-        description="Another substance that is a component of this substance.",
+        description=(
+            "Another substance that is a component of this substance. See "
+            "http://hl7.org/fhir/ValueSet/substance-code"
+        ),
         # if property is element of this resource.
         element_property=True,
         # Choice of Data Types. i.e substance[x]
         one_of_many="substance",
         one_of_many_required=True,
+        # valueset binding
+        binding_description="Substance Ingredient codes.",
+        binding_strength="example",
+        binding_uri="http://hl7.org/fhir/ValueSet/substance-code",
         # note: Listed Resource Type(s) should be allowed as Reference.
         enum_reference_types=["Substance"],
+        backref="substance.ingredient_substanceReference",
     )
 
     @classmethod

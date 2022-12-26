@@ -75,10 +75,13 @@ class ElementDefinition(backboneelement.BackboneElement):
         title="Corresponding codes in terminologies",
         description=(
             "A code that has the same meaning as the element in a particular "
-            "terminology."
+            "terminology. See http://hl7.org/fhir/ValueSet/observation-codes"
         ),
         # if property is element of this resource.
         element_property=True,
+        # valueset binding
+        binding_strength="example",
+        binding_uri="http://hl7.org/fhir/ValueSet/observation-codes",
     )
 
     comment: fhirtypes.Markdown = Field(
@@ -3945,13 +3948,18 @@ class ElementDefinition(backboneelement.BackboneElement):
         title="xmlAttr | xmlText | typeAttr | cdaText | xhtml",
         description=(
             "Codes that define how this element is represented in instances, when "
-            "the deviation varies from the normal case."
+            "the deviation varies from the normal case. See "
+            "http://hl7.org/fhir/ValueSet/property-representation"
         ),
         # if property is element of this resource.
         element_property=True,
         # note: Enum values can be used in validation,
         # but use in your own responsibilities, read official FHIR documentation.
         enum_values=["xmlAttr", "xmlText", "typeAttr", "cdaText", "xhtml"],
+        # valueset binding
+        binding_strength="required",
+        binding_uri="http://hl7.org/fhir/ValueSet/property-representation",
+        binding_version="4.3.0",
     )
     representation__ext: typing.List[
         typing.Union[fhirtypes.FHIRPrimitiveExtensionType, None]
@@ -4719,7 +4727,8 @@ class ElementDefinitionBinding(element.Element):
         description=(
             "Indicates the degree of conformance expectations associated with this "
             "binding - that is, the degree to which the provided value set must be "
-            "adhered to in the instances."
+            "adhered to in the instances. See http://hl7.org/fhir/ValueSet/binding-"
+            "strength"
         ),
         # if property is element of this resource.
         element_property=True,
@@ -4727,6 +4736,10 @@ class ElementDefinitionBinding(element.Element):
         # note: Enum values can be used in validation,
         # but use in your own responsibilities, read official FHIR documentation.
         enum_values=["required", "extensible", "preferred", "example"],
+        # valueset binding
+        binding_strength="required",
+        binding_uri="http://hl7.org/fhir/ValueSet/binding-strength",
+        binding_version="4.3.0",
     )
     strength__ext: fhirtypes.FHIRPrimitiveExtensionType = Field(
         None, alias="_strength", title="Extension field for ``strength``."
@@ -4744,6 +4757,7 @@ class ElementDefinitionBinding(element.Element):
         element_property=True,
         # note: Listed Resource Type(s) should be allowed as Reference.
         enum_reference_types=["ValueSet"],
+        backref="element_definition.binding_valueSet",
     )
     valueSet__ext: fhirtypes.FHIRPrimitiveExtensionType = Field(
         None, alias="_valueSet", title="Extension field for ``valueSet``."
@@ -4895,7 +4909,7 @@ class ElementDefinitionConstraint(element.Element):
         title="error | warning",
         description=(
             "Identifies the impact constraint violation has on the conformance of "
-            "the instance."
+            "the instance. See http://hl7.org/fhir/ValueSet/constraint-severity"
         ),
         # if property is element of this resource.
         element_property=True,
@@ -4903,6 +4917,10 @@ class ElementDefinitionConstraint(element.Element):
         # note: Enum values can be used in validation,
         # but use in your own responsibilities, read official FHIR documentation.
         enum_values=["error", "warning"],
+        # valueset binding
+        binding_strength="required",
+        binding_uri="http://hl7.org/fhir/ValueSet/constraint-severity",
+        binding_version="4.3.0",
     )
     severity__ext: fhirtypes.FHIRPrimitiveExtensionType = Field(
         None, alias="_severity", title="Extension field for ``severity``."
@@ -4920,6 +4938,7 @@ class ElementDefinitionConstraint(element.Element):
         element_property=True,
         # note: Listed Resource Type(s) should be allowed as Reference.
         enum_reference_types=["StructureDefinition"],
+        backref="element_definition.constraint_source",
     )
     source__ext: fhirtypes.FHIRPrimitiveExtensionType = Field(
         None, alias="_source", title="Extension field for ``source``."
@@ -6131,9 +6150,17 @@ class ElementDefinitionMapping(element.Element):
         None,
         alias="language",
         title="Computable language of mapping",
-        description="Identifies the computable language in which mapping.map is expressed.",
+        description=(
+            "Identifies the computable language in which mapping.map is expressed. "
+            "See http://hl7.org/fhir/ValueSet/mimetypes"
+        ),
         # if property is element of this resource.
         element_property=True,
+        # valueset binding
+        binding_description="BCP 13 (RFCs 2045, 2046, 2047, 4288, 4289 and 2049)",
+        binding_strength="required",
+        binding_uri="http://hl7.org/fhir/ValueSet/mimetypes",
+        binding_version="4.3.0",
     )
     language__ext: fhirtypes.FHIRPrimitiveExtensionType = Field(
         None, alias="_language", title="Extension field for ``language``."
@@ -6296,7 +6323,8 @@ class ElementDefinitionSlicing(element.Element):
         description=(
             "Whether additional slices are allowed or not. When the slices are "
             "ordered, profile authors can also say that additional slices are only "
-            "allowed at the end."
+            "allowed at the end. See http://hl7.org/fhir/ValueSet/resource-slicing-"
+            "rules"
         ),
         # if property is element of this resource.
         element_property=True,
@@ -6304,6 +6332,10 @@ class ElementDefinitionSlicing(element.Element):
         # note: Enum values can be used in validation,
         # but use in your own responsibilities, read official FHIR documentation.
         enum_values=["closed", "open", "openAtEnd"],
+        # valueset binding
+        binding_strength="required",
+        binding_uri="http://hl7.org/fhir/ValueSet/resource-slicing-rules",
+        binding_version="4.3.0",
     )
     rules__ext: fhirtypes.FHIRPrimitiveExtensionType = Field(
         None, alias="_rules", title="Extension field for ``rules``."
@@ -6413,13 +6445,20 @@ class ElementDefinitionSlicingDiscriminator(element.Element):
         None,
         alias="type",
         title="value | exists | pattern | type | profile",
-        description="How the element value is interpreted when discrimination is evaluated.",
+        description=(
+            "How the element value is interpreted when discrimination is evaluated."
+            " See http://hl7.org/fhir/ValueSet/discriminator-type"
+        ),
         # if property is element of this resource.
         element_property=True,
         element_required=True,
         # note: Enum values can be used in validation,
         # but use in your own responsibilities, read official FHIR documentation.
         enum_values=["value", "exists", "pattern", "type", "profile"],
+        # valueset binding
+        binding_strength="required",
+        binding_uri="http://hl7.org/fhir/ValueSet/discriminator-type",
+        binding_version="4.3.0",
     )
     type__ext: fhirtypes.FHIRPrimitiveExtensionType = Field(
         None, alias="_type", title="Extension field for ``type``."
@@ -6512,13 +6551,18 @@ class ElementDefinitionType(element.Element):
         description=(
             "If the type is a reference to another resource, how the resource is or"
             " can be aggregated - is it a contained resource, or a reference, and "
-            "if the context is a bundle, is it included in the bundle."
+            "if the context is a bundle, is it included in the bundle. See "
+            "http://hl7.org/fhir/ValueSet/resource-aggregation-mode"
         ),
         # if property is element of this resource.
         element_property=True,
         # note: Enum values can be used in validation,
         # but use in your own responsibilities, read official FHIR documentation.
         enum_values=["contained", "referenced", "bundled"],
+        # valueset binding
+        binding_strength="required",
+        binding_uri="http://hl7.org/fhir/ValueSet/resource-aggregation-mode",
+        binding_version="4.3.0",
     )
     aggregation__ext: typing.List[
         typing.Union[fhirtypes.FHIRPrimitiveExtensionType, None]
@@ -6533,11 +6577,15 @@ class ElementDefinitionType(element.Element):
             "element. References are URLs that are relative to "
             'http://hl7.org/fhir/StructureDefinition e.g. "string" is a reference '
             "to http://hl7.org/fhir/StructureDefinition/string. Absolute URLs are "
-            "only allowed in logical models."
+            "only allowed in logical models. See http://hl7.org/fhir/ValueSet/fhir-"
+            "element-types"
         ),
         # if property is element of this resource.
         element_property=True,
         element_required=True,
+        # valueset binding
+        binding_strength="extensible",
+        binding_uri="http://hl7.org/fhir/ValueSet/fhir-element-types",
     )
     code__ext: fhirtypes.FHIRPrimitiveExtensionType = Field(
         None, alias="_code", title="Extension field for ``code``."
@@ -6560,6 +6608,7 @@ class ElementDefinitionType(element.Element):
         element_property=True,
         # note: Listed Resource Type(s) should be allowed as Reference.
         enum_reference_types=["StructureDefinition", "ImplementationGuide"],
+        backref="element_definition.type_profile",
     )
     profile__ext: typing.List[
         typing.Union[fhirtypes.FHIRPrimitiveExtensionType, None]
@@ -6587,6 +6636,7 @@ class ElementDefinitionType(element.Element):
         element_property=True,
         # note: Listed Resource Type(s) should be allowed as Reference.
         enum_reference_types=["StructureDefinition", "ImplementationGuide"],
+        backref="element_definition.type_targetProfile",
     )
     targetProfile__ext: typing.List[
         typing.Union[fhirtypes.FHIRPrimitiveExtensionType, None]
@@ -6600,13 +6650,18 @@ class ElementDefinitionType(element.Element):
         title="either | independent | specific",
         description=(
             "Whether this reference needs to be version specific or version "
-            "independent, or whether either can be used."
+            "independent, or whether either can be used. See "
+            "http://hl7.org/fhir/ValueSet/reference-version-rules"
         ),
         # if property is element of this resource.
         element_property=True,
         # note: Enum values can be used in validation,
         # but use in your own responsibilities, read official FHIR documentation.
         enum_values=["either", "independent", "specific"],
+        # valueset binding
+        binding_strength="required",
+        binding_uri="http://hl7.org/fhir/ValueSet/reference-version-rules",
+        binding_version="4.3.0",
     )
     versioning__ext: fhirtypes.FHIRPrimitiveExtensionType = Field(
         None, alias="_versioning", title="Extension field for ``versioning``."

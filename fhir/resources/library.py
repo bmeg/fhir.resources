@@ -216,10 +216,14 @@ class Library(domainresource.DomainResource):
         title="Intended jurisdiction for library (if applicable)",
         description=(
             "A legal or geographic region in which the library is intended to be "
-            "used."
+            "used. See http://hl7.org/fhir/ValueSet/jurisdiction"
         ),
         # if property is element of this resource.
         element_property=True,
+        # valueset binding
+        binding_description="Countries and regions within which this artifact is targeted for use.",
+        binding_strength="extensible",
+        binding_uri="http://hl7.org/fhir/ValueSet/jurisdiction",
     )
 
     lastReviewDate: fhirtypes.Date = Field(
@@ -320,7 +324,7 @@ class Library(domainresource.DomainResource):
         title="draft | active | retired | unknown",
         description=(
             "The status of this library. Enables tracking the life-cycle of the "
-            "content."
+            "content. See http://hl7.org/fhir/ValueSet/publication-status"
         ),
         # if property is element of this resource.
         element_property=True,
@@ -328,6 +332,11 @@ class Library(domainresource.DomainResource):
         # note: Enum values can be used in validation,
         # but use in your own responsibilities, read official FHIR documentation.
         enum_values=["draft", "active", "retired", "unknown"],
+        # valueset binding
+        binding_description="The lifecycle status of an artifact.",
+        binding_strength="required",
+        binding_uri="http://hl7.org/fhir/ValueSet/publication-status",
+        binding_version="4.3.0",
     )
     status__ext: fhirtypes.FHIRPrimitiveExtensionType = Field(
         None, alias="_status", title="Extension field for ``status``."
@@ -339,13 +348,17 @@ class Library(domainresource.DomainResource):
         title="Type of individual the library content is focused on",
         description=(
             "A code or group definition that describes the intended subject of the "
-            "contents of the library."
+            "contents of the library. See http://hl7.org/fhir/ValueSet/subject-type"
         ),
         # if property is element of this resource.
         element_property=True,
         # Choice of Data Types. i.e subject[x]
         one_of_many="subject",
         one_of_many_required=False,
+        # valueset binding
+        binding_description="The possible types of subjects for a library (E.g. Patient, Practitioner, Organization, Location, etc.).",
+        binding_strength="extensible",
+        binding_uri="http://hl7.org/fhir/ValueSet/subject-type",
     )
 
     subjectReference: fhirtypes.ReferenceType = Field(
@@ -354,15 +367,20 @@ class Library(domainresource.DomainResource):
         title="Type of individual the library content is focused on",
         description=(
             "A code or group definition that describes the intended subject of the "
-            "contents of the library."
+            "contents of the library. See http://hl7.org/fhir/ValueSet/subject-type"
         ),
         # if property is element of this resource.
         element_property=True,
         # Choice of Data Types. i.e subject[x]
         one_of_many="subject",
         one_of_many_required=False,
+        # valueset binding
+        binding_description="The possible types of subjects for a library (E.g. Patient, Practitioner, Organization, Location, etc.).",
+        binding_strength="extensible",
+        binding_uri="http://hl7.org/fhir/ValueSet/subject-type",
         # note: Listed Resource Type(s) should be allowed as Reference.
         enum_reference_types=["Group"],
+        backref="library_subjectReference",
     )
 
     subtitle: fhirtypes.String = Field(
@@ -399,10 +417,15 @@ class Library(domainresource.DomainResource):
         description=(
             "Descriptive topics related to the content of the library. Topics "
             "provide a high-level categorization of the library that can be useful "
-            "for filtering and searching."
+            "for filtering and searching. See "
+            "http://hl7.org/fhir/ValueSet/definition-topic"
         ),
         # if property is element of this resource.
         element_property=True,
+        # valueset binding
+        binding_description="High-level categorization of the definition, used for searching, sorting, and filtering.",
+        binding_strength="example",
+        binding_uri="http://hl7.org/fhir/ValueSet/definition-topic",
     )
 
     type: fhirtypes.CodeableConceptType = Field(
@@ -413,10 +436,23 @@ class Library(domainresource.DomainResource):
         ),
         description=(
             "Identifies the type of library such as a Logic Library, Model "
-            "Definition, Asset Collection, or Module Definition."
+            "Definition, Asset Collection, or Module Definition. See "
+            "http://hl7.org/fhir/ValueSet/library-type"
         ),
         # if property is element of this resource.
         element_property=True,
+        # note: Enum values can be used in validation,
+        # but use in your own responsibilities, read official FHIR documentation.
+        enum_values=[
+            "logic-library",
+            "model-definition",
+            "asset-collection",
+            "module-definition",
+        ],
+        # valueset binding
+        binding_description="The type of knowledge asset this library contains.",
+        binding_strength="extensible",
+        binding_uri="http://hl7.org/fhir/ValueSet/library-type",
     )
 
     url: fhirtypes.Uri = Field(

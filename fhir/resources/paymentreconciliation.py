@@ -71,9 +71,16 @@ class PaymentReconciliation(domainresource.DomainResource):
         None,
         alias="formCode",
         title="Printed form identifier",
-        description="A code for the form to be used for printing the content.",
+        description=(
+            "A code for the form to be used for printing the content. See "
+            "http://hl7.org/fhir/ValueSet/forms"
+        ),
         # if property is element of this resource.
         element_property=True,
+        # valueset binding
+        binding_description="The forms codes.",
+        binding_strength="example",
+        binding_uri="http://hl7.org/fhir/ValueSet/forms",
     )
 
     identifier: typing.List[fhirtypes.IdentifierType] = Field(
@@ -89,12 +96,20 @@ class PaymentReconciliation(domainresource.DomainResource):
         None,
         alias="outcome",
         title="queued | complete | error | partial",
-        description="The outcome of a request for a reconciliation.",
+        description=(
+            "The outcome of a request for a reconciliation. See "
+            "http://hl7.org/fhir/ValueSet/remittance-outcome"
+        ),
         # if property is element of this resource.
         element_property=True,
         # note: Enum values can be used in validation,
         # but use in your own responsibilities, read official FHIR documentation.
         enum_values=["queued", "complete", "error", "partial"],
+        # valueset binding
+        binding_description="The outcome of the processing.",
+        binding_strength="required",
+        binding_uri="http://hl7.org/fhir/ValueSet/remittance-outcome",
+        binding_version="4.3.0",
     )
     outcome__ext: fhirtypes.FHIRPrimitiveExtensionType = Field(
         None, alias="_outcome", title="Extension field for ``outcome``."
@@ -140,6 +155,7 @@ class PaymentReconciliation(domainresource.DomainResource):
         element_property=True,
         # note: Listed Resource Type(s) should be allowed as Reference.
         enum_reference_types=["Organization"],
+        backref="payment_reconciliation_paymentIssuer",
     )
 
     period: fhirtypes.PeriodType = Field(
@@ -175,6 +191,7 @@ class PaymentReconciliation(domainresource.DomainResource):
         element_property=True,
         # note: Listed Resource Type(s) should be allowed as Reference.
         enum_reference_types=["Task"],
+        backref="payment_reconciliation_request",
     )
 
     requestor: fhirtypes.ReferenceType = Field(
@@ -189,19 +206,28 @@ class PaymentReconciliation(domainresource.DomainResource):
         element_property=True,
         # note: Listed Resource Type(s) should be allowed as Reference.
         enum_reference_types=["Practitioner", "PractitionerRole", "Organization"],
+        backref="payment_reconciliation_requestor",
     )
 
     status: fhirtypes.Code = Field(
         None,
         alias="status",
         title="active | cancelled | draft | entered-in-error",
-        description="The status of the resource instance.",
+        description=(
+            "The status of the resource instance. See "
+            "http://hl7.org/fhir/ValueSet/fm-status"
+        ),
         # if property is element of this resource.
         element_property=True,
         element_required=True,
         # note: Enum values can be used in validation,
         # but use in your own responsibilities, read official FHIR documentation.
         enum_values=["active", "cancelled", "draft", "entered-in-error"],
+        # valueset binding
+        binding_description="A code specifying the state of the resource instance.",
+        binding_strength="required",
+        binding_uri="http://hl7.org/fhir/ValueSet/fm-status",
+        binding_version="4.3.0",
     )
     status__ext: fhirtypes.FHIRPrimitiveExtensionType = Field(
         None, alias="_status", title="Extension field for ``status``."
@@ -356,6 +382,7 @@ class PaymentReconciliationDetail(backboneelement.BackboneElement):
         element_property=True,
         # note: Listed Resource Type(s) should be allowed as Reference.
         enum_reference_types=["Practitioner", "PractitionerRole", "Organization"],
+        backref="payment_reconciliation.detail_payee",
     )
 
     predecessor: fhirtypes.IdentifierType = Field(
@@ -382,6 +409,7 @@ class PaymentReconciliationDetail(backboneelement.BackboneElement):
         element_property=True,
         # note: Listed Resource Type(s) should be allowed as Reference.
         enum_reference_types=["Resource"],
+        backref="payment_reconciliation.detail_request",
     )
 
     response: fhirtypes.ReferenceType = Field(
@@ -396,6 +424,7 @@ class PaymentReconciliationDetail(backboneelement.BackboneElement):
         element_property=True,
         # note: Listed Resource Type(s) should be allowed as Reference.
         enum_reference_types=["Resource"],
+        backref="payment_reconciliation.detail_response",
     )
 
     responsible: fhirtypes.ReferenceType = Field(
@@ -410,6 +439,7 @@ class PaymentReconciliationDetail(backboneelement.BackboneElement):
         element_property=True,
         # note: Listed Resource Type(s) should be allowed as Reference.
         enum_reference_types=["PractitionerRole"],
+        backref="payment_reconciliation.detail_responsible",
     )
 
     submitter: fhirtypes.ReferenceType = Field(
@@ -421,15 +451,23 @@ class PaymentReconciliationDetail(backboneelement.BackboneElement):
         element_property=True,
         # note: Listed Resource Type(s) should be allowed as Reference.
         enum_reference_types=["Practitioner", "PractitionerRole", "Organization"],
+        backref="payment_reconciliation.detail_submitter",
     )
 
     type: fhirtypes.CodeableConceptType = Field(
         ...,
         alias="type",
         title="Category of payment",
-        description="Code to indicate the nature of the payment.",
+        description=(
+            "Code to indicate the nature of the payment. See "
+            "http://hl7.org/fhir/ValueSet/payment-type"
+        ),
         # if property is element of this resource.
         element_property=True,
+        # valueset binding
+        binding_description="The reason for the amount: payment, adjustment, advance.",
+        binding_strength="example",
+        binding_uri="http://hl7.org/fhir/ValueSet/payment-type",
     )
 
     @classmethod
@@ -482,12 +520,20 @@ class PaymentReconciliationProcessNote(backboneelement.BackboneElement):
         None,
         alias="type",
         title="display | print | printoper",
-        description="The business purpose of the note text.",
+        description=(
+            "The business purpose of the note text. See "
+            "http://hl7.org/fhir/ValueSet/note-type"
+        ),
         # if property is element of this resource.
         element_property=True,
         # note: Enum values can be used in validation,
         # but use in your own responsibilities, read official FHIR documentation.
         enum_values=["display", "print", "printoper"],
+        # valueset binding
+        binding_description="The presentation types of notes.",
+        binding_strength="required",
+        binding_uri="http://hl7.org/fhir/ValueSet/note-type",
+        binding_version="4.3.0",
     )
     type__ext: fhirtypes.FHIRPrimitiveExtensionType = Field(
         None, alias="_type", title="Extension field for ``type``."

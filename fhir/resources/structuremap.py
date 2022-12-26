@@ -136,6 +136,7 @@ class StructureMap(domainresource.DomainResource):
         element_property=True,
         # note: Listed Resource Type(s) should be allowed as Reference.
         enum_reference_types=["StructureMap"],
+        backref="structure_map_import_fhir",
     )
     import__ext: typing.List[
         typing.Union[fhirtypes.FHIRPrimitiveExtensionType, None]
@@ -147,10 +148,14 @@ class StructureMap(domainresource.DomainResource):
         title="Intended jurisdiction for structure map (if applicable)",
         description=(
             "A legal or geographic region in which the structure map is intended to"
-            " be used."
+            " be used. See http://hl7.org/fhir/ValueSet/jurisdiction"
         ),
         # if property is element of this resource.
         element_property=True,
+        # valueset binding
+        binding_description="Countries and regions within which this artifact is targeted for use.",
+        binding_strength="extensible",
+        binding_uri="http://hl7.org/fhir/ValueSet/jurisdiction",
     )
 
     name: fhirtypes.String = Field(
@@ -206,7 +211,7 @@ class StructureMap(domainresource.DomainResource):
         title="draft | active | retired | unknown",
         description=(
             "The status of this structure map. Enables tracking the life-cycle of "
-            "the content."
+            "the content. See http://hl7.org/fhir/ValueSet/publication-status"
         ),
         # if property is element of this resource.
         element_property=True,
@@ -214,6 +219,11 @@ class StructureMap(domainresource.DomainResource):
         # note: Enum values can be used in validation,
         # but use in your own responsibilities, read official FHIR documentation.
         enum_values=["draft", "active", "retired", "unknown"],
+        # valueset binding
+        binding_description="The lifecycle status of an artifact.",
+        binding_strength="required",
+        binding_uri="http://hl7.org/fhir/ValueSet/publication-status",
+        binding_version="4.3.0",
     )
     status__ext: fhirtypes.FHIRPrimitiveExtensionType = Field(
         None, alias="_status", title="Extension field for ``status``."
@@ -481,7 +491,8 @@ class StructureMapGroup(backboneelement.BackboneElement):
         title="none | types | type-and-types",
         description=(
             "If this is the default rule set to apply for the source type or this "
-            "combination of types."
+            "combination of types. See http://hl7.org/fhir/ValueSet/map-group-type-"
+            "mode"
         ),
         # if property is element of this resource.
         element_property=True,
@@ -489,6 +500,11 @@ class StructureMapGroup(backboneelement.BackboneElement):
         # note: Enum values can be used in validation,
         # but use in your own responsibilities, read official FHIR documentation.
         enum_values=["none", "types", "type-and-types"],
+        # valueset binding
+        binding_description="If this is the default rule set to apply for the source type, or this combination of types.",
+        binding_strength="required",
+        binding_uri="http://hl7.org/fhir/ValueSet/map-group-type-mode",
+        binding_version="4.3.0",
     )
     typeMode__ext: fhirtypes.FHIRPrimitiveExtensionType = Field(
         None, alias="_typeMode", title="Extension field for ``typeMode``."
@@ -600,13 +616,21 @@ class StructureMapGroupInput(backboneelement.BackboneElement):
         None,
         alias="mode",
         title="source | target",
-        description="Mode for this instance of data.",
+        description=(
+            "Mode for this instance of data. See http://hl7.org/fhir/ValueSet/map-"
+            "input-mode"
+        ),
         # if property is element of this resource.
         element_property=True,
         element_required=True,
         # note: Enum values can be used in validation,
         # but use in your own responsibilities, read official FHIR documentation.
         enum_values=["source", "target"],
+        # valueset binding
+        binding_description="Mode for this instance of data.",
+        binding_strength="required",
+        binding_uri="http://hl7.org/fhir/ValueSet/map-input-mode",
+        binding_version="4.3.0",
     )
     mode__ext: fhirtypes.FHIRPrimitiveExtensionType = Field(
         None, alias="_mode", title="Extension field for ``mode``."
@@ -1719,12 +1743,20 @@ class StructureMapGroupRuleSource(backboneelement.BackboneElement):
         None,
         alias="listMode",
         title="first | not_first | last | not_last | only_one",
-        description="How to handle the list mode for this element.",
+        description=(
+            "How to handle the list mode for this element. See "
+            "http://hl7.org/fhir/ValueSet/map-source-list-mode"
+        ),
         # if property is element of this resource.
         element_property=True,
         # note: Enum values can be used in validation,
         # but use in your own responsibilities, read official FHIR documentation.
         enum_values=["first", "not_first", "last", "not_last", "only_one"],
+        # valueset binding
+        binding_description="If field is a list, how to manage the source.",
+        binding_strength="required",
+        binding_uri="http://hl7.org/fhir/ValueSet/map-source-list-mode",
+        binding_version="4.3.0",
     )
     listMode__ext: fhirtypes.FHIRPrimitiveExtensionType = Field(
         None, alias="_listMode", title="Extension field for ``listMode``."
@@ -2052,12 +2084,20 @@ class StructureMapGroupRuleTarget(backboneelement.BackboneElement):
         None,
         alias="contextType",
         title="type | variable",
-        description="How to interpret the context.",
+        description=(
+            "How to interpret the context. See http://hl7.org/fhir/ValueSet/map-"
+            "context-type"
+        ),
         # if property is element of this resource.
         element_property=True,
         # note: Enum values can be used in validation,
         # but use in your own responsibilities, read official FHIR documentation.
         enum_values=["type", "variable"],
+        # valueset binding
+        binding_description="How to interpret the context.",
+        binding_strength="required",
+        binding_uri="http://hl7.org/fhir/ValueSet/map-context-type",
+        binding_version="4.3.0",
     )
     contextType__ext: fhirtypes.FHIRPrimitiveExtensionType = Field(
         None, alias="_contextType", title="Extension field for ``contextType``."
@@ -2079,12 +2119,20 @@ class StructureMapGroupRuleTarget(backboneelement.BackboneElement):
         None,
         alias="listMode",
         title="first | share | last | collate",
-        description="If field is a list, how to manage the list.",
+        description=(
+            "If field is a list, how to manage the list. See "
+            "http://hl7.org/fhir/ValueSet/map-target-list-mode"
+        ),
         # if property is element of this resource.
         element_property=True,
         # note: Enum values can be used in validation,
         # but use in your own responsibilities, read official FHIR documentation.
         enum_values=["first", "share", "last", "collate"],
+        # valueset binding
+        binding_description="If field is a list, how to manage the production.",
+        binding_strength="required",
+        binding_uri="http://hl7.org/fhir/ValueSet/map-target-list-mode",
+        binding_version="4.3.0",
     )
     listMode__ext: typing.List[
         typing.Union[fhirtypes.FHIRPrimitiveExtensionType, None]
@@ -2115,12 +2163,20 @@ class StructureMapGroupRuleTarget(backboneelement.BackboneElement):
         None,
         alias="transform",
         title="create | copy +",
-        description="How the data is copied / created.",
+        description=(
+            "How the data is copied / created. See "
+            "http://hl7.org/fhir/ValueSet/map-transform"
+        ),
         # if property is element of this resource.
         element_property=True,
         # note: Enum values can be used in validation,
         # but use in your own responsibilities, read official FHIR documentation.
         enum_values=["create", "copy", "+"],
+        # valueset binding
+        binding_description="How data is copied/created.",
+        binding_strength="required",
+        binding_uri="http://hl7.org/fhir/ValueSet/map-transform",
+        binding_version="4.3.0",
     )
     transform__ext: fhirtypes.FHIRPrimitiveExtensionType = Field(
         None, alias="_transform", title="Extension field for ``transform``."
@@ -2348,13 +2404,21 @@ class StructureMapStructure(backboneelement.BackboneElement):
         None,
         alias="mode",
         title="source | queried | target | produced",
-        description="How the referenced structure is used in this mapping.",
+        description=(
+            "How the referenced structure is used in this mapping. See "
+            "http://hl7.org/fhir/ValueSet/map-model-mode"
+        ),
         # if property is element of this resource.
         element_property=True,
         element_required=True,
         # note: Enum values can be used in validation,
         # but use in your own responsibilities, read official FHIR documentation.
         enum_values=["source", "queried", "target", "produced"],
+        # valueset binding
+        binding_description="How the referenced structure is used in this mapping.",
+        binding_strength="required",
+        binding_uri="http://hl7.org/fhir/ValueSet/map-model-mode",
+        binding_version="4.3.0",
     )
     mode__ext: fhirtypes.FHIRPrimitiveExtensionType = Field(
         None, alias="_mode", title="Extension field for ``mode``."
@@ -2370,6 +2434,7 @@ class StructureMapStructure(backboneelement.BackboneElement):
         element_required=True,
         # note: Listed Resource Type(s) should be allowed as Reference.
         enum_reference_types=["StructureDefinition"],
+        backref="structure_map.structure_url",
     )
     url__ext: fhirtypes.FHIRPrimitiveExtensionType = Field(
         None, alias="_url", title="Extension field for ``url``."

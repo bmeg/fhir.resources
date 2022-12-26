@@ -93,6 +93,7 @@ class DeviceDefinition(domainresource.DomainResource):
         one_of_many_required=False,
         # note: Listed Resource Type(s) should be allowed as Reference.
         enum_reference_types=["Organization"],
+        backref="device_definition_manufacturerReference",
     )
 
     manufacturerString: fhirtypes.String = Field(
@@ -171,6 +172,7 @@ class DeviceDefinition(domainresource.DomainResource):
         element_property=True,
         # note: Listed Resource Type(s) should be allowed as Reference.
         enum_reference_types=["Organization"],
+        backref="device_definition_owner",
     )
 
     parentDevice: fhirtypes.ReferenceType = Field(
@@ -182,6 +184,7 @@ class DeviceDefinition(domainresource.DomainResource):
         element_property=True,
         # note: Listed Resource Type(s) should be allowed as Reference.
         enum_reference_types=["DeviceDefinition"],
+        backref="device_definition_parentDevice",
     )
 
     physicalCharacteristics: fhirtypes.ProdCharacteristicType = Field(
@@ -222,9 +225,12 @@ class DeviceDefinition(domainresource.DomainResource):
         None,
         alias="safety",
         title="Safety characteristics of the device",
-        description=None,
+        description="See http://hl7.org/fhir/ValueSet/device-safety",
         # if property is element of this resource.
         element_property=True,
+        # valueset binding
+        binding_strength="example",
+        binding_uri="http://hl7.org/fhir/ValueSet/device-safety",
     )
 
     shelfLifeStorage: typing.List[fhirtypes.ProductShelfLifeType] = Field(
@@ -253,9 +259,13 @@ class DeviceDefinition(domainresource.DomainResource):
         None,
         alias="type",
         title="What kind of device or device system this is",
-        description=None,
+        description="See http://hl7.org/fhir/ValueSet/device-kind",
         # if property is element of this resource.
         element_property=True,
+        # valueset binding
+        binding_description="Type of device e.g. according to official classification.",
+        binding_strength="example",
+        binding_uri="http://hl7.org/fhir/ValueSet/device-kind",
     )
 
     udiDeviceIdentifier: typing.List[
@@ -448,7 +458,8 @@ class DeviceDefinitionDeviceName(backboneelement.BackboneElement):
         ),
         description=(
             "The type of deviceName. UDILabelName | UserFriendlyName | "
-            "PatientReportedName | ManufactureDeviceName | ModelName."
+            "PatientReportedName | ManufactureDeviceName | ModelName. See "
+            "http://hl7.org/fhir/ValueSet/device-nametype"
         ),
         # if property is element of this resource.
         element_property=True,
@@ -463,6 +474,11 @@ class DeviceDefinitionDeviceName(backboneelement.BackboneElement):
             "model-name",
             "other",
         ],
+        # valueset binding
+        binding_description="The type of name the device is referred by.",
+        binding_strength="required",
+        binding_uri="http://hl7.org/fhir/ValueSet/device-nametype",
+        binding_version="4.3.0",
     )
     type__ext: fhirtypes.FHIRPrimitiveExtensionType = Field(
         None, alias="_type", title="Extension field for ``type``."

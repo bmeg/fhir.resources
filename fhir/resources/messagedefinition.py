@@ -55,6 +55,7 @@ class MessageDefinition(domainresource.DomainResource):
         element_property=True,
         # note: Listed Resource Type(s) should be allowed as Reference.
         enum_reference_types=["MessageDefinition"],
+        backref="message_definition_base",
     )
     base__ext: fhirtypes.FHIRPrimitiveExtensionType = Field(
         None, alias="_base", title="Extension field for ``base``."
@@ -64,12 +65,20 @@ class MessageDefinition(domainresource.DomainResource):
         None,
         alias="category",
         title="consequence | currency | notification",
-        description="The impact of the content of the message.",
+        description=(
+            "The impact of the content of the message. See "
+            "http://hl7.org/fhir/ValueSet/message-significance-category"
+        ),
         # if property is element of this resource.
         element_property=True,
         # note: Enum values can be used in validation,
         # but use in your own responsibilities, read official FHIR documentation.
         enum_values=["consequence", "currency", "notification"],
+        # valueset binding
+        binding_description="The impact of the content of a message.",
+        binding_strength="required",
+        binding_uri="http://hl7.org/fhir/ValueSet/message-significance-category",
+        binding_version="4.3.0",
     )
     category__ext: fhirtypes.FHIRPrimitiveExtensionType = Field(
         None, alias="_category", title="Extension field for ``category``."
@@ -140,24 +149,38 @@ class MessageDefinition(domainresource.DomainResource):
         None,
         alias="eventCoding",
         title="Event code  or link to the EventDefinition",
-        description="Event code or link to the EventDefinition.",
+        description=(
+            "Event code or link to the EventDefinition. See "
+            "http://hl7.org/fhir/ValueSet/message-events"
+        ),
         # if property is element of this resource.
         element_property=True,
         # Choice of Data Types. i.e event[x]
         one_of_many="event",
         one_of_many_required=True,
+        # valueset binding
+        binding_description="One of the message events defined as part of this version of FHIR.",
+        binding_strength="example",
+        binding_uri="http://hl7.org/fhir/ValueSet/message-events",
     )
 
     eventUri: fhirtypes.Uri = Field(
         None,
         alias="eventUri",
         title="Event code  or link to the EventDefinition",
-        description="Event code or link to the EventDefinition.",
+        description=(
+            "Event code or link to the EventDefinition. See "
+            "http://hl7.org/fhir/ValueSet/message-events"
+        ),
         # if property is element of this resource.
         element_property=True,
         # Choice of Data Types. i.e event[x]
         one_of_many="event",
         one_of_many_required=True,
+        # valueset binding
+        binding_description="One of the message events defined as part of this version of FHIR.",
+        binding_strength="example",
+        binding_uri="http://hl7.org/fhir/ValueSet/message-events",
     )
     eventUri__ext: fhirtypes.FHIRPrimitiveExtensionType = Field(
         None, alias="_eventUri", title="Extension field for ``eventUri``."
@@ -207,6 +230,7 @@ class MessageDefinition(domainresource.DomainResource):
         element_property=True,
         # note: Listed Resource Type(s) should be allowed as Reference.
         enum_reference_types=["GraphDefinition"],
+        backref="message_definition_graph",
     )
     graph__ext: typing.List[
         typing.Union[fhirtypes.FHIRPrimitiveExtensionType, None]
@@ -231,10 +255,14 @@ class MessageDefinition(domainresource.DomainResource):
         title="Intended jurisdiction for message definition (if applicable)",
         description=(
             "A legal or geographic region in which the message definition is "
-            "intended to be used."
+            "intended to be used. See http://hl7.org/fhir/ValueSet/jurisdiction"
         ),
         # if property is element of this resource.
         element_property=True,
+        # valueset binding
+        binding_description="Countries and regions within which this artifact is targeted for use.",
+        binding_strength="extensible",
+        binding_uri="http://hl7.org/fhir/ValueSet/jurisdiction",
     )
 
     name: fhirtypes.String = Field(
@@ -265,6 +293,7 @@ class MessageDefinition(domainresource.DomainResource):
         element_property=True,
         # note: Listed Resource Type(s) should be allowed as Reference.
         enum_reference_types=["ActivityDefinition", "PlanDefinition"],
+        backref="message_definition_parent",
     )
     parent__ext: typing.List[
         typing.Union[fhirtypes.FHIRPrimitiveExtensionType, None]
@@ -309,6 +338,7 @@ class MessageDefinition(domainresource.DomainResource):
         element_property=True,
         # note: Listed Resource Type(s) should be allowed as Reference.
         enum_reference_types=["MessageDefinition"],
+        backref="message_definition_replaces",
     )
     replaces__ext: typing.List[
         typing.Union[fhirtypes.FHIRPrimitiveExtensionType, None]
@@ -320,13 +350,19 @@ class MessageDefinition(domainresource.DomainResource):
         title="always | on-error | never | on-success",
         description=(
             "Declare at a message definition level whether a response is required "
-            "or only upon error or success, or never."
+            "or only upon error or success, or never. See "
+            "http://hl7.org/fhir/ValueSet/messageheader-response-request"
         ),
         # if property is element of this resource.
         element_property=True,
         # note: Enum values can be used in validation,
         # but use in your own responsibilities, read official FHIR documentation.
         enum_values=["always", "on-error", "never", "on-success"],
+        # valueset binding
+        binding_description="This enables the capability currently available through MSH-16 (Application Level acknowledgement) in HL7 Version 2 to declare at a message definition level whether a response is required or only upon error or success, or never.",
+        binding_strength="required",
+        binding_uri="http://hl7.org/fhir/ValueSet/messageheader-response-request",
+        binding_version="4.3.0",
     )
     responseRequired__ext: fhirtypes.FHIRPrimitiveExtensionType = Field(
         None,
@@ -340,7 +376,7 @@ class MessageDefinition(domainresource.DomainResource):
         title="draft | active | retired | unknown",
         description=(
             "The status of this message definition. Enables tracking the life-cycle"
-            " of the content."
+            " of the content. See http://hl7.org/fhir/ValueSet/publication-status"
         ),
         # if property is element of this resource.
         element_property=True,
@@ -348,6 +384,11 @@ class MessageDefinition(domainresource.DomainResource):
         # note: Enum values can be used in validation,
         # but use in your own responsibilities, read official FHIR documentation.
         enum_values=["draft", "active", "retired", "unknown"],
+        # valueset binding
+        binding_description="The lifecycle status of an artifact.",
+        binding_strength="required",
+        binding_uri="http://hl7.org/fhir/ValueSet/publication-status",
+        binding_version="4.3.0",
     )
     status__ext: fhirtypes.FHIRPrimitiveExtensionType = Field(
         None, alias="_status", title="Extension field for ``status``."
@@ -581,6 +622,7 @@ class MessageDefinitionAllowedResponse(backboneelement.BackboneElement):
         element_required=True,
         # note: Listed Resource Type(s) should be allowed as Reference.
         enum_reference_types=["MessageDefinition"],
+        backref="message_definition.allowed_response_message",
     )
     message__ext: fhirtypes.FHIRPrimitiveExtensionType = Field(
         None, alias="_message", title="Extension field for ``message``."
@@ -686,10 +728,18 @@ class MessageDefinitionFocus(backboneelement.BackboneElement):
         None,
         alias="code",
         title="Type of resource",
-        description="The kind of resource that must be the focus for this message.",
+        description=(
+            "The kind of resource that must be the focus for this message. See "
+            "http://hl7.org/fhir/ValueSet/resource-types"
+        ),
         # if property is element of this resource.
         element_property=True,
         element_required=True,
+        # valueset binding
+        binding_description="One of the resource types defined as part of this version of FHIR.",
+        binding_strength="required",
+        binding_uri="http://hl7.org/fhir/ValueSet/resource-types",
+        binding_version="4.3.0",
     )
     code__ext: fhirtypes.FHIRPrimitiveExtensionType = Field(
         None, alias="_code", title="Extension field for ``code``."
@@ -740,6 +790,7 @@ class MessageDefinitionFocus(backboneelement.BackboneElement):
         element_property=True,
         # note: Listed Resource Type(s) should be allowed as Reference.
         enum_reference_types=["StructureDefinition"],
+        backref="message_definition.focus_profile",
     )
     profile__ext: fhirtypes.FHIRPrimitiveExtensionType = Field(
         None, alias="_profile", title="Extension field for ``profile``."

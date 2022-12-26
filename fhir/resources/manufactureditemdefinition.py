@@ -45,10 +45,14 @@ class ManufacturedItemDefinition(domainresource.DomainResource):
         description=(
             "The ingredients of this manufactured item. This is only needed if the "
             "ingredients are not specified by incoming references from the "
-            "Ingredient resource."
+            "Ingredient resource. See http://hl7.org/fhir/ValueSet/substance-codes"
         ),
         # if property is element of this resource.
         element_property=True,
+        # valueset binding
+        binding_description="This value set includes all substance codes from SNOMED CT - provided as an exemplar value set.",
+        binding_strength="example",
+        binding_uri="http://hl7.org/fhir/ValueSet/substance-codes",
     )
 
     manufacturedDoseForm: fhirtypes.CodeableConceptType = Field(
@@ -57,10 +61,15 @@ class ManufacturedItemDefinition(domainresource.DomainResource):
         title="Dose form as manufactured (before any necessary transformation)",
         description=(
             "Dose form as manufactured and before any transformation into the "
-            "pharmaceutical product."
+            "pharmaceutical product. See http://hl7.org/fhir/ValueSet/manufactured-"
+            "dose-form"
         ),
         # if property is element of this resource.
         element_property=True,
+        # valueset binding
+        binding_description="Dose form for a medication, in the form suitable for administering to the patient, after mixing, where necessary.",
+        binding_strength="example",
+        binding_uri="http://hl7.org/fhir/ValueSet/manufactured-dose-form",
     )
 
     manufacturer: typing.List[fhirtypes.ReferenceType] = Field(
@@ -75,6 +84,7 @@ class ManufacturedItemDefinition(domainresource.DomainResource):
         element_property=True,
         # note: Listed Resource Type(s) should be allowed as Reference.
         enum_reference_types=["Organization"],
+        backref="manufactured_item_definition_manufacturer",
     )
 
     property: typing.List[fhirtypes.ManufacturedItemDefinitionPropertyType] = Field(
@@ -92,7 +102,7 @@ class ManufacturedItemDefinition(domainresource.DomainResource):
         title="draft | active | retired | unknown",
         description=(
             "The status of this item. Enables tracking the life-cycle of the "
-            "content."
+            "content. See http://hl7.org/fhir/ValueSet/publication-status"
         ),
         # if property is element of this resource.
         element_property=True,
@@ -100,6 +110,11 @@ class ManufacturedItemDefinition(domainresource.DomainResource):
         # note: Enum values can be used in validation,
         # but use in your own responsibilities, read official FHIR documentation.
         enum_values=["draft", "active", "retired", "unknown"],
+        # valueset binding
+        binding_description="The lifecycle status of an artifact.",
+        binding_strength="required",
+        binding_uri="http://hl7.org/fhir/ValueSet/publication-status",
+        binding_version="4.3.0",
     )
     status__ext: fhirtypes.FHIRPrimitiveExtensionType = Field(
         None, alias="_status", title="Extension field for ``status``."
@@ -111,10 +126,14 @@ class ManufacturedItemDefinition(domainresource.DomainResource):
         title="The \u201creal world\u201d units in which the quantity of the item is described",
         description=(
             "The \u201creal world\u201d units in which the quantity of the manufactured item "
-            "is described."
+            "is described. See http://hl7.org/fhir/ValueSet/unit-of-presentation"
         ),
         # if property is element of this resource.
         element_property=True,
+        # valueset binding
+        binding_description="The presentation type in which an administrable medicinal product is given to a patient.",
+        binding_strength="example",
+        binding_uri="http://hl7.org/fhir/ValueSet/unit-of-presentation",
     )
 
     @classmethod
@@ -215,9 +234,13 @@ class ManufacturedItemDefinitionProperty(backboneelement.BackboneElement):
         ...,
         alias="type",
         title="A code expressing the type of characteristic",
-        description=None,
+        description="See http://hl7.org/fhir/ValueSet/product-characteristic-codes",
         # if property is element of this resource.
         element_property=True,
+        # valueset binding
+        binding_description="This value set includes all observable entity codes from SNOMED CT - provided as an exemplar value set.",
+        binding_strength="example",
+        binding_uri="http://hl7.org/fhir/ValueSet/product-characteristic-codes",
     )
 
     valueAttachment: fhirtypes.AttachmentType = Field(

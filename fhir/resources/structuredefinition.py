@@ -58,6 +58,7 @@ class StructureDefinition(domainresource.DomainResource):
         element_property=True,
         # note: Listed Resource Type(s) should be allowed as Reference.
         enum_reference_types=["StructureDefinition"],
+        backref="structure_definition_baseDefinition",
     )
     baseDefinition__ext: fhirtypes.FHIRPrimitiveExtensionType = Field(
         None, alias="_baseDefinition", title="Extension field for ``baseDefinition``."
@@ -145,12 +146,20 @@ class StructureDefinition(domainresource.DomainResource):
         None,
         alias="derivation",
         title="specialization | constraint - How relates to base definition",
-        description="How the type relates to the baseDefinition.",
+        description=(
+            "How the type relates to the baseDefinition. See "
+            "http://hl7.org/fhir/ValueSet/type-derivation-rule"
+        ),
         # if property is element of this resource.
         element_property=True,
         # note: Enum values can be used in validation,
         # but use in your own responsibilities, read official FHIR documentation.
         enum_values=["specialization", "constraint"],
+        # valueset binding
+        binding_description="How a type relates to its baseDefinition.",
+        binding_strength="required",
+        binding_uri="http://hl7.org/fhir/ValueSet/type-derivation-rule",
+        binding_version="4.3.0",
     )
     derivation__ext: fhirtypes.FHIRPrimitiveExtensionType = Field(
         None, alias="_derivation", title="Extension field for ``derivation``."
@@ -207,10 +216,16 @@ class StructureDefinition(domainresource.DomainResource):
             "The version of the FHIR specification on which this "
             "StructureDefinition is based - this is the formal version of the "
             "specification, without the revision number, e.g. "
-            "[publication].[major].[minor], which is 4.3.0 for this version."
+            "[publication].[major].[minor], which is 4.3.0 for this version. See "
+            "http://hl7.org/fhir/ValueSet/FHIR-version"
         ),
         # if property is element of this resource.
         element_property=True,
+        # valueset binding
+        binding_description="All published FHIR Versions.",
+        binding_strength="required",
+        binding_uri="http://hl7.org/fhir/ValueSet/FHIR-version",
+        binding_version="4.3.0",
     )
     fhirVersion__ext: fhirtypes.FHIRPrimitiveExtensionType = Field(
         None, alias="_fhirVersion", title="Extension field for ``fhirVersion``."
@@ -235,10 +250,14 @@ class StructureDefinition(domainresource.DomainResource):
         title="Intended jurisdiction for structure definition (if applicable)",
         description=(
             "A legal or geographic region in which the structure definition is "
-            "intended to be used."
+            "intended to be used. See http://hl7.org/fhir/ValueSet/jurisdiction"
         ),
         # if property is element of this resource.
         element_property=True,
+        # valueset binding
+        binding_description="Countries and regions within which this artifact is targeted for use.",
+        binding_strength="extensible",
+        binding_uri="http://hl7.org/fhir/ValueSet/jurisdiction",
     )
 
     keyword: typing.List[fhirtypes.CodingType] = Field(
@@ -248,23 +267,36 @@ class StructureDefinition(domainresource.DomainResource):
         description=(
             "A set of key words or terms from external terminologies that may be "
             "used to assist with indexing and searching of templates nby describing"
-            " the use of this structure definition, or the content it describes."
+            " the use of this structure definition, or the content it describes. "
+            "See http://hl7.org/fhir/ValueSet/definition-use"
         ),
         # if property is element of this resource.
         element_property=True,
+        # valueset binding
+        binding_description="Codes for the meaning of the defined structure (SNOMED CT and LOINC codes, as an example).",
+        binding_strength="extensible",
+        binding_uri="http://hl7.org/fhir/ValueSet/definition-use",
     )
 
     kind: fhirtypes.Code = Field(
         None,
         alias="kind",
         title="primitive-type | complex-type | resource | logical",
-        description="Defines the kind of structure that this definition is describing.",
+        description=(
+            "Defines the kind of structure that this definition is describing. See "
+            "http://hl7.org/fhir/ValueSet/structure-definition-kind"
+        ),
         # if property is element of this resource.
         element_property=True,
         element_required=True,
         # note: Enum values can be used in validation,
         # but use in your own responsibilities, read official FHIR documentation.
         enum_values=["primitive-type", "complex-type", "resource", "logical"],
+        # valueset binding
+        binding_description="Defines the type of structure that a definition is describing.",
+        binding_strength="required",
+        binding_uri="http://hl7.org/fhir/ValueSet/structure-definition-kind",
+        binding_version="4.3.0",
     )
     kind__ext: fhirtypes.FHIRPrimitiveExtensionType = Field(
         None, alias="_kind", title="Extension field for ``kind``."
@@ -344,7 +376,8 @@ class StructureDefinition(domainresource.DomainResource):
         title="draft | active | retired | unknown",
         description=(
             "The status of this structure definition. Enables tracking the life-"
-            "cycle of the content."
+            "cycle of the content. See http://hl7.org/fhir/ValueSet/publication-"
+            "status"
         ),
         # if property is element of this resource.
         element_property=True,
@@ -352,6 +385,11 @@ class StructureDefinition(domainresource.DomainResource):
         # note: Enum values can be used in validation,
         # but use in your own responsibilities, read official FHIR documentation.
         enum_values=["draft", "active", "retired", "unknown"],
+        # valueset binding
+        binding_description="The lifecycle status of an artifact.",
+        binding_strength="required",
+        binding_uri="http://hl7.org/fhir/ValueSet/publication-status",
+        binding_version="4.3.0",
     )
     status__ext: fhirtypes.FHIRPrimitiveExtensionType = Field(
         None, alias="_status", title="Extension field for ``status``."
@@ -384,11 +422,16 @@ class StructureDefinition(domainresource.DomainResource):
             " abstract type).  References are URLs that are relative to "
             'http://hl7.org/fhir/StructureDefinition e.g. "string" is a reference '
             "to http://hl7.org/fhir/StructureDefinition/string. Absolute URLs are "
-            "only allowed in logical models."
+            "only allowed in logical models. See "
+            "http://hl7.org/fhir/ValueSet/defined-types"
         ),
         # if property is element of this resource.
         element_property=True,
         element_required=True,
+        # valueset binding
+        binding_description="Either a resource or a data type, including logical model types.",
+        binding_strength="extensible",
+        binding_uri="http://hl7.org/fhir/ValueSet/defined-types",
     )
     type__ext: fhirtypes.FHIRPrimitiveExtensionType = Field(
         None, alias="_type", title="Extension field for ``type``."
@@ -598,7 +641,8 @@ class StructureDefinitionContext(backboneelement.BackboneElement):
         title="fhirpath | element | extension",
         description=(
             "Defines how to interpret the expression that defines what the context "
-            "of the extension is."
+            "of the extension is. See http://hl7.org/fhir/ValueSet/extension-"
+            "context-type"
         ),
         # if property is element of this resource.
         element_property=True,
@@ -606,6 +650,11 @@ class StructureDefinitionContext(backboneelement.BackboneElement):
         # note: Enum values can be used in validation,
         # but use in your own responsibilities, read official FHIR documentation.
         enum_values=["fhirpath", "element", "extension"],
+        # valueset binding
+        binding_description="How an extension context is interpreted.",
+        binding_strength="required",
+        binding_uri="http://hl7.org/fhir/ValueSet/extension-context-type",
+        binding_version="4.3.0",
     )
     type__ext: fhirtypes.FHIRPrimitiveExtensionType = Field(
         None, alias="_type", title="Extension field for ``type``."

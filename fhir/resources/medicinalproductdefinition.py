@@ -40,10 +40,15 @@ class MedicinalProductDefinition(domainresource.DomainResource):
         ),
         description=(
             "Whether the Medicinal Product is subject to additional monitoring for "
-            "regulatory reasons, such as heightened reporting requirements."
+            "regulatory reasons, such as heightened reporting requirements. See "
+            "http://hl7.org/fhir/ValueSet/medicinal-product-additional-monitoring"
         ),
         # if property is element of this resource.
         element_property=True,
+        # valueset binding
+        binding_description="Extra measures defined for a Medicinal Product, such as heightened reporting requirements (e.g. Black Triangle Monitoring).",
+        binding_strength="example",
+        binding_uri="http://hl7.org/fhir/ValueSet/medicinal-product-additional-monitoring",
     )
 
     attachedDocument: typing.List[fhirtypes.ReferenceType] = Field(
@@ -58,6 +63,7 @@ class MedicinalProductDefinition(domainresource.DomainResource):
         element_property=True,
         # note: Listed Resource Type(s) should be allowed as Reference.
         enum_reference_types=["DocumentReference"],
+        backref="medicinal_product_definition_attachedDocument",
     )
 
     characteristic: typing.List[
@@ -80,10 +86,14 @@ class MedicinalProductDefinition(domainresource.DomainResource):
         title="Allows the product to be classified by various systems",
         description=(
             "Allows the product to be classified by various systems, commonly WHO "
-            "ATC."
+            "ATC. See http://hl7.org/fhir/ValueSet/product-classification-codes"
         ),
         # if property is element of this resource.
         element_property=True,
+        # valueset binding
+        binding_description="This value set includes codes from the Anatomical Therapeutic Chemical Classification System - provided as an exemplar value set.",
+        binding_strength="example",
+        binding_uri="http://hl7.org/fhir/ValueSet/product-classification-codes",
     )
 
     clinicalTrial: typing.List[fhirtypes.ReferenceType] = Field(
@@ -95,6 +105,7 @@ class MedicinalProductDefinition(domainresource.DomainResource):
         element_property=True,
         # note: Listed Resource Type(s) should be allowed as Reference.
         enum_reference_types=["ResearchStudy"],
+        backref="medicinal_product_definition_clinicalTrial",
     )
 
     code: typing.List[fhirtypes.CodingType] = Field(
@@ -108,10 +119,15 @@ class MedicinalProductDefinition(domainresource.DomainResource):
             " known by identifiers during development and within regulatory "
             "process. However when they are prescribed they tend to be identified "
             "by codes. The same product may be have multiple codes, applied to it "
-            "by multiple organizations."
+            "by multiple organizations. See "
+            "http://hl7.org/fhir/ValueSet/medication-codes"
         ),
         # if property is element of this resource.
         element_property=True,
+        # valueset binding
+        binding_description="A coded concept that defines the type of a medication.",
+        binding_strength="example",
+        binding_uri="http://hl7.org/fhir/ValueSet/medication-codes",
     )
 
     combinedPharmaceuticalDoseForm: fhirtypes.CodeableConceptType = Field(
@@ -126,10 +142,15 @@ class MedicinalProductDefinition(domainresource.DomainResource):
             "multiple part product. This is one concept that describes all the "
             "components. It does not represent the form with components physically "
             "mixed, if that might be necessary, for which see "
-            "(AdministrableProductDefinition.administrableDoseForm)."
+            "(AdministrableProductDefinition.administrableDoseForm). See "
+            "http://hl7.org/fhir/ValueSet/combined-dose-form"
         ),
         # if property is element of this resource.
         element_property=True,
+        # valueset binding
+        binding_description="Dose forms for a product as a whole, considering all individual parts, but before any mixing",
+        binding_strength="example",
+        binding_uri="http://hl7.org/fhir/ValueSet/combined-dose-form",
     )
 
     contact: typing.List[fhirtypes.MedicinalProductDefinitionContactType] = Field(
@@ -174,9 +195,13 @@ class MedicinalProductDefinition(domainresource.DomainResource):
         None,
         alias="domain",
         title="If this medicine applies to human or veterinary uses",
-        description=None,
+        description="See http://hl7.org/fhir/ValueSet/medicinal-product-domain",
         # if property is element of this resource.
         element_property=True,
+        # valueset binding
+        binding_description="Applicable domain for this product (e.g. human, veterinary).",
+        binding_strength="example",
+        binding_uri="http://hl7.org/fhir/ValueSet/medicinal-product-domain",
     )
 
     identifier: typing.List[fhirtypes.IdentifierType] = Field(
@@ -206,12 +231,18 @@ class MedicinalProductDefinition(domainresource.DomainResource):
             "Any component of the drug product which is not the chemical entity "
             "defined as the drug substance, or an excipient in the drug product. "
             "This includes process-related impurities and contaminants, product-"
-            "related impurities including degradation products."
+            "related impurities including degradation products. See "
+            "http://hl7.org/fhir/ValueSet/substance-codes"
         ),
         # if property is element of this resource.
         element_property=True,
+        # valueset binding
+        binding_description="This value set includes all substance codes from SNOMED CT - provided as an exemplar value set.",
+        binding_strength="example",
+        binding_uri="http://hl7.org/fhir/ValueSet/substance-codes",
         # note: Listed Resource Type(s) should be allowed as Reference.
         enum_reference_types=["SubstanceDefinition"],
+        backref="medicinal_product_definition_impurity",
     )
 
     indication: fhirtypes.Markdown = Field(
@@ -249,10 +280,14 @@ class MedicinalProductDefinition(domainresource.DomainResource):
             " incoming AdministrableProductDefinition, PackagedProductDefinition or"
             " ManufacturedItemDefinition references. In cases where those levels of"
             " detail are not used, the ingredients may be specified directly here "
-            "as codes."
+            "as codes. See http://hl7.org/fhir/ValueSet/substance-codes"
         ),
         # if property is element of this resource.
         element_property=True,
+        # valueset binding
+        binding_description="This value set includes all substance codes from SNOMED CT - provided as an exemplar value set.",
+        binding_strength="example",
+        binding_uri="http://hl7.org/fhir/ValueSet/substance-codes",
     )
 
     legalStatusOfSupply: fhirtypes.CodeableConceptType = Field(
@@ -262,9 +297,13 @@ class MedicinalProductDefinition(domainresource.DomainResource):
             "The legal status of supply of the medicinal product as classified by "
             "the regulator"
         ),
-        description=None,
+        description="See http://hl7.org/fhir/ValueSet/legal-status-of-supply",
         # if property is element of this resource.
         element_property=True,
+        # valueset binding
+        binding_description="The prescription supply types appropriate to a medicinal product",
+        binding_strength="example",
+        binding_uri="http://hl7.org/fhir/ValueSet/legal-status-of-supply",
     )
 
     marketingStatus: typing.List[fhirtypes.MarketingStatusType] = Field(
@@ -302,6 +341,7 @@ class MedicinalProductDefinition(domainresource.DomainResource):
         element_property=True,
         # note: Listed Resource Type(s) should be allowed as Reference.
         enum_reference_types=["DocumentReference"],
+        backref="medicinal_product_definition_masterFile",
     )
 
     name: typing.List[fhirtypes.MedicinalProductDefinitionNameType] = Field(
@@ -331,19 +371,31 @@ class MedicinalProductDefinition(domainresource.DomainResource):
         title="Package type for the product",
         description=(
             "Package type for the product. See also the PackagedProductDefinition "
-            "resource."
+            "resource. See http://hl7.org/fhir/ValueSet/medicinal-product-package-"
+            "type"
         ),
         # if property is element of this resource.
         element_property=True,
+        # valueset binding
+        binding_description="Types of medicinal product packs",
+        binding_strength="example",
+        binding_uri="http://hl7.org/fhir/ValueSet/medicinal-product-package-type",
     )
 
     pediatricUseIndicator: fhirtypes.CodeableConceptType = Field(
         None,
         alias="pediatricUseIndicator",
         title="If authorised for use in children",
-        description="If authorised for use in children, or infants, neonates etc.",
+        description=(
+            "If authorised for use in children, or infants, neonates etc. See "
+            "http://hl7.org/fhir/ValueSet/medicinal-product-pediatric-use"
+        ),
         # if property is element of this resource.
         element_property=True,
+        # valueset binding
+        binding_description="Suitability for age groups, in particular children.",
+        binding_strength="example",
+        binding_uri="http://hl7.org/fhir/ValueSet/medicinal-product-pediatric-use",
     )
 
     route: typing.List[fhirtypes.CodeableConceptType] = Field(
@@ -359,10 +411,14 @@ class MedicinalProductDefinition(domainresource.DomainResource):
             "route. See also AdministrableProductDefinition resource. "
             "MedicinalProductDefinition.route is the same concept as "
             "AdministrableProductDefinition.routeOfAdministration.code, and they "
-            "cannot be used together."
+            "cannot be used together. See http://hl7.org/fhir/ValueSet/route-codes"
         ),
         # if property is element of this resource.
         element_property=True,
+        # valueset binding
+        binding_description="A code specifying the route or physiological path of administration of a therapeutic agent into or onto a patient\u0027s body.",
+        binding_strength="example",
+        binding_uri="http://hl7.org/fhir/ValueSet/route-codes",
     )
 
     specialMeasures: typing.List[fhirtypes.CodeableConceptType] = Field(
@@ -375,10 +431,15 @@ class MedicinalProductDefinition(domainresource.DomainResource):
         description=(
             "Whether the Medicinal Product is subject to special measures for "
             "regulatory reasons, such as a requirement to conduct post-"
-            "authorisation studies."
+            "authorisation studies. See http://hl7.org/fhir/ValueSet/medicinal-"
+            "product-special-measures"
         ),
         # if property is element of this resource.
         element_property=True,
+        # valueset binding
+        binding_description="Extra measures defined for a Medicinal Product, such as a requirement to conduct post-authorisation studies.",
+        binding_strength="example",
+        binding_uri="http://hl7.org/fhir/ValueSet/medicinal-product-special-measures",
     )
 
     status: fhirtypes.CodeableConceptType = Field(
@@ -388,10 +449,15 @@ class MedicinalProductDefinition(domainresource.DomainResource):
         description=(
             "The status within the lifecycle of this product record. A high-level "
             "status, this is not intended to duplicate details carried elsewhere "
-            "such as legal status, or authorization status."
+            "such as legal status, or authorization status. See "
+            "http://hl7.org/fhir/ValueSet/publication-status"
         ),
         # if property is element of this resource.
         element_property=True,
+        # valueset binding
+        binding_description="The lifecycle status of an artifact.",
+        binding_strength="preferred",
+        binding_uri="http://hl7.org/fhir/ValueSet/publication-status",
     )
 
     statusDate: fhirtypes.DateTime = Field(
@@ -410,9 +476,13 @@ class MedicinalProductDefinition(domainresource.DomainResource):
         None,
         alias="type",
         title="Regulatory type, e.g. Investigational or Authorized",
-        description=None,
+        description="See http://hl7.org/fhir/ValueSet/medicinal-product-type",
         # if property is element of this resource.
         element_property=True,
+        # valueset binding
+        binding_description="Overall defining type of this medicinal product.",
+        binding_strength="example",
+        binding_uri="http://hl7.org/fhir/ValueSet/medicinal-product-type",
     )
 
     version: fhirtypes.String = Field(
@@ -492,9 +562,13 @@ class MedicinalProductDefinitionCharacteristic(backboneelement.BackboneElement):
         ...,
         alias="type",
         title="A code expressing the type of characteristic",
-        description=None,
+        description="See http://hl7.org/fhir/ValueSet/product-characteristic-codes",
         # if property is element of this resource.
         element_property=True,
+        # valueset binding
+        binding_description="This value set includes all observable entity codes from SNOMED CT - provided as an exemplar value set.",
+        binding_strength="example",
+        binding_uri="http://hl7.org/fhir/ValueSet/product-characteristic-codes",
     )
 
     valueAttachment: fhirtypes.AttachmentType = Field(
@@ -647,6 +721,7 @@ class MedicinalProductDefinitionContact(backboneelement.BackboneElement):
         element_property=True,
         # note: Listed Resource Type(s) should be allowed as Reference.
         enum_reference_types=["Organization", "PractitionerRole"],
+        backref="medicinal_product_definition.contact_contact",
     )
 
     type: fhirtypes.CodeableConceptType = Field(
@@ -656,9 +731,13 @@ class MedicinalProductDefinitionContact(backboneelement.BackboneElement):
             "Allows the contact to be classified, for example QPPV, "
             "Pharmacovigilance Enquiry Information"
         ),
-        description=None,
+        description="See http://hl7.org/fhir/ValueSet/medicinal-product-contact-type",
         # if property is element of this resource.
         element_property=True,
+        # valueset binding
+        binding_description="Extra measures defined for a Medicinal Product, such as heightened reporting requirements.",
+        binding_strength="example",
+        binding_uri="http://hl7.org/fhir/ValueSet/medicinal-product-contact-type",
     )
 
     @classmethod
@@ -695,6 +774,7 @@ class MedicinalProductDefinitionCrossReference(backboneelement.BackboneElement):
         element_property=True,
         # note: Listed Resource Type(s) should be allowed as Reference.
         enum_reference_types=["MedicinalProductDefinition"],
+        backref="medicinal_product_definition.cross_reference_product",
     )
 
     type: fhirtypes.CodeableConceptType = Field(
@@ -707,10 +787,15 @@ class MedicinalProductDefinitionCrossReference(backboneelement.BackboneElement):
         description=(
             "The type of relationship, for instance branded to generic, virtual to "
             "actual product, product to development product (investigational), "
-            "parallel import version."
+            "parallel import version. See http://hl7.org/fhir/ValueSet/medicinal-"
+            "product-cross-reference-type"
         ),
         # if property is element of this resource.
         element_property=True,
+        # valueset binding
+        binding_description="Extra measures defined for a Medicinal Product, such as heightened reporting requirements.",
+        binding_strength="example",
+        binding_uri="http://hl7.org/fhir/ValueSet/medicinal-product-cross-reference-type",
     )
 
     @classmethod
@@ -772,9 +857,13 @@ class MedicinalProductDefinitionName(backboneelement.BackboneElement):
         None,
         alias="type",
         title="Type of product name, such as rINN, BAN, Proprietary, Non-Proprietary",
-        description=None,
+        description="See http://hl7.org/fhir/ValueSet/medicinal-product-name-type",
         # if property is element of this resource.
         element_property=True,
+        # valueset binding
+        binding_description="Type of a name for a Medicinal Product.",
+        binding_strength="example",
+        binding_uri="http://hl7.org/fhir/ValueSet/medicinal-product-name-type",
     )
 
     @classmethod
@@ -868,9 +957,13 @@ class MedicinalProductDefinitionNameCountryLanguage(backboneelement.BackboneElem
         ...,
         alias="country",
         title="Country code for where this name applies",
-        description=None,
+        description="See http://hl7.org/fhir/ValueSet/country",
         # if property is element of this resource.
         element_property=True,
+        # valueset binding
+        binding_description="Jurisdiction codes",
+        binding_strength="example",
+        binding_uri="http://hl7.org/fhir/ValueSet/country",
     )
 
     jurisdiction: fhirtypes.CodeableConceptType = Field(
@@ -879,19 +972,28 @@ class MedicinalProductDefinitionNameCountryLanguage(backboneelement.BackboneElem
         title="Jurisdiction code for where this name applies",
         description=(
             "Jurisdiction code for where this name applies. A jurisdiction may be a"
-            " sub- or supra-national entity (e.g. a state or a geographic region)."
+            " sub- or supra-national entity (e.g. a state or a geographic region). "
+            "See http://hl7.org/fhir/ValueSet/jurisdiction"
         ),
         # if property is element of this resource.
         element_property=True,
+        # valueset binding
+        binding_description="Jurisdiction codes",
+        binding_strength="example",
+        binding_uri="http://hl7.org/fhir/ValueSet/jurisdiction",
     )
 
     language: fhirtypes.CodeableConceptType = Field(
         ...,
         alias="language",
         title="Language code for this name",
-        description=None,
+        description="See http://hl7.org/fhir/ValueSet/languages",
         # if property is element of this resource.
         element_property=True,
+        # valueset binding
+        binding_description="IETF language tag",
+        binding_strength="preferred",
+        binding_uri="http://hl7.org/fhir/ValueSet/languages",
     )
 
     @classmethod
@@ -937,9 +1039,13 @@ class MedicinalProductDefinitionNameNamePart(backboneelement.BackboneElement):
         ...,
         alias="type",
         title="Identifying type for this part of the name (e.g. strength part)",
-        description=None,
+        description="See http://hl7.org/fhir/ValueSet/medicinal-product-name-part-type",
         # if property is element of this resource.
         element_property=True,
+        # valueset binding
+        binding_description="Type of part of a name for a Medicinal Product.",
+        binding_strength="example",
+        binding_uri="http://hl7.org/fhir/ValueSet/medicinal-product-name-part-type",
     )
 
     @classmethod
@@ -1031,10 +1137,15 @@ class MedicinalProductDefinitionOperation(backboneelement.BackboneElement):
         ),
         description=(
             "Specifies whether this particular business or manufacturing process is"
-            " considered proprietary or confidential."
+            " considered proprietary or confidential. See "
+            "http://hl7.org/fhir/ValueSet/medicinal-product-confidentiality"
         ),
         # if property is element of this resource.
         element_property=True,
+        # valueset binding
+        binding_description="Confidentiality rating, e.g. commercial sensitivity for a Medicinal Product.",
+        binding_strength="example",
+        binding_uri="http://hl7.org/fhir/ValueSet/medicinal-product-confidentiality",
     )
 
     effectiveDate: fhirtypes.PeriodType = Field(
@@ -1062,6 +1173,7 @@ class MedicinalProductDefinitionOperation(backboneelement.BackboneElement):
         element_property=True,
         # note: Listed Resource Type(s) should be allowed as Reference.
         enum_reference_types=["Organization"],
+        backref="medicinal_product_definition.operation_organization",
     )
 
     type: fhirtypes.CodeableReferenceType = Field(
@@ -1080,6 +1192,7 @@ class MedicinalProductDefinitionOperation(backboneelement.BackboneElement):
         element_property=True,
         # note: Listed Resource Type(s) should be allowed as Reference.
         enum_reference_types=["ActivityDefinition", "PlanDefinition"],
+        backref="medicinal_product_definition.operation_type",
     )
 
     @classmethod

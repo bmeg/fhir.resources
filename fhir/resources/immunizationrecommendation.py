@@ -36,6 +36,7 @@ class ImmunizationRecommendation(domainresource.DomainResource):
         element_property=True,
         # note: Listed Resource Type(s) should be allowed as Reference.
         enum_reference_types=["Organization"],
+        backref="immunization_recommendation_authority",
     )
 
     date: fhirtypes.DateTime = Field(
@@ -69,6 +70,7 @@ class ImmunizationRecommendation(domainresource.DomainResource):
         element_property=True,
         # note: Listed Resource Type(s) should be allowed as Reference.
         enum_reference_types=["Patient"],
+        backref="immunization_recommendation_patient",
     )
 
     recommendation: typing.List[
@@ -178,9 +180,16 @@ class ImmunizationRecommendationRecommendation(backboneelement.BackboneElement):
         None,
         alias="contraindicatedVaccineCode",
         title="Vaccine which is contraindicated to fulfill the recommendation",
-        description="Vaccine(s) which should not be used to fulfill the recommendation.",
+        description=(
+            "Vaccine(s) which should not be used to fulfill the recommendation. See"
+            " http://hl7.org/fhir/ValueSet/vaccine-code"
+        ),
         # if property is element of this resource.
         element_property=True,
+        # valueset binding
+        binding_description="The type of vaccine administered.",
+        binding_strength="example",
+        binding_uri="http://hl7.org/fhir/ValueSet/vaccine-code",
     )
 
     dateCriterion: typing.List[
@@ -256,9 +265,16 @@ class ImmunizationRecommendationRecommendation(backboneelement.BackboneElement):
         None,
         alias="forecastReason",
         title="Vaccine administration status reason",
-        description="The reason for the assigned forecast status.",
+        description=(
+            "The reason for the assigned forecast status. See "
+            "http://hl7.org/fhir/ValueSet/immunization-recommendation-reason"
+        ),
         # if property is element of this resource.
         element_property=True,
+        # valueset binding
+        binding_description="The reason for the patient\u0027s status with respect to a vaccination protocol.",
+        binding_strength="example",
+        binding_uri="http://hl7.org/fhir/ValueSet/immunization-recommendation-reason",
     )
 
     forecastStatus: fhirtypes.CodeableConceptType = Field(
@@ -267,10 +283,15 @@ class ImmunizationRecommendationRecommendation(backboneelement.BackboneElement):
         title="Vaccine recommendation status",
         description=(
             "Indicates the patient status with respect to the path to immunity for "
-            "the target disease."
+            "the target disease. See http://hl7.org/fhir/ValueSet/immunization-"
+            "recommendation-status"
         ),
         # if property is element of this resource.
         element_property=True,
+        # valueset binding
+        binding_description="The patient\u0027s status with respect to a vaccination protocol.",
+        binding_strength="example",
+        binding_uri="http://hl7.org/fhir/ValueSet/immunization-recommendation-status",
     )
 
     series: fhirtypes.String = Field(
@@ -334,6 +355,7 @@ class ImmunizationRecommendationRecommendation(backboneelement.BackboneElement):
         element_property=True,
         # note: Listed Resource Type(s) should be allowed as Reference.
         enum_reference_types=["Immunization", "ImmunizationEvaluation"],
+        backref="immunization_recommendation.recommendation_supportingImmunization",
     )
 
     supportingPatientInformation: typing.List[fhirtypes.ReferenceType] = Field(
@@ -349,24 +371,40 @@ class ImmunizationRecommendationRecommendation(backboneelement.BackboneElement):
         element_property=True,
         # note: Listed Resource Type(s) should be allowed as Reference.
         enum_reference_types=["Resource"],
+        backref="immunization_recommendation.recommendation_supportingPatientInformation",
     )
 
     targetDisease: fhirtypes.CodeableConceptType = Field(
         None,
         alias="targetDisease",
         title="Disease to be immunized against",
-        description="The targeted disease for the recommendation.",
+        description=(
+            "The targeted disease for the recommendation. See "
+            "http://hl7.org/fhir/ValueSet/immunization-recommendation-target-"
+            "disease"
+        ),
         # if property is element of this resource.
         element_property=True,
+        # valueset binding
+        binding_description="The disease that the recommended vaccination targets.",
+        binding_strength="example",
+        binding_uri="http://hl7.org/fhir/ValueSet/immunization-recommendation-target-disease",
     )
 
     vaccineCode: typing.List[fhirtypes.CodeableConceptType] = Field(
         None,
         alias="vaccineCode",
         title="Vaccine  or vaccine group recommendation applies to",
-        description="Vaccine(s) or vaccine group that pertain to the recommendation.",
+        description=(
+            "Vaccine(s) or vaccine group that pertain to the recommendation. See "
+            "http://hl7.org/fhir/ValueSet/vaccine-code"
+        ),
         # if property is element of this resource.
         element_property=True,
+        # valueset binding
+        binding_description="The type of vaccine administered.",
+        binding_strength="example",
+        binding_uri="http://hl7.org/fhir/ValueSet/vaccine-code",
     )
 
     @classmethod
@@ -459,10 +497,16 @@ class ImmunizationRecommendationRecommendationDateCriterion(
         title="Type of date",
         description=(
             "Date classification of recommendation.  For example, earliest date to "
-            "give, latest date to give, etc."
+            "give, latest date to give, etc. See "
+            "http://hl7.org/fhir/ValueSet/immunization-recommendation-date-"
+            "criterion"
         ),
         # if property is element of this resource.
         element_property=True,
+        # valueset binding
+        binding_description="Classifies date criterion with respect to conveying information about a patient\u0027s vaccination status (e.g. due date, latest to give date, etc.).",
+        binding_strength="example",
+        binding_uri="http://hl7.org/fhir/ValueSet/immunization-recommendation-date-criterion",
     )
 
     value: fhirtypes.DateTime = Field(

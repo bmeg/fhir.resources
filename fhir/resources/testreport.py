@@ -78,13 +78,21 @@ class TestReport(domainresource.DomainResource):
         None,
         alias="result",
         title="pass | fail | pending",
-        description="The overall result from the execution of the TestScript.",
+        description=(
+            "The overall result from the execution of the TestScript. See "
+            "http://hl7.org/fhir/ValueSet/report-result-codes"
+        ),
         # if property is element of this resource.
         element_property=True,
         element_required=True,
         # note: Enum values can be used in validation,
         # but use in your own responsibilities, read official FHIR documentation.
         enum_values=["pass", "fail", "pending"],
+        # valueset binding
+        binding_description="The overall execution result of the TestScript.",
+        binding_strength="required",
+        binding_uri="http://hl7.org/fhir/ValueSet/report-result-codes",
+        binding_version="4.3.0",
     )
     result__ext: fhirtypes.FHIRPrimitiveExtensionType = Field(
         None, alias="_result", title="Extension field for ``result``."
@@ -121,7 +129,10 @@ class TestReport(domainresource.DomainResource):
         None,
         alias="status",
         title="completed | in-progress | waiting | stopped | entered-in-error",
-        description="The current state of this test report.",
+        description=(
+            "The current state of this test report. See "
+            "http://hl7.org/fhir/ValueSet/report-status-codes"
+        ),
         # if property is element of this resource.
         element_property=True,
         element_required=True,
@@ -134,6 +145,11 @@ class TestReport(domainresource.DomainResource):
             "stopped",
             "entered-in-error",
         ],
+        # valueset binding
+        binding_description="The current status of the test script execution.",
+        binding_strength="required",
+        binding_uri="http://hl7.org/fhir/ValueSet/report-status-codes",
+        binding_version="4.3.0",
     )
     status__ext: fhirtypes.FHIRPrimitiveExtensionType = Field(
         None, alias="_status", title="Extension field for ``status``."
@@ -175,6 +191,7 @@ class TestReport(domainresource.DomainResource):
         element_property=True,
         # note: Listed Resource Type(s) should be allowed as Reference.
         enum_reference_types=["TestScript"],
+        backref="test_report_testScript",
     )
 
     tester: fhirtypes.String = Field(
@@ -305,13 +322,21 @@ class TestReportParticipant(backboneelement.BackboneElement):
         None,
         alias="type",
         title="test-engine | client | server",
-        description="The type of participant.",
+        description=(
+            "The type of participant. See http://hl7.org/fhir/ValueSet/report-"
+            "participant-type"
+        ),
         # if property is element of this resource.
         element_property=True,
         element_required=True,
         # note: Enum values can be used in validation,
         # but use in your own responsibilities, read official FHIR documentation.
         enum_values=["test-engine", "client", "server"],
+        # valueset binding
+        binding_description="The type of participant.",
+        binding_strength="required",
+        binding_uri="http://hl7.org/fhir/ValueSet/report-participant-type",
+        binding_version="4.3.0",
     )
     type__ext: fhirtypes.FHIRPrimitiveExtensionType = Field(
         None, alias="_type", title="Extension field for ``type``."
@@ -504,13 +529,21 @@ class TestReportSetupActionAssert(backboneelement.BackboneElement):
         None,
         alias="result",
         title="pass | skip | fail | warning | error",
-        description="The result of this assertion.",
+        description=(
+            "The result of this assertion. See http://hl7.org/fhir/ValueSet/report-"
+            "action-result-codes"
+        ),
         # if property is element of this resource.
         element_property=True,
         element_required=True,
         # note: Enum values can be used in validation,
         # but use in your own responsibilities, read official FHIR documentation.
         enum_values=["pass", "skip", "fail", "warning", "error"],
+        # valueset binding
+        binding_description="The result of the execution of an individual action.",
+        binding_strength="required",
+        binding_uri="http://hl7.org/fhir/ValueSet/report-action-result-codes",
+        binding_version="4.3.0",
     )
     result__ext: fhirtypes.FHIRPrimitiveExtensionType = Field(
         None, alias="_result", title="Extension field for ``result``."
@@ -623,13 +656,21 @@ class TestReportSetupActionOperation(backboneelement.BackboneElement):
         None,
         alias="result",
         title="pass | skip | fail | warning | error",
-        description="The result of this operation.",
+        description=(
+            "The result of this operation. See http://hl7.org/fhir/ValueSet/report-"
+            "action-result-codes"
+        ),
         # if property is element of this resource.
         element_property=True,
         element_required=True,
         # note: Enum values can be used in validation,
         # but use in your own responsibilities, read official FHIR documentation.
         enum_values=["pass", "skip", "fail", "warning", "error"],
+        # valueset binding
+        binding_description="The result of the execution of an individual action.",
+        binding_strength="required",
+        binding_uri="http://hl7.org/fhir/ValueSet/report-action-result-codes",
+        binding_version="4.3.0",
     )
     result__ext: fhirtypes.FHIRPrimitiveExtensionType = Field(
         None, alias="_result", title="Extension field for ``result``."

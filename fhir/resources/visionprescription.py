@@ -66,6 +66,7 @@ class VisionPrescription(domainresource.DomainResource):
         element_property=True,
         # note: Listed Resource Type(s) should be allowed as Reference.
         enum_reference_types=["Encounter"],
+        backref="vision_prescription_encounter",
     )
 
     identifier: typing.List[fhirtypes.IdentifierType] = Field(
@@ -103,6 +104,7 @@ class VisionPrescription(domainresource.DomainResource):
         element_property=True,
         # note: Listed Resource Type(s) should be allowed as Reference.
         enum_reference_types=["Patient"],
+        backref="vision_prescription_patient",
     )
 
     prescriber: fhirtypes.ReferenceType = Field(
@@ -117,19 +119,28 @@ class VisionPrescription(domainresource.DomainResource):
         element_property=True,
         # note: Listed Resource Type(s) should be allowed as Reference.
         enum_reference_types=["Practitioner", "PractitionerRole"],
+        backref="vision_prescription_prescriber",
     )
 
     status: fhirtypes.Code = Field(
         None,
         alias="status",
         title="active | cancelled | draft | entered-in-error",
-        description="The status of the resource instance.",
+        description=(
+            "The status of the resource instance. See "
+            "http://hl7.org/fhir/ValueSet/fm-status"
+        ),
         # if property is element of this resource.
         element_property=True,
         element_required=True,
         # note: Enum values can be used in validation,
         # but use in your own responsibilities, read official FHIR documentation.
         enum_values=["active", "cancelled", "draft", "entered-in-error"],
+        # valueset binding
+        binding_description="A code specifying the state of the resource instance.",
+        binding_strength="required",
+        binding_uri="http://hl7.org/fhir/ValueSet/fm-status",
+        binding_version="4.3.0",
     )
     status__ext: fhirtypes.FHIRPrimitiveExtensionType = Field(
         None, alias="_status", title="Extension field for ``status``."
@@ -336,13 +347,21 @@ class VisionPrescriptionLensSpecification(backboneelement.BackboneElement):
         None,
         alias="eye",
         title="right | left",
-        description="The eye for which the lens specification applies.",
+        description=(
+            "The eye for which the lens specification applies. See "
+            "http://hl7.org/fhir/ValueSet/vision-eye-codes"
+        ),
         # if property is element of this resource.
         element_property=True,
         element_required=True,
         # note: Enum values can be used in validation,
         # but use in your own responsibilities, read official FHIR documentation.
         enum_values=["right", "left"],
+        # valueset binding
+        binding_description="A coded concept listing the eye codes.",
+        binding_strength="required",
+        binding_uri="http://hl7.org/fhir/ValueSet/vision-eye-codes",
+        binding_version="4.3.0",
     )
     eye__ext: fhirtypes.FHIRPrimitiveExtensionType = Field(
         None, alias="_eye", title="Extension field for ``eye``."
@@ -384,10 +403,14 @@ class VisionPrescriptionLensSpecification(backboneelement.BackboneElement):
         title="Product to be supplied",
         description=(
             "Identifies the type of vision correction product which is required for"
-            " the patient."
+            " the patient. See http://hl7.org/fhir/ValueSet/vision-product"
         ),
         # if property is element of this resource.
         element_property=True,
+        # valueset binding
+        binding_description="A coded concept describing the vision products.",
+        binding_strength="example",
+        binding_uri="http://hl7.org/fhir/ValueSet/vision-product",
     )
 
     sphere: fhirtypes.Decimal = Field(
@@ -516,13 +539,21 @@ class VisionPrescriptionLensSpecificationPrism(backboneelement.BackboneElement):
         None,
         alias="base",
         title="up | down | in | out",
-        description="The relative base, or reference lens edge, for the prism.",
+        description=(
+            "The relative base, or reference lens edge, for the prism. See "
+            "http://hl7.org/fhir/ValueSet/vision-base-codes"
+        ),
         # if property is element of this resource.
         element_property=True,
         element_required=True,
         # note: Enum values can be used in validation,
         # but use in your own responsibilities, read official FHIR documentation.
         enum_values=["up", "down", "in", "out"],
+        # valueset binding
+        binding_description="A coded concept listing the base codes.",
+        binding_strength="required",
+        binding_uri="http://hl7.org/fhir/ValueSet/vision-base-codes",
+        binding_version="4.3.0",
     )
     base__ext: fhirtypes.FHIRPrimitiveExtensionType = Field(
         None, alias="_base", title="Extension field for ``base``."

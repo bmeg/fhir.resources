@@ -37,6 +37,7 @@ class Encounter(domainresource.DomainResource):
         element_property=True,
         # note: Listed Resource Type(s) should be allowed as Reference.
         enum_reference_types=["Account"],
+        backref="encounter_account",
     )
 
     appointment: typing.List[fhirtypes.ReferenceType] = Field(
@@ -48,6 +49,7 @@ class Encounter(domainresource.DomainResource):
         element_property=True,
         # note: Listed Resource Type(s) should be allowed as Reference.
         enum_reference_types=["Appointment"],
+        backref="encounter_appointment",
     )
 
     basedOn: typing.List[fhirtypes.ReferenceType] = Field(
@@ -62,6 +64,7 @@ class Encounter(domainresource.DomainResource):
         element_property=True,
         # note: Listed Resource Type(s) should be allowed as Reference.
         enum_reference_types=["ServiceRequest"],
+        backref="encounter_basedOn",
     )
 
     classHistory: typing.List[fhirtypes.EncounterClassHistoryType] = Field(
@@ -89,10 +92,15 @@ class Encounter(domainresource.DomainResource):
         description=(
             "Concepts representing classification of patient encounter such as "
             "ambulatory (outpatient), inpatient, emergency, home health or others "
-            "due to local variations."
+            "due to local variations. See "
+            "http://terminology.hl7.org/ValueSet/v3-ActEncounterCode"
         ),
         # if property is element of this resource.
         element_property=True,
+        # valueset binding
+        binding_description="Classification of the encounter.",
+        binding_strength="extensible",
+        binding_uri="http://terminology.hl7.org/ValueSet/v3-ActEncounterCode",
     )
 
     diagnosis: typing.List[fhirtypes.EncounterDiagnosisType] = Field(
@@ -122,6 +130,7 @@ class Encounter(domainresource.DomainResource):
         element_property=True,
         # note: Listed Resource Type(s) should be allowed as Reference.
         enum_reference_types=["EpisodeOfCare"],
+        backref="encounter_episodeOfCare",
     )
 
     hospitalization: fhirtypes.EncounterHospitalizationType = Field(
@@ -175,6 +184,7 @@ class Encounter(domainresource.DomainResource):
         element_property=True,
         # note: Listed Resource Type(s) should be allowed as Reference.
         enum_reference_types=["Encounter"],
+        backref="encounter_partOf",
     )
 
     participant: typing.List[fhirtypes.EncounterParticipantType] = Field(
@@ -199,9 +209,13 @@ class Encounter(domainresource.DomainResource):
         None,
         alias="priority",
         title="Indicates the urgency of the encounter",
-        description=None,
+        description="See http://terminology.hl7.org/ValueSet/v3-ActPriority",
         # if property is element of this resource.
         element_property=True,
+        # valueset binding
+        binding_description="Indicates the urgency of the encounter.",
+        binding_strength="example",
+        binding_uri="http://terminology.hl7.org/ValueSet/v3-ActPriority",
     )
 
     reasonCode: typing.List[fhirtypes.CodeableConceptType] = Field(
@@ -210,10 +224,15 @@ class Encounter(domainresource.DomainResource):
         title="Coded reason the encounter takes place",
         description=(
             "Reason the encounter takes place, expressed as a code. For admissions,"
-            " this can be used for a coded admission diagnosis."
+            " this can be used for a coded admission diagnosis. See "
+            "http://hl7.org/fhir/ValueSet/encounter-reason"
         ),
         # if property is element of this resource.
         element_property=True,
+        # valueset binding
+        binding_description="Reason why the encounter takes place.",
+        binding_strength="preferred",
+        binding_uri="http://hl7.org/fhir/ValueSet/encounter-reason",
     )
 
     reasonReference: typing.List[fhirtypes.ReferenceType] = Field(
@@ -233,6 +252,7 @@ class Encounter(domainresource.DomainResource):
             "Observation",
             "ImmunizationRecommendation",
         ],
+        backref="encounter_reasonReference",
     )
 
     serviceProvider: fhirtypes.ReferenceType = Field(
@@ -251,6 +271,7 @@ class Encounter(domainresource.DomainResource):
         element_property=True,
         # note: Listed Resource Type(s) should be allowed as Reference.
         enum_reference_types=["Organization"],
+        backref="encounter_serviceProvider",
     )
 
     serviceType: fhirtypes.CodeableConceptType = Field(
@@ -259,10 +280,14 @@ class Encounter(domainresource.DomainResource):
         title="Specific type of service",
         description=(
             "Broad categorization of the service that is to be provided (e.g. "
-            "cardiology)."
+            "cardiology). See http://hl7.org/fhir/ValueSet/service-type"
         ),
         # if property is element of this resource.
         element_property=True,
+        # valueset binding
+        binding_description="Broad categorization of the service that is to be provided.",
+        binding_strength="example",
+        binding_uri="http://hl7.org/fhir/ValueSet/service-type",
     )
 
     status: fhirtypes.Code = Field(
@@ -272,7 +297,7 @@ class Encounter(domainresource.DomainResource):
             "planned | arrived | triaged | in-progress | onleave | finished | "
             "cancelled +"
         ),
-        description=None,
+        description="See http://hl7.org/fhir/ValueSet/encounter-status",
         # if property is element of this resource.
         element_property=True,
         element_required=True,
@@ -288,6 +313,11 @@ class Encounter(domainresource.DomainResource):
             "cancelled",
             "+",
         ],
+        # valueset binding
+        binding_description="Current state of the encounter.",
+        binding_strength="required",
+        binding_uri="http://hl7.org/fhir/ValueSet/encounter-status",
+        binding_version="4.3.0",
     )
     status__ext: fhirtypes.FHIRPrimitiveExtensionType = Field(
         None, alias="_status", title="Extension field for ``status``."
@@ -315,6 +345,7 @@ class Encounter(domainresource.DomainResource):
         element_property=True,
         # note: Listed Resource Type(s) should be allowed as Reference.
         enum_reference_types=["Patient", "Group"],
+        backref="encounter_subject",
     )
 
     type: typing.List[fhirtypes.CodeableConceptType] = Field(
@@ -323,10 +354,15 @@ class Encounter(domainresource.DomainResource):
         title="Specific type of encounter",
         description=(
             "Specific type of encounter (e.g. e-mail consultation, surgical day-"
-            "care, skilled nursing, rehabilitation)."
+            "care, skilled nursing, rehabilitation). See "
+            "http://hl7.org/fhir/ValueSet/encounter-type"
         ),
         # if property is element of this resource.
         element_property=True,
+        # valueset binding
+        binding_description="A specific code indicating type of service provided",
+        binding_strength="example",
+        binding_uri="http://hl7.org/fhir/ValueSet/encounter-type",
     )
 
     @classmethod
@@ -450,9 +486,13 @@ class EncounterClassHistory(backboneelement.BackboneElement):
         ...,
         alias="class",
         title="inpatient | outpatient | ambulatory | emergency +",
-        description=None,
+        description="See http://terminology.hl7.org/ValueSet/v3-ActEncounterCode",
         # if property is element of this resource.
         element_property=True,
+        # valueset binding
+        binding_description="Classification of the encounter.",
+        binding_strength="extensible",
+        binding_uri="http://terminology.hl7.org/ValueSet/v3-ActEncounterCode",
     )
 
     period: fhirtypes.PeriodType = Field(
@@ -497,6 +537,7 @@ class EncounterDiagnosis(backboneelement.BackboneElement):
         element_property=True,
         # note: Listed Resource Type(s) should be allowed as Reference.
         enum_reference_types=["Condition", "Procedure"],
+        backref="encounter.diagnosis_condition",
     )
 
     rank: fhirtypes.PositiveInt = Field(
@@ -518,9 +559,13 @@ class EncounterDiagnosis(backboneelement.BackboneElement):
             "Role that this diagnosis has within the encounter (e.g. admission, "
             "billing, discharge \u2026)"
         ),
-        description=None,
+        description="See http://hl7.org/fhir/ValueSet/diagnosis-role",
         # if property is element of this resource.
         element_property=True,
+        # valueset binding
+        binding_description="The type of diagnosis this condition represents.",
+        binding_strength="preferred",
+        binding_uri="http://hl7.org/fhir/ValueSet/diagnosis-role",
     )
 
     @classmethod
@@ -546,9 +591,13 @@ class EncounterHospitalization(backboneelement.BackboneElement):
         None,
         alias="admitSource",
         title="From where patient was admitted (physician referral, transfer)",
-        description=None,
+        description="See http://hl7.org/fhir/ValueSet/encounter-admit-source",
         # if property is element of this resource.
         element_property=True,
+        # valueset binding
+        binding_description="From where the patient was admitted.",
+        binding_strength="preferred",
+        binding_uri="http://hl7.org/fhir/ValueSet/encounter-admit-source",
     )
 
     destination: fhirtypes.ReferenceType = Field(
@@ -560,24 +609,33 @@ class EncounterHospitalization(backboneelement.BackboneElement):
         element_property=True,
         # note: Listed Resource Type(s) should be allowed as Reference.
         enum_reference_types=["Location", "Organization"],
+        backref="encounter.hospitalization_destination",
     )
 
     dietPreference: typing.List[fhirtypes.CodeableConceptType] = Field(
         None,
         alias="dietPreference",
         title="Diet preferences reported by the patient",
-        description=None,
+        description="See http://hl7.org/fhir/ValueSet/encounter-diet",
         # if property is element of this resource.
         element_property=True,
+        # valueset binding
+        binding_description="Medical, cultural or ethical food preferences to help with catering requirements.",
+        binding_strength="example",
+        binding_uri="http://hl7.org/fhir/ValueSet/encounter-diet",
     )
 
     dischargeDisposition: fhirtypes.CodeableConceptType = Field(
         None,
         alias="dischargeDisposition",
         title="Category or kind of location after discharge",
-        description=None,
+        description="See http://hl7.org/fhir/ValueSet/encounter-discharge-disposition",
         # if property is element of this resource.
         element_property=True,
+        # valueset binding
+        binding_description="Discharge Disposition.",
+        binding_strength="example",
+        binding_uri="http://hl7.org/fhir/ValueSet/encounter-discharge-disposition",
     )
 
     origin: fhirtypes.ReferenceType = Field(
@@ -589,6 +647,7 @@ class EncounterHospitalization(backboneelement.BackboneElement):
         element_property=True,
         # note: Listed Resource Type(s) should be allowed as Reference.
         enum_reference_types=["Location", "Organization"],
+        backref="encounter.hospitalization_origin",
     )
 
     preAdmissionIdentifier: fhirtypes.IdentifierType = Field(
@@ -607,9 +666,16 @@ class EncounterHospitalization(backboneelement.BackboneElement):
             "The type of hospital re-admission that has occurred (if any). If the "
             "value is absent, then this is not identified as a readmission"
         ),
-        description="Whether this hospitalization is a readmission and why if known.",
+        description=(
+            "Whether this hospitalization is a readmission and why if known. See "
+            "http://terminology.hl7.org/ValueSet/v2-0092"
+        ),
         # if property is element of this resource.
         element_property=True,
+        # valueset binding
+        binding_description="The reason for re-admission of this hospitalization encounter.",
+        binding_strength="example",
+        binding_uri="http://terminology.hl7.org/ValueSet/v2-0092",
     )
 
     specialArrangement: typing.List[fhirtypes.CodeableConceptType] = Field(
@@ -619,19 +685,28 @@ class EncounterHospitalization(backboneelement.BackboneElement):
         description=(
             "Any special requests that have been made for this hospitalization "
             "encounter, such as the provision of specific equipment or other "
-            "things."
+            "things. See http://hl7.org/fhir/ValueSet/encounter-special-"
+            "arrangements"
         ),
         # if property is element of this resource.
         element_property=True,
+        # valueset binding
+        binding_description="Special arrangements.",
+        binding_strength="preferred",
+        binding_uri="http://hl7.org/fhir/ValueSet/encounter-special-arrangements",
     )
 
     specialCourtesy: typing.List[fhirtypes.CodeableConceptType] = Field(
         None,
         alias="specialCourtesy",
         title="Special courtesies (VIP, board member)",
-        description=None,
+        description="See http://hl7.org/fhir/ValueSet/encounter-special-courtesy",
         # if property is element of this resource.
         element_property=True,
+        # valueset binding
+        binding_description="Special courtesies.",
+        binding_strength="preferred",
+        binding_uri="http://hl7.org/fhir/ValueSet/encounter-special-courtesy",
     )
 
     @classmethod
@@ -676,6 +751,7 @@ class EncounterLocation(backboneelement.BackboneElement):
         element_property=True,
         # note: Listed Resource Type(s) should be allowed as Reference.
         enum_reference_types=["Location"],
+        backref="encounter.location_location",
     )
 
     period: fhirtypes.PeriodType = Field(
@@ -696,10 +772,15 @@ class EncounterLocation(backboneelement.BackboneElement):
         ),
         description=(
             "This will be used to specify the required levels (bed/ward/room/etc.) "
-            "desired to be recorded to simplify either messaging or query."
+            "desired to be recorded to simplify either messaging or query. See "
+            "http://hl7.org/fhir/ValueSet/location-physical-type"
         ),
         # if property is element of this resource.
         element_property=True,
+        # valueset binding
+        binding_description="Physical form of the location.",
+        binding_strength="example",
+        binding_uri="http://hl7.org/fhir/ValueSet/location-physical-type",
     )
 
     status: fhirtypes.Code = Field(
@@ -709,13 +790,19 @@ class EncounterLocation(backboneelement.BackboneElement):
         description=(
             "The status of the participants' presence at the specified location "
             "during the period specified. If the participant is no longer at the "
-            "location, then the period will have an end date/time."
+            "location, then the period will have an end date/time. See "
+            "http://hl7.org/fhir/ValueSet/encounter-location-status"
         ),
         # if property is element of this resource.
         element_property=True,
         # note: Enum values can be used in validation,
         # but use in your own responsibilities, read official FHIR documentation.
         enum_values=["planned", "active", "reserved", "completed"],
+        # valueset binding
+        binding_description="The status of the location.",
+        binding_strength="required",
+        binding_uri="http://hl7.org/fhir/ValueSet/encounter-location-status",
+        binding_version="4.3.0",
     )
     status__ext: fhirtypes.FHIRPrimitiveExtensionType = Field(
         None, alias="_status", title="Extension field for ``status``."
@@ -758,6 +845,7 @@ class EncounterParticipant(backboneelement.BackboneElement):
         element_property=True,
         # note: Listed Resource Type(s) should be allowed as Reference.
         enum_reference_types=["Practitioner", "PractitionerRole", "RelatedPerson"],
+        backref="encounter.participant_individual",
     )
 
     period: fhirtypes.PeriodType = Field(
@@ -777,9 +865,13 @@ class EncounterParticipant(backboneelement.BackboneElement):
         None,
         alias="type",
         title="Role of participant in encounter",
-        description=None,
+        description="See http://hl7.org/fhir/ValueSet/encounter-participant-type",
         # if property is element of this resource.
         element_property=True,
+        # valueset binding
+        binding_description="Role of participant in encounter.",
+        binding_strength="extensible",
+        binding_uri="http://hl7.org/fhir/ValueSet/encounter-participant-type",
     )
 
     @classmethod
@@ -820,7 +912,7 @@ class EncounterStatusHistory(backboneelement.BackboneElement):
             "planned | arrived | triaged | in-progress | onleave | finished | "
             "cancelled +"
         ),
-        description=None,
+        description="See http://hl7.org/fhir/ValueSet/encounter-status",
         # if property is element of this resource.
         element_property=True,
         element_required=True,
@@ -836,6 +928,11 @@ class EncounterStatusHistory(backboneelement.BackboneElement):
             "cancelled",
             "+",
         ],
+        # valueset binding
+        binding_description="Current state of the encounter.",
+        binding_strength="required",
+        binding_uri="http://hl7.org/fhir/ValueSet/encounter-status",
+        binding_version="4.3.0",
     )
     status__ext: fhirtypes.FHIRPrimitiveExtensionType = Field(
         None, alias="_status", title="Extension field for ``status``."

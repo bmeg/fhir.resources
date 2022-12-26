@@ -42,6 +42,7 @@ class ClinicalImpression(domainresource.DomainResource):
         element_property=True,
         # note: Listed Resource Type(s) should be allowed as Reference.
         enum_reference_types=["Practitioner", "PractitionerRole"],
+        backref="clinical_impression_assessor",
     )
 
     code: fhirtypes.CodeableConceptType = Field(
@@ -51,6 +52,9 @@ class ClinicalImpression(domainresource.DomainResource):
         description="Categorizes the type of clinical assessment performed.",
         # if property is element of this resource.
         element_property=True,
+        # valueset binding
+        binding_description="Identifies categories of clinical impressions.  This is a place-holder only.  It may be removed.",
+        binding_strength="example",
     )
 
     date: fhirtypes.DateTime = Field(
@@ -121,6 +125,7 @@ class ClinicalImpression(domainresource.DomainResource):
         element_property=True,
         # note: Listed Resource Type(s) should be allowed as Reference.
         enum_reference_types=["Encounter"],
+        backref="clinical_impression_encounter",
     )
 
     finding: typing.List[fhirtypes.ClinicalImpressionFindingType] = Field(
@@ -190,6 +195,7 @@ class ClinicalImpression(domainresource.DomainResource):
         element_property=True,
         # note: Listed Resource Type(s) should be allowed as Reference.
         enum_reference_types=["ClinicalImpression"],
+        backref="clinical_impression_previous",
     )
 
     problem: typing.List[fhirtypes.ReferenceType] = Field(
@@ -201,15 +207,20 @@ class ClinicalImpression(domainresource.DomainResource):
         element_property=True,
         # note: Listed Resource Type(s) should be allowed as Reference.
         enum_reference_types=["Condition", "AllergyIntolerance"],
+        backref="clinical_impression_problem",
     )
 
     prognosisCodeableConcept: typing.List[fhirtypes.CodeableConceptType] = Field(
         None,
         alias="prognosisCodeableConcept",
         title="Estimate of likely outcome",
-        description=None,
+        description="See http://hl7.org/fhir/ValueSet/clinicalimpression-prognosis",
         # if property is element of this resource.
         element_property=True,
+        # valueset binding
+        binding_description="Prognosis or outlook findings.",
+        binding_strength="example",
+        binding_uri="http://hl7.org/fhir/ValueSet/clinicalimpression-prognosis",
     )
 
     prognosisReference: typing.List[fhirtypes.ReferenceType] = Field(
@@ -221,6 +232,7 @@ class ClinicalImpression(domainresource.DomainResource):
         element_property=True,
         # note: Listed Resource Type(s) should be allowed as Reference.
         enum_reference_types=["RiskAssessment"],
+        backref="clinical_impression_prognosisReference",
     )
 
     protocol: typing.List[typing.Optional[fhirtypes.Uri]] = Field(
@@ -243,13 +255,21 @@ class ClinicalImpression(domainresource.DomainResource):
         None,
         alias="status",
         title="in-progress | completed | entered-in-error",
-        description="Identifies the workflow status of the assessment.",
+        description=(
+            "Identifies the workflow status of the assessment. See "
+            "http://hl7.org/fhir/ValueSet/clinicalimpression-status"
+        ),
         # if property is element of this resource.
         element_property=True,
         element_required=True,
         # note: Enum values can be used in validation,
         # but use in your own responsibilities, read official FHIR documentation.
         enum_values=["in-progress", "completed", "entered-in-error"],
+        # valueset binding
+        binding_description="The workflow state of a clinical impression.",
+        binding_strength="required",
+        binding_uri="http://hl7.org/fhir/ValueSet/clinicalimpression-status",
+        binding_version="4.3.0",
     )
     status__ext: fhirtypes.FHIRPrimitiveExtensionType = Field(
         None, alias="_status", title="Extension field for ``status``."
@@ -262,6 +282,9 @@ class ClinicalImpression(domainresource.DomainResource):
         description="Captures the reason for the current state of the ClinicalImpression.",
         # if property is element of this resource.
         element_property=True,
+        # valueset binding
+        binding_description="Codes identifying the reason for the current state of a clinical impression.",
+        binding_strength="example",
     )
 
     subject: fhirtypes.ReferenceType = Field(
@@ -273,6 +296,7 @@ class ClinicalImpression(domainresource.DomainResource):
         element_property=True,
         # note: Listed Resource Type(s) should be allowed as Reference.
         enum_reference_types=["Patient", "Group"],
+        backref="clinical_impression_subject",
     )
 
     summary: fhirtypes.String = Field(
@@ -296,6 +320,7 @@ class ClinicalImpression(domainresource.DomainResource):
         element_property=True,
         # note: Listed Resource Type(s) should be allowed as Reference.
         enum_reference_types=["Resource"],
+        backref="clinical_impression_supportingInfo",
     )
 
     @classmethod
@@ -464,10 +489,15 @@ class ClinicalImpressionFinding(backboneelement.BackboneElement):
         title="What was found",
         description=(
             "Specific text or code for finding or diagnosis, which may include "
-            "ruled-out or resolved conditions."
+            "ruled-out or resolved conditions. See "
+            "http://hl7.org/fhir/ValueSet/condition-code"
         ),
         # if property is element of this resource.
         element_property=True,
+        # valueset binding
+        binding_description="Identification of the Condition or diagnosis.",
+        binding_strength="example",
+        binding_uri="http://hl7.org/fhir/ValueSet/condition-code",
     )
 
     itemReference: fhirtypes.ReferenceType = Field(
@@ -482,6 +512,7 @@ class ClinicalImpressionFinding(backboneelement.BackboneElement):
         element_property=True,
         # note: Listed Resource Type(s) should be allowed as Reference.
         enum_reference_types=["Condition", "Observation", "Media"],
+        backref="clinical_impression.finding_itemReference",
     )
 
     @classmethod
@@ -523,10 +554,15 @@ class ClinicalImpressionInvestigation(backboneelement.BackboneElement):
             'A name/code for the group ("set") of investigations. Typically, this '
             'will be something like "signs", "symptoms", "clinical", "diagnostic", '
             "but the list is not constrained, and others such groups such as "
-            "(exposure|family|travel|nutritional) history may be used."
+            "(exposure|family|travel|nutritional) history may be used. See "
+            "http://hl7.org/fhir/ValueSet/investigation-sets"
         ),
         # if property is element of this resource.
         element_property=True,
+        # valueset binding
+        binding_description="A name/code for a set of investigations.",
+        binding_strength="example",
+        binding_uri="http://hl7.org/fhir/ValueSet/investigation-sets",
     )
 
     item: typing.List[fhirtypes.ReferenceType] = Field(
@@ -546,6 +582,7 @@ class ClinicalImpressionInvestigation(backboneelement.BackboneElement):
             "ImagingStudy",
             "Media",
         ],
+        backref="clinical_impression.investigation_item",
     )
 
     @classmethod

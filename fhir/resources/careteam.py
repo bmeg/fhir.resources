@@ -33,10 +33,15 @@ class CareTeam(domainresource.DomainResource):
         description=(
             "Identifies what kind of team.  This is to support differentiation "
             "between multiple co-existing teams, such as care plan team, episode of"
-            " care team, longitudinal care team."
+            " care team, longitudinal care team. See "
+            "http://hl7.org/fhir/ValueSet/care-team-category"
         ),
         # if property is element of this resource.
         element_property=True,
+        # valueset binding
+        binding_description="Indicates the type of care team.",
+        binding_strength="example",
+        binding_uri="http://hl7.org/fhir/ValueSet/care-team-category",
     )
 
     encounter: fhirtypes.ReferenceType = Field(
@@ -51,6 +56,7 @@ class CareTeam(domainresource.DomainResource):
         element_property=True,
         # note: Listed Resource Type(s) should be allowed as Reference.
         enum_reference_types=["Encounter"],
+        backref="care_team_encounter",
     )
 
     identifier: typing.List[fhirtypes.IdentifierType] = Field(
@@ -75,6 +81,7 @@ class CareTeam(domainresource.DomainResource):
         element_property=True,
         # note: Listed Resource Type(s) should be allowed as Reference.
         enum_reference_types=["Organization"],
+        backref="care_team_managingOrganization",
     )
 
     name: fhirtypes.String = Field(
@@ -129,9 +136,16 @@ class CareTeam(domainresource.DomainResource):
         None,
         alias="reasonCode",
         title="Why the care team exists",
-        description="Describes why the care team exists.",
+        description=(
+            "Describes why the care team exists. See "
+            "http://hl7.org/fhir/ValueSet/clinical-findings"
+        ),
         # if property is element of this resource.
         element_property=True,
+        # valueset binding
+        binding_description="Indicates the reason for the care team.",
+        binding_strength="example",
+        binding_uri="http://hl7.org/fhir/ValueSet/clinical-findings",
     )
 
     reasonReference: typing.List[fhirtypes.ReferenceType] = Field(
@@ -143,18 +157,27 @@ class CareTeam(domainresource.DomainResource):
         element_property=True,
         # note: Listed Resource Type(s) should be allowed as Reference.
         enum_reference_types=["Condition"],
+        backref="care_team_reasonReference",
     )
 
     status: fhirtypes.Code = Field(
         None,
         alias="status",
         title="proposed | active | suspended | inactive | entered-in-error",
-        description="Indicates the current state of the care team.",
+        description=(
+            "Indicates the current state of the care team. See "
+            "http://hl7.org/fhir/ValueSet/care-team-status"
+        ),
         # if property is element of this resource.
         element_property=True,
         # note: Enum values can be used in validation,
         # but use in your own responsibilities, read official FHIR documentation.
         enum_values=["proposed", "active", "suspended", "inactive", "entered-in-error"],
+        # valueset binding
+        binding_description="Indicates the status of the care team.",
+        binding_strength="required",
+        binding_uri="http://hl7.org/fhir/ValueSet/care-team-status",
+        binding_version="4.3.0",
     )
     status__ext: fhirtypes.FHIRPrimitiveExtensionType = Field(
         None, alias="_status", title="Extension field for ``status``."
@@ -172,6 +195,7 @@ class CareTeam(domainresource.DomainResource):
         element_property=True,
         # note: Listed Resource Type(s) should be allowed as Reference.
         enum_reference_types=["Patient", "Group"],
+        backref="care_team_subject",
     )
 
     telecom: typing.List[fhirtypes.ContactPointType] = Field(
@@ -248,6 +272,7 @@ class CareTeamParticipant(backboneelement.BackboneElement):
             "Organization",
             "CareTeam",
         ],
+        backref="care_team.participant_member",
     )
 
     onBehalfOf: fhirtypes.ReferenceType = Field(
@@ -259,6 +284,7 @@ class CareTeamParticipant(backboneelement.BackboneElement):
         element_property=True,
         # note: Listed Resource Type(s) should be allowed as Reference.
         enum_reference_types=["Organization"],
+        backref="care_team.participant_onBehalfOf",
     )
 
     period: fhirtypes.PeriodType = Field(
@@ -280,10 +306,15 @@ class CareTeamParticipant(backboneelement.BackboneElement):
         description=(
             "Indicates specific responsibility of an individual within the care "
             'team, such as "Primary care physician", "Trained social worker '
-            'counselor", "Caregiver", etc.'
+            'counselor", "Caregiver", etc. See '
+            "http://hl7.org/fhir/ValueSet/careteam-participant-role"
         ),
         # if property is element of this resource.
         element_property=True,
+        # valueset binding
+        binding_description='Indicates specific responsibility of an individual within the care team, such as "Primary physician", "Team coordinator", "Caregiver", etc.',
+        binding_strength="example",
+        binding_uri="http://hl7.org/fhir/ValueSet/careteam-participant-role",
     )
 
     @classmethod

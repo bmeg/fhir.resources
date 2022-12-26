@@ -55,6 +55,7 @@ class GuidanceResponse(domainresource.DomainResource):
         element_property=True,
         # note: Listed Resource Type(s) should be allowed as Reference.
         enum_reference_types=["Encounter"],
+        backref="guidance_response_encounter",
     )
 
     evaluationMessage: typing.List[fhirtypes.ReferenceType] = Field(
@@ -71,6 +72,7 @@ class GuidanceResponse(domainresource.DomainResource):
         element_property=True,
         # note: Listed Resource Type(s) should be allowed as Reference.
         enum_reference_types=["OperationOutcome"],
+        backref="guidance_response_evaluationMessage",
     )
 
     identifier: typing.List[fhirtypes.IdentifierType] = Field(
@@ -178,6 +180,7 @@ class GuidanceResponse(domainresource.DomainResource):
         element_property=True,
         # note: Listed Resource Type(s) should be allowed as Reference.
         enum_reference_types=["Parameters"],
+        backref="guidance_response_outputParameters",
     )
 
     performer: fhirtypes.ReferenceType = Field(
@@ -189,6 +192,7 @@ class GuidanceResponse(domainresource.DomainResource):
         element_property=True,
         # note: Listed Resource Type(s) should be allowed as Reference.
         enum_reference_types=["Device"],
+        backref="guidance_response_performer",
     )
 
     reasonCode: typing.List[fhirtypes.CodeableConceptType] = Field(
@@ -222,6 +226,7 @@ class GuidanceResponse(domainresource.DomainResource):
             "DiagnosticReport",
             "DocumentReference",
         ],
+        backref="guidance_response_reasonReference",
     )
 
     requestIdentifier: fhirtypes.IdentifierType = Field(
@@ -247,6 +252,7 @@ class GuidanceResponse(domainresource.DomainResource):
         element_property=True,
         # note: Listed Resource Type(s) should be allowed as Reference.
         enum_reference_types=["CarePlan", "RequestGroup"],
+        backref="guidance_response_result",
     )
 
     status: fhirtypes.Code = Field(
@@ -265,7 +271,8 @@ class GuidanceResponse(domainresource.DomainResource):
             "evaluation completed successfully, but the engine determines that a "
             "potentially more accurate response could be provided if more data was "
             "available, the status will be data-requested, and the response will "
-            "contain a description of the additional requested information."
+            "contain a description of the additional requested information. See "
+            "http://hl7.org/fhir/ValueSet/guidance-response-status"
         ),
         # if property is element of this resource.
         element_property=True,
@@ -280,6 +287,11 @@ class GuidanceResponse(domainresource.DomainResource):
             "failure",
             "entered-in-error",
         ],
+        # valueset binding
+        binding_description="The status of a guidance response.",
+        binding_strength="required",
+        binding_uri="http://hl7.org/fhir/ValueSet/guidance-response-status",
+        binding_version="4.3.0",
     )
     status__ext: fhirtypes.FHIRPrimitiveExtensionType = Field(
         None, alias="_status", title="Extension field for ``status``."
@@ -294,6 +306,7 @@ class GuidanceResponse(domainresource.DomainResource):
         element_property=True,
         # note: Listed Resource Type(s) should be allowed as Reference.
         enum_reference_types=["Patient", "Group"],
+        backref="guidance_response_subject",
     )
 
     @classmethod

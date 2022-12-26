@@ -38,10 +38,15 @@ class RegulatedAuthorization(domainresource.DomainResource):
         ),
         description=(
             "The legal or regulatory framework against which this authorization is "
-            "granted, or other reasons for it."
+            "granted, or other reasons for it. See "
+            "http://hl7.org/fhir/ValueSet/regulated-authorization-basis"
         ),
         # if property is element of this resource.
         element_property=True,
+        # valueset binding
+        binding_description="A legal or regulatory framework against which an authorization is granted, or other reasons for it.",
+        binding_strength="example",
+        binding_uri="http://hl7.org/fhir/ValueSet/regulated-authorization-basis",
     )
 
     case: fhirtypes.RegulatedAuthorizationCaseType = Field(
@@ -93,6 +98,7 @@ class RegulatedAuthorization(domainresource.DomainResource):
         element_property=True,
         # note: Listed Resource Type(s) should be allowed as Reference.
         enum_reference_types=["Organization"],
+        backref="regulated_authorization_holder",
     )
 
     identifier: typing.List[fhirtypes.IdentifierType] = Field(
@@ -116,6 +122,7 @@ class RegulatedAuthorization(domainresource.DomainResource):
         element_property=True,
         # note: Listed Resource Type(s) should be allowed as Reference.
         enum_reference_types=["ClinicalUseDefinition"],
+        backref="regulated_authorization_indication",
     )
 
     intendedUse: fhirtypes.CodeableConceptType = Field(
@@ -123,10 +130,15 @@ class RegulatedAuthorization(domainresource.DomainResource):
         alias="intendedUse",
         title="The intended use of the product, e.g. prevention, treatment",
         description=(
-            "The intended use of the product, e.g. prevention, treatment, " "diagnosis."
+            "The intended use of the product, e.g. prevention, treatment, "
+            "diagnosis. See http://hl7.org/fhir/ValueSet/product-intended-use"
         ),
         # if property is element of this resource.
         element_property=True,
+        # valueset binding
+        binding_description="The overall intended use of a product.",
+        binding_strength="preferred",
+        binding_uri="http://hl7.org/fhir/ValueSet/product-intended-use",
     )
 
     region: typing.List[fhirtypes.CodeableConceptType] = Field(
@@ -135,10 +147,15 @@ class RegulatedAuthorization(domainresource.DomainResource):
         title="The territory in which the authorization has been granted",
         description=(
             "The territory (e.g., country, jurisdiction etc.) in which the "
-            "authorization has been granted."
+            "authorization has been granted. See "
+            "http://hl7.org/fhir/ValueSet/jurisdiction"
         ),
         # if property is element of this resource.
         element_property=True,
+        # valueset binding
+        binding_description="Jurisdiction codes",
+        binding_strength="example",
+        binding_uri="http://hl7.org/fhir/ValueSet/jurisdiction",
     )
 
     regulator: fhirtypes.ReferenceType = Field(
@@ -156,6 +173,7 @@ class RegulatedAuthorization(domainresource.DomainResource):
         element_property=True,
         # note: Listed Resource Type(s) should be allowed as Reference.
         enum_reference_types=["Organization"],
+        backref="regulated_authorization_regulator",
     )
 
     status: fhirtypes.CodeableConceptType = Field(
@@ -167,10 +185,15 @@ class RegulatedAuthorization(domainresource.DomainResource):
         ),
         description=(
             "The status that is authorised e.g. approved. Intermediate states and "
-            "actions can be tracked with cases and applications."
+            "actions can be tracked with cases and applications. See "
+            "http://hl7.org/fhir/ValueSet/publication-status"
         ),
         # if property is element of this resource.
         element_property=True,
+        # valueset binding
+        binding_description="The lifecycle status of an artifact.",
+        binding_strength="preferred",
+        binding_uri="http://hl7.org/fhir/ValueSet/publication-status",
     )
 
     statusDate: fhirtypes.DateTime = Field(
@@ -211,6 +234,7 @@ class RegulatedAuthorization(domainresource.DomainResource):
             "Organization",
             "Location",
         ],
+        backref="regulated_authorization_subject",
     )
 
     type: fhirtypes.CodeableConceptType = Field(
@@ -220,9 +244,13 @@ class RegulatedAuthorization(domainresource.DomainResource):
             "Overall type of this authorization, for example drug marketing "
             "approval, orphan drug designation"
         ),
-        description=None,
+        description="See http://hl7.org/fhir/ValueSet/regulated-authorization-type",
         # if property is element of this resource.
         element_property=True,
+        # valueset binding
+        binding_description="Overall type of this authorization.",
+        binding_strength="example",
+        binding_uri="http://hl7.org/fhir/ValueSet/regulated-authorization-type",
     )
 
     validityPeriod: fhirtypes.PeriodType = Field(
@@ -352,18 +380,26 @@ class RegulatedAuthorizationCase(backboneelement.BackboneElement):
         None,
         alias="status",
         title="The status associated with the case",
-        description=None,
+        description="See http://hl7.org/fhir/ValueSet/publication-status",
         # if property is element of this resource.
         element_property=True,
+        # valueset binding
+        binding_description="The lifecycle status of an artifact.",
+        binding_strength="preferred",
+        binding_uri="http://hl7.org/fhir/ValueSet/publication-status",
     )
 
     type: fhirtypes.CodeableConceptType = Field(
         None,
         alias="type",
         title="The defining type of case",
-        description=None,
+        description="See http://hl7.org/fhir/ValueSet/regulated-authorization-case-type",
         # if property is element of this resource.
         element_property=True,
+        # valueset binding
+        binding_description="The type of a case involved in an application.",
+        binding_strength="example",
+        binding_uri="http://hl7.org/fhir/ValueSet/regulated-authorization-case-type",
     )
 
     @classmethod

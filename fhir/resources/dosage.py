@@ -37,10 +37,14 @@ class Dosage(backboneelement.BackboneElement):
             '  (e.g. "with meals" or"take half to one hour before food") or '
             'warnings for the patient about the medication (e.g. "may cause '
             'drowsiness" or "avoid exposure of skin to direct sunlight or '
-            'sunlamps").'
+            'sunlamps"). See http://hl7.org/fhir/ValueSet/additional-instruction-'
+            "codes"
         ),
         # if property is element of this resource.
         element_property=True,
+        # valueset binding
+        binding_strength="example",
+        binding_uri="http://hl7.org/fhir/ValueSet/additional-instruction-codes",
     )
 
     asNeededBoolean: bool = Field(
@@ -50,13 +54,17 @@ class Dosage(backboneelement.BackboneElement):
         description=(
             "Indicates whether the Medication is only taken when needed within a "
             "specific dosing schedule (Boolean option), or it indicates the "
-            "precondition for taking the Medication (CodeableConcept)."
+            "precondition for taking the Medication (CodeableConcept). See "
+            "http://hl7.org/fhir/ValueSet/medication-as-needed-reason"
         ),
         # if property is element of this resource.
         element_property=True,
         # Choice of Data Types. i.e asNeeded[x]
         one_of_many="asNeeded",
         one_of_many_required=False,
+        # valueset binding
+        binding_strength="example",
+        binding_uri="http://hl7.org/fhir/ValueSet/medication-as-needed-reason",
     )
     asNeededBoolean__ext: fhirtypes.FHIRPrimitiveExtensionType = Field(
         None, alias="_asNeededBoolean", title="Extension field for ``asNeededBoolean``."
@@ -69,13 +77,17 @@ class Dosage(backboneelement.BackboneElement):
         description=(
             "Indicates whether the Medication is only taken when needed within a "
             "specific dosing schedule (Boolean option), or it indicates the "
-            "precondition for taking the Medication (CodeableConcept)."
+            "precondition for taking the Medication (CodeableConcept). See "
+            "http://hl7.org/fhir/ValueSet/medication-as-needed-reason"
         ),
         # if property is element of this resource.
         element_property=True,
         # Choice of Data Types. i.e asNeeded[x]
         one_of_many="asNeeded",
         one_of_many_required=False,
+        # valueset binding
+        binding_strength="example",
+        binding_uri="http://hl7.org/fhir/ValueSet/medication-as-needed-reason",
     )
 
     doseAndRate: typing.List[fhirtypes.DosageDoseAndRateType] = Field(
@@ -118,9 +130,12 @@ class Dosage(backboneelement.BackboneElement):
         None,
         alias="method",
         title="Technique for administering medication",
-        description=None,
+        description="See http://hl7.org/fhir/ValueSet/administration-method-codes",
         # if property is element of this resource.
         element_property=True,
+        # valueset binding
+        binding_strength="example",
+        binding_uri="http://hl7.org/fhir/ValueSet/administration-method-codes",
     )
 
     patientInstruction: fhirtypes.String = Field(
@@ -141,9 +156,12 @@ class Dosage(backboneelement.BackboneElement):
         None,
         alias="route",
         title="How drug should enter body",
-        description=None,
+        description="See http://hl7.org/fhir/ValueSet/route-codes",
         # if property is element of this resource.
         element_property=True,
+        # valueset binding
+        binding_strength="example",
+        binding_uri="http://hl7.org/fhir/ValueSet/route-codes",
     )
 
     sequence: fhirtypes.Integer = Field(
@@ -165,9 +183,12 @@ class Dosage(backboneelement.BackboneElement):
         None,
         alias="site",
         title="Body site to administer to",
-        description=None,
+        description="See http://hl7.org/fhir/ValueSet/approach-site-codes",
         # if property is element of this resource.
         element_property=True,
+        # valueset binding
+        binding_strength="example",
+        binding_uri="http://hl7.org/fhir/ValueSet/approach-site-codes",
     )
 
     text: fhirtypes.String = Field(
@@ -334,10 +355,14 @@ class DosageDoseAndRate(element.Element):
         alias="type",
         title="The kind of dose or rate specified",
         description=(
-            "The kind of dose or rate specified, for example, ordered or " "calculated."
+            "The kind of dose or rate specified, for example, ordered or "
+            "calculated. See http://hl7.org/fhir/ValueSet/dose-rate-type"
         ),
         # if property is element of this resource.
         element_property=True,
+        # valueset binding
+        binding_strength="example",
+        binding_uri="http://hl7.org/fhir/ValueSet/dose-rate-type",
     )
 
     @classmethod

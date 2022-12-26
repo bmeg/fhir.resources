@@ -55,6 +55,9 @@ class ResearchStudy(domainresource.DomainResource):
         ),
         # if property is element of this resource.
         element_property=True,
+        # valueset binding
+        binding_description="Codes that describe the type of research study.  E.g. Study phase, Interventional/Observational, blinding type, etc.",
+        binding_strength="example",
     )
 
     condition: typing.List[fhirtypes.CodeableConceptType] = Field(
@@ -65,10 +68,14 @@ class ResearchStudy(domainresource.DomainResource):
             "The condition that is the focus of the study.  For example, In a study"
             " to examine risk factors for Lupus, might have as an inclusion "
             'criterion "healthy volunteer", but the target condition code would be '
-            "a Lupus SNOMED code."
+            "a Lupus SNOMED code. See http://hl7.org/fhir/ValueSet/condition-code"
         ),
         # if property is element of this resource.
         element_property=True,
+        # valueset binding
+        binding_description="Identification of the condition or diagnosis.",
+        binding_strength="example",
+        binding_uri="http://hl7.org/fhir/ValueSet/condition-code",
     )
 
     contact: typing.List[fhirtypes.ContactDetailType] = Field(
@@ -108,6 +115,7 @@ class ResearchStudy(domainresource.DomainResource):
         element_property=True,
         # note: Listed Resource Type(s) should be allowed as Reference.
         enum_reference_types=["Group"],
+        backref="research_study_enrollment",
     )
 
     focus: typing.List[fhirtypes.CodeableConceptType] = Field(
@@ -121,6 +129,9 @@ class ResearchStudy(domainresource.DomainResource):
         ),
         # if property is element of this resource.
         element_property=True,
+        # valueset binding
+        binding_description="Codes for medications, devices and other interventions.",
+        binding_strength="example",
     )
 
     identifier: typing.List[fhirtypes.IdentifierType] = Field(
@@ -142,6 +153,9 @@ class ResearchStudy(domainresource.DomainResource):
         description="Key terms to aid in searching for or filtering the study.",
         # if property is element of this resource.
         element_property=True,
+        # valueset binding
+        binding_description="Words associated with the study that may be useful in discovery.",
+        binding_strength="example",
     )
 
     location: typing.List[fhirtypes.CodeableConceptType] = Field(
@@ -150,10 +164,14 @@ class ResearchStudy(domainresource.DomainResource):
         title="Geographic region(s) for study",
         description=(
             "Indicates a country, state or other region where the study is taking "
-            "place."
+            "place. See http://hl7.org/fhir/ValueSet/jurisdiction"
         ),
         # if property is element of this resource.
         element_property=True,
+        # valueset binding
+        binding_description="Countries and regions within which this artifact is targeted for use.",
+        binding_strength="extensible",
+        binding_uri="http://hl7.org/fhir/ValueSet/jurisdiction",
     )
 
     note: typing.List[fhirtypes.AnnotationType] = Field(
@@ -193,6 +211,7 @@ class ResearchStudy(domainresource.DomainResource):
         element_property=True,
         # note: Listed Resource Type(s) should be allowed as Reference.
         enum_reference_types=["ResearchStudy"],
+        backref="research_study_partOf",
     )
 
     period: fhirtypes.PeriodType = Field(
@@ -216,10 +235,27 @@ class ResearchStudy(domainresource.DomainResource):
         ),
         description=(
             "The stage in the progression of a therapy from initial experimental "
-            "use in humans in clinical trials to post-market evaluation."
+            "use in humans in clinical trials to post-market evaluation. See "
+            "http://hl7.org/fhir/ValueSet/research-study-phase"
         ),
         # if property is element of this resource.
         element_property=True,
+        # note: Enum values can be used in validation,
+        # but use in your own responsibilities, read official FHIR documentation.
+        enum_values=[
+            "n-a",
+            "early-phase-1",
+            "phase-1",
+            "phase-1-phase-2",
+            "phase-2",
+            "phase-2-phase-3",
+            "phase-3",
+            "phase-4",
+        ],
+        # valueset binding
+        binding_description="Codes for the stage in the progression of a therapy from initial experimental use in humans in clinical trials to post-market evaluation.",
+        binding_strength="example",
+        binding_uri="http://hl7.org/fhir/ValueSet/research-study-phase",
     )
 
     primaryPurposeType: fhirtypes.CodeableConceptType = Field(
@@ -231,10 +267,27 @@ class ResearchStudy(domainresource.DomainResource):
         ),
         description=(
             "The type of study based upon the intent of the study's activities. A "
-            "classification of the intent of the study."
+            "classification of the intent of the study. See "
+            "http://hl7.org/fhir/ValueSet/research-study-prim-purp-type"
         ),
         # if property is element of this resource.
         element_property=True,
+        # note: Enum values can be used in validation,
+        # but use in your own responsibilities, read official FHIR documentation.
+        enum_values=[
+            "treatment",
+            "prevention",
+            "diagnostic",
+            "supportive-care",
+            "screening",
+            "health-services-research",
+            "basic-science",
+            "device-feasibility",
+        ],
+        # valueset binding
+        binding_description="Codes for the main intent of the study.",
+        binding_strength="extensible",
+        binding_uri="http://hl7.org/fhir/ValueSet/research-study-prim-purp-type",
     )
 
     principalInvestigator: fhirtypes.ReferenceType = Field(
@@ -251,6 +304,7 @@ class ResearchStudy(domainresource.DomainResource):
         element_property=True,
         # note: Listed Resource Type(s) should be allowed as Reference.
         enum_reference_types=["Practitioner", "PractitionerRole"],
+        backref="research_study_principalInvestigator",
     )
 
     protocol: typing.List[fhirtypes.ReferenceType] = Field(
@@ -265,6 +319,7 @@ class ResearchStudy(domainresource.DomainResource):
         element_property=True,
         # note: Listed Resource Type(s) should be allowed as Reference.
         enum_reference_types=["PlanDefinition"],
+        backref="research_study_protocol",
     )
 
     reasonStopped: fhirtypes.CodeableConceptType = Field(
@@ -276,10 +331,22 @@ class ResearchStudy(domainresource.DomainResource):
         ),
         description=(
             "A description and/or code explaining the premature termination of the "
-            "study."
+            "study. See http://hl7.org/fhir/ValueSet/research-study-reason-stopped"
         ),
         # if property is element of this resource.
         element_property=True,
+        # note: Enum values can be used in validation,
+        # but use in your own responsibilities, read official FHIR documentation.
+        enum_values=[
+            "accrual-goal-met",
+            "closed-due-to-toxicity",
+            "closed-due-to-lack-of-study-progress",
+            "temporarily-closed-per-study-design",
+        ],
+        # valueset binding
+        binding_description="Codes for why the study ended prematurely.",
+        binding_strength="example",
+        binding_uri="http://hl7.org/fhir/ValueSet/research-study-reason-stopped",
     )
 
     relatedArtifact: typing.List[fhirtypes.RelatedArtifactType] = Field(
@@ -300,6 +367,7 @@ class ResearchStudy(domainresource.DomainResource):
         element_property=True,
         # note: Listed Resource Type(s) should be allowed as Reference.
         enum_reference_types=["Location"],
+        backref="research_study_site",
     )
 
     sponsor: fhirtypes.ReferenceType = Field(
@@ -314,6 +382,7 @@ class ResearchStudy(domainresource.DomainResource):
         element_property=True,
         # note: Listed Resource Type(s) should be allowed as Reference.
         enum_reference_types=["Organization"],
+        backref="research_study_sponsor",
     )
 
     status: fhirtypes.Code = Field(
@@ -325,7 +394,10 @@ class ResearchStudy(domainresource.DomainResource):
             "review | temporarily-closed-to-accrual | temporarily-closed-to-"
             "accrual-and-intervention | withdrawn"
         ),
-        description="The current state of the study.",
+        description=(
+            "The current state of the study. See "
+            "http://hl7.org/fhir/ValueSet/research-study-status"
+        ),
         # if property is element of this resource.
         element_property=True,
         element_required=True,
@@ -344,6 +416,11 @@ class ResearchStudy(domainresource.DomainResource):
             "temporarily-closed-to-accrual-and-intervention",
             "withdrawn",
         ],
+        # valueset binding
+        binding_description="Codes that convey the current status of the research study.",
+        binding_strength="required",
+        binding_uri="http://hl7.org/fhir/ValueSet/research-study-status",
+        binding_version="4.3.0",
     )
     status__ext: fhirtypes.FHIRPrimitiveExtensionType = Field(
         None, alias="_status", title="Extension field for ``status``."
@@ -611,9 +688,19 @@ class ResearchStudyObjective(backboneelement.BackboneElement):
         None,
         alias="type",
         title="primary | secondary | exploratory",
-        description="The kind of study objective.",
+        description=(
+            "The kind of study objective. See "
+            "http://hl7.org/fhir/ValueSet/research-study-objective-type"
+        ),
         # if property is element of this resource.
         element_property=True,
+        # note: Enum values can be used in validation,
+        # but use in your own responsibilities, read official FHIR documentation.
+        enum_values=["primary", "secondary", "exploratory"],
+        # valueset binding
+        binding_description="Codes for the kind of study objective.",
+        binding_strength="preferred",
+        binding_uri="http://hl7.org/fhir/ValueSet/research-study-objective-type",
     )
 
     @classmethod

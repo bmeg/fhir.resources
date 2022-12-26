@@ -84,13 +84,18 @@ class EvidenceVariable(domainresource.DomainResource):
         title="intersection | union",
         description=(
             "Used to specify if two or more characteristics are combined with OR or"
-            " AND."
+            " AND. See http://hl7.org/fhir/ValueSet/characteristic-combination"
         ),
         # if property is element of this resource.
         element_property=True,
         # note: Enum values can be used in validation,
         # but use in your own responsibilities, read official FHIR documentation.
         enum_values=["intersection", "union"],
+        # valueset binding
+        binding_description="Logical grouping of characteristics.",
+        binding_strength="required",
+        binding_uri="http://hl7.org/fhir/ValueSet/characteristic-combination",
+        binding_version="4.3.0",
     )
     characteristicCombination__ext: fhirtypes.FHIRPrimitiveExtensionType = Field(
         None,
@@ -170,12 +175,20 @@ class EvidenceVariable(domainresource.DomainResource):
         None,
         alias="handling",
         title="continuous | dichotomous | ordinal | polychotomous",
-        description="Used for an outcome to classify.",
+        description=(
+            "Used for an outcome to classify. See "
+            "http://hl7.org/fhir/ValueSet/variable-handling"
+        ),
         # if property is element of this resource.
         element_property=True,
         # note: Enum values can be used in validation,
         # but use in your own responsibilities, read official FHIR documentation.
         enum_values=["continuous", "dichotomous", "ordinal", "polychotomous"],
+        # valueset binding
+        binding_description="The handling of the variable in statistical analysis for exposures or outcomes (E.g. Dichotomous, Continuous, Descriptive).",
+        binding_strength="required",
+        binding_uri="http://hl7.org/fhir/ValueSet/variable-handling",
+        binding_version="4.3.0",
     )
     handling__ext: fhirtypes.FHIRPrimitiveExtensionType = Field(
         None, alias="_handling", title="Extension field for ``handling``."
@@ -282,7 +295,7 @@ class EvidenceVariable(domainresource.DomainResource):
         title="draft | active | retired | unknown",
         description=(
             "The status of this evidence variable. Enables tracking the life-cycle "
-            "of the content."
+            "of the content. See http://hl7.org/fhir/ValueSet/publication-status"
         ),
         # if property is element of this resource.
         element_property=True,
@@ -290,6 +303,11 @@ class EvidenceVariable(domainresource.DomainResource):
         # note: Enum values can be used in validation,
         # but use in your own responsibilities, read official FHIR documentation.
         enum_values=["draft", "active", "retired", "unknown"],
+        # valueset binding
+        binding_description="The lifecycle status of an artifact.",
+        binding_strength="required",
+        binding_uri="http://hl7.org/fhir/ValueSet/publication-status",
+        binding_version="4.3.0",
     )
     status__ext: fhirtypes.FHIRPrimitiveExtensionType = Field(
         None, alias="_status", title="Extension field for ``status``."
@@ -632,6 +650,7 @@ class EvidenceVariableCharacteristic(backboneelement.BackboneElement):
         one_of_many_required=True,
         # note: Listed Resource Type(s) should be allowed as Reference.
         enum_reference_types=["Resource"],
+        backref="evidence_variable.characteristic_definitionCanonical",
     )
     definitionCanonical__ext: fhirtypes.FHIRPrimitiveExtensionType = Field(
         None,
@@ -690,6 +709,7 @@ class EvidenceVariableCharacteristic(backboneelement.BackboneElement):
         one_of_many_required=True,
         # note: Listed Resource Type(s) should be allowed as Reference.
         enum_reference_types=["Group", "EvidenceVariable"],
+        backref="evidence_variable.characteristic_definitionReference",
     )
 
     description: fhirtypes.String = Field(
@@ -716,6 +736,7 @@ class EvidenceVariableCharacteristic(backboneelement.BackboneElement):
         element_property=True,
         # note: Listed Resource Type(s) should be allowed as Reference.
         enum_reference_types=["Device", "DeviceMetric"],
+        backref="evidence_variable.characteristic_device",
     )
 
     exclude: bool = Field(
@@ -742,7 +763,7 @@ class EvidenceVariableCharacteristic(backboneelement.BackboneElement):
         ),
         description=(
             "Indicates how elements are aggregated within the study effective "
-            "period."
+            "period. See http://hl7.org/fhir/ValueSet/group-measure"
         ),
         # if property is element of this resource.
         element_property=True,
@@ -756,6 +777,11 @@ class EvidenceVariableCharacteristic(backboneelement.BackboneElement):
             "median-of-mean",
             "median-of-median",
         ],
+        # valueset binding
+        binding_description="Possible group measure aggregates (E.g. Mean, Median).",
+        binding_strength="required",
+        binding_uri="http://hl7.org/fhir/ValueSet/group-measure",
+        binding_version="4.3.0",
     )
     groupMeasure__ext: fhirtypes.FHIRPrimitiveExtensionType = Field(
         None, alias="_groupMeasure", title="Extension field for ``groupMeasure``."
@@ -765,9 +791,13 @@ class EvidenceVariableCharacteristic(backboneelement.BackboneElement):
         None,
         alias="method",
         title="Method used for describing characteristic",
-        description=None,
+        description="See http://hl7.org/fhir/ValueSet/characteristic-method",
         # if property is element of this resource.
         element_property=True,
+        # valueset binding
+        binding_description="The method used to determine the characteristic(s) of the variable.",
+        binding_strength="example",
+        binding_uri="http://hl7.org/fhir/ValueSet/characteristic-method",
     )
 
     timeFromStart: fhirtypes.EvidenceVariableCharacteristicTimeFromStartType = Field(

@@ -48,7 +48,8 @@ class Narrative(element.Element):
         description=(
             "The status of the narrative - whether it's entirely generated (from "
             "just the defined data or the extensions too), or whether a human "
-            "authored it and it may contain additional data."
+            "authored it and it may contain additional data. See "
+            "http://hl7.org/fhir/ValueSet/narrative-status"
         ),
         # if property is element of this resource.
         element_property=True,
@@ -56,6 +57,10 @@ class Narrative(element.Element):
         # note: Enum values can be used in validation,
         # but use in your own responsibilities, read official FHIR documentation.
         enum_values=["generated", "extensions", "additional", "empty"],
+        # valueset binding
+        binding_strength="required",
+        binding_uri="http://hl7.org/fhir/ValueSet/narrative-status",
+        binding_version="4.3.0",
     )
     status__ext: fhirtypes.FHIRPrimitiveExtensionType = Field(
         None, alias="_status", title="Extension field for ``status``."

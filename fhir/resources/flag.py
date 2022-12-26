@@ -42,6 +42,7 @@ class Flag(domainresource.DomainResource):
             "Practitioner",
             "PractitionerRole",
         ],
+        backref="flag_author",
     )
 
     category: typing.List[fhirtypes.CodeableConceptType] = Field(
@@ -51,10 +52,15 @@ class Flag(domainresource.DomainResource):
         description=(
             "Allows a flag to be divided into different categories like clinical, "
             "administrative etc. Intended to be used as a means of filtering which "
-            "flags are displayed to particular user or in a given context."
+            "flags are displayed to particular user or in a given context. See "
+            "http://hl7.org/fhir/ValueSet/flag-category"
         ),
         # if property is element of this resource.
         element_property=True,
+        # valueset binding
+        binding_description="A general category for flags for filtering/display purposes.",
+        binding_strength="example",
+        binding_uri="http://hl7.org/fhir/ValueSet/flag-category",
     )
 
     code: fhirtypes.CodeableConceptType = Field(
@@ -63,10 +69,14 @@ class Flag(domainresource.DomainResource):
         title="Coded or textual message to display to user",
         description=(
             "The coded value or textual component of the flag to display to the "
-            "user."
+            "user. See http://hl7.org/fhir/ValueSet/flag-code"
         ),
         # if property is element of this resource.
         element_property=True,
+        # valueset binding
+        binding_description="Detail codes identifying specific flagged issues.",
+        binding_strength="example",
+        binding_uri="http://hl7.org/fhir/ValueSet/flag-code",
     )
 
     encounter: fhirtypes.ReferenceType = Field(
@@ -78,6 +88,7 @@ class Flag(domainresource.DomainResource):
         element_property=True,
         # note: Listed Resource Type(s) should be allowed as Reference.
         enum_reference_types=["Encounter"],
+        backref="flag_encounter",
     )
 
     identifier: typing.List[fhirtypes.IdentifierType] = Field(
@@ -110,13 +121,18 @@ class Flag(domainresource.DomainResource):
         None,
         alias="status",
         title="active | inactive | entered-in-error",
-        description="Supports basic workflow.",
+        description="Supports basic workflow. See http://hl7.org/fhir/ValueSet/flag-status",
         # if property is element of this resource.
         element_property=True,
         element_required=True,
         # note: Enum values can be used in validation,
         # but use in your own responsibilities, read official FHIR documentation.
         enum_values=["active", "inactive", "entered-in-error"],
+        # valueset binding
+        binding_description="Indicates whether this flag is active and needs to be displayed to a user, or whether it is no longer needed or was entered in error.",
+        binding_strength="required",
+        binding_uri="http://hl7.org/fhir/ValueSet/flag-status",
+        binding_version="4.3.0",
     )
     status__ext: fhirtypes.FHIRPrimitiveExtensionType = Field(
         None, alias="_status", title="Extension field for ``status``."
@@ -143,6 +159,7 @@ class Flag(domainresource.DomainResource):
             "Medication",
             "Procedure",
         ],
+        backref="flag_subject",
     )
 
     @classmethod

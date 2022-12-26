@@ -49,32 +49,48 @@ class DeviceRequest(domainresource.DomainResource):
         element_property=True,
         # note: Listed Resource Type(s) should be allowed as Reference.
         enum_reference_types=["Resource"],
+        backref="device_request_basedOn",
     )
 
     codeCodeableConcept: fhirtypes.CodeableConceptType = Field(
         None,
         alias="codeCodeableConcept",
         title="Device requested",
-        description="The details of the device to be used.",
+        description=(
+            "The details of the device to be used. See "
+            "http://hl7.org/fhir/ValueSet/device-kind"
+        ),
         # if property is element of this resource.
         element_property=True,
         # Choice of Data Types. i.e code[x]
         one_of_many="code",
         one_of_many_required=True,
+        # valueset binding
+        binding_description="Codes for devices that can be requested.",
+        binding_strength="example",
+        binding_uri="http://hl7.org/fhir/ValueSet/device-kind",
     )
 
     codeReference: fhirtypes.ReferenceType = Field(
         None,
         alias="codeReference",
         title="Device requested",
-        description="The details of the device to be used.",
+        description=(
+            "The details of the device to be used. See "
+            "http://hl7.org/fhir/ValueSet/device-kind"
+        ),
         # if property is element of this resource.
         element_property=True,
         # Choice of Data Types. i.e code[x]
         one_of_many="code",
         one_of_many_required=True,
+        # valueset binding
+        binding_description="Codes for devices that can be requested.",
+        binding_strength="example",
+        binding_uri="http://hl7.org/fhir/ValueSet/device-kind",
         # note: Listed Resource Type(s) should be allowed as Reference.
         enum_reference_types=["Device"],
+        backref="device_request_codeReference",
     )
 
     encounter: fhirtypes.ReferenceType = Field(
@@ -89,6 +105,7 @@ class DeviceRequest(domainresource.DomainResource):
         element_property=True,
         # note: Listed Resource Type(s) should be allowed as Reference.
         enum_reference_types=["Encounter"],
+        backref="device_request_encounter",
     )
 
     groupIdentifier: fhirtypes.IdentifierType = Field(
@@ -122,6 +139,7 @@ class DeviceRequest(domainresource.DomainResource):
         element_property=True,
         # note: Listed Resource Type(s) should be allowed as Reference.
         enum_reference_types=["ActivityDefinition", "PlanDefinition"],
+        backref="device_request_instantiatesCanonical",
     )
     instantiatesCanonical__ext: typing.List[
         typing.Union[fhirtypes.FHIRPrimitiveExtensionType, None]
@@ -162,6 +180,7 @@ class DeviceRequest(domainresource.DomainResource):
         element_property=True,
         # note: Listed Resource Type(s) should be allowed as Reference.
         enum_reference_types=["Coverage", "ClaimResponse"],
+        backref="device_request_insurance",
     )
 
     intent: fhirtypes.Code = Field(
@@ -173,7 +192,7 @@ class DeviceRequest(domainresource.DomainResource):
         ),
         description=(
             "Whether the request is a proposal, plan, an original order or a reflex"
-            " order."
+            " order. See http://hl7.org/fhir/ValueSet/request-intent"
         ),
         # if property is element of this resource.
         element_property=True,
@@ -191,6 +210,11 @@ class DeviceRequest(domainresource.DomainResource):
             "instance-order",
             "option",
         ],
+        # valueset binding
+        binding_description="The kind of diagnostic request.",
+        binding_strength="required",
+        binding_uri="http://hl7.org/fhir/ValueSet/request-intent",
+        binding_version="4.3.0",
     )
     intent__ext: fhirtypes.FHIRPrimitiveExtensionType = Field(
         None, alias="_intent", title="Extension field for ``intent``."
@@ -296,15 +320,23 @@ class DeviceRequest(domainresource.DomainResource):
             "Device",
             "RelatedPerson",
         ],
+        backref="device_request_performer",
     )
 
     performerType: fhirtypes.CodeableConceptType = Field(
         None,
         alias="performerType",
         title="Filler role",
-        description="Desired type of performer for doing the diagnostic testing.",
+        description=(
+            "Desired type of performer for doing the diagnostic testing. See "
+            "http://hl7.org/fhir/ValueSet/participant-role"
+        ),
         # if property is element of this resource.
         element_property=True,
+        # valueset binding
+        binding_description='Indicates specific responsibility of an individual within the care team, such as "Primary physician", "Team coordinator", "Caregiver", etc.',
+        binding_strength="example",
+        binding_uri="http://hl7.org/fhir/ValueSet/participant-role",
     )
 
     priorRequest: typing.List[fhirtypes.ReferenceType] = Field(
@@ -319,6 +351,7 @@ class DeviceRequest(domainresource.DomainResource):
         element_property=True,
         # note: Listed Resource Type(s) should be allowed as Reference.
         enum_reference_types=["Resource"],
+        backref="device_request_priorRequest",
     )
 
     priority: fhirtypes.Code = Field(
@@ -327,13 +360,18 @@ class DeviceRequest(domainresource.DomainResource):
         title="routine | urgent | asap | stat",
         description=(
             "Indicates how quickly the {{title}} should be addressed with respect "
-            "to other requests."
+            "to other requests. See http://hl7.org/fhir/ValueSet/request-priority"
         ),
         # if property is element of this resource.
         element_property=True,
         # note: Enum values can be used in validation,
         # but use in your own responsibilities, read official FHIR documentation.
         enum_values=["routine", "urgent", "asap", "stat"],
+        # valueset binding
+        binding_description="Identifies the level of importance to be assigned to actioning the request.",
+        binding_strength="required",
+        binding_uri="http://hl7.org/fhir/ValueSet/request-priority",
+        binding_version="4.3.0",
     )
     priority__ext: fhirtypes.FHIRPrimitiveExtensionType = Field(
         None, alias="_priority", title="Extension field for ``priority``."
@@ -343,9 +381,16 @@ class DeviceRequest(domainresource.DomainResource):
         None,
         alias="reasonCode",
         title="Coded Reason for request",
-        description="Reason or justification for the use of this device.",
+        description=(
+            "Reason or justification for the use of this device. See "
+            "http://hl7.org/fhir/ValueSet/condition-code"
+        ),
         # if property is element of this resource.
         element_property=True,
+        # valueset binding
+        binding_description="Diagnosis or problem codes justifying the reason for requesting the device.",
+        binding_strength="example",
+        binding_uri="http://hl7.org/fhir/ValueSet/condition-code",
     )
 
     reasonReference: typing.List[fhirtypes.ReferenceType] = Field(
@@ -362,6 +407,7 @@ class DeviceRequest(domainresource.DomainResource):
             "DiagnosticReport",
             "DocumentReference",
         ],
+        backref="device_request_reasonReference",
     )
 
     relevantHistory: typing.List[fhirtypes.ReferenceType] = Field(
@@ -373,6 +419,7 @@ class DeviceRequest(domainresource.DomainResource):
         element_property=True,
         # note: Listed Resource Type(s) should be allowed as Reference.
         enum_reference_types=["Provenance"],
+        backref="device_request_relevantHistory",
     )
 
     requester: fhirtypes.ReferenceType = Field(
@@ -392,6 +439,7 @@ class DeviceRequest(domainresource.DomainResource):
             "PractitionerRole",
             "Organization",
         ],
+        backref="device_request_requester",
     )
 
     status: fhirtypes.Code = Field(
@@ -401,7 +449,10 @@ class DeviceRequest(domainresource.DomainResource):
             "draft | active | on-hold | revoked | completed | entered-in-error | "
             "unknown"
         ),
-        description="The status of the request.",
+        description=(
+            "The status of the request. See http://hl7.org/fhir/ValueSet/request-"
+            "status"
+        ),
         # if property is element of this resource.
         element_property=True,
         # note: Enum values can be used in validation,
@@ -415,6 +466,11 @@ class DeviceRequest(domainresource.DomainResource):
             "entered-in-error",
             "unknown",
         ],
+        # valueset binding
+        binding_description="Codes representing the status of the request.",
+        binding_strength="required",
+        binding_uri="http://hl7.org/fhir/ValueSet/request-status",
+        binding_version="4.3.0",
     )
     status__ext: fhirtypes.FHIRPrimitiveExtensionType = Field(
         None, alias="_status", title="Extension field for ``status``."
@@ -429,6 +485,7 @@ class DeviceRequest(domainresource.DomainResource):
         element_property=True,
         # note: Listed Resource Type(s) should be allowed as Reference.
         enum_reference_types=["Patient", "Group", "Location", "Device"],
+        backref="device_request_subject",
     )
 
     supportingInfo: typing.List[fhirtypes.ReferenceType] = Field(
@@ -444,6 +501,7 @@ class DeviceRequest(domainresource.DomainResource):
         element_property=True,
         # note: Listed Resource Type(s) should be allowed as Reference.
         enum_reference_types=["Resource"],
+        backref="device_request_supportingInfo",
     )
 
     @classmethod
@@ -614,6 +672,9 @@ class DeviceRequestParameter(backboneelement.BackboneElement):
         description="A code or string that identifies the device detail being asserted.",
         # if property is element of this resource.
         element_property=True,
+        # valueset binding
+        binding_description="A code that identifies the device detail.",
+        binding_strength="example",
     )
 
     valueBoolean: bool = Field(

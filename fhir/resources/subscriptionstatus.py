@@ -33,10 +33,14 @@ class SubscriptionStatus(domainresource.DomainResource):
         title="List of errors on the subscription",
         description=(
             "A record of errors that occurred when the server processed a "
-            "notification."
+            "notification. See http://hl7.org/fhir/ValueSet/subscription-error"
         ),
         # if property is element of this resource.
         element_property=True,
+        # valueset binding
+        binding_description="Codes to represent subscription error details.",
+        binding_strength="example",
+        binding_uri="http://hl7.org/fhir/ValueSet/subscription-error",
     )
 
     eventsSinceSubscriptionStart: fhirtypes.String = Field(
@@ -78,13 +82,19 @@ class SubscriptionStatus(domainresource.DomainResource):
         title="requested | active | error | off | entered-in-error",
         description=(
             "The status of the subscription, which marks the server state for "
-            "managing the subscription."
+            "managing the subscription. See "
+            "http://hl7.org/fhir/ValueSet/subscription-status"
         ),
         # if property is element of this resource.
         element_property=True,
         # note: Enum values can be used in validation,
         # but use in your own responsibilities, read official FHIR documentation.
         enum_values=["requested", "active", "error", "off", "entered-in-error"],
+        # valueset binding
+        binding_description="The status of a subscription at the time this notification was generated.",
+        binding_strength="required",
+        binding_uri="http://hl7.org/fhir/ValueSet/subscription-status",
+        binding_version="4.3.0",
     )
     status__ext: fhirtypes.FHIRPrimitiveExtensionType = Field(
         None, alias="_status", title="Extension field for ``status``."
@@ -99,6 +109,7 @@ class SubscriptionStatus(domainresource.DomainResource):
         element_property=True,
         # note: Listed Resource Type(s) should be allowed as Reference.
         enum_reference_types=["Subscription"],
+        backref="subscription_status_subscription",
     )
 
     topic: fhirtypes.Canonical = Field(
@@ -113,6 +124,7 @@ class SubscriptionStatus(domainresource.DomainResource):
         element_property=True,
         # note: Listed Resource Type(s) should be allowed as Reference.
         enum_reference_types=["SubscriptionTopic"],
+        backref="subscription_status_topic",
     )
     topic__ext: fhirtypes.FHIRPrimitiveExtensionType = Field(
         None, alias="_topic", title="Extension field for ``topic``."
@@ -124,7 +136,10 @@ class SubscriptionStatus(domainresource.DomainResource):
         title=(
             "handshake | heartbeat | event-notification | query-status | query-" "event"
         ),
-        description="The type of event being conveyed with this notificaiton.",
+        description=(
+            "The type of event being conveyed with this notificaiton. See "
+            "http://hl7.org/fhir/ValueSet/subscription-notification-type"
+        ),
         # if property is element of this resource.
         element_property=True,
         element_required=True,
@@ -137,6 +152,11 @@ class SubscriptionStatus(domainresource.DomainResource):
             "query-status",
             "query-event",
         ],
+        # valueset binding
+        binding_description="The type of notification represented by the status message.",
+        binding_strength="required",
+        binding_uri="http://hl7.org/fhir/ValueSet/subscription-notification-type",
+        binding_version="4.3.0",
     )
     type__ext: fhirtypes.FHIRPrimitiveExtensionType = Field(
         None, alias="_type", title="Extension field for ``type``."
@@ -252,6 +272,7 @@ class SubscriptionStatusNotificationEvent(backboneelement.BackboneElement):
         element_property=True,
         # note: Listed Resource Type(s) should be allowed as Reference.
         enum_reference_types=["Resource"],
+        backref="subscription_status.notification_event_additionalContext",
     )
 
     eventNumber: fhirtypes.String = Field(
@@ -283,6 +304,7 @@ class SubscriptionStatusNotificationEvent(backboneelement.BackboneElement):
         element_property=True,
         # note: Listed Resource Type(s) should be allowed as Reference.
         enum_reference_types=["Resource"],
+        backref="subscription_status.notification_event_focus",
     )
 
     timestamp: fhirtypes.Instant = Field(

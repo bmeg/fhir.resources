@@ -49,6 +49,7 @@ class ImagingStudy(domainresource.DomainResource):
             "AppointmentResponse",
             "Task",
         ],
+        backref="imaging_study_basedOn",
     )
 
     description: fhirtypes.String = Field(
@@ -78,6 +79,7 @@ class ImagingStudy(domainresource.DomainResource):
         element_property=True,
         # note: Listed Resource Type(s) should be allowed as Reference.
         enum_reference_types=["Encounter"],
+        backref="imaging_study_encounter",
     )
 
     endpoint: typing.List[fhirtypes.ReferenceType] = Field(
@@ -95,6 +97,7 @@ class ImagingStudy(domainresource.DomainResource):
         element_property=True,
         # note: Listed Resource Type(s) should be allowed as Reference.
         enum_reference_types=["Endpoint"],
+        backref="imaging_study_endpoint",
     )
 
     identifier: typing.List[fhirtypes.IdentifierType] = Field(
@@ -118,6 +121,7 @@ class ImagingStudy(domainresource.DomainResource):
         element_property=True,
         # note: Listed Resource Type(s) should be allowed as Reference.
         enum_reference_types=["Practitioner", "PractitionerRole"],
+        backref="imaging_study_interpreter",
     )
 
     location: fhirtypes.ReferenceType = Field(
@@ -129,6 +133,7 @@ class ImagingStudy(domainresource.DomainResource):
         element_property=True,
         # note: Listed Resource Type(s) should be allowed as Reference.
         enum_reference_types=["Location"],
+        backref="imaging_study_location",
     )
 
     modality: typing.List[fhirtypes.CodingType] = Field(
@@ -138,10 +143,15 @@ class ImagingStudy(domainresource.DomainResource):
         description=(
             "A list of all the series.modality values that are actual acquisition "
             "modalities, i.e. those in the DICOM Context Group 29 (value set OID "
-            "1.2.840.10008.6.1.19)."
+            "1.2.840.10008.6.1.19). See http://dicom.nema.org/medical/dicom/current"
+            "/output/chtml/part16/sect_CID_29.html"
         ),
         # if property is element of this resource.
         element_property=True,
+        # valueset binding
+        binding_description="Type of acquired data in the instance.",
+        binding_strength="extensible",
+        binding_uri="http://dicom.nema.org/medical/dicom/current/output/chtml/part16/sect_CID_29.html",
     )
 
     note: typing.List[fhirtypes.AnnotationType] = Field(
@@ -198,9 +208,16 @@ class ImagingStudy(domainresource.DomainResource):
         None,
         alias="procedureCode",
         title="The performed procedure code",
-        description="The code for the performed procedure type.",
+        description=(
+            "The code for the performed procedure type. See "
+            "http://www.rsna.org/RadLex_Playbook.aspx"
+        ),
         # if property is element of this resource.
         element_property=True,
+        # valueset binding
+        binding_description="Use of RadLex is preferred",
+        binding_strength="extensible",
+        binding_uri="http://www.rsna.org/RadLex_Playbook.aspx",
     )
 
     procedureReference: fhirtypes.ReferenceType = Field(
@@ -212,6 +229,7 @@ class ImagingStudy(domainresource.DomainResource):
         element_property=True,
         # note: Listed Resource Type(s) should be allowed as Reference.
         enum_reference_types=["Procedure"],
+        backref="imaging_study_procedureReference",
     )
 
     reasonCode: typing.List[fhirtypes.CodeableConceptType] = Field(
@@ -220,10 +238,14 @@ class ImagingStudy(domainresource.DomainResource):
         title="Why the study was requested",
         description=(
             "Description of clinical condition indicating why the ImagingStudy was "
-            "requested."
+            "requested. See http://hl7.org/fhir/ValueSet/procedure-reason"
         ),
         # if property is element of this resource.
         element_property=True,
+        # valueset binding
+        binding_description="The reason for the study.",
+        binding_strength="example",
+        binding_uri="http://hl7.org/fhir/ValueSet/procedure-reason",
     )
 
     reasonReference: typing.List[fhirtypes.ReferenceType] = Field(
@@ -241,6 +263,7 @@ class ImagingStudy(domainresource.DomainResource):
             "DiagnosticReport",
             "DocumentReference",
         ],
+        backref="imaging_study_reasonReference",
     )
 
     referrer: fhirtypes.ReferenceType = Field(
@@ -252,6 +275,7 @@ class ImagingStudy(domainresource.DomainResource):
         element_property=True,
         # note: Listed Resource Type(s) should be allowed as Reference.
         enum_reference_types=["Practitioner", "PractitionerRole"],
+        backref="imaging_study_referrer",
     )
 
     series: typing.List[fhirtypes.ImagingStudySeriesType] = Field(
@@ -279,7 +303,10 @@ class ImagingStudy(domainresource.DomainResource):
         None,
         alias="status",
         title="registered | available | cancelled | entered-in-error | unknown",
-        description="The current state of the ImagingStudy.",
+        description=(
+            "The current state of the ImagingStudy. See "
+            "http://hl7.org/fhir/ValueSet/imagingstudy-status"
+        ),
         # if property is element of this resource.
         element_property=True,
         element_required=True,
@@ -292,6 +319,11 @@ class ImagingStudy(domainresource.DomainResource):
             "entered-in-error",
             "unknown",
         ],
+        # valueset binding
+        binding_description="The status of the ImagingStudy.",
+        binding_strength="required",
+        binding_uri="http://hl7.org/fhir/ValueSet/imagingstudy-status",
+        binding_version="4.3.0",
     )
     status__ext: fhirtypes.FHIRPrimitiveExtensionType = Field(
         None, alias="_status", title="Extension field for ``status``."
@@ -306,6 +338,7 @@ class ImagingStudy(domainresource.DomainResource):
         element_property=True,
         # note: Listed Resource Type(s) should be allowed as Reference.
         enum_reference_types=["Patient", "Device", "Group"],
+        backref="imaging_study_subject",
     )
 
     @classmethod
@@ -425,10 +458,15 @@ class ImagingStudySeries(backboneelement.BackboneElement):
             "com.nema.org/medical/dicom/current/output/chtml/part16/chapter_L.html)"
             " for DICOM to SNOMED-CT mappings. The bodySite may indicate the "
             "laterality of body part imaged; if so, it shall be consistent with any"
-            " content of ImagingStudy.series.laterality."
+            " content of ImagingStudy.series.laterality. See "
+            "http://hl7.org/fhir/ValueSet/body-site"
         ),
         # if property is element of this resource.
         element_property=True,
+        # valueset binding
+        binding_description="SNOMED CT Body site concepts",
+        binding_strength="example",
+        binding_uri="http://hl7.org/fhir/ValueSet/body-site",
     )
 
     description: fhirtypes.String = Field(
@@ -457,6 +495,7 @@ class ImagingStudySeries(backboneelement.BackboneElement):
         element_property=True,
         # note: Listed Resource Type(s) should be allowed as Reference.
         enum_reference_types=["Endpoint"],
+        backref="imaging_study.series_endpoint",
     )
 
     instance: typing.List[fhirtypes.ImagingStudySeriesInstanceType] = Field(
@@ -479,19 +518,31 @@ class ImagingStudySeries(backboneelement.BackboneElement):
             "The laterality of the (possibly paired) anatomic structures examined. "
             "E.g., the left knee, both lungs, or unpaired abdomen. If present, "
             "shall be consistent with any laterality information indicated in "
-            "ImagingStudy.series.bodySite."
+            "ImagingStudy.series.bodySite. See "
+            "http://hl7.org/fhir/ValueSet/bodysite-laterality"
         ),
         # if property is element of this resource.
         element_property=True,
+        # valueset binding
+        binding_description="Codes describing body site laterality (left, right, etc.).",
+        binding_strength="example",
+        binding_uri="http://hl7.org/fhir/ValueSet/bodysite-laterality",
     )
 
     modality: fhirtypes.CodingType = Field(
         ...,
         alias="modality",
         title="The modality of the instances in the series",
-        description="The modality of this series sequence.",
+        description=(
+            "The modality of this series sequence. See http://dicom.nema.org/medica"
+            "l/dicom/current/output/chtml/part16/sect_CID_29.html"
+        ),
         # if property is element of this resource.
         element_property=True,
+        # valueset binding
+        binding_description="Type of acquired data in the instance.",
+        binding_strength="extensible",
+        binding_uri="http://dicom.nema.org/medical/dicom/current/output/chtml/part16/sect_CID_29.html",
     )
 
     number: fhirtypes.UnsignedInt = Field(
@@ -543,6 +594,7 @@ class ImagingStudySeries(backboneelement.BackboneElement):
         element_property=True,
         # note: Listed Resource Type(s) should be allowed as Reference.
         enum_reference_types=["Specimen"],
+        backref="imaging_study.series_specimen",
     )
 
     started: fhirtypes.DateTime = Field(
@@ -682,9 +734,16 @@ class ImagingStudySeriesInstance(backboneelement.BackboneElement):
         ...,
         alias="sopClass",
         title="DICOM class type",
-        description="DICOM instance  type.",
+        description=(
+            "DICOM instance  type. See http://dicom.nema.org/medical/dicom/current/"
+            "output/chtml/part04/sect_B.5.html#table_B.5-1"
+        ),
         # if property is element of this resource.
         element_property=True,
+        # valueset binding
+        binding_description="The sopClass for the instance.",
+        binding_strength="extensible",
+        binding_uri="http://dicom.nema.org/medical/dicom/current/output/chtml/part04/sect_B.5.html#table_B.5-1",
     )
 
     title: fhirtypes.String = Field(
@@ -816,15 +875,23 @@ class ImagingStudySeriesPerformer(backboneelement.BackboneElement):
             "Device",
             "RelatedPerson",
         ],
+        backref="imaging_study.series.performer_actor",
     )
 
     function: fhirtypes.CodeableConceptType = Field(
         None,
         alias="function",
         title="Type of performance",
-        description="Distinguishes the type of involvement of the performer in the series.",
+        description=(
+            "Distinguishes the type of involvement of the performer in the series. "
+            "See http://hl7.org/fhir/ValueSet/series-performer-function"
+        ),
         # if property is element of this resource.
         element_property=True,
+        # valueset binding
+        binding_description="The type of involvement of the performer.",
+        binding_strength="extensible",
+        binding_uri="http://hl7.org/fhir/ValueSet/series-performer-function",
     )
 
     @classmethod

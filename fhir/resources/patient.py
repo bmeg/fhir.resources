@@ -126,13 +126,19 @@ class Patient(domainresource.DomainResource):
         title="male | female | other | unknown",
         description=(
             "Administrative Gender - the gender that the patient is considered to "
-            "have for administration and record keeping purposes."
+            "have for administration and record keeping purposes. See "
+            "http://hl7.org/fhir/ValueSet/administrative-gender"
         ),
         # if property is element of this resource.
         element_property=True,
         # note: Enum values can be used in validation,
         # but use in your own responsibilities, read official FHIR documentation.
         enum_values=["male", "female", "other", "unknown"],
+        # valueset binding
+        binding_description="The gender of a person used for administrative purposes.",
+        binding_strength="required",
+        binding_uri="http://hl7.org/fhir/ValueSet/administrative-gender",
+        binding_version="4.3.0",
     )
     gender__ext: fhirtypes.FHIRPrimitiveExtensionType = Field(
         None, alias="_gender", title="Extension field for ``gender``."
@@ -147,6 +153,7 @@ class Patient(domainresource.DomainResource):
         element_property=True,
         # note: Listed Resource Type(s) should be allowed as Reference.
         enum_reference_types=["Organization", "Practitioner", "PractitionerRole"],
+        backref="patient_generalPractitioner",
     )
 
     identifier: typing.List[fhirtypes.IdentifierType] = Field(
@@ -178,15 +185,23 @@ class Patient(domainresource.DomainResource):
         element_property=True,
         # note: Listed Resource Type(s) should be allowed as Reference.
         enum_reference_types=["Organization"],
+        backref="patient_managingOrganization",
     )
 
     maritalStatus: fhirtypes.CodeableConceptType = Field(
         None,
         alias="maritalStatus",
         title="Marital (civil) status of a patient",
-        description="This field contains a patient's most recent marital (civil) status.",
+        description=(
+            "This field contains a patient's most recent marital (civil) status. "
+            "See http://hl7.org/fhir/ValueSet/marital-status"
+        ),
         # if property is element of this resource.
         element_property=True,
+        # valueset binding
+        binding_description="The domestic partnership status of a person.",
+        binding_strength="extensible",
+        binding_uri="http://hl7.org/fhir/ValueSet/marital-status",
     )
 
     multipleBirthBoolean: bool = Field(
@@ -358,10 +373,15 @@ class PatientCommunication(backboneelement.BackboneElement):
             "The ISO-639-1 alpha 2 code in lower case for the language, optionally "
             "followed by a hyphen and the ISO-3166-1 alpha 2 code for the region in"
             ' upper case; e.g. "en" for English, or "en-US" for American English '
-            'versus "en-EN" for England English.'
+            'versus "en-EN" for England English. See '
+            "http://hl7.org/fhir/ValueSet/languages"
         ),
         # if property is element of this resource.
         element_property=True,
+        # valueset binding
+        binding_description="IETF language tag",
+        binding_strength="preferred",
+        binding_uri="http://hl7.org/fhir/ValueSet/languages",
     )
 
     preferred: bool = Field(
@@ -413,13 +433,19 @@ class PatientContact(backboneelement.BackboneElement):
         title="male | female | other | unknown",
         description=(
             "Administrative Gender - the gender that the contact person is "
-            "considered to have for administration and record keeping purposes."
+            "considered to have for administration and record keeping purposes. See"
+            " http://hl7.org/fhir/ValueSet/administrative-gender"
         ),
         # if property is element of this resource.
         element_property=True,
         # note: Enum values can be used in validation,
         # but use in your own responsibilities, read official FHIR documentation.
         enum_values=["male", "female", "other", "unknown"],
+        # valueset binding
+        binding_description="The gender of a person used for administrative purposes.",
+        binding_strength="required",
+        binding_uri="http://hl7.org/fhir/ValueSet/administrative-gender",
+        binding_version="4.3.0",
     )
     gender__ext: fhirtypes.FHIRPrimitiveExtensionType = Field(
         None, alias="_gender", title="Extension field for ``gender``."
@@ -446,6 +472,7 @@ class PatientContact(backboneelement.BackboneElement):
         element_property=True,
         # note: Listed Resource Type(s) should be allowed as Reference.
         enum_reference_types=["Organization"],
+        backref="patient.contact_organization",
     )
 
     period: fhirtypes.PeriodType = Field(
@@ -466,10 +493,14 @@ class PatientContact(backboneelement.BackboneElement):
         title="The kind of relationship",
         description=(
             "The nature of the relationship between the patient and the contact "
-            "person."
+            "person. See http://hl7.org/fhir/ValueSet/patient-contactrelationship"
         ),
         # if property is element of this resource.
         element_property=True,
+        # valueset binding
+        binding_description="The nature of the relationship between a patient and a contact person for that patient.",
+        binding_strength="extensible",
+        binding_uri="http://hl7.org/fhir/ValueSet/patient-contactrelationship",
     )
 
     telecom: typing.List[fhirtypes.ContactPointType] = Field(
@@ -524,6 +555,7 @@ class PatientLink(backboneelement.BackboneElement):
         element_property=True,
         # note: Listed Resource Type(s) should be allowed as Reference.
         enum_reference_types=["Patient", "RelatedPerson"],
+        backref="patient.link_other",
     )
 
     type: fhirtypes.Code = Field(
@@ -532,7 +564,7 @@ class PatientLink(backboneelement.BackboneElement):
         title="replaced-by | replaces | refer | seealso",
         description=(
             "The type of link between this patient resource and another patient "
-            "resource."
+            "resource. See http://hl7.org/fhir/ValueSet/link-type"
         ),
         # if property is element of this resource.
         element_property=True,
@@ -540,6 +572,11 @@ class PatientLink(backboneelement.BackboneElement):
         # note: Enum values can be used in validation,
         # but use in your own responsibilities, read official FHIR documentation.
         enum_values=["replaced-by", "replaces", "refer", "seealso"],
+        # valueset binding
+        binding_description="The type of link between this patient resource and another patient resource.",
+        binding_strength="required",
+        binding_uri="http://hl7.org/fhir/ValueSet/link-type",
+        binding_version="4.3.0",
     )
     type__ext: fhirtypes.FHIRPrimitiveExtensionType = Field(
         None, alias="_type", title="Extension field for ``type``."

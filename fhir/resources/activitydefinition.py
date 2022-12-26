@@ -63,10 +63,15 @@ class ActivityDefinition(domainresource.DomainResource):
         title="What part of body to perform on",
         description=(
             "Indicates the sites on the subject's body where the procedure should "
-            "be performed (I.e. the target sites)."
+            "be performed (I.e. the target sites). See "
+            "http://hl7.org/fhir/ValueSet/body-site"
         ),
         # if property is element of this resource.
         element_property=True,
+        # valueset binding
+        binding_description="A code that identifies the anatomical location.",
+        binding_strength="example",
+        binding_uri="http://hl7.org/fhir/ValueSet/body-site",
     )
 
     code: fhirtypes.CodeableConceptType = Field(
@@ -75,10 +80,15 @@ class ActivityDefinition(domainresource.DomainResource):
         title="Detail type of activity",
         description=(
             "Detailed description of the type of activity; e.g. What lab test, what"
-            " procedure, what kind of encounter."
+            " procedure, what kind of encounter. See "
+            "http://hl7.org/fhir/ValueSet/procedure-code"
         ),
         # if property is element of this resource.
         element_property=True,
+        # valueset binding
+        binding_description="Detailed type of the activity; e.g. CBC.",
+        binding_strength="example",
+        binding_uri="http://hl7.org/fhir/ValueSet/procedure-code",
     )
 
     contact: typing.List[fhirtypes.ContactDetailType] = Field(
@@ -261,7 +271,8 @@ class ActivityDefinition(domainresource.DomainResource):
         ),
         description=(
             "Indicates the level of authority/intentionality associated with the "
-            "activity and where the request should fit into the workflow chain."
+            "activity and where the request should fit into the workflow chain. See"
+            " http://hl7.org/fhir/ValueSet/request-intent"
         ),
         # if property is element of this resource.
         element_property=True,
@@ -278,6 +289,11 @@ class ActivityDefinition(domainresource.DomainResource):
             "instance-order",
             "option",
         ],
+        # valueset binding
+        binding_description="Codes indicating the degree of authority/intentionality associated with a request.",
+        binding_strength="required",
+        binding_uri="http://hl7.org/fhir/ValueSet/request-intent",
+        binding_version="4.3.0",
     )
     intent__ext: fhirtypes.FHIRPrimitiveExtensionType = Field(
         None, alias="_intent", title="Extension field for ``intent``."
@@ -289,10 +305,14 @@ class ActivityDefinition(domainresource.DomainResource):
         title="Intended jurisdiction for activity definition (if applicable)",
         description=(
             "A legal or geographic region in which the activity definition is "
-            "intended to be used."
+            "intended to be used. See http://hl7.org/fhir/ValueSet/jurisdiction"
         ),
         # if property is element of this resource.
         element_property=True,
+        # valueset binding
+        binding_description="Countries and regions within which this artifact is targeted for use.",
+        binding_strength="extensible",
+        binding_uri="http://hl7.org/fhir/ValueSet/jurisdiction",
     )
 
     kind: fhirtypes.Code = Field(
@@ -303,10 +323,15 @@ class ActivityDefinition(domainresource.DomainResource):
             "A description of the kind of resource the activity definition is "
             "representing. For example, a MedicationRequest, a ServiceRequest, or a"
             " CommunicationRequest. Typically, but not always, this is a Request "
-            "resource."
+            "resource. See http://hl7.org/fhir/ValueSet/request-resource-types"
         ),
         # if property is element of this resource.
         element_property=True,
+        # valueset binding
+        binding_description="The kind of activity the definition is describing.",
+        binding_strength="required",
+        binding_uri="http://hl7.org/fhir/ValueSet/request-resource-types",
+        binding_version="4.3.0",
     )
     kind__ext: fhirtypes.FHIRPrimitiveExtensionType = Field(
         None, alias="_kind", title="Extension field for ``kind``."
@@ -340,6 +365,7 @@ class ActivityDefinition(domainresource.DomainResource):
         element_property=True,
         # note: Listed Resource Type(s) should be allowed as Reference.
         enum_reference_types=["Library"],
+        backref="activity_definition_library",
     )
     library__ext: typing.List[
         typing.Union[fhirtypes.FHIRPrimitiveExtensionType, None]
@@ -357,6 +383,7 @@ class ActivityDefinition(domainresource.DomainResource):
         element_property=True,
         # note: Listed Resource Type(s) should be allowed as Reference.
         enum_reference_types=["Location"],
+        backref="activity_definition_location",
     )
 
     name: fhirtypes.String = Field(
@@ -387,6 +414,7 @@ class ActivityDefinition(domainresource.DomainResource):
         element_property=True,
         # note: Listed Resource Type(s) should be allowed as Reference.
         enum_reference_types=["ObservationDefinition"],
+        backref="activity_definition_observationRequirement",
     )
 
     observationResultRequirement: typing.List[fhirtypes.ReferenceType] = Field(
@@ -401,6 +429,7 @@ class ActivityDefinition(domainresource.DomainResource):
         element_property=True,
         # note: Listed Resource Type(s) should be allowed as Reference.
         enum_reference_types=["ObservationDefinition"],
+        backref="activity_definition_observationResultRequirement",
     )
 
     participant: typing.List[fhirtypes.ActivityDefinitionParticipantType] = Field(
@@ -418,13 +447,18 @@ class ActivityDefinition(domainresource.DomainResource):
         title="routine | urgent | asap | stat",
         description=(
             "Indicates how quickly the activity  should be addressed with respect "
-            "to other requests."
+            "to other requests. See http://hl7.org/fhir/ValueSet/request-priority"
         ),
         # if property is element of this resource.
         element_property=True,
         # note: Enum values can be used in validation,
         # but use in your own responsibilities, read official FHIR documentation.
         enum_values=["routine", "urgent", "asap", "stat"],
+        # valueset binding
+        binding_description="Identifies the level of importance to be assigned to actioning the request.",
+        binding_strength="required",
+        binding_uri="http://hl7.org/fhir/ValueSet/request-priority",
+        binding_version="4.3.0",
     )
     priority__ext: fhirtypes.FHIRPrimitiveExtensionType = Field(
         None, alias="_priority", title="Extension field for ``priority``."
@@ -436,13 +470,17 @@ class ActivityDefinition(domainresource.DomainResource):
         title="What's administered/supplied",
         description=(
             "Identifies the food, drug or other product being consumed or supplied "
-            "in the activity."
+            "in the activity. See http://hl7.org/fhir/ValueSet/medication-codes"
         ),
         # if property is element of this resource.
         element_property=True,
         # Choice of Data Types. i.e product[x]
         one_of_many="product",
         one_of_many_required=False,
+        # valueset binding
+        binding_description="Code describing the type of substance or medication.",
+        binding_strength="example",
+        binding_uri="http://hl7.org/fhir/ValueSet/medication-codes",
     )
 
     productReference: fhirtypes.ReferenceType = Field(
@@ -451,15 +489,20 @@ class ActivityDefinition(domainresource.DomainResource):
         title="What's administered/supplied",
         description=(
             "Identifies the food, drug or other product being consumed or supplied "
-            "in the activity."
+            "in the activity. See http://hl7.org/fhir/ValueSet/medication-codes"
         ),
         # if property is element of this resource.
         element_property=True,
         # Choice of Data Types. i.e product[x]
         one_of_many="product",
         one_of_many_required=False,
+        # valueset binding
+        binding_description="Code describing the type of substance or medication.",
+        binding_strength="example",
+        binding_uri="http://hl7.org/fhir/ValueSet/medication-codes",
         # note: Listed Resource Type(s) should be allowed as Reference.
         enum_reference_types=["Medication", "Substance", "Ingredient"],
+        backref="activity_definition_productReference",
     )
 
     profile: fhirtypes.Canonical = Field(
@@ -474,6 +517,7 @@ class ActivityDefinition(domainresource.DomainResource):
         element_property=True,
         # note: Listed Resource Type(s) should be allowed as Reference.
         enum_reference_types=["StructureDefinition"],
+        backref="activity_definition_profile",
     )
     profile__ext: fhirtypes.FHIRPrimitiveExtensionType = Field(
         None, alias="_profile", title="Extension field for ``profile``."
@@ -557,6 +601,7 @@ class ActivityDefinition(domainresource.DomainResource):
         element_property=True,
         # note: Listed Resource Type(s) should be allowed as Reference.
         enum_reference_types=["SpecimenDefinition"],
+        backref="activity_definition_specimenRequirement",
     )
 
     status: fhirtypes.Code = Field(
@@ -565,7 +610,8 @@ class ActivityDefinition(domainresource.DomainResource):
         title="draft | active | retired | unknown",
         description=(
             "The status of this activity definition. Enables tracking the life-"
-            "cycle of the content."
+            "cycle of the content. See http://hl7.org/fhir/ValueSet/publication-"
+            "status"
         ),
         # if property is element of this resource.
         element_property=True,
@@ -573,6 +619,11 @@ class ActivityDefinition(domainresource.DomainResource):
         # note: Enum values can be used in validation,
         # but use in your own responsibilities, read official FHIR documentation.
         enum_values=["draft", "active", "retired", "unknown"],
+        # valueset binding
+        binding_description="The lifecycle status of an artifact.",
+        binding_strength="required",
+        binding_uri="http://hl7.org/fhir/ValueSet/publication-status",
+        binding_version="4.3.0",
     )
     status__ext: fhirtypes.FHIRPrimitiveExtensionType = Field(
         None, alias="_status", title="Extension field for ``status``."
@@ -589,13 +640,18 @@ class ActivityDefinition(domainresource.DomainResource):
             "protocols for drug and substance quality specifications, and is "
             "allowed to reference a MedicinalProductDefinition, "
             "SubstanceDefinition, AdministrableProductDefinition, "
-            "ManufacturedItemDefinition, or PackagedProductDefinition resource."
+            "ManufacturedItemDefinition, or PackagedProductDefinition resource. See"
+            " http://hl7.org/fhir/ValueSet/subject-type"
         ),
         # if property is element of this resource.
         element_property=True,
         # Choice of Data Types. i.e subject[x]
         one_of_many="subject",
         one_of_many_required=False,
+        # valueset binding
+        binding_description="The possible types of subjects for an activity (E.g. Patient, Practitioner, Organization, Location, etc.).",
+        binding_strength="extensible",
+        binding_uri="http://hl7.org/fhir/ValueSet/subject-type",
     )
     subjectCanonical__ext: fhirtypes.FHIRPrimitiveExtensionType = Field(
         None,
@@ -614,13 +670,18 @@ class ActivityDefinition(domainresource.DomainResource):
             "protocols for drug and substance quality specifications, and is "
             "allowed to reference a MedicinalProductDefinition, "
             "SubstanceDefinition, AdministrableProductDefinition, "
-            "ManufacturedItemDefinition, or PackagedProductDefinition resource."
+            "ManufacturedItemDefinition, or PackagedProductDefinition resource. See"
+            " http://hl7.org/fhir/ValueSet/subject-type"
         ),
         # if property is element of this resource.
         element_property=True,
         # Choice of Data Types. i.e subject[x]
         one_of_many="subject",
         one_of_many_required=False,
+        # valueset binding
+        binding_description="The possible types of subjects for an activity (E.g. Patient, Practitioner, Organization, Location, etc.).",
+        binding_strength="extensible",
+        binding_uri="http://hl7.org/fhir/ValueSet/subject-type",
     )
 
     subjectReference: fhirtypes.ReferenceType = Field(
@@ -634,15 +695,21 @@ class ActivityDefinition(domainresource.DomainResource):
             "protocols for drug and substance quality specifications, and is "
             "allowed to reference a MedicinalProductDefinition, "
             "SubstanceDefinition, AdministrableProductDefinition, "
-            "ManufacturedItemDefinition, or PackagedProductDefinition resource."
+            "ManufacturedItemDefinition, or PackagedProductDefinition resource. See"
+            " http://hl7.org/fhir/ValueSet/subject-type"
         ),
         # if property is element of this resource.
         element_property=True,
         # Choice of Data Types. i.e subject[x]
         one_of_many="subject",
         one_of_many_required=False,
+        # valueset binding
+        binding_description="The possible types of subjects for an activity (E.g. Patient, Practitioner, Organization, Location, etc.).",
+        binding_strength="extensible",
+        binding_uri="http://hl7.org/fhir/ValueSet/subject-type",
         # note: Listed Resource Type(s) should be allowed as Reference.
         enum_reference_types=["Group"],
+        backref="activity_definition_subjectReference",
     )
 
     subtitle: fhirtypes.String = Field(
@@ -772,10 +839,15 @@ class ActivityDefinition(domainresource.DomainResource):
         description=(
             "Descriptive topics related to the content of the activity. Topics "
             "provide a high-level categorization of the activity that can be useful"
-            " for filtering and searching."
+            " for filtering and searching. See "
+            "http://hl7.org/fhir/ValueSet/definition-topic"
         ),
         # if property is element of this resource.
         element_property=True,
+        # valueset binding
+        binding_description="High-level categorization of the definition, used for searching, sorting, and filtering.",
+        binding_strength="example",
+        binding_uri="http://hl7.org/fhir/ValueSet/definition-topic",
     )
 
     transform: fhirtypes.Canonical = Field(
@@ -791,6 +863,7 @@ class ActivityDefinition(domainresource.DomainResource):
         element_property=True,
         # note: Listed Resource Type(s) should be allowed as Reference.
         enum_reference_types=["StructureMap"],
+        backref="activity_definition_transform",
     )
     transform__ext: fhirtypes.FHIRPrimitiveExtensionType = Field(
         None, alias="_transform", title="Extension field for ``transform``."
@@ -1189,23 +1262,36 @@ class ActivityDefinitionParticipant(backboneelement.BackboneElement):
         title="E.g. Nurse, Surgeon, Parent, etc.",
         description=(
             "The role the participant should play in performing the described "
-            "action."
+            "action. See http://terminology.hl7.org/ValueSet/action-participant-"
+            "role"
         ),
         # if property is element of this resource.
         element_property=True,
+        # valueset binding
+        binding_description="Defines roles played by participants for the action.",
+        binding_strength="example",
+        binding_uri="http://terminology.hl7.org/ValueSet/action-participant-role",
     )
 
     type: fhirtypes.Code = Field(
         None,
         alias="type",
         title="patient | practitioner | related-person | device",
-        description="The type of participant in the action.",
+        description=(
+            "The type of participant in the action. See "
+            "http://hl7.org/fhir/ValueSet/action-participant-type"
+        ),
         # if property is element of this resource.
         element_property=True,
         element_required=True,
         # note: Enum values can be used in validation,
         # but use in your own responsibilities, read official FHIR documentation.
         enum_values=["patient", "practitioner", "related-person", "device"],
+        # valueset binding
+        binding_description="The type of participant in the activity.",
+        binding_strength="required",
+        binding_uri="http://hl7.org/fhir/ValueSet/action-participant-type",
+        binding_version="4.3.0",
     )
     type__ext: fhirtypes.FHIRPrimitiveExtensionType = Field(
         None, alias="_type", title="Extension field for ``type``."

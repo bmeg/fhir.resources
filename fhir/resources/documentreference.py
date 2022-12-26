@@ -41,6 +41,7 @@ class DocumentReference(domainresource.DomainResource):
         element_property=True,
         # note: Listed Resource Type(s) should be allowed as Reference.
         enum_reference_types=["Practitioner", "PractitionerRole", "Organization"],
+        backref="document_reference_authenticator",
     )
 
     author: typing.List[fhirtypes.ReferenceType] = Field(
@@ -62,6 +63,7 @@ class DocumentReference(domainresource.DomainResource):
             "Patient",
             "RelatedPerson",
         ],
+        backref="document_reference_author",
     )
 
     category: typing.List[fhirtypes.CodeableConceptType] = Field(
@@ -71,10 +73,15 @@ class DocumentReference(domainresource.DomainResource):
         description=(
             "A categorization for the type of document referenced - helps for "
             "indexing and searching. This may be implied by or derived from the "
-            "code specified in the DocumentReference.type."
+            "code specified in the DocumentReference.type. See "
+            "http://hl7.org/fhir/ValueSet/doc-classcodes"
         ),
         # if property is element of this resource.
         element_property=True,
+        # valueset binding
+        binding_description="High-level kind of a clinical document at a macro level.",
+        binding_strength="example",
+        binding_uri="http://hl7.org/fhir/ValueSet/doc-classcodes",
     )
 
     content: typing.List[fhirtypes.DocumentReferenceContentType] = Field(
@@ -110,6 +117,7 @@ class DocumentReference(domainresource.DomainResource):
         element_property=True,
         # note: Listed Resource Type(s) should be allowed as Reference.
         enum_reference_types=["Organization"],
+        backref="document_reference_custodian",
     )
 
     date: fhirtypes.Instant = Field(
@@ -140,12 +148,20 @@ class DocumentReference(domainresource.DomainResource):
         None,
         alias="docStatus",
         title="preliminary | final | amended | entered-in-error",
-        description="The status of the underlying document.",
+        description=(
+            "The status of the underlying document. See "
+            "http://hl7.org/fhir/ValueSet/composition-status"
+        ),
         # if property is element of this resource.
         element_property=True,
         # note: Enum values can be used in validation,
         # but use in your own responsibilities, read official FHIR documentation.
         enum_values=["preliminary", "final", "amended", "entered-in-error"],
+        # valueset binding
+        binding_description="Status of the underlying document.",
+        binding_strength="required",
+        binding_uri="http://hl7.org/fhir/ValueSet/composition-status",
+        binding_version="4.3.0",
     )
     docStatus__ext: fhirtypes.FHIRPrimitiveExtensionType = Field(
         None, alias="_docStatus", title="Extension field for ``docStatus``."
@@ -198,23 +214,36 @@ class DocumentReference(domainresource.DomainResource):
             "of the Document. Note that DocumentReference.meta.security contains "
             'the security labels of the "reference" to the document, while '
             "DocumentReference.securityLabel contains a snapshot of the security "
-            "labels on the document the reference refers to."
+            "labels on the document the reference refers to. See "
+            "http://hl7.org/fhir/ValueSet/security-labels"
         ),
         # if property is element of this resource.
         element_property=True,
+        # valueset binding
+        binding_description="Security Labels from the Healthcare Privacy and Security Classification System.",
+        binding_strength="extensible",
+        binding_uri="http://hl7.org/fhir/ValueSet/security-labels",
     )
 
     status: fhirtypes.Code = Field(
         None,
         alias="status",
         title="current | superseded | entered-in-error",
-        description="The status of this document reference.",
+        description=(
+            "The status of this document reference. See "
+            "http://hl7.org/fhir/ValueSet/document-reference-status"
+        ),
         # if property is element of this resource.
         element_property=True,
         element_required=True,
         # note: Enum values can be used in validation,
         # but use in your own responsibilities, read official FHIR documentation.
         enum_values=["current", "superseded", "entered-in-error"],
+        # valueset binding
+        binding_description="The status of the document reference.",
+        binding_strength="required",
+        binding_uri="http://hl7.org/fhir/ValueSet/document-reference-status",
+        binding_version="4.3.0",
     )
     status__ext: fhirtypes.FHIRPrimitiveExtensionType = Field(
         None, alias="_status", title="Extension field for ``status``."
@@ -234,6 +263,7 @@ class DocumentReference(domainresource.DomainResource):
         element_property=True,
         # note: Listed Resource Type(s) should be allowed as Reference.
         enum_reference_types=["Patient", "Practitioner", "Group", "Device"],
+        backref="document_reference_subject",
     )
 
     type: fhirtypes.CodeableConceptType = Field(
@@ -243,10 +273,15 @@ class DocumentReference(domainresource.DomainResource):
         description=(
             "Specifies the particular kind of document referenced  (e.g. History "
             "and Physical, Discharge Summary, Progress Note). This usually equates "
-            "to the purpose of making the document referenced."
+            "to the purpose of making the document referenced. See "
+            "http://hl7.org/fhir/ValueSet/doc-typecodes"
         ),
         # if property is element of this resource.
         element_property=True,
+        # valueset binding
+        binding_description="Precise type of clinical document.",
+        binding_strength="preferred",
+        binding_uri="http://hl7.org/fhir/ValueSet/doc-typecodes",
     )
 
     @classmethod
@@ -373,10 +408,14 @@ class DocumentReferenceContent(backboneelement.BackboneElement):
         description=(
             "An identifier of the document encoding, structure, and template that "
             "the document conforms to beyond the base format indicated in the "
-            "mimeType."
+            "mimeType. See http://hl7.org/fhir/ValueSet/formatcodes"
         ),
         # if property is element of this resource.
         element_property=True,
+        # valueset binding
+        binding_description="Document Format Codes.",
+        binding_strength="preferred",
+        binding_uri="http://hl7.org/fhir/ValueSet/formatcodes",
     )
 
     @classmethod
@@ -411,6 +450,7 @@ class DocumentReferenceContext(backboneelement.BackboneElement):
         element_property=True,
         # note: Listed Resource Type(s) should be allowed as Reference.
         enum_reference_types=["Encounter", "EpisodeOfCare"],
+        backref="document_reference.context_encounter",
     )
 
     event: typing.List[fhirtypes.CodeableConceptType] = Field(
@@ -422,19 +462,31 @@ class DocumentReferenceContext(backboneelement.BackboneElement):
             "colonoscopy or an appendectomy, being documented. In some cases, the "
             'event is inherent in the type Code, such as a "History and Physical '
             'Report" in which the procedure being documented is necessarily a '
-            '"History and Physical" act.'
+            '"History and Physical" act. See '
+            "http://terminology.hl7.org/ValueSet/v3-ActCode"
         ),
         # if property is element of this resource.
         element_property=True,
+        # valueset binding
+        binding_description="This list of codes represents the main clinical acts being documented.",
+        binding_strength="example",
+        binding_uri="http://terminology.hl7.org/ValueSet/v3-ActCode",
     )
 
     facilityType: fhirtypes.CodeableConceptType = Field(
         None,
         alias="facilityType",
         title="Kind of facility where patient was seen",
-        description="The kind of facility where the patient was seen.",
+        description=(
+            "The kind of facility where the patient was seen. See "
+            "http://hl7.org/fhir/ValueSet/c80-facilitycodes"
+        ),
         # if property is element of this resource.
         element_property=True,
+        # valueset binding
+        binding_description="XDS Facility Type.",
+        binding_strength="example",
+        binding_uri="http://hl7.org/fhir/ValueSet/c80-facilitycodes",
     )
 
     period: fhirtypes.PeriodType = Field(
@@ -458,10 +510,15 @@ class DocumentReferenceContext(backboneelement.BackboneElement):
         ),
         description=(
             "This property may convey specifics about the practice setting where "
-            "the content was created, often reflecting the clinical specialty."
+            "the content was created, often reflecting the clinical specialty. See "
+            "http://hl7.org/fhir/ValueSet/c80-practice-codes"
         ),
         # if property is element of this resource.
         element_property=True,
+        # valueset binding
+        binding_description="Additional details about where the content was created (e.g. clinical specialty).",
+        binding_strength="example",
+        binding_uri="http://hl7.org/fhir/ValueSet/c80-practice-codes",
     )
 
     related: typing.List[fhirtypes.ReferenceType] = Field(
@@ -475,6 +532,7 @@ class DocumentReferenceContext(backboneelement.BackboneElement):
         element_property=True,
         # note: Listed Resource Type(s) should be allowed as Reference.
         enum_reference_types=["Resource"],
+        backref="document_reference.context_related",
     )
 
     sourcePatientInfo: fhirtypes.ReferenceType = Field(
@@ -489,6 +547,7 @@ class DocumentReferenceContext(backboneelement.BackboneElement):
         element_property=True,
         # note: Listed Resource Type(s) should be allowed as Reference.
         enum_reference_types=["Patient"],
+        backref="document_reference.context_sourcePatientInfo",
     )
 
     @classmethod
@@ -527,13 +586,21 @@ class DocumentReferenceRelatesTo(backboneelement.BackboneElement):
         None,
         alias="code",
         title="replaces | transforms | signs | appends",
-        description="The type of relationship that this document has with anther document.",
+        description=(
+            "The type of relationship that this document has with anther document. "
+            "See http://hl7.org/fhir/ValueSet/document-relationship-type"
+        ),
         # if property is element of this resource.
         element_property=True,
         element_required=True,
         # note: Enum values can be used in validation,
         # but use in your own responsibilities, read official FHIR documentation.
         enum_values=["replaces", "transforms", "signs", "appends"],
+        # valueset binding
+        binding_description="The type of relationship between documents.",
+        binding_strength="required",
+        binding_uri="http://hl7.org/fhir/ValueSet/document-relationship-type",
+        binding_version="4.3.0",
     )
     code__ext: fhirtypes.FHIRPrimitiveExtensionType = Field(
         None, alias="_code", title="Extension field for ``code``."
@@ -548,6 +615,7 @@ class DocumentReferenceRelatesTo(backboneelement.BackboneElement):
         element_property=True,
         # note: Listed Resource Type(s) should be allowed as Reference.
         enum_reference_types=["DocumentReference"],
+        backref="document_reference.relates_to_target",
     )
 
     @classmethod

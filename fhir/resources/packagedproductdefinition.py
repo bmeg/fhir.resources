@@ -32,10 +32,15 @@ class PackagedProductDefinition(domainresource.DomainResource):
         ),
         description=(
             'Allows the key features to be recorded, such as "hospital pack", '
-            '"nurse prescribable", "calendar pack".'
+            '"nurse prescribable", "calendar pack". See '
+            "http://hl7.org/fhir/ValueSet/package-characteristic"
         ),
         # if property is element of this resource.
         element_property=True,
+        # valueset binding
+        binding_description="A characteristic of a package.",
+        binding_strength="example",
+        binding_uri="http://hl7.org/fhir/ValueSet/package-characteristic",
     )
 
     containedItemQuantity: typing.List[fhirtypes.QuantityType] = Field(
@@ -143,6 +148,7 @@ class PackagedProductDefinition(domainresource.DomainResource):
         element_property=True,
         # note: Listed Resource Type(s) should be allowed as Reference.
         enum_reference_types=["Organization"],
+        backref="packaged_product_definition_manufacturer",
     )
 
     marketingStatus: typing.List[fhirtypes.MarketingStatusType] = Field(
@@ -201,6 +207,7 @@ class PackagedProductDefinition(domainresource.DomainResource):
         element_property=True,
         # note: Listed Resource Type(s) should be allowed as Reference.
         enum_reference_types=["MedicinalProductDefinition"],
+        backref="packaged_product_definition_packageFor",
     )
 
     status: fhirtypes.CodeableConceptType = Field(
@@ -214,10 +221,15 @@ class PackagedProductDefinition(domainresource.DomainResource):
         description=(
             "The status within the lifecycle of this item. A high level status, "
             "this is not intended to duplicate details carried elsewhere such as "
-            "legal status, or authorization or marketing status."
+            "legal status, or authorization or marketing status. See "
+            "http://hl7.org/fhir/ValueSet/publication-status"
         ),
         # if property is element of this resource.
         element_property=True,
+        # valueset binding
+        binding_description="The lifecycle status of an artifact.",
+        binding_strength="preferred",
+        binding_uri="http://hl7.org/fhir/ValueSet/publication-status",
     )
 
     statusDate: fhirtypes.DateTime = Field(
@@ -241,10 +253,15 @@ class PackagedProductDefinition(domainresource.DomainResource):
         ),
         description=(
             "A high level category e.g. medicinal product, raw material, "
-            "shipping/transport container, etc."
+            "shipping/transport container, etc. See "
+            "http://hl7.org/fhir/ValueSet/package-type"
         ),
         # if property is element of this resource.
         element_property=True,
+        # valueset binding
+        binding_description="A high level categorisation of a package.",
+        binding_strength="example",
+        binding_uri="http://hl7.org/fhir/ValueSet/package-type",
     )
 
     @classmethod
@@ -299,10 +316,15 @@ class PackagedProductDefinitionLegalStatusOfSupply(backboneelement.BackboneEleme
         ),
         description=(
             "The actual status of supply. Conveys in what situation this package "
-            "type may be supplied for use."
+            "type may be supplied for use. See http://hl7.org/fhir/ValueSet/legal-"
+            "status-of-supply"
         ),
         # if property is element of this resource.
         element_property=True,
+        # valueset binding
+        binding_description="The prescription supply types appropriate to a medicinal product",
+        binding_strength="example",
+        binding_uri="http://hl7.org/fhir/ValueSet/legal-status-of-supply",
     )
 
     jurisdiction: fhirtypes.CodeableConceptType = Field(
@@ -311,10 +333,15 @@ class PackagedProductDefinitionLegalStatusOfSupply(backboneelement.BackboneEleme
         title="The place where the legal status of supply applies",
         description=(
             "The place where the legal status of supply applies. When not "
-            "specified, this indicates it is unknown in this context."
+            "specified, this indicates it is unknown in this context. See "
+            "http://hl7.org/fhir/ValueSet/jurisdiction"
         ),
         # if property is element of this resource.
         element_property=True,
+        # valueset binding
+        binding_description="Jurisdiction codes",
+        binding_strength="example",
+        binding_uri="http://hl7.org/fhir/ValueSet/jurisdiction",
     )
 
     @classmethod
@@ -350,10 +377,15 @@ class PackagedProductDefinitionPackage(backboneelement.BackboneElement):
         description=(
             "A possible alternate material for this part of the packaging, that is "
             "allowed to be used instead of the usual material (e.g. different types"
-            " of plastic for a blister sleeve)."
+            " of plastic for a blister sleeve). See "
+            "http://hl7.org/fhir/ValueSet/package-material"
         ),
         # if property is element of this resource.
         element_property=True,
+        # valueset binding
+        binding_description="A material used in the construction of packages and their components.",
+        binding_strength="example",
+        binding_uri="http://hl7.org/fhir/ValueSet/package-material",
     )
 
     containedItem: typing.List[
@@ -397,15 +429,20 @@ class PackagedProductDefinitionPackage(backboneelement.BackboneElement):
         element_property=True,
         # note: Listed Resource Type(s) should be allowed as Reference.
         enum_reference_types=["Organization"],
+        backref="packaged_product_definition.package_manufacturer",
     )
 
     material: typing.List[fhirtypes.CodeableConceptType] = Field(
         None,
         alias="material",
         title="Material type of the package item",
-        description=None,
+        description="See http://hl7.org/fhir/ValueSet/package-material",
         # if property is element of this resource.
         element_property=True,
+        # valueset binding
+        binding_description="A material used in the construction of packages and their components.",
+        binding_strength="example",
+        binding_uri="http://hl7.org/fhir/ValueSet/package-material",
     )
 
     package: typing.List[fhirtypes.PackagedProductDefinitionPackageType] = Field(
@@ -468,9 +505,13 @@ class PackagedProductDefinitionPackage(backboneelement.BackboneElement):
         None,
         alias="type",
         title="The physical type of the container of the items",
-        description=None,
+        description="See http://hl7.org/fhir/ValueSet/packaging-type",
         # if property is element of this resource.
         element_property=True,
+        # valueset binding
+        binding_description="A high level categorisation of a package.",
+        binding_strength="example",
+        binding_uri="http://hl7.org/fhir/ValueSet/packaging-type",
     )
 
     @classmethod
@@ -543,6 +584,7 @@ class PackagedProductDefinitionPackageContainedItem(backboneelement.BackboneElem
             "BiologicallyDerivedProduct",
             "NutritionProduct",
         ],
+        backref="packaged_product_definition.package.contained_item_item",
     )
 
     @classmethod
@@ -568,9 +610,13 @@ class PackagedProductDefinitionPackageProperty(backboneelement.BackboneElement):
         ...,
         alias="type",
         title="A code expressing the type of characteristic",
-        description=None,
+        description="See http://hl7.org/fhir/ValueSet/product-characteristic-codes",
         # if property is element of this resource.
         element_property=True,
+        # valueset binding
+        binding_description="This value set includes all observable entity codes from SNOMED CT - provided as an exemplar value set.",
+        binding_strength="example",
+        binding_uri="http://hl7.org/fhir/ValueSet/product-characteristic-codes",
     )
 
     valueAttachment: fhirtypes.AttachmentType = Field(

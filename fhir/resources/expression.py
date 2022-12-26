@@ -62,7 +62,10 @@ class Expression(element.Element):
             "text/cql | text/fhirpath | application/x-fhir-query | text/cql-"
             "identifier | text/cql-expression | etc."
         ),
-        description="The media type of the language for the expression.",
+        description=(
+            "The media type of the language for the expression. See "
+            "http://hl7.org/fhir/ValueSet/expression-language"
+        ),
         # if property is element of this resource.
         element_property=True,
         element_required=True,
@@ -76,6 +79,9 @@ class Expression(element.Element):
             "text/cql-expression",
             "etc.",
         ],
+        # valueset binding
+        binding_strength="extensible",
+        binding_uri="http://hl7.org/fhir/ValueSet/expression-language",
     )
     language__ext: fhirtypes.FHIRPrimitiveExtensionType = Field(
         None, alias="_language", title="Extension field for ``language``."

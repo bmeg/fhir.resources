@@ -29,9 +29,16 @@ class List(domainresource.DomainResource):
         None,
         alias="code",
         title="What the purpose of this list is",
-        description="This code defines the purpose of the list - why it was created.",
+        description=(
+            "This code defines the purpose of the list - why it was created. See "
+            "http://hl7.org/fhir/ValueSet/list-example-codes"
+        ),
         # if property is element of this resource.
         element_property=True,
+        # valueset binding
+        binding_description="What the purpose of a list is.",
+        binding_strength="example",
+        binding_uri="http://hl7.org/fhir/ValueSet/list-example-codes",
     )
 
     date: fhirtypes.DateTime = Field(
@@ -50,9 +57,16 @@ class List(domainresource.DomainResource):
         None,
         alias="emptyReason",
         title="Why list is empty",
-        description="If the list is empty, why the list is empty.",
+        description=(
+            "If the list is empty, why the list is empty. See "
+            "http://hl7.org/fhir/ValueSet/list-empty-reason"
+        ),
         # if property is element of this resource.
         element_property=True,
+        # valueset binding
+        binding_description="If a list is empty, why it is empty.",
+        binding_strength="preferred",
+        binding_uri="http://hl7.org/fhir/ValueSet/list-empty-reason",
     )
 
     encounter: fhirtypes.ReferenceType = Field(
@@ -64,6 +78,7 @@ class List(domainresource.DomainResource):
         element_property=True,
         # note: Listed Resource Type(s) should be allowed as Reference.
         enum_reference_types=["Encounter"],
+        backref="list_encounter",
     )
 
     entry: typing.List[fhirtypes.ListEntryType] = Field(
@@ -96,7 +111,7 @@ class List(domainresource.DomainResource):
             "suitable for being maintained on an ongoing basis, or if it represents"
             " a snapshot of a list of items from another source, or whether it is a"
             " prepared list where items may be marked as added, modified or "
-            "deleted."
+            "deleted. See http://hl7.org/fhir/ValueSet/list-mode"
         ),
         # if property is element of this resource.
         element_property=True,
@@ -104,6 +119,11 @@ class List(domainresource.DomainResource):
         # note: Enum values can be used in validation,
         # but use in your own responsibilities, read official FHIR documentation.
         enum_values=["working", "snapshot", "changes"],
+        # valueset binding
+        binding_description="The processing mode that applies to this list.",
+        binding_strength="required",
+        binding_uri="http://hl7.org/fhir/ValueSet/list-mode",
+        binding_version="4.3.0",
     )
     mode__ext: fhirtypes.FHIRPrimitiveExtensionType = Field(
         None, alias="_mode", title="Extension field for ``mode``."
@@ -122,9 +142,16 @@ class List(domainresource.DomainResource):
         None,
         alias="orderedBy",
         title="What order the list has",
-        description="What order applies to the items in the list.",
+        description=(
+            "What order applies to the items in the list. See "
+            "http://hl7.org/fhir/ValueSet/list-order"
+        ),
         # if property is element of this resource.
         element_property=True,
+        # valueset binding
+        binding_description="What order applies to the items in a list.",
+        binding_strength="preferred",
+        binding_uri="http://hl7.org/fhir/ValueSet/list-order",
     )
 
     source: fhirtypes.ReferenceType = Field(
@@ -140,19 +167,28 @@ class List(domainresource.DomainResource):
         element_property=True,
         # note: Listed Resource Type(s) should be allowed as Reference.
         enum_reference_types=["Practitioner", "PractitionerRole", "Patient", "Device"],
+        backref="list_source",
     )
 
     status: fhirtypes.Code = Field(
         None,
         alias="status",
         title="current | retired | entered-in-error",
-        description="Indicates the current state of this list.",
+        description=(
+            "Indicates the current state of this list. See "
+            "http://hl7.org/fhir/ValueSet/list-status"
+        ),
         # if property is element of this resource.
         element_property=True,
         element_required=True,
         # note: Enum values can be used in validation,
         # but use in your own responsibilities, read official FHIR documentation.
         enum_values=["current", "retired", "entered-in-error"],
+        # valueset binding
+        binding_description="The current state of the list.",
+        binding_strength="required",
+        binding_uri="http://hl7.org/fhir/ValueSet/list-status",
+        binding_version="4.3.0",
     )
     status__ext: fhirtypes.FHIRPrimitiveExtensionType = Field(
         None, alias="_status", title="Extension field for ``status``."
@@ -170,6 +206,7 @@ class List(domainresource.DomainResource):
         element_property=True,
         # note: Listed Resource Type(s) should be allowed as Reference.
         enum_reference_types=["Patient", "Group", "Device", "Location"],
+        backref="list_subject",
     )
 
     title: fhirtypes.String = Field(
@@ -315,10 +352,15 @@ class ListEntry(backboneelement.BackboneElement):
         title="Status/Workflow information about this item",
         description=(
             "The flag allows the system constructing the list to indicate the role "
-            "and significance of the item in the list."
+            "and significance of the item in the list. See "
+            "http://hl7.org/fhir/ValueSet/list-item-flag"
         ),
         # if property is element of this resource.
         element_property=True,
+        # valueset binding
+        binding_description="Codes that provide further information about the reason and meaning of the item in the list.",
+        binding_strength="example",
+        binding_uri="http://hl7.org/fhir/ValueSet/list-item-flag",
     )
 
     item: fhirtypes.ReferenceType = Field(
@@ -330,6 +372,7 @@ class ListEntry(backboneelement.BackboneElement):
         element_property=True,
         # note: Listed Resource Type(s) should be allowed as Reference.
         enum_reference_types=["Resource"],
+        backref="list.entry_item",
     )
 
     @classmethod

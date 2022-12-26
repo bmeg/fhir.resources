@@ -107,7 +107,10 @@ class Bundle(resource.Resource):
             "document | message | transaction | transaction-response | batch | "
             "batch-response | history | searchset | collection"
         ),
-        description="Indicates the purpose of this bundle - how it is intended to be used.",
+        description=(
+            "Indicates the purpose of this bundle - how it is intended to be used. "
+            "See http://hl7.org/fhir/ValueSet/bundle-type"
+        ),
         # if property is element of this resource.
         element_property=True,
         element_required=True,
@@ -124,6 +127,11 @@ class Bundle(resource.Resource):
             "searchset",
             "collection",
         ],
+        # valueset binding
+        binding_description="Indicates the purpose of a bundle - how it is intended to be used.",
+        binding_strength="required",
+        binding_uri="http://hl7.org/fhir/ValueSet/bundle-type",
+        binding_version="4.3.0",
     )
     type__ext: fhirtypes.FHIRPrimitiveExtensionType = Field(
         None, alias="_type", title="Extension field for ``type``."
@@ -403,7 +411,7 @@ class BundleEntryRequest(backboneelement.BackboneElement):
         description=(
             "In a transaction or batch, this is the HTTP action to be executed for "
             "this entry. In a history bundle, this indicates the HTTP action that "
-            "occurred."
+            "occurred. See http://hl7.org/fhir/ValueSet/http-verb"
         ),
         # if property is element of this resource.
         element_property=True,
@@ -411,6 +419,11 @@ class BundleEntryRequest(backboneelement.BackboneElement):
         # note: Enum values can be used in validation,
         # but use in your own responsibilities, read official FHIR documentation.
         enum_values=["GET", "HEAD", "POST", "PUT", "DELETE", "PATCH"],
+        # valueset binding
+        binding_description="HTTP verbs (in the HTTP command line). See [HTTP rfc](https://tools.ietf.org/html/rfc7231) for details.",
+        binding_strength="required",
+        binding_uri="http://hl7.org/fhir/ValueSet/http-verb",
+        binding_version="4.3.0",
     )
     method__ext: fhirtypes.FHIRPrimitiveExtensionType = Field(
         None, alias="_method", title="Extension field for ``method``."
@@ -692,13 +705,19 @@ class BundleEntrySearch(backboneelement.BackboneElement):
         description=(
             "Why this entry is in the result set - whether it's included as a match"
             " or because of an _include requirement, or to convey information or "
-            "warning information about the search process."
+            "warning information about the search process. See "
+            "http://hl7.org/fhir/ValueSet/search-entry-mode"
         ),
         # if property is element of this resource.
         element_property=True,
         # note: Enum values can be used in validation,
         # but use in your own responsibilities, read official FHIR documentation.
         enum_values=["match", "include", "outcome"],
+        # valueset binding
+        binding_description="Why an entry is in the result set - whether it\u0027s included as a match or because of an _include requirement, or to convey information or warning information about the search process.",
+        binding_strength="required",
+        binding_uri="http://hl7.org/fhir/ValueSet/search-entry-mode",
+        binding_version="4.3.0",
     )
     mode__ext: fhirtypes.FHIRPrimitiveExtensionType = Field(
         None, alias="_mode", title="Extension field for ``mode``."

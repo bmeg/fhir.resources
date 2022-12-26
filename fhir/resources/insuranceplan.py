@@ -36,6 +36,7 @@ class InsurancePlan(domainresource.DomainResource):
         element_property=True,
         # note: Listed Resource Type(s) should be allowed as Reference.
         enum_reference_types=["Organization"],
+        backref="insurance_plan_administeredBy",
     )
 
     alias: typing.List[typing.Optional[fhirtypes.String]] = Field(
@@ -83,6 +84,7 @@ class InsurancePlan(domainresource.DomainResource):
         element_property=True,
         # note: Listed Resource Type(s) should be allowed as Reference.
         enum_reference_types=["Location"],
+        backref="insurance_plan_coverageArea",
     )
 
     endpoint: typing.List[fhirtypes.ReferenceType] = Field(
@@ -97,6 +99,7 @@ class InsurancePlan(domainresource.DomainResource):
         element_property=True,
         # note: Listed Resource Type(s) should be allowed as Reference.
         enum_reference_types=["Endpoint"],
+        backref="insurance_plan_endpoint",
     )
 
     identifier: typing.List[fhirtypes.IdentifierType] = Field(
@@ -136,6 +139,7 @@ class InsurancePlan(domainresource.DomainResource):
         element_property=True,
         # note: Listed Resource Type(s) should be allowed as Reference.
         enum_reference_types=["Organization"],
+        backref="insurance_plan_network",
     )
 
     ownedBy: fhirtypes.ReferenceType = Field(
@@ -152,6 +156,7 @@ class InsurancePlan(domainresource.DomainResource):
         element_property=True,
         # note: Listed Resource Type(s) should be allowed as Reference.
         enum_reference_types=["Organization"],
+        backref="insurance_plan_ownedBy",
     )
 
     period: fhirtypes.PeriodType = Field(
@@ -176,12 +181,20 @@ class InsurancePlan(domainresource.DomainResource):
         None,
         alias="status",
         title="draft | active | retired | unknown",
-        description="The current state of the health insurance product.",
+        description=(
+            "The current state of the health insurance product. See "
+            "http://hl7.org/fhir/ValueSet/publication-status"
+        ),
         # if property is element of this resource.
         element_property=True,
         # note: Enum values can be used in validation,
         # but use in your own responsibilities, read official FHIR documentation.
         enum_values=["draft", "active", "retired", "unknown"],
+        # valueset binding
+        binding_description="The lifecycle status of an artifact.",
+        binding_strength="required",
+        binding_uri="http://hl7.org/fhir/ValueSet/publication-status",
+        binding_version="4.3.0",
     )
     status__ext: fhirtypes.FHIRPrimitiveExtensionType = Field(
         None, alias="_status", title="Extension field for ``status``."
@@ -191,9 +204,16 @@ class InsurancePlan(domainresource.DomainResource):
         None,
         alias="type",
         title="Kind of product",
-        description="The kind of health insurance product.",
+        description=(
+            "The kind of health insurance product. See "
+            "http://hl7.org/fhir/ValueSet/insuranceplan-type"
+        ),
         # if property is element of this resource.
         element_property=True,
+        # valueset binding
+        binding_description="Used to categorize the product/plan.",
+        binding_strength="example",
+        binding_uri="http://hl7.org/fhir/ValueSet/insuranceplan-type",
     )
 
     @classmethod
@@ -261,9 +281,16 @@ class InsurancePlanContact(backboneelement.BackboneElement):
         None,
         alias="purpose",
         title="The type of contact",
-        description="Indicates a purpose for which the contact can be reached.",
+        description=(
+            "Indicates a purpose for which the contact can be reached. See "
+            "http://hl7.org/fhir/ValueSet/contactentity-type"
+        ),
         # if property is element of this resource.
         element_property=True,
+        # valueset binding
+        binding_description="The purpose for which you would contact a contact party.",
+        binding_strength="extensible",
+        binding_uri="http://hl7.org/fhir/ValueSet/contactentity-type",
     )
 
     telecom: typing.List[fhirtypes.ContactPointType] = Field(
@@ -324,6 +351,7 @@ class InsurancePlanCoverage(backboneelement.BackboneElement):
         element_property=True,
         # note: Listed Resource Type(s) should be allowed as Reference.
         enum_reference_types=["Organization"],
+        backref="insurance_plan.coverage_network",
     )
 
     type: fhirtypes.CodeableConceptType = Field(
@@ -463,6 +491,7 @@ class InsurancePlanPlan(backboneelement.BackboneElement):
         element_property=True,
         # note: Listed Resource Type(s) should be allowed as Reference.
         enum_reference_types=["Location"],
+        backref="insurance_plan.plan_coverageArea",
     )
 
     generalCost: typing.List[fhirtypes.InsurancePlanPlanGeneralCostType] = Field(
@@ -496,6 +525,7 @@ class InsurancePlanPlan(backboneelement.BackboneElement):
         element_property=True,
         # note: Listed Resource Type(s) should be allowed as Reference.
         enum_reference_types=["Organization"],
+        backref="insurance_plan.plan_network",
     )
 
     specificCost: typing.List[fhirtypes.InsurancePlanPlanSpecificCostType] = Field(
@@ -708,10 +738,19 @@ class InsurancePlanPlanSpecificCostBenefitCost(backboneelement.BackboneElement):
         title="in-network | out-of-network | other",
         description=(
             "Whether the cost applies to in-network or out-of-network providers "
-            "(in-network; out-of-network; other)."
+            "(in-network; out-of-network; other). See "
+            "http://hl7.org/fhir/ValueSet/insuranceplan-applicability"
         ),
         # if property is element of this resource.
         element_property=True,
+        # note: Enum values can be used in validation,
+        # but use in your own responsibilities, read official FHIR documentation.
+        enum_values=["in-network", "out-of-network", "other"],
+        # valueset binding
+        binding_description="Whether the cost applies to in-network or out-of-network providers.",
+        binding_strength="required",
+        binding_uri="http://hl7.org/fhir/ValueSet/insuranceplan-applicability",
+        binding_version="4.3.0",
     )
 
     qualifiers: typing.List[fhirtypes.CodeableConceptType] = Field(

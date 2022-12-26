@@ -53,6 +53,7 @@ class Meta(element.Element):
         element_property=True,
         # note: Listed Resource Type(s) should be allowed as Reference.
         enum_reference_types=["StructureDefinition"],
+        backref="meta_profile",
     )
     profile__ext: typing.List[
         typing.Union[fhirtypes.FHIRPrimitiveExtensionType, None]
@@ -64,10 +65,14 @@ class Meta(element.Element):
         title="Security Labels applied to this resource",
         description=(
             "Security labels applied to this resource. These tags connect specific "
-            "resources to the overall security policy and infrastructure."
+            "resources to the overall security policy and infrastructure. See "
+            "http://hl7.org/fhir/ValueSet/security-labels"
         ),
         # if property is element of this resource.
         element_property=True,
+        # valueset binding
+        binding_strength="extensible",
+        binding_uri="http://hl7.org/fhir/ValueSet/security-labels",
     )
 
     source: fhirtypes.Uri = Field(
@@ -96,10 +101,14 @@ class Meta(element.Element):
             "Tags applied to this resource. Tags are intended to be used to "
             "identify and relate resources to process and workflow, and "
             "applications are not required to consider the tags when interpreting "
-            "the meaning of a resource."
+            "the meaning of a resource. See http://hl7.org/fhir/ValueSet/common-"
+            "tags"
         ),
         # if property is element of this resource.
         element_property=True,
+        # valueset binding
+        binding_strength="example",
+        binding_uri="http://hl7.org/fhir/ValueSet/common-tags",
     )
 
     versionId: fhirtypes.Id = Field(

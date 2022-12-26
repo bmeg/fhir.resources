@@ -101,6 +101,7 @@ class ParameterDefinition(element.Element):
         element_property=True,
         # note: Listed Resource Type(s) should be allowed as Reference.
         enum_reference_types=["StructureDefinition"],
+        backref="parameter_definition_profile",
     )
     profile__ext: fhirtypes.FHIRPrimitiveExtensionType = Field(
         None, alias="_profile", title="Extension field for ``profile``."
@@ -110,10 +111,14 @@ class ParameterDefinition(element.Element):
         None,
         alias="type",
         title="What type of value",
-        description="The type of the parameter.",
+        description="The type of the parameter. See http://hl7.org/fhir/ValueSet/all-types",
         # if property is element of this resource.
         element_property=True,
         element_required=True,
+        # valueset binding
+        binding_strength="required",
+        binding_uri="http://hl7.org/fhir/ValueSet/all-types",
+        binding_version="4.3.0",
     )
     type__ext: fhirtypes.FHIRPrimitiveExtensionType = Field(
         None, alias="_type", title="Extension field for ``type``."
@@ -123,13 +128,20 @@ class ParameterDefinition(element.Element):
         None,
         alias="use",
         title="in | out",
-        description="Whether the parameter is input or output for the module.",
+        description=(
+            "Whether the parameter is input or output for the module. See "
+            "http://hl7.org/fhir/ValueSet/operation-parameter-use"
+        ),
         # if property is element of this resource.
         element_property=True,
         element_required=True,
         # note: Enum values can be used in validation,
         # but use in your own responsibilities, read official FHIR documentation.
         enum_values=["in", "out"],
+        # valueset binding
+        binding_strength="required",
+        binding_uri="http://hl7.org/fhir/ValueSet/operation-parameter-use",
+        binding_version="4.3.0",
     )
     use__ext: fhirtypes.FHIRPrimitiveExtensionType = Field(
         None, alias="_use", title="Extension field for ``use``."

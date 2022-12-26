@@ -70,9 +70,13 @@ class Practitioner(domainresource.DomainResource):
         None,
         alias="communication",
         title="A language the practitioner can use in patient communication",
-        description=None,
+        description="See http://hl7.org/fhir/ValueSet/languages",
         # if property is element of this resource.
         element_property=True,
+        # valueset binding
+        binding_description="IETF language tag",
+        binding_strength="preferred",
+        binding_uri="http://hl7.org/fhir/ValueSet/languages",
     )
 
     gender: fhirtypes.Code = Field(
@@ -81,13 +85,19 @@ class Practitioner(domainresource.DomainResource):
         title="male | female | other | unknown",
         description=(
             "Administrative Gender - the gender that the person is considered to "
-            "have for administration and record keeping purposes."
+            "have for administration and record keeping purposes. See "
+            "http://hl7.org/fhir/ValueSet/administrative-gender"
         ),
         # if property is element of this resource.
         element_property=True,
         # note: Enum values can be used in validation,
         # but use in your own responsibilities, read official FHIR documentation.
         enum_values=["male", "female", "other", "unknown"],
+        # valueset binding
+        binding_description="The gender of a person used for administrative purposes.",
+        binding_strength="required",
+        binding_uri="http://hl7.org/fhir/ValueSet/administrative-gender",
+        binding_version="4.3.0",
     )
     gender__ext: fhirtypes.FHIRPrimitiveExtensionType = Field(
         None, alias="_gender", title="Extension field for ``gender``."
@@ -195,9 +205,13 @@ class PractitionerQualification(backboneelement.BackboneElement):
         ...,
         alias="code",
         title="Coded representation of the qualification",
-        description=None,
+        description="See http://terminology.hl7.org/ValueSet/v2-2.7-0360",
         # if property is element of this resource.
         element_property=True,
+        # valueset binding
+        binding_description="Specific qualification the practitioner has to provide a service.",
+        binding_strength="example",
+        binding_uri="http://terminology.hl7.org/ValueSet/v2-2.7-0360",
     )
 
     identifier: typing.List[fhirtypes.IdentifierType] = Field(
@@ -220,6 +234,7 @@ class PractitionerQualification(backboneelement.BackboneElement):
         element_property=True,
         # note: Listed Resource Type(s) should be allowed as Reference.
         enum_reference_types=["Organization"],
+        backref="practitioner.qualification_issuer",
     )
 
     period: fhirtypes.PeriodType = Field(

@@ -96,6 +96,7 @@ class RelatedArtifact(element.Element):
         element_property=True,
         # note: Listed Resource Type(s) should be allowed as Reference.
         enum_reference_types=["Resource"],
+        backref="related_artifact_resource",
     )
     resource__ext: fhirtypes.FHIRPrimitiveExtensionType = Field(
         None, alias="_resource", title="Extension field for ``resource``."
@@ -108,7 +109,10 @@ class RelatedArtifact(element.Element):
             "documentation | justification | citation | predecessor | successor | "
             "derived-from | depends-on | composed-of"
         ),
-        description="The type of relationship to the related artifact.",
+        description=(
+            "The type of relationship to the related artifact. See "
+            "http://hl7.org/fhir/ValueSet/related-artifact-type"
+        ),
         # if property is element of this resource.
         element_property=True,
         element_required=True,
@@ -124,6 +128,10 @@ class RelatedArtifact(element.Element):
             "depends-on",
             "composed-of",
         ],
+        # valueset binding
+        binding_strength="required",
+        binding_uri="http://hl7.org/fhir/ValueSet/related-artifact-type",
+        binding_version="4.3.0",
     )
     type__ext: fhirtypes.FHIRPrimitiveExtensionType = Field(
         None, alias="_type", title="Extension field for ``type``."

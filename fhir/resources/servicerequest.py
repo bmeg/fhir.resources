@@ -33,13 +33,18 @@ class ServiceRequest(domainresource.DomainResource):
         title="Preconditions for service",
         description=(
             "If a CodeableConcept is present, it indicates the pre-condition for "
-            'performing the service.  For example "pain", "on flare-up", etc.'
+            'performing the service.  For example "pain", "on flare-up", etc. See '
+            "http://hl7.org/fhir/ValueSet/medication-as-needed-reason"
         ),
         # if property is element of this resource.
         element_property=True,
         # Choice of Data Types. i.e asNeeded[x]
         one_of_many="asNeeded",
         one_of_many_required=False,
+        # valueset binding
+        binding_description='A coded concept identifying the pre-condition that should hold prior to performing a procedure.  For example "pain", "on flare-up", etc.',
+        binding_strength="example",
+        binding_uri="http://hl7.org/fhir/ValueSet/medication-as-needed-reason",
     )
     asNeededBoolean__ext: fhirtypes.FHIRPrimitiveExtensionType = Field(
         None, alias="_asNeededBoolean", title="Extension field for ``asNeededBoolean``."
@@ -51,13 +56,18 @@ class ServiceRequest(domainresource.DomainResource):
         title="Preconditions for service",
         description=(
             "If a CodeableConcept is present, it indicates the pre-condition for "
-            'performing the service.  For example "pain", "on flare-up", etc.'
+            'performing the service.  For example "pain", "on flare-up", etc. See '
+            "http://hl7.org/fhir/ValueSet/medication-as-needed-reason"
         ),
         # if property is element of this resource.
         element_property=True,
         # Choice of Data Types. i.e asNeeded[x]
         one_of_many="asNeeded",
         one_of_many_required=False,
+        # valueset binding
+        binding_description='A coded concept identifying the pre-condition that should hold prior to performing a procedure.  For example "pain", "on flare-up", etc.',
+        binding_strength="example",
+        binding_uri="http://hl7.org/fhir/ValueSet/medication-as-needed-reason",
     )
 
     authoredOn: fhirtypes.DateTime = Field(
@@ -81,6 +91,7 @@ class ServiceRequest(domainresource.DomainResource):
         element_property=True,
         # note: Listed Resource Type(s) should be allowed as Reference.
         enum_reference_types=["CarePlan", "ServiceRequest", "MedicationRequest"],
+        backref="service_request_basedOn",
     )
 
     bodySite: typing.List[fhirtypes.CodeableConceptType] = Field(
@@ -89,10 +100,14 @@ class ServiceRequest(domainresource.DomainResource):
         title="Location on Body",
         description=(
             "Anatomic location where the procedure should be performed. This is the"
-            " target site."
+            " target site. See http://hl7.org/fhir/ValueSet/body-site"
         ),
         # if property is element of this resource.
         element_property=True,
+        # valueset binding
+        binding_description="SNOMED CT Body site concepts",
+        binding_strength="example",
+        binding_uri="http://hl7.org/fhir/ValueSet/body-site",
     )
 
     category: typing.List[fhirtypes.CodeableConceptType] = Field(
@@ -101,10 +116,15 @@ class ServiceRequest(domainresource.DomainResource):
         title="Classification of service",
         description=(
             "A code that classifies the service for searching, sorting and display "
-            'purposes (e.g. "Surgical Procedure").'
+            'purposes (e.g. "Surgical Procedure"). See '
+            "http://hl7.org/fhir/ValueSet/servicerequest-category"
         ),
         # if property is element of this resource.
         element_property=True,
+        # valueset binding
+        binding_description="Classification of the requested service.",
+        binding_strength="example",
+        binding_uri="http://hl7.org/fhir/ValueSet/servicerequest-category",
     )
 
     code: fhirtypes.CodeableConceptType = Field(
@@ -114,10 +134,14 @@ class ServiceRequest(domainresource.DomainResource):
         description=(
             "A code that identifies a particular service (i.e., procedure, "
             "diagnostic investigation, or panel of investigations) that have been "
-            "requested."
+            "requested. See http://hl7.org/fhir/ValueSet/procedure-code"
         ),
         # if property is element of this resource.
         element_property=True,
+        # valueset binding
+        binding_description="Codes for tests or services that can be carried out by a designated individual, organization or healthcare service.  For laboratory, LOINC is  (preferred)[http://build.fhir.org/terminologies.html#preferred] and a valueset using LOINC Order codes is available.",
+        binding_strength="example",
+        binding_uri="http://hl7.org/fhir/ValueSet/procedure-code",
     )
 
     doNotPerform: bool = Field(
@@ -147,6 +171,7 @@ class ServiceRequest(domainresource.DomainResource):
         element_property=True,
         # note: Listed Resource Type(s) should be allowed as Reference.
         enum_reference_types=["Encounter"],
+        backref="service_request_encounter",
     )
 
     identifier: typing.List[fhirtypes.IdentifierType] = Field(
@@ -174,6 +199,7 @@ class ServiceRequest(domainresource.DomainResource):
         element_property=True,
         # note: Listed Resource Type(s) should be allowed as Reference.
         enum_reference_types=["ActivityDefinition", "PlanDefinition"],
+        backref="service_request_instantiatesCanonical",
     )
     instantiatesCanonical__ext: typing.List[
         typing.Union[fhirtypes.FHIRPrimitiveExtensionType, None]
@@ -214,6 +240,7 @@ class ServiceRequest(domainresource.DomainResource):
         element_property=True,
         # note: Listed Resource Type(s) should be allowed as Reference.
         enum_reference_types=["Coverage", "ClaimResponse"],
+        backref="service_request_insurance",
     )
 
     intent: fhirtypes.Code = Field(
@@ -225,7 +252,7 @@ class ServiceRequest(domainresource.DomainResource):
         ),
         description=(
             "Whether the request is a proposal, plan, an original order or a reflex"
-            " order."
+            " order. See http://hl7.org/fhir/ValueSet/request-intent"
         ),
         # if property is element of this resource.
         element_property=True,
@@ -243,6 +270,11 @@ class ServiceRequest(domainresource.DomainResource):
             "instance-order",
             "option",
         ],
+        # valueset binding
+        binding_description="The kind of service request.",
+        binding_strength="required",
+        binding_uri="http://hl7.org/fhir/ValueSet/request-intent",
+        binding_version="4.3.0",
     )
     intent__ext: fhirtypes.FHIRPrimitiveExtensionType = Field(
         None, alias="_intent", title="Extension field for ``intent``."
@@ -254,10 +286,16 @@ class ServiceRequest(domainresource.DomainResource):
         title="Requested location",
         description=(
             "The preferred location(s) where the procedure should actually happen "
-            "in coded or free text form. E.g. at home or nursing day care center."
+            "in coded or free text form. E.g. at home or nursing day care center. "
+            "See "
+            "http://terminology.hl7.org/ValueSet/v3-ServiceDeliveryLocationRoleType"
         ),
         # if property is element of this resource.
         element_property=True,
+        # valueset binding
+        binding_description="A location type where services are delivered.",
+        binding_strength="example",
+        binding_uri="http://terminology.hl7.org/ValueSet/v3-ServiceDeliveryLocationRoleType",
     )
 
     locationReference: typing.List[fhirtypes.ReferenceType] = Field(
@@ -272,6 +310,7 @@ class ServiceRequest(domainresource.DomainResource):
         element_property=True,
         # note: Listed Resource Type(s) should be allowed as Reference.
         enum_reference_types=["Location"],
+        backref="service_request_locationReference",
     )
 
     note: typing.List[fhirtypes.AnnotationType] = Field(
@@ -336,10 +375,15 @@ class ServiceRequest(domainresource.DomainResource):
             "be delivered.   For example, and order for a urinary catheter may have"
             " an order detail for an external or indwelling catheter, or an order "
             "for a bandage may require additional instructions specifying how the "
-            "bandage should be applied."
+            "bandage should be applied. See "
+            "http://hl7.org/fhir/ValueSet/servicerequest-orderdetail"
         ),
         # if property is element of this resource.
         element_property=True,
+        # valueset binding
+        binding_description="Codified order entry details which are based on order context.",
+        binding_strength="example",
+        binding_uri="http://hl7.org/fhir/ValueSet/servicerequest-orderdetail",
     )
 
     patientInstruction: fhirtypes.String = Field(
@@ -377,15 +421,23 @@ class ServiceRequest(domainresource.DomainResource):
             "Device",
             "RelatedPerson",
         ],
+        backref="service_request_performer",
     )
 
     performerType: fhirtypes.CodeableConceptType = Field(
         None,
         alias="performerType",
         title="Performer role",
-        description="Desired type of performer for doing the requested service.",
+        description=(
+            "Desired type of performer for doing the requested service. See "
+            "http://terminology.hl7.org/ValueSet/action-participant-role"
+        ),
         # if property is element of this resource.
         element_property=True,
+        # valueset binding
+        binding_description='Indicates specific responsibility of an individual within the care team, such as "Primary physician", "Team coordinator", "Caregiver", etc.',
+        binding_strength="example",
+        binding_uri="http://terminology.hl7.org/ValueSet/action-participant-role",
     )
 
     priority: fhirtypes.Code = Field(
@@ -394,13 +446,19 @@ class ServiceRequest(domainresource.DomainResource):
         title="routine | urgent | asap | stat",
         description=(
             "Indicates how quickly the ServiceRequest should be addressed with "
-            "respect to other requests."
+            "respect to other requests. See http://hl7.org/fhir/ValueSet/request-"
+            "priority"
         ),
         # if property is element of this resource.
         element_property=True,
         # note: Enum values can be used in validation,
         # but use in your own responsibilities, read official FHIR documentation.
         enum_values=["routine", "urgent", "asap", "stat"],
+        # valueset binding
+        binding_description="Identifies the level of importance to be assigned to actioning the request.",
+        binding_strength="required",
+        binding_uri="http://hl7.org/fhir/ValueSet/request-priority",
+        binding_version="4.3.0",
     )
     priority__ext: fhirtypes.FHIRPrimitiveExtensionType = Field(
         None, alias="_priority", title="Extension field for ``priority``."
@@ -462,10 +520,14 @@ class ServiceRequest(domainresource.DomainResource):
             "An explanation or justification for why this service is being "
             "requested in coded or textual form.   This is often for billing "
             "purposes.  May relate to the resources referred to in "
-            "`supportingInfo`."
+            "`supportingInfo`. See http://hl7.org/fhir/ValueSet/procedure-reason"
         ),
         # if property is element of this resource.
         element_property=True,
+        # valueset binding
+        binding_description="SNOMED CT Condition/Problem/Diagnosis Codes",
+        binding_strength="example",
+        binding_uri="http://hl7.org/fhir/ValueSet/procedure-reason",
     )
 
     reasonReference: typing.List[fhirtypes.ReferenceType] = Field(
@@ -486,6 +548,7 @@ class ServiceRequest(domainresource.DomainResource):
             "DiagnosticReport",
             "DocumentReference",
         ],
+        backref="service_request_reasonReference",
     )
 
     relevantHistory: typing.List[fhirtypes.ReferenceType] = Field(
@@ -497,6 +560,7 @@ class ServiceRequest(domainresource.DomainResource):
         element_property=True,
         # note: Listed Resource Type(s) should be allowed as Reference.
         enum_reference_types=["Provenance"],
+        backref="service_request_relevantHistory",
     )
 
     replaces: typing.List[fhirtypes.ReferenceType] = Field(
@@ -511,6 +575,7 @@ class ServiceRequest(domainresource.DomainResource):
         element_property=True,
         # note: Listed Resource Type(s) should be allowed as Reference.
         enum_reference_types=["ServiceRequest"],
+        backref="service_request_replaces",
     )
 
     requester: fhirtypes.ReferenceType = Field(
@@ -532,6 +597,7 @@ class ServiceRequest(domainresource.DomainResource):
             "RelatedPerson",
             "Device",
         ],
+        backref="service_request_requester",
     )
 
     requisition: fhirtypes.IdentifierType = Field(
@@ -556,6 +622,7 @@ class ServiceRequest(domainresource.DomainResource):
         element_property=True,
         # note: Listed Resource Type(s) should be allowed as Reference.
         enum_reference_types=["Specimen"],
+        backref="service_request_specimen",
     )
 
     status: fhirtypes.Code = Field(
@@ -565,7 +632,10 @@ class ServiceRequest(domainresource.DomainResource):
             "draft | active | on-hold | revoked | completed | entered-in-error | "
             "unknown"
         ),
-        description="The status of the order.",
+        description=(
+            "The status of the order. See http://hl7.org/fhir/ValueSet/request-"
+            "status"
+        ),
         # if property is element of this resource.
         element_property=True,
         element_required=True,
@@ -580,6 +650,11 @@ class ServiceRequest(domainresource.DomainResource):
             "entered-in-error",
             "unknown",
         ],
+        # valueset binding
+        binding_description="The status of a service order.",
+        binding_strength="required",
+        binding_uri="http://hl7.org/fhir/ValueSet/request-status",
+        binding_version="4.3.0",
     )
     status__ext: fhirtypes.FHIRPrimitiveExtensionType = Field(
         None, alias="_status", title="Extension field for ``status``."
@@ -599,6 +674,7 @@ class ServiceRequest(domainresource.DomainResource):
         element_property=True,
         # note: Listed Resource Type(s) should be allowed as Reference.
         enum_reference_types=["Patient", "Group", "Location", "Device"],
+        backref="service_request_subject",
     )
 
     supportingInfo: typing.List[fhirtypes.ReferenceType] = Field(
@@ -619,6 +695,7 @@ class ServiceRequest(domainresource.DomainResource):
         element_property=True,
         # note: Listed Resource Type(s) should be allowed as Reference.
         enum_reference_types=["Resource"],
+        backref="service_request_supportingInfo",
     )
 
     @classmethod

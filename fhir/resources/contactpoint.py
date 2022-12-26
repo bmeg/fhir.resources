@@ -54,13 +54,18 @@ class ContactPoint(element.Element):
         title="phone | fax | email | pager | url | sms | other",
         description=(
             "Telecommunications form for contact point - what communications system"
-            " is required to make use of the contact."
+            " is required to make use of the contact. See "
+            "http://hl7.org/fhir/ValueSet/contact-point-system"
         ),
         # if property is element of this resource.
         element_property=True,
         # note: Enum values can be used in validation,
         # but use in your own responsibilities, read official FHIR documentation.
         enum_values=["phone", "fax", "email", "pager", "url", "sms", "other"],
+        # valueset binding
+        binding_strength="required",
+        binding_uri="http://hl7.org/fhir/ValueSet/contact-point-system",
+        binding_version="4.3.0",
     )
     system__ext: fhirtypes.FHIRPrimitiveExtensionType = Field(
         None, alias="_system", title="Extension field for ``system``."
@@ -70,12 +75,19 @@ class ContactPoint(element.Element):
         None,
         alias="use",
         title="home | work | temp | old | mobile - purpose of this contact point",
-        description="Identifies the purpose for the contact point.",
+        description=(
+            "Identifies the purpose for the contact point. See "
+            "http://hl7.org/fhir/ValueSet/contact-point-use"
+        ),
         # if property is element of this resource.
         element_property=True,
         # note: Enum values can be used in validation,
         # but use in your own responsibilities, read official FHIR documentation.
         enum_values=["home", "work", "temp", "old", "mobile"],
+        # valueset binding
+        binding_strength="required",
+        binding_uri="http://hl7.org/fhir/ValueSet/contact-point-use",
+        binding_version="4.3.0",
     )
     use__ext: fhirtypes.FHIRPrimitiveExtensionType = Field(
         None, alias="_use", title="Extension field for ``use``."

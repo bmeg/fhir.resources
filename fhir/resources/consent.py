@@ -35,10 +35,15 @@ class Consent(domainresource.DomainResource):
         title="Classification of the consent statement - for indexing/retrieval",
         description=(
             "A classification of the type of consents found in the statement. This "
-            "element supports indexing and retrieval of consent statements."
+            "element supports indexing and retrieval of consent statements. See "
+            "http://hl7.org/fhir/ValueSet/consent-category"
         ),
         # if property is element of this resource.
         element_property=True,
+        # valueset binding
+        binding_description="A classification of the type of consents found in a consent statement.",
+        binding_strength="extensible",
+        binding_uri="http://hl7.org/fhir/ValueSet/consent-category",
     )
 
     dateTime: fhirtypes.DateTime = Field(
@@ -74,6 +79,7 @@ class Consent(domainresource.DomainResource):
         element_property=True,
         # note: Listed Resource Type(s) should be allowed as Reference.
         enum_reference_types=["Organization"],
+        backref="consent_organization",
     )
 
     patient: fhirtypes.ReferenceType = Field(
@@ -85,6 +91,7 @@ class Consent(domainresource.DomainResource):
         element_property=True,
         # note: Listed Resource Type(s) should be allowed as Reference.
         enum_reference_types=["Patient"],
+        backref="consent_patient",
     )
 
     performer: typing.List[fhirtypes.ReferenceType] = Field(
@@ -108,6 +115,7 @@ class Consent(domainresource.DomainResource):
             "RelatedPerson",
             "PractitionerRole",
         ],
+        backref="consent_performer",
     )
 
     policy: typing.List[fhirtypes.ConsentPolicyType] = Field(
@@ -127,9 +135,16 @@ class Consent(domainresource.DomainResource):
         None,
         alias="policyRule",
         title="Regulation that this consents to",
-        description="A reference to the specific base computable regulation or policy.",
+        description=(
+            "A reference to the specific base computable regulation or policy. See "
+            "http://hl7.org/fhir/ValueSet/consent-policy"
+        ),
         # if property is element of this resource.
         element_property=True,
+        # valueset binding
+        binding_description="Regulatory policy examples.",
+        binding_strength="extensible",
+        binding_uri="http://hl7.org/fhir/ValueSet/consent-policy",
     )
 
     provision: fhirtypes.ConsentProvisionType = Field(
@@ -150,10 +165,15 @@ class Consent(domainresource.DomainResource):
         title="Which of the four areas this resource covers (extensible)",
         description=(
             "A selector of the type of consent being presented: ADR, Privacy, "
-            "Treatment, Research.  This list is now extensible."
+            "Treatment, Research.  This list is now extensible. See "
+            "http://hl7.org/fhir/ValueSet/consent-scope"
         ),
         # if property is element of this resource.
         element_property=True,
+        # valueset binding
+        binding_description="The four anticipated uses for the Consent Resource.",
+        binding_strength="extensible",
+        binding_uri="http://hl7.org/fhir/ValueSet/consent-scope",
     )
 
     sourceAttachment: fhirtypes.AttachmentType = Field(
@@ -195,13 +215,17 @@ class Consent(domainresource.DomainResource):
             "Contract",
             "QuestionnaireResponse",
         ],
+        backref="consent_sourceReference",
     )
 
     status: fhirtypes.Code = Field(
         None,
         alias="status",
         title="draft | proposed | active | rejected | inactive | entered-in-error",
-        description="Indicates the current state of this consent.",
+        description=(
+            "Indicates the current state of this consent. See "
+            "http://hl7.org/fhir/ValueSet/consent-state-codes"
+        ),
         # if property is element of this resource.
         element_property=True,
         element_required=True,
@@ -215,6 +239,11 @@ class Consent(domainresource.DomainResource):
             "inactive",
             "entered-in-error",
         ],
+        # valueset binding
+        binding_description="Indicates the state of the consent.",
+        binding_strength="required",
+        binding_uri="http://hl7.org/fhir/ValueSet/consent-state-codes",
+        binding_version="4.3.0",
     )
     status__ext: fhirtypes.FHIRPrimitiveExtensionType = Field(
         None, alias="_status", title="Extension field for ``status``."
@@ -432,9 +461,16 @@ class ConsentProvision(backboneelement.BackboneElement):
         None,
         alias="action",
         title="Actions controlled by this rule",
-        description="Actions controlled by this Rule.",
+        description=(
+            "Actions controlled by this Rule. See "
+            "http://hl7.org/fhir/ValueSet/consent-action"
+        ),
         # if property is element of this resource.
         element_property=True,
+        # valueset binding
+        binding_description="Detailed codes for the consent action.",
+        binding_strength="example",
+        binding_uri="http://hl7.org/fhir/ValueSet/consent-action",
     )
 
     actor: typing.List[fhirtypes.ConsentProvisionActorType] = Field(
@@ -456,19 +492,31 @@ class ConsentProvision(backboneelement.BackboneElement):
         description=(
             "The class of information covered by this rule. The type can be a FHIR "
             "resource type, a profile on a type, or a CDA document, or some other "
-            "type that indicates what sort of information the consent relates to."
+            "type that indicates what sort of information the consent relates to. "
+            "See http://hl7.org/fhir/ValueSet/consent-content-class"
         ),
         # if property is element of this resource.
         element_property=True,
+        # valueset binding
+        binding_description="The class (type) of information a consent rule covers.",
+        binding_strength="extensible",
+        binding_uri="http://hl7.org/fhir/ValueSet/consent-content-class",
     )
 
     code: typing.List[fhirtypes.CodeableConceptType] = Field(
         None,
         alias="code",
         title="e.g. LOINC or SNOMED CT code, etc. in the content",
-        description="If this code is found in an instance, then the rule applies.",
+        description=(
+            "If this code is found in an instance, then the rule applies. See "
+            "http://hl7.org/fhir/ValueSet/consent-content-code"
+        ),
         # if property is element of this resource.
         element_property=True,
+        # valueset binding
+        binding_description="If this code is found in an instance, then the exception applies.",
+        binding_strength="example",
+        binding_uri="http://hl7.org/fhir/ValueSet/consent-content-code",
     )
 
     data: typing.List[fhirtypes.ConsentProvisionDataType] = Field(
@@ -519,10 +567,15 @@ class ConsentProvision(backboneelement.BackboneElement):
         title="Context of activities covered by this rule",
         description=(
             "The context of the activities a user is taking - why the user is "
-            "accessing the data - that are controlled by this rule."
+            "accessing the data - that are controlled by this rule. See "
+            "http://terminology.hl7.org/ValueSet/v3-PurposeOfUse"
         ),
         # if property is element of this resource.
         element_property=True,
+        # valueset binding
+        binding_description="What purposes of use are controlled by this exception. If more than one label is specified, operations must have all the specified labels.",
+        binding_strength="extensible",
+        binding_uri="http://terminology.hl7.org/ValueSet/v3-PurposeOfUse",
     )
 
     securityLabel: typing.List[fhirtypes.CodingType] = Field(
@@ -531,10 +584,15 @@ class ConsentProvision(backboneelement.BackboneElement):
         title="Security Labels that define affected resources",
         description=(
             "A security label, comprised of 0..* security label fields (Privacy "
-            "tags), which define which resources are controlled by this exception."
+            "tags), which define which resources are controlled by this exception. "
+            "See http://hl7.org/fhir/ValueSet/security-labels"
         ),
         # if property is element of this resource.
         element_property=True,
+        # valueset binding
+        binding_description="Security Labels from the Healthcare Privacy and Security Classification System.",
+        binding_strength="extensible",
+        binding_uri="http://hl7.org/fhir/ValueSet/security-labels",
     )
 
     type: fhirtypes.Code = Field(
@@ -543,13 +601,19 @@ class ConsentProvision(backboneelement.BackboneElement):
         title="deny | permit",
         description=(
             "Action  to take - permit or deny - when the rule conditions are met.  "
-            "Not permitted in root rule, required in all nested rules."
+            "Not permitted in root rule, required in all nested rules. See "
+            "http://hl7.org/fhir/ValueSet/consent-provision-type"
         ),
         # if property is element of this resource.
         element_property=True,
         # note: Enum values can be used in validation,
         # but use in your own responsibilities, read official FHIR documentation.
         enum_values=["deny", "permit"],
+        # valueset binding
+        binding_description="How a rule statement is applied, such as adding additional consent or removing consent.",
+        binding_strength="required",
+        binding_uri="http://hl7.org/fhir/ValueSet/consent-provision-type",
+        binding_version="4.3.0",
     )
     type__ext: fhirtypes.FHIRPrimitiveExtensionType = Field(
         None, alias="_type", title="Extension field for ``type``."
@@ -613,6 +677,7 @@ class ConsentProvisionActor(backboneelement.BackboneElement):
             "RelatedPerson",
             "PractitionerRole",
         ],
+        backref="consent.provision.actor_reference",
     )
 
     role: fhirtypes.CodeableConceptType = Field(
@@ -621,10 +686,15 @@ class ConsentProvisionActor(backboneelement.BackboneElement):
         title="How the actor is involved",
         description=(
             "How the individual is involved in the resources content that is "
-            "described in the exception."
+            "described in the exception. See http://hl7.org/fhir/ValueSet/security-"
+            "role-type"
         ),
         # if property is element of this resource.
         element_property=True,
+        # valueset binding
+        binding_description="How an actor is involved in the consent considerations.",
+        binding_strength="extensible",
+        binding_uri="http://hl7.org/fhir/ValueSet/security-role-type",
     )
 
     @classmethod
@@ -653,7 +723,7 @@ class ConsentProvisionData(backboneelement.BackboneElement):
         title="instance | related | dependents | authoredby",
         description=(
             "How the resource reference is interpreted when testing consent "
-            "restrictions."
+            "restrictions. See http://hl7.org/fhir/ValueSet/consent-data-meaning"
         ),
         # if property is element of this resource.
         element_property=True,
@@ -661,6 +731,11 @@ class ConsentProvisionData(backboneelement.BackboneElement):
         # note: Enum values can be used in validation,
         # but use in your own responsibilities, read official FHIR documentation.
         enum_values=["instance", "related", "dependents", "authoredby"],
+        # valueset binding
+        binding_description="How a resource reference is interpreted when testing consent restrictions.",
+        binding_strength="required",
+        binding_uri="http://hl7.org/fhir/ValueSet/consent-data-meaning",
+        binding_version="4.3.0",
     )
     meaning__ext: fhirtypes.FHIRPrimitiveExtensionType = Field(
         None, alias="_meaning", title="Extension field for ``meaning``."
@@ -678,6 +753,7 @@ class ConsentProvisionData(backboneelement.BackboneElement):
         element_property=True,
         # note: Listed Resource Type(s) should be allowed as Reference.
         enum_reference_types=["Resource"],
+        backref="consent.provision.data_reference",
     )
 
     @classmethod
@@ -799,6 +875,7 @@ class ConsentVerification(backboneelement.BackboneElement):
         element_property=True,
         # note: Listed Resource Type(s) should be allowed as Reference.
         enum_reference_types=["Patient", "RelatedPerson"],
+        backref="consent.verification_verifiedWith",
     )
 
     @classmethod

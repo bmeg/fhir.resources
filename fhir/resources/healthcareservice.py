@@ -92,9 +92,16 @@ class HealthcareService(domainresource.DomainResource):
         None,
         alias="category",
         title="Broad category of service being performed or delivered",
-        description="Identifies the broad category of service being performed or delivered.",
+        description=(
+            "Identifies the broad category of service being performed or delivered."
+            " See http://hl7.org/fhir/ValueSet/service-category"
+        ),
         # if property is element of this resource.
         element_property=True,
+        # valueset binding
+        binding_description="A category of the service(s) that could be provided.",
+        binding_strength="example",
+        binding_uri="http://hl7.org/fhir/ValueSet/service-category",
     )
 
     characteristic: typing.List[fhirtypes.CodeableConceptType] = Field(
@@ -104,6 +111,9 @@ class HealthcareService(domainresource.DomainResource):
         description=None,
         # if property is element of this resource.
         element_property=True,
+        # valueset binding
+        binding_description="A custom attribute that could be provided at a service (e.g. Wheelchair accessibiliy).",
+        binding_strength="example",
     )
 
     comment: fhirtypes.String = Field(
@@ -132,10 +142,15 @@ class HealthcareService(domainresource.DomainResource):
             "Some services are specifically made available in multiple languages, "
             "this property permits a directory to declare the languages this is "
             "offered in. Typically this is only provided where a service operates "
-            "in communities with mixed languages used."
+            "in communities with mixed languages used. See "
+            "http://hl7.org/fhir/ValueSet/languages"
         ),
         # if property is element of this resource.
         element_property=True,
+        # valueset binding
+        binding_description="IETF language tag",
+        binding_strength="preferred",
+        binding_uri="http://hl7.org/fhir/ValueSet/languages",
     )
 
     coverageArea: typing.List[fhirtypes.ReferenceType] = Field(
@@ -150,6 +165,7 @@ class HealthcareService(domainresource.DomainResource):
         element_property=True,
         # note: Listed Resource Type(s) should be allowed as Reference.
         enum_reference_types=["Location"],
+        backref="healthcare_service_coverageArea",
     )
 
     eligibility: typing.List[fhirtypes.HealthcareServiceEligibilityType] = Field(
@@ -179,6 +195,7 @@ class HealthcareService(domainresource.DomainResource):
         element_property=True,
         # note: Listed Resource Type(s) should be allowed as Reference.
         enum_reference_types=["Endpoint"],
+        backref="healthcare_service_endpoint",
     )
 
     extraDetails: fhirtypes.Markdown = Field(
@@ -214,6 +231,7 @@ class HealthcareService(domainresource.DomainResource):
         element_property=True,
         # note: Listed Resource Type(s) should be allowed as Reference.
         enum_reference_types=["Location"],
+        backref="healthcare_service_location",
     )
 
     name: fhirtypes.String = Field(
@@ -260,9 +278,13 @@ class HealthcareService(domainresource.DomainResource):
         None,
         alias="program",
         title="Programs that this service is applicable to",
-        description=None,
+        description="See http://hl7.org/fhir/ValueSet/program",
         # if property is element of this resource.
         element_property=True,
+        # valueset binding
+        binding_description="Government or local programs that this service applies to.",
+        binding_strength="example",
+        binding_uri="http://hl7.org/fhir/ValueSet/program",
     )
 
     providedBy: fhirtypes.ReferenceType = Field(
@@ -274,6 +296,7 @@ class HealthcareService(domainresource.DomainResource):
         element_property=True,
         # note: Listed Resource Type(s) should be allowed as Reference.
         enum_reference_types=["Organization"],
+        backref="healthcare_service_providedBy",
     )
 
     referralMethod: typing.List[fhirtypes.CodeableConceptType] = Field(
@@ -282,10 +305,15 @@ class HealthcareService(domainresource.DomainResource):
         title="Ways that the service accepts referrals",
         description=(
             "Ways that the service accepts referrals, if this is not provided then "
-            "it is implied that no referral is required."
+            "it is implied that no referral is required. See "
+            "http://hl7.org/fhir/ValueSet/service-referral-method"
         ),
         # if property is element of this resource.
         element_property=True,
+        # valueset binding
+        binding_description="The methods of referral can be used when referring to a specific HealthCareService resource.",
+        binding_strength="example",
+        binding_uri="http://hl7.org/fhir/ValueSet/service-referral-method",
     )
 
     serviceProvisionCode: typing.List[fhirtypes.CodeableConceptType] = Field(
@@ -294,10 +322,15 @@ class HealthcareService(domainresource.DomainResource):
         title="Conditions under which service is available/offered",
         description=(
             "The code(s) that detail the conditions under which the healthcare "
-            "service is available/offered."
+            "service is available/offered. See "
+            "http://hl7.org/fhir/ValueSet/service-provision-conditions"
         ),
         # if property is element of this resource.
         element_property=True,
+        # valueset binding
+        binding_description="The code(s) that detail the conditions under which the healthcare service is available/offered.",
+        binding_strength="example",
+        binding_uri="http://hl7.org/fhir/ValueSet/service-provision-conditions",
     )
 
     specialty: typing.List[fhirtypes.CodeableConceptType] = Field(
@@ -306,10 +339,14 @@ class HealthcareService(domainresource.DomainResource):
         title="Specialties handled by the HealthcareService",
         description=(
             "Collection of specialties handled by the service site. This is more of"
-            " a medical term."
+            " a medical term. See http://hl7.org/fhir/ValueSet/c80-practice-codes"
         ),
         # if property is element of this resource.
         element_property=True,
+        # valueset binding
+        binding_description="A specialty that a healthcare service may provide.",
+        binding_strength="preferred",
+        binding_uri="http://hl7.org/fhir/ValueSet/c80-practice-codes",
     )
 
     telecom: typing.List[fhirtypes.ContactPointType] = Field(
@@ -325,9 +362,16 @@ class HealthcareService(domainresource.DomainResource):
         None,
         alias="type",
         title="Type of service that may be delivered or performed",
-        description="The specific type of service that may be delivered or performed.",
+        description=(
+            "The specific type of service that may be delivered or performed. See "
+            "http://hl7.org/fhir/ValueSet/service-type"
+        ),
         # if property is element of this resource.
         element_property=True,
+        # valueset binding
+        binding_description="Additional details about where the content was created (e.g. clinical specialty).",
+        binding_strength="example",
+        binding_uri="http://hl7.org/fhir/ValueSet/service-type",
     )
 
     @classmethod
@@ -438,13 +482,18 @@ class HealthcareServiceAvailableTime(backboneelement.BackboneElement):
         title="mon | tue | wed | thu | fri | sat | sun",
         description=(
             "Indicates which days of the week are available between the start and "
-            "end Times."
+            "end Times. See http://hl7.org/fhir/ValueSet/days-of-week"
         ),
         # if property is element of this resource.
         element_property=True,
         # note: Enum values can be used in validation,
         # but use in your own responsibilities, read official FHIR documentation.
         enum_values=["mon", "tue", "wed", "thu", "fri", "sat", "sun"],
+        # valueset binding
+        binding_description="The days of the week.",
+        binding_strength="required",
+        binding_uri="http://hl7.org/fhir/ValueSet/days-of-week",
+        binding_version="4.3.0",
     )
     daysOfWeek__ext: typing.List[
         typing.Union[fhirtypes.FHIRPrimitiveExtensionType, None]
@@ -486,6 +535,9 @@ class HealthcareServiceEligibility(backboneelement.BackboneElement):
         description=None,
         # if property is element of this resource.
         element_property=True,
+        # valueset binding
+        binding_description="Coded values underwhich a specific service is made available.",
+        binding_strength="example",
     )
 
     comment: fhirtypes.Markdown = Field(

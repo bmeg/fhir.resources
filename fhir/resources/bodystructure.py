@@ -74,10 +74,14 @@ class BodyStructure(domainresource.DomainResource):
         title="Body site",
         description=(
             "The anatomical location or region of the specimen, lesion, or body "
-            "structure."
+            "structure. See http://hl7.org/fhir/ValueSet/body-site"
         ),
         # if property is element of this resource.
         element_property=True,
+        # valueset binding
+        binding_description="SNOMED CT Body site concepts",
+        binding_strength="example",
+        binding_uri="http://hl7.org/fhir/ValueSet/body-site",
     )
 
     locationQualifier: typing.List[fhirtypes.CodeableConceptType] = Field(
@@ -87,9 +91,14 @@ class BodyStructure(domainresource.DomainResource):
         description=(
             "Qualifier to refine the anatomical location.  These include qualifiers"
             " for laterality, relative location, directionality, number, and plane."
+            " See http://hl7.org/fhir/ValueSet/bodystructure-relative-location"
         ),
         # if property is element of this resource.
         element_property=True,
+        # valueset binding
+        binding_description="Concepts modifying the anatomic location.",
+        binding_strength="example",
+        binding_uri="http://hl7.org/fhir/ValueSet/bodystructure-relative-location",
     )
 
     morphology: fhirtypes.CodeableConceptType = Field(
@@ -99,10 +108,14 @@ class BodyStructure(domainresource.DomainResource):
         description=(
             "The kind of structure being represented by the body structure at "
             "`BodyStructure.location`.  This can define both normal and abnormal "
-            "morphologies."
+            "morphologies. See http://hl7.org/fhir/ValueSet/bodystructure-code"
         ),
         # if property is element of this resource.
         element_property=True,
+        # valueset binding
+        binding_description="Codes describing anatomic morphology.",
+        binding_strength="example",
+        binding_uri="http://hl7.org/fhir/ValueSet/bodystructure-code",
     )
 
     patient: fhirtypes.ReferenceType = Field(
@@ -114,6 +127,7 @@ class BodyStructure(domainresource.DomainResource):
         element_property=True,
         # note: Listed Resource Type(s) should be allowed as Reference.
         enum_reference_types=["Patient"],
+        backref="body_structure_patient",
     )
 
     @classmethod

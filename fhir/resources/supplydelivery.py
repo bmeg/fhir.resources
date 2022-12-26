@@ -36,6 +36,7 @@ class SupplyDelivery(domainresource.DomainResource):
         element_property=True,
         # note: Listed Resource Type(s) should be allowed as Reference.
         enum_reference_types=["SupplyRequest"],
+        backref="supply_delivery_basedOn",
     )
 
     destination: fhirtypes.ReferenceType = Field(
@@ -50,6 +51,7 @@ class SupplyDelivery(domainresource.DomainResource):
         element_property=True,
         # note: Listed Resource Type(s) should be allowed as Reference.
         enum_reference_types=["Location"],
+        backref="supply_delivery_destination",
     )
 
     identifier: typing.List[fhirtypes.IdentifierType] = Field(
@@ -114,6 +116,7 @@ class SupplyDelivery(domainresource.DomainResource):
         element_property=True,
         # note: Listed Resource Type(s) should be allowed as Reference.
         enum_reference_types=["SupplyDelivery", "Contract"],
+        backref="supply_delivery_partOf",
     )
 
     patient: fhirtypes.ReferenceType = Field(
@@ -128,6 +131,7 @@ class SupplyDelivery(domainresource.DomainResource):
         element_property=True,
         # note: Listed Resource Type(s) should be allowed as Reference.
         enum_reference_types=["Patient"],
+        backref="supply_delivery_patient",
     )
 
     receiver: typing.List[fhirtypes.ReferenceType] = Field(
@@ -139,18 +143,27 @@ class SupplyDelivery(domainresource.DomainResource):
         element_property=True,
         # note: Listed Resource Type(s) should be allowed as Reference.
         enum_reference_types=["Practitioner", "PractitionerRole"],
+        backref="supply_delivery_receiver",
     )
 
     status: fhirtypes.Code = Field(
         None,
         alias="status",
         title="in-progress | completed | abandoned | entered-in-error",
-        description="A code specifying the state of the dispense event.",
+        description=(
+            "A code specifying the state of the dispense event. See "
+            "http://hl7.org/fhir/ValueSet/supplydelivery-status"
+        ),
         # if property is element of this resource.
         element_property=True,
         # note: Enum values can be used in validation,
         # but use in your own responsibilities, read official FHIR documentation.
         enum_values=["in-progress", "completed", "abandoned", "entered-in-error"],
+        # valueset binding
+        binding_description="Status of the supply delivery.",
+        binding_strength="required",
+        binding_uri="http://hl7.org/fhir/ValueSet/supplydelivery-status",
+        binding_version="4.3.0",
     )
     status__ext: fhirtypes.FHIRPrimitiveExtensionType = Field(
         None, alias="_status", title="Extension field for ``status``."
@@ -177,6 +190,7 @@ class SupplyDelivery(domainresource.DomainResource):
         element_property=True,
         # note: Listed Resource Type(s) should be allowed as Reference.
         enum_reference_types=["Practitioner", "PractitionerRole", "Organization"],
+        backref="supply_delivery_supplier",
     )
 
     type: fhirtypes.CodeableConceptType = Field(
@@ -186,10 +200,16 @@ class SupplyDelivery(domainresource.DomainResource):
         description=(
             "Indicates the type of dispensing event that is performed. Examples "
             "include: Trial Fill, Completion of Trial, Partial Fill, Emergency "
-            "Fill, Samples, etc."
+            "Fill, Samples, etc. See http://hl7.org/fhir/ValueSet/supplydelivery-"
+            "type"
         ),
         # if property is element of this resource.
         element_property=True,
+        # valueset binding
+        binding_description="The type of supply dispense.",
+        binding_strength="required",
+        binding_uri="http://hl7.org/fhir/ValueSet/supplydelivery-type",
+        binding_version="4.3.0",
     )
 
     @classmethod
@@ -281,13 +301,18 @@ class SupplyDeliverySuppliedItem(backboneelement.BackboneElement):
         description=(
             "Identifies the medication, substance or device being dispensed. This "
             "is either a link to a resource representing the details of the item or"
-            " a code that identifies the item from a known list."
+            " a code that identifies the item from a known list. See "
+            "http://hl7.org/fhir/ValueSet/supply-item"
         ),
         # if property is element of this resource.
         element_property=True,
         # Choice of Data Types. i.e item[x]
         one_of_many="item",
         one_of_many_required=False,
+        # valueset binding
+        binding_description="The item that was delivered.",
+        binding_strength="example",
+        binding_uri="http://hl7.org/fhir/ValueSet/supply-item",
     )
 
     itemReference: fhirtypes.ReferenceType = Field(
@@ -297,15 +322,21 @@ class SupplyDeliverySuppliedItem(backboneelement.BackboneElement):
         description=(
             "Identifies the medication, substance or device being dispensed. This "
             "is either a link to a resource representing the details of the item or"
-            " a code that identifies the item from a known list."
+            " a code that identifies the item from a known list. See "
+            "http://hl7.org/fhir/ValueSet/supply-item"
         ),
         # if property is element of this resource.
         element_property=True,
         # Choice of Data Types. i.e item[x]
         one_of_many="item",
         one_of_many_required=False,
+        # valueset binding
+        binding_description="The item that was delivered.",
+        binding_strength="example",
+        binding_uri="http://hl7.org/fhir/ValueSet/supply-item",
         # note: Listed Resource Type(s) should be allowed as Reference.
         enum_reference_types=["Medication", "Substance", "Device"],
+        backref="supply_delivery.supplied_item_itemReference",
     )
 
     quantity: fhirtypes.QuantityType = Field(

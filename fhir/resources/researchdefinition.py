@@ -197,6 +197,7 @@ class ResearchDefinition(domainresource.DomainResource):
         element_property=True,
         # note: Listed Resource Type(s) should be allowed as Reference.
         enum_reference_types=["ResearchElementDefinition"],
+        backref="research_definition_exposure",
     )
 
     exposureAlternative: fhirtypes.ReferenceType = Field(
@@ -211,6 +212,7 @@ class ResearchDefinition(domainresource.DomainResource):
         element_property=True,
         # note: Listed Resource Type(s) should be allowed as Reference.
         enum_reference_types=["ResearchElementDefinition"],
+        backref="research_definition_exposureAlternative",
     )
 
     identifier: typing.List[fhirtypes.IdentifierType] = Field(
@@ -232,10 +234,14 @@ class ResearchDefinition(domainresource.DomainResource):
         title="Intended jurisdiction for research definition (if applicable)",
         description=(
             "A legal or geographic region in which the research definition is "
-            "intended to be used."
+            "intended to be used. See http://hl7.org/fhir/ValueSet/jurisdiction"
         ),
         # if property is element of this resource.
         element_property=True,
+        # valueset binding
+        binding_description="Countries and regions within which this artifact is targeted for use.",
+        binding_strength="extensible",
+        binding_uri="http://hl7.org/fhir/ValueSet/jurisdiction",
     )
 
     lastReviewDate: fhirtypes.Date = Field(
@@ -266,6 +272,7 @@ class ResearchDefinition(domainresource.DomainResource):
         element_property=True,
         # note: Listed Resource Type(s) should be allowed as Reference.
         enum_reference_types=["Library"],
+        backref="research_definition_library",
     )
     library__ext: typing.List[
         typing.Union[fhirtypes.FHIRPrimitiveExtensionType, None]
@@ -299,6 +306,7 @@ class ResearchDefinition(domainresource.DomainResource):
         element_property=True,
         # note: Listed Resource Type(s) should be allowed as Reference.
         enum_reference_types=["ResearchElementDefinition"],
+        backref="research_definition_outcome",
     )
 
     population: fhirtypes.ReferenceType = Field(
@@ -313,6 +321,7 @@ class ResearchDefinition(domainresource.DomainResource):
         element_property=True,
         # note: Listed Resource Type(s) should be allowed as Reference.
         enum_reference_types=["ResearchElementDefinition"],
+        backref="research_definition_population",
     )
 
     publisher: fhirtypes.String = Field(
@@ -390,7 +399,8 @@ class ResearchDefinition(domainresource.DomainResource):
         title="draft | active | retired | unknown",
         description=(
             "The status of this research definition. Enables tracking the life-"
-            "cycle of the content."
+            "cycle of the content. See http://hl7.org/fhir/ValueSet/publication-"
+            "status"
         ),
         # if property is element of this resource.
         element_property=True,
@@ -398,6 +408,11 @@ class ResearchDefinition(domainresource.DomainResource):
         # note: Enum values can be used in validation,
         # but use in your own responsibilities, read official FHIR documentation.
         enum_values=["draft", "active", "retired", "unknown"],
+        # valueset binding
+        binding_description="The lifecycle status of an artifact.",
+        binding_strength="required",
+        binding_uri="http://hl7.org/fhir/ValueSet/publication-status",
+        binding_version="4.3.0",
     )
     status__ext: fhirtypes.FHIRPrimitiveExtensionType = Field(
         None, alias="_status", title="Extension field for ``status``."
@@ -413,13 +428,18 @@ class ResearchDefinition(domainresource.DomainResource):
         description=(
             "The intended subjects for the ResearchDefinition. If this element is "
             "not provided, a Patient subject is assumed, but the subject of the "
-            "ResearchDefinition can be anything."
+            "ResearchDefinition can be anything. See "
+            "http://hl7.org/fhir/ValueSet/subject-type"
         ),
         # if property is element of this resource.
         element_property=True,
         # Choice of Data Types. i.e subject[x]
         one_of_many="subject",
         one_of_many_required=False,
+        # valueset binding
+        binding_description="The possible types of subjects for the research (E.g. Patient, Practitioner, Organization, Location, etc.).",
+        binding_strength="extensible",
+        binding_uri="http://hl7.org/fhir/ValueSet/subject-type",
     )
 
     subjectReference: fhirtypes.ReferenceType = Field(
@@ -432,15 +452,21 @@ class ResearchDefinition(domainresource.DomainResource):
         description=(
             "The intended subjects for the ResearchDefinition. If this element is "
             "not provided, a Patient subject is assumed, but the subject of the "
-            "ResearchDefinition can be anything."
+            "ResearchDefinition can be anything. See "
+            "http://hl7.org/fhir/ValueSet/subject-type"
         ),
         # if property is element of this resource.
         element_property=True,
         # Choice of Data Types. i.e subject[x]
         one_of_many="subject",
         one_of_many_required=False,
+        # valueset binding
+        binding_description="The possible types of subjects for the research (E.g. Patient, Practitioner, Organization, Location, etc.).",
+        binding_strength="extensible",
+        binding_uri="http://hl7.org/fhir/ValueSet/subject-type",
         # note: Listed Resource Type(s) should be allowed as Reference.
         enum_reference_types=["Group"],
+        backref="research_definition_subjectReference",
     )
 
     subtitle: fhirtypes.String = Field(
@@ -480,10 +506,15 @@ class ResearchDefinition(domainresource.DomainResource):
         description=(
             "Descriptive topics related to the content of the ResearchDefinition. "
             "Topics provide a high-level categorization grouping types of "
-            "ResearchDefinitions that can be useful for filtering and searching."
+            "ResearchDefinitions that can be useful for filtering and searching. "
+            "See http://hl7.org/fhir/ValueSet/definition-topic"
         ),
         # if property is element of this resource.
         element_property=True,
+        # valueset binding
+        binding_description="High-level categorization of the definition, used for searching, sorting, and filtering.",
+        binding_strength="example",
+        binding_uri="http://hl7.org/fhir/ValueSet/definition-topic",
     )
 
     url: fhirtypes.Uri = Field(

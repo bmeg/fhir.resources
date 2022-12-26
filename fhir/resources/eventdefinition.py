@@ -186,10 +186,14 @@ class EventDefinition(domainresource.DomainResource):
         title="Intended jurisdiction for event definition (if applicable)",
         description=(
             "A legal or geographic region in which the event definition is intended"
-            " to be used."
+            " to be used. See http://hl7.org/fhir/ValueSet/jurisdiction"
         ),
         # if property is element of this resource.
         element_property=True,
+        # valueset binding
+        binding_description="Countries and regions within which this artifact is targeted for use.",
+        binding_strength="extensible",
+        binding_uri="http://hl7.org/fhir/ValueSet/jurisdiction",
     )
 
     lastReviewDate: fhirtypes.Date = Field(
@@ -284,7 +288,7 @@ class EventDefinition(domainresource.DomainResource):
         title="draft | active | retired | unknown",
         description=(
             "The status of this event definition. Enables tracking the life-cycle "
-            "of the content."
+            "of the content. See http://hl7.org/fhir/ValueSet/publication-status"
         ),
         # if property is element of this resource.
         element_property=True,
@@ -292,6 +296,11 @@ class EventDefinition(domainresource.DomainResource):
         # note: Enum values can be used in validation,
         # but use in your own responsibilities, read official FHIR documentation.
         enum_values=["draft", "active", "retired", "unknown"],
+        # valueset binding
+        binding_description="The lifecycle status of an artifact.",
+        binding_strength="required",
+        binding_uri="http://hl7.org/fhir/ValueSet/publication-status",
+        binding_version="4.3.0",
     )
     status__ext: fhirtypes.FHIRPrimitiveExtensionType = Field(
         None, alias="_status", title="Extension field for ``status``."
@@ -303,13 +312,17 @@ class EventDefinition(domainresource.DomainResource):
         title="Type of individual the event definition is focused on",
         description=(
             "A code or group definition that describes the intended subject of the "
-            "event definition."
+            "event definition. See http://hl7.org/fhir/ValueSet/subject-type"
         ),
         # if property is element of this resource.
         element_property=True,
         # Choice of Data Types. i.e subject[x]
         one_of_many="subject",
         one_of_many_required=False,
+        # valueset binding
+        binding_description="The possible types of subjects for an event (E.g. Patient, Practitioner, Organization, Location, etc.).",
+        binding_strength="extensible",
+        binding_uri="http://hl7.org/fhir/ValueSet/subject-type",
     )
 
     subjectReference: fhirtypes.ReferenceType = Field(
@@ -318,15 +331,20 @@ class EventDefinition(domainresource.DomainResource):
         title="Type of individual the event definition is focused on",
         description=(
             "A code or group definition that describes the intended subject of the "
-            "event definition."
+            "event definition. See http://hl7.org/fhir/ValueSet/subject-type"
         ),
         # if property is element of this resource.
         element_property=True,
         # Choice of Data Types. i.e subject[x]
         one_of_many="subject",
         one_of_many_required=False,
+        # valueset binding
+        binding_description="The possible types of subjects for an event (E.g. Patient, Practitioner, Organization, Location, etc.).",
+        binding_strength="extensible",
+        binding_uri="http://hl7.org/fhir/ValueSet/subject-type",
         # note: Listed Resource Type(s) should be allowed as Reference.
         enum_reference_types=["Group"],
+        backref="event_definition_subjectReference",
     )
 
     subtitle: fhirtypes.String = Field(
@@ -363,10 +381,14 @@ class EventDefinition(domainresource.DomainResource):
         description=(
             "Descriptive topics related to the module. Topics provide a high-level "
             "categorization of the module that can be useful for filtering and "
-            "searching."
+            "searching. See http://hl7.org/fhir/ValueSet/definition-topic"
         ),
         # if property is element of this resource.
         element_property=True,
+        # valueset binding
+        binding_description="High-level categorization of the definition, used for searching, sorting, and filtering.",
+        binding_strength="example",
+        binding_uri="http://hl7.org/fhir/ValueSet/definition-topic",
     )
 
     trigger: typing.List[fhirtypes.TriggerDefinitionType] = Field(

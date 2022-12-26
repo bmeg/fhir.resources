@@ -132,10 +132,14 @@ class ConceptMap(domainresource.DomainResource):
         title="Intended jurisdiction for concept map (if applicable)",
         description=(
             "A legal or geographic region in which the concept map is intended to "
-            "be used."
+            "be used. See http://hl7.org/fhir/ValueSet/jurisdiction"
         ),
         # if property is element of this resource.
         element_property=True,
+        # valueset binding
+        binding_description="Countries and regions within which this artifact is targeted for use.",
+        binding_strength="extensible",
+        binding_uri="http://hl7.org/fhir/ValueSet/jurisdiction",
     )
 
     name: fhirtypes.String = Field(
@@ -199,6 +203,7 @@ class ConceptMap(domainresource.DomainResource):
         one_of_many_required=False,
         # note: Listed Resource Type(s) should be allowed as Reference.
         enum_reference_types=["ValueSet"],
+        backref="concept_map_sourceCanonical",
     )
     sourceCanonical__ext: fhirtypes.FHIRPrimitiveExtensionType = Field(
         None, alias="_sourceCanonical", title="Extension field for ``sourceCanonical``."
@@ -228,7 +233,7 @@ class ConceptMap(domainresource.DomainResource):
         title="draft | active | retired | unknown",
         description=(
             "The status of this concept map. Enables tracking the life-cycle of the"
-            " content."
+            " content. See http://hl7.org/fhir/ValueSet/publication-status"
         ),
         # if property is element of this resource.
         element_property=True,
@@ -236,6 +241,11 @@ class ConceptMap(domainresource.DomainResource):
         # note: Enum values can be used in validation,
         # but use in your own responsibilities, read official FHIR documentation.
         enum_values=["draft", "active", "retired", "unknown"],
+        # valueset binding
+        binding_description="The lifecycle status of an artifact.",
+        binding_strength="required",
+        binding_uri="http://hl7.org/fhir/ValueSet/publication-status",
+        binding_version="4.3.0",
     )
     status__ext: fhirtypes.FHIRPrimitiveExtensionType = Field(
         None, alias="_status", title="Extension field for ``status``."
@@ -258,6 +268,7 @@ class ConceptMap(domainresource.DomainResource):
         one_of_many_required=False,
         # note: Listed Resource Type(s) should be allowed as Reference.
         enum_reference_types=["ValueSet"],
+        backref="concept_map_targetCanonical",
     )
     targetCanonical__ext: fhirtypes.FHIRPrimitiveExtensionType = Field(
         None, alias="_targetCanonical", title="Extension field for ``targetCanonical``."
@@ -739,7 +750,8 @@ class ConceptMapGroupElementTarget(backboneelement.BackboneElement):
         description=(
             "The equivalence between the source and target concepts (counting for "
             "the dependencies and products). The equivalence is read from target to"
-            " source (e.g. the target is 'wider' than the source)."
+            " source (e.g. the target is 'wider' than the source). See "
+            "http://hl7.org/fhir/ValueSet/concept-map-equivalence"
         ),
         # if property is element of this resource.
         element_property=True,
@@ -758,6 +770,11 @@ class ConceptMapGroupElementTarget(backboneelement.BackboneElement):
             "unmatched",
             "disjoint",
         ],
+        # valueset binding
+        binding_description="The degree of equivalence between concepts.",
+        binding_strength="required",
+        binding_uri="http://hl7.org/fhir/ValueSet/concept-map-equivalence",
+        binding_version="4.3.0",
     )
     equivalence__ext: fhirtypes.FHIRPrimitiveExtensionType = Field(
         None, alias="_equivalence", title="Extension field for ``equivalence``."
@@ -914,6 +931,7 @@ class ConceptMapGroupElementTargetDependsOn(backboneelement.BackboneElement):
         element_property=True,
         # note: Listed Resource Type(s) should be allowed as Reference.
         enum_reference_types=["CodeSystem"],
+        backref="concept_map.group.element.target.depends_on_system",
     )
     system__ext: fhirtypes.FHIRPrimitiveExtensionType = Field(
         None, alias="_system", title="Extension field for ``system``."
@@ -1064,7 +1082,8 @@ class ConceptMapGroupUnmapped(backboneelement.BackboneElement):
             "actions are possible: use the unmapped code (this is useful when doing"
             " a mapping between versions, and only a few codes have changed), use a"
             " fixed code (a default code), or alternatively, a reference to a "
-            "different concept map can be provided (by canonical URL)."
+            "different concept map can be provided (by canonical URL). See "
+            "http://hl7.org/fhir/ValueSet/conceptmap-unmapped-mode"
         ),
         # if property is element of this resource.
         element_property=True,
@@ -1072,6 +1091,11 @@ class ConceptMapGroupUnmapped(backboneelement.BackboneElement):
         # note: Enum values can be used in validation,
         # but use in your own responsibilities, read official FHIR documentation.
         enum_values=["provided", "fixed", "other-map"],
+        # valueset binding
+        binding_description="Defines which action to take if there is no match in the group.",
+        binding_strength="required",
+        binding_uri="http://hl7.org/fhir/ValueSet/conceptmap-unmapped-mode",
+        binding_version="4.3.0",
     )
     mode__ext: fhirtypes.FHIRPrimitiveExtensionType = Field(
         None, alias="_mode", title="Extension field for ``mode``."
@@ -1093,6 +1117,7 @@ class ConceptMapGroupUnmapped(backboneelement.BackboneElement):
         element_property=True,
         # note: Listed Resource Type(s) should be allowed as Reference.
         enum_reference_types=["ConceptMap"],
+        backref="concept_map.group.unmapped_url",
     )
     url__ext: fhirtypes.FHIRPrimitiveExtensionType = Field(
         None, alias="_url", title="Extension field for ``url``."

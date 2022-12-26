@@ -59,19 +59,34 @@ class Medication(domainresource.DomainResource):
             "description if no code is available. Usage note: This could be a "
             "standard medication code such as a code from RxNorm, SNOMED CT, IDMP "
             "etc. It could also be a national or local formulary code, optionally "
-            "with translations to other code systems."
+            "with translations to other code systems. See "
+            "http://hl7.org/fhir/ValueSet/medication-codes"
         ),
         # if property is element of this resource.
         element_property=True,
+        # valueset binding
+        binding_description="A coded concept that defines the type of a medication.",
+        binding_strength="example",
+        binding_uri="http://hl7.org/fhir/ValueSet/medication-codes",
     )
 
     form: fhirtypes.CodeableConceptType = Field(
         None,
         alias="form",
         title="powder | tablets | capsule +",
-        description="Describes the form of the item.  Powder; tablets; capsule.",
+        description=(
+            "Describes the form of the item.  Powder; tablets; capsule. See "
+            "http://hl7.org/fhir/ValueSet/medication-form-codes"
+        ),
         # if property is element of this resource.
         element_property=True,
+        # note: Enum values can be used in validation,
+        # but use in your own responsibilities, read official FHIR documentation.
+        enum_values=["powder", "tablets", "capsule", "+"],
+        # valueset binding
+        binding_description="A coded concept defining the form of a medication.",
+        binding_strength="example",
+        binding_uri="http://hl7.org/fhir/ValueSet/medication-form-codes",
     )
 
     identifier: typing.List[fhirtypes.IdentifierType] = Field(
@@ -105,18 +120,27 @@ class Medication(domainresource.DomainResource):
         element_property=True,
         # note: Listed Resource Type(s) should be allowed as Reference.
         enum_reference_types=["Organization"],
+        backref="medication_manufacturer",
     )
 
     status: fhirtypes.Code = Field(
         None,
         alias="status",
         title="active | inactive | entered-in-error",
-        description="A code to indicate if the medication is in active use.",
+        description=(
+            "A code to indicate if the medication is in active use. See "
+            "http://hl7.org/fhir/ValueSet/medication-status"
+        ),
         # if property is element of this resource.
         element_property=True,
         # note: Enum values can be used in validation,
         # but use in your own responsibilities, read official FHIR documentation.
         enum_values=["active", "inactive", "entered-in-error"],
+        # valueset binding
+        binding_description="A coded concept defining if the medication is in active use.",
+        binding_strength="required",
+        binding_uri="http://hl7.org/fhir/ValueSet/medication-status",
+        binding_version="4.3.0",
     )
     status__ext: fhirtypes.FHIRPrimitiveExtensionType = Field(
         None, alias="_status", title="Extension field for ``status``."
@@ -248,6 +272,7 @@ class MedicationIngredient(backboneelement.BackboneElement):
         one_of_many_required=True,
         # note: Listed Resource Type(s) should be allowed as Reference.
         enum_reference_types=["Substance", "Medication"],
+        backref="medication.ingredient_itemReference",
     )
 
     strength: fhirtypes.RatioType = Field(

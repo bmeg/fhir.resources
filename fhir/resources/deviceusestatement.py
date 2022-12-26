@@ -39,6 +39,7 @@ class DeviceUseStatement(domainresource.DomainResource):
         element_property=True,
         # note: Listed Resource Type(s) should be allowed as Reference.
         enum_reference_types=["ServiceRequest"],
+        backref="device_use_statement_basedOn",
     )
 
     bodySite: fhirtypes.CodeableConceptType = Field(
@@ -47,10 +48,15 @@ class DeviceUseStatement(domainresource.DomainResource):
         title="Target body site",
         description=(
             "Indicates the anotomic location on the subject's body where the device"
-            " was used ( i.e. the target)."
+            " was used ( i.e. the target). See http://hl7.org/fhir/ValueSet/body-"
+            "site"
         ),
         # if property is element of this resource.
         element_property=True,
+        # valueset binding
+        binding_description="SNOMED CT Body site concepts",
+        binding_strength="example",
+        binding_uri="http://hl7.org/fhir/ValueSet/body-site",
     )
 
     derivedFrom: typing.List[fhirtypes.ReferenceType] = Field(
@@ -73,6 +79,7 @@ class DeviceUseStatement(domainresource.DomainResource):
             "QuestionnaireResponse",
             "DocumentReference",
         ],
+        backref="device_use_statement_derivedFrom",
     )
 
     device: fhirtypes.ReferenceType = Field(
@@ -84,6 +91,7 @@ class DeviceUseStatement(domainresource.DomainResource):
         element_property=True,
         # note: Listed Resource Type(s) should be allowed as Reference.
         enum_reference_types=["Device"],
+        backref="device_use_statement_device",
     )
 
     identifier: typing.List[fhirtypes.IdentifierType] = Field(
@@ -136,6 +144,7 @@ class DeviceUseStatement(domainresource.DomainResource):
             "DocumentReference",
             "Media",
         ],
+        backref="device_use_statement_reasonReference",
     )
 
     recordedOn: fhirtypes.DateTime = Field(
@@ -164,6 +173,7 @@ class DeviceUseStatement(domainresource.DomainResource):
             "PractitionerRole",
             "RelatedPerson",
         ],
+        backref="device_use_statement_source",
     )
 
     status: fhirtypes.Code = Field(
@@ -173,7 +183,8 @@ class DeviceUseStatement(domainresource.DomainResource):
         description=(
             "A code representing the patient or other source's judgment about the "
             "state of the device used that this statement is about.  Generally this"
-            " will be active or completed."
+            " will be active or completed. See http://hl7.org/fhir/ValueSet/device-"
+            "statement-status"
         ),
         # if property is element of this resource.
         element_property=True,
@@ -181,6 +192,11 @@ class DeviceUseStatement(domainresource.DomainResource):
         # note: Enum values can be used in validation,
         # but use in your own responsibilities, read official FHIR documentation.
         enum_values=["active", "completed", "entered-in-error", "+"],
+        # valueset binding
+        binding_description="A coded concept indicating the current status of the Device Usage.",
+        binding_strength="required",
+        binding_uri="http://hl7.org/fhir/ValueSet/device-statement-status",
+        binding_version="4.3.0",
     )
     status__ext: fhirtypes.FHIRPrimitiveExtensionType = Field(
         None, alias="_status", title="Extension field for ``status``."
@@ -195,6 +211,7 @@ class DeviceUseStatement(domainresource.DomainResource):
         element_property=True,
         # note: Listed Resource Type(s) should be allowed as Reference.
         enum_reference_types=["Patient", "Group"],
+        backref="device_use_statement_subject",
     )
 
     timingDateTime: fhirtypes.DateTime = Field(

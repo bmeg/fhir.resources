@@ -170,10 +170,14 @@ class ValueSet(domainresource.DomainResource):
         title="Intended jurisdiction for value set (if applicable)",
         description=(
             "A legal or geographic region in which the value set is intended to be "
-            "used."
+            "used. See http://hl7.org/fhir/ValueSet/jurisdiction"
         ),
         # if property is element of this resource.
         element_property=True,
+        # valueset binding
+        binding_description="Countries and regions within which this artifact is targeted for use.",
+        binding_strength="extensible",
+        binding_uri="http://hl7.org/fhir/ValueSet/jurisdiction",
     )
 
     name: fhirtypes.String = Field(
@@ -230,7 +234,8 @@ class ValueSet(domainresource.DomainResource):
             "The status of this value set. Enables tracking the life-cycle of the "
             "content. The status of the value set applies to the value set "
             "definition (ValueSet.compose) and the associated ValueSet metadata. "
-            "Expansions do not have a state."
+            "Expansions do not have a state. See "
+            "http://hl7.org/fhir/ValueSet/publication-status"
         ),
         # if property is element of this resource.
         element_property=True,
@@ -238,6 +243,11 @@ class ValueSet(domainresource.DomainResource):
         # note: Enum values can be used in validation,
         # but use in your own responsibilities, read official FHIR documentation.
         enum_values=["draft", "active", "retired", "unknown"],
+        # valueset binding
+        binding_description="The lifecycle status of an artifact.",
+        binding_strength="required",
+        binding_uri="http://hl7.org/fhir/ValueSet/publication-status",
+        binding_version="4.3.0",
     )
     status__ext: fhirtypes.FHIRPrimitiveExtensionType = Field(
         None, alias="_status", title="Extension field for ``status``."
@@ -558,6 +568,7 @@ class ValueSetComposeInclude(backboneelement.BackboneElement):
         element_property=True,
         # note: Listed Resource Type(s) should be allowed as Reference.
         enum_reference_types=["ValueSet"],
+        backref="value_set.compose.include_valueSet",
     )
     valueSet__ext: typing.List[
         typing.Union[fhirtypes.FHIRPrimitiveExtensionType, None]
@@ -743,9 +754,16 @@ class ValueSetComposeIncludeConceptDesignation(backboneelement.BackboneElement):
         None,
         alias="language",
         title="Human language of the designation",
-        description="The language this designation is defined for.",
+        description=(
+            "The language this designation is defined for. See "
+            "http://hl7.org/fhir/ValueSet/languages"
+        ),
         # if property is element of this resource.
         element_property=True,
+        # valueset binding
+        binding_description="IETF language tag",
+        binding_strength="preferred",
+        binding_uri="http://hl7.org/fhir/ValueSet/languages",
     )
     language__ext: fhirtypes.FHIRPrimitiveExtensionType = Field(
         None, alias="_language", title="Extension field for ``language``."
@@ -755,9 +773,16 @@ class ValueSetComposeIncludeConceptDesignation(backboneelement.BackboneElement):
         None,
         alias="use",
         title="Types of uses of designations",
-        description="A code that represents types of uses of designations.",
+        description=(
+            "A code that represents types of uses of designations. See "
+            "http://hl7.org/fhir/ValueSet/designation-use"
+        ),
         # if property is element of this resource.
         element_property=True,
+        # valueset binding
+        binding_description="Details of how a designation would be used.",
+        binding_strength="extensible",
+        binding_uri="http://hl7.org/fhir/ValueSet/designation-use",
     )
 
     value: fhirtypes.String = Field(
@@ -861,7 +886,10 @@ class ValueSetComposeIncludeFilter(backboneelement.BackboneElement):
             "= | is-a | descendent-of | is-not-a | regex | in | not-in | "
             "generalizes | exists"
         ),
-        description="The kind of operation to perform as a part of the filter criteria.",
+        description=(
+            "The kind of operation to perform as a part of the filter criteria. See"
+            " http://hl7.org/fhir/ValueSet/filter-operator"
+        ),
         # if property is element of this resource.
         element_property=True,
         element_required=True,
@@ -878,6 +906,11 @@ class ValueSetComposeIncludeFilter(backboneelement.BackboneElement):
             "generalizes",
             "exists",
         ],
+        # valueset binding
+        binding_description="The kind of operation to perform as a part of a property based filter.",
+        binding_strength="required",
+        binding_uri="http://hl7.org/fhir/ValueSet/filter-operator",
+        binding_version="4.3.0",
     )
     op__ext: fhirtypes.FHIRPrimitiveExtensionType = Field(
         None, alias="_op", title="Extension field for ``op``."

@@ -132,42 +132,82 @@ class Condition(domainresource.DomainResource):
             "Patient",
             "RelatedPerson",
         ],
+        backref="condition_asserter",
     )
 
     bodySite: typing.List[fhirtypes.CodeableConceptType] = Field(
         None,
         alias="bodySite",
         title="Anatomical location, if relevant",
-        description="The anatomical location where this condition manifests itself.",
+        description=(
+            "The anatomical location where this condition manifests itself. See "
+            "http://hl7.org/fhir/ValueSet/body-site"
+        ),
         # if property is element of this resource.
         element_property=True,
+        # valueset binding
+        binding_description="SNOMED CT Body site concepts",
+        binding_strength="example",
+        binding_uri="http://hl7.org/fhir/ValueSet/body-site",
     )
 
     category: typing.List[fhirtypes.CodeableConceptType] = Field(
         None,
         alias="category",
         title="problem-list-item | encounter-diagnosis",
-        description="A category assigned to the condition.",
+        description=(
+            "A category assigned to the condition. See "
+            "http://hl7.org/fhir/ValueSet/condition-category"
+        ),
         # if property is element of this resource.
         element_property=True,
+        # note: Enum values can be used in validation,
+        # but use in your own responsibilities, read official FHIR documentation.
+        enum_values=["problem-list-item", "encounter-diagnosis"],
+        # valueset binding
+        binding_description="A category assigned to the condition.",
+        binding_strength="extensible",
+        binding_uri="http://hl7.org/fhir/ValueSet/condition-category",
     )
 
     clinicalStatus: fhirtypes.CodeableConceptType = Field(
         None,
         alias="clinicalStatus",
         title="active | recurrence | relapse | inactive | remission | resolved",
-        description="The clinical status of the condition.",
+        description=(
+            "The clinical status of the condition. See "
+            "http://hl7.org/fhir/ValueSet/condition-clinical"
+        ),
         # if property is element of this resource.
         element_property=True,
+        # note: Enum values can be used in validation,
+        # but use in your own responsibilities, read official FHIR documentation.
+        enum_values=[
+            "active",
+            "recurrence",
+            "relapse",
+            "inactive",
+            "remission",
+            "resolved",
+        ],
+        # valueset binding
+        binding_description="The clinical status of the condition or diagnosis.",
+        binding_strength="required",
+        binding_uri="http://hl7.org/fhir/ValueSet/condition-clinical",
+        binding_version="4.3.0",
     )
 
     code: fhirtypes.CodeableConceptType = Field(
         None,
         alias="code",
         title="Identification of the condition, problem or diagnosis",
-        description=None,
+        description="See http://hl7.org/fhir/ValueSet/condition-code",
         # if property is element of this resource.
         element_property=True,
+        # valueset binding
+        binding_description="Identification of the condition or diagnosis.",
+        binding_strength="example",
+        binding_uri="http://hl7.org/fhir/ValueSet/condition-code",
     )
 
     encounter: fhirtypes.ReferenceType = Field(
@@ -182,6 +222,7 @@ class Condition(domainresource.DomainResource):
         element_property=True,
         # note: Listed Resource Type(s) should be allowed as Reference.
         enum_reference_types=["Encounter"],
+        backref="condition_encounter",
     )
 
     evidence: typing.List[fhirtypes.ConditionEvidenceType] = Field(
@@ -336,6 +377,7 @@ class Condition(domainresource.DomainResource):
             "Patient",
             "RelatedPerson",
         ],
+        backref="condition_recorder",
     )
 
     severity: fhirtypes.CodeableConceptType = Field(
@@ -344,10 +386,14 @@ class Condition(domainresource.DomainResource):
         title="Subjective severity of condition",
         description=(
             "A subjective assessment of the severity of the condition as evaluated "
-            "by the clinician."
+            "by the clinician. See http://hl7.org/fhir/ValueSet/condition-severity"
         ),
         # if property is element of this resource.
         element_property=True,
+        # valueset binding
+        binding_description="A subjective assessment of the severity of the condition as evaluated by the clinician.",
+        binding_strength="preferred",
+        binding_uri="http://hl7.org/fhir/ValueSet/condition-severity",
     )
 
     stage: typing.List[fhirtypes.ConditionStageType] = Field(
@@ -374,6 +420,7 @@ class Condition(domainresource.DomainResource):
         element_property=True,
         # note: Listed Resource Type(s) should be allowed as Reference.
         enum_reference_types=["Patient", "Group"],
+        backref="condition_subject",
     )
 
     verificationStatus: fhirtypes.CodeableConceptType = Field(
@@ -385,10 +432,25 @@ class Condition(domainresource.DomainResource):
         ),
         description=(
             "The verification status to support the clinical status of the "
-            "condition."
+            "condition. See http://hl7.org/fhir/ValueSet/condition-ver-status"
         ),
         # if property is element of this resource.
         element_property=True,
+        # note: Enum values can be used in validation,
+        # but use in your own responsibilities, read official FHIR documentation.
+        enum_values=[
+            "unconfirmed",
+            "provisional",
+            "differential",
+            "confirmed",
+            "refuted",
+            "entered-in-error",
+        ],
+        # valueset binding
+        binding_description="The verification status to support or decline the clinical status of the condition or diagnosis.",
+        binding_strength="required",
+        binding_uri="http://hl7.org/fhir/ValueSet/condition-ver-status",
+        binding_version="4.3.0",
     )
 
     @classmethod
@@ -505,10 +567,15 @@ class ConditionEvidence(backboneelement.BackboneElement):
         alias="code",
         title="Manifestation/symptom",
         description=(
-            "A manifestation or symptom that led to the recording of this " "condition."
+            "A manifestation or symptom that led to the recording of this "
+            "condition. See http://hl7.org/fhir/ValueSet/manifestation-or-symptom"
         ),
         # if property is element of this resource.
         element_property=True,
+        # valueset binding
+        binding_description="Codes that describe the manifestation or symptoms of a condition.",
+        binding_strength="example",
+        binding_uri="http://hl7.org/fhir/ValueSet/manifestation-or-symptom",
     )
 
     detail: typing.List[fhirtypes.ReferenceType] = Field(
@@ -520,6 +587,7 @@ class ConditionEvidence(backboneelement.BackboneElement):
         element_property=True,
         # note: Listed Resource Type(s) should be allowed as Reference.
         enum_reference_types=["Resource"],
+        backref="condition.evidence_detail",
     )
 
     @classmethod
@@ -555,6 +623,7 @@ class ConditionStage(backboneelement.BackboneElement):
         element_property=True,
         # note: Listed Resource Type(s) should be allowed as Reference.
         enum_reference_types=["ClinicalImpression", "DiagnosticReport", "Observation"],
+        backref="condition.stage_assessment",
     )
 
     summary: fhirtypes.CodeableConceptType = Field(
@@ -563,19 +632,31 @@ class ConditionStage(backboneelement.BackboneElement):
         title="Simple summary (disease specific)",
         description=(
             'A simple summary of the stage such as "Stage 3". The determination of '
-            "the stage is disease-specific."
+            "the stage is disease-specific. See "
+            "http://hl7.org/fhir/ValueSet/condition-stage"
         ),
         # if property is element of this resource.
         element_property=True,
+        # valueset binding
+        binding_description="Codes describing condition stages (e.g. Cancer stages).",
+        binding_strength="example",
+        binding_uri="http://hl7.org/fhir/ValueSet/condition-stage",
     )
 
     type: fhirtypes.CodeableConceptType = Field(
         None,
         alias="type",
         title="Kind of staging",
-        description="The kind of staging, such as pathological or clinical staging.",
+        description=(
+            "The kind of staging, such as pathological or clinical staging. See "
+            "http://hl7.org/fhir/ValueSet/condition-stage-type"
+        ),
         # if property is element of this resource.
         element_property=True,
+        # valueset binding
+        binding_description="Codes describing the kind of condition staging (e.g. clinical or pathological).",
+        binding_strength="example",
+        binding_uri="http://hl7.org/fhir/ValueSet/condition-stage-type",
     )
 
     @classmethod

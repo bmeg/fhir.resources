@@ -42,10 +42,15 @@ class AdministrableProductDefinition(domainresource.DomainResource):
             "ManufacturedItemDefinition). If the manufactured form was 'powder for "
             "solution for injection', the administrable dose form could be "
             "'solution for injection' (once mixed with another item having "
-            "manufactured form 'solvent for solution for injection')."
+            "manufactured form 'solvent for solution for injection'). See "
+            "http://hl7.org/fhir/ValueSet/administrable-dose-form"
         ),
         # if property is element of this resource.
         element_property=True,
+        # valueset binding
+        binding_description="Dose form for a medication, in the form suitable for administering to the patient, after mixing, where necessary.",
+        binding_strength="example",
+        binding_uri="http://hl7.org/fhir/ValueSet/administrable-dose-form",
     )
 
     device: fhirtypes.ReferenceType = Field(
@@ -64,6 +69,7 @@ class AdministrableProductDefinition(domainresource.DomainResource):
         element_property=True,
         # note: Listed Resource Type(s) should be allowed as Reference.
         enum_reference_types=["DeviceDefinition"],
+        backref="administrable_product_definition_device",
     )
 
     formOf: typing.List[fhirtypes.ReferenceType] = Field(
@@ -88,6 +94,7 @@ class AdministrableProductDefinition(domainresource.DomainResource):
         element_property=True,
         # note: Listed Resource Type(s) should be allowed as Reference.
         enum_reference_types=["MedicinalProductDefinition"],
+        backref="administrable_product_definition_formOf",
     )
 
     identifier: typing.List[fhirtypes.IdentifierType] = Field(
@@ -115,10 +122,15 @@ class AdministrableProductDefinition(domainresource.DomainResource):
             "AdministrableProductDefinition.producedFrom) to state which component "
             "items are used to make this, or using by incoming references from the "
             "Ingredient resource, to state in detail which substances exist within "
-            "this. This element allows a basic coded ingredient to be used."
+            "this. This element allows a basic coded ingredient to be used. See "
+            "http://hl7.org/fhir/ValueSet/substance-codes"
         ),
         # if property is element of this resource.
         element_property=True,
+        # valueset binding
+        binding_description="This value set includes all substance codes from SNOMED CT - provided as an exemplar value set.",
+        binding_strength="example",
+        binding_uri="http://hl7.org/fhir/ValueSet/substance-codes",
     )
 
     producedFrom: typing.List[fhirtypes.ReferenceType] = Field(
@@ -144,6 +156,7 @@ class AdministrableProductDefinition(domainresource.DomainResource):
         element_property=True,
         # note: Listed Resource Type(s) should be allowed as Reference.
         enum_reference_types=["ManufacturedItemDefinition"],
+        backref="administrable_product_definition_producedFrom",
     )
 
     property: typing.List[fhirtypes.AdministrableProductDefinitionPropertyType] = Field(
@@ -180,7 +193,8 @@ class AdministrableProductDefinition(domainresource.DomainResource):
         title="draft | active | retired | unknown",
         description=(
             "The status of this administrable product. Enables tracking the life-"
-            "cycle of the content."
+            "cycle of the content. See http://hl7.org/fhir/ValueSet/publication-"
+            "status"
         ),
         # if property is element of this resource.
         element_property=True,
@@ -188,6 +202,11 @@ class AdministrableProductDefinition(domainresource.DomainResource):
         # note: Enum values can be used in validation,
         # but use in your own responsibilities, read official FHIR documentation.
         enum_values=["draft", "active", "retired", "unknown"],
+        # valueset binding
+        binding_description="The lifecycle status of an artifact.",
+        binding_strength="required",
+        binding_uri="http://hl7.org/fhir/ValueSet/publication-status",
+        binding_version="4.3.0",
     )
     status__ext: fhirtypes.FHIRPrimitiveExtensionType = Field(
         None, alias="_status", title="Extension field for ``status``."
@@ -203,10 +222,15 @@ class AdministrableProductDefinition(domainresource.DomainResource):
         description=(
             "The presentation type in which this item is given to a patient. e.g. "
             "for a spray - 'puff' (as in 'contains 100 mcg per puff'), or for a "
-            "liquid - 'vial' (as in 'contains 5 ml per vial')."
+            "liquid - 'vial' (as in 'contains 5 ml per vial'). See "
+            "http://hl7.org/fhir/ValueSet/unit-of-presentation"
         ),
         # if property is element of this resource.
         element_property=True,
+        # valueset binding
+        binding_description="The presentation type in which an administrable medicinal product is given to a patient.",
+        binding_strength="example",
+        binding_uri="http://hl7.org/fhir/ValueSet/unit-of-presentation",
     )
 
     @classmethod
@@ -310,18 +334,27 @@ class AdministrableProductDefinitionProperty(backboneelement.BackboneElement):
         None,
         alias="status",
         title="The status of characteristic e.g. assigned or pending",
-        description=None,
+        description="See http://hl7.org/fhir/ValueSet/publication-status",
         # if property is element of this resource.
         element_property=True,
+        # valueset binding
+        binding_description="The lifecycle status of an artifact.",
+        binding_strength="required",
+        binding_uri="http://hl7.org/fhir/ValueSet/publication-status",
+        binding_version="4.3.0",
     )
 
     type: fhirtypes.CodeableConceptType = Field(
         ...,
         alias="type",
         title="A code expressing the type of characteristic",
-        description=None,
+        description="See http://hl7.org/fhir/ValueSet/product-characteristic-codes",
         # if property is element of this resource.
         element_property=True,
+        # valueset binding
+        binding_description="This value set includes all observable entity codes from SNOMED CT - provided as an exemplar value set.",
+        binding_strength="example",
+        binding_uri="http://hl7.org/fhir/ValueSet/product-characteristic-codes",
     )
 
     valueAttachment: fhirtypes.AttachmentType = Field(
@@ -478,9 +511,13 @@ class AdministrableProductDefinitionRouteOfAdministration(
         ...,
         alias="code",
         title="Coded expression for the route",
-        description=None,
+        description="See http://hl7.org/fhir/ValueSet/route-codes",
         # if property is element of this resource.
         element_property=True,
+        # valueset binding
+        binding_description="A code specifying the route or physiological path of administration of a therapeutic agent into or onto a patient\u0027s body.",
+        binding_strength="example",
+        binding_uri="http://hl7.org/fhir/ValueSet/route-codes",
     )
 
     firstDose: fhirtypes.QuantityType = Field(
@@ -592,13 +629,17 @@ class AdministrableProductDefinitionRouteOfAdministrationTargetSpecies(
         ...,
         alias="code",
         title="Coded expression for the species",
-        description=None,
+        description="See http://hl7.org/fhir/ValueSet/target-species",
         # if property is element of this resource.
         element_property=True,
+        # valueset binding
+        binding_description="A tissue type of an animal.",
+        binding_strength="example",
+        binding_uri="http://hl7.org/fhir/ValueSet/target-species",
     )
 
     withdrawalPeriod: typing.List[
-        fhirtypes.AdministrableProductDefinitionRouteOfAdministrationTargetSpeciesWithdrawalPeriodType  # noqa: B950
+        fhirtypes.AdministrableProductDefinitionRouteOfAdministrationTargetSpeciesWithdrawalPeriodType
     ] = Field(
         None,
         alias="withdrawalPeriod",
@@ -614,8 +655,7 @@ class AdministrableProductDefinitionRouteOfAdministrationTargetSpecies(
     @classmethod
     def elements_sequence(cls):
         """returning all elements names from
-        ``AdministrableProductDefinitionRoute
-        OfAdministrationTargetSpecies`` according specification,
+        ``AdministrableProductDefinitionRouteOfAdministrationTargetSpecies`` according specification,
         with preserving original sequence order.
         """
         return ["id", "extension", "modifierExtension", "code", "withdrawalPeriod"]
@@ -660,10 +700,15 @@ class AdministrableProductDefinitionRouteOfAdministrationTargetSpeciesWithdrawal
         ),
         description=(
             "Coded expression for the type of tissue for which the withdrawal "
-            "period applies, e.g. meat, milk."
+            "period applies, e.g. meat, milk. See "
+            "http://hl7.org/fhir/ValueSet/animal-tissue-type"
         ),
         # if property is element of this resource.
         element_property=True,
+        # valueset binding
+        binding_description="A tissue type of an animal.",
+        binding_strength="example",
+        binding_uri="http://hl7.org/fhir/ValueSet/animal-tissue-type",
     )
 
     value: fhirtypes.QuantityType = Field(
@@ -678,9 +723,8 @@ class AdministrableProductDefinitionRouteOfAdministrationTargetSpeciesWithdrawal
     @classmethod
     def elements_sequence(cls):
         """returning all elements names from
-        ``AdministrableProductDefinitionRoute
-        OfAdministrationTargetSpeciesWithdrawalPeriod``
-        according specification, with preserving original sequence order.
+        ``AdministrableProductDefinitionRouteOfAdministrationTargetSpeciesWithdrawalPeriod`` according specification,
+        with preserving original sequence order.
         """
         return [
             "id",

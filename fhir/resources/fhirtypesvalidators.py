@@ -746,7 +746,7 @@ MODEL_CLASSES = {
 
 
 def get_fhir_model_class(model_name: str) -> typing.Type[FHIRAbstractModel]:
-    """"""
+    """ """
     global MODEL_CLASSES
     klass, module_name = MODEL_CLASSES[model_name]
     if klass is not None:
@@ -4987,7 +4987,7 @@ __all__ = [
     "administrableproductdefinitionproperty_validator",
     "administrableproductdefinitionrouteofadministration_validator",
     "administrableproductdefinitionrouteofadministrationtargetspecies_validator",
-    "administrableproductdefinitionrouteofadministrationtargetspecieswithdrawalperiod_validator",  # noqa: B950
+    "administrableproductdefinitionrouteofadministrationtargetspecieswithdrawalperiod_validator",
     "adverseevent_validator",
     "adverseeventsuspectentity_validator",
     "adverseeventsuspectentitycausality_validator",

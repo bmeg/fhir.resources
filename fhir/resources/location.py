@@ -101,6 +101,7 @@ class Location(domainresource.DomainResource):
         element_property=True,
         # note: Listed Resource Type(s) should be allowed as Reference.
         enum_reference_types=["Endpoint"],
+        backref="location_endpoint",
     )
 
     hoursOfOperation: typing.List[fhirtypes.LocationHoursOfOperationType] = Field(
@@ -133,6 +134,7 @@ class Location(domainresource.DomainResource):
         element_property=True,
         # note: Listed Resource Type(s) should be allowed as Reference.
         enum_reference_types=["Organization"],
+        backref="location_managingOrganization",
     )
 
     mode: fhirtypes.Code = Field(
@@ -141,13 +143,19 @@ class Location(domainresource.DomainResource):
         title="instance | kind",
         description=(
             "Indicates whether a resource instance represents a specific location "
-            "or a class of locations."
+            "or a class of locations. See http://hl7.org/fhir/ValueSet/location-"
+            "mode"
         ),
         # if property is element of this resource.
         element_property=True,
         # note: Enum values can be used in validation,
         # but use in your own responsibilities, read official FHIR documentation.
         enum_values=["instance", "kind"],
+        # valueset binding
+        binding_description="Indicates whether a resource instance represents a specific location or a class of locations.",
+        binding_strength="required",
+        binding_uri="http://hl7.org/fhir/ValueSet/location-mode",
+        binding_version="4.3.0",
     )
     mode__ext: fhirtypes.FHIRPrimitiveExtensionType = Field(
         None, alias="_mode", title="Extension field for ``mode``."
@@ -173,10 +181,15 @@ class Location(domainresource.DomainResource):
             "The operational status covers operation values most relevant to beds "
             "(but can also apply to rooms/units/chairs/etc. such as an isolation "
             "unit/dialysis chair). This typically covers concepts such as "
-            "contamination, housekeeping, and other activities like maintenance."
+            "contamination, housekeeping, and other activities like maintenance. "
+            "See http://terminology.hl7.org/ValueSet/v2-0116"
         ),
         # if property is element of this resource.
         element_property=True,
+        # valueset binding
+        binding_description="The operational status if the location (where typically a bed/room).",
+        binding_strength="preferred",
+        binding_uri="http://terminology.hl7.org/ValueSet/v2-0116",
     )
 
     partOf: fhirtypes.ReferenceType = Field(
@@ -188,15 +201,23 @@ class Location(domainresource.DomainResource):
         element_property=True,
         # note: Listed Resource Type(s) should be allowed as Reference.
         enum_reference_types=["Location"],
+        backref="location_partOf",
     )
 
     physicalType: fhirtypes.CodeableConceptType = Field(
         None,
         alias="physicalType",
         title="Physical form of the location",
-        description="Physical form of the location, e.g. building, room, vehicle, road.",
+        description=(
+            "Physical form of the location, e.g. building, room, vehicle, road. See"
+            " http://hl7.org/fhir/ValueSet/location-physical-type"
+        ),
         # if property is element of this resource.
         element_property=True,
+        # valueset binding
+        binding_description="Physical form of the location.",
+        binding_strength="example",
+        binding_uri="http://hl7.org/fhir/ValueSet/location-physical-type",
     )
 
     position: fhirtypes.LocationPositionType = Field(
@@ -218,13 +239,19 @@ class Location(domainresource.DomainResource):
         description=(
             "The status property covers the general availability of the resource, "
             "not the current value which may be covered by the operationStatus, or "
-            "by a schedule/slots if they are configured for the location."
+            "by a schedule/slots if they are configured for the location. See "
+            "http://hl7.org/fhir/ValueSet/location-status"
         ),
         # if property is element of this resource.
         element_property=True,
         # note: Enum values can be used in validation,
         # but use in your own responsibilities, read official FHIR documentation.
         enum_values=["active", "suspended", "inactive"],
+        # valueset binding
+        binding_description="Indicates whether the location is still in use.",
+        binding_strength="required",
+        binding_uri="http://hl7.org/fhir/ValueSet/location-status",
+        binding_version="4.3.0",
     )
     status__ext: fhirtypes.FHIRPrimitiveExtensionType = Field(
         None, alias="_status", title="Extension field for ``status``."
@@ -247,9 +274,16 @@ class Location(domainresource.DomainResource):
         None,
         alias="type",
         title="Type of function performed",
-        description="Indicates the type of function performed at the location.",
+        description=(
+            "Indicates the type of function performed at the location. See "
+            "http://terminology.hl7.org/ValueSet/v3-ServiceDeliveryLocationRoleType"
+        ),
         # if property is element of this resource.
         element_property=True,
+        # valueset binding
+        binding_description="Indicates the type of function performed at the location.",
+        binding_strength="extensible",
+        binding_uri="http://terminology.hl7.org/ValueSet/v3-ServiceDeliveryLocationRoleType",
     )
 
     @classmethod
@@ -327,13 +361,18 @@ class LocationHoursOfOperation(backboneelement.BackboneElement):
         title="mon | tue | wed | thu | fri | sat | sun",
         description=(
             "Indicates which days of the week are available between the start and "
-            "end Times."
+            "end Times. See http://hl7.org/fhir/ValueSet/days-of-week"
         ),
         # if property is element of this resource.
         element_property=True,
         # note: Enum values can be used in validation,
         # but use in your own responsibilities, read official FHIR documentation.
         enum_values=["mon", "tue", "wed", "thu", "fri", "sat", "sun"],
+        # valueset binding
+        binding_description="The days of the week.",
+        binding_strength="required",
+        binding_uri="http://hl7.org/fhir/ValueSet/days-of-week",
+        binding_version="4.3.0",
     )
     daysOfWeek__ext: typing.List[
         typing.Union[fhirtypes.FHIRPrimitiveExtensionType, None]

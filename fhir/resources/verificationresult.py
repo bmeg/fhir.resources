@@ -39,9 +39,19 @@ class VerificationResult(domainresource.DomainResource):
         None,
         alias="failureAction",
         title="fatal | warn | rec-only | none",
-        description="The result if validation fails (fatal; warning; record only; none).",
+        description=(
+            "The result if validation fails (fatal; warning; record only; none). "
+            "See http://hl7.org/fhir/ValueSet/verificationresult-failure-action"
+        ),
         # if property is element of this resource.
         element_property=True,
+        # note: Enum values can be used in validation,
+        # but use in your own responsibilities, read official FHIR documentation.
+        enum_values=["fatal", "warn", "rec-only", "none"],
+        # valueset binding
+        binding_description="The result if validation fails.",
+        binding_strength="preferred",
+        binding_uri="http://hl7.org/fhir/ValueSet/verificationresult-failure-action",
     )
 
     frequency: fhirtypes.TimingType = Field(
@@ -74,10 +84,17 @@ class VerificationResult(domainresource.DomainResource):
         title="none | initial | periodic",
         description=(
             "The frequency with which the target must be validated (none; initial; "
-            "periodic)."
+            "periodic). See http://hl7.org/fhir/ValueSet/verificationresult-need"
         ),
         # if property is element of this resource.
         element_property=True,
+        # note: Enum values can be used in validation,
+        # but use in your own responsibilities, read official FHIR documentation.
+        enum_values=["none", "initial", "periodic"],
+        # valueset binding
+        binding_description="The frequency with which the target must be validated.",
+        binding_strength="preferred",
+        binding_uri="http://hl7.org/fhir/ValueSet/verificationresult-need",
     )
 
     nextScheduled: fhirtypes.Date = Field(
@@ -109,7 +126,8 @@ class VerificationResult(domainresource.DomainResource):
         ),
         description=(
             "The validation status of the target (attested; validated; in process; "
-            "requires revalidation; validation failed; revalidation failed)."
+            "requires revalidation; validation failed; revalidation failed). See "
+            "http://hl7.org/fhir/ValueSet/verificationresult-status"
         ),
         # if property is element of this resource.
         element_property=True,
@@ -124,6 +142,11 @@ class VerificationResult(domainresource.DomainResource):
             "val-fail",
             "reval-fail",
         ],
+        # valueset binding
+        binding_description="The validation status of the target.",
+        binding_strength="required",
+        binding_uri="http://hl7.org/fhir/ValueSet/verificationresult-status",
+        binding_version="4.3.0",
     )
     status__ext: fhirtypes.FHIRPrimitiveExtensionType = Field(
         None, alias="_status", title="Extension field for ``status``."
@@ -150,6 +173,7 @@ class VerificationResult(domainresource.DomainResource):
         element_property=True,
         # note: Listed Resource Type(s) should be allowed as Reference.
         enum_reference_types=["Resource"],
+        backref="verification_result_target",
     )
 
     targetLocation: typing.List[typing.Optional[fhirtypes.String]] = Field(
@@ -173,9 +197,13 @@ class VerificationResult(domainresource.DomainResource):
             "The primary process by which the target is validated (edit check; "
             "value set; primary source; multiple sources; standalone; in context)"
         ),
-        description=None,
+        description="See http://hl7.org/fhir/ValueSet/verificationresult-validation-process",
         # if property is element of this resource.
         element_property=True,
+        # valueset binding
+        binding_description="The primary process by which the target is validated.",
+        binding_strength="example",
+        binding_uri="http://hl7.org/fhir/ValueSet/verificationresult-validation-process",
     )
 
     validationType: fhirtypes.CodeableConceptType = Field(
@@ -184,10 +212,18 @@ class VerificationResult(domainresource.DomainResource):
         title="nothing | primary | multiple",
         description=(
             "What the target is validated against (nothing; primary source; "
-            "multiple sources)."
+            "multiple sources). See "
+            "http://hl7.org/fhir/ValueSet/verificationresult-validation-type"
         ),
         # if property is element of this resource.
         element_property=True,
+        # note: Enum values can be used in validation,
+        # but use in your own responsibilities, read official FHIR documentation.
+        enum_values=["nothing", "primary", "multiple"],
+        # valueset binding
+        binding_description="What the target is validated against.",
+        binding_strength="preferred",
+        binding_uri="http://hl7.org/fhir/ValueSet/verificationresult-validation-type",
     )
 
     validator: typing.List[fhirtypes.VerificationResultValidatorType] = Field(
@@ -306,10 +342,15 @@ class VerificationResultAttestation(backboneelement.BackboneElement):
         title="The method by which attested information was submitted/retrieved",
         description=(
             "The method by which attested information was submitted/retrieved "
-            "(manual; API; Push)."
+            "(manual; API; Push). See "
+            "http://hl7.org/fhir/ValueSet/verificationresult-communication-method"
         ),
         # if property is element of this resource.
         element_property=True,
+        # valueset binding
+        binding_description="Method for communicating with the data source (manual; API; Push).",
+        binding_strength="example",
+        binding_uri="http://hl7.org/fhir/ValueSet/verificationresult-communication-method",
     )
 
     date: fhirtypes.Date = Field(
@@ -336,6 +377,7 @@ class VerificationResultAttestation(backboneelement.BackboneElement):
         element_property=True,
         # note: Listed Resource Type(s) should be allowed as Reference.
         enum_reference_types=["Organization", "Practitioner", "PractitionerRole"],
+        backref="verification_result.attestation_onBehalfOf",
     )
 
     proxyIdentityCertificate: fhirtypes.String = Field(
@@ -403,6 +445,7 @@ class VerificationResultAttestation(backboneelement.BackboneElement):
         element_property=True,
         # note: Listed Resource Type(s) should be allowed as Reference.
         enum_reference_types=["Practitioner", "PractitionerRole", "Organization"],
+        backref="verification_result.attestation_who",
     )
 
     @classmethod
@@ -442,19 +485,35 @@ class VerificationResultPrimarySource(backboneelement.BackboneElement):
         title="yes | no | undetermined",
         description=(
             "Ability of the primary source to push updates/alerts (yes; no; "
-            "undetermined)."
+            "undetermined). See http://hl7.org/fhir/ValueSet/verificationresult-"
+            "can-push-updates"
         ),
         # if property is element of this resource.
         element_property=True,
+        # note: Enum values can be used in validation,
+        # but use in your own responsibilities, read official FHIR documentation.
+        enum_values=["yes", "no", "undetermined"],
+        # valueset binding
+        binding_description="Ability of the primary source to push updates/alerts.",
+        binding_strength="preferred",
+        binding_uri="http://hl7.org/fhir/ValueSet/verificationresult-can-push-updates",
     )
 
     communicationMethod: typing.List[fhirtypes.CodeableConceptType] = Field(
         None,
         alias="communicationMethod",
         title="Method for exchanging information with the primary source",
-        description="Method for communicating with the primary source (manual; API; Push).",
+        description=(
+            "Method for communicating with the primary source (manual; API; Push). "
+            "See http://hl7.org/fhir/ValueSet/verificationresult-communication-"
+            "method"
+        ),
         # if property is element of this resource.
         element_property=True,
+        # valueset binding
+        binding_description="Method for communicating with the data source (manual; API; Push).",
+        binding_strength="example",
+        binding_uri="http://hl7.org/fhir/ValueSet/verificationresult-communication-method",
     )
 
     pushTypeAvailable: typing.List[fhirtypes.CodeableConceptType] = Field(
@@ -463,10 +522,18 @@ class VerificationResultPrimarySource(backboneelement.BackboneElement):
         title="specific | any | source",
         description=(
             "Type of alerts/updates the primary source can send (specific requested"
-            " changes; any changes; as defined by source)."
+            " changes; any changes; as defined by source). See "
+            "http://hl7.org/fhir/ValueSet/verificationresult-push-type-available"
         ),
         # if property is element of this resource.
         element_property=True,
+        # note: Enum values can be used in validation,
+        # but use in your own responsibilities, read official FHIR documentation.
+        enum_values=["specific", "any", "source"],
+        # valueset binding
+        binding_description="Type of alerts/updates the primary source can send.",
+        binding_strength="preferred",
+        binding_uri="http://hl7.org/fhir/ValueSet/verificationresult-push-type-available",
     )
 
     type: typing.List[fhirtypes.CodeableConceptType] = Field(
@@ -477,9 +544,15 @@ class VerificationResultPrimarySource(backboneelement.BackboneElement):
             "Education; Postal Service; Relationship owner; Registration Authority;"
             " legal source; issuing source; authoritative source)"
         ),
-        description=None,
+        description=(
+            "See http://hl7.org/fhir/ValueSet/verificationresult-primary-source-" "type"
+        ),
         # if property is element of this resource.
         element_property=True,
+        # valueset binding
+        binding_description="Type of the validation primary source.",
+        binding_strength="example",
+        binding_uri="http://hl7.org/fhir/ValueSet/verificationresult-primary-source-type",
     )
 
     validationDate: fhirtypes.DateTime = Field(
@@ -500,10 +573,18 @@ class VerificationResultPrimarySource(backboneelement.BackboneElement):
         title="successful | failed | unknown",
         description=(
             "Status of the validation of the target against the primary source "
-            "(successful; failed; unknown)."
+            "(successful; failed; unknown). See "
+            "http://hl7.org/fhir/ValueSet/verificationresult-validation-status"
         ),
         # if property is element of this resource.
         element_property=True,
+        # note: Enum values can be used in validation,
+        # but use in your own responsibilities, read official FHIR documentation.
+        enum_values=["successful", "failed", "unknown"],
+        # valueset binding
+        binding_description="Status of the validation of the target against the primary source.",
+        binding_strength="preferred",
+        binding_uri="http://hl7.org/fhir/ValueSet/verificationresult-validation-status",
     )
 
     who: fhirtypes.ReferenceType = Field(
@@ -515,6 +596,7 @@ class VerificationResultPrimarySource(backboneelement.BackboneElement):
         element_property=True,
         # note: Listed Resource Type(s) should be allowed as Reference.
         enum_reference_types=["Organization", "Practitioner", "PractitionerRole"],
+        backref="verification_result.primary_source_who",
     )
 
     @classmethod
@@ -582,6 +664,7 @@ class VerificationResultValidator(backboneelement.BackboneElement):
         element_property=True,
         # note: Listed Resource Type(s) should be allowed as Reference.
         enum_reference_types=["Organization"],
+        backref="verification_result.validator_organization",
     )
 
     @classmethod

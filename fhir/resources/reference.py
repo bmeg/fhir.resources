@@ -88,10 +88,14 @@ class Reference(element.Element):
             'http://hl7.org/fhir/StructureDefinition/ e.g. "Patient" is a reference'
             " to http://hl7.org/fhir/StructureDefinition/Patient. Absolute URLs are"
             " only allowed for logical models (and can only be used in references "
-            "in logical models, not resources)."
+            "in logical models, not resources). See "
+            "http://hl7.org/fhir/ValueSet/resource-types"
         ),
         # if property is element of this resource.
         element_property=True,
+        # valueset binding
+        binding_strength="extensible",
+        binding_uri="http://hl7.org/fhir/ValueSet/resource-types",
     )
     type__ext: fhirtypes.FHIRPrimitiveExtensionType = Field(
         None, alias="_type", title="Extension field for ``type``."

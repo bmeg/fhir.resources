@@ -49,6 +49,7 @@ class Device(domainresource.DomainResource):
         element_property=True,
         # note: Listed Resource Type(s) should be allowed as Reference.
         enum_reference_types=["DeviceDefinition"],
+        backref="device_definition",
     )
 
     deviceName: typing.List[fhirtypes.DeviceDeviceNameType] = Field(
@@ -119,6 +120,7 @@ class Device(domainresource.DomainResource):
         element_property=True,
         # note: Listed Resource Type(s) should be allowed as Reference.
         enum_reference_types=["Location"],
+        backref="device_location",
     )
 
     lotNumber: fhirtypes.String = Field(
@@ -193,6 +195,7 @@ class Device(domainresource.DomainResource):
         element_property=True,
         # note: Listed Resource Type(s) should be allowed as Reference.
         enum_reference_types=["Organization"],
+        backref="device_owner",
     )
 
     parent: fhirtypes.ReferenceType = Field(
@@ -204,6 +207,7 @@ class Device(domainresource.DomainResource):
         element_property=True,
         # note: Listed Resource Type(s) should be allowed as Reference.
         enum_reference_types=["Device"],
+        backref="device_parent",
     )
 
     partNumber: fhirtypes.String = Field(
@@ -227,6 +231,7 @@ class Device(domainresource.DomainResource):
         element_property=True,
         # note: Listed Resource Type(s) should be allowed as Reference.
         enum_reference_types=["Patient"],
+        backref="device_patient",
     )
 
     property: typing.List[fhirtypes.DevicePropertyType] = Field(
@@ -285,12 +290,20 @@ class Device(domainresource.DomainResource):
         None,
         alias="status",
         title="active | inactive | entered-in-error | unknown",
-        description="Status of the Device availability.",
+        description=(
+            "Status of the Device availability. See "
+            "http://hl7.org/fhir/ValueSet/device-status"
+        ),
         # if property is element of this resource.
         element_property=True,
         # note: Enum values can be used in validation,
         # but use in your own responsibilities, read official FHIR documentation.
         enum_values=["active", "inactive", "entered-in-error", "unknown"],
+        # valueset binding
+        binding_description="The availability status of the device.",
+        binding_strength="required",
+        binding_uri="http://hl7.org/fhir/ValueSet/device-status",
+        binding_version="4.3.0",
     )
     status__ext: fhirtypes.FHIRPrimitiveExtensionType = Field(
         None, alias="_status", title="Extension field for ``status``."
@@ -303,18 +316,41 @@ class Device(domainresource.DomainResource):
             "online | paused | standby | offline | not-ready | transduc-discon | "
             "hw-discon | off"
         ),
-        description="Reason for the dtatus of the Device availability.",
+        description=(
+            "Reason for the dtatus of the Device availability. See "
+            "http://hl7.org/fhir/ValueSet/device-status-reason"
+        ),
         # if property is element of this resource.
         element_property=True,
+        # note: Enum values can be used in validation,
+        # but use in your own responsibilities, read official FHIR documentation.
+        enum_values=[
+            "online",
+            "paused",
+            "standby",
+            "offline",
+            "not-ready",
+            "transduc-discon",
+            "hw-discon",
+            "off",
+        ],
+        # valueset binding
+        binding_description="The availability status reason of the device.",
+        binding_strength="extensible",
+        binding_uri="http://hl7.org/fhir/ValueSet/device-status-reason",
     )
 
     type: fhirtypes.CodeableConceptType = Field(
         None,
         alias="type",
         title="The kind or type of device",
-        description=None,
+        description="See http://hl7.org/fhir/ValueSet/device-type",
         # if property is element of this resource.
         element_property=True,
+        # valueset binding
+        binding_description="Codes to identify medical devices.",
+        binding_strength="example",
+        binding_uri="http://hl7.org/fhir/ValueSet/device-type",
     )
 
     udiCarrier: typing.List[fhirtypes.DeviceUdiCarrierType] = Field(
@@ -435,7 +471,8 @@ class DeviceDeviceName(backboneelement.BackboneElement):
         ),
         description=(
             "The type of deviceName. UDILabelName | UserFriendlyName | "
-            "PatientReportedName | ManufactureDeviceName | ModelName."
+            "PatientReportedName | ManufactureDeviceName | ModelName. See "
+            "http://hl7.org/fhir/ValueSet/device-nametype"
         ),
         # if property is element of this resource.
         element_property=True,
@@ -450,6 +487,11 @@ class DeviceDeviceName(backboneelement.BackboneElement):
             "model-name",
             "other",
         ],
+        # valueset binding
+        binding_description="The type of name the device is referred by.",
+        binding_strength="required",
+        binding_uri="http://hl7.org/fhir/ValueSet/device-nametype",
+        binding_version="4.3.0",
     )
     type__ext: fhirtypes.FHIRPrimitiveExtensionType = Field(
         None, alias="_type", title="Extension field for ``type``."
@@ -689,12 +731,20 @@ class DeviceUdiCarrier(backboneelement.BackboneElement):
         None,
         alias="entryType",
         title="barcode | rfid | manual +",
-        description="A coded entry to indicate how the data was entered.",
+        description=(
+            "A coded entry to indicate how the data was entered. See "
+            "http://hl7.org/fhir/ValueSet/udi-entry-type"
+        ),
         # if property is element of this resource.
         element_property=True,
         # note: Enum values can be used in validation,
         # but use in your own responsibilities, read official FHIR documentation.
         enum_values=["barcode", "rfid", "manual", "+"],
+        # valueset binding
+        binding_description="Codes to identify how UDI data was entered.",
+        binding_strength="required",
+        binding_uri="http://hl7.org/fhir/ValueSet/udi-entry-type",
+        binding_version="4.3.0",
     )
     entryType__ext: fhirtypes.FHIRPrimitiveExtensionType = Field(
         None, alias="_entryType", title="Extension field for ``entryType``."

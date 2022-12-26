@@ -32,9 +32,12 @@ class Slot(domainresource.DomainResource):
             "The style of appointment or patient that may be booked in the slot "
             "(not service type)"
         ),
-        description=None,
+        description="See http://terminology.hl7.org/ValueSet/v2-0276",
         # if property is element of this resource.
         element_property=True,
+        # valueset binding
+        binding_strength="preferred",
+        binding_uri="http://terminology.hl7.org/ValueSet/v2-0276",
     )
 
     comment: fhirtypes.String = Field(
@@ -101,6 +104,7 @@ class Slot(domainresource.DomainResource):
         element_property=True,
         # note: Listed Resource Type(s) should be allowed as Reference.
         enum_reference_types=["Schedule"],
+        backref="slot_schedule",
     )
 
     serviceCategory: typing.List[fhirtypes.CodeableConceptType] = Field(
@@ -110,9 +114,12 @@ class Slot(domainresource.DomainResource):
             "A broad categorization of the service that is to be performed during "
             "this appointment"
         ),
-        description=None,
+        description="See http://hl7.org/fhir/ValueSet/service-category",
         # if property is element of this resource.
         element_property=True,
+        # valueset binding
+        binding_strength="example",
+        binding_uri="http://hl7.org/fhir/ValueSet/service-category",
     )
 
     serviceType: typing.List[fhirtypes.CodeableConceptType] = Field(
@@ -124,9 +131,12 @@ class Slot(domainresource.DomainResource):
             " than the location itself). If provided then this overrides the value "
             "provided on the availability resource"
         ),
-        description=None,
+        description="See http://hl7.org/fhir/ValueSet/service-type",
         # if property is element of this resource.
         element_property=True,
+        # valueset binding
+        binding_strength="example",
+        binding_uri="http://hl7.org/fhir/ValueSet/service-type",
     )
 
     specialty: typing.List[fhirtypes.CodeableConceptType] = Field(
@@ -136,9 +146,13 @@ class Slot(domainresource.DomainResource):
             "The specialty of a practitioner that would be required to perform the "
             "service requested in this appointment"
         ),
-        description=None,
+        description="See http://hl7.org/fhir/ValueSet/c80-practice-codes",
         # if property is element of this resource.
         element_property=True,
+        # valueset binding
+        binding_description="Additional details about where the content was created (e.g. clinical specialty).",
+        binding_strength="preferred",
+        binding_uri="http://hl7.org/fhir/ValueSet/c80-practice-codes",
     )
 
     start: fhirtypes.Instant = Field(
@@ -158,7 +172,7 @@ class Slot(domainresource.DomainResource):
         None,
         alias="status",
         title="busy | free | busy-unavailable | busy-tentative | entered-in-error",
-        description=None,
+        description="See http://hl7.org/fhir/ValueSet/slotstatus",
         # if property is element of this resource.
         element_property=True,
         element_required=True,
@@ -171,6 +185,11 @@ class Slot(domainresource.DomainResource):
             "busy-tentative",
             "entered-in-error",
         ],
+        # valueset binding
+        binding_description="The free/busy status of the slot.",
+        binding_strength="required",
+        binding_uri="http://hl7.org/fhir/ValueSet/slotstatus",
+        binding_version="4.3.0",
     )
     status__ext: fhirtypes.FHIRPrimitiveExtensionType = Field(
         None, alias="_status", title="Extension field for ``status``."

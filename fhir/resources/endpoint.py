@@ -49,10 +49,14 @@ class Endpoint(domainresource.DomainResource):
         description=(
             "A coded value that represents the technical details of the usage of "
             "this endpoint, such as what WSDLs should be used in what way. (e.g. "
-            "XDS.b/DICOM/cds-hook)."
+            "XDS.b/DICOM/cds-hook). See http://hl7.org/fhir/ValueSet/endpoint-"
+            "connection-type"
         ),
         # if property is element of this resource.
         element_property=True,
+        # valueset binding
+        binding_strength="extensible",
+        binding_uri="http://hl7.org/fhir/ValueSet/endpoint-connection-type",
     )
 
     contact: typing.List[fhirtypes.ContactPointType] = Field(
@@ -107,6 +111,7 @@ class Endpoint(domainresource.DomainResource):
         element_property=True,
         # note: Listed Resource Type(s) should be allowed as Reference.
         enum_reference_types=["Organization"],
+        backref="endpoint_managingOrganization",
     )
 
     name: fhirtypes.String = Field(
@@ -132,10 +137,15 @@ class Endpoint(domainresource.DomainResource):
             "The mime type to send the payload in - e.g. application/fhir+xml, "
             "application/fhir+json. If the mime type is not specified, then the "
             "sender could send any content (including no content depending on the "
-            "connectionType)."
+            "connectionType). See http://hl7.org/fhir/ValueSet/mimetypes"
         ),
         # if property is element of this resource.
         element_property=True,
+        # valueset binding
+        binding_description="BCP 13 (RFCs 2045, 2046, 2047, 4288, 4289 and 2049)",
+        binding_strength="required",
+        binding_uri="http://hl7.org/fhir/ValueSet/mimetypes",
+        binding_version="4.3.0",
     )
     payloadMimeType__ext: typing.List[
         typing.Union[fhirtypes.FHIRPrimitiveExtensionType, None]
@@ -152,10 +162,14 @@ class Endpoint(domainresource.DomainResource):
         ),
         description=(
             "The payload type describes the acceptable content that can be "
-            "communicated on the endpoint."
+            "communicated on the endpoint. See "
+            "http://hl7.org/fhir/ValueSet/endpoint-payload-type"
         ),
         # if property is element of this resource.
         element_property=True,
+        # valueset binding
+        binding_strength="example",
+        binding_uri="http://hl7.org/fhir/ValueSet/endpoint-payload-type",
     )
 
     period: fhirtypes.PeriodType = Field(
@@ -171,13 +185,21 @@ class Endpoint(domainresource.DomainResource):
         None,
         alias="status",
         title="active | suspended | error | off | entered-in-error | test",
-        description="active | suspended | error | off | test.",
+        description=(
+            "active | suspended | error | off | test. See "
+            "http://hl7.org/fhir/ValueSet/endpoint-status"
+        ),
         # if property is element of this resource.
         element_property=True,
         element_required=True,
         # note: Enum values can be used in validation,
         # but use in your own responsibilities, read official FHIR documentation.
         enum_values=["active", "suspended", "error", "off", "entered-in-error", "test"],
+        # valueset binding
+        binding_description="The status of the endpoint.",
+        binding_strength="required",
+        binding_uri="http://hl7.org/fhir/ValueSet/endpoint-status",
+        binding_version="4.3.0",
     )
     status__ext: fhirtypes.FHIRPrimitiveExtensionType = Field(
         None, alias="_status", title="Extension field for ``status``."

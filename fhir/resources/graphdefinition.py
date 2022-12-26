@@ -94,10 +94,14 @@ class GraphDefinition(domainresource.DomainResource):
         title="Intended jurisdiction for graph definition (if applicable)",
         description=(
             "A legal or geographic region in which the graph definition is intended"
-            " to be used."
+            " to be used. See http://hl7.org/fhir/ValueSet/jurisdiction"
         ),
         # if property is element of this resource.
         element_property=True,
+        # valueset binding
+        binding_description="Countries and regions within which this artifact is targeted for use.",
+        binding_strength="extensible",
+        binding_uri="http://hl7.org/fhir/ValueSet/jurisdiction",
     )
 
     link: typing.List[fhirtypes.GraphDefinitionLinkType] = Field(
@@ -135,6 +139,7 @@ class GraphDefinition(domainresource.DomainResource):
         element_property=True,
         # note: Listed Resource Type(s) should be allowed as Reference.
         enum_reference_types=["StructureDefinition"],
+        backref="graph_definition_profile",
     )
     profile__ext: fhirtypes.FHIRPrimitiveExtensionType = Field(
         None, alias="_profile", title="Extension field for ``profile``."
@@ -174,10 +179,18 @@ class GraphDefinition(domainresource.DomainResource):
         None,
         alias="start",
         title="Type of resource at which the graph starts",
-        description="The type of FHIR resource at which instances of this graph start.",
+        description=(
+            "The type of FHIR resource at which instances of this graph start. See "
+            "http://hl7.org/fhir/ValueSet/resource-types"
+        ),
         # if property is element of this resource.
         element_property=True,
         element_required=True,
+        # valueset binding
+        binding_description="One of the resource types defined as part of this version of FHIR.",
+        binding_strength="required",
+        binding_uri="http://hl7.org/fhir/ValueSet/resource-types",
+        binding_version="4.3.0",
     )
     start__ext: fhirtypes.FHIRPrimitiveExtensionType = Field(
         None, alias="_start", title="Extension field for ``start``."
@@ -189,7 +202,7 @@ class GraphDefinition(domainresource.DomainResource):
         title="draft | active | retired | unknown",
         description=(
             "The status of this graph definition. Enables tracking the life-cycle "
-            "of the content."
+            "of the content. See http://hl7.org/fhir/ValueSet/publication-status"
         ),
         # if property is element of this resource.
         element_property=True,
@@ -197,6 +210,11 @@ class GraphDefinition(domainresource.DomainResource):
         # note: Enum values can be used in validation,
         # but use in your own responsibilities, read official FHIR documentation.
         enum_values=["draft", "active", "retired", "unknown"],
+        # valueset binding
+        binding_description="The lifecycle status of an artifact.",
+        binding_strength="required",
+        binding_uri="http://hl7.org/fhir/ValueSet/publication-status",
+        binding_version="4.3.0",
     )
     status__ext: fhirtypes.FHIRPrimitiveExtensionType = Field(
         None, alias="_status", title="Extension field for ``status``."
@@ -511,6 +529,7 @@ class GraphDefinitionLinkTarget(backboneelement.BackboneElement):
         element_property=True,
         # note: Listed Resource Type(s) should be allowed as Reference.
         enum_reference_types=["StructureDefinition"],
+        backref="graph_definition.link.target_profile",
     )
     profile__ext: fhirtypes.FHIRPrimitiveExtensionType = Field(
         None, alias="_profile", title="Extension field for ``profile``."
@@ -520,10 +539,15 @@ class GraphDefinitionLinkTarget(backboneelement.BackboneElement):
         None,
         alias="type",
         title="Type of resource this link refers to",
-        description=None,
+        description="See http://hl7.org/fhir/ValueSet/resource-types",
         # if property is element of this resource.
         element_property=True,
         element_required=True,
+        # valueset binding
+        binding_description="One of the resource types defined as part of this version of FHIR.",
+        binding_strength="required",
+        binding_uri="http://hl7.org/fhir/ValueSet/resource-types",
+        binding_version="4.3.0",
     )
     type__ext: fhirtypes.FHIRPrimitiveExtensionType = Field(
         None, alias="_type", title="Extension field for ``type``."
@@ -620,13 +644,21 @@ class GraphDefinitionLinkTargetCompartment(backboneelement.BackboneElement):
         None,
         alias="code",
         title="Patient | Encounter | RelatedPerson | Practitioner | Device",
-        description="Identifies the compartment.",
+        description=(
+            "Identifies the compartment. See "
+            "http://hl7.org/fhir/ValueSet/compartment-type"
+        ),
         # if property is element of this resource.
         element_property=True,
         element_required=True,
         # note: Enum values can be used in validation,
         # but use in your own responsibilities, read official FHIR documentation.
         enum_values=["Patient", "Encounter", "RelatedPerson", "Practitioner", "Device"],
+        # valueset binding
+        binding_description="Identifies a compartment.",
+        binding_strength="required",
+        binding_uri="http://hl7.org/fhir/ValueSet/compartment-type",
+        binding_version="4.3.0",
     )
     code__ext: fhirtypes.FHIRPrimitiveExtensionType = Field(
         None, alias="_code", title="Extension field for ``code``."
@@ -660,13 +692,21 @@ class GraphDefinitionLinkTargetCompartment(backboneelement.BackboneElement):
         None,
         alias="rule",
         title="identical | matching | different | custom",
-        description="identical | matching | different | no-rule | custom.",
+        description=(
+            "identical | matching | different | no-rule | custom. See "
+            "http://hl7.org/fhir/ValueSet/graph-compartment-rule"
+        ),
         # if property is element of this resource.
         element_property=True,
         element_required=True,
         # note: Enum values can be used in validation,
         # but use in your own responsibilities, read official FHIR documentation.
         enum_values=["identical", "matching", "different", "custom"],
+        # valueset binding
+        binding_description="How a compartment must be linked.",
+        binding_strength="required",
+        binding_uri="http://hl7.org/fhir/ValueSet/graph-compartment-rule",
+        binding_version="4.3.0",
     )
     rule__ext: fhirtypes.FHIRPrimitiveExtensionType = Field(
         None, alias="_rule", title="Extension field for ``rule``."
@@ -679,7 +719,8 @@ class GraphDefinitionLinkTargetCompartment(backboneelement.BackboneElement):
         description=(
             "Defines how the compartment rule is used - whether it it is used to "
             "test whether resources are subject to the rule, or whether it is a "
-            "rule that must be followed."
+            "rule that must be followed. See http://hl7.org/fhir/ValueSet/graph-"
+            "compartment-use"
         ),
         # if property is element of this resource.
         element_property=True,
@@ -687,6 +728,11 @@ class GraphDefinitionLinkTargetCompartment(backboneelement.BackboneElement):
         # note: Enum values can be used in validation,
         # but use in your own responsibilities, read official FHIR documentation.
         enum_values=["condition", "requirement"],
+        # valueset binding
+        binding_description="Defines how a compartment rule is used.",
+        binding_strength="required",
+        binding_uri="http://hl7.org/fhir/ValueSet/graph-compartment-use",
+        binding_version="4.3.0",
     )
     use__ext: fhirtypes.FHIRPrimitiveExtensionType = Field(
         None, alias="_use", title="Extension field for ``use``."

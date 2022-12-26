@@ -39,18 +39,27 @@ class AllergyIntolerance(domainresource.DomainResource):
             "Practitioner",
             "PractitionerRole",
         ],
+        backref="allergy_intolerance_asserter",
     )
 
     category: typing.List[typing.Optional[fhirtypes.Code]] = Field(
         None,
         alias="category",
         title="food | medication | environment | biologic",
-        description="Category of the identified substance.",
+        description=(
+            "Category of the identified substance. See "
+            "http://hl7.org/fhir/ValueSet/allergy-intolerance-category"
+        ),
         # if property is element of this resource.
         element_property=True,
         # note: Enum values can be used in validation,
         # but use in your own responsibilities, read official FHIR documentation.
         enum_values=["food", "medication", "environment", "biologic"],
+        # valueset binding
+        binding_description="Category of an identified substance associated with allergies or intolerances.",
+        binding_strength="required",
+        binding_uri="http://hl7.org/fhir/ValueSet/allergy-intolerance-category",
+        binding_version="4.3.0",
     )
     category__ext: typing.List[
         typing.Union[fhirtypes.FHIRPrimitiveExtensionType, None]
@@ -60,9 +69,20 @@ class AllergyIntolerance(domainresource.DomainResource):
         None,
         alias="clinicalStatus",
         title="active | inactive | resolved",
-        description="The clinical status of the allergy or intolerance.",
+        description=(
+            "The clinical status of the allergy or intolerance. See "
+            "http://hl7.org/fhir/ValueSet/allergyintolerance-clinical"
+        ),
         # if property is element of this resource.
         element_property=True,
+        # note: Enum values can be used in validation,
+        # but use in your own responsibilities, read official FHIR documentation.
+        enum_values=["active", "inactive", "resolved"],
+        # valueset binding
+        binding_description="The clinical status of the allergy or intolerance.",
+        binding_strength="required",
+        binding_uri="http://hl7.org/fhir/ValueSet/allergyintolerance-clinical",
+        binding_version="4.3.0",
     )
 
     code: fhirtypes.CodeableConceptType = Field(
@@ -86,10 +106,15 @@ class AllergyIntolerance(domainresource.DomainResource):
             "receiving system is unable to confirm that "
             "AllergyIntolerance.reaction.substance falls within the semantic scope "
             "of AllergyIntolerance.code, then the receiving system should ignore "
-            "AllergyIntolerance.reaction.substance."
+            "AllergyIntolerance.reaction.substance. See "
+            "http://hl7.org/fhir/ValueSet/allergyintolerance-code"
         ),
         # if property is element of this resource.
         element_property=True,
+        # valueset binding
+        binding_description="Type of the substance/product, allergy or intolerance condition, or negation/exclusion codes for reporting no known allergies.",
+        binding_strength="example",
+        binding_uri="http://hl7.org/fhir/ValueSet/allergyintolerance-code",
     )
 
     criticality: fhirtypes.Code = Field(
@@ -98,13 +123,19 @@ class AllergyIntolerance(domainresource.DomainResource):
         title="low | high | unable-to-assess",
         description=(
             "Estimate of the potential clinical harm, or seriousness, of the "
-            "reaction to the identified substance."
+            "reaction to the identified substance. See "
+            "http://hl7.org/fhir/ValueSet/allergy-intolerance-criticality"
         ),
         # if property is element of this resource.
         element_property=True,
         # note: Enum values can be used in validation,
         # but use in your own responsibilities, read official FHIR documentation.
         enum_values=["low", "high", "unable-to-assess"],
+        # valueset binding
+        binding_description="Estimate of the potential clinical harm, or seriousness, of a reaction to an identified substance.",
+        binding_strength="required",
+        binding_uri="http://hl7.org/fhir/ValueSet/allergy-intolerance-criticality",
+        binding_version="4.3.0",
     )
     criticality__ext: fhirtypes.FHIRPrimitiveExtensionType = Field(
         None, alias="_criticality", title="Extension field for ``criticality``."
@@ -119,6 +150,7 @@ class AllergyIntolerance(domainresource.DomainResource):
         element_property=True,
         # note: Listed Resource Type(s) should be allowed as Reference.
         enum_reference_types=["Encounter"],
+        backref="allergy_intolerance_encounter",
     )
 
     identifier: typing.List[fhirtypes.IdentifierType] = Field(
@@ -251,6 +283,7 @@ class AllergyIntolerance(domainresource.DomainResource):
         element_property=True,
         # note: Listed Resource Type(s) should be allowed as Reference.
         enum_reference_types=["Patient"],
+        backref="allergy_intolerance_patient",
     )
 
     reaction: typing.List[fhirtypes.AllergyIntoleranceReactionType] = Field(
@@ -298,6 +331,7 @@ class AllergyIntolerance(domainresource.DomainResource):
             "Patient",
             "RelatedPerson",
         ],
+        backref="allergy_intolerance_recorder",
     )
 
     type: fhirtypes.Code = Field(
@@ -306,13 +340,19 @@ class AllergyIntolerance(domainresource.DomainResource):
         title="allergy | intolerance - Underlying mechanism (if known)",
         description=(
             "Identification of the underlying physiological mechanism for the "
-            "reaction risk."
+            "reaction risk. See http://hl7.org/fhir/ValueSet/allergy-intolerance-"
+            "type"
         ),
         # if property is element of this resource.
         element_property=True,
         # note: Enum values can be used in validation,
         # but use in your own responsibilities, read official FHIR documentation.
         enum_values=["allergy", "intolerance"],
+        # valueset binding
+        binding_description="Identification of the underlying physiological mechanism for a Reaction Risk.",
+        binding_strength="required",
+        binding_uri="http://hl7.org/fhir/ValueSet/allergy-intolerance-type",
+        binding_version="4.3.0",
     )
     type__ext: fhirtypes.FHIRPrimitiveExtensionType = Field(
         None, alias="_type", title="Extension field for ``type``."
@@ -325,10 +365,19 @@ class AllergyIntolerance(domainresource.DomainResource):
         description=(
             "Assertion about certainty associated with the propensity, or potential"
             " risk, of a reaction to the identified substance (including "
-            "pharmaceutical product)."
+            "pharmaceutical product). See "
+            "http://hl7.org/fhir/ValueSet/allergyintolerance-verification"
         ),
         # if property is element of this resource.
         element_property=True,
+        # note: Enum values can be used in validation,
+        # but use in your own responsibilities, read official FHIR documentation.
+        enum_values=["unconfirmed", "confirmed", "refuted", "entered-in-error"],
+        # valueset binding
+        binding_description="Assertion about certainty associated with a propensity, or potential risk, of a reaction to the identified substance.",
+        binding_strength="required",
+        binding_uri="http://hl7.org/fhir/ValueSet/allergyintolerance-verification",
+        binding_version="4.3.0",
     )
 
     @classmethod
@@ -448,10 +497,14 @@ class AllergyIntoleranceReaction(backboneelement.BackboneElement):
         title="How the subject was exposed to the substance",
         description=(
             "Identification of the route by which the subject was exposed to the "
-            "substance."
+            "substance. See http://hl7.org/fhir/ValueSet/route-codes"
         ),
         # if property is element of this resource.
         element_property=True,
+        # valueset binding
+        binding_description="A coded concept describing the route or physiological path of administration of a therapeutic agent into or onto the body of a subject.",
+        binding_strength="example",
+        binding_uri="http://hl7.org/fhir/ValueSet/route-codes",
     )
 
     manifestation: typing.List[fhirtypes.CodeableConceptType] = Field(
@@ -460,10 +513,15 @@ class AllergyIntoleranceReaction(backboneelement.BackboneElement):
         title="Clinical symptoms/signs associated with the Event",
         description=(
             "Clinical symptoms and/or signs that are observed or associated with "
-            "the adverse reaction event."
+            "the adverse reaction event. See http://hl7.org/fhir/ValueSet/clinical-"
+            "findings"
         ),
         # if property is element of this resource.
         element_property=True,
+        # valueset binding
+        binding_description="Clinical symptoms and/or signs that are observed or associated with an Adverse Reaction Event.",
+        binding_strength="example",
+        binding_uri="http://hl7.org/fhir/ValueSet/clinical-findings",
     )
 
     note: typing.List[fhirtypes.AnnotationType] = Field(
@@ -496,13 +554,19 @@ class AllergyIntoleranceReaction(backboneelement.BackboneElement):
         title="mild | moderate | severe (of event as a whole)",
         description=(
             "Clinical assessment of the severity of the reaction event as a whole, "
-            "potentially considering multiple different manifestations."
+            "potentially considering multiple different manifestations. See "
+            "http://hl7.org/fhir/ValueSet/reaction-event-severity"
         ),
         # if property is element of this resource.
         element_property=True,
         # note: Enum values can be used in validation,
         # but use in your own responsibilities, read official FHIR documentation.
         enum_values=["mild", "moderate", "severe"],
+        # valueset binding
+        binding_description="Clinical assessment of the severity of a reaction event as a whole, potentially considering multiple different manifestations.",
+        binding_strength="required",
+        binding_uri="http://hl7.org/fhir/ValueSet/reaction-event-severity",
+        binding_version="4.3.0",
     )
     severity__ext: fhirtypes.FHIRPrimitiveExtensionType = Field(
         None, alias="_severity", title="Extension field for ``severity``."
@@ -526,10 +590,15 @@ class AllergyIntoleranceReaction(backboneelement.BackboneElement):
             "ignore the 'reaction.substance'.  If a receiving system is unable to "
             "confirm that AllergyIntolerance.reaction.substance falls within the "
             "semantic scope of AllergyIntolerance.code, then the receiving system "
-            "should ignore AllergyIntolerance.reaction.substance."
+            "should ignore AllergyIntolerance.reaction.substance. See "
+            "http://hl7.org/fhir/ValueSet/substance-code"
         ),
         # if property is element of this resource.
         element_property=True,
+        # valueset binding
+        binding_description="Codes defining the type of the substance (including pharmaceutical products).",
+        binding_strength="example",
+        binding_uri="http://hl7.org/fhir/ValueSet/substance-code",
     )
 
     @classmethod

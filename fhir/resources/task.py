@@ -54,6 +54,7 @@ class Task(domainresource.DomainResource):
         element_property=True,
         # note: Listed Resource Type(s) should be allowed as Reference.
         enum_reference_types=["Resource"],
+        backref="task_basedOn",
     )
 
     businessStatus: fhirtypes.CodeableConceptType = Field(
@@ -63,15 +64,25 @@ class Task(domainresource.DomainResource):
         description="Contains business-specific nuances of the business state.",
         # if property is element of this resource.
         element_property=True,
+        # valueset binding
+        binding_description='The domain-specific business-contextual sub-state of the task.  For example: "Blood drawn", "IV inserted", "Awaiting physician signature", etc.',
+        binding_strength="example",
     )
 
     code: fhirtypes.CodeableConceptType = Field(
         None,
         alias="code",
         title="Task Type",
-        description="A name or code (or both) briefly describing what the task involves.",
+        description=(
+            "A name or code (or both) briefly describing what the task involves. "
+            "See http://hl7.org/fhir/ValueSet/task-code"
+        ),
         # if property is element of this resource.
         element_property=True,
+        # valueset binding
+        binding_description="Codes to identify what the task involves.  These will typically be specific to a particular workflow.",
+        binding_strength="example",
+        binding_uri="http://hl7.org/fhir/ValueSet/task-code",
     )
 
     description: fhirtypes.String = Field(
@@ -98,6 +109,7 @@ class Task(domainresource.DomainResource):
         element_property=True,
         # note: Listed Resource Type(s) should be allowed as Reference.
         enum_reference_types=["Encounter"],
+        backref="task_encounter",
     )
 
     executionPeriod: fhirtypes.PeriodType = Field(
@@ -125,6 +137,7 @@ class Task(domainresource.DomainResource):
         element_property=True,
         # note: Listed Resource Type(s) should be allowed as Reference.
         enum_reference_types=["Resource"],
+        backref="task_focus",
     )
 
     for_fhir: fhirtypes.ReferenceType = Field(
@@ -139,6 +152,7 @@ class Task(domainresource.DomainResource):
         element_property=True,
         # note: Listed Resource Type(s) should be allowed as Reference.
         enum_reference_types=["Resource"],
+        backref="task_for_fhir",
     )
 
     groupIdentifier: fhirtypes.IdentifierType = Field(
@@ -185,6 +199,7 @@ class Task(domainresource.DomainResource):
         element_property=True,
         # note: Listed Resource Type(s) should be allowed as Reference.
         enum_reference_types=["ActivityDefinition"],
+        backref="task_instantiatesCanonical",
     )
     instantiatesCanonical__ext: fhirtypes.FHIRPrimitiveExtensionType = Field(
         None,
@@ -220,6 +235,7 @@ class Task(domainresource.DomainResource):
         element_property=True,
         # note: Listed Resource Type(s) should be allowed as Reference.
         enum_reference_types=["Coverage", "ClaimResponse"],
+        backref="task_insurance",
     )
 
     intent: fhirtypes.Code = Field(
@@ -232,7 +248,7 @@ class Task(domainresource.DomainResource):
         description=(
             'Indicates the "level" of actionability associated with the Task, i.e. '
             "i+R[9]Cs this a proposed task, a planned task, an actionable task, "
-            "etc."
+            "etc. See http://hl7.org/fhir/ValueSet/task-intent"
         ),
         # if property is element of this resource.
         element_property=True,
@@ -250,6 +266,11 @@ class Task(domainresource.DomainResource):
             "instance-order",
             "option",
         ],
+        # valueset binding
+        binding_description="Distinguishes whether the task is a proposal, plan or full order.",
+        binding_strength="required",
+        binding_uri="http://hl7.org/fhir/ValueSet/task-intent",
+        binding_version="4.3.0",
     )
     intent__ext: fhirtypes.FHIRPrimitiveExtensionType = Field(
         None, alias="_intent", title="Extension field for ``intent``."
@@ -276,6 +297,7 @@ class Task(domainresource.DomainResource):
         element_property=True,
         # note: Listed Resource Type(s) should be allowed as Reference.
         enum_reference_types=["Location"],
+        backref="task_location",
     )
 
     note: typing.List[fhirtypes.AnnotationType] = Field(
@@ -317,6 +339,7 @@ class Task(domainresource.DomainResource):
             "Device",
             "RelatedPerson",
         ],
+        backref="task_owner",
     )
 
     partOf: typing.List[fhirtypes.ReferenceType] = Field(
@@ -328,15 +351,23 @@ class Task(domainresource.DomainResource):
         element_property=True,
         # note: Listed Resource Type(s) should be allowed as Reference.
         enum_reference_types=["Task"],
+        backref="task_partOf",
     )
 
     performerType: typing.List[fhirtypes.CodeableConceptType] = Field(
         None,
         alias="performerType",
         title="Requested performer",
-        description="The kind of participant that should perform the task.",
+        description=(
+            "The kind of participant that should perform the task. See "
+            "http://hl7.org/fhir/ValueSet/performer-role"
+        ),
         # if property is element of this resource.
         element_property=True,
+        # valueset binding
+        binding_description="The type(s) of task performers allowed.",
+        binding_strength="preferred",
+        binding_uri="http://hl7.org/fhir/ValueSet/performer-role",
     )
 
     priority: fhirtypes.Code = Field(
@@ -345,13 +376,18 @@ class Task(domainresource.DomainResource):
         title="routine | urgent | asap | stat",
         description=(
             "Indicates how quickly the Task should be addressed with respect to "
-            "other requests."
+            "other requests. See http://hl7.org/fhir/ValueSet/request-priority"
         ),
         # if property is element of this resource.
         element_property=True,
         # note: Enum values can be used in validation,
         # but use in your own responsibilities, read official FHIR documentation.
         enum_values=["routine", "urgent", "asap", "stat"],
+        # valueset binding
+        binding_description="The priority of a task (may affect service level applied to the task).",
+        binding_strength="required",
+        binding_uri="http://hl7.org/fhir/ValueSet/request-priority",
+        binding_version="4.3.0",
     )
     priority__ext: fhirtypes.FHIRPrimitiveExtensionType = Field(
         None, alias="_priority", title="Extension field for ``priority``."
@@ -364,6 +400,9 @@ class Task(domainresource.DomainResource):
         description="A description or code indicating why this task needs to be performed.",
         # if property is element of this resource.
         element_property=True,
+        # valueset binding
+        binding_description="Indicates why the task is needed.  E.g. Suspended because patient admitted to hospital.",
+        binding_strength="example",
     )
 
     reasonReference: fhirtypes.ReferenceType = Field(
@@ -375,6 +414,7 @@ class Task(domainresource.DomainResource):
         element_property=True,
         # note: Listed Resource Type(s) should be allowed as Reference.
         enum_reference_types=["Resource"],
+        backref="task_reasonReference",
     )
 
     relevantHistory: typing.List[fhirtypes.ReferenceType] = Field(
@@ -390,6 +430,7 @@ class Task(domainresource.DomainResource):
         element_property=True,
         # note: Listed Resource Type(s) should be allowed as Reference.
         enum_reference_types=["Provenance"],
+        backref="task_relevantHistory",
     )
 
     requester: fhirtypes.ReferenceType = Field(
@@ -408,6 +449,7 @@ class Task(domainresource.DomainResource):
             "PractitionerRole",
             "RelatedPerson",
         ],
+        backref="task_requester",
     )
 
     restriction: fhirtypes.TaskRestrictionType = Field(
@@ -428,13 +470,21 @@ class Task(domainresource.DomainResource):
         None,
         alias="status",
         title="draft | requested | received | accepted | +",
-        description="The current status of the task.",
+        description=(
+            "The current status of the task. See http://hl7.org/fhir/ValueSet/task-"
+            "status"
+        ),
         # if property is element of this resource.
         element_property=True,
         element_required=True,
         # note: Enum values can be used in validation,
         # but use in your own responsibilities, read official FHIR documentation.
         enum_values=["draft", "requested", "received", "accepted", "+"],
+        # valueset binding
+        binding_description="The current status of the task.",
+        binding_strength="required",
+        binding_uri="http://hl7.org/fhir/ValueSet/task-status",
+        binding_version="4.3.0",
     )
     status__ext: fhirtypes.FHIRPrimitiveExtensionType = Field(
         None, alias="_status", title="Extension field for ``status``."
@@ -447,6 +497,9 @@ class Task(domainresource.DomainResource):
         description="An explanation as to why this task is held, failed, was refused, etc.",
         # if property is element of this resource.
         element_property=True,
+        # valueset binding
+        binding_description="Codes to identify the reason for current status.  These will typically be specific to a particular workflow.",
+        binding_strength="example",
     )
 
     @classmethod
@@ -578,6 +631,9 @@ class TaskInput(backboneelement.BackboneElement):
         ),
         # if property is element of this resource.
         element_property=True,
+        # valueset binding
+        binding_description='Codes to identify types of input parameters.  These will typically be specific to a particular workflow.  E.g. "Comparison source", "Applicable consent", "Concomitent Medications", etc.',
+        binding_strength="example",
     )
 
     valueAddress: fhirtypes.AddressType = Field(
@@ -1416,6 +1472,9 @@ class TaskOutput(backboneelement.BackboneElement):
         description="The name of the Output parameter.",
         # if property is element of this resource.
         element_property=True,
+        # valueset binding
+        binding_description='Codes to identify types of input parameters.  These will typically be specific to a particular workflow.  E.g. "Identified issues", "Preliminary results", "Filler order", "Final results", etc.',
+        binding_strength="example",
     )
 
     valueAddress: fhirtypes.AddressType = Field(
@@ -2277,6 +2336,7 @@ class TaskRestriction(backboneelement.BackboneElement):
             "Group",
             "Organization",
         ],
+        backref="task.restriction_recipient",
     )
 
     repetitions: fhirtypes.PositiveInt = Field(

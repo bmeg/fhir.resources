@@ -34,10 +34,15 @@ class AuditEvent(domainresource.DomainResource):
         title="Type of action performed during the event",
         description=(
             "Indicator for type of action performed during the event that generated"
-            " the audit."
+            " the audit. See http://hl7.org/fhir/ValueSet/audit-event-action"
         ),
         # if property is element of this resource.
         element_property=True,
+        # valueset binding
+        binding_description="DICOM Audit Event Action",
+        binding_strength="required",
+        binding_uri="http://hl7.org/fhir/ValueSet/audit-event-action",
+        binding_version="4.3.0",
     )
     action__ext: fhirtypes.FHIRPrimitiveExtensionType = Field(
         None, alias="_action", title="Extension field for ``action``."
@@ -67,9 +72,17 @@ class AuditEvent(domainresource.DomainResource):
         None,
         alias="outcome",
         title="Whether the event succeeded or failed",
-        description="Indicates whether the event succeeded or failed.",
+        description=(
+            "Indicates whether the event succeeded or failed. See "
+            "http://hl7.org/fhir/ValueSet/audit-event-outcome"
+        ),
         # if property is element of this resource.
         element_property=True,
+        # valueset binding
+        binding_description="DICOM Audit Event Outcome",
+        binding_strength="required",
+        binding_uri="http://hl7.org/fhir/ValueSet/audit-event-outcome",
+        binding_version="4.3.0",
     )
     outcome__ext: fhirtypes.FHIRPrimitiveExtensionType = Field(
         None, alias="_outcome", title="Extension field for ``outcome``."
@@ -102,10 +115,14 @@ class AuditEvent(domainresource.DomainResource):
         title="The purposeOfUse of the event",
         description=(
             "The purposeOfUse (reason) that was used during the event being "
-            "recorded."
+            "recorded. See http://terminology.hl7.org/ValueSet/v3-PurposeOfUse"
         ),
         # if property is element of this resource.
         element_property=True,
+        # valueset binding
+        binding_description="The reason the activity took place.",
+        binding_strength="extensible",
+        binding_uri="http://terminology.hl7.org/ValueSet/v3-PurposeOfUse",
     )
 
     recorded: fhirtypes.Instant = Field(
@@ -134,9 +151,16 @@ class AuditEvent(domainresource.DomainResource):
         None,
         alias="subtype",
         title="More specific type/id for the event",
-        description="Identifier for the category of event.",
+        description=(
+            "Identifier for the category of event. See "
+            "http://hl7.org/fhir/ValueSet/audit-event-sub-type"
+        ),
         # if property is element of this resource.
         element_property=True,
+        # valueset binding
+        binding_description="Sub-type of event.",
+        binding_strength="extensible",
+        binding_uri="http://hl7.org/fhir/ValueSet/audit-event-sub-type",
     )
 
     type: fhirtypes.CodingType = Field(
@@ -146,10 +170,15 @@ class AuditEvent(domainresource.DomainResource):
         description=(
             "Identifier for a family of the event.  For example, a menu item, "
             "program, rule, policy, function code, application name or URL. It "
-            "identifies the performed function."
+            "identifies the performed function. See "
+            "http://hl7.org/fhir/ValueSet/audit-event-type"
         ),
         # if property is element of this resource.
         element_property=True,
+        # valueset binding
+        binding_description="Type of event.",
+        binding_strength="extensible",
+        binding_uri="http://hl7.org/fhir/ValueSet/audit-event-type",
     )
 
     @classmethod
@@ -277,6 +306,7 @@ class AuditEventAgent(backboneelement.BackboneElement):
         element_property=True,
         # note: Listed Resource Type(s) should be allowed as Reference.
         enum_reference_types=["Location"],
+        backref="audit_event.agent_location",
     )
 
     media: fhirtypes.CodingType = Field(
@@ -285,10 +315,15 @@ class AuditEventAgent(backboneelement.BackboneElement):
         title="Type of media",
         description=(
             "Type of media involved. Used when the event is about "
-            "exporting/importing onto media."
+            "exporting/importing onto media. See "
+            "http://hl7.org/fhir/ValueSet/dicm-405-mediatype"
         ),
         # if property is element of this resource.
         element_property=True,
+        # valueset binding
+        binding_description="Used when the event is about exporting/importing onto media.",
+        binding_strength="extensible",
+        binding_uri="http://hl7.org/fhir/ValueSet/dicm-405-mediatype",
     )
 
     name: fhirtypes.String = Field(
@@ -338,10 +373,15 @@ class AuditEventAgent(backboneelement.BackboneElement):
         title="Reason given for this user",
         description=(
             "The reason (purpose of use), specific to this agent, that was used "
-            "during the event being recorded."
+            "during the event being recorded. See "
+            "http://terminology.hl7.org/ValueSet/v3-PurposeOfUse"
         ),
         # if property is element of this resource.
         element_property=True,
+        # valueset binding
+        binding_description="The reason the activity took place.",
+        binding_strength="extensible",
+        binding_uri="http://terminology.hl7.org/ValueSet/v3-PurposeOfUse",
     )
 
     requestor: bool = Field(
@@ -367,10 +407,15 @@ class AuditEventAgent(backboneelement.BackboneElement):
         description=(
             "The security role that the user was acting under, that come from local"
             " codes defined by the access control security system (e.g. RBAC, ABAC)"
-            " used in the local context."
+            " used in the local context. See http://hl7.org/fhir/ValueSet/security-"
+            "role-type"
         ),
         # if property is element of this resource.
         element_property=True,
+        # valueset binding
+        binding_description="What security role enabled the agent to participate in the event.",
+        binding_strength="example",
+        binding_uri="http://hl7.org/fhir/ValueSet/security-role-type",
     )
 
     type: fhirtypes.CodeableConceptType = Field(
@@ -379,10 +424,14 @@ class AuditEventAgent(backboneelement.BackboneElement):
         title="How agent participated",
         description=(
             "Specification of the participation type the user plays when performing"
-            " the event."
+            " the event. See http://hl7.org/fhir/ValueSet/participation-role-type"
         ),
         # if property is element of this resource.
         element_property=True,
+        # valueset binding
+        binding_description="The Participation type of the agent to the event.",
+        binding_strength="extensible",
+        binding_uri="http://hl7.org/fhir/ValueSet/participation-role-type",
     )
 
     who: fhirtypes.ReferenceType = Field(
@@ -401,6 +450,7 @@ class AuditEventAgent(backboneelement.BackboneElement):
             "Patient",
             "RelatedPerson",
         ],
+        backref="audit_event.agent_who",
     )
 
     @classmethod
@@ -519,10 +569,15 @@ class AuditEventAgentNetwork(backboneelement.BackboneElement):
         title="The type of network access point",
         description=(
             "An identifier for the type of network access point that originated the"
-            " audit event."
+            " audit event. See http://hl7.org/fhir/ValueSet/network-type"
         ),
         # if property is element of this resource.
         element_property=True,
+        # valueset binding
+        binding_description="DICOM Audit Event Network Type",
+        binding_strength="required",
+        binding_uri="http://hl7.org/fhir/ValueSet/network-type",
+        binding_version="4.3.0",
     )
     type__ext: fhirtypes.FHIRPrimitiveExtensionType = Field(
         None, alias="_type", title="Extension field for ``type``."
@@ -576,9 +631,16 @@ class AuditEventEntity(backboneelement.BackboneElement):
         None,
         alias="lifecycle",
         title="Life-cycle stage for the entity",
-        description="Identifier for the data life-cycle stage for the entity.",
+        description=(
+            "Identifier for the data life-cycle stage for the entity. See "
+            "http://hl7.org/fhir/ValueSet/object-lifecycle-events"
+        ),
         # if property is element of this resource.
         element_property=True,
+        # valueset binding
+        binding_description="Identifier for the data life-cycle stage for the entity.",
+        binding_strength="extensible",
+        binding_uri="http://hl7.org/fhir/ValueSet/object-lifecycle-events",
     )
 
     name: fhirtypes.String = Field(
@@ -611,28 +673,46 @@ class AuditEventEntity(backboneelement.BackboneElement):
         title="What role the entity played",
         description=(
             "Code representing the role the entity played in the event being "
-            "audited."
+            "audited. See http://hl7.org/fhir/ValueSet/object-role"
         ),
         # if property is element of this resource.
         element_property=True,
+        # valueset binding
+        binding_description="DICOM Audit Event Entity Role",
+        binding_strength="extensible",
+        binding_uri="http://hl7.org/fhir/ValueSet/object-role",
     )
 
     securityLabel: typing.List[fhirtypes.CodingType] = Field(
         None,
         alias="securityLabel",
         title="Security labels on the entity",
-        description="Security labels for the identified entity.",
+        description=(
+            "Security labels for the identified entity. See "
+            "http://hl7.org/fhir/ValueSet/security-labels"
+        ),
         # if property is element of this resource.
         element_property=True,
+        # valueset binding
+        binding_description="Security Labels from the Healthcare Privacy and Security Classification System.",
+        binding_strength="extensible",
+        binding_uri="http://hl7.org/fhir/ValueSet/security-labels",
     )
 
     type: fhirtypes.CodingType = Field(
         None,
         alias="type",
         title="Type of entity involved",
-        description="The type of the object that was involved in this audit event.",
+        description=(
+            "The type of the object that was involved in this audit event. See "
+            "http://hl7.org/fhir/ValueSet/audit-entity-type"
+        ),
         # if property is element of this resource.
         element_property=True,
+        # valueset binding
+        binding_description="DICOM Audit Event Entity Type",
+        binding_strength="extensible",
+        binding_uri="http://hl7.org/fhir/ValueSet/audit-entity-type",
     )
 
     what: fhirtypes.ReferenceType = Field(
@@ -647,6 +727,7 @@ class AuditEventEntity(backboneelement.BackboneElement):
         element_property=True,
         # note: Listed Resource Type(s) should be allowed as Reference.
         enum_reference_types=["Resource"],
+        backref="audit_event.entity_what",
     )
 
     @classmethod
@@ -867,6 +948,7 @@ class AuditEventSource(backboneelement.BackboneElement):
             "Patient",
             "RelatedPerson",
         ],
+        backref="audit_event.source_observer",
     )
 
     site: fhirtypes.String = Field(
@@ -889,9 +971,16 @@ class AuditEventSource(backboneelement.BackboneElement):
         None,
         alias="type",
         title="The type of source where event originated",
-        description="Code specifying the type of source where event originated.",
+        description=(
+            "Code specifying the type of source where event originated. See "
+            "http://hl7.org/fhir/ValueSet/audit-source-type"
+        ),
         # if property is element of this resource.
         element_property=True,
+        # valueset binding
+        binding_description="Code specifying the type of system that detected and recorded the event.",
+        binding_strength="extensible",
+        binding_uri="http://hl7.org/fhir/ValueSet/audit-source-type",
     )
 
     @classmethod

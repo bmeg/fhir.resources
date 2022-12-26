@@ -42,15 +42,23 @@ class DetectedIssue(domainresource.DomainResource):
         element_property=True,
         # note: Listed Resource Type(s) should be allowed as Reference.
         enum_reference_types=["Practitioner", "PractitionerRole", "Device"],
+        backref="detected_issue_author",
     )
 
     code: fhirtypes.CodeableConceptType = Field(
         None,
         alias="code",
         title="Issue Category, e.g. drug-drug, duplicate therapy, etc.",
-        description="Identifies the general type of issue identified.",
+        description=(
+            "Identifies the general type of issue identified. See "
+            "http://hl7.org/fhir/ValueSet/detectedissue-category"
+        ),
         # if property is element of this resource.
         element_property=True,
+        # valueset binding
+        binding_description="Codes identifying the general type of detected issue; e.g. Drug-drug interaction, Timing issue, Duplicate therapy, etc.",
+        binding_strength="preferred",
+        binding_uri="http://hl7.org/fhir/ValueSet/detectedissue-category",
     )
 
     detail: fhirtypes.String = Field(
@@ -128,6 +136,7 @@ class DetectedIssue(domainresource.DomainResource):
         element_property=True,
         # note: Listed Resource Type(s) should be allowed as Reference.
         enum_reference_types=["Resource"],
+        backref="detected_issue_implicated",
     )
 
     mitigation: typing.List[fhirtypes.DetectedIssueMitigationType] = Field(
@@ -156,6 +165,7 @@ class DetectedIssue(domainresource.DomainResource):
         element_property=True,
         # note: Listed Resource Type(s) should be allowed as Reference.
         enum_reference_types=["Patient"],
+        backref="detected_issue_patient",
     )
 
     reference: fhirtypes.Uri = Field(
@@ -179,13 +189,19 @@ class DetectedIssue(domainresource.DomainResource):
         title="high | moderate | low",
         description=(
             "Indicates the degree of importance associated with the identified "
-            "issue based on the potential impact on the patient."
+            "issue based on the potential impact on the patient. See "
+            "http://hl7.org/fhir/ValueSet/detectedissue-severity"
         ),
         # if property is element of this resource.
         element_property=True,
         # note: Enum values can be used in validation,
         # but use in your own responsibilities, read official FHIR documentation.
         enum_values=["high", "moderate", "low"],
+        # valueset binding
+        binding_description="Indicates the potential degree of impact of the identified issue on the patient.",
+        binding_strength="required",
+        binding_uri="http://hl7.org/fhir/ValueSet/detectedissue-severity",
+        binding_version="4.3.0",
     )
     severity__ext: fhirtypes.FHIRPrimitiveExtensionType = Field(
         None, alias="_severity", title="Extension field for ``severity``."
@@ -195,13 +211,21 @@ class DetectedIssue(domainresource.DomainResource):
         None,
         alias="status",
         title="registered | preliminary | final | amended +",
-        description="Indicates the status of the detected issue.",
+        description=(
+            "Indicates the status of the detected issue. See "
+            "http://hl7.org/fhir/ValueSet/observation-status"
+        ),
         # if property is element of this resource.
         element_property=True,
         element_required=True,
         # note: Enum values can be used in validation,
         # but use in your own responsibilities, read official FHIR documentation.
         enum_values=["registered", "preliminary", "final", "amended", "+"],
+        # valueset binding
+        binding_description="Indicates the status of the identified issue.",
+        binding_strength="required",
+        binding_uri="http://hl7.org/fhir/ValueSet/observation-status",
+        binding_version="4.3.0",
     )
     status__ext: fhirtypes.FHIRPrimitiveExtensionType = Field(
         None, alias="_status", title="Extension field for ``status``."
@@ -351,9 +375,16 @@ class DetectedIssueEvidence(backboneelement.BackboneElement):
         None,
         alias="code",
         title="Manifestation",
-        description="A manifestation that led to the recording of this detected issue.",
+        description=(
+            "A manifestation that led to the recording of this detected issue. See "
+            "http://hl7.org/fhir/ValueSet/manifestation-or-symptom"
+        ),
         # if property is element of this resource.
         element_property=True,
+        # valueset binding
+        binding_description="Codes that describes the types of evidence for a detected issue.",
+        binding_strength="example",
+        binding_uri="http://hl7.org/fhir/ValueSet/manifestation-or-symptom",
     )
 
     detail: typing.List[fhirtypes.ReferenceType] = Field(
@@ -368,6 +399,7 @@ class DetectedIssueEvidence(backboneelement.BackboneElement):
         element_property=True,
         # note: Listed Resource Type(s) should be allowed as Reference.
         enum_reference_types=["Resource"],
+        backref="detected_issue.evidence_detail",
     )
 
     @classmethod
@@ -400,9 +432,14 @@ class DetectedIssueMitigation(backboneelement.BackboneElement):
         description=(
             "Describes the action that was taken or the observation that was made "
             "that reduces/eliminates the risk associated with the identified issue."
+            " See http://hl7.org/fhir/ValueSet/detectedissue-mitigation-action"
         ),
         # if property is element of this resource.
         element_property=True,
+        # valueset binding
+        binding_description="Codes describing steps taken to resolve the issue or other circumstances that mitigate the risk associated with the issue; e.g. \u0027added concurrent therapy\u0027, \u0027prior therapy documented\u0027, etc.",
+        binding_strength="preferred",
+        binding_uri="http://hl7.org/fhir/ValueSet/detectedissue-mitigation-action",
     )
 
     author: fhirtypes.ReferenceType = Field(
@@ -417,6 +454,7 @@ class DetectedIssueMitigation(backboneelement.BackboneElement):
         element_property=True,
         # note: Listed Resource Type(s) should be allowed as Reference.
         enum_reference_types=["Practitioner", "PractitionerRole"],
+        backref="detected_issue.mitigation_author",
     )
 
     date: fhirtypes.DateTime = Field(

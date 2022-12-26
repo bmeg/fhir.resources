@@ -42,6 +42,7 @@ class NutritionOrder(domainresource.DomainResource):
         element_property=True,
         # note: Listed Resource Type(s) should be allowed as Reference.
         enum_reference_types=["AllergyIntolerance"],
+        backref="nutrition_order_allergyIntolerance",
     )
 
     dateTime: fhirtypes.DateTime = Field(
@@ -69,6 +70,7 @@ class NutritionOrder(domainresource.DomainResource):
         element_property=True,
         # note: Listed Resource Type(s) should be allowed as Reference.
         enum_reference_types=["Encounter"],
+        backref="nutrition_order_encounter",
     )
 
     enteralFormula: fhirtypes.NutritionOrderEnteralFormulaType = Field(
@@ -100,10 +102,14 @@ class NutritionOrder(domainresource.DomainResource):
             "foods that should be eliminated from the patient\u2019s diet for any "
             "reason.  This modifier applies to the entire nutrition order inclusive"
             " of the oral diet, nutritional supplements and enteral formula "
-            "feedings."
+            "feedings. See http://hl7.org/fhir/ValueSet/food-type"
         ),
         # if property is element of this resource.
         element_property=True,
+        # valueset binding
+        binding_description="Codes used to indicate the type of food that should NOT be given to the patient.",
+        binding_strength="example",
+        binding_uri="http://hl7.org/fhir/ValueSet/food-type",
     )
 
     foodPreferenceModifier: typing.List[fhirtypes.CodeableConceptType] = Field(
@@ -116,10 +122,14 @@ class NutritionOrder(domainresource.DomainResource):
             "allergies, intolerances, or preferences such as Halal, Vegan or "
             "Kosher. This modifier applies to the entire nutrition order inclusive "
             "of the oral diet, nutritional supplements and enteral formula "
-            "feedings."
+            "feedings. See http://hl7.org/fhir/ValueSet/encounter-diet"
         ),
         # if property is element of this resource.
         element_property=True,
+        # valueset binding
+        binding_description="Medical, cultural or ethical food preferences to help with catering requirements.",
+        binding_strength="example",
+        binding_uri="http://hl7.org/fhir/ValueSet/encounter-diet",
     )
 
     identifier: typing.List[fhirtypes.IdentifierType] = Field(
@@ -165,6 +175,7 @@ class NutritionOrder(domainresource.DomainResource):
         element_property=True,
         # note: Listed Resource Type(s) should be allowed as Reference.
         enum_reference_types=["ActivityDefinition", "PlanDefinition"],
+        backref="nutrition_order_instantiatesCanonical",
     )
     instantiatesCanonical__ext: typing.List[
         typing.Union[fhirtypes.FHIRPrimitiveExtensionType, None]
@@ -201,7 +212,8 @@ class NutritionOrder(domainresource.DomainResource):
         ),
         description=(
             "Indicates the level of authority/intentionality associated with the "
-            "NutrionOrder and where the request fits into the workflow chain."
+            "NutrionOrder and where the request fits into the workflow chain. See "
+            "http://hl7.org/fhir/ValueSet/request-intent"
         ),
         # if property is element of this resource.
         element_property=True,
@@ -219,6 +231,11 @@ class NutritionOrder(domainresource.DomainResource):
             "instance-order",
             "option",
         ],
+        # valueset binding
+        binding_description="Codes indicating the degree of authority/intentionality associated with a nutrition order.",
+        binding_strength="required",
+        binding_uri="http://hl7.org/fhir/ValueSet/request-intent",
+        binding_version="4.3.0",
     )
     intent__ext: fhirtypes.FHIRPrimitiveExtensionType = Field(
         None, alias="_intent", title="Extension field for ``intent``."
@@ -257,6 +274,7 @@ class NutritionOrder(domainresource.DomainResource):
         element_property=True,
         # note: Listed Resource Type(s) should be allowed as Reference.
         enum_reference_types=["Practitioner", "PractitionerRole"],
+        backref="nutrition_order_orderer",
     )
 
     patient: fhirtypes.ReferenceType = Field(
@@ -271,6 +289,7 @@ class NutritionOrder(domainresource.DomainResource):
         element_property=True,
         # note: Listed Resource Type(s) should be allowed as Reference.
         enum_reference_types=["Patient"],
+        backref="nutrition_order_patient",
     )
 
     status: fhirtypes.Code = Field(
@@ -280,7 +299,10 @@ class NutritionOrder(domainresource.DomainResource):
             "draft | active | on-hold | revoked | completed | entered-in-error | "
             "unknown"
         ),
-        description="The workflow status of the nutrition order/request.",
+        description=(
+            "The workflow status of the nutrition order/request. See "
+            "http://hl7.org/fhir/ValueSet/request-status"
+        ),
         # if property is element of this resource.
         element_property=True,
         element_required=True,
@@ -295,6 +317,11 @@ class NutritionOrder(domainresource.DomainResource):
             "entered-in-error",
             "unknown",
         ],
+        # valueset binding
+        binding_description="Codes identifying the lifecycle stage of the nutrition order.",
+        binding_strength="required",
+        binding_uri="http://hl7.org/fhir/ValueSet/request-status",
+        binding_version="4.3.0",
     )
     status__ext: fhirtypes.FHIRPrimitiveExtensionType = Field(
         None, alias="_status", title="Extension field for ``status``."
@@ -446,10 +473,14 @@ class NutritionOrderEnteralFormula(backboneelement.BackboneElement):
         description=(
             "Indicates the type of modular component such as protein, carbohydrate,"
             " fat or fiber to be provided in addition to or mixed with the base "
-            "formula."
+            "formula. See http://hl7.org/fhir/ValueSet/entformula-additive"
         ),
         # if property is element of this resource.
         element_property=True,
+        # valueset binding
+        binding_description="Codes for the type of modular component such as protein, carbohydrate or fiber to be provided in addition to or mixed with the base formula.",
+        binding_strength="example",
+        binding_uri="http://hl7.org/fhir/ValueSet/entformula-additive",
     )
 
     administration: typing.List[
@@ -509,10 +540,15 @@ class NutritionOrderEnteralFormula(backboneelement.BackboneElement):
         title="Type of enteral or infant formula",
         description=(
             "The type of enteral or infant formula such as an adult standard "
-            "formula with fiber or a soy-based infant formula."
+            "formula with fiber or a soy-based infant formula. See "
+            "http://hl7.org/fhir/ValueSet/entformula-type"
         ),
         # if property is element of this resource.
         element_property=True,
+        # valueset binding
+        binding_description="Codes for type of enteral formula to be administered to patient.",
+        binding_strength="example",
+        binding_uri="http://hl7.org/fhir/ValueSet/entformula-type",
     )
 
     caloricDensity: fhirtypes.QuantityType = Field(
@@ -549,10 +585,14 @@ class NutritionOrderEnteralFormula(backboneelement.BackboneElement):
         description=(
             "The route or physiological path of administration into the patient's "
             "gastrointestinal  tract for purposes of providing the formula feeding,"
-            " e.g. nasogastric tube."
+            " e.g. nasogastric tube. See http://hl7.org/fhir/ValueSet/enteral-route"
         ),
         # if property is element of this resource.
         element_property=True,
+        # valueset binding
+        binding_description="Codes specifying the route of administration of enteral formula.",
+        binding_strength="extensible",
+        binding_uri="http://hl7.org/fhir/ValueSet/enteral-route",
     )
 
     @classmethod
@@ -717,10 +757,15 @@ class NutritionOrderOralDiet(backboneelement.BackboneElement):
         title="The required consistency of fluids and liquids provided to the patient",
         description=(
             "The required consistency (e.g. honey-thick, nectar-thick, thin, "
-            "thickened.) of liquids or fluids served to the patient."
+            "thickened.) of liquids or fluids served to the patient. See "
+            "http://hl7.org/fhir/ValueSet/consistency-type"
         ),
         # if property is element of this resource.
         element_property=True,
+        # valueset binding
+        binding_description="Codes used to represent the consistency of fluids and liquids provided to the patient.",
+        binding_strength="example",
+        binding_uri="http://hl7.org/fhir/ValueSet/consistency-type",
     )
 
     instruction: fhirtypes.String = Field(
@@ -785,10 +830,14 @@ class NutritionOrderOralDiet(backboneelement.BackboneElement):
         ),
         description=(
             "The kind of diet or dietary restriction such as fiber restricted diet "
-            "or diabetic diet."
+            "or diabetic diet. See http://hl7.org/fhir/ValueSet/diet-type"
         ),
         # if property is element of this resource.
         element_property=True,
+        # valueset binding
+        binding_description="Codes used to indicate the type of diet being ordered for a patient.",
+        binding_strength="example",
+        binding_uri="http://hl7.org/fhir/ValueSet/diet-type",
     )
 
     @classmethod
@@ -835,9 +884,16 @@ class NutritionOrderOralDietNutrient(backboneelement.BackboneElement):
         None,
         alias="modifier",
         title="Type of nutrient that is being modified",
-        description="The nutrient that is being modified such as carbohydrate or sodium.",
+        description=(
+            "The nutrient that is being modified such as carbohydrate or sodium. "
+            "See http://hl7.org/fhir/ValueSet/nutrient-code"
+        ),
         # if property is element of this resource.
         element_property=True,
+        # valueset binding
+        binding_description="Codes for types of nutrients that are being modified such as carbohydrate or sodium.",
+        binding_strength="example",
+        binding_uri="http://hl7.org/fhir/ValueSet/nutrient-code",
     )
 
     @classmethod
@@ -870,10 +926,15 @@ class NutritionOrderOralDietTexture(backboneelement.BackboneElement):
         ),
         description=(
             "The food type(s) (e.g. meats, all foods)  that the texture "
-            "modification applies to.  This could be all foods types."
+            "modification applies to.  This could be all foods types. See "
+            "http://hl7.org/fhir/ValueSet/modified-foodtype"
         ),
         # if property is element of this resource.
         element_property=True,
+        # valueset binding
+        binding_description="Codes for types of foods that are texture-modified.",
+        binding_strength="example",
+        binding_uri="http://hl7.org/fhir/ValueSet/modified-foodtype",
     )
 
     modifier: fhirtypes.CodeableConceptType = Field(
@@ -882,10 +943,15 @@ class NutritionOrderOralDietTexture(backboneelement.BackboneElement):
         title="Code to indicate how to alter the texture of the foods, e.g. pureed",
         description=(
             "Any texture modifications (for solid foods) that should be made, e.g. "
-            "easy to chew, chopped, ground, and pureed."
+            "easy to chew, chopped, ground, and pureed. See "
+            "http://hl7.org/fhir/ValueSet/texture-code"
         ),
         # if property is element of this resource.
         element_property=True,
+        # valueset binding
+        binding_description="Codes for food consistency types or texture modifications to apply to foods.",
+        binding_strength="example",
+        binding_uri="http://hl7.org/fhir/ValueSet/texture-code",
     )
 
     @classmethod
@@ -967,10 +1033,15 @@ class NutritionOrderSupplement(backboneelement.BackboneElement):
         title="Type of supplement product requested",
         description=(
             "The kind of nutritional supplement product required such as a high "
-            "protein or pediatric clear liquid supplement."
+            "protein or pediatric clear liquid supplement. See "
+            "http://hl7.org/fhir/ValueSet/supplement-type"
         ),
         # if property is element of this resource.
         element_property=True,
+        # valueset binding
+        binding_description="Codes for nutritional supplements to be provided to the patient.",
+        binding_strength="example",
+        binding_uri="http://hl7.org/fhir/ValueSet/supplement-type",
     )
 
     @classmethod

@@ -115,7 +115,10 @@ class HumanName(element.Element):
         None,
         alias="use",
         title="usual | official | temp | nickname | anonymous | old | maiden",
-        description="Identifies the purpose for this name.",
+        description=(
+            "Identifies the purpose for this name. See "
+            "http://hl7.org/fhir/ValueSet/name-use"
+        ),
         # if property is element of this resource.
         element_property=True,
         # note: Enum values can be used in validation,
@@ -129,6 +132,10 @@ class HumanName(element.Element):
             "old",
             "maiden",
         ],
+        # valueset binding
+        binding_strength="required",
+        binding_uri="http://hl7.org/fhir/ValueSet/name-use",
+        binding_version="4.3.0",
     )
     use__ext: fhirtypes.FHIRPrimitiveExtensionType = Field(
         None, alias="_use", title="Extension field for ``use``."
