@@ -31,7 +31,7 @@ test_requirements = [
     "requests==2.23.0",
     "isort==4.3.21",
     "black",
-    "mypy==0.812",
+    "mypy",
 ]
 
 development_requirements = [
@@ -39,9 +39,13 @@ development_requirements = [
     "MarkupSafe==1.1.1",
     "colorlog==2.10.0",
     "certifi",
-    "fhirspec",
     "zest-releaser[recommended]",
 ]
+
+dependency_links = [
+    "git+https://github.com/bwalsh/fhirspec.git@feature/valuesets",
+]
+
 setup(
     author="Md Nazrul Islam",
     author_email="email2nazrul@gmail.com",
