@@ -365,7 +365,8 @@ class ActivityDefinition(domainresource.DomainResource):
         element_property=True,
         # note: Listed Resource Type(s) should be allowed as Reference.
         enum_reference_types=["Library"],
-        backref="activity_definition_library",
+        backref="activity_definition",
+        parent_name="activity_definition",
     )
     library__ext: typing.List[
         typing.Union[fhirtypes.FHIRPrimitiveExtensionType, None]
@@ -383,7 +384,8 @@ class ActivityDefinition(domainresource.DomainResource):
         element_property=True,
         # note: Listed Resource Type(s) should be allowed as Reference.
         enum_reference_types=["Location"],
-        backref="activity_definition_location",
+        backref="activity_definition",
+        parent_name="activity_definition",
     )
 
     name: fhirtypes.String = Field(
@@ -414,7 +416,8 @@ class ActivityDefinition(domainresource.DomainResource):
         element_property=True,
         # note: Listed Resource Type(s) should be allowed as Reference.
         enum_reference_types=["ObservationDefinition"],
-        backref="activity_definition_observationRequirement",
+        backref="activity_definition",
+        parent_name="activity_definition",
     )
 
     observationResultRequirement: typing.List[fhirtypes.ReferenceType] = Field(
@@ -429,7 +432,8 @@ class ActivityDefinition(domainresource.DomainResource):
         element_property=True,
         # note: Listed Resource Type(s) should be allowed as Reference.
         enum_reference_types=["ObservationDefinition"],
-        backref="activity_definition_observationResultRequirement",
+        backref="activity_definition",
+        parent_name="activity_definition",
     )
 
     participant: typing.List[fhirtypes.ActivityDefinitionParticipantType] = Field(
@@ -502,7 +506,8 @@ class ActivityDefinition(domainresource.DomainResource):
         binding_uri="http://hl7.org/fhir/ValueSet/medication-codes",
         # note: Listed Resource Type(s) should be allowed as Reference.
         enum_reference_types=["Medication", "Substance", "Ingredient"],
-        backref="activity_definition_productReference",
+        backref="activity_definition",
+        parent_name="activity_definition",
     )
 
     profile: fhirtypes.Canonical = Field(
@@ -517,7 +522,8 @@ class ActivityDefinition(domainresource.DomainResource):
         element_property=True,
         # note: Listed Resource Type(s) should be allowed as Reference.
         enum_reference_types=["StructureDefinition"],
-        backref="activity_definition_profile",
+        backref="activity_definition",
+        parent_name="activity_definition",
     )
     profile__ext: fhirtypes.FHIRPrimitiveExtensionType = Field(
         None, alias="_profile", title="Extension field for ``profile``."
@@ -601,7 +607,8 @@ class ActivityDefinition(domainresource.DomainResource):
         element_property=True,
         # note: Listed Resource Type(s) should be allowed as Reference.
         enum_reference_types=["SpecimenDefinition"],
-        backref="activity_definition_specimenRequirement",
+        backref="activity_definition",
+        parent_name="activity_definition",
     )
 
     status: fhirtypes.Code = Field(
@@ -709,7 +716,8 @@ class ActivityDefinition(domainresource.DomainResource):
         binding_uri="http://hl7.org/fhir/ValueSet/subject-type",
         # note: Listed Resource Type(s) should be allowed as Reference.
         enum_reference_types=["Group"],
-        backref="activity_definition_subjectReference",
+        backref="activity_definition",
+        parent_name="activity_definition",
     )
 
     subtitle: fhirtypes.String = Field(
@@ -863,7 +871,8 @@ class ActivityDefinition(domainresource.DomainResource):
         element_property=True,
         # note: Listed Resource Type(s) should be allowed as Reference.
         enum_reference_types=["StructureMap"],
-        backref="activity_definition_transform",
+        backref="activity_definition",
+        parent_name="activity_definition",
     )
     transform__ext: fhirtypes.FHIRPrimitiveExtensionType = Field(
         None, alias="_transform", title="Extension field for ``transform``."

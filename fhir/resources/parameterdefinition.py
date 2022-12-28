@@ -101,7 +101,8 @@ class ParameterDefinition(element.Element):
         element_property=True,
         # note: Listed Resource Type(s) should be allowed as Reference.
         enum_reference_types=["StructureDefinition"],
-        backref="parameter_definition_profile",
+        backref="parameter_definition",
+        parent_name="parameter_definition",
     )
     profile__ext: fhirtypes.FHIRPrimitiveExtensionType = Field(
         None, alias="_profile", title="Extension field for ``profile``."

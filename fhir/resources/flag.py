@@ -42,7 +42,8 @@ class Flag(domainresource.DomainResource):
             "Practitioner",
             "PractitionerRole",
         ],
-        backref="flag_author",
+        backref="flag",
+        parent_name="flag",
     )
 
     category: typing.List[fhirtypes.CodeableConceptType] = Field(
@@ -88,7 +89,8 @@ class Flag(domainresource.DomainResource):
         element_property=True,
         # note: Listed Resource Type(s) should be allowed as Reference.
         enum_reference_types=["Encounter"],
-        backref="flag_encounter",
+        backref="flag",
+        parent_name="flag",
     )
 
     identifier: typing.List[fhirtypes.IdentifierType] = Field(
@@ -159,7 +161,8 @@ class Flag(domainresource.DomainResource):
             "Medication",
             "Procedure",
         ],
-        backref="flag_subject",
+        backref="flag",
+        parent_name="flag",
     )
 
     @classmethod

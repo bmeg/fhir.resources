@@ -39,7 +39,8 @@ class AllergyIntolerance(domainresource.DomainResource):
             "Practitioner",
             "PractitionerRole",
         ],
-        backref="allergy_intolerance_asserter",
+        backref="allergy_intolerance",
+        parent_name="allergy_intolerance",
     )
 
     category: typing.List[typing.Optional[fhirtypes.Code]] = Field(
@@ -150,7 +151,8 @@ class AllergyIntolerance(domainresource.DomainResource):
         element_property=True,
         # note: Listed Resource Type(s) should be allowed as Reference.
         enum_reference_types=["Encounter"],
-        backref="allergy_intolerance_encounter",
+        backref="allergy_intolerance",
+        parent_name="allergy_intolerance",
     )
 
     identifier: typing.List[fhirtypes.IdentifierType] = Field(
@@ -283,7 +285,8 @@ class AllergyIntolerance(domainresource.DomainResource):
         element_property=True,
         # note: Listed Resource Type(s) should be allowed as Reference.
         enum_reference_types=["Patient"],
-        backref="allergy_intolerance_patient",
+        backref="allergy_intolerance",
+        parent_name="allergy_intolerance",
     )
 
     reaction: typing.List[fhirtypes.AllergyIntoleranceReactionType] = Field(
@@ -331,7 +334,8 @@ class AllergyIntolerance(domainresource.DomainResource):
             "Patient",
             "RelatedPerson",
         ],
-        backref="allergy_intolerance_recorder",
+        backref="allergy_intolerance",
+        parent_name="allergy_intolerance",
     )
 
     type: fhirtypes.Code = Field(

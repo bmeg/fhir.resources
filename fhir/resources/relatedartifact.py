@@ -96,7 +96,8 @@ class RelatedArtifact(element.Element):
         element_property=True,
         # note: Listed Resource Type(s) should be allowed as Reference.
         enum_reference_types=["Resource"],
-        backref="related_artifact_resource",
+        backref="related_artifact",
+        parent_name="related_artifact",
     )
     resource__ext: fhirtypes.FHIRPrimitiveExtensionType = Field(
         None, alias="_resource", title="Extension field for ``resource``."

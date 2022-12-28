@@ -155,7 +155,8 @@ class PaymentReconciliation(domainresource.DomainResource):
         element_property=True,
         # note: Listed Resource Type(s) should be allowed as Reference.
         enum_reference_types=["Organization"],
-        backref="payment_reconciliation_paymentIssuer",
+        backref="payment_reconciliation",
+        parent_name="payment_reconciliation",
     )
 
     period: fhirtypes.PeriodType = Field(
@@ -191,7 +192,8 @@ class PaymentReconciliation(domainresource.DomainResource):
         element_property=True,
         # note: Listed Resource Type(s) should be allowed as Reference.
         enum_reference_types=["Task"],
-        backref="payment_reconciliation_request",
+        backref="payment_reconciliation",
+        parent_name="payment_reconciliation",
     )
 
     requestor: fhirtypes.ReferenceType = Field(
@@ -206,7 +208,8 @@ class PaymentReconciliation(domainresource.DomainResource):
         element_property=True,
         # note: Listed Resource Type(s) should be allowed as Reference.
         enum_reference_types=["Practitioner", "PractitionerRole", "Organization"],
-        backref="payment_reconciliation_requestor",
+        backref="payment_reconciliation",
+        parent_name="payment_reconciliation",
     )
 
     status: fhirtypes.Code = Field(
@@ -382,7 +385,8 @@ class PaymentReconciliationDetail(backboneelement.BackboneElement):
         element_property=True,
         # note: Listed Resource Type(s) should be allowed as Reference.
         enum_reference_types=["Practitioner", "PractitionerRole", "Organization"],
-        backref="payment_reconciliation_detail_payee",
+        backref="payment_reconciliation_detail",
+        parent_name="payment_reconciliation_detail",
     )
 
     predecessor: fhirtypes.IdentifierType = Field(
@@ -409,7 +413,8 @@ class PaymentReconciliationDetail(backboneelement.BackboneElement):
         element_property=True,
         # note: Listed Resource Type(s) should be allowed as Reference.
         enum_reference_types=["Resource"],
-        backref="payment_reconciliation_detail_request",
+        backref="payment_reconciliation_detail",
+        parent_name="payment_reconciliation_detail",
     )
 
     response: fhirtypes.ReferenceType = Field(
@@ -424,7 +429,8 @@ class PaymentReconciliationDetail(backboneelement.BackboneElement):
         element_property=True,
         # note: Listed Resource Type(s) should be allowed as Reference.
         enum_reference_types=["Resource"],
-        backref="payment_reconciliation_detail_response",
+        backref="payment_reconciliation_detail",
+        parent_name="payment_reconciliation_detail",
     )
 
     responsible: fhirtypes.ReferenceType = Field(
@@ -439,7 +445,8 @@ class PaymentReconciliationDetail(backboneelement.BackboneElement):
         element_property=True,
         # note: Listed Resource Type(s) should be allowed as Reference.
         enum_reference_types=["PractitionerRole"],
-        backref="payment_reconciliation_detail_responsible",
+        backref="payment_reconciliation_detail",
+        parent_name="payment_reconciliation_detail",
     )
 
     submitter: fhirtypes.ReferenceType = Field(
@@ -451,7 +458,8 @@ class PaymentReconciliationDetail(backboneelement.BackboneElement):
         element_property=True,
         # note: Listed Resource Type(s) should be allowed as Reference.
         enum_reference_types=["Practitioner", "PractitionerRole", "Organization"],
-        backref="payment_reconciliation_detail_submitter",
+        backref="payment_reconciliation_detail",
+        parent_name="payment_reconciliation_detail",
     )
 
     type: fhirtypes.CodeableConceptType = Field(

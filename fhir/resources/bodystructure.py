@@ -127,7 +127,8 @@ class BodyStructure(domainresource.DomainResource):
         element_property=True,
         # note: Listed Resource Type(s) should be allowed as Reference.
         enum_reference_types=["Patient"],
-        backref="body_structure_patient",
+        backref="body_structure",
+        parent_name="body_structure",
     )
 
     @classmethod

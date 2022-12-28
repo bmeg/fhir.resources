@@ -293,7 +293,8 @@ class FamilyMemberHistory(domainresource.DomainResource):
             "Measure",
             "OperationDefinition",
         ],
-        backref="family_member_history_instantiatesCanonical",
+        backref="family_member_history",
+        parent_name="family_member_history",
     )
     instantiatesCanonical__ext: typing.List[
         typing.Union[fhirtypes.FHIRPrimitiveExtensionType, None]
@@ -358,7 +359,8 @@ class FamilyMemberHistory(domainresource.DomainResource):
         element_property=True,
         # note: Listed Resource Type(s) should be allowed as Reference.
         enum_reference_types=["Patient"],
-        backref="family_member_history_patient",
+        backref="family_member_history",
+        parent_name="family_member_history",
     )
 
     reasonCode: typing.List[fhirtypes.CodeableConceptType] = Field(
@@ -396,7 +398,8 @@ class FamilyMemberHistory(domainresource.DomainResource):
             "DiagnosticReport",
             "DocumentReference",
         ],
-        backref="family_member_history_reasonReference",
+        backref="family_member_history",
+        parent_name="family_member_history",
     )
 
     relationship: fhirtypes.CodeableConceptType = Field(

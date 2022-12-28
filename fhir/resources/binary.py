@@ -85,7 +85,8 @@ class Binary(resource.Resource):
         element_property=True,
         # note: Listed Resource Type(s) should be allowed as Reference.
         enum_reference_types=["Resource"],
-        backref="binary_securityContext",
+        backref="binary",
+        parent_name="binary",
     )
 
     @classmethod

@@ -98,7 +98,8 @@ class RegulatedAuthorization(domainresource.DomainResource):
         element_property=True,
         # note: Listed Resource Type(s) should be allowed as Reference.
         enum_reference_types=["Organization"],
-        backref="regulated_authorization_holder",
+        backref="regulated_authorization",
+        parent_name="regulated_authorization",
     )
 
     identifier: typing.List[fhirtypes.IdentifierType] = Field(
@@ -122,7 +123,8 @@ class RegulatedAuthorization(domainresource.DomainResource):
         element_property=True,
         # note: Listed Resource Type(s) should be allowed as Reference.
         enum_reference_types=["ClinicalUseDefinition"],
-        backref="regulated_authorization_indication",
+        backref="regulated_authorization",
+        parent_name="regulated_authorization",
     )
 
     intendedUse: fhirtypes.CodeableConceptType = Field(
@@ -173,7 +175,8 @@ class RegulatedAuthorization(domainresource.DomainResource):
         element_property=True,
         # note: Listed Resource Type(s) should be allowed as Reference.
         enum_reference_types=["Organization"],
-        backref="regulated_authorization_regulator",
+        backref="regulated_authorization",
+        parent_name="regulated_authorization",
     )
 
     status: fhirtypes.CodeableConceptType = Field(
@@ -234,7 +237,8 @@ class RegulatedAuthorization(domainresource.DomainResource):
             "Organization",
             "Location",
         ],
-        backref="regulated_authorization_subject",
+        backref="regulated_authorization",
+        parent_name="regulated_authorization",
     )
 
     type: fhirtypes.CodeableConceptType = Field(

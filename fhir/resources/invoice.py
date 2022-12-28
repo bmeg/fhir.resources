@@ -36,7 +36,8 @@ class Invoice(domainresource.DomainResource):
         element_property=True,
         # note: Listed Resource Type(s) should be allowed as Reference.
         enum_reference_types=["Account"],
-        backref="invoice_account",
+        backref="invoice",
+        parent_name="invoice",
     )
 
     cancelledReason: fhirtypes.String = Field(
@@ -87,7 +88,8 @@ class Invoice(domainresource.DomainResource):
         element_property=True,
         # note: Listed Resource Type(s) should be allowed as Reference.
         enum_reference_types=["Organization"],
-        backref="invoice_issuer",
+        backref="invoice",
+        parent_name="invoice",
     )
 
     lineItem: typing.List[fhirtypes.InvoiceLineItemType] = Field(
@@ -153,7 +155,8 @@ class Invoice(domainresource.DomainResource):
         element_property=True,
         # note: Listed Resource Type(s) should be allowed as Reference.
         enum_reference_types=["Organization", "Patient", "RelatedPerson"],
-        backref="invoice_recipient",
+        backref="invoice",
+        parent_name="invoice",
     )
 
     status: fhirtypes.Code = Field(
@@ -192,7 +195,8 @@ class Invoice(domainresource.DomainResource):
         element_property=True,
         # note: Listed Resource Type(s) should be allowed as Reference.
         enum_reference_types=["Patient", "Group"],
-        backref="invoice_subject",
+        backref="invoice",
+        parent_name="invoice",
     )
 
     totalGross: fhirtypes.MoneyType = Field(
@@ -388,7 +392,8 @@ class InvoiceLineItem(backboneelement.BackboneElement):
         one_of_many_required=True,
         # note: Listed Resource Type(s) should be allowed as Reference.
         enum_reference_types=["ChargeItem"],
-        backref="invoice_line_item_chargeItemReference",
+        backref="invoice_line_item",
+        parent_name="invoice_line_item",
     )
 
     priceComponent: typing.List[fhirtypes.InvoiceLineItemPriceComponentType] = Field(
@@ -666,7 +671,8 @@ class InvoiceParticipant(backboneelement.BackboneElement):
             "Device",
             "RelatedPerson",
         ],
-        backref="invoice_participant_actor",
+        backref="invoice_participant",
+        parent_name="invoice_participant",
     )
 
     role: fhirtypes.CodeableConceptType = Field(

@@ -60,7 +60,8 @@ class Immunization(domainresource.DomainResource):
         element_property=True,
         # note: Listed Resource Type(s) should be allowed as Reference.
         enum_reference_types=["Encounter"],
-        backref="immunization_encounter",
+        backref="immunization",
+        parent_name="immunization",
     )
 
     expirationDate: fhirtypes.Date = Field(
@@ -131,7 +132,8 @@ class Immunization(domainresource.DomainResource):
         element_property=True,
         # note: Listed Resource Type(s) should be allowed as Reference.
         enum_reference_types=["Location"],
-        backref="immunization_location",
+        backref="immunization",
+        parent_name="immunization",
     )
 
     lotNumber: fhirtypes.String = Field(
@@ -155,7 +157,8 @@ class Immunization(domainresource.DomainResource):
         element_property=True,
         # note: Listed Resource Type(s) should be allowed as Reference.
         enum_reference_types=["Organization"],
-        backref="immunization_manufacturer",
+        backref="immunization",
+        parent_name="immunization",
     )
 
     note: typing.List[fhirtypes.AnnotationType] = Field(
@@ -213,7 +216,8 @@ class Immunization(domainresource.DomainResource):
         element_property=True,
         # note: Listed Resource Type(s) should be allowed as Reference.
         enum_reference_types=["Patient"],
-        backref="immunization_patient",
+        backref="immunization",
+        parent_name="immunization",
     )
 
     performer: typing.List[fhirtypes.ImmunizationPerformerType] = Field(
@@ -309,7 +313,8 @@ class Immunization(domainresource.DomainResource):
         element_property=True,
         # note: Listed Resource Type(s) should be allowed as Reference.
         enum_reference_types=["Condition", "Observation", "DiagnosticReport"],
-        backref="immunization_reasonReference",
+        backref="immunization",
+        parent_name="immunization",
     )
 
     recorded: fhirtypes.DateTime = Field(
@@ -694,7 +699,8 @@ class ImmunizationPerformer(backboneelement.BackboneElement):
         element_property=True,
         # note: Listed Resource Type(s) should be allowed as Reference.
         enum_reference_types=["Practitioner", "PractitionerRole", "Organization"],
-        backref="immunization_performer_actor",
+        backref="immunization_performer",
+        parent_name="immunization_performer",
     )
 
     function: fhirtypes.CodeableConceptType = Field(
@@ -747,7 +753,8 @@ class ImmunizationProtocolApplied(backboneelement.BackboneElement):
         element_property=True,
         # note: Listed Resource Type(s) should be allowed as Reference.
         enum_reference_types=["Organization"],
-        backref="immunization_protocol_applied_authority",
+        backref="immunization_protocol_applied",
+        parent_name="immunization_protocol_applied",
     )
 
     doseNumberPositiveInt: fhirtypes.PositiveInt = Field(
@@ -943,7 +950,8 @@ class ImmunizationReaction(backboneelement.BackboneElement):
         element_property=True,
         # note: Listed Resource Type(s) should be allowed as Reference.
         enum_reference_types=["Observation"],
-        backref="immunization_reaction_detail",
+        backref="immunization_reaction",
+        parent_name="immunization_reaction",
     )
 
     reported: bool = Field(

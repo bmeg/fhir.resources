@@ -49,7 +49,8 @@ class Device(domainresource.DomainResource):
         element_property=True,
         # note: Listed Resource Type(s) should be allowed as Reference.
         enum_reference_types=["DeviceDefinition"],
-        backref="device_definition",
+        backref="device",
+        parent_name="device",
     )
 
     deviceName: typing.List[fhirtypes.DeviceDeviceNameType] = Field(
@@ -120,7 +121,8 @@ class Device(domainresource.DomainResource):
         element_property=True,
         # note: Listed Resource Type(s) should be allowed as Reference.
         enum_reference_types=["Location"],
-        backref="device_location",
+        backref="device",
+        parent_name="device",
     )
 
     lotNumber: fhirtypes.String = Field(
@@ -195,7 +197,8 @@ class Device(domainresource.DomainResource):
         element_property=True,
         # note: Listed Resource Type(s) should be allowed as Reference.
         enum_reference_types=["Organization"],
-        backref="device_owner",
+        backref="device",
+        parent_name="device",
     )
 
     parent: fhirtypes.ReferenceType = Field(
@@ -207,7 +210,8 @@ class Device(domainresource.DomainResource):
         element_property=True,
         # note: Listed Resource Type(s) should be allowed as Reference.
         enum_reference_types=["Device"],
-        backref="device_parent",
+        backref="device",
+        parent_name="device",
     )
 
     partNumber: fhirtypes.String = Field(
@@ -231,7 +235,8 @@ class Device(domainresource.DomainResource):
         element_property=True,
         # note: Listed Resource Type(s) should be allowed as Reference.
         enum_reference_types=["Patient"],
-        backref="device_patient",
+        backref="device",
+        parent_name="device",
     )
 
     property: typing.List[fhirtypes.DevicePropertyType] = Field(

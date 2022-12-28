@@ -54,7 +54,8 @@ class OperationDefinition(domainresource.DomainResource):
         element_property=True,
         # note: Listed Resource Type(s) should be allowed as Reference.
         enum_reference_types=["OperationDefinition"],
-        backref="operation_definition_base",
+        backref="operation_definition",
+        parent_name="operation_definition",
     )
     base__ext: fhirtypes.FHIRPrimitiveExtensionType = Field(
         None, alias="_base", title="Extension field for ``base``."
@@ -159,7 +160,8 @@ class OperationDefinition(domainresource.DomainResource):
         element_property=True,
         # note: Listed Resource Type(s) should be allowed as Reference.
         enum_reference_types=["StructureDefinition"],
-        backref="operation_definition_inputProfile",
+        backref="operation_definition",
+        parent_name="operation_definition",
     )
     inputProfile__ext: fhirtypes.FHIRPrimitiveExtensionType = Field(
         None, alias="_inputProfile", title="Extension field for ``inputProfile``."
@@ -251,7 +253,8 @@ class OperationDefinition(domainresource.DomainResource):
         element_property=True,
         # note: Listed Resource Type(s) should be allowed as Reference.
         enum_reference_types=["StructureDefinition"],
-        backref="operation_definition_outputProfile",
+        backref="operation_definition",
+        parent_name="operation_definition",
     )
     outputProfile__ext: fhirtypes.FHIRPrimitiveExtensionType = Field(
         None, alias="_outputProfile", title="Extension field for ``outputProfile``."
@@ -779,7 +782,8 @@ class OperationDefinitionParameter(backboneelement.BackboneElement):
         element_property=True,
         # note: Listed Resource Type(s) should be allowed as Reference.
         enum_reference_types=["StructureDefinition"],
-        backref="operation_definition_parameter_targetProfile",
+        backref="operation_definition_parameter",
+        parent_name="operation_definition_parameter",
     )
     targetProfile__ext: typing.List[
         typing.Union[fhirtypes.FHIRPrimitiveExtensionType, None]
@@ -969,7 +973,8 @@ class OperationDefinitionParameterBinding(backboneelement.BackboneElement):
         element_required=True,
         # note: Listed Resource Type(s) should be allowed as Reference.
         enum_reference_types=["ValueSet"],
-        backref="operation_definition_parameter_binding_valueSet",
+        backref="operation_definition_parameter_binding",
+        parent_name="operation_definition_parameter_binding",
     )
     valueSet__ext: fhirtypes.FHIRPrimitiveExtensionType = Field(
         None, alias="_valueSet", title="Extension field for ``valueSet``."

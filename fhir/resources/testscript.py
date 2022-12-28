@@ -215,7 +215,8 @@ class TestScript(domainresource.DomainResource):
         element_property=True,
         # note: Listed Resource Type(s) should be allowed as Reference.
         enum_reference_types=["Resource"],
-        backref="test_script_profile",
+        backref="test_script",
+        parent_name="test_script",
     )
 
     publisher: fhirtypes.String = Field(
@@ -666,7 +667,8 @@ class TestScriptFixture(backboneelement.BackboneElement):
         element_property=True,
         # note: Listed Resource Type(s) should be allowed as Reference.
         enum_reference_types=["Resource"],
-        backref="test_script_fixture_resource",
+        backref="test_script_fixture",
+        parent_name="test_script_fixture",
     )
 
     @classmethod
@@ -820,7 +822,8 @@ class TestScriptMetadataCapability(backboneelement.BackboneElement):
         element_required=True,
         # note: Listed Resource Type(s) should be allowed as Reference.
         enum_reference_types=["CapabilityStatement"],
-        backref="test_script_metadata_capability_capabilities",
+        backref="test_script_metadata_capability",
+        parent_name="test_script_metadata_capability",
     )
     capabilities__ext: fhirtypes.FHIRPrimitiveExtensionType = Field(
         None, alias="_capabilities", title="Extension field for ``capabilities``."

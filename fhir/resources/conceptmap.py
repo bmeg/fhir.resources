@@ -203,7 +203,8 @@ class ConceptMap(domainresource.DomainResource):
         one_of_many_required=False,
         # note: Listed Resource Type(s) should be allowed as Reference.
         enum_reference_types=["ValueSet"],
-        backref="concept_map_sourceCanonical",
+        backref="concept_map",
+        parent_name="concept_map",
     )
     sourceCanonical__ext: fhirtypes.FHIRPrimitiveExtensionType = Field(
         None, alias="_sourceCanonical", title="Extension field for ``sourceCanonical``."
@@ -268,7 +269,8 @@ class ConceptMap(domainresource.DomainResource):
         one_of_many_required=False,
         # note: Listed Resource Type(s) should be allowed as Reference.
         enum_reference_types=["ValueSet"],
-        backref="concept_map_targetCanonical",
+        backref="concept_map",
+        parent_name="concept_map",
     )
     targetCanonical__ext: fhirtypes.FHIRPrimitiveExtensionType = Field(
         None, alias="_targetCanonical", title="Extension field for ``targetCanonical``."
@@ -931,7 +933,8 @@ class ConceptMapGroupElementTargetDependsOn(backboneelement.BackboneElement):
         element_property=True,
         # note: Listed Resource Type(s) should be allowed as Reference.
         enum_reference_types=["CodeSystem"],
-        backref="concept_map_group_element_target_depends_on_system",
+        backref="concept_map_group_element_target_depends_on",
+        parent_name="concept_map_group_element_target_depends_on",
     )
     system__ext: fhirtypes.FHIRPrimitiveExtensionType = Field(
         None, alias="_system", title="Extension field for ``system``."
@@ -1117,7 +1120,8 @@ class ConceptMapGroupUnmapped(backboneelement.BackboneElement):
         element_property=True,
         # note: Listed Resource Type(s) should be allowed as Reference.
         enum_reference_types=["ConceptMap"],
-        backref="concept_map_group_unmapped_url",
+        backref="concept_map_group_unmapped",
+        parent_name="concept_map_group_unmapped",
     )
     url__ext: fhirtypes.FHIRPrimitiveExtensionType = Field(
         None, alias="_url", title="Extension field for ``url``."

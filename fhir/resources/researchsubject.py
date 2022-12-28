@@ -69,7 +69,8 @@ class ResearchSubject(domainresource.DomainResource):
         element_property=True,
         # note: Listed Resource Type(s) should be allowed as Reference.
         enum_reference_types=["Consent"],
-        backref="research_subject_consent",
+        backref="research_subject",
+        parent_name="research_subject",
     )
 
     identifier: typing.List[fhirtypes.IdentifierType] = Field(
@@ -90,7 +91,8 @@ class ResearchSubject(domainresource.DomainResource):
         element_property=True,
         # note: Listed Resource Type(s) should be allowed as Reference.
         enum_reference_types=["Patient"],
-        backref="research_subject_individual",
+        backref="research_subject",
+        parent_name="research_subject",
     )
 
     period: fhirtypes.PeriodType = Field(
@@ -155,7 +157,8 @@ class ResearchSubject(domainresource.DomainResource):
         element_property=True,
         # note: Listed Resource Type(s) should be allowed as Reference.
         enum_reference_types=["ResearchStudy"],
-        backref="research_subject_study",
+        backref="research_subject",
+        parent_name="research_subject",
     )
 
     @classmethod

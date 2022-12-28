@@ -281,7 +281,8 @@ class ExampleScenario(domainresource.DomainResource):
         element_property=True,
         # note: Listed Resource Type(s) should be allowed as Reference.
         enum_reference_types=["ExampleScenario"],
-        backref="example_scenario_workflow",
+        backref="example_scenario",
+        parent_name="example_scenario",
     )
     workflow__ext: typing.List[
         typing.Union[fhirtypes.FHIRPrimitiveExtensionType, None]

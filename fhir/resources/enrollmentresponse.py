@@ -70,7 +70,8 @@ class EnrollmentResponse(domainresource.DomainResource):
         element_property=True,
         # note: Listed Resource Type(s) should be allowed as Reference.
         enum_reference_types=["Organization"],
-        backref="enrollment_response_organization",
+        backref="enrollment_response",
+        parent_name="enrollment_response",
     )
 
     outcome: fhirtypes.Code = Field(
@@ -105,7 +106,8 @@ class EnrollmentResponse(domainresource.DomainResource):
         element_property=True,
         # note: Listed Resource Type(s) should be allowed as Reference.
         enum_reference_types=["EnrollmentRequest"],
-        backref="enrollment_response_request",
+        backref="enrollment_response",
+        parent_name="enrollment_response",
     )
 
     requestProvider: fhirtypes.ReferenceType = Field(
@@ -120,7 +122,8 @@ class EnrollmentResponse(domainresource.DomainResource):
         element_property=True,
         # note: Listed Resource Type(s) should be allowed as Reference.
         enum_reference_types=["Practitioner", "PractitionerRole", "Organization"],
-        backref="enrollment_response_requestProvider",
+        backref="enrollment_response",
+        parent_name="enrollment_response",
     )
 
     status: fhirtypes.Code = Field(

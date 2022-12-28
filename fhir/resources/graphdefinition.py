@@ -139,7 +139,8 @@ class GraphDefinition(domainresource.DomainResource):
         element_property=True,
         # note: Listed Resource Type(s) should be allowed as Reference.
         enum_reference_types=["StructureDefinition"],
-        backref="graph_definition_profile",
+        backref="graph_definition",
+        parent_name="graph_definition",
     )
     profile__ext: fhirtypes.FHIRPrimitiveExtensionType = Field(
         None, alias="_profile", title="Extension field for ``profile``."
@@ -529,7 +530,8 @@ class GraphDefinitionLinkTarget(backboneelement.BackboneElement):
         element_property=True,
         # note: Listed Resource Type(s) should be allowed as Reference.
         enum_reference_types=["StructureDefinition"],
-        backref="graph_definition_link_target_profile",
+        backref="graph_definition_link_target",
+        parent_name="graph_definition_link_target",
     )
     profile__ext: fhirtypes.FHIRPrimitiveExtensionType = Field(
         None, alias="_profile", title="Extension field for ``profile``."

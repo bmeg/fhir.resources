@@ -79,7 +79,8 @@ class Consent(domainresource.DomainResource):
         element_property=True,
         # note: Listed Resource Type(s) should be allowed as Reference.
         enum_reference_types=["Organization"],
-        backref="consent_organization",
+        backref="consent",
+        parent_name="consent",
     )
 
     patient: fhirtypes.ReferenceType = Field(
@@ -91,7 +92,8 @@ class Consent(domainresource.DomainResource):
         element_property=True,
         # note: Listed Resource Type(s) should be allowed as Reference.
         enum_reference_types=["Patient"],
-        backref="consent_patient",
+        backref="consent",
+        parent_name="consent",
     )
 
     performer: typing.List[fhirtypes.ReferenceType] = Field(
@@ -115,7 +117,8 @@ class Consent(domainresource.DomainResource):
             "RelatedPerson",
             "PractitionerRole",
         ],
-        backref="consent_performer",
+        backref="consent",
+        parent_name="consent",
     )
 
     policy: typing.List[fhirtypes.ConsentPolicyType] = Field(
@@ -215,7 +218,8 @@ class Consent(domainresource.DomainResource):
             "Contract",
             "QuestionnaireResponse",
         ],
-        backref="consent_sourceReference",
+        backref="consent",
+        parent_name="consent",
     )
 
     status: fhirtypes.Code = Field(
@@ -677,7 +681,8 @@ class ConsentProvisionActor(backboneelement.BackboneElement):
             "RelatedPerson",
             "PractitionerRole",
         ],
-        backref="consent_provision_actor_reference",
+        backref="consent_provision_actor",
+        parent_name="consent_provision_actor",
     )
 
     role: fhirtypes.CodeableConceptType = Field(
@@ -753,7 +758,8 @@ class ConsentProvisionData(backboneelement.BackboneElement):
         element_property=True,
         # note: Listed Resource Type(s) should be allowed as Reference.
         enum_reference_types=["Resource"],
-        backref="consent_provision_data_reference",
+        backref="consent_provision_data",
+        parent_name="consent_provision_data",
     )
 
     @classmethod
@@ -875,7 +881,8 @@ class ConsentVerification(backboneelement.BackboneElement):
         element_property=True,
         # note: Listed Resource Type(s) should be allowed as Reference.
         enum_reference_types=["Patient", "RelatedPerson"],
-        backref="consent_verification_verifiedWith",
+        backref="consent_verification",
+        parent_name="consent_verification",
     )
 
     @classmethod

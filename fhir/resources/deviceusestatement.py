@@ -39,7 +39,8 @@ class DeviceUseStatement(domainresource.DomainResource):
         element_property=True,
         # note: Listed Resource Type(s) should be allowed as Reference.
         enum_reference_types=["ServiceRequest"],
-        backref="device_use_statement_basedOn",
+        backref="device_use_statement",
+        parent_name="device_use_statement",
     )
 
     bodySite: fhirtypes.CodeableConceptType = Field(
@@ -79,7 +80,8 @@ class DeviceUseStatement(domainresource.DomainResource):
             "QuestionnaireResponse",
             "DocumentReference",
         ],
-        backref="device_use_statement_derivedFrom",
+        backref="device_use_statement",
+        parent_name="device_use_statement",
     )
 
     device: fhirtypes.ReferenceType = Field(
@@ -91,7 +93,8 @@ class DeviceUseStatement(domainresource.DomainResource):
         element_property=True,
         # note: Listed Resource Type(s) should be allowed as Reference.
         enum_reference_types=["Device"],
-        backref="device_use_statement_device",
+        backref="device_use_statement",
+        parent_name="device_use_statement",
     )
 
     identifier: typing.List[fhirtypes.IdentifierType] = Field(
@@ -144,7 +147,8 @@ class DeviceUseStatement(domainresource.DomainResource):
             "DocumentReference",
             "Media",
         ],
-        backref="device_use_statement_reasonReference",
+        backref="device_use_statement",
+        parent_name="device_use_statement",
     )
 
     recordedOn: fhirtypes.DateTime = Field(
@@ -173,7 +177,8 @@ class DeviceUseStatement(domainresource.DomainResource):
             "PractitionerRole",
             "RelatedPerson",
         ],
-        backref="device_use_statement_source",
+        backref="device_use_statement",
+        parent_name="device_use_statement",
     )
 
     status: fhirtypes.Code = Field(
@@ -211,7 +216,8 @@ class DeviceUseStatement(domainresource.DomainResource):
         element_property=True,
         # note: Listed Resource Type(s) should be allowed as Reference.
         enum_reference_types=["Patient", "Group"],
-        backref="device_use_statement_subject",
+        backref="device_use_statement",
+        parent_name="device_use_statement",
     )
 
     timingDateTime: fhirtypes.DateTime = Field(

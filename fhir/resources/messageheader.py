@@ -44,7 +44,8 @@ class MessageHeader(domainresource.DomainResource):
         element_property=True,
         # note: Listed Resource Type(s) should be allowed as Reference.
         enum_reference_types=["Practitioner", "PractitionerRole"],
-        backref="message_header_author",
+        backref="message_header",
+        parent_name="message_header",
     )
 
     definition: fhirtypes.Canonical = Field(
@@ -56,7 +57,8 @@ class MessageHeader(domainresource.DomainResource):
         element_property=True,
         # note: Listed Resource Type(s) should be allowed as Reference.
         enum_reference_types=["MessageDefinition"],
-        backref="message_header_definition",
+        backref="message_header",
+        parent_name="message_header",
     )
     definition__ext: fhirtypes.FHIRPrimitiveExtensionType = Field(
         None, alias="_definition", title="Extension field for ``definition``."
@@ -84,7 +86,8 @@ class MessageHeader(domainresource.DomainResource):
         element_property=True,
         # note: Listed Resource Type(s) should be allowed as Reference.
         enum_reference_types=["Practitioner", "PractitionerRole"],
-        backref="message_header_enterer",
+        backref="message_header",
+        parent_name="message_header",
     )
 
     eventCoding: fhirtypes.CodingType = Field(
@@ -146,7 +149,8 @@ class MessageHeader(domainresource.DomainResource):
         element_property=True,
         # note: Listed Resource Type(s) should be allowed as Reference.
         enum_reference_types=["Resource"],
-        backref="message_header_focus",
+        backref="message_header",
+        parent_name="message_header",
     )
 
     reason: fhirtypes.CodeableConceptType = Field(
@@ -191,7 +195,8 @@ class MessageHeader(domainresource.DomainResource):
         element_property=True,
         # note: Listed Resource Type(s) should be allowed as Reference.
         enum_reference_types=["Practitioner", "PractitionerRole", "Organization"],
-        backref="message_header_responsible",
+        backref="message_header",
+        parent_name="message_header",
     )
 
     sender: fhirtypes.ReferenceType = Field(
@@ -205,7 +210,8 @@ class MessageHeader(domainresource.DomainResource):
         element_property=True,
         # note: Listed Resource Type(s) should be allowed as Reference.
         enum_reference_types=["Practitioner", "PractitionerRole", "Organization"],
-        backref="message_header_sender",
+        backref="message_header",
+        parent_name="message_header",
     )
 
     source: fhirtypes.MessageHeaderSourceType = Field(
@@ -334,7 +340,8 @@ class MessageHeaderDestination(backboneelement.BackboneElement):
         element_property=True,
         # note: Listed Resource Type(s) should be allowed as Reference.
         enum_reference_types=["Practitioner", "PractitionerRole", "Organization"],
-        backref="message_header_destination_receiver",
+        backref="message_header_destination",
+        parent_name="message_header_destination",
     )
 
     target: fhirtypes.ReferenceType = Field(
@@ -349,7 +356,8 @@ class MessageHeaderDestination(backboneelement.BackboneElement):
         element_property=True,
         # note: Listed Resource Type(s) should be allowed as Reference.
         enum_reference_types=["Device"],
-        backref="message_header_destination_target",
+        backref="message_header_destination",
+        parent_name="message_header_destination",
     )
 
     @classmethod
@@ -474,7 +482,8 @@ class MessageHeaderResponse(backboneelement.BackboneElement):
         element_property=True,
         # note: Listed Resource Type(s) should be allowed as Reference.
         enum_reference_types=["OperationOutcome"],
-        backref="message_header_response_details",
+        backref="message_header_response",
+        parent_name="message_header_response",
     )
 
     identifier: fhirtypes.Id = Field(

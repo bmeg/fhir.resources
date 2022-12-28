@@ -64,7 +64,8 @@ class Signature(element.Element):
             "Device",
             "Organization",
         ],
-        backref="signature_onBehalfOf",
+        backref="signature",
+        parent_name="signature",
     )
 
     sigFormat: fhirtypes.Code = Field(
@@ -160,7 +161,8 @@ class Signature(element.Element):
             "Device",
             "Organization",
         ],
-        backref="signature_who",
+        backref="signature",
+        parent_name="signature",
     )
 
     @classmethod

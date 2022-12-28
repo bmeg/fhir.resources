@@ -84,7 +84,8 @@ class Organization(domainresource.DomainResource):
         element_property=True,
         # note: Listed Resource Type(s) should be allowed as Reference.
         enum_reference_types=["Endpoint"],
-        backref="organization_endpoint",
+        backref="organization",
+        parent_name="organization",
     )
 
     identifier: typing.List[fhirtypes.IdentifierType] = Field(
@@ -120,7 +121,8 @@ class Organization(domainresource.DomainResource):
         element_property=True,
         # note: Listed Resource Type(s) should be allowed as Reference.
         enum_reference_types=["Organization"],
-        backref="organization_partOf",
+        backref="organization",
+        parent_name="organization",
     )
 
     telecom: typing.List[fhirtypes.ContactPointType] = Field(

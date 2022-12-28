@@ -586,7 +586,8 @@ class SpecimenDefinitionTypeTestedContainerAdditive(backboneelement.BackboneElem
         binding_uri="http://terminology.hl7.org/ValueSet/v2-0371",
         # note: Listed Resource Type(s) should be allowed as Reference.
         enum_reference_types=["Substance"],
-        backref="specimen_definition_type_tested_container_additive_additiveReference",
+        backref="specimen_definition_type_tested_container_additive",
+        parent_name="specimen_definition_type_tested_container_additive",
     )
 
     @classmethod

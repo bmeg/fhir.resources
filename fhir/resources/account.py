@@ -105,7 +105,8 @@ class Account(domainresource.DomainResource):
         element_property=True,
         # note: Listed Resource Type(s) should be allowed as Reference.
         enum_reference_types=["Organization"],
-        backref="account_owner",
+        backref="account",
+        parent_name="account",
     )
 
     partOf: fhirtypes.ReferenceType = Field(
@@ -117,7 +118,8 @@ class Account(domainresource.DomainResource):
         element_property=True,
         # note: Listed Resource Type(s) should be allowed as Reference.
         enum_reference_types=["Account"],
-        backref="account_partOf",
+        backref="account",
+        parent_name="account",
     )
 
     servicePeriod: fhirtypes.PeriodType = Field(
@@ -175,7 +177,8 @@ class Account(domainresource.DomainResource):
             "HealthcareService",
             "Organization",
         ],
-        backref="account_subject",
+        backref="account",
+        parent_name="account",
     )
 
     type: fhirtypes.CodeableConceptType = Field(
@@ -310,7 +313,8 @@ class AccountCoverage(backboneelement.BackboneElement):
         element_property=True,
         # note: Listed Resource Type(s) should be allowed as Reference.
         enum_reference_types=["Coverage"],
-        backref="account_coverage_coverage",
+        backref="account_coverage",
+        parent_name="account_coverage",
     )
 
     priority: fhirtypes.PositiveInt = Field(
@@ -370,7 +374,8 @@ class AccountGuarantor(backboneelement.BackboneElement):
         element_property=True,
         # note: Listed Resource Type(s) should be allowed as Reference.
         enum_reference_types=["Patient", "RelatedPerson", "Organization"],
-        backref="account_guarantor_party",
+        backref="account_guarantor",
+        parent_name="account_guarantor",
     )
 
     period: fhirtypes.PeriodType = Field(

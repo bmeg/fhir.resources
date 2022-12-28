@@ -69,7 +69,8 @@ class AdministrableProductDefinition(domainresource.DomainResource):
         element_property=True,
         # note: Listed Resource Type(s) should be allowed as Reference.
         enum_reference_types=["DeviceDefinition"],
-        backref="administrable_product_definition_device",
+        backref="administrable_product_definition",
+        parent_name="administrable_product_definition",
     )
 
     formOf: typing.List[fhirtypes.ReferenceType] = Field(
@@ -94,7 +95,8 @@ class AdministrableProductDefinition(domainresource.DomainResource):
         element_property=True,
         # note: Listed Resource Type(s) should be allowed as Reference.
         enum_reference_types=["MedicinalProductDefinition"],
-        backref="administrable_product_definition_formOf",
+        backref="administrable_product_definition",
+        parent_name="administrable_product_definition",
     )
 
     identifier: typing.List[fhirtypes.IdentifierType] = Field(
@@ -156,7 +158,8 @@ class AdministrableProductDefinition(domainresource.DomainResource):
         element_property=True,
         # note: Listed Resource Type(s) should be allowed as Reference.
         enum_reference_types=["ManufacturedItemDefinition"],
-        backref="administrable_product_definition_producedFrom",
+        backref="administrable_product_definition",
+        parent_name="administrable_product_definition",
     )
 
     property: typing.List[fhirtypes.AdministrableProductDefinitionPropertyType] = Field(

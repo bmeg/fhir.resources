@@ -306,7 +306,8 @@ class AuditEventAgent(backboneelement.BackboneElement):
         element_property=True,
         # note: Listed Resource Type(s) should be allowed as Reference.
         enum_reference_types=["Location"],
-        backref="audit_event_agent_location",
+        backref="audit_event_agent",
+        parent_name="audit_event_agent",
     )
 
     media: fhirtypes.CodingType = Field(
@@ -450,7 +451,8 @@ class AuditEventAgent(backboneelement.BackboneElement):
             "Patient",
             "RelatedPerson",
         ],
-        backref="audit_event_agent_who",
+        backref="audit_event_agent",
+        parent_name="audit_event_agent",
     )
 
     @classmethod
@@ -727,7 +729,8 @@ class AuditEventEntity(backboneelement.BackboneElement):
         element_property=True,
         # note: Listed Resource Type(s) should be allowed as Reference.
         enum_reference_types=["Resource"],
-        backref="audit_event_entity_what",
+        backref="audit_event_entity",
+        parent_name="audit_event_entity",
     )
 
     @classmethod
@@ -948,7 +951,8 @@ class AuditEventSource(backboneelement.BackboneElement):
             "Patient",
             "RelatedPerson",
         ],
-        backref="audit_event_source_observer",
+        backref="audit_event_source",
+        parent_name="audit_event_source",
     )
 
     site: fhirtypes.String = Field(

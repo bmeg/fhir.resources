@@ -52,7 +52,8 @@ class MeasureReport(domainresource.DomainResource):
         element_property=True,
         # note: Listed Resource Type(s) should be allowed as Reference.
         enum_reference_types=["Resource"],
-        backref="measure_report_evaluatedResource",
+        backref="measure_report",
+        parent_name="measure_report",
     )
 
     group: typing.List[fhirtypes.MeasureReportGroupType] = Field(
@@ -111,7 +112,8 @@ class MeasureReport(domainresource.DomainResource):
         element_required=True,
         # note: Listed Resource Type(s) should be allowed as Reference.
         enum_reference_types=["Measure"],
-        backref="measure_report_measure",
+        backref="measure_report",
+        parent_name="measure_report",
     )
     measure__ext: fhirtypes.FHIRPrimitiveExtensionType = Field(
         None, alias="_measure", title="Extension field for ``measure``."
@@ -140,7 +142,8 @@ class MeasureReport(domainresource.DomainResource):
             "Location",
             "Organization",
         ],
-        backref="measure_report_reporter",
+        backref="measure_report",
+        parent_name="measure_report",
     )
 
     status: fhirtypes.Code = Field(
@@ -188,7 +191,8 @@ class MeasureReport(domainresource.DomainResource):
             "RelatedPerson",
             "Group",
         ],
-        backref="measure_report_subject",
+        backref="measure_report",
+        parent_name="measure_report",
     )
 
     type: fhirtypes.Code = Field(
@@ -464,7 +468,8 @@ class MeasureReportGroupPopulation(backboneelement.BackboneElement):
         element_property=True,
         # note: Listed Resource Type(s) should be allowed as Reference.
         enum_reference_types=["List"],
-        backref="measure_report_group_population_subjectResults",
+        backref="measure_report_group_population",
+        parent_name="measure_report_group_population",
     )
 
     @classmethod
@@ -745,7 +750,8 @@ class MeasureReportGroupStratifierStratumPopulation(backboneelement.BackboneElem
         element_property=True,
         # note: Listed Resource Type(s) should be allowed as Reference.
         enum_reference_types=["List"],
-        backref="measure_report_group_stratifier_stratum_population_subjectResults",
+        backref="measure_report_group_stratifier_stratum_population",
+        parent_name="measure_report_group_stratifier_stratum_population",
     )
 
     @classmethod

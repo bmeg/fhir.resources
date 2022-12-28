@@ -334,7 +334,8 @@ class Measure(domainresource.DomainResource):
         element_property=True,
         # note: Listed Resource Type(s) should be allowed as Reference.
         enum_reference_types=["Library"],
-        backref="measure_library",
+        backref="measure",
+        parent_name="measure",
     )
     library__ext: typing.List[
         typing.Union[fhirtypes.FHIRPrimitiveExtensionType, None]
@@ -545,7 +546,8 @@ class Measure(domainresource.DomainResource):
         binding_uri="http://hl7.org/fhir/ValueSet/subject-type",
         # note: Listed Resource Type(s) should be allowed as Reference.
         enum_reference_types=["Group"],
-        backref="measure_subjectReference",
+        backref="measure",
+        parent_name="measure",
     )
 
     subtitle: fhirtypes.String = Field(

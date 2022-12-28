@@ -45,7 +45,8 @@ class RequestGroup(domainresource.DomainResource):
         element_property=True,
         # note: Listed Resource Type(s) should be allowed as Reference.
         enum_reference_types=["Device", "Practitioner", "PractitionerRole"],
-        backref="request_group_author",
+        backref="request_group",
+        parent_name="request_group",
     )
 
     authoredOn: fhirtypes.DateTime = Field(
@@ -72,7 +73,8 @@ class RequestGroup(domainresource.DomainResource):
         element_property=True,
         # note: Listed Resource Type(s) should be allowed as Reference.
         enum_reference_types=["Resource"],
-        backref="request_group_basedOn",
+        backref="request_group",
+        parent_name="request_group",
     )
 
     code: fhirtypes.CodeableConceptType = Field(
@@ -93,7 +95,8 @@ class RequestGroup(domainresource.DomainResource):
         element_property=True,
         # note: Listed Resource Type(s) should be allowed as Reference.
         enum_reference_types=["Encounter"],
-        backref="request_group_encounter",
+        backref="request_group",
+        parent_name="request_group",
     )
 
     groupIdentifier: fhirtypes.IdentifierType = Field(
@@ -258,7 +261,8 @@ class RequestGroup(domainresource.DomainResource):
             "DiagnosticReport",
             "DocumentReference",
         ],
-        backref="request_group_reasonReference",
+        backref="request_group",
+        parent_name="request_group",
     )
 
     replaces: typing.List[fhirtypes.ReferenceType] = Field(
@@ -273,7 +277,8 @@ class RequestGroup(domainresource.DomainResource):
         element_property=True,
         # note: Listed Resource Type(s) should be allowed as Reference.
         enum_reference_types=["Resource"],
-        backref="request_group_replaces",
+        backref="request_group",
+        parent_name="request_group",
     )
 
     status: fhirtypes.Code = Field(
@@ -321,7 +326,8 @@ class RequestGroup(domainresource.DomainResource):
         element_property=True,
         # note: Listed Resource Type(s) should be allowed as Reference.
         enum_reference_types=["Patient", "Group"],
-        backref="request_group_subject",
+        backref="request_group",
+        parent_name="request_group",
     )
 
     @classmethod
@@ -557,7 +563,8 @@ class RequestGroupAction(backboneelement.BackboneElement):
             "RelatedPerson",
             "Device",
         ],
-        backref="request_group_action_participant",
+        backref="request_group_action",
+        parent_name="request_group_action",
     )
 
     precheckBehavior: fhirtypes.Code = Field(
@@ -669,7 +676,8 @@ class RequestGroupAction(backboneelement.BackboneElement):
         element_property=True,
         # note: Listed Resource Type(s) should be allowed as Reference.
         enum_reference_types=["Resource"],
-        backref="request_group_action_resource",
+        backref="request_group_action",
+        parent_name="request_group_action",
     )
 
     selectionBehavior: fhirtypes.Code = Field(

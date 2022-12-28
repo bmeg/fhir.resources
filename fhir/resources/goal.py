@@ -80,7 +80,8 @@ class Goal(domainresource.DomainResource):
             "ServiceRequest",
             "RiskAssessment",
         ],
-        backref="goal_addresses",
+        backref="goal",
+        parent_name="goal",
     )
 
     category: typing.List[fhirtypes.CodeableConceptType] = Field(
@@ -131,7 +132,8 @@ class Goal(domainresource.DomainResource):
             "PractitionerRole",
             "RelatedPerson",
         ],
-        backref="goal_expressedBy",
+        backref="goal",
+        parent_name="goal",
     )
 
     identifier: typing.List[fhirtypes.IdentifierType] = Field(
@@ -219,7 +221,8 @@ class Goal(domainresource.DomainResource):
         element_property=True,
         # note: Listed Resource Type(s) should be allowed as Reference.
         enum_reference_types=["Observation"],
-        backref="goal_outcomeReference",
+        backref="goal",
+        parent_name="goal",
     )
 
     priority: fhirtypes.CodeableConceptType = Field(
@@ -322,7 +325,8 @@ class Goal(domainresource.DomainResource):
         element_property=True,
         # note: Listed Resource Type(s) should be allowed as Reference.
         enum_reference_types=["Patient", "Group", "Organization"],
-        backref="goal_subject",
+        backref="goal",
+        parent_name="goal",
     )
 
     target: typing.List[fhirtypes.GoalTargetType] = Field(

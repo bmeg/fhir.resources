@@ -42,7 +42,8 @@ class NutritionOrder(domainresource.DomainResource):
         element_property=True,
         # note: Listed Resource Type(s) should be allowed as Reference.
         enum_reference_types=["AllergyIntolerance"],
-        backref="nutrition_order_allergyIntolerance",
+        backref="nutrition_order",
+        parent_name="nutrition_order",
     )
 
     dateTime: fhirtypes.DateTime = Field(
@@ -70,7 +71,8 @@ class NutritionOrder(domainresource.DomainResource):
         element_property=True,
         # note: Listed Resource Type(s) should be allowed as Reference.
         enum_reference_types=["Encounter"],
-        backref="nutrition_order_encounter",
+        backref="nutrition_order",
+        parent_name="nutrition_order",
     )
 
     enteralFormula: fhirtypes.NutritionOrderEnteralFormulaType = Field(
@@ -175,7 +177,8 @@ class NutritionOrder(domainresource.DomainResource):
         element_property=True,
         # note: Listed Resource Type(s) should be allowed as Reference.
         enum_reference_types=["ActivityDefinition", "PlanDefinition"],
-        backref="nutrition_order_instantiatesCanonical",
+        backref="nutrition_order",
+        parent_name="nutrition_order",
     )
     instantiatesCanonical__ext: typing.List[
         typing.Union[fhirtypes.FHIRPrimitiveExtensionType, None]
@@ -274,7 +277,8 @@ class NutritionOrder(domainresource.DomainResource):
         element_property=True,
         # note: Listed Resource Type(s) should be allowed as Reference.
         enum_reference_types=["Practitioner", "PractitionerRole"],
-        backref="nutrition_order_orderer",
+        backref="nutrition_order",
+        parent_name="nutrition_order",
     )
 
     patient: fhirtypes.ReferenceType = Field(
@@ -289,7 +293,8 @@ class NutritionOrder(domainresource.DomainResource):
         element_property=True,
         # note: Listed Resource Type(s) should be allowed as Reference.
         enum_reference_types=["Patient"],
-        backref="nutrition_order_patient",
+        backref="nutrition_order",
+        parent_name="nutrition_order",
     )
 
     status: fhirtypes.Code = Field(

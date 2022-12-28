@@ -46,7 +46,8 @@ class AppointmentResponse(domainresource.DomainResource):
             "HealthcareService",
             "Location",
         ],
-        backref="appointment_response_actor",
+        backref="appointment_response",
+        parent_name="appointment_response",
     )
 
     appointment: fhirtypes.ReferenceType = Field(
@@ -58,7 +59,8 @@ class AppointmentResponse(domainresource.DomainResource):
         element_property=True,
         # note: Listed Resource Type(s) should be allowed as Reference.
         enum_reference_types=["Appointment"],
-        backref="appointment_response_appointment",
+        backref="appointment_response",
+        parent_name="appointment_response",
     )
 
     comment: fhirtypes.String = Field(

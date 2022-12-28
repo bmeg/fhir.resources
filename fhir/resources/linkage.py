@@ -55,7 +55,8 @@ class Linkage(domainresource.DomainResource):
         element_property=True,
         # note: Listed Resource Type(s) should be allowed as Reference.
         enum_reference_types=["Practitioner", "PractitionerRole", "Organization"],
-        backref="linkage_author",
+        backref="linkage",
+        parent_name="linkage",
     )
 
     item: typing.List[fhirtypes.LinkageItemType] = Field(
@@ -114,7 +115,8 @@ class LinkageItem(backboneelement.BackboneElement):
         element_property=True,
         # note: Listed Resource Type(s) should be allowed as Reference.
         enum_reference_types=["Resource"],
-        backref="linkage_item_resource",
+        backref="linkage_item",
+        parent_name="linkage_item",
     )
 
     type: fhirtypes.Code = Field(

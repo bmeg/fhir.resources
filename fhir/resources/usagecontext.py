@@ -126,7 +126,8 @@ class UsageContext(element.Element):
             "Location",
             "Organization",
         ],
-        backref="usage_context_valueReference",
+        backref="usage_context",
+        parent_name="usage_context",
     )
 
     @classmethod

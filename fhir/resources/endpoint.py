@@ -111,7 +111,8 @@ class Endpoint(domainresource.DomainResource):
         element_property=True,
         # note: Listed Resource Type(s) should be allowed as Reference.
         enum_reference_types=["Organization"],
-        backref="endpoint_managingOrganization",
+        backref="endpoint",
+        parent_name="endpoint",
     )
 
     name: fhirtypes.String = Field(

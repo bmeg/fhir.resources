@@ -60,7 +60,8 @@ class ClaimResponse(domainresource.DomainResource):
         element_property=True,
         # note: Listed Resource Type(s) should be allowed as Reference.
         enum_reference_types=["CommunicationRequest"],
-        backref="claim_response_communicationRequest",
+        backref="claim_response",
+        parent_name="claim_response",
     )
 
     created: fhirtypes.DateTime = Field(
@@ -175,7 +176,8 @@ class ClaimResponse(domainresource.DomainResource):
         element_property=True,
         # note: Listed Resource Type(s) should be allowed as Reference.
         enum_reference_types=["Organization"],
-        backref="claim_response_insurer",
+        backref="claim_response",
+        parent_name="claim_response",
     )
 
     item: typing.List[fhirtypes.ClaimResponseItemType] = Field(
@@ -227,7 +229,8 @@ class ClaimResponse(domainresource.DomainResource):
         element_property=True,
         # note: Listed Resource Type(s) should be allowed as Reference.
         enum_reference_types=["Patient"],
-        backref="claim_response_patient",
+        backref="claim_response",
+        parent_name="claim_response",
     )
 
     payeeType: fhirtypes.CodeableConceptType = Field(
@@ -300,7 +303,8 @@ class ClaimResponse(domainresource.DomainResource):
         element_property=True,
         # note: Listed Resource Type(s) should be allowed as Reference.
         enum_reference_types=["Claim"],
-        backref="claim_response_request",
+        backref="claim_response",
+        parent_name="claim_response",
     )
 
     requestor: fhirtypes.ReferenceType = Field(
@@ -315,7 +319,8 @@ class ClaimResponse(domainresource.DomainResource):
         element_property=True,
         # note: Listed Resource Type(s) should be allowed as Reference.
         enum_reference_types=["Practitioner", "PractitionerRole", "Organization"],
-        backref="claim_response_requestor",
+        backref="claim_response",
+        parent_name="claim_response",
     )
 
     status: fhirtypes.Code = Field(
@@ -673,7 +678,8 @@ class ClaimResponseAddItem(backboneelement.BackboneElement):
         binding_uri="http://hl7.org/fhir/ValueSet/service-place",
         # note: Listed Resource Type(s) should be allowed as Reference.
         enum_reference_types=["Location"],
-        backref="claim_response_add_item_locationReference",
+        backref="claim_response_add_item",
+        parent_name="claim_response_add_item",
     )
 
     modifier: typing.List[fhirtypes.CodeableConceptType] = Field(
@@ -766,7 +772,8 @@ class ClaimResponseAddItem(backboneelement.BackboneElement):
         element_property=True,
         # note: Listed Resource Type(s) should be allowed as Reference.
         enum_reference_types=["Practitioner", "PractitionerRole", "Organization"],
-        backref="claim_response_add_item_provider",
+        backref="claim_response_add_item",
+        parent_name="claim_response_add_item",
     )
 
     quantity: fhirtypes.QuantityType = Field(
@@ -1368,7 +1375,8 @@ class ClaimResponseInsurance(backboneelement.BackboneElement):
         element_property=True,
         # note: Listed Resource Type(s) should be allowed as Reference.
         enum_reference_types=["ClaimResponse"],
-        backref="claim_response_insurance_claimResponse",
+        backref="claim_response_insurance",
+        parent_name="claim_response_insurance",
     )
 
     coverage: fhirtypes.ReferenceType = Field(
@@ -1385,7 +1393,8 @@ class ClaimResponseInsurance(backboneelement.BackboneElement):
         element_property=True,
         # note: Listed Resource Type(s) should be allowed as Reference.
         enum_reference_types=["Coverage"],
-        backref="claim_response_insurance_coverage",
+        backref="claim_response_insurance",
+        parent_name="claim_response_insurance",
     )
 
     focal: bool = Field(

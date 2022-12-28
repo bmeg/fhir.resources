@@ -49,7 +49,8 @@ class ImagingStudy(domainresource.DomainResource):
             "AppointmentResponse",
             "Task",
         ],
-        backref="imaging_study_basedOn",
+        backref="imaging_study",
+        parent_name="imaging_study",
     )
 
     description: fhirtypes.String = Field(
@@ -79,7 +80,8 @@ class ImagingStudy(domainresource.DomainResource):
         element_property=True,
         # note: Listed Resource Type(s) should be allowed as Reference.
         enum_reference_types=["Encounter"],
-        backref="imaging_study_encounter",
+        backref="imaging_study",
+        parent_name="imaging_study",
     )
 
     endpoint: typing.List[fhirtypes.ReferenceType] = Field(
@@ -97,7 +99,8 @@ class ImagingStudy(domainresource.DomainResource):
         element_property=True,
         # note: Listed Resource Type(s) should be allowed as Reference.
         enum_reference_types=["Endpoint"],
-        backref="imaging_study_endpoint",
+        backref="imaging_study",
+        parent_name="imaging_study",
     )
 
     identifier: typing.List[fhirtypes.IdentifierType] = Field(
@@ -121,7 +124,8 @@ class ImagingStudy(domainresource.DomainResource):
         element_property=True,
         # note: Listed Resource Type(s) should be allowed as Reference.
         enum_reference_types=["Practitioner", "PractitionerRole"],
-        backref="imaging_study_interpreter",
+        backref="imaging_study",
+        parent_name="imaging_study",
     )
 
     location: fhirtypes.ReferenceType = Field(
@@ -133,7 +137,8 @@ class ImagingStudy(domainresource.DomainResource):
         element_property=True,
         # note: Listed Resource Type(s) should be allowed as Reference.
         enum_reference_types=["Location"],
-        backref="imaging_study_location",
+        backref="imaging_study",
+        parent_name="imaging_study",
     )
 
     modality: typing.List[fhirtypes.CodingType] = Field(
@@ -229,7 +234,8 @@ class ImagingStudy(domainresource.DomainResource):
         element_property=True,
         # note: Listed Resource Type(s) should be allowed as Reference.
         enum_reference_types=["Procedure"],
-        backref="imaging_study_procedureReference",
+        backref="imaging_study",
+        parent_name="imaging_study",
     )
 
     reasonCode: typing.List[fhirtypes.CodeableConceptType] = Field(
@@ -263,7 +269,8 @@ class ImagingStudy(domainresource.DomainResource):
             "DiagnosticReport",
             "DocumentReference",
         ],
-        backref="imaging_study_reasonReference",
+        backref="imaging_study",
+        parent_name="imaging_study",
     )
 
     referrer: fhirtypes.ReferenceType = Field(
@@ -275,7 +282,8 @@ class ImagingStudy(domainresource.DomainResource):
         element_property=True,
         # note: Listed Resource Type(s) should be allowed as Reference.
         enum_reference_types=["Practitioner", "PractitionerRole"],
-        backref="imaging_study_referrer",
+        backref="imaging_study",
+        parent_name="imaging_study",
     )
 
     series: typing.List[fhirtypes.ImagingStudySeriesType] = Field(
@@ -338,7 +346,8 @@ class ImagingStudy(domainresource.DomainResource):
         element_property=True,
         # note: Listed Resource Type(s) should be allowed as Reference.
         enum_reference_types=["Patient", "Device", "Group"],
-        backref="imaging_study_subject",
+        backref="imaging_study",
+        parent_name="imaging_study",
     )
 
     @classmethod
@@ -495,7 +504,8 @@ class ImagingStudySeries(backboneelement.BackboneElement):
         element_property=True,
         # note: Listed Resource Type(s) should be allowed as Reference.
         enum_reference_types=["Endpoint"],
-        backref="imaging_study_series_endpoint",
+        backref="imaging_study_series",
+        parent_name="imaging_study_series",
     )
 
     instance: typing.List[fhirtypes.ImagingStudySeriesInstanceType] = Field(
@@ -594,7 +604,8 @@ class ImagingStudySeries(backboneelement.BackboneElement):
         element_property=True,
         # note: Listed Resource Type(s) should be allowed as Reference.
         enum_reference_types=["Specimen"],
-        backref="imaging_study_series_specimen",
+        backref="imaging_study_series",
+        parent_name="imaging_study_series",
     )
 
     started: fhirtypes.DateTime = Field(
@@ -875,7 +886,8 @@ class ImagingStudySeriesPerformer(backboneelement.BackboneElement):
             "Device",
             "RelatedPerson",
         ],
-        backref="imaging_study_series_performer_actor",
+        backref="imaging_study_series_performer",
+        parent_name="imaging_study_series_performer",
     )
 
     function: fhirtypes.CodeableConceptType = Field(

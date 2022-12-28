@@ -57,7 +57,8 @@ class Ingredient(domainresource.DomainResource):
             "AdministrableProductDefinition",
             "ManufacturedItemDefinition",
         ],
-        backref="ingredient_for_fhir",
+        backref="ingredient",
+        parent_name="ingredient",
     )
 
     function: typing.List[fhirtypes.CodeableConceptType] = Field(
@@ -270,7 +271,8 @@ class IngredientManufacturer(backboneelement.BackboneElement):
         element_property=True,
         # note: Listed Resource Type(s) should be allowed as Reference.
         enum_reference_types=["Organization"],
-        backref="ingredient_manufacturer_manufacturer",
+        backref="ingredient_manufacturer",
+        parent_name="ingredient_manufacturer",
     )
 
     role: fhirtypes.Code = Field(
@@ -334,7 +336,8 @@ class IngredientSubstance(backboneelement.BackboneElement):
         binding_uri="http://hl7.org/fhir/ValueSet/substance-codes",
         # note: Listed Resource Type(s) should be allowed as Reference.
         enum_reference_types=["SubstanceDefinition"],
-        backref="ingredient_substance_code",
+        backref="ingredient_substance",
+        parent_name="ingredient_substance",
     )
 
     strength: typing.List[fhirtypes.IngredientSubstanceStrengthType] = Field(
@@ -684,7 +687,8 @@ class IngredientSubstanceStrengthReferenceStrength(backboneelement.BackboneEleme
         binding_uri="http://hl7.org/fhir/ValueSet/substance-codes",
         # note: Listed Resource Type(s) should be allowed as Reference.
         enum_reference_types=["SubstanceDefinition"],
-        backref="ingredient_substance_strength_reference_strength_substance",
+        backref="ingredient_substance_strength_reference_strength",
+        parent_name="ingredient_substance_strength_reference_strength",
     )
 
     @classmethod

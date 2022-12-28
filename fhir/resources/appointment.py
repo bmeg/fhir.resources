@@ -54,7 +54,8 @@ class Appointment(domainresource.DomainResource):
         element_property=True,
         # note: Listed Resource Type(s) should be allowed as Reference.
         enum_reference_types=["ServiceRequest"],
-        backref="appointment_basedOn",
+        backref="appointment",
+        parent_name="appointment",
     )
 
     cancelationReason: fhirtypes.CodeableConceptType = Field(
@@ -246,7 +247,8 @@ class Appointment(domainresource.DomainResource):
             "Observation",
             "ImmunizationRecommendation",
         ],
-        backref="appointment_reasonReference",
+        backref="appointment",
+        parent_name="appointment",
     )
 
     requestedPeriod: typing.List[fhirtypes.PeriodType] = Field(
@@ -307,7 +309,8 @@ class Appointment(domainresource.DomainResource):
         element_property=True,
         # note: Listed Resource Type(s) should be allowed as Reference.
         enum_reference_types=["Slot"],
-        backref="appointment_slot",
+        backref="appointment",
+        parent_name="appointment",
     )
 
     specialty: typing.List[fhirtypes.CodeableConceptType] = Field(
@@ -389,7 +392,8 @@ class Appointment(domainresource.DomainResource):
         element_property=True,
         # note: Listed Resource Type(s) should be allowed as Reference.
         enum_reference_types=["Resource"],
-        backref="appointment_supportingInformation",
+        backref="appointment",
+        parent_name="appointment",
     )
 
     @classmethod
@@ -522,7 +526,8 @@ class AppointmentParticipant(backboneelement.BackboneElement):
             "HealthcareService",
             "Location",
         ],
-        backref="appointment_participant_actor",
+        backref="appointment_participant",
+        parent_name="appointment_participant",
     )
 
     period: fhirtypes.PeriodType = Field(

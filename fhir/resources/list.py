@@ -78,7 +78,8 @@ class List(domainresource.DomainResource):
         element_property=True,
         # note: Listed Resource Type(s) should be allowed as Reference.
         enum_reference_types=["Encounter"],
-        backref="list_encounter",
+        backref="list",
+        parent_name="list",
     )
 
     entry: typing.List[fhirtypes.ListEntryType] = Field(
@@ -167,7 +168,8 @@ class List(domainresource.DomainResource):
         element_property=True,
         # note: Listed Resource Type(s) should be allowed as Reference.
         enum_reference_types=["Practitioner", "PractitionerRole", "Patient", "Device"],
-        backref="list_source",
+        backref="list",
+        parent_name="list",
     )
 
     status: fhirtypes.Code = Field(
@@ -206,7 +208,8 @@ class List(domainresource.DomainResource):
         element_property=True,
         # note: Listed Resource Type(s) should be allowed as Reference.
         enum_reference_types=["Patient", "Group", "Device", "Location"],
-        backref="list_subject",
+        backref="list",
+        parent_name="list",
     )
 
     title: fhirtypes.String = Field(
@@ -372,7 +375,8 @@ class ListEntry(backboneelement.BackboneElement):
         element_property=True,
         # note: Listed Resource Type(s) should be allowed as Reference.
         enum_reference_types=["Resource"],
-        backref="list_entry_item",
+        backref="list_entry",
+        parent_name="list_entry",
     )
 
     @classmethod

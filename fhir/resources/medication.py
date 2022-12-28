@@ -120,7 +120,8 @@ class Medication(domainresource.DomainResource):
         element_property=True,
         # note: Listed Resource Type(s) should be allowed as Reference.
         enum_reference_types=["Organization"],
-        backref="medication_manufacturer",
+        backref="medication",
+        parent_name="medication",
     )
 
     status: fhirtypes.Code = Field(
@@ -272,7 +273,8 @@ class MedicationIngredient(backboneelement.BackboneElement):
         one_of_many_required=True,
         # note: Listed Resource Type(s) should be allowed as Reference.
         enum_reference_types=["Substance", "Medication"],
-        backref="medication_ingredient_itemReference",
+        backref="medication_ingredient",
+        parent_name="medication_ingredient",
     )
 
     strength: fhirtypes.RatioType = Field(

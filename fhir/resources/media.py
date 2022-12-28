@@ -38,7 +38,8 @@ class Media(domainresource.DomainResource):
         element_property=True,
         # note: Listed Resource Type(s) should be allowed as Reference.
         enum_reference_types=["ServiceRequest", "CarePlan"],
-        backref="media_basedOn",
+        backref="media",
+        parent_name="media",
     )
 
     bodySite: fhirtypes.CodeableConceptType = Field(
@@ -106,7 +107,8 @@ class Media(domainresource.DomainResource):
         element_property=True,
         # note: Listed Resource Type(s) should be allowed as Reference.
         enum_reference_types=["Device", "DeviceMetric", "Device"],
-        backref="media_device",
+        backref="media",
+        parent_name="media",
     )
 
     deviceName: fhirtypes.String = Field(
@@ -145,7 +147,8 @@ class Media(domainresource.DomainResource):
         element_property=True,
         # note: Listed Resource Type(s) should be allowed as Reference.
         enum_reference_types=["Encounter"],
-        backref="media_encounter",
+        backref="media",
+        parent_name="media",
     )
 
     frames: fhirtypes.PositiveInt = Field(
@@ -254,7 +257,8 @@ class Media(domainresource.DomainResource):
             "Device",
             "RelatedPerson",
         ],
-        backref="media_operator",
+        backref="media",
+        parent_name="media",
     )
 
     partOf: typing.List[fhirtypes.ReferenceType] = Field(
@@ -266,7 +270,8 @@ class Media(domainresource.DomainResource):
         element_property=True,
         # note: Listed Resource Type(s) should be allowed as Reference.
         enum_reference_types=["Resource"],
-        backref="media_partOf",
+        backref="media",
+        parent_name="media",
     )
 
     reasonCode: typing.List[fhirtypes.CodeableConceptType] = Field(
@@ -338,7 +343,8 @@ class Media(domainresource.DomainResource):
             "Specimen",
             "Location",
         ],
-        backref="media_subject",
+        backref="media",
+        parent_name="media",
     )
 
     type: fhirtypes.CodeableConceptType = Field(

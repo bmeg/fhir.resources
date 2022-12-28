@@ -114,7 +114,8 @@ class Group(domainresource.DomainResource):
             "Practitioner",
             "PractitionerRole",
         ],
-        backref="group_managingEntity",
+        backref="group",
+        parent_name="group",
     )
 
     member: typing.List[fhirtypes.GroupMemberType] = Field(
@@ -577,7 +578,8 @@ class GroupMember(backboneelement.BackboneElement):
             "Substance",
             "Group",
         ],
-        backref="group_member_entity",
+        backref="group_member",
+        parent_name="group_member",
     )
 
     inactive: bool = Field(

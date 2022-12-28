@@ -117,7 +117,8 @@ class SubscriptionTopic(domainresource.DomainResource):
         element_property=True,
         # note: Listed Resource Type(s) should be allowed as Reference.
         enum_reference_types=["SubscriptionTopic"],
-        backref="subscription_topic_derivedFrom",
+        backref="subscription_topic",
+        parent_name="subscription_topic",
     )
     derivedFrom__ext: typing.List[
         typing.Union[fhirtypes.FHIRPrimitiveExtensionType, None]

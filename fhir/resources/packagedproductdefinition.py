@@ -148,7 +148,8 @@ class PackagedProductDefinition(domainresource.DomainResource):
         element_property=True,
         # note: Listed Resource Type(s) should be allowed as Reference.
         enum_reference_types=["Organization"],
-        backref="packaged_product_definition_manufacturer",
+        backref="packaged_product_definition",
+        parent_name="packaged_product_definition",
     )
 
     marketingStatus: typing.List[fhirtypes.MarketingStatusType] = Field(
@@ -207,7 +208,8 @@ class PackagedProductDefinition(domainresource.DomainResource):
         element_property=True,
         # note: Listed Resource Type(s) should be allowed as Reference.
         enum_reference_types=["MedicinalProductDefinition"],
-        backref="packaged_product_definition_packageFor",
+        backref="packaged_product_definition",
+        parent_name="packaged_product_definition",
     )
 
     status: fhirtypes.CodeableConceptType = Field(
@@ -429,7 +431,8 @@ class PackagedProductDefinitionPackage(backboneelement.BackboneElement):
         element_property=True,
         # note: Listed Resource Type(s) should be allowed as Reference.
         enum_reference_types=["Organization"],
-        backref="packaged_product_definition_package_manufacturer",
+        backref="packaged_product_definition_package",
+        parent_name="packaged_product_definition_package",
     )
 
     material: typing.List[fhirtypes.CodeableConceptType] = Field(
@@ -584,7 +587,8 @@ class PackagedProductDefinitionPackageContainedItem(backboneelement.BackboneElem
             "BiologicallyDerivedProduct",
             "NutritionProduct",
         ],
-        backref="packaged_product_definition_package_contained_item_item",
+        backref="packaged_product_definition_package_contained_item",
+        parent_name="packaged_product_definition_package_contained_item",
     )
 
     @classmethod

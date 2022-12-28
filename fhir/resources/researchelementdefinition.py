@@ -255,7 +255,8 @@ class ResearchElementDefinition(domainresource.DomainResource):
         element_property=True,
         # note: Listed Resource Type(s) should be allowed as Reference.
         enum_reference_types=["Library"],
-        backref="research_element_definition_library",
+        backref="research_element_definition",
+        parent_name="research_element_definition",
     )
     library__ext: typing.List[
         typing.Union[fhirtypes.FHIRPrimitiveExtensionType, None]
@@ -419,7 +420,8 @@ class ResearchElementDefinition(domainresource.DomainResource):
         binding_uri="http://hl7.org/fhir/ValueSet/subject-type",
         # note: Listed Resource Type(s) should be allowed as Reference.
         enum_reference_types=["Group"],
-        backref="research_element_definition_subjectReference",
+        backref="research_element_definition",
+        parent_name="research_element_definition",
     )
 
     subtitle: fhirtypes.String = Field(
@@ -779,7 +781,8 @@ class ResearchElementDefinitionCharacteristic(backboneelement.BackboneElement):
         one_of_many_required=True,
         # note: Listed Resource Type(s) should be allowed as Reference.
         enum_reference_types=["ValueSet"],
-        backref="research_element_definition_characteristic_definitionCanonical",
+        backref="research_element_definition_characteristic",
+        parent_name="research_element_definition_characteristic",
     )
     definitionCanonical__ext: fhirtypes.FHIRPrimitiveExtensionType = Field(
         None,

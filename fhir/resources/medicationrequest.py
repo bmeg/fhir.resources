@@ -63,7 +63,8 @@ class MedicationRequest(domainresource.DomainResource):
             "ServiceRequest",
             "ImmunizationRecommendation",
         ],
-        backref="medication_request_basedOn",
+        backref="medication_request",
+        parent_name="medication_request",
     )
 
     category: typing.List[fhirtypes.CodeableConceptType] = Field(
@@ -114,7 +115,8 @@ class MedicationRequest(domainresource.DomainResource):
         element_property=True,
         # note: Listed Resource Type(s) should be allowed as Reference.
         enum_reference_types=["DetectedIssue"],
-        backref="medication_request_detectedIssue",
+        backref="medication_request",
+        parent_name="medication_request",
     )
 
     dispenseRequest: fhirtypes.MedicationRequestDispenseRequestType = Field(
@@ -169,7 +171,8 @@ class MedicationRequest(domainresource.DomainResource):
         element_property=True,
         # note: Listed Resource Type(s) should be allowed as Reference.
         enum_reference_types=["Encounter"],
-        backref="medication_request_encounter",
+        backref="medication_request",
+        parent_name="medication_request",
     )
 
     eventHistory: typing.List[fhirtypes.ReferenceType] = Field(
@@ -186,7 +189,8 @@ class MedicationRequest(domainresource.DomainResource):
         element_property=True,
         # note: Listed Resource Type(s) should be allowed as Reference.
         enum_reference_types=["Provenance"],
-        backref="medication_request_eventHistory",
+        backref="medication_request",
+        parent_name="medication_request",
     )
 
     groupIdentifier: fhirtypes.IdentifierType = Field(
@@ -269,7 +273,8 @@ class MedicationRequest(domainresource.DomainResource):
         element_property=True,
         # note: Listed Resource Type(s) should be allowed as Reference.
         enum_reference_types=["Coverage", "ClaimResponse"],
-        backref="medication_request_insurance",
+        backref="medication_request",
+        parent_name="medication_request",
     )
 
     intent: fhirtypes.Code = Field(
@@ -352,7 +357,8 @@ class MedicationRequest(domainresource.DomainResource):
         binding_uri="http://hl7.org/fhir/ValueSet/medication-codes",
         # note: Listed Resource Type(s) should be allowed as Reference.
         enum_reference_types=["Medication"],
-        backref="medication_request_medicationReference",
+        backref="medication_request",
+        parent_name="medication_request",
     )
 
     note: typing.List[fhirtypes.AnnotationType] = Field(
@@ -387,7 +393,8 @@ class MedicationRequest(domainresource.DomainResource):
             "RelatedPerson",
             "CareTeam",
         ],
-        backref="medication_request_performer",
+        backref="medication_request",
+        parent_name="medication_request",
     )
 
     performerType: fhirtypes.CodeableConceptType = Field(
@@ -418,7 +425,8 @@ class MedicationRequest(domainresource.DomainResource):
         element_property=True,
         # note: Listed Resource Type(s) should be allowed as Reference.
         enum_reference_types=["MedicationRequest"],
-        backref="medication_request_priorPrescription",
+        backref="medication_request",
+        parent_name="medication_request",
     )
 
     priority: fhirtypes.Code = Field(
@@ -473,7 +481,8 @@ class MedicationRequest(domainresource.DomainResource):
         element_property=True,
         # note: Listed Resource Type(s) should be allowed as Reference.
         enum_reference_types=["Condition", "Observation"],
-        backref="medication_request_reasonReference",
+        backref="medication_request",
+        parent_name="medication_request",
     )
 
     recorder: fhirtypes.ReferenceType = Field(
@@ -488,7 +497,8 @@ class MedicationRequest(domainresource.DomainResource):
         element_property=True,
         # note: Listed Resource Type(s) should be allowed as Reference.
         enum_reference_types=["Practitioner", "PractitionerRole"],
-        backref="medication_request_recorder",
+        backref="medication_request",
+        parent_name="medication_request",
     )
 
     reportedBoolean: bool = Field(
@@ -532,7 +542,8 @@ class MedicationRequest(domainresource.DomainResource):
             "RelatedPerson",
             "Organization",
         ],
-        backref="medication_request_reportedReference",
+        backref="medication_request",
+        parent_name="medication_request",
     )
 
     requester: fhirtypes.ReferenceType = Field(
@@ -554,7 +565,8 @@ class MedicationRequest(domainresource.DomainResource):
             "RelatedPerson",
             "Device",
         ],
-        backref="medication_request_requester",
+        backref="medication_request",
+        parent_name="medication_request",
     )
 
     status: fhirtypes.Code = Field(
@@ -622,7 +634,8 @@ class MedicationRequest(domainresource.DomainResource):
         element_property=True,
         # note: Listed Resource Type(s) should be allowed as Reference.
         enum_reference_types=["Patient", "Group"],
-        backref="medication_request_subject",
+        backref="medication_request",
+        parent_name="medication_request",
     )
 
     substitution: fhirtypes.MedicationRequestSubstitutionType = Field(
@@ -651,7 +664,8 @@ class MedicationRequest(domainresource.DomainResource):
         element_property=True,
         # note: Listed Resource Type(s) should be allowed as Reference.
         enum_reference_types=["Resource"],
-        backref="medication_request_supportingInformation",
+        backref="medication_request",
+        parent_name="medication_request",
     )
 
     @classmethod
@@ -893,7 +907,8 @@ class MedicationRequestDispenseRequest(backboneelement.BackboneElement):
         element_property=True,
         # note: Listed Resource Type(s) should be allowed as Reference.
         enum_reference_types=["Organization"],
-        backref="medication_request_dispense_request_performer",
+        backref="medication_request_dispense_request",
+        parent_name="medication_request_dispense_request",
     )
 
     quantity: fhirtypes.QuantityType = Field(

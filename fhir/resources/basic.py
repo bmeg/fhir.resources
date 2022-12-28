@@ -41,7 +41,8 @@ class Basic(domainresource.DomainResource):
             "RelatedPerson",
             "Organization",
         ],
-        backref="basic_author",
+        backref="basic",
+        parent_name="basic",
     )
 
     code: fhirtypes.CodeableConceptType = Field(
@@ -97,7 +98,8 @@ class Basic(domainresource.DomainResource):
         element_property=True,
         # note: Listed Resource Type(s) should be allowed as Reference.
         enum_reference_types=["Resource"],
-        backref="basic_subject",
+        backref="basic",
+        parent_name="basic",
     )
 
     @classmethod

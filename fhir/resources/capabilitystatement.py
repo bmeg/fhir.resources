@@ -191,7 +191,8 @@ class CapabilityStatement(domainresource.DomainResource):
         element_property=True,
         # note: Listed Resource Type(s) should be allowed as Reference.
         enum_reference_types=["ImplementationGuide"],
-        backref="capability_statement_implementationGuide",
+        backref="capability_statement",
+        parent_name="capability_statement",
     )
     implementationGuide__ext: typing.List[
         typing.Union[fhirtypes.FHIRPrimitiveExtensionType, None]
@@ -216,7 +217,8 @@ class CapabilityStatement(domainresource.DomainResource):
         element_property=True,
         # note: Listed Resource Type(s) should be allowed as Reference.
         enum_reference_types=["CapabilityStatement"],
-        backref="capability_statement_imports",
+        backref="capability_statement",
+        parent_name="capability_statement",
     )
     imports__ext: typing.List[
         typing.Union[fhirtypes.FHIRPrimitiveExtensionType, None]
@@ -238,7 +240,8 @@ class CapabilityStatement(domainresource.DomainResource):
         element_property=True,
         # note: Listed Resource Type(s) should be allowed as Reference.
         enum_reference_types=["CapabilityStatement"],
-        backref="capability_statement_instantiates",
+        backref="capability_statement",
+        parent_name="capability_statement",
     )
     instantiates__ext: typing.List[
         typing.Union[fhirtypes.FHIRPrimitiveExtensionType, None]
@@ -656,7 +659,8 @@ class CapabilityStatementDocument(backboneelement.BackboneElement):
         element_required=True,
         # note: Listed Resource Type(s) should be allowed as Reference.
         enum_reference_types=["StructureDefinition"],
-        backref="capability_statement_document_profile",
+        backref="capability_statement_document",
+        parent_name="capability_statement_document",
     )
     profile__ext: fhirtypes.FHIRPrimitiveExtensionType = Field(
         None, alias="_profile", title="Extension field for ``profile``."
@@ -762,7 +766,8 @@ class CapabilityStatementImplementation(backboneelement.BackboneElement):
         element_property=True,
         # note: Listed Resource Type(s) should be allowed as Reference.
         enum_reference_types=["Organization"],
-        backref="capability_statement_implementation_custodian",
+        backref="capability_statement_implementation",
+        parent_name="capability_statement_implementation",
     )
 
     description: fhirtypes.String = Field(
@@ -1095,7 +1100,8 @@ class CapabilityStatementMessagingSupportedMessage(backboneelement.BackboneEleme
         element_required=True,
         # note: Listed Resource Type(s) should be allowed as Reference.
         enum_reference_types=["MessageDefinition"],
-        backref="capability_statement_messaging_supported_message_definition",
+        backref="capability_statement_messaging_supported_message",
+        parent_name="capability_statement_messaging_supported_message",
     )
     definition__ext: fhirtypes.FHIRPrimitiveExtensionType = Field(
         None, alias="_definition", title="Extension field for ``definition``."
@@ -1217,7 +1223,8 @@ class CapabilityStatementRest(backboneelement.BackboneElement):
         element_property=True,
         # note: Listed Resource Type(s) should be allowed as Reference.
         enum_reference_types=["CompartmentDefinition"],
-        backref="capability_statement_rest_compartment",
+        backref="capability_statement_rest",
+        parent_name="capability_statement_rest",
     )
     compartment__ext: typing.List[
         typing.Union[fhirtypes.FHIRPrimitiveExtensionType, None]
@@ -1668,7 +1675,8 @@ class CapabilityStatementRestResource(backboneelement.BackboneElement):
         element_property=True,
         # note: Listed Resource Type(s) should be allowed as Reference.
         enum_reference_types=["StructureDefinition"],
-        backref="capability_statement_rest_resource_profile",
+        backref="capability_statement_rest_resource",
+        parent_name="capability_statement_rest_resource",
     )
     profile__ext: fhirtypes.FHIRPrimitiveExtensionType = Field(
         None, alias="_profile", title="Extension field for ``profile``."
@@ -1779,7 +1787,8 @@ class CapabilityStatementRestResource(backboneelement.BackboneElement):
         element_property=True,
         # note: Listed Resource Type(s) should be allowed as Reference.
         enum_reference_types=["StructureDefinition"],
-        backref="capability_statement_rest_resource_supportedProfile",
+        backref="capability_statement_rest_resource",
+        parent_name="capability_statement_rest_resource",
     )
     supportedProfile__ext: typing.List[
         typing.Union[fhirtypes.FHIRPrimitiveExtensionType, None]
@@ -2110,7 +2119,8 @@ class CapabilityStatementRestResourceOperation(backboneelement.BackboneElement):
         element_required=True,
         # note: Listed Resource Type(s) should be allowed as Reference.
         enum_reference_types=["OperationDefinition"],
-        backref="capability_statement_rest_resource_operation_definition",
+        backref="capability_statement_rest_resource_operation",
+        parent_name="capability_statement_rest_resource_operation",
     )
     definition__ext: fhirtypes.FHIRPrimitiveExtensionType = Field(
         None, alias="_definition", title="Extension field for ``definition``."
@@ -2254,7 +2264,8 @@ class CapabilityStatementRestResourceSearchParam(backboneelement.BackboneElement
         element_property=True,
         # note: Listed Resource Type(s) should be allowed as Reference.
         enum_reference_types=["SearchParameter"],
-        backref="capability_statement_rest_resource_search_param_definition",
+        backref="capability_statement_rest_resource_search_param",
+        parent_name="capability_statement_rest_resource_search_param",
     )
     definition__ext: fhirtypes.FHIRPrimitiveExtensionType = Field(
         None, alias="_definition", title="Extension field for ``definition``."

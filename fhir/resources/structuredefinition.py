@@ -58,7 +58,8 @@ class StructureDefinition(domainresource.DomainResource):
         element_property=True,
         # note: Listed Resource Type(s) should be allowed as Reference.
         enum_reference_types=["StructureDefinition"],
-        backref="structure_definition_baseDefinition",
+        backref="structure_definition",
+        parent_name="structure_definition",
     )
     baseDefinition__ext: fhirtypes.FHIRPrimitiveExtensionType = Field(
         None, alias="_baseDefinition", title="Extension field for ``baseDefinition``."

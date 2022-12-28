@@ -101,7 +101,8 @@ class Location(domainresource.DomainResource):
         element_property=True,
         # note: Listed Resource Type(s) should be allowed as Reference.
         enum_reference_types=["Endpoint"],
-        backref="location_endpoint",
+        backref="location",
+        parent_name="location",
     )
 
     hoursOfOperation: typing.List[fhirtypes.LocationHoursOfOperationType] = Field(
@@ -134,7 +135,8 @@ class Location(domainresource.DomainResource):
         element_property=True,
         # note: Listed Resource Type(s) should be allowed as Reference.
         enum_reference_types=["Organization"],
-        backref="location_managingOrganization",
+        backref="location",
+        parent_name="location",
     )
 
     mode: fhirtypes.Code = Field(
@@ -201,7 +203,8 @@ class Location(domainresource.DomainResource):
         element_property=True,
         # note: Listed Resource Type(s) should be allowed as Reference.
         enum_reference_types=["Location"],
-        backref="location_partOf",
+        backref="location",
+        parent_name="location",
     )
 
     physicalType: fhirtypes.CodeableConceptType = Field(

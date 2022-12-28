@@ -967,7 +967,8 @@ class CitationCitedArtifactClassificationWhoClassified(backboneelement.BackboneE
         element_property=True,
         # note: Listed Resource Type(s) should be allowed as Reference.
         enum_reference_types=["Organization"],
-        backref="citation_cited_artifact_classification_who_classified_organization",
+        backref="citation_cited_artifact_classification_who_classified",
+        parent_name="citation_cited_artifact_classification_who_classified",
     )
 
     person: fhirtypes.ReferenceType = Field(
@@ -979,7 +980,8 @@ class CitationCitedArtifactClassificationWhoClassified(backboneelement.BackboneE
         element_property=True,
         # note: Listed Resource Type(s) should be allowed as Reference.
         enum_reference_types=["Person", "Practitioner"],
-        backref="citation_cited_artifact_classification_who_classified_person",
+        backref="citation_cited_artifact_classification_who_classified",
+        parent_name="citation_cited_artifact_classification_who_classified",
     )
 
     publisher: fhirtypes.ReferenceType = Field(
@@ -994,7 +996,8 @@ class CitationCitedArtifactClassificationWhoClassified(backboneelement.BackboneE
         element_property=True,
         # note: Listed Resource Type(s) should be allowed as Reference.
         enum_reference_types=["Organization"],
-        backref="citation_cited_artifact_classification_who_classified_publisher",
+        backref="citation_cited_artifact_classification_who_classified",
+        parent_name="citation_cited_artifact_classification_who_classified",
     )
 
     @classmethod
@@ -1518,7 +1521,8 @@ class CitationCitedArtifactPart(backboneelement.BackboneElement):
         element_property=True,
         # note: Listed Resource Type(s) should be allowed as Reference.
         enum_reference_types=["Citation"],
-        backref="citation_cited_artifact_part_baseCitation",
+        backref="citation_cited_artifact_part",
+        parent_name="citation_cited_artifact_part",
     )
 
     type: fhirtypes.CodeableConceptType = Field(
@@ -1943,7 +1947,8 @@ class CitationCitedArtifactPublicationFormPublishedIn(backboneelement.BackboneEl
         element_property=True,
         # note: Listed Resource Type(s) should be allowed as Reference.
         enum_reference_types=["Organization"],
-        backref="citation_cited_artifact_publication_form_published_in_publisher",
+        backref="citation_cited_artifact_publication_form_published_in",
+        parent_name="citation_cited_artifact_publication_form_published_in",
     )
 
     publisherLocation: fhirtypes.String = Field(
@@ -2072,7 +2077,8 @@ class CitationCitedArtifactRelatesTo(backboneelement.BackboneElement):
         one_of_many_required=True,
         # note: Listed Resource Type(s) should be allowed as Reference.
         enum_reference_types=["Resource"],
-        backref="citation_cited_artifact_relates_to_targetReference",
+        backref="citation_cited_artifact_relates_to",
+        parent_name="citation_cited_artifact_relates_to",
     )
 
     targetUri: fhirtypes.Uri = Field(
@@ -2343,7 +2349,8 @@ class CitationCitedArtifactVersion(backboneelement.BackboneElement):
         element_property=True,
         # note: Listed Resource Type(s) should be allowed as Reference.
         enum_reference_types=["Citation"],
-        backref="citation_cited_artifact_version_baseCitation",
+        backref="citation_cited_artifact_version",
+        parent_name="citation_cited_artifact_version",
     )
 
     value: fhirtypes.String = Field(
@@ -2583,7 +2590,8 @@ class CitationRelatesTo(backboneelement.BackboneElement):
         one_of_many_required=True,
         # note: Listed Resource Type(s) should be allowed as Reference.
         enum_reference_types=["Resource"],
-        backref="citation_relates_to_targetReference",
+        backref="citation_relates_to",
+        parent_name="citation_relates_to",
     )
 
     targetUri: fhirtypes.Uri = Field(

@@ -39,7 +39,8 @@ class Coverage(domainresource.DomainResource):
         element_property=True,
         # note: Listed Resource Type(s) should be allowed as Reference.
         enum_reference_types=["Patient"],
-        backref="coverage_beneficiary",
+        backref="coverage",
+        parent_name="coverage",
     )
 
     class_fhir: typing.List[fhirtypes.CoverageClassType] = Field(
@@ -60,7 +61,8 @@ class Coverage(domainresource.DomainResource):
         element_property=True,
         # note: Listed Resource Type(s) should be allowed as Reference.
         enum_reference_types=["Contract"],
-        backref="coverage_contract",
+        backref="coverage",
+        parent_name="coverage",
     )
 
     costToBeneficiary: typing.List[fhirtypes.CoverageCostToBeneficiaryType] = Field(
@@ -143,7 +145,8 @@ class Coverage(domainresource.DomainResource):
         element_property=True,
         # note: Listed Resource Type(s) should be allowed as Reference.
         enum_reference_types=["Organization", "Patient", "RelatedPerson"],
-        backref="coverage_payor",
+        backref="coverage",
+        parent_name="coverage",
     )
 
     period: fhirtypes.PeriodType = Field(
@@ -168,7 +171,8 @@ class Coverage(domainresource.DomainResource):
         element_property=True,
         # note: Listed Resource Type(s) should be allowed as Reference.
         enum_reference_types=["Patient", "RelatedPerson", "Organization"],
-        backref="coverage_policyHolder",
+        backref="coverage",
+        parent_name="coverage",
     )
 
     relationship: fhirtypes.CodeableConceptType = Field(
@@ -240,7 +244,8 @@ class Coverage(domainresource.DomainResource):
         element_property=True,
         # note: Listed Resource Type(s) should be allowed as Reference.
         enum_reference_types=["Patient", "RelatedPerson"],
-        backref="coverage_subscriber",
+        backref="coverage",
+        parent_name="coverage",
     )
 
     subscriberId: fhirtypes.String = Field(

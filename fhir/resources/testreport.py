@@ -191,7 +191,8 @@ class TestReport(domainresource.DomainResource):
         element_property=True,
         # note: Listed Resource Type(s) should be allowed as Reference.
         enum_reference_types=["TestScript"],
-        backref="test_report_testScript",
+        backref="test_report",
+        parent_name="test_report",
     )
 
     tester: fhirtypes.String = Field(

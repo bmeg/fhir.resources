@@ -46,7 +46,8 @@ class DiagnosticReport(domainresource.DomainResource):
             "NutritionOrder",
             "ServiceRequest",
         ],
-        backref="diagnostic_report_basedOn",
+        backref="diagnostic_report",
+        parent_name="diagnostic_report",
     )
 
     category: typing.List[fhirtypes.CodeableConceptType] = Field(
@@ -167,7 +168,8 @@ class DiagnosticReport(domainresource.DomainResource):
         element_property=True,
         # note: Listed Resource Type(s) should be allowed as Reference.
         enum_reference_types=["Encounter"],
-        backref="diagnostic_report_encounter",
+        backref="diagnostic_report",
+        parent_name="diagnostic_report",
     )
 
     identifier: typing.List[fhirtypes.IdentifierType] = Field(
@@ -197,7 +199,8 @@ class DiagnosticReport(domainresource.DomainResource):
         element_property=True,
         # note: Listed Resource Type(s) should be allowed as Reference.
         enum_reference_types=["ImagingStudy"],
-        backref="diagnostic_report_imagingStudy",
+        backref="diagnostic_report",
+        parent_name="diagnostic_report",
     )
 
     issued: fhirtypes.Instant = Field(
@@ -242,7 +245,8 @@ class DiagnosticReport(domainresource.DomainResource):
             "Organization",
             "CareTeam",
         ],
-        backref="diagnostic_report_performer",
+        backref="diagnostic_report",
+        parent_name="diagnostic_report",
     )
 
     presentedForm: typing.List[fhirtypes.AttachmentType] = Field(
@@ -270,7 +274,8 @@ class DiagnosticReport(domainresource.DomainResource):
         element_property=True,
         # note: Listed Resource Type(s) should be allowed as Reference.
         enum_reference_types=["Observation"],
-        backref="diagnostic_report_result",
+        backref="diagnostic_report",
+        parent_name="diagnostic_report",
     )
 
     resultsInterpreter: typing.List[fhirtypes.ReferenceType] = Field(
@@ -290,7 +295,8 @@ class DiagnosticReport(domainresource.DomainResource):
             "Organization",
             "CareTeam",
         ],
-        backref="diagnostic_report_resultsInterpreter",
+        backref="diagnostic_report",
+        parent_name="diagnostic_report",
     )
 
     specimen: typing.List[fhirtypes.ReferenceType] = Field(
@@ -302,7 +308,8 @@ class DiagnosticReport(domainresource.DomainResource):
         element_property=True,
         # note: Listed Resource Type(s) should be allowed as Reference.
         enum_reference_types=["Specimen"],
-        backref="diagnostic_report_specimen",
+        backref="diagnostic_report",
+        parent_name="diagnostic_report",
     )
 
     status: fhirtypes.Code = Field(
@@ -352,7 +359,8 @@ class DiagnosticReport(domainresource.DomainResource):
             "Medication",
             "Substance",
         ],
-        backref="diagnostic_report_subject",
+        backref="diagnostic_report",
+        parent_name="diagnostic_report",
     )
 
     @classmethod
@@ -527,7 +535,8 @@ class DiagnosticReportMedia(backboneelement.BackboneElement):
         element_property=True,
         # note: Listed Resource Type(s) should be allowed as Reference.
         enum_reference_types=["Media"],
-        backref="diagnostic_report_media_link",
+        backref="diagnostic_report_media",
+        parent_name="diagnostic_report_media",
     )
 
     @classmethod

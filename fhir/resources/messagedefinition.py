@@ -55,7 +55,8 @@ class MessageDefinition(domainresource.DomainResource):
         element_property=True,
         # note: Listed Resource Type(s) should be allowed as Reference.
         enum_reference_types=["MessageDefinition"],
-        backref="message_definition_base",
+        backref="message_definition",
+        parent_name="message_definition",
     )
     base__ext: fhirtypes.FHIRPrimitiveExtensionType = Field(
         None, alias="_base", title="Extension field for ``base``."
@@ -230,7 +231,8 @@ class MessageDefinition(domainresource.DomainResource):
         element_property=True,
         # note: Listed Resource Type(s) should be allowed as Reference.
         enum_reference_types=["GraphDefinition"],
-        backref="message_definition_graph",
+        backref="message_definition",
+        parent_name="message_definition",
     )
     graph__ext: typing.List[
         typing.Union[fhirtypes.FHIRPrimitiveExtensionType, None]
@@ -293,7 +295,8 @@ class MessageDefinition(domainresource.DomainResource):
         element_property=True,
         # note: Listed Resource Type(s) should be allowed as Reference.
         enum_reference_types=["ActivityDefinition", "PlanDefinition"],
-        backref="message_definition_parent",
+        backref="message_definition",
+        parent_name="message_definition",
     )
     parent__ext: typing.List[
         typing.Union[fhirtypes.FHIRPrimitiveExtensionType, None]
@@ -338,7 +341,8 @@ class MessageDefinition(domainresource.DomainResource):
         element_property=True,
         # note: Listed Resource Type(s) should be allowed as Reference.
         enum_reference_types=["MessageDefinition"],
-        backref="message_definition_replaces",
+        backref="message_definition",
+        parent_name="message_definition",
     )
     replaces__ext: typing.List[
         typing.Union[fhirtypes.FHIRPrimitiveExtensionType, None]
@@ -622,7 +626,8 @@ class MessageDefinitionAllowedResponse(backboneelement.BackboneElement):
         element_required=True,
         # note: Listed Resource Type(s) should be allowed as Reference.
         enum_reference_types=["MessageDefinition"],
-        backref="message_definition_allowed_response_message",
+        backref="message_definition_allowed_response",
+        parent_name="message_definition_allowed_response",
     )
     message__ext: fhirtypes.FHIRPrimitiveExtensionType = Field(
         None, alias="_message", title="Extension field for ``message``."
@@ -790,7 +795,8 @@ class MessageDefinitionFocus(backboneelement.BackboneElement):
         element_property=True,
         # note: Listed Resource Type(s) should be allowed as Reference.
         enum_reference_types=["StructureDefinition"],
-        backref="message_definition_focus_profile",
+        backref="message_definition_focus",
+        parent_name="message_definition_focus",
     )
     profile__ext: fhirtypes.FHIRPrimitiveExtensionType = Field(
         None, alias="_profile", title="Extension field for ``profile``."

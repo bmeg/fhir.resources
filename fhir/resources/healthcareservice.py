@@ -165,7 +165,8 @@ class HealthcareService(domainresource.DomainResource):
         element_property=True,
         # note: Listed Resource Type(s) should be allowed as Reference.
         enum_reference_types=["Location"],
-        backref="healthcare_service_coverageArea",
+        backref="healthcare_service",
+        parent_name="healthcare_service",
     )
 
     eligibility: typing.List[fhirtypes.HealthcareServiceEligibilityType] = Field(
@@ -195,7 +196,8 @@ class HealthcareService(domainresource.DomainResource):
         element_property=True,
         # note: Listed Resource Type(s) should be allowed as Reference.
         enum_reference_types=["Endpoint"],
-        backref="healthcare_service_endpoint",
+        backref="healthcare_service",
+        parent_name="healthcare_service",
     )
 
     extraDetails: fhirtypes.Markdown = Field(
@@ -231,7 +233,8 @@ class HealthcareService(domainresource.DomainResource):
         element_property=True,
         # note: Listed Resource Type(s) should be allowed as Reference.
         enum_reference_types=["Location"],
-        backref="healthcare_service_location",
+        backref="healthcare_service",
+        parent_name="healthcare_service",
     )
 
     name: fhirtypes.String = Field(
@@ -296,7 +299,8 @@ class HealthcareService(domainresource.DomainResource):
         element_property=True,
         # note: Listed Resource Type(s) should be allowed as Reference.
         enum_reference_types=["Organization"],
-        backref="healthcare_service_providedBy",
+        backref="healthcare_service",
+        parent_name="healthcare_service",
     )
 
     referralMethod: typing.List[fhirtypes.CodeableConceptType] = Field(

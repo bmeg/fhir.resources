@@ -123,7 +123,8 @@ class RelatedPerson(domainresource.DomainResource):
         element_property=True,
         # note: Listed Resource Type(s) should be allowed as Reference.
         enum_reference_types=["Patient"],
-        backref="related_person_patient",
+        backref="related_person",
+        parent_name="related_person",
     )
 
     period: fhirtypes.PeriodType = Field(

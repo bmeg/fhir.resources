@@ -67,7 +67,8 @@ class EvidenceReport(domainresource.DomainResource):
         one_of_many_required=False,
         # note: Listed Resource Type(s) should be allowed as Reference.
         enum_reference_types=["Citation"],
-        backref="evidence_report_citeAsReference",
+        backref="evidence_report",
+        parent_name="evidence_report",
     )
 
     contact: typing.List[fhirtypes.ContactDetailType] = Field(
@@ -498,7 +499,8 @@ class EvidenceReportRelatesTo(backboneelement.BackboneElement):
         one_of_many_required=True,
         # note: Listed Resource Type(s) should be allowed as Reference.
         enum_reference_types=["EvidenceReport"],
-        backref="evidence_report_relates_to_targetReference",
+        backref="evidence_report_relates_to",
+        parent_name="evidence_report_relates_to",
     )
 
     @classmethod
@@ -637,7 +639,8 @@ class EvidenceReportSection(backboneelement.BackboneElement):
         element_property=True,
         # note: Listed Resource Type(s) should be allowed as Reference.
         enum_reference_types=["Person", "Device", "Group", "Organization"],
-        backref="evidence_report_section_author",
+        backref="evidence_report_section",
+        parent_name="evidence_report_section",
     )
 
     emptyReason: fhirtypes.CodeableConceptType = Field(
@@ -694,7 +697,8 @@ class EvidenceReportSection(backboneelement.BackboneElement):
         element_property=True,
         # note: Listed Resource Type(s) should be allowed as Reference.
         enum_reference_types=["Resource"],
-        backref="evidence_report_section_entryReference",
+        backref="evidence_report_section",
+        parent_name="evidence_report_section",
     )
 
     focus: fhirtypes.CodeableConceptType = Field(
@@ -726,7 +730,8 @@ class EvidenceReportSection(backboneelement.BackboneElement):
         element_property=True,
         # note: Listed Resource Type(s) should be allowed as Reference.
         enum_reference_types=["Resource"],
-        backref="evidence_report_section_focusReference",
+        backref="evidence_report_section",
+        parent_name="evidence_report_section",
     )
 
     mode: fhirtypes.Code = Field(
@@ -984,7 +989,8 @@ class EvidenceReportSubjectCharacteristic(backboneelement.BackboneElement):
         one_of_many_required=True,
         # note: Listed Resource Type(s) should be allowed as Reference.
         enum_reference_types=["Resource"],
-        backref="evidence_report_subject_characteristic_valueReference",
+        backref="evidence_report_subject_characteristic",
+        parent_name="evidence_report_subject_characteristic",
     )
 
     @classmethod

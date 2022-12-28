@@ -153,7 +153,8 @@ class Patient(domainresource.DomainResource):
         element_property=True,
         # note: Listed Resource Type(s) should be allowed as Reference.
         enum_reference_types=["Organization", "Practitioner", "PractitionerRole"],
-        backref="patient_generalPractitioner",
+        backref="patient",
+        parent_name="patient",
     )
 
     identifier: typing.List[fhirtypes.IdentifierType] = Field(
@@ -185,7 +186,8 @@ class Patient(domainresource.DomainResource):
         element_property=True,
         # note: Listed Resource Type(s) should be allowed as Reference.
         enum_reference_types=["Organization"],
-        backref="patient_managingOrganization",
+        backref="patient",
+        parent_name="patient",
     )
 
     maritalStatus: fhirtypes.CodeableConceptType = Field(
@@ -472,7 +474,8 @@ class PatientContact(backboneelement.BackboneElement):
         element_property=True,
         # note: Listed Resource Type(s) should be allowed as Reference.
         enum_reference_types=["Organization"],
-        backref="patient_contact_organization",
+        backref="patient_contact",
+        parent_name="patient_contact",
     )
 
     period: fhirtypes.PeriodType = Field(
@@ -555,7 +558,8 @@ class PatientLink(backboneelement.BackboneElement):
         element_property=True,
         # note: Listed Resource Type(s) should be allowed as Reference.
         enum_reference_types=["Patient", "RelatedPerson"],
-        backref="patient_link_other",
+        backref="patient_link",
+        parent_name="patient_link",
     )
 
     type: fhirtypes.Code = Field(

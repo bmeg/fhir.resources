@@ -41,7 +41,8 @@ class DocumentReference(domainresource.DomainResource):
         element_property=True,
         # note: Listed Resource Type(s) should be allowed as Reference.
         enum_reference_types=["Practitioner", "PractitionerRole", "Organization"],
-        backref="document_reference_authenticator",
+        backref="document_reference",
+        parent_name="document_reference",
     )
 
     author: typing.List[fhirtypes.ReferenceType] = Field(
@@ -63,7 +64,8 @@ class DocumentReference(domainresource.DomainResource):
             "Patient",
             "RelatedPerson",
         ],
-        backref="document_reference_author",
+        backref="document_reference",
+        parent_name="document_reference",
     )
 
     category: typing.List[fhirtypes.CodeableConceptType] = Field(
@@ -117,7 +119,8 @@ class DocumentReference(domainresource.DomainResource):
         element_property=True,
         # note: Listed Resource Type(s) should be allowed as Reference.
         enum_reference_types=["Organization"],
-        backref="document_reference_custodian",
+        backref="document_reference",
+        parent_name="document_reference",
     )
 
     date: fhirtypes.Instant = Field(
@@ -263,7 +266,8 @@ class DocumentReference(domainresource.DomainResource):
         element_property=True,
         # note: Listed Resource Type(s) should be allowed as Reference.
         enum_reference_types=["Patient", "Practitioner", "Group", "Device"],
-        backref="document_reference_subject",
+        backref="document_reference",
+        parent_name="document_reference",
     )
 
     type: fhirtypes.CodeableConceptType = Field(
@@ -450,7 +454,8 @@ class DocumentReferenceContext(backboneelement.BackboneElement):
         element_property=True,
         # note: Listed Resource Type(s) should be allowed as Reference.
         enum_reference_types=["Encounter", "EpisodeOfCare"],
-        backref="document_reference_context_encounter",
+        backref="document_reference_context",
+        parent_name="document_reference_context",
     )
 
     event: typing.List[fhirtypes.CodeableConceptType] = Field(
@@ -532,7 +537,8 @@ class DocumentReferenceContext(backboneelement.BackboneElement):
         element_property=True,
         # note: Listed Resource Type(s) should be allowed as Reference.
         enum_reference_types=["Resource"],
-        backref="document_reference_context_related",
+        backref="document_reference_context",
+        parent_name="document_reference_context",
     )
 
     sourcePatientInfo: fhirtypes.ReferenceType = Field(
@@ -547,7 +553,8 @@ class DocumentReferenceContext(backboneelement.BackboneElement):
         element_property=True,
         # note: Listed Resource Type(s) should be allowed as Reference.
         enum_reference_types=["Patient"],
-        backref="document_reference_context_sourcePatientInfo",
+        backref="document_reference_context",
+        parent_name="document_reference_context",
     )
 
     @classmethod
@@ -615,7 +622,8 @@ class DocumentReferenceRelatesTo(backboneelement.BackboneElement):
         element_property=True,
         # note: Listed Resource Type(s) should be allowed as Reference.
         enum_reference_types=["DocumentReference"],
-        backref="document_reference_relates_to_target",
+        backref="document_reference_relates_to",
+        parent_name="document_reference_relates_to",
     )
 
     @classmethod

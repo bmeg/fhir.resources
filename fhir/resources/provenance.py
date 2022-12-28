@@ -83,7 +83,8 @@ class Provenance(domainresource.DomainResource):
         element_property=True,
         # note: Listed Resource Type(s) should be allowed as Reference.
         enum_reference_types=["Location"],
-        backref="provenance_location",
+        backref="provenance",
+        parent_name="provenance",
     )
 
     occurredDateTime: fhirtypes.DateTime = Field(
@@ -186,7 +187,8 @@ class Provenance(domainresource.DomainResource):
         element_property=True,
         # note: Listed Resource Type(s) should be allowed as Reference.
         enum_reference_types=["Resource"],
-        backref="provenance_target",
+        backref="provenance",
+        parent_name="provenance",
     )
 
     @classmethod
@@ -343,7 +345,8 @@ class ProvenanceAgent(backboneelement.BackboneElement):
             "Device",
             "Organization",
         ],
-        backref="provenance_agent_onBehalfOf",
+        backref="provenance_agent",
+        parent_name="provenance_agent",
     )
 
     role: typing.List[fhirtypes.CodeableConceptType] = Field(
@@ -395,7 +398,8 @@ class ProvenanceAgent(backboneelement.BackboneElement):
             "Device",
             "Organization",
         ],
-        backref="provenance_agent_who",
+        backref="provenance_agent",
+        parent_name="provenance_agent",
     )
 
     @classmethod
@@ -475,7 +479,8 @@ class ProvenanceEntity(backboneelement.BackboneElement):
         element_property=True,
         # note: Listed Resource Type(s) should be allowed as Reference.
         enum_reference_types=["Resource"],
-        backref="provenance_entity_what",
+        backref="provenance_entity",
+        parent_name="provenance_entity",
     )
 
     @classmethod

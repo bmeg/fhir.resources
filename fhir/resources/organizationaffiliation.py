@@ -63,7 +63,8 @@ class OrganizationAffiliation(domainresource.DomainResource):
         element_property=True,
         # note: Listed Resource Type(s) should be allowed as Reference.
         enum_reference_types=["Endpoint"],
-        backref="organization_affiliation_endpoint",
+        backref="organization_affiliation",
+        parent_name="organization_affiliation",
     )
 
     healthcareService: typing.List[fhirtypes.ReferenceType] = Field(
@@ -75,7 +76,8 @@ class OrganizationAffiliation(domainresource.DomainResource):
         element_property=True,
         # note: Listed Resource Type(s) should be allowed as Reference.
         enum_reference_types=["HealthcareService"],
-        backref="organization_affiliation_healthcareService",
+        backref="organization_affiliation",
+        parent_name="organization_affiliation",
     )
 
     identifier: typing.List[fhirtypes.IdentifierType] = Field(
@@ -96,7 +98,8 @@ class OrganizationAffiliation(domainresource.DomainResource):
         element_property=True,
         # note: Listed Resource Type(s) should be allowed as Reference.
         enum_reference_types=["Location"],
-        backref="organization_affiliation_location",
+        backref="organization_affiliation",
+        parent_name="organization_affiliation",
     )
 
     network: typing.List[fhirtypes.ReferenceType] = Field(
@@ -112,7 +115,8 @@ class OrganizationAffiliation(domainresource.DomainResource):
         element_property=True,
         # note: Listed Resource Type(s) should be allowed as Reference.
         enum_reference_types=["Organization"],
-        backref="organization_affiliation_network",
+        backref="organization_affiliation",
+        parent_name="organization_affiliation",
     )
 
     organization: fhirtypes.ReferenceType = Field(
@@ -127,7 +131,8 @@ class OrganizationAffiliation(domainresource.DomainResource):
         element_property=True,
         # note: Listed Resource Type(s) should be allowed as Reference.
         enum_reference_types=["Organization"],
-        backref="organization_affiliation_organization",
+        backref="organization_affiliation",
+        parent_name="organization_affiliation",
     )
 
     participatingOrganization: fhirtypes.ReferenceType = Field(
@@ -146,7 +151,8 @@ class OrganizationAffiliation(domainresource.DomainResource):
         element_property=True,
         # note: Listed Resource Type(s) should be allowed as Reference.
         enum_reference_types=["Organization"],
-        backref="organization_affiliation_participatingOrganization",
+        backref="organization_affiliation",
+        parent_name="organization_affiliation",
     )
 
     period: fhirtypes.PeriodType = Field(

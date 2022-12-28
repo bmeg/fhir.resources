@@ -61,7 +61,8 @@ class MedicationStatement(domainresource.DomainResource):
         element_property=True,
         # note: Listed Resource Type(s) should be allowed as Reference.
         enum_reference_types=["MedicationRequest", "CarePlan", "ServiceRequest"],
-        backref="medication_statement_basedOn",
+        backref="medication_statement",
+        parent_name="medication_statement",
     )
 
     category: fhirtypes.CodeableConceptType = Field(
@@ -93,7 +94,8 @@ class MedicationStatement(domainresource.DomainResource):
         element_property=True,
         # note: Listed Resource Type(s) should be allowed as Reference.
         enum_reference_types=["Encounter", "EpisodeOfCare"],
-        backref="medication_statement_context",
+        backref="medication_statement",
+        parent_name="medication_statement",
     )
 
     dateAsserted: fhirtypes.DateTime = Field(
@@ -124,7 +126,8 @@ class MedicationStatement(domainresource.DomainResource):
         element_property=True,
         # note: Listed Resource Type(s) should be allowed as Reference.
         enum_reference_types=["Resource"],
-        backref="medication_statement_derivedFrom",
+        backref="medication_statement",
+        parent_name="medication_statement",
     )
 
     dosage: typing.List[fhirtypes.DosageType] = Field(
@@ -212,7 +215,8 @@ class MedicationStatement(domainresource.DomainResource):
             "RelatedPerson",
             "Organization",
         ],
-        backref="medication_statement_informationSource",
+        backref="medication_statement",
+        parent_name="medication_statement",
     )
 
     medicationCodeableConcept: fhirtypes.CodeableConceptType = Field(
@@ -257,7 +261,8 @@ class MedicationStatement(domainresource.DomainResource):
         binding_uri="http://hl7.org/fhir/ValueSet/medication-codes",
         # note: Listed Resource Type(s) should be allowed as Reference.
         enum_reference_types=["Medication"],
-        backref="medication_statement_medicationReference",
+        backref="medication_statement",
+        parent_name="medication_statement",
     )
 
     note: typing.List[fhirtypes.AnnotationType] = Field(
@@ -287,7 +292,8 @@ class MedicationStatement(domainresource.DomainResource):
             "Procedure",
             "Observation",
         ],
-        backref="medication_statement_partOf",
+        backref="medication_statement",
+        parent_name="medication_statement",
     )
 
     reasonCode: typing.List[fhirtypes.CodeableConceptType] = Field(
@@ -318,7 +324,8 @@ class MedicationStatement(domainresource.DomainResource):
         element_property=True,
         # note: Listed Resource Type(s) should be allowed as Reference.
         enum_reference_types=["Condition", "Observation", "DiagnosticReport"],
-        backref="medication_statement_reasonReference",
+        backref="medication_statement",
+        parent_name="medication_statement",
     )
 
     status: fhirtypes.Code = Field(
@@ -384,7 +391,8 @@ class MedicationStatement(domainresource.DomainResource):
         element_property=True,
         # note: Listed Resource Type(s) should be allowed as Reference.
         enum_reference_types=["Patient", "Group"],
-        backref="medication_statement_subject",
+        backref="medication_statement",
+        parent_name="medication_statement",
     )
 
     @classmethod

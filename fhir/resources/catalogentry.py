@@ -127,7 +127,8 @@ class CatalogEntry(domainresource.DomainResource):
             "ObservationDefinition",
             "Binary",
         ],
-        backref="catalog_entry_referencedItem",
+        backref="catalog_entry",
+        parent_name="catalog_entry",
     )
 
     relatedEntry: typing.List[fhirtypes.CatalogEntryRelatedEntryType] = Field(
@@ -307,7 +308,8 @@ class CatalogEntryRelatedEntry(backboneelement.BackboneElement):
         element_property=True,
         # note: Listed Resource Type(s) should be allowed as Reference.
         enum_reference_types=["CatalogEntry"],
-        backref="catalog_entry_related_entry_item",
+        backref="catalog_entry_related_entry",
+        parent_name="catalog_entry_related_entry",
     )
 
     relationtype: fhirtypes.Code = Field(

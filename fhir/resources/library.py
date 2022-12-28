@@ -380,7 +380,8 @@ class Library(domainresource.DomainResource):
         binding_uri="http://hl7.org/fhir/ValueSet/subject-type",
         # note: Listed Resource Type(s) should be allowed as Reference.
         enum_reference_types=["Group"],
-        backref="library_subjectReference",
+        backref="library",
+        parent_name="library",
     )
 
     subtitle: fhirtypes.String = Field(

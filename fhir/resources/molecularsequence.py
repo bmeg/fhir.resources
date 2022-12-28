@@ -58,7 +58,8 @@ class MolecularSequence(domainresource.DomainResource):
         element_property=True,
         # note: Listed Resource Type(s) should be allowed as Reference.
         enum_reference_types=["Device"],
-        backref="molecular_sequence_device",
+        backref="molecular_sequence",
+        parent_name="molecular_sequence",
     )
 
     identifier: typing.List[fhirtypes.IdentifierType] = Field(
@@ -98,7 +99,8 @@ class MolecularSequence(domainresource.DomainResource):
         element_property=True,
         # note: Listed Resource Type(s) should be allowed as Reference.
         enum_reference_types=["Patient"],
-        backref="molecular_sequence_patient",
+        backref="molecular_sequence",
+        parent_name="molecular_sequence",
     )
 
     performer: fhirtypes.ReferenceType = Field(
@@ -110,7 +112,8 @@ class MolecularSequence(domainresource.DomainResource):
         element_property=True,
         # note: Listed Resource Type(s) should be allowed as Reference.
         enum_reference_types=["Organization"],
-        backref="molecular_sequence_performer",
+        backref="molecular_sequence",
+        parent_name="molecular_sequence",
     )
 
     pointer: typing.List[fhirtypes.ReferenceType] = Field(
@@ -122,7 +125,8 @@ class MolecularSequence(domainresource.DomainResource):
         element_property=True,
         # note: Listed Resource Type(s) should be allowed as Reference.
         enum_reference_types=["MolecularSequence"],
-        backref="molecular_sequence_pointer",
+        backref="molecular_sequence",
+        parent_name="molecular_sequence",
     )
 
     quality: typing.List[fhirtypes.MolecularSequenceQualityType] = Field(
@@ -202,7 +206,8 @@ class MolecularSequence(domainresource.DomainResource):
         element_property=True,
         # note: Listed Resource Type(s) should be allowed as Reference.
         enum_reference_types=["Specimen"],
-        backref="molecular_sequence_specimen",
+        backref="molecular_sequence",
+        parent_name="molecular_sequence",
     )
 
     structureVariant: typing.List[
@@ -929,7 +934,8 @@ class MolecularSequenceReferenceSeq(backboneelement.BackboneElement):
         element_property=True,
         # note: Listed Resource Type(s) should be allowed as Reference.
         enum_reference_types=["MolecularSequence"],
-        backref="molecular_sequence_reference_seq_referenceSeqPointer",
+        backref="molecular_sequence_reference_seq",
+        parent_name="molecular_sequence_reference_seq",
     )
 
     referenceSeqString: fhirtypes.String = Field(
@@ -1523,7 +1529,8 @@ class MolecularSequenceVariant(backboneelement.BackboneElement):
         element_property=True,
         # note: Listed Resource Type(s) should be allowed as Reference.
         enum_reference_types=["Observation"],
-        backref="molecular_sequence_variant_variantPointer",
+        backref="molecular_sequence_variant",
+        parent_name="molecular_sequence_variant",
     )
 
     @classmethod

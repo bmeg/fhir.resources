@@ -37,7 +37,8 @@ class Encounter(domainresource.DomainResource):
         element_property=True,
         # note: Listed Resource Type(s) should be allowed as Reference.
         enum_reference_types=["Account"],
-        backref="encounter_account",
+        backref="encounter",
+        parent_name="encounter",
     )
 
     appointment: typing.List[fhirtypes.ReferenceType] = Field(
@@ -49,7 +50,8 @@ class Encounter(domainresource.DomainResource):
         element_property=True,
         # note: Listed Resource Type(s) should be allowed as Reference.
         enum_reference_types=["Appointment"],
-        backref="encounter_appointment",
+        backref="encounter",
+        parent_name="encounter",
     )
 
     basedOn: typing.List[fhirtypes.ReferenceType] = Field(
@@ -64,7 +66,8 @@ class Encounter(domainresource.DomainResource):
         element_property=True,
         # note: Listed Resource Type(s) should be allowed as Reference.
         enum_reference_types=["ServiceRequest"],
-        backref="encounter_basedOn",
+        backref="encounter",
+        parent_name="encounter",
     )
 
     classHistory: typing.List[fhirtypes.EncounterClassHistoryType] = Field(
@@ -130,7 +133,8 @@ class Encounter(domainresource.DomainResource):
         element_property=True,
         # note: Listed Resource Type(s) should be allowed as Reference.
         enum_reference_types=["EpisodeOfCare"],
-        backref="encounter_episodeOfCare",
+        backref="encounter",
+        parent_name="encounter",
     )
 
     hospitalization: fhirtypes.EncounterHospitalizationType = Field(
@@ -184,7 +188,8 @@ class Encounter(domainresource.DomainResource):
         element_property=True,
         # note: Listed Resource Type(s) should be allowed as Reference.
         enum_reference_types=["Encounter"],
-        backref="encounter_partOf",
+        backref="encounter",
+        parent_name="encounter",
     )
 
     participant: typing.List[fhirtypes.EncounterParticipantType] = Field(
@@ -252,7 +257,8 @@ class Encounter(domainresource.DomainResource):
             "Observation",
             "ImmunizationRecommendation",
         ],
-        backref="encounter_reasonReference",
+        backref="encounter",
+        parent_name="encounter",
     )
 
     serviceProvider: fhirtypes.ReferenceType = Field(
@@ -271,7 +277,8 @@ class Encounter(domainresource.DomainResource):
         element_property=True,
         # note: Listed Resource Type(s) should be allowed as Reference.
         enum_reference_types=["Organization"],
-        backref="encounter_serviceProvider",
+        backref="encounter",
+        parent_name="encounter",
     )
 
     serviceType: fhirtypes.CodeableConceptType = Field(
@@ -345,7 +352,8 @@ class Encounter(domainresource.DomainResource):
         element_property=True,
         # note: Listed Resource Type(s) should be allowed as Reference.
         enum_reference_types=["Patient", "Group"],
-        backref="encounter_subject",
+        backref="encounter",
+        parent_name="encounter",
     )
 
     type: typing.List[fhirtypes.CodeableConceptType] = Field(
@@ -537,7 +545,8 @@ class EncounterDiagnosis(backboneelement.BackboneElement):
         element_property=True,
         # note: Listed Resource Type(s) should be allowed as Reference.
         enum_reference_types=["Condition", "Procedure"],
-        backref="encounter_diagnosis_condition",
+        backref="encounter_diagnosis",
+        parent_name="encounter_diagnosis",
     )
 
     rank: fhirtypes.PositiveInt = Field(
@@ -609,7 +618,8 @@ class EncounterHospitalization(backboneelement.BackboneElement):
         element_property=True,
         # note: Listed Resource Type(s) should be allowed as Reference.
         enum_reference_types=["Location", "Organization"],
-        backref="encounter_hospitalization_destination",
+        backref="encounter_hospitalization",
+        parent_name="encounter_hospitalization",
     )
 
     dietPreference: typing.List[fhirtypes.CodeableConceptType] = Field(
@@ -647,7 +657,8 @@ class EncounterHospitalization(backboneelement.BackboneElement):
         element_property=True,
         # note: Listed Resource Type(s) should be allowed as Reference.
         enum_reference_types=["Location", "Organization"],
-        backref="encounter_hospitalization_origin",
+        backref="encounter_hospitalization",
+        parent_name="encounter_hospitalization",
     )
 
     preAdmissionIdentifier: fhirtypes.IdentifierType = Field(
@@ -751,7 +762,8 @@ class EncounterLocation(backboneelement.BackboneElement):
         element_property=True,
         # note: Listed Resource Type(s) should be allowed as Reference.
         enum_reference_types=["Location"],
-        backref="encounter_location_location",
+        backref="encounter_location",
+        parent_name="encounter_location",
     )
 
     period: fhirtypes.PeriodType = Field(
@@ -845,7 +857,8 @@ class EncounterParticipant(backboneelement.BackboneElement):
         element_property=True,
         # note: Listed Resource Type(s) should be allowed as Reference.
         enum_reference_types=["Practitioner", "PractitionerRole", "RelatedPerson"],
-        backref="encounter_participant_individual",
+        backref="encounter_participant",
+        parent_name="encounter_participant",
     )
 
     period: fhirtypes.PeriodType = Field(

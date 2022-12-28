@@ -36,7 +36,8 @@ class SupplyDelivery(domainresource.DomainResource):
         element_property=True,
         # note: Listed Resource Type(s) should be allowed as Reference.
         enum_reference_types=["SupplyRequest"],
-        backref="supply_delivery_basedOn",
+        backref="supply_delivery",
+        parent_name="supply_delivery",
     )
 
     destination: fhirtypes.ReferenceType = Field(
@@ -51,7 +52,8 @@ class SupplyDelivery(domainresource.DomainResource):
         element_property=True,
         # note: Listed Resource Type(s) should be allowed as Reference.
         enum_reference_types=["Location"],
-        backref="supply_delivery_destination",
+        backref="supply_delivery",
+        parent_name="supply_delivery",
     )
 
     identifier: typing.List[fhirtypes.IdentifierType] = Field(
@@ -116,7 +118,8 @@ class SupplyDelivery(domainresource.DomainResource):
         element_property=True,
         # note: Listed Resource Type(s) should be allowed as Reference.
         enum_reference_types=["SupplyDelivery", "Contract"],
-        backref="supply_delivery_partOf",
+        backref="supply_delivery",
+        parent_name="supply_delivery",
     )
 
     patient: fhirtypes.ReferenceType = Field(
@@ -131,7 +134,8 @@ class SupplyDelivery(domainresource.DomainResource):
         element_property=True,
         # note: Listed Resource Type(s) should be allowed as Reference.
         enum_reference_types=["Patient"],
-        backref="supply_delivery_patient",
+        backref="supply_delivery",
+        parent_name="supply_delivery",
     )
 
     receiver: typing.List[fhirtypes.ReferenceType] = Field(
@@ -143,7 +147,8 @@ class SupplyDelivery(domainresource.DomainResource):
         element_property=True,
         # note: Listed Resource Type(s) should be allowed as Reference.
         enum_reference_types=["Practitioner", "PractitionerRole"],
-        backref="supply_delivery_receiver",
+        backref="supply_delivery",
+        parent_name="supply_delivery",
     )
 
     status: fhirtypes.Code = Field(
@@ -190,7 +195,8 @@ class SupplyDelivery(domainresource.DomainResource):
         element_property=True,
         # note: Listed Resource Type(s) should be allowed as Reference.
         enum_reference_types=["Practitioner", "PractitionerRole", "Organization"],
-        backref="supply_delivery_supplier",
+        backref="supply_delivery",
+        parent_name="supply_delivery",
     )
 
     type: fhirtypes.CodeableConceptType = Field(
@@ -336,7 +342,8 @@ class SupplyDeliverySuppliedItem(backboneelement.BackboneElement):
         binding_uri="http://hl7.org/fhir/ValueSet/supply-item",
         # note: Listed Resource Type(s) should be allowed as Reference.
         enum_reference_types=["Medication", "Substance", "Device"],
-        backref="supply_delivery_supplied_item_itemReference",
+        backref="supply_delivery_supplied_item",
+        parent_name="supply_delivery_supplied_item",
     )
 
     quantity: fhirtypes.QuantityType = Field(

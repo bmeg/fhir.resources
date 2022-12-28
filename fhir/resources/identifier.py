@@ -32,7 +32,8 @@ class Identifier(element.Element):
         element_property=True,
         # note: Listed Resource Type(s) should be allowed as Reference.
         enum_reference_types=["Organization"],
-        backref="identifier_assigner",
+        backref="identifier",
+        parent_name="identifier",
     )
 
     period: fhirtypes.PeriodType = Field(

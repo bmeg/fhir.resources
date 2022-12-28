@@ -34,7 +34,8 @@ class EnrollmentRequest(domainresource.DomainResource):
         element_property=True,
         # note: Listed Resource Type(s) should be allowed as Reference.
         enum_reference_types=["Patient"],
-        backref="enrollment_request_candidate",
+        backref="enrollment_request",
+        parent_name="enrollment_request",
     )
 
     coverage: fhirtypes.ReferenceType = Field(
@@ -46,7 +47,8 @@ class EnrollmentRequest(domainresource.DomainResource):
         element_property=True,
         # note: Listed Resource Type(s) should be allowed as Reference.
         enum_reference_types=["Coverage"],
-        backref="enrollment_request_coverage",
+        backref="enrollment_request",
+        parent_name="enrollment_request",
     )
 
     created: fhirtypes.DateTime = Field(
@@ -79,7 +81,8 @@ class EnrollmentRequest(domainresource.DomainResource):
         element_property=True,
         # note: Listed Resource Type(s) should be allowed as Reference.
         enum_reference_types=["Organization"],
-        backref="enrollment_request_insurer",
+        backref="enrollment_request",
+        parent_name="enrollment_request",
     )
 
     provider: fhirtypes.ReferenceType = Field(
@@ -94,7 +97,8 @@ class EnrollmentRequest(domainresource.DomainResource):
         element_property=True,
         # note: Listed Resource Type(s) should be allowed as Reference.
         enum_reference_types=["Practitioner", "PractitionerRole", "Organization"],
-        backref="enrollment_request_provider",
+        backref="enrollment_request",
+        parent_name="enrollment_request",
     )
 
     status: fhirtypes.Code = Field(

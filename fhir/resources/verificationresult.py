@@ -173,7 +173,8 @@ class VerificationResult(domainresource.DomainResource):
         element_property=True,
         # note: Listed Resource Type(s) should be allowed as Reference.
         enum_reference_types=["Resource"],
-        backref="verification_result_target",
+        backref="verification_result",
+        parent_name="verification_result",
     )
 
     targetLocation: typing.List[typing.Optional[fhirtypes.String]] = Field(
@@ -377,7 +378,8 @@ class VerificationResultAttestation(backboneelement.BackboneElement):
         element_property=True,
         # note: Listed Resource Type(s) should be allowed as Reference.
         enum_reference_types=["Organization", "Practitioner", "PractitionerRole"],
-        backref="verification_result_attestation_onBehalfOf",
+        backref="verification_result_attestation",
+        parent_name="verification_result_attestation",
     )
 
     proxyIdentityCertificate: fhirtypes.String = Field(
@@ -445,7 +447,8 @@ class VerificationResultAttestation(backboneelement.BackboneElement):
         element_property=True,
         # note: Listed Resource Type(s) should be allowed as Reference.
         enum_reference_types=["Practitioner", "PractitionerRole", "Organization"],
-        backref="verification_result_attestation_who",
+        backref="verification_result_attestation",
+        parent_name="verification_result_attestation",
     )
 
     @classmethod
@@ -596,7 +599,8 @@ class VerificationResultPrimarySource(backboneelement.BackboneElement):
         element_property=True,
         # note: Listed Resource Type(s) should be allowed as Reference.
         enum_reference_types=["Organization", "Practitioner", "PractitionerRole"],
-        backref="verification_result_primary_source_who",
+        backref="verification_result_primary_source",
+        parent_name="verification_result_primary_source",
     )
 
     @classmethod
@@ -664,7 +668,8 @@ class VerificationResultValidator(backboneelement.BackboneElement):
         element_property=True,
         # note: Listed Resource Type(s) should be allowed as Reference.
         enum_reference_types=["Organization"],
-        backref="verification_result_validator_organization",
+        backref="verification_result_validator",
+        parent_name="verification_result_validator",
     )
 
     @classmethod

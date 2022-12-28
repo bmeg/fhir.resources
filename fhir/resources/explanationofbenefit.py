@@ -116,7 +116,8 @@ class ExplanationOfBenefit(domainresource.DomainResource):
         element_property=True,
         # note: Listed Resource Type(s) should be allowed as Reference.
         enum_reference_types=["Claim"],
-        backref="explanation_of_benefit_claim",
+        backref="explanation_of_benefit",
+        parent_name="explanation_of_benefit",
     )
 
     claimResponse: fhirtypes.ReferenceType = Field(
@@ -131,7 +132,8 @@ class ExplanationOfBenefit(domainresource.DomainResource):
         element_property=True,
         # note: Listed Resource Type(s) should be allowed as Reference.
         enum_reference_types=["ClaimResponse"],
-        backref="explanation_of_benefit_claimResponse",
+        backref="explanation_of_benefit",
+        parent_name="explanation_of_benefit",
     )
 
     created: fhirtypes.DateTime = Field(
@@ -179,7 +181,8 @@ class ExplanationOfBenefit(domainresource.DomainResource):
         element_property=True,
         # note: Listed Resource Type(s) should be allowed as Reference.
         enum_reference_types=["Practitioner", "PractitionerRole"],
-        backref="explanation_of_benefit_enterer",
+        backref="explanation_of_benefit",
+        parent_name="explanation_of_benefit",
     )
 
     facility: fhirtypes.ReferenceType = Field(
@@ -191,7 +194,8 @@ class ExplanationOfBenefit(domainresource.DomainResource):
         element_property=True,
         # note: Listed Resource Type(s) should be allowed as Reference.
         enum_reference_types=["Location"],
-        backref="explanation_of_benefit_facility",
+        backref="explanation_of_benefit",
+        parent_name="explanation_of_benefit",
     )
 
     form: fhirtypes.AttachmentType = Field(
@@ -288,7 +292,8 @@ class ExplanationOfBenefit(domainresource.DomainResource):
         element_property=True,
         # note: Listed Resource Type(s) should be allowed as Reference.
         enum_reference_types=["Organization"],
-        backref="explanation_of_benefit_insurer",
+        backref="explanation_of_benefit",
+        parent_name="explanation_of_benefit",
     )
 
     item: typing.List[fhirtypes.ExplanationOfBenefitItemType] = Field(
@@ -316,7 +321,8 @@ class ExplanationOfBenefit(domainresource.DomainResource):
         element_property=True,
         # note: Listed Resource Type(s) should be allowed as Reference.
         enum_reference_types=["MedicationRequest"],
-        backref="explanation_of_benefit_originalPrescription",
+        backref="explanation_of_benefit",
+        parent_name="explanation_of_benefit",
     )
 
     outcome: fhirtypes.Code = Field(
@@ -356,7 +362,8 @@ class ExplanationOfBenefit(domainresource.DomainResource):
         element_property=True,
         # note: Listed Resource Type(s) should be allowed as Reference.
         enum_reference_types=["Patient"],
-        backref="explanation_of_benefit_patient",
+        backref="explanation_of_benefit",
+        parent_name="explanation_of_benefit",
     )
 
     payee: fhirtypes.ExplanationOfBenefitPayeeType = Field(
@@ -434,7 +441,8 @@ class ExplanationOfBenefit(domainresource.DomainResource):
         element_property=True,
         # note: Listed Resource Type(s) should be allowed as Reference.
         enum_reference_types=["MedicationRequest", "VisionPrescription"],
-        backref="explanation_of_benefit_prescription",
+        backref="explanation_of_benefit",
+        parent_name="explanation_of_benefit",
     )
 
     priority: fhirtypes.CodeableConceptType = Field(
@@ -490,7 +498,8 @@ class ExplanationOfBenefit(domainresource.DomainResource):
         element_property=True,
         # note: Listed Resource Type(s) should be allowed as Reference.
         enum_reference_types=["Practitioner", "PractitionerRole", "Organization"],
-        backref="explanation_of_benefit_provider",
+        backref="explanation_of_benefit",
+        parent_name="explanation_of_benefit",
     )
 
     referral: fhirtypes.ReferenceType = Field(
@@ -502,7 +511,8 @@ class ExplanationOfBenefit(domainresource.DomainResource):
         element_property=True,
         # note: Listed Resource Type(s) should be allowed as Reference.
         enum_reference_types=["ServiceRequest"],
-        backref="explanation_of_benefit_referral",
+        backref="explanation_of_benefit",
+        parent_name="explanation_of_benefit",
     )
 
     related: typing.List[fhirtypes.ExplanationOfBenefitRelatedType] = Field(
@@ -801,7 +811,8 @@ class ExplanationOfBenefitAccident(backboneelement.BackboneElement):
         one_of_many_required=False,
         # note: Listed Resource Type(s) should be allowed as Reference.
         enum_reference_types=["Location"],
-        backref="explanation_of_benefit_accident_locationReference",
+        backref="explanation_of_benefit_accident",
+        parent_name="explanation_of_benefit_accident",
     )
 
     type: fhirtypes.CodeableConceptType = Field(
@@ -1030,7 +1041,8 @@ class ExplanationOfBenefitAddItem(backboneelement.BackboneElement):
         binding_uri="http://hl7.org/fhir/ValueSet/service-place",
         # note: Listed Resource Type(s) should be allowed as Reference.
         enum_reference_types=["Location"],
-        backref="explanation_of_benefit_add_item_locationReference",
+        backref="explanation_of_benefit_add_item",
+        parent_name="explanation_of_benefit_add_item",
     )
 
     modifier: typing.List[fhirtypes.CodeableConceptType] = Field(
@@ -1123,7 +1135,8 @@ class ExplanationOfBenefitAddItem(backboneelement.BackboneElement):
         element_property=True,
         # note: Listed Resource Type(s) should be allowed as Reference.
         enum_reference_types=["Practitioner", "PractitionerRole", "Organization"],
-        backref="explanation_of_benefit_add_item_provider",
+        backref="explanation_of_benefit_add_item",
+        parent_name="explanation_of_benefit_add_item",
     )
 
     quantity: fhirtypes.QuantityType = Field(
@@ -1922,7 +1935,8 @@ class ExplanationOfBenefitCareTeam(backboneelement.BackboneElement):
         element_property=True,
         # note: Listed Resource Type(s) should be allowed as Reference.
         enum_reference_types=["Practitioner", "PractitionerRole", "Organization"],
-        backref="explanation_of_benefit_care_team_provider",
+        backref="explanation_of_benefit_care_team",
+        parent_name="explanation_of_benefit_care_team",
     )
 
     qualification: fhirtypes.CodeableConceptType = Field(
@@ -2112,7 +2126,8 @@ class ExplanationOfBenefitDiagnosis(backboneelement.BackboneElement):
         binding_uri="http://hl7.org/fhir/ValueSet/icd-10",
         # note: Listed Resource Type(s) should be allowed as Reference.
         enum_reference_types=["Condition"],
-        backref="explanation_of_benefit_diagnosis_diagnosisReference",
+        backref="explanation_of_benefit_diagnosis",
+        parent_name="explanation_of_benefit_diagnosis",
     )
 
     onAdmission: fhirtypes.CodeableConceptType = Field(
@@ -2322,7 +2337,8 @@ class ExplanationOfBenefitInsurance(backboneelement.BackboneElement):
         element_property=True,
         # note: Listed Resource Type(s) should be allowed as Reference.
         enum_reference_types=["Coverage"],
-        backref="explanation_of_benefit_insurance_coverage",
+        backref="explanation_of_benefit_insurance",
+        parent_name="explanation_of_benefit_insurance",
     )
 
     focal: bool = Field(
@@ -2545,7 +2561,8 @@ class ExplanationOfBenefitItem(backboneelement.BackboneElement):
         element_property=True,
         # note: Listed Resource Type(s) should be allowed as Reference.
         enum_reference_types=["Encounter"],
-        backref="explanation_of_benefit_item_encounter",
+        backref="explanation_of_benefit_item",
+        parent_name="explanation_of_benefit_item",
     )
 
     factor: fhirtypes.Decimal = Field(
@@ -2641,7 +2658,8 @@ class ExplanationOfBenefitItem(backboneelement.BackboneElement):
         binding_uri="http://hl7.org/fhir/ValueSet/service-place",
         # note: Listed Resource Type(s) should be allowed as Reference.
         enum_reference_types=["Location"],
-        backref="explanation_of_benefit_item_locationReference",
+        backref="explanation_of_benefit_item",
+        parent_name="explanation_of_benefit_item",
     )
 
     modifier: typing.List[fhirtypes.CodeableConceptType] = Field(
@@ -2834,7 +2852,8 @@ class ExplanationOfBenefitItem(backboneelement.BackboneElement):
         element_property=True,
         # note: Listed Resource Type(s) should be allowed as Reference.
         enum_reference_types=["Device"],
-        backref="explanation_of_benefit_item_udi",
+        backref="explanation_of_benefit_item",
+        parent_name="explanation_of_benefit_item",
     )
 
     unitPrice: fhirtypes.MoneyType = Field(
@@ -3279,7 +3298,8 @@ class ExplanationOfBenefitItemDetail(backboneelement.BackboneElement):
         element_property=True,
         # note: Listed Resource Type(s) should be allowed as Reference.
         enum_reference_types=["Device"],
-        backref="explanation_of_benefit_item_detail_udi",
+        backref="explanation_of_benefit_item_detail",
+        parent_name="explanation_of_benefit_item_detail",
     )
 
     unitPrice: fhirtypes.MoneyType = Field(
@@ -3565,7 +3585,8 @@ class ExplanationOfBenefitItemDetailSubDetail(backboneelement.BackboneElement):
         element_property=True,
         # note: Listed Resource Type(s) should be allowed as Reference.
         enum_reference_types=["Device"],
-        backref="explanation_of_benefit_item_detail_sub_detail_udi",
+        backref="explanation_of_benefit_item_detail_sub_detail",
+        parent_name="explanation_of_benefit_item_detail_sub_detail",
     )
 
     unitPrice: fhirtypes.MoneyType = Field(
@@ -3696,7 +3717,8 @@ class ExplanationOfBenefitPayee(backboneelement.BackboneElement):
             "Patient",
             "RelatedPerson",
         ],
-        backref="explanation_of_benefit_payee_party",
+        backref="explanation_of_benefit_payee",
+        parent_name="explanation_of_benefit_payee",
     )
 
     type: fhirtypes.CodeableConceptType = Field(
@@ -3895,7 +3917,8 @@ class ExplanationOfBenefitProcedure(backboneelement.BackboneElement):
         binding_uri="http://hl7.org/fhir/ValueSet/icd-10-procedures",
         # note: Listed Resource Type(s) should be allowed as Reference.
         enum_reference_types=["Procedure"],
-        backref="explanation_of_benefit_procedure_procedureReference",
+        backref="explanation_of_benefit_procedure",
+        parent_name="explanation_of_benefit_procedure",
     )
 
     sequence: fhirtypes.PositiveInt = Field(
@@ -3936,7 +3959,8 @@ class ExplanationOfBenefitProcedure(backboneelement.BackboneElement):
         element_property=True,
         # note: Listed Resource Type(s) should be allowed as Reference.
         enum_reference_types=["Device"],
-        backref="explanation_of_benefit_procedure_udi",
+        backref="explanation_of_benefit_procedure",
+        parent_name="explanation_of_benefit_procedure",
     )
 
     @classmethod
@@ -4170,7 +4194,8 @@ class ExplanationOfBenefitRelated(backboneelement.BackboneElement):
         element_property=True,
         # note: Listed Resource Type(s) should be allowed as Reference.
         enum_reference_types=["Claim"],
-        backref="explanation_of_benefit_related_claim",
+        backref="explanation_of_benefit_related",
+        parent_name="explanation_of_benefit_related",
     )
 
     reference: fhirtypes.IdentifierType = Field(
@@ -4387,7 +4412,8 @@ class ExplanationOfBenefitSupportingInfo(backboneelement.BackboneElement):
         one_of_many_required=False,
         # note: Listed Resource Type(s) should be allowed as Reference.
         enum_reference_types=["Resource"],
-        backref="explanation_of_benefit_supporting_info_valueReference",
+        backref="explanation_of_benefit_supporting_info",
+        parent_name="explanation_of_benefit_supporting_info",
     )
 
     valueString: fhirtypes.String = Field(

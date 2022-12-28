@@ -66,7 +66,8 @@ class VisionPrescription(domainresource.DomainResource):
         element_property=True,
         # note: Listed Resource Type(s) should be allowed as Reference.
         enum_reference_types=["Encounter"],
-        backref="vision_prescription_encounter",
+        backref="vision_prescription",
+        parent_name="vision_prescription",
     )
 
     identifier: typing.List[fhirtypes.IdentifierType] = Field(
@@ -104,7 +105,8 @@ class VisionPrescription(domainresource.DomainResource):
         element_property=True,
         # note: Listed Resource Type(s) should be allowed as Reference.
         enum_reference_types=["Patient"],
-        backref="vision_prescription_patient",
+        backref="vision_prescription",
+        parent_name="vision_prescription",
     )
 
     prescriber: fhirtypes.ReferenceType = Field(
@@ -119,7 +121,8 @@ class VisionPrescription(domainresource.DomainResource):
         element_property=True,
         # note: Listed Resource Type(s) should be allowed as Reference.
         enum_reference_types=["Practitioner", "PractitionerRole"],
-        backref="vision_prescription_prescriber",
+        backref="vision_prescription",
+        parent_name="vision_prescription",
     )
 
     status: fhirtypes.Code = Field(

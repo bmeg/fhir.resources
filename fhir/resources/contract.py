@@ -69,7 +69,8 @@ class Contract(domainresource.DomainResource):
             "PractitionerRole",
             "Organization",
         ],
-        backref="contract_author",
+        backref="contract",
+        parent_name="contract",
     )
 
     authority: typing.List[fhirtypes.ReferenceType] = Field(
@@ -86,7 +87,8 @@ class Contract(domainresource.DomainResource):
         element_property=True,
         # note: Listed Resource Type(s) should be allowed as Reference.
         enum_reference_types=["Organization"],
-        backref="contract_authority",
+        backref="contract",
+        parent_name="contract",
     )
 
     contentDefinition: fhirtypes.ContractContentDefinitionType = Field(
@@ -136,7 +138,8 @@ class Contract(domainresource.DomainResource):
         element_property=True,
         # note: Listed Resource Type(s) should be allowed as Reference.
         enum_reference_types=["Location"],
-        backref="contract_domain",
+        backref="contract",
+        parent_name="contract",
     )
 
     expirationType: fhirtypes.CodeableConceptType = Field(
@@ -197,7 +200,8 @@ class Contract(domainresource.DomainResource):
         element_property=True,
         # note: Listed Resource Type(s) should be allowed as Reference.
         enum_reference_types=["Contract"],
-        backref="contract_instantiatesCanonical",
+        backref="contract",
+        parent_name="contract",
     )
 
     instantiatesUri: fhirtypes.Uri = Field(
@@ -295,7 +299,8 @@ class Contract(domainresource.DomainResource):
             "QuestionnaireResponse",
             "Contract",
         ],
-        backref="contract_legallyBindingReference",
+        backref="contract",
+        parent_name="contract",
     )
 
     name: fhirtypes.String = Field(
@@ -332,7 +337,8 @@ class Contract(domainresource.DomainResource):
         element_property=True,
         # note: Listed Resource Type(s) should be allowed as Reference.
         enum_reference_types=["Provenance"],
-        backref="contract_relevantHistory",
+        backref="contract",
+        parent_name="contract",
     )
 
     rule: typing.List[fhirtypes.ContractRuleType] = Field(
@@ -387,7 +393,8 @@ class Contract(domainresource.DomainResource):
         element_property=True,
         # note: Listed Resource Type(s) should be allowed as Reference.
         enum_reference_types=["Location"],
-        backref="contract_site",
+        backref="contract",
+        parent_name="contract",
     )
 
     status: fhirtypes.Code = Field(
@@ -462,7 +469,8 @@ class Contract(domainresource.DomainResource):
         element_property=True,
         # note: Listed Resource Type(s) should be allowed as Reference.
         enum_reference_types=["Resource"],
-        backref="contract_subject",
+        backref="contract",
+        parent_name="contract",
     )
 
     subtitle: fhirtypes.String = Field(
@@ -493,7 +501,8 @@ class Contract(domainresource.DomainResource):
         element_property=True,
         # note: Listed Resource Type(s) should be allowed as Reference.
         enum_reference_types=["Resource"],
-        backref="contract_supportingInfo",
+        backref="contract",
+        parent_name="contract",
     )
 
     term: typing.List[fhirtypes.ContractTermType] = Field(
@@ -554,7 +563,8 @@ class Contract(domainresource.DomainResource):
         one_of_many_required=False,
         # note: Listed Resource Type(s) should be allowed as Reference.
         enum_reference_types=["Resource"],
-        backref="contract_topicReference",
+        backref="contract",
+        parent_name="contract",
     )
 
     type: fhirtypes.CodeableConceptType = Field(
@@ -802,7 +812,8 @@ class ContractContentDefinition(backboneelement.BackboneElement):
         element_property=True,
         # note: Listed Resource Type(s) should be allowed as Reference.
         enum_reference_types=["Practitioner", "PractitionerRole", "Organization"],
-        backref="contract_content_definition_publisher",
+        backref="contract_content_definition",
+        parent_name="contract_content_definition",
     )
 
     subType: fhirtypes.CodeableConceptType = Field(
@@ -970,7 +981,8 @@ class ContractFriendly(backboneelement.BackboneElement):
             "DocumentReference",
             "QuestionnaireResponse",
         ],
-        backref="contract_friendly_contentReference",
+        backref="contract_friendly",
+        parent_name="contract_friendly",
     )
 
     @classmethod
@@ -1065,7 +1077,8 @@ class ContractLegal(backboneelement.BackboneElement):
             "DocumentReference",
             "QuestionnaireResponse",
         ],
-        backref="contract_legal_contentReference",
+        backref="contract_legal",
+        parent_name="contract_legal",
     )
 
     @classmethod
@@ -1162,7 +1175,8 @@ class ContractRule(backboneelement.BackboneElement):
         one_of_many_required=True,
         # note: Listed Resource Type(s) should be allowed as Reference.
         enum_reference_types=["DocumentReference"],
-        backref="contract_rule_contentReference",
+        backref="contract_rule",
+        parent_name="contract_rule",
     )
 
     @classmethod
@@ -1247,7 +1261,8 @@ class ContractSigner(backboneelement.BackboneElement):
             "PractitionerRole",
             "RelatedPerson",
         ],
-        backref="contract_signer_party",
+        backref="contract_signer",
+        parent_name="contract_signer",
     )
 
     signature: typing.List[fhirtypes.SignatureType] = Field(
@@ -1434,7 +1449,8 @@ class ContractTerm(backboneelement.BackboneElement):
         one_of_many_required=False,
         # note: Listed Resource Type(s) should be allowed as Reference.
         enum_reference_types=["Resource"],
-        backref="contract_term_topicReference",
+        backref="contract_term",
+        parent_name="contract_term",
     )
 
     type: fhirtypes.CodeableConceptType = Field(
@@ -1544,7 +1560,8 @@ class ContractTermAction(backboneelement.BackboneElement):
         element_property=True,
         # note: Listed Resource Type(s) should be allowed as Reference.
         enum_reference_types=["Encounter", "EpisodeOfCare"],
-        backref="contract_term_action_context",
+        backref="contract_term_action",
+        parent_name="contract_term_action",
     )
 
     contextLinkId: typing.List[typing.Optional[fhirtypes.String]] = Field(
@@ -1683,7 +1700,8 @@ class ContractTermAction(backboneelement.BackboneElement):
             "Organization",
             "Location",
         ],
-        backref="contract_term_action_performer",
+        backref="contract_term_action",
+        parent_name="contract_term_action",
     )
 
     performerLinkId: typing.List[typing.Optional[fhirtypes.String]] = Field(
@@ -1807,7 +1825,8 @@ class ContractTermAction(backboneelement.BackboneElement):
             "Questionnaire",
             "QuestionnaireResponse",
         ],
-        backref="contract_term_action_reasonReference",
+        backref="contract_term_action",
+        parent_name="contract_term_action",
     )
 
     requester: typing.List[fhirtypes.ReferenceType] = Field(
@@ -1830,7 +1849,8 @@ class ContractTermAction(backboneelement.BackboneElement):
             "Group",
             "Organization",
         ],
-        backref="contract_term_action_requester",
+        backref="contract_term_action",
+        parent_name="contract_term_action",
     )
 
     requesterLinkId: typing.List[typing.Optional[fhirtypes.String]] = Field(
@@ -2012,7 +2032,8 @@ class ContractTermActionSubject(backboneelement.BackboneElement):
             "Group",
             "Organization",
         ],
-        backref="contract_term_action_subject_reference",
+        backref="contract_term_action_subject",
+        parent_name="contract_term_action_subject",
     )
 
     role: fhirtypes.CodeableConceptType = Field(
@@ -2230,7 +2251,8 @@ class ContractTermAsset(backboneelement.BackboneElement):
         element_property=True,
         # note: Listed Resource Type(s) should be allowed as Reference.
         enum_reference_types=["Resource"],
-        backref="contract_term_asset_typeReference",
+        backref="contract_term_asset",
+        parent_name="contract_term_asset",
     )
 
     usePeriod: typing.List[fhirtypes.PeriodType] = Field(
@@ -2319,7 +2341,8 @@ class ContractTermAssetContext(backboneelement.BackboneElement):
         element_property=True,
         # note: Listed Resource Type(s) should be allowed as Reference.
         enum_reference_types=["Resource"],
-        backref="contract_term_asset_context_reference",
+        backref="contract_term_asset_context",
+        parent_name="contract_term_asset_context",
     )
 
     text: fhirtypes.String = Field(
@@ -2392,7 +2415,8 @@ class ContractTermAssetValuedItem(backboneelement.BackboneElement):
         one_of_many_required=False,
         # note: Listed Resource Type(s) should be allowed as Reference.
         enum_reference_types=["Resource"],
-        backref="contract_term_asset_valued_item_entityReference",
+        backref="contract_term_asset_valued_item",
+        parent_name="contract_term_asset_valued_item",
     )
 
     factor: fhirtypes.Decimal = Field(
@@ -2520,7 +2544,8 @@ class ContractTermAssetValuedItem(backboneelement.BackboneElement):
             "PractitionerRole",
             "RelatedPerson",
         ],
-        backref="contract_term_asset_valued_item_recipient",
+        backref="contract_term_asset_valued_item",
+        parent_name="contract_term_asset_valued_item",
     )
 
     responsible: fhirtypes.ReferenceType = Field(
@@ -2538,7 +2563,8 @@ class ContractTermAssetValuedItem(backboneelement.BackboneElement):
             "PractitionerRole",
             "RelatedPerson",
         ],
-        backref="contract_term_asset_valued_item_responsible",
+        backref="contract_term_asset_valued_item",
+        parent_name="contract_term_asset_valued_item",
     )
 
     securityLabelNumber: typing.List[typing.Optional[fhirtypes.UnsignedInt]] = Field(
@@ -2763,7 +2789,8 @@ class ContractTermOffer(backboneelement.BackboneElement):
         element_property=True,
         # note: Listed Resource Type(s) should be allowed as Reference.
         enum_reference_types=["Resource"],
-        backref="contract_term_offer_topic",
+        backref="contract_term_offer",
+        parent_name="contract_term_offer",
     )
 
     type: fhirtypes.CodeableConceptType = Field(
@@ -2984,7 +3011,8 @@ class ContractTermOfferAnswer(backboneelement.BackboneElement):
         one_of_many_required=True,
         # note: Listed Resource Type(s) should be allowed as Reference.
         enum_reference_types=["Resource"],
-        backref="contract_term_offer_answer_valueReference",
+        backref="contract_term_offer_answer",
+        parent_name="contract_term_offer_answer",
     )
 
     valueString: fhirtypes.String = Field(
@@ -3152,7 +3180,8 @@ class ContractTermOfferParty(backboneelement.BackboneElement):
             "Group",
             "Organization",
         ],
-        backref="contract_term_offer_party_reference",
+        backref="contract_term_offer_party",
+        parent_name="contract_term_offer_party",
     )
 
     role: fhirtypes.CodeableConceptType = Field(

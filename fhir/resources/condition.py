@@ -132,7 +132,8 @@ class Condition(domainresource.DomainResource):
             "Patient",
             "RelatedPerson",
         ],
-        backref="condition_asserter",
+        backref="condition",
+        parent_name="condition",
     )
 
     bodySite: typing.List[fhirtypes.CodeableConceptType] = Field(
@@ -222,7 +223,8 @@ class Condition(domainresource.DomainResource):
         element_property=True,
         # note: Listed Resource Type(s) should be allowed as Reference.
         enum_reference_types=["Encounter"],
-        backref="condition_encounter",
+        backref="condition",
+        parent_name="condition",
     )
 
     evidence: typing.List[fhirtypes.ConditionEvidenceType] = Field(
@@ -377,7 +379,8 @@ class Condition(domainresource.DomainResource):
             "Patient",
             "RelatedPerson",
         ],
-        backref="condition_recorder",
+        backref="condition",
+        parent_name="condition",
     )
 
     severity: fhirtypes.CodeableConceptType = Field(
@@ -420,7 +423,8 @@ class Condition(domainresource.DomainResource):
         element_property=True,
         # note: Listed Resource Type(s) should be allowed as Reference.
         enum_reference_types=["Patient", "Group"],
-        backref="condition_subject",
+        backref="condition",
+        parent_name="condition",
     )
 
     verificationStatus: fhirtypes.CodeableConceptType = Field(
@@ -587,7 +591,8 @@ class ConditionEvidence(backboneelement.BackboneElement):
         element_property=True,
         # note: Listed Resource Type(s) should be allowed as Reference.
         enum_reference_types=["Resource"],
-        backref="condition_evidence_detail",
+        backref="condition_evidence",
+        parent_name="condition_evidence",
     )
 
     @classmethod
@@ -623,7 +628,8 @@ class ConditionStage(backboneelement.BackboneElement):
         element_property=True,
         # note: Listed Resource Type(s) should be allowed as Reference.
         enum_reference_types=["ClinicalImpression", "DiagnosticReport", "Observation"],
-        backref="condition_stage_assessment",
+        backref="condition_stage",
+        parent_name="condition_stage",
     )
 
     summary: fhirtypes.CodeableConceptType = Field(

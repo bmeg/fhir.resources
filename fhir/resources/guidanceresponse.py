@@ -55,7 +55,8 @@ class GuidanceResponse(domainresource.DomainResource):
         element_property=True,
         # note: Listed Resource Type(s) should be allowed as Reference.
         enum_reference_types=["Encounter"],
-        backref="guidance_response_encounter",
+        backref="guidance_response",
+        parent_name="guidance_response",
     )
 
     evaluationMessage: typing.List[fhirtypes.ReferenceType] = Field(
@@ -72,7 +73,8 @@ class GuidanceResponse(domainresource.DomainResource):
         element_property=True,
         # note: Listed Resource Type(s) should be allowed as Reference.
         enum_reference_types=["OperationOutcome"],
-        backref="guidance_response_evaluationMessage",
+        backref="guidance_response",
+        parent_name="guidance_response",
     )
 
     identifier: typing.List[fhirtypes.IdentifierType] = Field(
@@ -180,7 +182,8 @@ class GuidanceResponse(domainresource.DomainResource):
         element_property=True,
         # note: Listed Resource Type(s) should be allowed as Reference.
         enum_reference_types=["Parameters"],
-        backref="guidance_response_outputParameters",
+        backref="guidance_response",
+        parent_name="guidance_response",
     )
 
     performer: fhirtypes.ReferenceType = Field(
@@ -192,7 +195,8 @@ class GuidanceResponse(domainresource.DomainResource):
         element_property=True,
         # note: Listed Resource Type(s) should be allowed as Reference.
         enum_reference_types=["Device"],
-        backref="guidance_response_performer",
+        backref="guidance_response",
+        parent_name="guidance_response",
     )
 
     reasonCode: typing.List[fhirtypes.CodeableConceptType] = Field(
@@ -226,7 +230,8 @@ class GuidanceResponse(domainresource.DomainResource):
             "DiagnosticReport",
             "DocumentReference",
         ],
-        backref="guidance_response_reasonReference",
+        backref="guidance_response",
+        parent_name="guidance_response",
     )
 
     requestIdentifier: fhirtypes.IdentifierType = Field(
@@ -252,7 +257,8 @@ class GuidanceResponse(domainresource.DomainResource):
         element_property=True,
         # note: Listed Resource Type(s) should be allowed as Reference.
         enum_reference_types=["CarePlan", "RequestGroup"],
-        backref="guidance_response_result",
+        backref="guidance_response",
+        parent_name="guidance_response",
     )
 
     status: fhirtypes.Code = Field(
@@ -306,7 +312,8 @@ class GuidanceResponse(domainresource.DomainResource):
         element_property=True,
         # note: Listed Resource Type(s) should be allowed as Reference.
         enum_reference_types=["Patient", "Group"],
-        backref="guidance_response_subject",
+        backref="guidance_response",
+        parent_name="guidance_response",
     )
 
     @classmethod

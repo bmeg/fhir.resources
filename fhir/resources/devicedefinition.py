@@ -93,7 +93,8 @@ class DeviceDefinition(domainresource.DomainResource):
         one_of_many_required=False,
         # note: Listed Resource Type(s) should be allowed as Reference.
         enum_reference_types=["Organization"],
-        backref="device_definition_manufacturerReference",
+        backref="device_definition",
+        parent_name="device_definition",
     )
 
     manufacturerString: fhirtypes.String = Field(
@@ -172,7 +173,8 @@ class DeviceDefinition(domainresource.DomainResource):
         element_property=True,
         # note: Listed Resource Type(s) should be allowed as Reference.
         enum_reference_types=["Organization"],
-        backref="device_definition_owner",
+        backref="device_definition",
+        parent_name="device_definition",
     )
 
     parentDevice: fhirtypes.ReferenceType = Field(
@@ -184,7 +186,8 @@ class DeviceDefinition(domainresource.DomainResource):
         element_property=True,
         # note: Listed Resource Type(s) should be allowed as Reference.
         enum_reference_types=["DeviceDefinition"],
-        backref="device_definition_parentDevice",
+        backref="device_definition",
+        parent_name="device_definition",
     )
 
     physicalCharacteristics: fhirtypes.ProdCharacteristicType = Field(

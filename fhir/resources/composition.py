@@ -66,7 +66,8 @@ class Composition(domainresource.DomainResource):
             "RelatedPerson",
             "Organization",
         ],
-        backref="composition_author",
+        backref="composition",
+        parent_name="composition",
     )
 
     category: typing.List[fhirtypes.CodeableConceptType] = Field(
@@ -119,7 +120,8 @@ class Composition(domainresource.DomainResource):
         element_property=True,
         # note: Listed Resource Type(s) should be allowed as Reference.
         enum_reference_types=["Organization"],
-        backref="composition_custodian",
+        backref="composition",
+        parent_name="composition",
     )
 
     date: fhirtypes.DateTime = Field(
@@ -150,7 +152,8 @@ class Composition(domainresource.DomainResource):
         element_property=True,
         # note: Listed Resource Type(s) should be allowed as Reference.
         enum_reference_types=["Encounter"],
-        backref="composition_encounter",
+        backref="composition",
+        parent_name="composition",
     )
 
     event: typing.List[fhirtypes.CompositionEventType] = Field(
@@ -237,7 +240,8 @@ class Composition(domainresource.DomainResource):
         element_property=True,
         # note: Listed Resource Type(s) should be allowed as Reference.
         enum_reference_types=["Resource"],
-        backref="composition_subject",
+        backref="composition",
+        parent_name="composition",
     )
 
     title: fhirtypes.String = Field(
@@ -417,7 +421,8 @@ class CompositionAttester(backboneelement.BackboneElement):
             "PractitionerRole",
             "Organization",
         ],
-        backref="composition_attester_party",
+        backref="composition_attester",
+        parent_name="composition_attester",
     )
 
     time: fhirtypes.DateTime = Field(
@@ -545,7 +550,8 @@ class CompositionEvent(backboneelement.BackboneElement):
         element_property=True,
         # note: Listed Resource Type(s) should be allowed as Reference.
         enum_reference_types=["Resource"],
-        backref="composition_event_detail",
+        backref="composition_event",
+        parent_name="composition_event",
     )
 
     period: fhirtypes.PeriodType = Field(
@@ -631,7 +637,8 @@ class CompositionRelatesTo(backboneelement.BackboneElement):
         one_of_many_required=True,
         # note: Listed Resource Type(s) should be allowed as Reference.
         enum_reference_types=["Composition"],
-        backref="composition_relates_to_targetReference",
+        backref="composition_relates_to",
+        parent_name="composition_relates_to",
     )
 
     @classmethod
@@ -777,7 +784,8 @@ class CompositionSection(backboneelement.BackboneElement):
             "RelatedPerson",
             "Organization",
         ],
-        backref="composition_section_author",
+        backref="composition_section",
+        parent_name="composition_section",
     )
 
     code: fhirtypes.CodeableConceptType = Field(
@@ -826,7 +834,8 @@ class CompositionSection(backboneelement.BackboneElement):
         element_property=True,
         # note: Listed Resource Type(s) should be allowed as Reference.
         enum_reference_types=["Resource"],
-        backref="composition_section_entry",
+        backref="composition_section",
+        parent_name="composition_section",
     )
 
     focus: fhirtypes.ReferenceType = Field(
@@ -851,7 +860,8 @@ class CompositionSection(backboneelement.BackboneElement):
         element_property=True,
         # note: Listed Resource Type(s) should be allowed as Reference.
         enum_reference_types=["Resource"],
-        backref="composition_section_focus",
+        backref="composition_section",
+        parent_name="composition_section",
     )
 
     mode: fhirtypes.Code = Field(

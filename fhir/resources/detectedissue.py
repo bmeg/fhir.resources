@@ -42,7 +42,8 @@ class DetectedIssue(domainresource.DomainResource):
         element_property=True,
         # note: Listed Resource Type(s) should be allowed as Reference.
         enum_reference_types=["Practitioner", "PractitionerRole", "Device"],
-        backref="detected_issue_author",
+        backref="detected_issue",
+        parent_name="detected_issue",
     )
 
     code: fhirtypes.CodeableConceptType = Field(
@@ -136,7 +137,8 @@ class DetectedIssue(domainresource.DomainResource):
         element_property=True,
         # note: Listed Resource Type(s) should be allowed as Reference.
         enum_reference_types=["Resource"],
-        backref="detected_issue_implicated",
+        backref="detected_issue",
+        parent_name="detected_issue",
     )
 
     mitigation: typing.List[fhirtypes.DetectedIssueMitigationType] = Field(
@@ -165,7 +167,8 @@ class DetectedIssue(domainresource.DomainResource):
         element_property=True,
         # note: Listed Resource Type(s) should be allowed as Reference.
         enum_reference_types=["Patient"],
-        backref="detected_issue_patient",
+        backref="detected_issue",
+        parent_name="detected_issue",
     )
 
     reference: fhirtypes.Uri = Field(
@@ -399,7 +402,8 @@ class DetectedIssueEvidence(backboneelement.BackboneElement):
         element_property=True,
         # note: Listed Resource Type(s) should be allowed as Reference.
         enum_reference_types=["Resource"],
-        backref="detected_issue_evidence_detail",
+        backref="detected_issue_evidence",
+        parent_name="detected_issue_evidence",
     )
 
     @classmethod
@@ -454,7 +458,8 @@ class DetectedIssueMitigation(backboneelement.BackboneElement):
         element_property=True,
         # note: Listed Resource Type(s) should be allowed as Reference.
         enum_reference_types=["Practitioner", "PractitionerRole"],
-        backref="detected_issue_mitigation_author",
+        backref="detected_issue_mitigation",
+        parent_name="detected_issue_mitigation",
     )
 
     date: fhirtypes.DateTime = Field(

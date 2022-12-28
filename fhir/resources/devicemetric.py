@@ -174,7 +174,8 @@ class DeviceMetric(domainresource.DomainResource):
         element_property=True,
         # note: Listed Resource Type(s) should be allowed as Reference.
         enum_reference_types=["Device"],
-        backref="device_metric_parent",
+        backref="device_metric",
+        parent_name="device_metric",
     )
 
     source: fhirtypes.ReferenceType = Field(
@@ -190,7 +191,8 @@ class DeviceMetric(domainresource.DomainResource):
         element_property=True,
         # note: Listed Resource Type(s) should be allowed as Reference.
         enum_reference_types=["Device"],
-        backref="device_metric_source",
+        backref="device_metric",
+        parent_name="device_metric",
     )
 
     type: fhirtypes.CodeableConceptType = Field(

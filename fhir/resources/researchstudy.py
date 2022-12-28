@@ -115,7 +115,8 @@ class ResearchStudy(domainresource.DomainResource):
         element_property=True,
         # note: Listed Resource Type(s) should be allowed as Reference.
         enum_reference_types=["Group"],
-        backref="research_study_enrollment",
+        backref="research_study",
+        parent_name="research_study",
     )
 
     focus: typing.List[fhirtypes.CodeableConceptType] = Field(
@@ -211,7 +212,8 @@ class ResearchStudy(domainresource.DomainResource):
         element_property=True,
         # note: Listed Resource Type(s) should be allowed as Reference.
         enum_reference_types=["ResearchStudy"],
-        backref="research_study_partOf",
+        backref="research_study",
+        parent_name="research_study",
     )
 
     period: fhirtypes.PeriodType = Field(
@@ -304,7 +306,8 @@ class ResearchStudy(domainresource.DomainResource):
         element_property=True,
         # note: Listed Resource Type(s) should be allowed as Reference.
         enum_reference_types=["Practitioner", "PractitionerRole"],
-        backref="research_study_principalInvestigator",
+        backref="research_study",
+        parent_name="research_study",
     )
 
     protocol: typing.List[fhirtypes.ReferenceType] = Field(
@@ -319,7 +322,8 @@ class ResearchStudy(domainresource.DomainResource):
         element_property=True,
         # note: Listed Resource Type(s) should be allowed as Reference.
         enum_reference_types=["PlanDefinition"],
-        backref="research_study_protocol",
+        backref="research_study",
+        parent_name="research_study",
     )
 
     reasonStopped: fhirtypes.CodeableConceptType = Field(
@@ -367,7 +371,8 @@ class ResearchStudy(domainresource.DomainResource):
         element_property=True,
         # note: Listed Resource Type(s) should be allowed as Reference.
         enum_reference_types=["Location"],
-        backref="research_study_site",
+        backref="research_study",
+        parent_name="research_study",
     )
 
     sponsor: fhirtypes.ReferenceType = Field(
@@ -382,7 +387,8 @@ class ResearchStudy(domainresource.DomainResource):
         element_property=True,
         # note: Listed Resource Type(s) should be allowed as Reference.
         enum_reference_types=["Organization"],
-        backref="research_study_sponsor",
+        backref="research_study",
+        parent_name="research_study",
     )
 
     status: fhirtypes.Code = Field(

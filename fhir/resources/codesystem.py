@@ -348,7 +348,8 @@ class CodeSystem(domainresource.DomainResource):
         element_property=True,
         # note: Listed Resource Type(s) should be allowed as Reference.
         enum_reference_types=["CodeSystem"],
-        backref="code_system_supplements",
+        backref="code_system",
+        parent_name="code_system",
     )
     supplements__ext: fhirtypes.FHIRPrimitiveExtensionType = Field(
         None, alias="_supplements", title="Extension field for ``supplements``."
@@ -417,7 +418,8 @@ class CodeSystem(domainresource.DomainResource):
         element_property=True,
         # note: Listed Resource Type(s) should be allowed as Reference.
         enum_reference_types=["ValueSet"],
-        backref="code_system_valueSet",
+        backref="code_system",
+        parent_name="code_system",
     )
     valueSet__ext: fhirtypes.FHIRPrimitiveExtensionType = Field(
         None, alias="_valueSet", title="Extension field for ``valueSet``."

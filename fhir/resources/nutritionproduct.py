@@ -103,7 +103,8 @@ class NutritionProduct(domainresource.DomainResource):
         binding_uri="http://hl7.org/fhir/ValueSet/allergen-class",
         # note: Listed Resource Type(s) should be allowed as Reference.
         enum_reference_types=["Substance"],
-        backref="nutrition_product_knownAllergen",
+        backref="nutrition_product",
+        parent_name="nutrition_product",
     )
 
     manufacturer: typing.List[fhirtypes.ReferenceType] = Field(
@@ -118,7 +119,8 @@ class NutritionProduct(domainresource.DomainResource):
         element_property=True,
         # note: Listed Resource Type(s) should be allowed as Reference.
         enum_reference_types=["Organization"],
-        backref="nutrition_product_manufacturer",
+        backref="nutrition_product",
+        parent_name="nutrition_product",
     )
 
     note: typing.List[fhirtypes.AnnotationType] = Field(
@@ -289,7 +291,8 @@ class NutritionProductIngredient(backboneelement.BackboneElement):
         element_property=True,
         # note: Listed Resource Type(s) should be allowed as Reference.
         enum_reference_types=["NutritionProduct"],
-        backref="nutrition_product_ingredient_item",
+        backref="nutrition_product_ingredient",
+        parent_name="nutrition_product_ingredient",
     )
 
     @classmethod
@@ -431,7 +434,8 @@ class NutritionProductNutrient(backboneelement.BackboneElement):
         binding_uri="http://hl7.org/fhir/ValueSet/nutrition-product-nutrient",
         # note: Listed Resource Type(s) should be allowed as Reference.
         enum_reference_types=["Substance"],
-        backref="nutrition_product_nutrient_item",
+        backref="nutrition_product_nutrient",
+        parent_name="nutrition_product_nutrient",
     )
 
     @classmethod

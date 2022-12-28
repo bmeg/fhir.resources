@@ -40,7 +40,8 @@ class Communication(domainresource.DomainResource):
         element_property=True,
         # note: Listed Resource Type(s) should be allowed as Reference.
         enum_reference_types=["Resource"],
-        backref="communication_about",
+        backref="communication",
+        parent_name="communication",
     )
 
     basedOn: typing.List[fhirtypes.ReferenceType] = Field(
@@ -55,7 +56,8 @@ class Communication(domainresource.DomainResource):
         element_property=True,
         # note: Listed Resource Type(s) should be allowed as Reference.
         enum_reference_types=["Resource"],
-        backref="communication_basedOn",
+        backref="communication",
+        parent_name="communication",
     )
 
     category: typing.List[fhirtypes.CodeableConceptType] = Field(
@@ -87,7 +89,8 @@ class Communication(domainresource.DomainResource):
         element_property=True,
         # note: Listed Resource Type(s) should be allowed as Reference.
         enum_reference_types=["Encounter"],
-        backref="communication_encounter",
+        backref="communication",
+        parent_name="communication",
     )
 
     identifier: typing.List[fhirtypes.IdentifierType] = Field(
@@ -112,7 +115,8 @@ class Communication(domainresource.DomainResource):
         element_property=True,
         # note: Listed Resource Type(s) should be allowed as Reference.
         enum_reference_types=["Communication"],
-        backref="communication_inResponseTo",
+        backref="communication",
+        parent_name="communication",
     )
 
     instantiatesCanonical: typing.List[typing.Optional[fhirtypes.Canonical]] = Field(
@@ -134,7 +138,8 @@ class Communication(domainresource.DomainResource):
             "OperationDefinition",
             "Questionnaire",
         ],
-        backref="communication_instantiatesCanonical",
+        backref="communication",
+        parent_name="communication",
     )
     instantiatesCanonical__ext: typing.List[
         typing.Union[fhirtypes.FHIRPrimitiveExtensionType, None]
@@ -199,7 +204,8 @@ class Communication(domainresource.DomainResource):
         element_property=True,
         # note: Listed Resource Type(s) should be allowed as Reference.
         enum_reference_types=["Resource"],
-        backref="communication_partOf",
+        backref="communication",
+        parent_name="communication",
     )
 
     payload: typing.List[fhirtypes.CommunicationPayloadType] = Field(
@@ -271,7 +277,8 @@ class Communication(domainresource.DomainResource):
             "DiagnosticReport",
             "DocumentReference",
         ],
-        backref="communication_reasonReference",
+        backref="communication",
+        parent_name="communication",
     )
 
     received: fhirtypes.DateTime = Field(
@@ -313,7 +320,8 @@ class Communication(domainresource.DomainResource):
             "CareTeam",
             "HealthcareService",
         ],
-        backref="communication_recipient",
+        backref="communication",
+        parent_name="communication",
     )
 
     sender: fhirtypes.ReferenceType = Field(
@@ -336,7 +344,8 @@ class Communication(domainresource.DomainResource):
             "RelatedPerson",
             "HealthcareService",
         ],
-        backref="communication_sender",
+        backref="communication",
+        parent_name="communication",
     )
 
     sent: fhirtypes.DateTime = Field(
@@ -412,7 +421,8 @@ class Communication(domainresource.DomainResource):
         element_property=True,
         # note: Listed Resource Type(s) should be allowed as Reference.
         enum_reference_types=["Patient", "Group"],
-        backref="communication_subject",
+        backref="communication",
+        parent_name="communication",
     )
 
     topic: fhirtypes.CodeableConceptType = Field(
@@ -572,7 +582,8 @@ class CommunicationPayload(backboneelement.BackboneElement):
         one_of_many_required=True,
         # note: Listed Resource Type(s) should be allowed as Reference.
         enum_reference_types=["Resource"],
-        backref="communication_payload_contentReference",
+        backref="communication_payload",
+        parent_name="communication_payload",
     )
 
     contentString: fhirtypes.String = Field(

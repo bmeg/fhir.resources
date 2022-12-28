@@ -160,7 +160,8 @@ class SearchParameter(domainresource.DomainResource):
         element_property=True,
         # note: Listed Resource Type(s) should be allowed as Reference.
         enum_reference_types=["SearchParameter"],
-        backref="search_parameter_derivedFrom",
+        backref="search_parameter",
+        parent_name="search_parameter",
     )
     derivedFrom__ext: fhirtypes.FHIRPrimitiveExtensionType = Field(
         None, alias="_derivedFrom", title="Extension field for ``derivedFrom``."
@@ -655,7 +656,8 @@ class SearchParameterComponent(backboneelement.BackboneElement):
         element_required=True,
         # note: Listed Resource Type(s) should be allowed as Reference.
         enum_reference_types=["SearchParameter"],
-        backref="search_parameter_component_definition",
+        backref="search_parameter_component",
+        parent_name="search_parameter_component",
     )
     definition__ext: fhirtypes.FHIRPrimitiveExtensionType = Field(
         None, alias="_definition", title="Extension field for ``definition``."

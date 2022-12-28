@@ -108,7 +108,8 @@ class Specimen(domainresource.DomainResource):
         element_property=True,
         # note: Listed Resource Type(s) should be allowed as Reference.
         enum_reference_types=["Specimen"],
-        backref="specimen_parent",
+        backref="specimen",
+        parent_name="specimen",
     )
 
     processing: typing.List[fhirtypes.SpecimenProcessingType] = Field(
@@ -144,7 +145,8 @@ class Specimen(domainresource.DomainResource):
         element_property=True,
         # note: Listed Resource Type(s) should be allowed as Reference.
         enum_reference_types=["ServiceRequest"],
-        backref="specimen_request",
+        backref="specimen",
+        parent_name="specimen",
     )
 
     status: fhirtypes.Code = Field(
@@ -183,7 +185,8 @@ class Specimen(domainresource.DomainResource):
         element_property=True,
         # note: Listed Resource Type(s) should be allowed as Reference.
         enum_reference_types=["Patient", "Group", "Device", "Substance", "Location"],
-        backref="specimen_subject",
+        backref="specimen",
+        parent_name="specimen",
     )
 
     type: fhirtypes.CodeableConceptType = Field(
@@ -305,7 +308,8 @@ class SpecimenCollection(backboneelement.BackboneElement):
         element_property=True,
         # note: Listed Resource Type(s) should be allowed as Reference.
         enum_reference_types=["Practitioner", "PractitionerRole"],
-        backref="specimen_collection_collector",
+        backref="specimen_collection",
+        parent_name="specimen_collection",
     )
 
     duration: fhirtypes.DurationType = Field(
@@ -500,7 +504,8 @@ class SpecimenContainer(backboneelement.BackboneElement):
         binding_uri="http://terminology.hl7.org/ValueSet/v2-0371",
         # note: Listed Resource Type(s) should be allowed as Reference.
         enum_reference_types=["Substance"],
-        backref="specimen_container_additiveReference",
+        backref="specimen_container",
+        parent_name="specimen_container",
     )
 
     capacity: fhirtypes.QuantityType = Field(
@@ -646,7 +651,8 @@ class SpecimenProcessing(backboneelement.BackboneElement):
         element_property=True,
         # note: Listed Resource Type(s) should be allowed as Reference.
         enum_reference_types=["Substance"],
-        backref="specimen_processing_additive",
+        backref="specimen_processing",
+        parent_name="specimen_processing",
     )
 
     description: fhirtypes.String = Field(

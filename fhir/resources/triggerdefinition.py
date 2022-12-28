@@ -111,7 +111,8 @@ class TriggerDefinition(element.Element):
         one_of_many_required=False,
         # note: Listed Resource Type(s) should be allowed as Reference.
         enum_reference_types=["Schedule"],
-        backref="trigger_definition_timingReference",
+        backref="trigger_definition",
+        parent_name="trigger_definition",
     )
 
     timingTiming: fhirtypes.TimingType = Field(

@@ -47,7 +47,8 @@ class Observation(domainresource.DomainResource):
             "NutritionOrder",
             "ServiceRequest",
         ],
-        backref="observation_basedOn",
+        backref="observation",
+        parent_name="observation",
     )
 
     bodySite: fhirtypes.CodeableConceptType = Field(
@@ -151,7 +152,8 @@ class Observation(domainresource.DomainResource):
             "Observation",
             "MolecularSequence",
         ],
-        backref="observation_derivedFrom",
+        backref="observation",
+        parent_name="observation",
     )
 
     device: fhirtypes.ReferenceType = Field(
@@ -163,7 +165,8 @@ class Observation(domainresource.DomainResource):
         element_property=True,
         # note: Listed Resource Type(s) should be allowed as Reference.
         enum_reference_types=["Device", "DeviceMetric"],
-        backref="observation_device",
+        backref="observation",
+        parent_name="observation",
     )
 
     effectiveDateTime: fhirtypes.DateTime = Field(
@@ -260,7 +263,8 @@ class Observation(domainresource.DomainResource):
         element_property=True,
         # note: Listed Resource Type(s) should be allowed as Reference.
         enum_reference_types=["Encounter"],
-        backref="observation_encounter",
+        backref="observation",
+        parent_name="observation",
     )
 
     focus: typing.List[fhirtypes.ReferenceType] = Field(
@@ -286,7 +290,8 @@ class Observation(domainresource.DomainResource):
         element_property=True,
         # note: Listed Resource Type(s) should be allowed as Reference.
         enum_reference_types=["Resource"],
-        backref="observation_focus",
+        backref="observation",
+        parent_name="observation",
     )
 
     hasMember: typing.List[fhirtypes.ReferenceType] = Field(
@@ -306,7 +311,8 @@ class Observation(domainresource.DomainResource):
             "QuestionnaireResponse",
             "MolecularSequence",
         ],
-        backref="observation_hasMember",
+        backref="observation",
+        parent_name="observation",
     )
 
     identifier: typing.List[fhirtypes.IdentifierType] = Field(
@@ -395,7 +401,8 @@ class Observation(domainresource.DomainResource):
             "Immunization",
             "ImagingStudy",
         ],
-        backref="observation_partOf",
+        backref="observation",
+        parent_name="observation",
     )
 
     performer: typing.List[fhirtypes.ReferenceType] = Field(
@@ -414,7 +421,8 @@ class Observation(domainresource.DomainResource):
             "Patient",
             "RelatedPerson",
         ],
-        backref="observation_performer",
+        backref="observation",
+        parent_name="observation",
     )
 
     referenceRange: typing.List[fhirtypes.ObservationReferenceRangeType] = Field(
@@ -440,7 +448,8 @@ class Observation(domainresource.DomainResource):
         element_property=True,
         # note: Listed Resource Type(s) should be allowed as Reference.
         enum_reference_types=["Specimen"],
-        backref="observation_specimen",
+        backref="observation",
+        parent_name="observation",
     )
 
     status: fhirtypes.Code = Field(
@@ -492,7 +501,8 @@ class Observation(domainresource.DomainResource):
             "Medication",
             "Substance",
         ],
-        backref="observation_subject",
+        backref="observation",
+        parent_name="observation",
     )
 
     valueBoolean: bool = Field(

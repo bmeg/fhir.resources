@@ -40,7 +40,8 @@ class ObservationDefinition(domainresource.DomainResource):
         element_property=True,
         # note: Listed Resource Type(s) should be allowed as Reference.
         enum_reference_types=["ValueSet"],
-        backref="observation_definition_abnormalCodedValueSet",
+        backref="observation_definition",
+        parent_name="observation_definition",
     )
 
     category: typing.List[fhirtypes.CodeableConceptType] = Field(
@@ -90,7 +91,8 @@ class ObservationDefinition(domainresource.DomainResource):
         element_property=True,
         # note: Listed Resource Type(s) should be allowed as Reference.
         enum_reference_types=["ValueSet"],
-        backref="observation_definition_criticalCodedValueSet",
+        backref="observation_definition",
+        parent_name="observation_definition",
     )
 
     identifier: typing.List[fhirtypes.IdentifierType] = Field(
@@ -150,7 +152,8 @@ class ObservationDefinition(domainresource.DomainResource):
         element_property=True,
         # note: Listed Resource Type(s) should be allowed as Reference.
         enum_reference_types=["ValueSet"],
-        backref="observation_definition_normalCodedValueSet",
+        backref="observation_definition",
+        parent_name="observation_definition",
     )
 
     permittedDataType: typing.List[typing.Optional[fhirtypes.Code]] = Field(
@@ -252,7 +255,8 @@ class ObservationDefinition(domainresource.DomainResource):
         element_property=True,
         # note: Listed Resource Type(s) should be allowed as Reference.
         enum_reference_types=["ValueSet"],
-        backref="observation_definition_validCodedValueSet",
+        backref="observation_definition",
+        parent_name="observation_definition",
     )
 
     @classmethod

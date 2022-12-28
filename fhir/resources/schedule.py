@@ -59,7 +59,8 @@ class Schedule(domainresource.DomainResource):
             "HealthcareService",
             "Location",
         ],
-        backref="schedule_actor",
+        backref="schedule",
+        parent_name="schedule",
     )
 
     comment: fhirtypes.String = Field(

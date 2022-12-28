@@ -36,7 +36,8 @@ class RiskAssessment(domainresource.DomainResource):
         element_property=True,
         # note: Listed Resource Type(s) should be allowed as Reference.
         enum_reference_types=["Resource"],
-        backref="risk_assessment_basedOn",
+        backref="risk_assessment",
+        parent_name="risk_assessment",
     )
 
     basis: typing.List[fhirtypes.ReferenceType] = Field(
@@ -51,7 +52,8 @@ class RiskAssessment(domainresource.DomainResource):
         element_property=True,
         # note: Listed Resource Type(s) should be allowed as Reference.
         enum_reference_types=["Resource"],
-        backref="risk_assessment_basis",
+        backref="risk_assessment",
+        parent_name="risk_assessment",
     )
 
     code: fhirtypes.CodeableConceptType = Field(
@@ -75,7 +77,8 @@ class RiskAssessment(domainresource.DomainResource):
         element_property=True,
         # note: Listed Resource Type(s) should be allowed as Reference.
         enum_reference_types=["Condition"],
-        backref="risk_assessment_condition",
+        backref="risk_assessment",
+        parent_name="risk_assessment",
     )
 
     encounter: fhirtypes.ReferenceType = Field(
@@ -87,7 +90,8 @@ class RiskAssessment(domainresource.DomainResource):
         element_property=True,
         # note: Listed Resource Type(s) should be allowed as Reference.
         enum_reference_types=["Encounter"],
-        backref="risk_assessment_encounter",
+        backref="risk_assessment",
+        parent_name="risk_assessment",
     )
 
     identifier: typing.List[fhirtypes.IdentifierType] = Field(
@@ -176,7 +180,8 @@ class RiskAssessment(domainresource.DomainResource):
         element_property=True,
         # note: Listed Resource Type(s) should be allowed as Reference.
         enum_reference_types=["Resource"],
-        backref="risk_assessment_parent",
+        backref="risk_assessment",
+        parent_name="risk_assessment",
     )
 
     performer: fhirtypes.ReferenceType = Field(
@@ -188,7 +193,8 @@ class RiskAssessment(domainresource.DomainResource):
         element_property=True,
         # note: Listed Resource Type(s) should be allowed as Reference.
         enum_reference_types=["Practitioner", "PractitionerRole", "Device"],
-        backref="risk_assessment_performer",
+        backref="risk_assessment",
+        parent_name="risk_assessment",
     )
 
     prediction: typing.List[fhirtypes.RiskAssessmentPredictionType] = Field(
@@ -223,7 +229,8 @@ class RiskAssessment(domainresource.DomainResource):
             "DiagnosticReport",
             "DocumentReference",
         ],
-        backref="risk_assessment_reasonReference",
+        backref="risk_assessment",
+        parent_name="risk_assessment",
     )
 
     status: fhirtypes.Code = Field(
@@ -259,7 +266,8 @@ class RiskAssessment(domainresource.DomainResource):
         element_property=True,
         # note: Listed Resource Type(s) should be allowed as Reference.
         enum_reference_types=["Patient", "Group"],
-        backref="risk_assessment_subject",
+        backref="risk_assessment",
+        parent_name="risk_assessment",
     )
 
     @classmethod

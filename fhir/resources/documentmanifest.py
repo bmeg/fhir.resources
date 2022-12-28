@@ -46,7 +46,8 @@ class DocumentManifest(domainresource.DomainResource):
             "Patient",
             "RelatedPerson",
         ],
-        backref="document_manifest_author",
+        backref="document_manifest",
+        parent_name="document_manifest",
     )
 
     content: typing.List[fhirtypes.ReferenceType] = Field(
@@ -58,7 +59,8 @@ class DocumentManifest(domainresource.DomainResource):
         element_property=True,
         # note: Listed Resource Type(s) should be allowed as Reference.
         enum_reference_types=["Resource"],
-        backref="document_manifest_content",
+        backref="document_manifest",
+        parent_name="document_manifest",
     )
 
     created: fhirtypes.DateTime = Field(
@@ -134,7 +136,8 @@ class DocumentManifest(domainresource.DomainResource):
             "RelatedPerson",
             "Organization",
         ],
-        backref="document_manifest_recipient",
+        backref="document_manifest",
+        parent_name="document_manifest",
     )
 
     related: typing.List[fhirtypes.DocumentManifestRelatedType] = Field(
@@ -201,7 +204,8 @@ class DocumentManifest(domainresource.DomainResource):
         element_property=True,
         # note: Listed Resource Type(s) should be allowed as Reference.
         enum_reference_types=["Patient", "Practitioner", "Group", "Device"],
-        backref="document_manifest_subject",
+        backref="document_manifest",
+        parent_name="document_manifest",
     )
 
     type: fhirtypes.CodeableConceptType = Field(
@@ -345,7 +349,8 @@ class DocumentManifestRelated(backboneelement.BackboneElement):
         element_property=True,
         # note: Listed Resource Type(s) should be allowed as Reference.
         enum_reference_types=["Resource"],
-        backref="document_manifest_related_ref",
+        backref="document_manifest_related",
+        parent_name="document_manifest_related",
     )
 
     @classmethod

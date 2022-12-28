@@ -63,7 +63,8 @@ class MedicinalProductDefinition(domainresource.DomainResource):
         element_property=True,
         # note: Listed Resource Type(s) should be allowed as Reference.
         enum_reference_types=["DocumentReference"],
-        backref="medicinal_product_definition_attachedDocument",
+        backref="medicinal_product_definition",
+        parent_name="medicinal_product_definition",
     )
 
     characteristic: typing.List[
@@ -105,7 +106,8 @@ class MedicinalProductDefinition(domainresource.DomainResource):
         element_property=True,
         # note: Listed Resource Type(s) should be allowed as Reference.
         enum_reference_types=["ResearchStudy"],
-        backref="medicinal_product_definition_clinicalTrial",
+        backref="medicinal_product_definition",
+        parent_name="medicinal_product_definition",
     )
 
     code: typing.List[fhirtypes.CodingType] = Field(
@@ -242,7 +244,8 @@ class MedicinalProductDefinition(domainresource.DomainResource):
         binding_uri="http://hl7.org/fhir/ValueSet/substance-codes",
         # note: Listed Resource Type(s) should be allowed as Reference.
         enum_reference_types=["SubstanceDefinition"],
-        backref="medicinal_product_definition_impurity",
+        backref="medicinal_product_definition",
+        parent_name="medicinal_product_definition",
     )
 
     indication: fhirtypes.Markdown = Field(
@@ -341,7 +344,8 @@ class MedicinalProductDefinition(domainresource.DomainResource):
         element_property=True,
         # note: Listed Resource Type(s) should be allowed as Reference.
         enum_reference_types=["DocumentReference"],
-        backref="medicinal_product_definition_masterFile",
+        backref="medicinal_product_definition",
+        parent_name="medicinal_product_definition",
     )
 
     name: typing.List[fhirtypes.MedicinalProductDefinitionNameType] = Field(
@@ -721,7 +725,8 @@ class MedicinalProductDefinitionContact(backboneelement.BackboneElement):
         element_property=True,
         # note: Listed Resource Type(s) should be allowed as Reference.
         enum_reference_types=["Organization", "PractitionerRole"],
-        backref="medicinal_product_definition_contact_contact",
+        backref="medicinal_product_definition_contact",
+        parent_name="medicinal_product_definition_contact",
     )
 
     type: fhirtypes.CodeableConceptType = Field(
@@ -774,7 +779,8 @@ class MedicinalProductDefinitionCrossReference(backboneelement.BackboneElement):
         element_property=True,
         # note: Listed Resource Type(s) should be allowed as Reference.
         enum_reference_types=["MedicinalProductDefinition"],
-        backref="medicinal_product_definition_cross_reference_product",
+        backref="medicinal_product_definition_cross_reference",
+        parent_name="medicinal_product_definition_cross_reference",
     )
 
     type: fhirtypes.CodeableConceptType = Field(
@@ -1173,7 +1179,8 @@ class MedicinalProductDefinitionOperation(backboneelement.BackboneElement):
         element_property=True,
         # note: Listed Resource Type(s) should be allowed as Reference.
         enum_reference_types=["Organization"],
-        backref="medicinal_product_definition_operation_organization",
+        backref="medicinal_product_definition_operation",
+        parent_name="medicinal_product_definition_operation",
     )
 
     type: fhirtypes.CodeableReferenceType = Field(
@@ -1192,7 +1199,8 @@ class MedicinalProductDefinitionOperation(backboneelement.BackboneElement):
         element_property=True,
         # note: Listed Resource Type(s) should be allowed as Reference.
         enum_reference_types=["ActivityDefinition", "PlanDefinition"],
-        backref="medicinal_product_definition_operation_type",
+        backref="medicinal_product_definition_operation",
+        parent_name="medicinal_product_definition_operation",
     )
 
     @classmethod

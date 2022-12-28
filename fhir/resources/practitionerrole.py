@@ -98,7 +98,8 @@ class PractitionerRole(domainresource.DomainResource):
         element_property=True,
         # note: Listed Resource Type(s) should be allowed as Reference.
         enum_reference_types=["Endpoint"],
-        backref="practitioner_role_endpoint",
+        backref="practitioner_role",
+        parent_name="practitioner_role",
     )
 
     healthcareService: typing.List[fhirtypes.ReferenceType] = Field(
@@ -113,7 +114,8 @@ class PractitionerRole(domainresource.DomainResource):
         element_property=True,
         # note: Listed Resource Type(s) should be allowed as Reference.
         enum_reference_types=["HealthcareService"],
-        backref="practitioner_role_healthcareService",
+        backref="practitioner_role",
+        parent_name="practitioner_role",
     )
 
     identifier: typing.List[fhirtypes.IdentifierType] = Field(
@@ -134,7 +136,8 @@ class PractitionerRole(domainresource.DomainResource):
         element_property=True,
         # note: Listed Resource Type(s) should be allowed as Reference.
         enum_reference_types=["Location"],
-        backref="practitioner_role_location",
+        backref="practitioner_role",
+        parent_name="practitioner_role",
     )
 
     notAvailable: typing.List[fhirtypes.PractitionerRoleNotAvailableType] = Field(
@@ -158,7 +161,8 @@ class PractitionerRole(domainresource.DomainResource):
         element_property=True,
         # note: Listed Resource Type(s) should be allowed as Reference.
         enum_reference_types=["Organization"],
-        backref="practitioner_role_organization",
+        backref="practitioner_role",
+        parent_name="practitioner_role",
     )
 
     period: fhirtypes.PeriodType = Field(
@@ -188,7 +192,8 @@ class PractitionerRole(domainresource.DomainResource):
         element_property=True,
         # note: Listed Resource Type(s) should be allowed as Reference.
         enum_reference_types=["Practitioner"],
-        backref="practitioner_role_practitioner",
+        backref="practitioner_role",
+        parent_name="practitioner_role",
     )
 
     specialty: typing.List[fhirtypes.CodeableConceptType] = Field(

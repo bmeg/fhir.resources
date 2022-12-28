@@ -42,7 +42,8 @@ class Procedure(domainresource.DomainResource):
             "Practitioner",
             "PractitionerRole",
         ],
-        backref="procedure_asserter",
+        backref="procedure",
+        parent_name="procedure",
     )
 
     basedOn: typing.List[fhirtypes.ReferenceType] = Field(
@@ -57,7 +58,8 @@ class Procedure(domainresource.DomainResource):
         element_property=True,
         # note: Listed Resource Type(s) should be allowed as Reference.
         enum_reference_types=["CarePlan", "ServiceRequest"],
-        backref="procedure_basedOn",
+        backref="procedure",
+        parent_name="procedure",
     )
 
     bodySite: typing.List[fhirtypes.CodeableConceptType] = Field(
@@ -142,7 +144,8 @@ class Procedure(domainresource.DomainResource):
         element_property=True,
         # note: Listed Resource Type(s) should be allowed as Reference.
         enum_reference_types=["Condition"],
-        backref="procedure_complicationDetail",
+        backref="procedure",
+        parent_name="procedure",
     )
 
     encounter: fhirtypes.ReferenceType = Field(
@@ -157,7 +160,8 @@ class Procedure(domainresource.DomainResource):
         element_property=True,
         # note: Listed Resource Type(s) should be allowed as Reference.
         enum_reference_types=["Encounter"],
-        backref="procedure_encounter",
+        backref="procedure",
+        parent_name="procedure",
     )
 
     focalDevice: typing.List[fhirtypes.ProcedureFocalDeviceType] = Field(
@@ -223,7 +227,8 @@ class Procedure(domainresource.DomainResource):
             "OperationDefinition",
             "Questionnaire",
         ],
-        backref="procedure_instantiatesCanonical",
+        backref="procedure",
+        parent_name="procedure",
     )
     instantiatesCanonical__ext: typing.List[
         typing.Union[fhirtypes.FHIRPrimitiveExtensionType, None]
@@ -263,7 +268,8 @@ class Procedure(domainresource.DomainResource):
         element_property=True,
         # note: Listed Resource Type(s) should be allowed as Reference.
         enum_reference_types=["Location"],
-        backref="procedure_location",
+        backref="procedure",
+        parent_name="procedure",
     )
 
     note: typing.List[fhirtypes.AnnotationType] = Field(
@@ -304,7 +310,8 @@ class Procedure(domainresource.DomainResource):
         element_property=True,
         # note: Listed Resource Type(s) should be allowed as Reference.
         enum_reference_types=["Procedure", "Observation", "MedicationAdministration"],
-        backref="procedure_partOf",
+        backref="procedure",
+        parent_name="procedure",
     )
 
     performedAge: fhirtypes.AgeType = Field(
@@ -441,7 +448,8 @@ class Procedure(domainresource.DomainResource):
             "DiagnosticReport",
             "DocumentReference",
         ],
-        backref="procedure_reasonReference",
+        backref="procedure",
+        parent_name="procedure",
     )
 
     recorder: fhirtypes.ReferenceType = Field(
@@ -461,7 +469,8 @@ class Procedure(domainresource.DomainResource):
             "Practitioner",
             "PractitionerRole",
         ],
-        backref="procedure_recorder",
+        backref="procedure",
+        parent_name="procedure",
     )
 
     report: typing.List[fhirtypes.ReferenceType] = Field(
@@ -476,7 +485,8 @@ class Procedure(domainresource.DomainResource):
         element_property=True,
         # note: Listed Resource Type(s) should be allowed as Reference.
         enum_reference_types=["DiagnosticReport", "DocumentReference", "Composition"],
-        backref="procedure_report",
+        backref="procedure",
+        parent_name="procedure",
     )
 
     status: fhirtypes.Code = Field(
@@ -541,7 +551,8 @@ class Procedure(domainresource.DomainResource):
         element_property=True,
         # note: Listed Resource Type(s) should be allowed as Reference.
         enum_reference_types=["Patient", "Group"],
-        backref="procedure_subject",
+        backref="procedure",
+        parent_name="procedure",
     )
 
     usedCode: typing.List[fhirtypes.CodeableConceptType] = Field(
@@ -572,7 +583,8 @@ class Procedure(domainresource.DomainResource):
         element_property=True,
         # note: Listed Resource Type(s) should be allowed as Reference.
         enum_reference_types=["Device", "Medication", "Substance"],
-        backref="procedure_usedReference",
+        backref="procedure",
+        parent_name="procedure",
     )
 
     @classmethod
@@ -768,7 +780,8 @@ class ProcedureFocalDevice(backboneelement.BackboneElement):
         element_property=True,
         # note: Listed Resource Type(s) should be allowed as Reference.
         enum_reference_types=["Device"],
-        backref="procedure_focal_device_manipulated",
+        backref="procedure_focal_device",
+        parent_name="procedure_focal_device",
     )
 
     @classmethod
@@ -807,7 +820,8 @@ class ProcedurePerformer(backboneelement.BackboneElement):
             "RelatedPerson",
             "Device",
         ],
-        backref="procedure_performer_actor",
+        backref="procedure_performer",
+        parent_name="procedure_performer",
     )
 
     function: fhirtypes.CodeableConceptType = Field(
@@ -836,7 +850,8 @@ class ProcedurePerformer(backboneelement.BackboneElement):
         element_property=True,
         # note: Listed Resource Type(s) should be allowed as Reference.
         enum_reference_types=["Organization"],
-        backref="procedure_performer_onBehalfOf",
+        backref="procedure_performer",
+        parent_name="procedure_performer",
     )
 
     @classmethod

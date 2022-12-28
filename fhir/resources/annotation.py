@@ -44,7 +44,8 @@ class Annotation(element.Element):
             "RelatedPerson",
             "Organization",
         ],
-        backref="annotation_authorReference",
+        backref="annotation",
+        parent_name="annotation",
     )
 
     authorString: fhirtypes.String = Field(

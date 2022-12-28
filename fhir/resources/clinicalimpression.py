@@ -42,7 +42,8 @@ class ClinicalImpression(domainresource.DomainResource):
         element_property=True,
         # note: Listed Resource Type(s) should be allowed as Reference.
         enum_reference_types=["Practitioner", "PractitionerRole"],
-        backref="clinical_impression_assessor",
+        backref="clinical_impression",
+        parent_name="clinical_impression",
     )
 
     code: fhirtypes.CodeableConceptType = Field(
@@ -125,7 +126,8 @@ class ClinicalImpression(domainresource.DomainResource):
         element_property=True,
         # note: Listed Resource Type(s) should be allowed as Reference.
         enum_reference_types=["Encounter"],
-        backref="clinical_impression_encounter",
+        backref="clinical_impression",
+        parent_name="clinical_impression",
     )
 
     finding: typing.List[fhirtypes.ClinicalImpressionFindingType] = Field(
@@ -195,7 +197,8 @@ class ClinicalImpression(domainresource.DomainResource):
         element_property=True,
         # note: Listed Resource Type(s) should be allowed as Reference.
         enum_reference_types=["ClinicalImpression"],
-        backref="clinical_impression_previous",
+        backref="clinical_impression",
+        parent_name="clinical_impression",
     )
 
     problem: typing.List[fhirtypes.ReferenceType] = Field(
@@ -207,7 +210,8 @@ class ClinicalImpression(domainresource.DomainResource):
         element_property=True,
         # note: Listed Resource Type(s) should be allowed as Reference.
         enum_reference_types=["Condition", "AllergyIntolerance"],
-        backref="clinical_impression_problem",
+        backref="clinical_impression",
+        parent_name="clinical_impression",
     )
 
     prognosisCodeableConcept: typing.List[fhirtypes.CodeableConceptType] = Field(
@@ -232,7 +236,8 @@ class ClinicalImpression(domainresource.DomainResource):
         element_property=True,
         # note: Listed Resource Type(s) should be allowed as Reference.
         enum_reference_types=["RiskAssessment"],
-        backref="clinical_impression_prognosisReference",
+        backref="clinical_impression",
+        parent_name="clinical_impression",
     )
 
     protocol: typing.List[typing.Optional[fhirtypes.Uri]] = Field(
@@ -296,7 +301,8 @@ class ClinicalImpression(domainresource.DomainResource):
         element_property=True,
         # note: Listed Resource Type(s) should be allowed as Reference.
         enum_reference_types=["Patient", "Group"],
-        backref="clinical_impression_subject",
+        backref="clinical_impression",
+        parent_name="clinical_impression",
     )
 
     summary: fhirtypes.String = Field(
@@ -320,7 +326,8 @@ class ClinicalImpression(domainresource.DomainResource):
         element_property=True,
         # note: Listed Resource Type(s) should be allowed as Reference.
         enum_reference_types=["Resource"],
-        backref="clinical_impression_supportingInfo",
+        backref="clinical_impression",
+        parent_name="clinical_impression",
     )
 
     @classmethod
@@ -512,7 +519,8 @@ class ClinicalImpressionFinding(backboneelement.BackboneElement):
         element_property=True,
         # note: Listed Resource Type(s) should be allowed as Reference.
         enum_reference_types=["Condition", "Observation", "Media"],
-        backref="clinical_impression_finding_itemReference",
+        backref="clinical_impression_finding",
+        parent_name="clinical_impression_finding",
     )
 
     @classmethod
@@ -582,7 +590,8 @@ class ClinicalImpressionInvestigation(backboneelement.BackboneElement):
             "ImagingStudy",
             "Media",
         ],
-        backref="clinical_impression_investigation_item",
+        backref="clinical_impression_investigation",
+        parent_name="clinical_impression_investigation",
     )
 
     @classmethod

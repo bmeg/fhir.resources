@@ -116,7 +116,8 @@ class SubstanceDefinition(domainresource.DomainResource):
         element_property=True,
         # note: Listed Resource Type(s) should be allowed as Reference.
         enum_reference_types=["Citation"],
-        backref="substance_definition_informationSource",
+        backref="substance_definition",
+        parent_name="substance_definition",
     )
 
     manufacturer: typing.List[fhirtypes.ReferenceType] = Field(
@@ -132,7 +133,8 @@ class SubstanceDefinition(domainresource.DomainResource):
         element_property=True,
         # note: Listed Resource Type(s) should be allowed as Reference.
         enum_reference_types=["Organization"],
-        backref="substance_definition_manufacturer",
+        backref="substance_definition",
+        parent_name="substance_definition",
     )
 
     moiety: typing.List[fhirtypes.SubstanceDefinitionMoietyType] = Field(
@@ -243,7 +245,8 @@ class SubstanceDefinition(domainresource.DomainResource):
         element_property=True,
         # note: Listed Resource Type(s) should be allowed as Reference.
         enum_reference_types=["Organization"],
-        backref="substance_definition_supplier",
+        backref="substance_definition",
+        parent_name="substance_definition",
     )
 
     version: fhirtypes.String = Field(
@@ -332,7 +335,8 @@ class SubstanceDefinitionCode(backboneelement.BackboneElement):
         element_property=True,
         # note: Listed Resource Type(s) should be allowed as Reference.
         enum_reference_types=["DocumentReference"],
-        backref="substance_definition_code_source",
+        backref="substance_definition_code",
+        parent_name="substance_definition_code",
     )
 
     status: fhirtypes.CodeableConceptType = Field(
@@ -737,7 +741,8 @@ class SubstanceDefinitionName(backboneelement.BackboneElement):
         element_property=True,
         # note: Listed Resource Type(s) should be allowed as Reference.
         enum_reference_types=["DocumentReference"],
-        backref="substance_definition_name_source",
+        backref="substance_definition_name",
+        parent_name="substance_definition_name",
     )
 
     status: fhirtypes.CodeableConceptType = Field(
@@ -1215,7 +1220,8 @@ class SubstanceDefinitionRelationship(backboneelement.BackboneElement):
         element_property=True,
         # note: Listed Resource Type(s) should be allowed as Reference.
         enum_reference_types=["DocumentReference"],
-        backref="substance_definition_relationship_source",
+        backref="substance_definition_relationship",
+        parent_name="substance_definition_relationship",
     )
 
     substanceDefinitionCodeableConcept: fhirtypes.CodeableConceptType = Field(
@@ -1254,7 +1260,8 @@ class SubstanceDefinitionRelationship(backboneelement.BackboneElement):
         one_of_many_required=False,
         # note: Listed Resource Type(s) should be allowed as Reference.
         enum_reference_types=["SubstanceDefinition"],
-        backref="substance_definition_relationship_substanceDefinitionReference",
+        backref="substance_definition_relationship",
+        parent_name="substance_definition_relationship",
     )
 
     type: fhirtypes.CodeableConceptType = Field(
@@ -1543,7 +1550,8 @@ class SubstanceDefinitionStructure(backboneelement.BackboneElement):
         element_property=True,
         # note: Listed Resource Type(s) should be allowed as Reference.
         enum_reference_types=["DocumentReference"],
-        backref="substance_definition_structure_sourceDocument",
+        backref="substance_definition_structure",
+        parent_name="substance_definition_structure",
     )
 
     stereochemistry: fhirtypes.CodeableConceptType = Field(
@@ -1624,7 +1632,8 @@ class SubstanceDefinitionStructureRepresentation(backboneelement.BackboneElement
         element_property=True,
         # note: Listed Resource Type(s) should be allowed as Reference.
         enum_reference_types=["DocumentReference"],
-        backref="substance_definition_structure_representation_document",
+        backref="substance_definition_structure_representation",
+        parent_name="substance_definition_structure_representation",
     )
 
     format: fhirtypes.CodeableConceptType = Field(

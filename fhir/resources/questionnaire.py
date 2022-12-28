@@ -116,7 +116,8 @@ class Questionnaire(domainresource.DomainResource):
         element_property=True,
         # note: Listed Resource Type(s) should be allowed as Reference.
         enum_reference_types=["Questionnaire"],
-        backref="questionnaire_derivedFrom",
+        backref="questionnaire",
+        parent_name="questionnaire",
     )
     derivedFrom__ext: typing.List[
         typing.Union[fhirtypes.FHIRPrimitiveExtensionType, None]
@@ -514,7 +515,8 @@ class QuestionnaireItem(backboneelement.BackboneElement):
         element_property=True,
         # note: Listed Resource Type(s) should be allowed as Reference.
         enum_reference_types=["ValueSet"],
-        backref="questionnaire_item_answerValueSet",
+        backref="questionnaire_item",
+        parent_name="questionnaire_item",
     )
     answerValueSet__ext: fhirtypes.FHIRPrimitiveExtensionType = Field(
         None, alias="_answerValueSet", title="Extension field for ``answerValueSet``."
@@ -963,7 +965,8 @@ class QuestionnaireItemAnswerOption(backboneelement.BackboneElement):
         binding_uri="http://hl7.org/fhir/ValueSet/questionnaire-answers",
         # note: Listed Resource Type(s) should be allowed as Reference.
         enum_reference_types=["Resource"],
-        backref="questionnaire_item_answer_option_valueReference",
+        backref="questionnaire_item_answer_option",
+        parent_name="questionnaire_item_answer_option",
     )
 
     valueString: fhirtypes.String = Field(
@@ -1265,7 +1268,8 @@ class QuestionnaireItemEnableWhen(backboneelement.BackboneElement):
         binding_uri="http://hl7.org/fhir/ValueSet/questionnaire-answers",
         # note: Listed Resource Type(s) should be allowed as Reference.
         enum_reference_types=["Resource"],
-        backref="questionnaire_item_enable_when_answerReference",
+        backref="questionnaire_item_enable_when",
+        parent_name="questionnaire_item_enable_when",
     )
 
     answerString: fhirtypes.String = Field(
@@ -1687,7 +1691,8 @@ class QuestionnaireItemInitial(backboneelement.BackboneElement):
         binding_uri="http://hl7.org/fhir/ValueSet/questionnaire-answers",
         # note: Listed Resource Type(s) should be allowed as Reference.
         enum_reference_types=["Resource"],
-        backref="questionnaire_item_initial_valueReference",
+        backref="questionnaire_item_initial",
+        parent_name="questionnaire_item_initial",
     )
 
     valueString: fhirtypes.String = Field(

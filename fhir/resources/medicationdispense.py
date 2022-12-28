@@ -39,7 +39,8 @@ class MedicationDispense(domainresource.DomainResource):
         element_property=True,
         # note: Listed Resource Type(s) should be allowed as Reference.
         enum_reference_types=["MedicationRequest"],
-        backref="medication_dispense_authorizingPrescription",
+        backref="medication_dispense",
+        parent_name="medication_dispense",
     )
 
     category: fhirtypes.CodeableConceptType = Field(
@@ -72,7 +73,8 @@ class MedicationDispense(domainresource.DomainResource):
         element_property=True,
         # note: Listed Resource Type(s) should be allowed as Reference.
         enum_reference_types=["Encounter", "EpisodeOfCare"],
-        backref="medication_dispense_context",
+        backref="medication_dispense",
+        parent_name="medication_dispense",
     )
 
     daysSupply: fhirtypes.QuantityType = Field(
@@ -96,7 +98,8 @@ class MedicationDispense(domainresource.DomainResource):
         element_property=True,
         # note: Listed Resource Type(s) should be allowed as Reference.
         enum_reference_types=["Location"],
-        backref="medication_dispense_destination",
+        backref="medication_dispense",
+        parent_name="medication_dispense",
     )
 
     detectedIssue: typing.List[fhirtypes.ReferenceType] = Field(
@@ -112,7 +115,8 @@ class MedicationDispense(domainresource.DomainResource):
         element_property=True,
         # note: Listed Resource Type(s) should be allowed as Reference.
         enum_reference_types=["DetectedIssue"],
-        backref="medication_dispense_detectedIssue",
+        backref="medication_dispense",
+        parent_name="medication_dispense",
     )
 
     dosageInstruction: typing.List[fhirtypes.DosageType] = Field(
@@ -139,7 +143,8 @@ class MedicationDispense(domainresource.DomainResource):
         element_property=True,
         # note: Listed Resource Type(s) should be allowed as Reference.
         enum_reference_types=["Provenance"],
-        backref="medication_dispense_eventHistory",
+        backref="medication_dispense",
+        parent_name="medication_dispense",
     )
 
     identifier: typing.List[fhirtypes.IdentifierType] = Field(
@@ -167,7 +172,8 @@ class MedicationDispense(domainresource.DomainResource):
         element_property=True,
         # note: Listed Resource Type(s) should be allowed as Reference.
         enum_reference_types=["Location"],
-        backref="medication_dispense_location",
+        backref="medication_dispense",
+        parent_name="medication_dispense",
     )
 
     medicationCodeableConcept: fhirtypes.CodeableConceptType = Field(
@@ -212,7 +218,8 @@ class MedicationDispense(domainresource.DomainResource):
         binding_uri="http://hl7.org/fhir/ValueSet/medication-codes",
         # note: Listed Resource Type(s) should be allowed as Reference.
         enum_reference_types=["Medication"],
-        backref="medication_dispense_medicationReference",
+        backref="medication_dispense",
+        parent_name="medication_dispense",
     )
 
     note: typing.List[fhirtypes.AnnotationType] = Field(
@@ -236,7 +243,8 @@ class MedicationDispense(domainresource.DomainResource):
         element_property=True,
         # note: Listed Resource Type(s) should be allowed as Reference.
         enum_reference_types=["Procedure"],
-        backref="medication_dispense_partOf",
+        backref="medication_dispense",
+        parent_name="medication_dispense",
     )
 
     performer: typing.List[fhirtypes.MedicationDispensePerformerType] = Field(
@@ -273,7 +281,8 @@ class MedicationDispense(domainresource.DomainResource):
         element_property=True,
         # note: Listed Resource Type(s) should be allowed as Reference.
         enum_reference_types=["Patient", "Practitioner"],
-        backref="medication_dispense_receiver",
+        backref="medication_dispense",
+        parent_name="medication_dispense",
     )
 
     status: fhirtypes.Code = Field(
@@ -351,7 +360,8 @@ class MedicationDispense(domainresource.DomainResource):
         binding_uri="http://hl7.org/fhir/ValueSet/medicationdispense-status-reason",
         # note: Listed Resource Type(s) should be allowed as Reference.
         enum_reference_types=["DetectedIssue"],
-        backref="medication_dispense_statusReasonReference",
+        backref="medication_dispense",
+        parent_name="medication_dispense",
     )
 
     subject: fhirtypes.ReferenceType = Field(
@@ -366,7 +376,8 @@ class MedicationDispense(domainresource.DomainResource):
         element_property=True,
         # note: Listed Resource Type(s) should be allowed as Reference.
         enum_reference_types=["Patient", "Group"],
-        backref="medication_dispense_subject",
+        backref="medication_dispense",
+        parent_name="medication_dispense",
     )
 
     substitution: fhirtypes.MedicationDispenseSubstitutionType = Field(
@@ -393,7 +404,8 @@ class MedicationDispense(domainresource.DomainResource):
         element_property=True,
         # note: Listed Resource Type(s) should be allowed as Reference.
         enum_reference_types=["Resource"],
-        backref="medication_dispense_supportingInformation",
+        backref="medication_dispense",
+        parent_name="medication_dispense",
     )
 
     type: fhirtypes.CodeableConceptType = Field(
@@ -615,7 +627,8 @@ class MedicationDispensePerformer(backboneelement.BackboneElement):
             "Device",
             "RelatedPerson",
         ],
-        backref="medication_dispense_performer_actor",
+        backref="medication_dispense_performer",
+        parent_name="medication_dispense_performer",
     )
 
     function: fhirtypes.CodeableConceptType = Field(
@@ -688,7 +701,8 @@ class MedicationDispenseSubstitution(backboneelement.BackboneElement):
         element_property=True,
         # note: Listed Resource Type(s) should be allowed as Reference.
         enum_reference_types=["Practitioner", "PractitionerRole"],
-        backref="medication_dispense_substitution_responsibleParty",
+        backref="medication_dispense_substitution",
+        parent_name="medication_dispense_substitution",
     )
 
     type: fhirtypes.CodeableConceptType = Field(

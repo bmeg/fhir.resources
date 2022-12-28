@@ -344,7 +344,8 @@ class EventDefinition(domainresource.DomainResource):
         binding_uri="http://hl7.org/fhir/ValueSet/subject-type",
         # note: Listed Resource Type(s) should be allowed as Reference.
         enum_reference_types=["Group"],
-        backref="event_definition_subjectReference",
+        backref="event_definition",
+        parent_name="event_definition",
     )
 
     subtitle: fhirtypes.String = Field(

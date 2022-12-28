@@ -63,7 +63,8 @@ class SupplyRequest(domainresource.DomainResource):
         element_property=True,
         # note: Listed Resource Type(s) should be allowed as Reference.
         enum_reference_types=["Organization", "Location"],
-        backref="supply_request_deliverFrom",
+        backref="supply_request",
+        parent_name="supply_request",
     )
 
     deliverTo: fhirtypes.ReferenceType = Field(
@@ -75,7 +76,8 @@ class SupplyRequest(domainresource.DomainResource):
         element_property=True,
         # note: Listed Resource Type(s) should be allowed as Reference.
         enum_reference_types=["Organization", "Location", "Patient"],
-        backref="supply_request_deliverTo",
+        backref="supply_request",
+        parent_name="supply_request",
     )
 
     identifier: typing.List[fhirtypes.IdentifierType] = Field(
@@ -133,7 +135,8 @@ class SupplyRequest(domainresource.DomainResource):
         binding_uri="http://hl7.org/fhir/ValueSet/supply-item",
         # note: Listed Resource Type(s) should be allowed as Reference.
         enum_reference_types=["Medication", "Substance", "Device"],
-        backref="supply_request_itemReference",
+        backref="supply_request",
+        parent_name="supply_request",
     )
 
     occurrenceDateTime: fhirtypes.DateTime = Field(
@@ -249,7 +252,8 @@ class SupplyRequest(domainresource.DomainResource):
             "DiagnosticReport",
             "DocumentReference",
         ],
-        backref="supply_request_reasonReference",
+        backref="supply_request",
+        parent_name="supply_request",
     )
 
     requester: fhirtypes.ReferenceType = Field(
@@ -268,7 +272,8 @@ class SupplyRequest(domainresource.DomainResource):
             "RelatedPerson",
             "Device",
         ],
-        backref="supply_request_requester",
+        backref="supply_request",
+        parent_name="supply_request",
     )
 
     status: fhirtypes.Code = Field(
@@ -303,7 +308,8 @@ class SupplyRequest(domainresource.DomainResource):
         element_property=True,
         # note: Listed Resource Type(s) should be allowed as Reference.
         enum_reference_types=["Organization", "HealthcareService"],
-        backref="supply_request_supplier",
+        backref="supply_request",
+        parent_name="supply_request",
     )
 
     @classmethod

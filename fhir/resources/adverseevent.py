@@ -113,7 +113,8 @@ class AdverseEvent(domainresource.DomainResource):
         element_property=True,
         # note: Listed Resource Type(s) should be allowed as Reference.
         enum_reference_types=["Practitioner", "PractitionerRole", "Device"],
-        backref="adverse_event_contributor",
+        backref="adverse_event",
+        parent_name="adverse_event",
     )
 
     date: fhirtypes.DateTime = Field(
@@ -155,7 +156,8 @@ class AdverseEvent(domainresource.DomainResource):
         element_property=True,
         # note: Listed Resource Type(s) should be allowed as Reference.
         enum_reference_types=["Encounter"],
-        backref="adverse_event_encounter",
+        backref="adverse_event",
+        parent_name="adverse_event",
     )
 
     event: fhirtypes.CodeableConceptType = Field(
@@ -197,7 +199,8 @@ class AdverseEvent(domainresource.DomainResource):
         element_property=True,
         # note: Listed Resource Type(s) should be allowed as Reference.
         enum_reference_types=["Location"],
-        backref="adverse_event_location",
+        backref="adverse_event",
+        parent_name="adverse_event",
     )
 
     outcome: fhirtypes.CodeableConceptType = Field(
@@ -261,7 +264,8 @@ class AdverseEvent(domainresource.DomainResource):
             "PractitionerRole",
             "RelatedPerson",
         ],
-        backref="adverse_event_recorder",
+        backref="adverse_event",
+        parent_name="adverse_event",
     )
 
     referenceDocument: typing.List[fhirtypes.ReferenceType] = Field(
@@ -273,7 +277,8 @@ class AdverseEvent(domainresource.DomainResource):
         element_property=True,
         # note: Listed Resource Type(s) should be allowed as Reference.
         enum_reference_types=["DocumentReference"],
-        backref="adverse_event_referenceDocument",
+        backref="adverse_event",
+        parent_name="adverse_event",
     )
 
     resultingCondition: typing.List[fhirtypes.ReferenceType] = Field(
@@ -288,7 +293,8 @@ class AdverseEvent(domainresource.DomainResource):
         element_property=True,
         # note: Listed Resource Type(s) should be allowed as Reference.
         enum_reference_types=["Condition"],
-        backref="adverse_event_resultingCondition",
+        backref="adverse_event",
+        parent_name="adverse_event",
     )
 
     seriousness: fhirtypes.CodeableConceptType = Field(
@@ -338,7 +344,8 @@ class AdverseEvent(domainresource.DomainResource):
         element_property=True,
         # note: Listed Resource Type(s) should be allowed as Reference.
         enum_reference_types=["ResearchStudy"],
-        backref="adverse_event_study",
+        backref="adverse_event",
+        parent_name="adverse_event",
     )
 
     subject: fhirtypes.ReferenceType = Field(
@@ -350,7 +357,8 @@ class AdverseEvent(domainresource.DomainResource):
         element_property=True,
         # note: Listed Resource Type(s) should be allowed as Reference.
         enum_reference_types=["Patient", "Group", "Practitioner", "RelatedPerson"],
-        backref="adverse_event_subject",
+        backref="adverse_event",
+        parent_name="adverse_event",
     )
 
     subjectMedicalHistory: typing.List[fhirtypes.ReferenceType] = Field(
@@ -371,7 +379,8 @@ class AdverseEvent(domainresource.DomainResource):
             "Media",
             "DocumentReference",
         ],
-        backref="adverse_event_subjectMedicalHistory",
+        backref="adverse_event",
+        parent_name="adverse_event",
     )
 
     suspectEntity: typing.List[fhirtypes.AdverseEventSuspectEntityType] = Field(
@@ -524,7 +533,8 @@ class AdverseEventSuspectEntity(backboneelement.BackboneElement):
             "MedicationStatement",
             "Device",
         ],
-        backref="adverse_event_suspect_entity_instance",
+        backref="adverse_event_suspect_entity",
+        parent_name="adverse_event_suspect_entity",
     )
 
     @classmethod
@@ -568,7 +578,8 @@ class AdverseEventSuspectEntityCausality(backboneelement.BackboneElement):
         element_property=True,
         # note: Listed Resource Type(s) should be allowed as Reference.
         enum_reference_types=["Practitioner", "PractitionerRole"],
-        backref="adverse_event_suspect_entity_causality_author",
+        backref="adverse_event_suspect_entity_causality",
+        parent_name="adverse_event_suspect_entity_causality",
     )
 
     method: fhirtypes.CodeableConceptType = Field(

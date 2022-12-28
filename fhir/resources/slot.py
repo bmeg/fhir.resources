@@ -104,7 +104,8 @@ class Slot(domainresource.DomainResource):
         element_property=True,
         # note: Listed Resource Type(s) should be allowed as Reference.
         enum_reference_types=["Schedule"],
-        backref="slot_schedule",
+        backref="slot",
+        parent_name="slot",
     )
 
     serviceCategory: typing.List[fhirtypes.CodeableConceptType] = Field(

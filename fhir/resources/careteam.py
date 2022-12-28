@@ -56,7 +56,8 @@ class CareTeam(domainresource.DomainResource):
         element_property=True,
         # note: Listed Resource Type(s) should be allowed as Reference.
         enum_reference_types=["Encounter"],
-        backref="care_team_encounter",
+        backref="care_team",
+        parent_name="care_team",
     )
 
     identifier: typing.List[fhirtypes.IdentifierType] = Field(
@@ -81,7 +82,8 @@ class CareTeam(domainresource.DomainResource):
         element_property=True,
         # note: Listed Resource Type(s) should be allowed as Reference.
         enum_reference_types=["Organization"],
-        backref="care_team_managingOrganization",
+        backref="care_team",
+        parent_name="care_team",
     )
 
     name: fhirtypes.String = Field(
@@ -157,7 +159,8 @@ class CareTeam(domainresource.DomainResource):
         element_property=True,
         # note: Listed Resource Type(s) should be allowed as Reference.
         enum_reference_types=["Condition"],
-        backref="care_team_reasonReference",
+        backref="care_team",
+        parent_name="care_team",
     )
 
     status: fhirtypes.Code = Field(
@@ -195,7 +198,8 @@ class CareTeam(domainresource.DomainResource):
         element_property=True,
         # note: Listed Resource Type(s) should be allowed as Reference.
         enum_reference_types=["Patient", "Group"],
-        backref="care_team_subject",
+        backref="care_team",
+        parent_name="care_team",
     )
 
     telecom: typing.List[fhirtypes.ContactPointType] = Field(
@@ -272,7 +276,8 @@ class CareTeamParticipant(backboneelement.BackboneElement):
             "Organization",
             "CareTeam",
         ],
-        backref="care_team_participant_member",
+        backref="care_team_participant",
+        parent_name="care_team_participant",
     )
 
     onBehalfOf: fhirtypes.ReferenceType = Field(
@@ -284,7 +289,8 @@ class CareTeamParticipant(backboneelement.BackboneElement):
         element_property=True,
         # note: Listed Resource Type(s) should be allowed as Reference.
         enum_reference_types=["Organization"],
-        backref="care_team_participant_onBehalfOf",
+        backref="care_team_participant",
+        parent_name="care_team_participant",
     )
 
     period: fhirtypes.PeriodType = Field(

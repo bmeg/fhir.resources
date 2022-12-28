@@ -107,7 +107,8 @@ class DataRequirement(element.Element):
         element_property=True,
         # note: Listed Resource Type(s) should be allowed as Reference.
         enum_reference_types=["StructureDefinition"],
-        backref="data_requirement_profile",
+        backref="data_requirement",
+        parent_name="data_requirement",
     )
     profile__ext: typing.List[
         typing.Union[fhirtypes.FHIRPrimitiveExtensionType, None]
@@ -166,7 +167,8 @@ class DataRequirement(element.Element):
         binding_uri="http://hl7.org/fhir/ValueSet/subject-type",
         # note: Listed Resource Type(s) should be allowed as Reference.
         enum_reference_types=["Group"],
-        backref="data_requirement_subjectReference",
+        backref="data_requirement",
+        parent_name="data_requirement",
     )
 
     type: fhirtypes.Code = Field(
@@ -389,7 +391,8 @@ class DataRequirementCodeFilter(element.Element):
         element_property=True,
         # note: Listed Resource Type(s) should be allowed as Reference.
         enum_reference_types=["ValueSet"],
-        backref="data_requirement_code_filter_valueSet",
+        backref="data_requirement_code_filter",
+        parent_name="data_requirement_code_filter",
     )
     valueSet__ext: fhirtypes.FHIRPrimitiveExtensionType = Field(
         None, alias="_valueSet", title="Extension field for ``valueSet``."

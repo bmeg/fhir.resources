@@ -66,7 +66,8 @@ class MedicationKnowledge(domainresource.DomainResource):
         element_property=True,
         # note: Listed Resource Type(s) should be allowed as Reference.
         enum_reference_types=["Medication"],
-        backref="medication_knowledge_associatedMedication",
+        backref="medication_knowledge",
+        parent_name="medication_knowledge",
     )
 
     code: fhirtypes.CodeableConceptType = Field(
@@ -101,7 +102,8 @@ class MedicationKnowledge(domainresource.DomainResource):
         element_property=True,
         # note: Listed Resource Type(s) should be allowed as Reference.
         enum_reference_types=["DetectedIssue"],
-        backref="medication_knowledge_contraindication",
+        backref="medication_knowledge",
+        parent_name="medication_knowledge",
     )
 
     cost: typing.List[fhirtypes.MedicationKnowledgeCostType] = Field(
@@ -193,7 +195,8 @@ class MedicationKnowledge(domainresource.DomainResource):
         element_property=True,
         # note: Listed Resource Type(s) should be allowed as Reference.
         enum_reference_types=["Organization"],
-        backref="medication_knowledge_manufacturer",
+        backref="medication_knowledge",
+        parent_name="medication_knowledge",
     )
 
     medicineClassification: typing.List[
@@ -416,7 +419,8 @@ class MedicationKnowledgeAdministrationGuidelines(backboneelement.BackboneElemen
         one_of_many_required=False,
         # note: Listed Resource Type(s) should be allowed as Reference.
         enum_reference_types=["ObservationDefinition"],
-        backref="medication_knowledge_administration_guidelines_indicationReference",
+        backref="medication_knowledge_administration_guidelines",
+        parent_name="medication_knowledge_administration_guidelines",
     )
 
     patientCharacteristics: typing.List[
@@ -918,7 +922,8 @@ class MedicationKnowledgeIngredient(backboneelement.BackboneElement):
         one_of_many_required=True,
         # note: Listed Resource Type(s) should be allowed as Reference.
         enum_reference_types=["Substance"],
-        backref="medication_knowledge_ingredient_itemReference",
+        backref="medication_knowledge_ingredient",
+        parent_name="medication_knowledge_ingredient",
     )
 
     strength: fhirtypes.RatioType = Field(
@@ -1150,7 +1155,8 @@ class MedicationKnowledgeMonograph(backboneelement.BackboneElement):
         element_property=True,
         # note: Listed Resource Type(s) should be allowed as Reference.
         enum_reference_types=["DocumentReference", "Media"],
-        backref="medication_knowledge_monograph_source",
+        backref="medication_knowledge_monograph",
+        parent_name="medication_knowledge_monograph",
     )
 
     type: fhirtypes.CodeableConceptType = Field(
@@ -1254,7 +1260,8 @@ class MedicationKnowledgeRegulatory(backboneelement.BackboneElement):
         element_property=True,
         # note: Listed Resource Type(s) should be allowed as Reference.
         enum_reference_types=["Organization"],
-        backref="medication_knowledge_regulatory_regulatoryAuthority",
+        backref="medication_knowledge_regulatory",
+        parent_name="medication_knowledge_regulatory",
     )
 
     schedule: typing.List[fhirtypes.MedicationKnowledgeRegulatoryScheduleType] = Field(
@@ -1487,7 +1494,8 @@ class MedicationKnowledgeRelatedMedicationKnowledge(backboneelement.BackboneElem
         element_property=True,
         # note: Listed Resource Type(s) should be allowed as Reference.
         enum_reference_types=["MedicationKnowledge"],
-        backref="medication_knowledge_related_medication_knowledge_reference",
+        backref="medication_knowledge_related_medication_knowledge",
+        parent_name="medication_knowledge_related_medication_knowledge",
     )
 
     type: fhirtypes.CodeableConceptType = Field(

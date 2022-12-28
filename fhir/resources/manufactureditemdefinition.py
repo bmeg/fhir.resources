@@ -84,7 +84,8 @@ class ManufacturedItemDefinition(domainresource.DomainResource):
         element_property=True,
         # note: Listed Resource Type(s) should be allowed as Reference.
         enum_reference_types=["Organization"],
-        backref="manufactured_item_definition_manufacturer",
+        backref="manufactured_item_definition",
+        parent_name="manufactured_item_definition",
     )
 
     property: typing.List[fhirtypes.ManufacturedItemDefinitionPropertyType] = Field(

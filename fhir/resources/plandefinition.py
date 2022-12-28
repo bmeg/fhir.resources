@@ -259,7 +259,8 @@ class PlanDefinition(domainresource.DomainResource):
         element_property=True,
         # note: Listed Resource Type(s) should be allowed as Reference.
         enum_reference_types=["Library"],
-        backref="plan_definition_library",
+        backref="plan_definition",
+        parent_name="plan_definition",
     )
     library__ext: typing.List[
         typing.Union[fhirtypes.FHIRPrimitiveExtensionType, None]
@@ -390,7 +391,8 @@ class PlanDefinition(domainresource.DomainResource):
             "ManufacturedItemDefinition",
             "PackagedProductDefinition",
         ],
-        backref="plan_definition_subjectCanonical",
+        backref="plan_definition",
+        parent_name="plan_definition",
     )
     subjectCanonical__ext: fhirtypes.FHIRPrimitiveExtensionType = Field(
         None,
@@ -448,7 +450,8 @@ class PlanDefinition(domainresource.DomainResource):
         binding_uri="http://hl7.org/fhir/ValueSet/subject-type",
         # note: Listed Resource Type(s) should be allowed as Reference.
         enum_reference_types=["Group"],
-        backref="plan_definition_subjectReference",
+        backref="plan_definition",
+        parent_name="plan_definition",
     )
 
     subtitle: fhirtypes.String = Field(
@@ -854,7 +857,8 @@ class PlanDefinitionAction(backboneelement.BackboneElement):
         one_of_many_required=False,
         # note: Listed Resource Type(s) should be allowed as Reference.
         enum_reference_types=["ActivityDefinition", "PlanDefinition", "Questionnaire"],
-        backref="plan_definition_action_definitionCanonical",
+        backref="plan_definition_action",
+        parent_name="plan_definition_action",
     )
     definitionCanonical__ext: fhirtypes.FHIRPrimitiveExtensionType = Field(
         None,
@@ -1219,7 +1223,8 @@ class PlanDefinitionAction(backboneelement.BackboneElement):
         binding_uri="http://hl7.org/fhir/ValueSet/subject-type",
         # note: Listed Resource Type(s) should be allowed as Reference.
         enum_reference_types=["Group"],
-        backref="plan_definition_action_subjectReference",
+        backref="plan_definition_action",
+        parent_name="plan_definition_action",
     )
 
     textEquivalent: fhirtypes.String = Field(
@@ -1346,7 +1351,8 @@ class PlanDefinitionAction(backboneelement.BackboneElement):
         element_property=True,
         # note: Listed Resource Type(s) should be allowed as Reference.
         enum_reference_types=["StructureMap"],
-        backref="plan_definition_action_transform",
+        backref="plan_definition_action",
+        parent_name="plan_definition_action",
     )
     transform__ext: fhirtypes.FHIRPrimitiveExtensionType = Field(
         None, alias="_transform", title="Extension field for ``transform``."

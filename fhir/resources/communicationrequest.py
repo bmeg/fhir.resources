@@ -40,7 +40,8 @@ class CommunicationRequest(domainresource.DomainResource):
         element_property=True,
         # note: Listed Resource Type(s) should be allowed as Reference.
         enum_reference_types=["Resource"],
-        backref="communication_request_about",
+        backref="communication_request",
+        parent_name="communication_request",
     )
 
     authoredOn: fhirtypes.DateTime = Field(
@@ -70,7 +71,8 @@ class CommunicationRequest(domainresource.DomainResource):
         element_property=True,
         # note: Listed Resource Type(s) should be allowed as Reference.
         enum_reference_types=["Resource"],
-        backref="communication_request_basedOn",
+        backref="communication_request",
+        parent_name="communication_request",
     )
 
     category: typing.List[fhirtypes.CodeableConceptType] = Field(
@@ -117,7 +119,8 @@ class CommunicationRequest(domainresource.DomainResource):
         element_property=True,
         # note: Listed Resource Type(s) should be allowed as Reference.
         enum_reference_types=["Encounter"],
-        backref="communication_request_encounter",
+        backref="communication_request",
+        parent_name="communication_request",
     )
 
     groupIdentifier: fhirtypes.IdentifierType = Field(
@@ -269,7 +272,8 @@ class CommunicationRequest(domainresource.DomainResource):
             "DiagnosticReport",
             "DocumentReference",
         ],
-        backref="communication_request_reasonReference",
+        backref="communication_request",
+        parent_name="communication_request",
     )
 
     recipient: typing.List[fhirtypes.ReferenceType] = Field(
@@ -295,7 +299,8 @@ class CommunicationRequest(domainresource.DomainResource):
             "CareTeam",
             "HealthcareService",
         ],
-        backref="communication_request_recipient",
+        backref="communication_request",
+        parent_name="communication_request",
     )
 
     replaces: typing.List[fhirtypes.ReferenceType] = Field(
@@ -310,7 +315,8 @@ class CommunicationRequest(domainresource.DomainResource):
         element_property=True,
         # note: Listed Resource Type(s) should be allowed as Reference.
         enum_reference_types=["CommunicationRequest"],
-        backref="communication_request_replaces",
+        backref="communication_request",
+        parent_name="communication_request",
     )
 
     requester: fhirtypes.ReferenceType = Field(
@@ -332,7 +338,8 @@ class CommunicationRequest(domainresource.DomainResource):
             "RelatedPerson",
             "Device",
         ],
-        backref="communication_request_requester",
+        backref="communication_request",
+        parent_name="communication_request",
     )
 
     sender: fhirtypes.ReferenceType = Field(
@@ -355,7 +362,8 @@ class CommunicationRequest(domainresource.DomainResource):
             "RelatedPerson",
             "HealthcareService",
         ],
-        backref="communication_request_sender",
+        backref="communication_request",
+        parent_name="communication_request",
     )
 
     status: fhirtypes.Code = Field(
@@ -414,7 +422,8 @@ class CommunicationRequest(domainresource.DomainResource):
         element_property=True,
         # note: Listed Resource Type(s) should be allowed as Reference.
         enum_reference_types=["Patient", "Group"],
-        backref="communication_request_subject",
+        backref="communication_request",
+        parent_name="communication_request",
     )
 
     @classmethod
@@ -596,7 +605,8 @@ class CommunicationRequestPayload(backboneelement.BackboneElement):
         one_of_many_required=True,
         # note: Listed Resource Type(s) should be allowed as Reference.
         enum_reference_types=["Resource"],
-        backref="communication_request_payload_contentReference",
+        backref="communication_request_payload",
+        parent_name="communication_request_payload",
     )
 
     contentString: fhirtypes.String = Field(

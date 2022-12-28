@@ -72,7 +72,8 @@ class BiologicallyDerivedProduct(domainresource.DomainResource):
         element_property=True,
         # note: Listed Resource Type(s) should be allowed as Reference.
         enum_reference_types=["BiologicallyDerivedProduct"],
-        backref="biologically_derived_product_parent",
+        backref="biologically_derived_product",
+        parent_name="biologically_derived_product",
     )
 
     processing: typing.List[fhirtypes.BiologicallyDerivedProductProcessingType] = Field(
@@ -147,7 +148,8 @@ class BiologicallyDerivedProduct(domainresource.DomainResource):
         element_property=True,
         # note: Listed Resource Type(s) should be allowed as Reference.
         enum_reference_types=["ServiceRequest"],
-        backref="biologically_derived_product_request",
+        backref="biologically_derived_product",
+        parent_name="biologically_derived_product",
     )
 
     status: fhirtypes.Code = Field(
@@ -259,7 +261,8 @@ class BiologicallyDerivedProductCollection(backboneelement.BackboneElement):
         element_property=True,
         # note: Listed Resource Type(s) should be allowed as Reference.
         enum_reference_types=["Practitioner", "PractitionerRole"],
-        backref="biologically_derived_product_collection_collector",
+        backref="biologically_derived_product_collection",
+        parent_name="biologically_derived_product_collection",
     )
 
     source: fhirtypes.ReferenceType = Field(
@@ -274,7 +277,8 @@ class BiologicallyDerivedProductCollection(backboneelement.BackboneElement):
         element_property=True,
         # note: Listed Resource Type(s) should be allowed as Reference.
         enum_reference_types=["Patient", "Organization"],
-        backref="biologically_derived_product_collection_source",
+        backref="biologically_derived_product_collection",
+        parent_name="biologically_derived_product_collection",
     )
 
     @classmethod
@@ -460,7 +464,8 @@ class BiologicallyDerivedProductProcessing(backboneelement.BackboneElement):
         element_property=True,
         # note: Listed Resource Type(s) should be allowed as Reference.
         enum_reference_types=["Substance"],
-        backref="biologically_derived_product_processing_additive",
+        backref="biologically_derived_product_processing",
+        parent_name="biologically_derived_product_processing",
     )
 
     description: fhirtypes.String = Field(

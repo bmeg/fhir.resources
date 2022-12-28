@@ -108,7 +108,8 @@ class Person(domainresource.DomainResource):
         element_property=True,
         # note: Listed Resource Type(s) should be allowed as Reference.
         enum_reference_types=["Organization"],
-        backref="person_managingOrganization",
+        backref="person",
+        parent_name="person",
     )
 
     name: typing.List[fhirtypes.HumanNameType] = Field(
@@ -214,7 +215,8 @@ class PersonLink(backboneelement.BackboneElement):
         element_property=True,
         # note: Listed Resource Type(s) should be allowed as Reference.
         enum_reference_types=["Patient", "Practitioner", "RelatedPerson", "Person"],
-        backref="person_link_target",
+        backref="person_link",
+        parent_name="person_link",
     )
 
     @classmethod

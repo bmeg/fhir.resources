@@ -37,7 +37,8 @@ class ImmunizationEvaluation(domainresource.DomainResource):
         element_property=True,
         # note: Listed Resource Type(s) should be allowed as Reference.
         enum_reference_types=["Organization"],
-        backref="immunization_evaluation_authority",
+        backref="immunization_evaluation",
+        parent_name="immunization_evaluation",
     )
 
     date: fhirtypes.DateTime = Field(
@@ -154,7 +155,8 @@ class ImmunizationEvaluation(domainresource.DomainResource):
         element_property=True,
         # note: Listed Resource Type(s) should be allowed as Reference.
         enum_reference_types=["Immunization"],
-        backref="immunization_evaluation_immunizationEvent",
+        backref="immunization_evaluation",
+        parent_name="immunization_evaluation",
     )
 
     patient: fhirtypes.ReferenceType = Field(
@@ -166,7 +168,8 @@ class ImmunizationEvaluation(domainresource.DomainResource):
         element_property=True,
         # note: Listed Resource Type(s) should be allowed as Reference.
         enum_reference_types=["Patient"],
-        backref="immunization_evaluation_patient",
+        backref="immunization_evaluation",
+        parent_name="immunization_evaluation",
     )
 
     series: fhirtypes.String = Field(

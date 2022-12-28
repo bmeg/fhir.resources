@@ -203,7 +203,8 @@ class ChargeItemDefinition(domainresource.DomainResource):
         element_property=True,
         # note: Listed Resource Type(s) should be allowed as Reference.
         enum_reference_types=["Medication", "Substance", "Device"],
-        backref="charge_item_definition_instance",
+        backref="charge_item_definition",
+        parent_name="charge_item_definition",
     )
 
     jurisdiction: typing.List[fhirtypes.CodeableConceptType] = Field(
@@ -250,7 +251,8 @@ class ChargeItemDefinition(domainresource.DomainResource):
         element_property=True,
         # note: Listed Resource Type(s) should be allowed as Reference.
         enum_reference_types=["ChargeItemDefinition"],
-        backref="charge_item_definition_partOf",
+        backref="charge_item_definition",
+        parent_name="charge_item_definition",
     )
     partOf__ext: typing.List[
         typing.Union[fhirtypes.FHIRPrimitiveExtensionType, None]
@@ -299,7 +301,8 @@ class ChargeItemDefinition(domainresource.DomainResource):
         element_property=True,
         # note: Listed Resource Type(s) should be allowed as Reference.
         enum_reference_types=["ChargeItemDefinition"],
-        backref="charge_item_definition_replaces",
+        backref="charge_item_definition",
+        parent_name="charge_item_definition",
     )
     replaces__ext: typing.List[
         typing.Union[fhirtypes.FHIRPrimitiveExtensionType, None]

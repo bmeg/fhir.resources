@@ -109,7 +109,8 @@ class SubscriptionStatus(domainresource.DomainResource):
         element_property=True,
         # note: Listed Resource Type(s) should be allowed as Reference.
         enum_reference_types=["Subscription"],
-        backref="subscription_status_subscription",
+        backref="subscription_status",
+        parent_name="subscription_status",
     )
 
     topic: fhirtypes.Canonical = Field(
@@ -124,7 +125,8 @@ class SubscriptionStatus(domainresource.DomainResource):
         element_property=True,
         # note: Listed Resource Type(s) should be allowed as Reference.
         enum_reference_types=["SubscriptionTopic"],
-        backref="subscription_status_topic",
+        backref="subscription_status",
+        parent_name="subscription_status",
     )
     topic__ext: fhirtypes.FHIRPrimitiveExtensionType = Field(
         None, alias="_topic", title="Extension field for ``topic``."
@@ -272,7 +274,8 @@ class SubscriptionStatusNotificationEvent(backboneelement.BackboneElement):
         element_property=True,
         # note: Listed Resource Type(s) should be allowed as Reference.
         enum_reference_types=["Resource"],
-        backref="subscription_status_notification_event_additionalContext",
+        backref="subscription_status_notification_event",
+        parent_name="subscription_status_notification_event",
     )
 
     eventNumber: fhirtypes.String = Field(
@@ -304,7 +307,8 @@ class SubscriptionStatusNotificationEvent(backboneelement.BackboneElement):
         element_property=True,
         # note: Listed Resource Type(s) should be allowed as Reference.
         enum_reference_types=["Resource"],
-        backref="subscription_status_notification_event_focus",
+        backref="subscription_status_notification_event",
+        parent_name="subscription_status_notification_event",
     )
 
     timestamp: fhirtypes.Instant = Field(
