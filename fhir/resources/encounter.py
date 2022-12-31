@@ -16,10 +16,7 @@ from . import backboneelement, domainresource, fhirtypes
 
 
 class Encounter(domainresource.DomainResource):
-    """Disclaimer: Any field name ends with ``__ext`` doesn't part of
-    Resource StructureDefinition, instead used to enable Extensibility feature
-    for FHIR Primitive Data Types.
-
+    """
     An interaction during which services are provided to the patient.
     An interaction between a patient and healthcare provider(s) for the purpose
     of providing healthcare service(s) or assessing the health status of a
@@ -37,8 +34,6 @@ class Encounter(domainresource.DomainResource):
         element_property=True,
         # note: Listed Resource Type(s) should be allowed as Reference.
         enum_reference_types=["Account"],
-        backref="encounter",
-        parent_name="encounter",
     )
 
     appointment: typing.List[fhirtypes.ReferenceType] = Field(
@@ -50,8 +45,6 @@ class Encounter(domainresource.DomainResource):
         element_property=True,
         # note: Listed Resource Type(s) should be allowed as Reference.
         enum_reference_types=["Appointment"],
-        backref="encounter",
-        parent_name="encounter",
     )
 
     basedOn: typing.List[fhirtypes.ReferenceType] = Field(
@@ -66,8 +59,6 @@ class Encounter(domainresource.DomainResource):
         element_property=True,
         # note: Listed Resource Type(s) should be allowed as Reference.
         enum_reference_types=["ServiceRequest"],
-        backref="encounter",
-        parent_name="encounter",
     )
 
     classHistory: typing.List[fhirtypes.EncounterClassHistoryType] = Field(
@@ -133,8 +124,6 @@ class Encounter(domainresource.DomainResource):
         element_property=True,
         # note: Listed Resource Type(s) should be allowed as Reference.
         enum_reference_types=["EpisodeOfCare"],
-        backref="encounter",
-        parent_name="encounter",
     )
 
     hospitalization: fhirtypes.EncounterHospitalizationType = Field(
@@ -188,8 +177,6 @@ class Encounter(domainresource.DomainResource):
         element_property=True,
         # note: Listed Resource Type(s) should be allowed as Reference.
         enum_reference_types=["Encounter"],
-        backref="encounter",
-        parent_name="encounter",
     )
 
     participant: typing.List[fhirtypes.EncounterParticipantType] = Field(
@@ -257,8 +244,6 @@ class Encounter(domainresource.DomainResource):
             "Observation",
             "ImmunizationRecommendation",
         ],
-        backref="encounter",
-        parent_name="encounter",
     )
 
     serviceProvider: fhirtypes.ReferenceType = Field(
@@ -277,8 +262,6 @@ class Encounter(domainresource.DomainResource):
         element_property=True,
         # note: Listed Resource Type(s) should be allowed as Reference.
         enum_reference_types=["Organization"],
-        backref="encounter",
-        parent_name="encounter",
     )
 
     serviceType: fhirtypes.CodeableConceptType = Field(
@@ -352,8 +335,6 @@ class Encounter(domainresource.DomainResource):
         element_property=True,
         # note: Listed Resource Type(s) should be allowed as Reference.
         enum_reference_types=["Patient", "Group"],
-        backref="encounter",
-        parent_name="encounter",
     )
 
     type: typing.List[fhirtypes.CodeableConceptType] = Field(
@@ -474,10 +455,7 @@ class Encounter(domainresource.DomainResource):
 
 
 class EncounterClassHistory(backboneelement.BackboneElement):
-    """Disclaimer: Any field name ends with ``__ext`` doesn't part of
-    Resource StructureDefinition, instead used to enable Extensibility feature
-    for FHIR Primitive Data Types.
-
+    """
     List of past encounter classes.
     The class history permits the tracking of the encounters transitions
     without needing to go  through the resource history.  This would be used
@@ -522,10 +500,7 @@ class EncounterClassHistory(backboneelement.BackboneElement):
 
 
 class EncounterDiagnosis(backboneelement.BackboneElement):
-    """Disclaimer: Any field name ends with ``__ext`` doesn't part of
-    Resource StructureDefinition, instead used to enable Extensibility feature
-    for FHIR Primitive Data Types.
-
+    """
     The list of diagnosis relevant to this encounter.
     """
 
@@ -545,8 +520,6 @@ class EncounterDiagnosis(backboneelement.BackboneElement):
         element_property=True,
         # note: Listed Resource Type(s) should be allowed as Reference.
         enum_reference_types=["Condition", "Procedure"],
-        backref="encounter_diagnosis",
-        parent_name="encounter_diagnosis",
     )
 
     rank: fhirtypes.PositiveInt = Field(
@@ -587,10 +560,7 @@ class EncounterDiagnosis(backboneelement.BackboneElement):
 
 
 class EncounterHospitalization(backboneelement.BackboneElement):
-    """Disclaimer: Any field name ends with ``__ext`` doesn't part of
-    Resource StructureDefinition, instead used to enable Extensibility feature
-    for FHIR Primitive Data Types.
-
+    """
     Details about the admission to a healthcare service.
     """
 
@@ -618,8 +588,6 @@ class EncounterHospitalization(backboneelement.BackboneElement):
         element_property=True,
         # note: Listed Resource Type(s) should be allowed as Reference.
         enum_reference_types=["Location", "Organization"],
-        backref="encounter_hospitalization",
-        parent_name="encounter_hospitalization",
     )
 
     dietPreference: typing.List[fhirtypes.CodeableConceptType] = Field(
@@ -657,8 +625,6 @@ class EncounterHospitalization(backboneelement.BackboneElement):
         element_property=True,
         # note: Listed Resource Type(s) should be allowed as Reference.
         enum_reference_types=["Location", "Organization"],
-        backref="encounter_hospitalization",
-        parent_name="encounter_hospitalization",
     )
 
     preAdmissionIdentifier: fhirtypes.IdentifierType = Field(
@@ -743,10 +709,7 @@ class EncounterHospitalization(backboneelement.BackboneElement):
 
 
 class EncounterLocation(backboneelement.BackboneElement):
-    """Disclaimer: Any field name ends with ``__ext`` doesn't part of
-    Resource StructureDefinition, instead used to enable Extensibility feature
-    for FHIR Primitive Data Types.
-
+    """
     List of locations where the patient has been.
     List of locations where  the patient has been during this encounter.
     """
@@ -762,8 +725,6 @@ class EncounterLocation(backboneelement.BackboneElement):
         element_property=True,
         # note: Listed Resource Type(s) should be allowed as Reference.
         enum_reference_types=["Location"],
-        backref="encounter_location",
-        parent_name="encounter_location",
     )
 
     period: fhirtypes.PeriodType = Field(
@@ -838,10 +799,7 @@ class EncounterLocation(backboneelement.BackboneElement):
 
 
 class EncounterParticipant(backboneelement.BackboneElement):
-    """Disclaimer: Any field name ends with ``__ext`` doesn't part of
-    Resource StructureDefinition, instead used to enable Extensibility feature
-    for FHIR Primitive Data Types.
-
+    """
     List of participants involved in the encounter.
     The list of people responsible for providing the service.
     """
@@ -857,8 +815,6 @@ class EncounterParticipant(backboneelement.BackboneElement):
         element_property=True,
         # note: Listed Resource Type(s) should be allowed as Reference.
         enum_reference_types=["Practitioner", "PractitionerRole", "RelatedPerson"],
-        backref="encounter_participant",
-        parent_name="encounter_participant",
     )
 
     period: fhirtypes.PeriodType = Field(
@@ -897,10 +853,7 @@ class EncounterParticipant(backboneelement.BackboneElement):
 
 
 class EncounterStatusHistory(backboneelement.BackboneElement):
-    """Disclaimer: Any field name ends with ``__ext`` doesn't part of
-    Resource StructureDefinition, instead used to enable Extensibility feature
-    for FHIR Primitive Data Types.
-
+    """
     List of past encounter statuses.
     The status history permits the encounter resource to contain the status
     history without needing to read through the historical versions of the

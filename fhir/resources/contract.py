@@ -16,10 +16,7 @@ from . import backboneelement, domainresource, fhirtypes
 
 
 class Contract(domainresource.DomainResource):
-    """Disclaimer: Any field name ends with ``__ext`` doesn't part of
-    Resource StructureDefinition, instead used to enable Extensibility feature
-    for FHIR Primitive Data Types.
-
+    """
     Legal Agreement.
     Legally enforceable, formally recorded unilateral or bilateral directive
     i.e., a policy or agreement.
@@ -69,8 +66,6 @@ class Contract(domainresource.DomainResource):
             "PractitionerRole",
             "Organization",
         ],
-        backref="contract",
-        parent_name="contract",
     )
 
     authority: typing.List[fhirtypes.ReferenceType] = Field(
@@ -87,8 +82,6 @@ class Contract(domainresource.DomainResource):
         element_property=True,
         # note: Listed Resource Type(s) should be allowed as Reference.
         enum_reference_types=["Organization"],
-        backref="contract",
-        parent_name="contract",
     )
 
     contentDefinition: fhirtypes.ContractContentDefinitionType = Field(
@@ -138,8 +131,6 @@ class Contract(domainresource.DomainResource):
         element_property=True,
         # note: Listed Resource Type(s) should be allowed as Reference.
         enum_reference_types=["Location"],
-        backref="contract",
-        parent_name="contract",
     )
 
     expirationType: fhirtypes.CodeableConceptType = Field(
@@ -200,8 +191,6 @@ class Contract(domainresource.DomainResource):
         element_property=True,
         # note: Listed Resource Type(s) should be allowed as Reference.
         enum_reference_types=["Contract"],
-        backref="contract",
-        parent_name="contract",
     )
 
     instantiatesUri: fhirtypes.Uri = Field(
@@ -299,8 +288,6 @@ class Contract(domainresource.DomainResource):
             "QuestionnaireResponse",
             "Contract",
         ],
-        backref="contract",
-        parent_name="contract",
     )
 
     name: fhirtypes.String = Field(
@@ -337,8 +324,6 @@ class Contract(domainresource.DomainResource):
         element_property=True,
         # note: Listed Resource Type(s) should be allowed as Reference.
         enum_reference_types=["Provenance"],
-        backref="contract",
-        parent_name="contract",
     )
 
     rule: typing.List[fhirtypes.ContractRuleType] = Field(
@@ -393,8 +378,6 @@ class Contract(domainresource.DomainResource):
         element_property=True,
         # note: Listed Resource Type(s) should be allowed as Reference.
         enum_reference_types=["Location"],
-        backref="contract",
-        parent_name="contract",
     )
 
     status: fhirtypes.Code = Field(
@@ -469,8 +452,6 @@ class Contract(domainresource.DomainResource):
         element_property=True,
         # note: Listed Resource Type(s) should be allowed as Reference.
         enum_reference_types=["Resource"],
-        backref="contract",
-        parent_name="contract",
     )
 
     subtitle: fhirtypes.String = Field(
@@ -501,8 +482,6 @@ class Contract(domainresource.DomainResource):
         element_property=True,
         # note: Listed Resource Type(s) should be allowed as Reference.
         enum_reference_types=["Resource"],
-        backref="contract",
-        parent_name="contract",
     )
 
     term: typing.List[fhirtypes.ContractTermType] = Field(
@@ -563,8 +542,6 @@ class Contract(domainresource.DomainResource):
         one_of_many_required=False,
         # note: Listed Resource Type(s) should be allowed as Reference.
         enum_reference_types=["Resource"],
-        backref="contract",
-        parent_name="contract",
     )
 
     type: fhirtypes.CodeableConceptType = Field(
@@ -712,10 +689,7 @@ class Contract(domainresource.DomainResource):
 
 
 class ContractContentDefinition(backboneelement.BackboneElement):
-    """Disclaimer: Any field name ends with ``__ext`` doesn't part of
-    Resource StructureDefinition, instead used to enable Extensibility feature
-    for FHIR Primitive Data Types.
-
+    """
     Contract precursor content.
     Precusory content developed with a focus and intent of supporting the
     formation a Contract instance, which may be associated with and
@@ -812,8 +786,6 @@ class ContractContentDefinition(backboneelement.BackboneElement):
         element_property=True,
         # note: Listed Resource Type(s) should be allowed as Reference.
         enum_reference_types=["Practitioner", "PractitionerRole", "Organization"],
-        backref="contract_content_definition",
-        parent_name="contract_content_definition",
     )
 
     subType: fhirtypes.CodeableConceptType = Field(
@@ -929,10 +901,7 @@ class ContractContentDefinition(backboneelement.BackboneElement):
 
 
 class ContractFriendly(backboneelement.BackboneElement):
-    """Disclaimer: Any field name ends with ``__ext`` doesn't part of
-    Resource StructureDefinition, instead used to enable Extensibility feature
-    for FHIR Primitive Data Types.
-
+    """
     Contract Friendly Language.
     The "patient friendly language" versionof the Contract in whole or in
     parts. "Patient friendly language" means the representation of the Contract
@@ -981,8 +950,6 @@ class ContractFriendly(backboneelement.BackboneElement):
             "DocumentReference",
             "QuestionnaireResponse",
         ],
-        backref="contract_friendly",
-        parent_name="contract_friendly",
     )
 
     @classmethod
@@ -1039,10 +1006,7 @@ class ContractFriendly(backboneelement.BackboneElement):
 
 
 class ContractLegal(backboneelement.BackboneElement):
-    """Disclaimer: Any field name ends with ``__ext`` doesn't part of
-    Resource StructureDefinition, instead used to enable Extensibility feature
-    for FHIR Primitive Data Types.
-
+    """
     Contract Legal Language.
     List of Legal expressions or representations of this Contract.
     """
@@ -1077,8 +1041,6 @@ class ContractLegal(backboneelement.BackboneElement):
             "DocumentReference",
             "QuestionnaireResponse",
         ],
-        backref="contract_legal",
-        parent_name="contract_legal",
     )
 
     @classmethod
@@ -1135,10 +1097,7 @@ class ContractLegal(backboneelement.BackboneElement):
 
 
 class ContractRule(backboneelement.BackboneElement):
-    """Disclaimer: Any field name ends with ``__ext`` doesn't part of
-    Resource StructureDefinition, instead used to enable Extensibility feature
-    for FHIR Primitive Data Types.
-
+    """
     Computable Contract Language.
     List of Computable Policy Rule Language Representations of this Contract.
     """
@@ -1175,8 +1134,6 @@ class ContractRule(backboneelement.BackboneElement):
         one_of_many_required=True,
         # note: Listed Resource Type(s) should be allowed as Reference.
         enum_reference_types=["DocumentReference"],
-        backref="contract_rule",
-        parent_name="contract_rule",
     )
 
     @classmethod
@@ -1233,10 +1190,7 @@ class ContractRule(backboneelement.BackboneElement):
 
 
 class ContractSigner(backboneelement.BackboneElement):
-    """Disclaimer: Any field name ends with ``__ext`` doesn't part of
-    Resource StructureDefinition, instead used to enable Extensibility feature
-    for FHIR Primitive Data Types.
-
+    """
     Contract Signatory.
     Parties with legal standing in the Contract, including the principal
     parties, the grantor(s) and grantee(s), which are any person or
@@ -1261,8 +1215,6 @@ class ContractSigner(backboneelement.BackboneElement):
             "PractitionerRole",
             "RelatedPerson",
         ],
-        backref="contract_signer",
-        parent_name="contract_signer",
     )
 
     signature: typing.List[fhirtypes.SignatureType] = Field(
@@ -1300,10 +1252,7 @@ class ContractSigner(backboneelement.BackboneElement):
 
 
 class ContractTerm(backboneelement.BackboneElement):
-    """Disclaimer: Any field name ends with ``__ext`` doesn't part of
-    Resource StructureDefinition, instead used to enable Extensibility feature
-    for FHIR Primitive Data Types.
-
+    """
     Contract Term List.
     One or more Contract Provisions, which may be related and conveyed as a
     group, and may contain nested groups.
@@ -1449,8 +1398,6 @@ class ContractTerm(backboneelement.BackboneElement):
         one_of_many_required=False,
         # note: Listed Resource Type(s) should be allowed as Reference.
         enum_reference_types=["Resource"],
-        backref="contract_term",
-        parent_name="contract_term",
     )
 
     type: fhirtypes.CodeableConceptType = Field(
@@ -1537,10 +1484,7 @@ class ContractTerm(backboneelement.BackboneElement):
 
 
 class ContractTermAction(backboneelement.BackboneElement):
-    """Disclaimer: Any field name ends with ``__ext`` doesn't part of
-    Resource StructureDefinition, instead used to enable Extensibility feature
-    for FHIR Primitive Data Types.
-
+    """
     Entity being ascribed responsibility.
     An actor taking a role in an activity for which it can be assigned some
     degree of responsibility for the activity taking place.
@@ -1560,8 +1504,6 @@ class ContractTermAction(backboneelement.BackboneElement):
         element_property=True,
         # note: Listed Resource Type(s) should be allowed as Reference.
         enum_reference_types=["Encounter", "EpisodeOfCare"],
-        backref="contract_term_action",
-        parent_name="contract_term_action",
     )
 
     contextLinkId: typing.List[typing.Optional[fhirtypes.String]] = Field(
@@ -1700,8 +1642,6 @@ class ContractTermAction(backboneelement.BackboneElement):
             "Organization",
             "Location",
         ],
-        backref="contract_term_action",
-        parent_name="contract_term_action",
     )
 
     performerLinkId: typing.List[typing.Optional[fhirtypes.String]] = Field(
@@ -1825,8 +1765,6 @@ class ContractTermAction(backboneelement.BackboneElement):
             "Questionnaire",
             "QuestionnaireResponse",
         ],
-        backref="contract_term_action",
-        parent_name="contract_term_action",
     )
 
     requester: typing.List[fhirtypes.ReferenceType] = Field(
@@ -1849,8 +1787,6 @@ class ContractTermAction(backboneelement.BackboneElement):
             "Group",
             "Organization",
         ],
-        backref="contract_term_action",
-        parent_name="contract_term_action",
     )
 
     requesterLinkId: typing.List[typing.Optional[fhirtypes.String]] = Field(
@@ -2006,10 +1942,7 @@ class ContractTermAction(backboneelement.BackboneElement):
 
 
 class ContractTermActionSubject(backboneelement.BackboneElement):
-    """Disclaimer: Any field name ends with ``__ext`` doesn't part of
-    Resource StructureDefinition, instead used to enable Extensibility feature
-    for FHIR Primitive Data Types.
-
+    """
     Entity of the action.
     """
 
@@ -2032,8 +1965,6 @@ class ContractTermActionSubject(backboneelement.BackboneElement):
             "Group",
             "Organization",
         ],
-        backref="contract_term_action_subject",
-        parent_name="contract_term_action_subject",
     )
 
     role: fhirtypes.CodeableConceptType = Field(
@@ -2062,10 +1993,7 @@ class ContractTermActionSubject(backboneelement.BackboneElement):
 
 
 class ContractTermAsset(backboneelement.BackboneElement):
-    """Disclaimer: Any field name ends with ``__ext`` doesn't part of
-    Resource StructureDefinition, instead used to enable Extensibility feature
-    for FHIR Primitive Data Types.
-
+    """
     Contract Term Asset List.
     """
 
@@ -2251,8 +2179,6 @@ class ContractTermAsset(backboneelement.BackboneElement):
         element_property=True,
         # note: Listed Resource Type(s) should be allowed as Reference.
         enum_reference_types=["Resource"],
-        backref="contract_term_asset",
-        parent_name="contract_term_asset",
     )
 
     usePeriod: typing.List[fhirtypes.PeriodType] = Field(
@@ -2302,10 +2228,7 @@ class ContractTermAsset(backboneelement.BackboneElement):
 
 
 class ContractTermAssetContext(backboneelement.BackboneElement):
-    """Disclaimer: Any field name ends with ``__ext`` doesn't part of
-    Resource StructureDefinition, instead used to enable Extensibility feature
-    for FHIR Primitive Data Types.
-
+    """
     Circumstance of the asset.
     """
 
@@ -2341,8 +2264,6 @@ class ContractTermAssetContext(backboneelement.BackboneElement):
         element_property=True,
         # note: Listed Resource Type(s) should be allowed as Reference.
         enum_reference_types=["Resource"],
-        backref="contract_term_asset_context",
-        parent_name="contract_term_asset_context",
     )
 
     text: fhirtypes.String = Field(
@@ -2367,10 +2288,7 @@ class ContractTermAssetContext(backboneelement.BackboneElement):
 
 
 class ContractTermAssetValuedItem(backboneelement.BackboneElement):
-    """Disclaimer: Any field name ends with ``__ext`` doesn't part of
-    Resource StructureDefinition, instead used to enable Extensibility feature
-    for FHIR Primitive Data Types.
-
+    """
     Contract Valued Item List.
     """
 
@@ -2415,8 +2333,6 @@ class ContractTermAssetValuedItem(backboneelement.BackboneElement):
         one_of_many_required=False,
         # note: Listed Resource Type(s) should be allowed as Reference.
         enum_reference_types=["Resource"],
-        backref="contract_term_asset_valued_item",
-        parent_name="contract_term_asset_valued_item",
     )
 
     factor: fhirtypes.Decimal = Field(
@@ -2544,8 +2460,6 @@ class ContractTermAssetValuedItem(backboneelement.BackboneElement):
             "PractitionerRole",
             "RelatedPerson",
         ],
-        backref="contract_term_asset_valued_item",
-        parent_name="contract_term_asset_valued_item",
     )
 
     responsible: fhirtypes.ReferenceType = Field(
@@ -2563,8 +2477,6 @@ class ContractTermAssetValuedItem(backboneelement.BackboneElement):
             "PractitionerRole",
             "RelatedPerson",
         ],
-        backref="contract_term_asset_valued_item",
-        parent_name="contract_term_asset_valued_item",
     )
 
     securityLabelNumber: typing.List[typing.Optional[fhirtypes.UnsignedInt]] = Field(
@@ -2662,10 +2574,7 @@ class ContractTermAssetValuedItem(backboneelement.BackboneElement):
 
 
 class ContractTermOffer(backboneelement.BackboneElement):
-    """Disclaimer: Any field name ends with ``__ext`` doesn't part of
-    Resource StructureDefinition, instead used to enable Extensibility feature
-    for FHIR Primitive Data Types.
-
+    """
     Context of the Contract term.
     The matter of concern in the context of this provision of the agrement.
     """
@@ -2789,8 +2698,6 @@ class ContractTermOffer(backboneelement.BackboneElement):
         element_property=True,
         # note: Listed Resource Type(s) should be allowed as Reference.
         enum_reference_types=["Resource"],
-        backref="contract_term_offer",
-        parent_name="contract_term_offer",
     )
 
     type: fhirtypes.CodeableConceptType = Field(
@@ -2834,10 +2741,7 @@ class ContractTermOffer(backboneelement.BackboneElement):
 
 
 class ContractTermOfferAnswer(backboneelement.BackboneElement):
-    """Disclaimer: Any field name ends with ``__ext`` doesn't part of
-    Resource StructureDefinition, instead used to enable Extensibility feature
-    for FHIR Primitive Data Types.
-
+    """
     Response to offer text.
     """
 
@@ -3011,8 +2915,6 @@ class ContractTermOfferAnswer(backboneelement.BackboneElement):
         one_of_many_required=True,
         # note: Listed Resource Type(s) should be allowed as Reference.
         enum_reference_types=["Resource"],
-        backref="contract_term_offer_answer",
-        parent_name="contract_term_offer_answer",
     )
 
     valueString: fhirtypes.String = Field(
@@ -3154,10 +3056,7 @@ class ContractTermOfferAnswer(backboneelement.BackboneElement):
 
 
 class ContractTermOfferParty(backboneelement.BackboneElement):
-    """Disclaimer: Any field name ends with ``__ext`` doesn't part of
-    Resource StructureDefinition, instead used to enable Extensibility feature
-    for FHIR Primitive Data Types.
-
+    """
     Offer Recipient.
     """
 
@@ -3180,8 +3079,6 @@ class ContractTermOfferParty(backboneelement.BackboneElement):
             "Group",
             "Organization",
         ],
-        backref="contract_term_offer_party",
-        parent_name="contract_term_offer_party",
     )
 
     role: fhirtypes.CodeableConceptType = Field(
@@ -3210,10 +3107,7 @@ class ContractTermOfferParty(backboneelement.BackboneElement):
 
 
 class ContractTermSecurityLabel(backboneelement.BackboneElement):
-    """Disclaimer: Any field name ends with ``__ext`` doesn't part of
-    Resource StructureDefinition, instead used to enable Extensibility feature
-    for FHIR Primitive Data Types.
-
+    """
     Protection for the Term.
     Security labels that protect the handling of information about the term and
     its elements, which may be specifically identified..

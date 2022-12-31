@@ -14,10 +14,7 @@ from . import element, fhirtypes
 
 
 class HumanName(element.Element):
-    """Disclaimer: Any field name ends with ``__ext`` doesn't part of
-    Resource StructureDefinition, instead used to enable Extensibility feature
-    for FHIR Primitive Data Types.
-
+    """
     Name of a human - parts and usage.
     A human's name with the ability to identify parts and usage.
     """

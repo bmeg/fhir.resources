@@ -16,10 +16,7 @@ from . import backboneelement, domainresource, fhirtypes
 
 
 class PaymentReconciliation(domainresource.DomainResource):
-    """Disclaimer: Any field name ends with ``__ext`` doesn't part of
-    Resource StructureDefinition, instead used to enable Extensibility feature
-    for FHIR Primitive Data Types.
-
+    """
     PaymentReconciliation resource.
     This resource provides the details including amount of a payment and
     allocates the payment items being paid.
@@ -155,8 +152,6 @@ class PaymentReconciliation(domainresource.DomainResource):
         element_property=True,
         # note: Listed Resource Type(s) should be allowed as Reference.
         enum_reference_types=["Organization"],
-        backref="payment_reconciliation",
-        parent_name="payment_reconciliation",
     )
 
     period: fhirtypes.PeriodType = Field(
@@ -192,8 +187,6 @@ class PaymentReconciliation(domainresource.DomainResource):
         element_property=True,
         # note: Listed Resource Type(s) should be allowed as Reference.
         enum_reference_types=["Task"],
-        backref="payment_reconciliation",
-        parent_name="payment_reconciliation",
     )
 
     requestor: fhirtypes.ReferenceType = Field(
@@ -208,8 +201,6 @@ class PaymentReconciliation(domainresource.DomainResource):
         element_property=True,
         # note: Listed Resource Type(s) should be allowed as Reference.
         enum_reference_types=["Practitioner", "PractitionerRole", "Organization"],
-        backref="payment_reconciliation",
-        parent_name="payment_reconciliation",
     )
 
     status: fhirtypes.Code = Field(
@@ -333,10 +324,7 @@ class PaymentReconciliation(domainresource.DomainResource):
 
 
 class PaymentReconciliationDetail(backboneelement.BackboneElement):
-    """Disclaimer: Any field name ends with ``__ext`` doesn't part of
-    Resource StructureDefinition, instead used to enable Extensibility feature
-    for FHIR Primitive Data Types.
-
+    """
     Settlement particulars.
     Distribution of the payment amount for a previously acknowledged payable.
     """
@@ -385,8 +373,6 @@ class PaymentReconciliationDetail(backboneelement.BackboneElement):
         element_property=True,
         # note: Listed Resource Type(s) should be allowed as Reference.
         enum_reference_types=["Practitioner", "PractitionerRole", "Organization"],
-        backref="payment_reconciliation_detail",
-        parent_name="payment_reconciliation_detail",
     )
 
     predecessor: fhirtypes.IdentifierType = Field(
@@ -413,8 +399,6 @@ class PaymentReconciliationDetail(backboneelement.BackboneElement):
         element_property=True,
         # note: Listed Resource Type(s) should be allowed as Reference.
         enum_reference_types=["Resource"],
-        backref="payment_reconciliation_detail",
-        parent_name="payment_reconciliation_detail",
     )
 
     response: fhirtypes.ReferenceType = Field(
@@ -429,8 +413,6 @@ class PaymentReconciliationDetail(backboneelement.BackboneElement):
         element_property=True,
         # note: Listed Resource Type(s) should be allowed as Reference.
         enum_reference_types=["Resource"],
-        backref="payment_reconciliation_detail",
-        parent_name="payment_reconciliation_detail",
     )
 
     responsible: fhirtypes.ReferenceType = Field(
@@ -445,8 +427,6 @@ class PaymentReconciliationDetail(backboneelement.BackboneElement):
         element_property=True,
         # note: Listed Resource Type(s) should be allowed as Reference.
         enum_reference_types=["PractitionerRole"],
-        backref="payment_reconciliation_detail",
-        parent_name="payment_reconciliation_detail",
     )
 
     submitter: fhirtypes.ReferenceType = Field(
@@ -458,8 +438,6 @@ class PaymentReconciliationDetail(backboneelement.BackboneElement):
         element_property=True,
         # note: Listed Resource Type(s) should be allowed as Reference.
         enum_reference_types=["Practitioner", "PractitionerRole", "Organization"],
-        backref="payment_reconciliation_detail",
-        parent_name="payment_reconciliation_detail",
     )
 
     type: fhirtypes.CodeableConceptType = Field(
@@ -502,10 +480,7 @@ class PaymentReconciliationDetail(backboneelement.BackboneElement):
 
 
 class PaymentReconciliationProcessNote(backboneelement.BackboneElement):
-    """Disclaimer: Any field name ends with ``__ext`` doesn't part of
-    Resource StructureDefinition, instead used to enable Extensibility feature
-    for FHIR Primitive Data Types.
-
+    """
     Note concerning processing.
     A note that describes or explains the processing in a human readable form.
     """

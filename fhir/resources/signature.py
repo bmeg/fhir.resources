@@ -16,10 +16,7 @@ from . import element, fhirtypes
 
 
 class Signature(element.Element):
-    """Disclaimer: Any field name ends with ``__ext`` doesn't part of
-    Resource StructureDefinition, instead used to enable Extensibility feature
-    for FHIR Primitive Data Types.
-
+    """
     A Signature - XML DigSig, JWS, Graphical image of signature, etc..
     A signature along with supporting context. The signature may be a digital
     signature that is cryptographic in nature, or some other signature
@@ -64,8 +61,6 @@ class Signature(element.Element):
             "Device",
             "Organization",
         ],
-        backref="signature",
-        parent_name="signature",
     )
 
     sigFormat: fhirtypes.Code = Field(
@@ -161,8 +156,6 @@ class Signature(element.Element):
             "Device",
             "Organization",
         ],
-        backref="signature",
-        parent_name="signature",
     )
 
     @classmethod

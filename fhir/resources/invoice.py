@@ -16,10 +16,7 @@ from . import backboneelement, domainresource, fhirtypes
 
 
 class Invoice(domainresource.DomainResource):
-    """Disclaimer: Any field name ends with ``__ext`` doesn't part of
-    Resource StructureDefinition, instead used to enable Extensibility feature
-    for FHIR Primitive Data Types.
-
+    """
     Invoice containing ChargeItems from an Account.
     Invoice containing collected ChargeItems from an Account with calculated
     individual and total price for Billing purpose.
@@ -36,8 +33,6 @@ class Invoice(domainresource.DomainResource):
         element_property=True,
         # note: Listed Resource Type(s) should be allowed as Reference.
         enum_reference_types=["Account"],
-        backref="invoice",
-        parent_name="invoice",
     )
 
     cancelledReason: fhirtypes.String = Field(
@@ -88,8 +83,6 @@ class Invoice(domainresource.DomainResource):
         element_property=True,
         # note: Listed Resource Type(s) should be allowed as Reference.
         enum_reference_types=["Organization"],
-        backref="invoice",
-        parent_name="invoice",
     )
 
     lineItem: typing.List[fhirtypes.InvoiceLineItemType] = Field(
@@ -155,8 +148,6 @@ class Invoice(domainresource.DomainResource):
         element_property=True,
         # note: Listed Resource Type(s) should be allowed as Reference.
         enum_reference_types=["Organization", "Patient", "RelatedPerson"],
-        backref="invoice",
-        parent_name="invoice",
     )
 
     status: fhirtypes.Code = Field(
@@ -195,8 +186,6 @@ class Invoice(domainresource.DomainResource):
         element_property=True,
         # note: Listed Resource Type(s) should be allowed as Reference.
         enum_reference_types=["Patient", "Group"],
-        backref="invoice",
-        parent_name="invoice",
     )
 
     totalGross: fhirtypes.MoneyType = Field(
@@ -340,10 +329,7 @@ class Invoice(domainresource.DomainResource):
 
 
 class InvoiceLineItem(backboneelement.BackboneElement):
-    """Disclaimer: Any field name ends with ``__ext`` doesn't part of
-    Resource StructureDefinition, instead used to enable Extensibility feature
-    for FHIR Primitive Data Types.
-
+    """
     Line items of this Invoice.
     Each line item represents one charge for goods and services rendered.
     Details such as date, code and amount are found in the referenced
@@ -392,8 +378,6 @@ class InvoiceLineItem(backboneelement.BackboneElement):
         one_of_many_required=True,
         # note: Listed Resource Type(s) should be allowed as Reference.
         enum_reference_types=["ChargeItem"],
-        backref="invoice_line_item",
-        parent_name="invoice_line_item",
     )
 
     priceComponent: typing.List[fhirtypes.InvoiceLineItemPriceComponentType] = Field(
@@ -483,10 +467,7 @@ class InvoiceLineItem(backboneelement.BackboneElement):
 
 
 class InvoiceLineItemPriceComponent(backboneelement.BackboneElement):
-    """Disclaimer: Any field name ends with ``__ext`` doesn't part of
-    Resource StructureDefinition, instead used to enable Extensibility feature
-    for FHIR Primitive Data Types.
-
+    """
     Components of total line item price.
     The price for a ChargeItem may be calculated as a base price with
     surcharges/deductions that apply in certain conditions. A
@@ -642,10 +623,7 @@ class InvoiceLineItemPriceComponent(backboneelement.BackboneElement):
 
 
 class InvoiceParticipant(backboneelement.BackboneElement):
-    """Disclaimer: Any field name ends with ``__ext`` doesn't part of
-    Resource StructureDefinition, instead used to enable Extensibility feature
-    for FHIR Primitive Data Types.
-
+    """
     Participant in creation of this Invoice.
     Indicates who or what performed or participated in the charged service.
     """
@@ -671,8 +649,6 @@ class InvoiceParticipant(backboneelement.BackboneElement):
             "Device",
             "RelatedPerson",
         ],
-        backref="invoice_participant",
-        parent_name="invoice_participant",
     )
 
     role: fhirtypes.CodeableConceptType = Field(

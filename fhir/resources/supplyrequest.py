@@ -14,10 +14,7 @@ from . import backboneelement, domainresource, fhirtypes
 
 
 class SupplyRequest(domainresource.DomainResource):
-    """Disclaimer: Any field name ends with ``__ext`` doesn't part of
-    Resource StructureDefinition, instead used to enable Extensibility feature
-    for FHIR Primitive Data Types.
-
+    """
     Request for a medication, substance or device.
     A record of a request for a medication, substance or device used in the
     healthcare setting.
@@ -63,8 +60,6 @@ class SupplyRequest(domainresource.DomainResource):
         element_property=True,
         # note: Listed Resource Type(s) should be allowed as Reference.
         enum_reference_types=["Organization", "Location"],
-        backref="supply_request",
-        parent_name="supply_request",
     )
 
     deliverTo: fhirtypes.ReferenceType = Field(
@@ -76,8 +71,6 @@ class SupplyRequest(domainresource.DomainResource):
         element_property=True,
         # note: Listed Resource Type(s) should be allowed as Reference.
         enum_reference_types=["Organization", "Location", "Patient"],
-        backref="supply_request",
-        parent_name="supply_request",
     )
 
     identifier: typing.List[fhirtypes.IdentifierType] = Field(
@@ -135,8 +128,6 @@ class SupplyRequest(domainresource.DomainResource):
         binding_uri="http://hl7.org/fhir/ValueSet/supply-item",
         # note: Listed Resource Type(s) should be allowed as Reference.
         enum_reference_types=["Medication", "Substance", "Device"],
-        backref="supply_request",
-        parent_name="supply_request",
     )
 
     occurrenceDateTime: fhirtypes.DateTime = Field(
@@ -252,8 +243,6 @@ class SupplyRequest(domainresource.DomainResource):
             "DiagnosticReport",
             "DocumentReference",
         ],
-        backref="supply_request",
-        parent_name="supply_request",
     )
 
     requester: fhirtypes.ReferenceType = Field(
@@ -272,8 +261,6 @@ class SupplyRequest(domainresource.DomainResource):
             "RelatedPerson",
             "Device",
         ],
-        backref="supply_request",
-        parent_name="supply_request",
     )
 
     status: fhirtypes.Code = Field(
@@ -308,8 +295,6 @@ class SupplyRequest(domainresource.DomainResource):
         element_property=True,
         # note: Listed Resource Type(s) should be allowed as Reference.
         enum_reference_types=["Organization", "HealthcareService"],
-        backref="supply_request",
-        parent_name="supply_request",
     )
 
     @classmethod
@@ -394,10 +379,7 @@ class SupplyRequest(domainresource.DomainResource):
 
 
 class SupplyRequestParameter(backboneelement.BackboneElement):
-    """Disclaimer: Any field name ends with ``__ext`` doesn't part of
-    Resource StructureDefinition, instead used to enable Extensibility feature
-    for FHIR Primitive Data Types.
-
+    """
     Ordered item details.
     Specific parameters for the ordered item.  For example, the size of the
     indicated item.

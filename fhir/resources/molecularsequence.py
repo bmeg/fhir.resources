@@ -16,10 +16,7 @@ from . import backboneelement, domainresource, fhirtypes
 
 
 class MolecularSequence(domainresource.DomainResource):
-    """Disclaimer: Any field name ends with ``__ext`` doesn't part of
-    Resource StructureDefinition, instead used to enable Extensibility feature
-    for FHIR Primitive Data Types.
-
+    """
     Information about a biological sequence.
     Raw data describing a biological sequence.
     """
@@ -58,8 +55,6 @@ class MolecularSequence(domainresource.DomainResource):
         element_property=True,
         # note: Listed Resource Type(s) should be allowed as Reference.
         enum_reference_types=["Device"],
-        backref="molecular_sequence",
-        parent_name="molecular_sequence",
     )
 
     identifier: typing.List[fhirtypes.IdentifierType] = Field(
@@ -99,8 +94,6 @@ class MolecularSequence(domainresource.DomainResource):
         element_property=True,
         # note: Listed Resource Type(s) should be allowed as Reference.
         enum_reference_types=["Patient"],
-        backref="molecular_sequence",
-        parent_name="molecular_sequence",
     )
 
     performer: fhirtypes.ReferenceType = Field(
@@ -112,8 +105,6 @@ class MolecularSequence(domainresource.DomainResource):
         element_property=True,
         # note: Listed Resource Type(s) should be allowed as Reference.
         enum_reference_types=["Organization"],
-        backref="molecular_sequence",
-        parent_name="molecular_sequence",
     )
 
     pointer: typing.List[fhirtypes.ReferenceType] = Field(
@@ -125,8 +116,6 @@ class MolecularSequence(domainresource.DomainResource):
         element_property=True,
         # note: Listed Resource Type(s) should be allowed as Reference.
         enum_reference_types=["MolecularSequence"],
-        backref="molecular_sequence",
-        parent_name="molecular_sequence",
     )
 
     quality: typing.List[fhirtypes.MolecularSequenceQualityType] = Field(
@@ -206,8 +195,6 @@ class MolecularSequence(domainresource.DomainResource):
         element_property=True,
         # note: Listed Resource Type(s) should be allowed as Reference.
         enum_reference_types=["Specimen"],
-        backref="molecular_sequence",
-        parent_name="molecular_sequence",
     )
 
     structureVariant: typing.List[
@@ -353,10 +340,7 @@ class MolecularSequence(domainresource.DomainResource):
 
 
 class MolecularSequenceQuality(backboneelement.BackboneElement):
-    """Disclaimer: Any field name ends with ``__ext`` doesn't part of
-    Resource StructureDefinition, instead used to enable Extensibility feature
-    for FHIR Primitive Data Types.
-
+    """
     An set of value as quality of sequence.
     An experimental feature attribute that defines the quality of the feature
     in a quantitative way, such as a phred quality score ([SO:0001686](http://w
@@ -695,10 +679,7 @@ class MolecularSequenceQuality(backboneelement.BackboneElement):
 
 
 class MolecularSequenceQualityRoc(backboneelement.BackboneElement):
-    """Disclaimer: Any field name ends with ``__ext`` doesn't part of
-    Resource StructureDefinition, instead used to enable Extensibility feature
-    for FHIR Primitive Data Types.
-
+    """
     Receiver Operator Characteristic (ROC) Curve.
     Receiver Operator Characteristic (ROC) Curve  to give
     sensitivity/specificity tradeoff.
@@ -832,10 +813,7 @@ class MolecularSequenceQualityRoc(backboneelement.BackboneElement):
 
 
 class MolecularSequenceReferenceSeq(backboneelement.BackboneElement):
-    """Disclaimer: Any field name ends with ``__ext`` doesn't part of
-    Resource StructureDefinition, instead used to enable Extensibility feature
-    for FHIR Primitive Data Types.
-
+    """
     A sequence used as reference.
     A sequence that is used as a reference to describe variants that are
     present in a sequence analyzed.
@@ -934,8 +912,6 @@ class MolecularSequenceReferenceSeq(backboneelement.BackboneElement):
         element_property=True,
         # note: Listed Resource Type(s) should be allowed as Reference.
         enum_reference_types=["MolecularSequence"],
-        backref="molecular_sequence_reference_seq",
-        parent_name="molecular_sequence_reference_seq",
     )
 
     referenceSeqString: fhirtypes.String = Field(
@@ -1033,10 +1009,7 @@ class MolecularSequenceReferenceSeq(backboneelement.BackboneElement):
 
 
 class MolecularSequenceRepository(backboneelement.BackboneElement):
-    """Disclaimer: Any field name ends with ``__ext`` doesn't part of
-    Resource StructureDefinition, instead used to enable Extensibility feature
-    for FHIR Primitive Data Types.
-
+    """
     External repository which contains detailed report related with observedSeq
     in this resource.
     Configurations of the external repository. The repository shall store
@@ -1223,10 +1196,7 @@ class MolecularSequenceRepository(backboneelement.BackboneElement):
 
 
 class MolecularSequenceStructureVariant(backboneelement.BackboneElement):
-    """Disclaimer: Any field name ends with ``__ext`` doesn't part of
-    Resource StructureDefinition, instead used to enable Extensibility feature
-    for FHIR Primitive Data Types.
-
+    """
     Structural variant.
     Information about chromosome structure variation.
     """
@@ -1314,10 +1284,7 @@ class MolecularSequenceStructureVariant(backboneelement.BackboneElement):
 
 
 class MolecularSequenceStructureVariantInner(backboneelement.BackboneElement):
-    """Disclaimer: Any field name ends with ``__ext`` doesn't part of
-    Resource StructureDefinition, instead used to enable Extensibility feature
-    for FHIR Primitive Data Types.
-
+    """
     Structural variant inner.
     """
 
@@ -1365,10 +1332,7 @@ class MolecularSequenceStructureVariantInner(backboneelement.BackboneElement):
 
 
 class MolecularSequenceStructureVariantOuter(backboneelement.BackboneElement):
-    """Disclaimer: Any field name ends with ``__ext`` doesn't part of
-    Resource StructureDefinition, instead used to enable Extensibility feature
-    for FHIR Primitive Data Types.
-
+    """
     Structural variant outer.
     """
 
@@ -1416,10 +1380,7 @@ class MolecularSequenceStructureVariantOuter(backboneelement.BackboneElement):
 
 
 class MolecularSequenceVariant(backboneelement.BackboneElement):
-    """Disclaimer: Any field name ends with ``__ext`` doesn't part of
-    Resource StructureDefinition, instead used to enable Extensibility feature
-    for FHIR Primitive Data Types.
-
+    """
     Variant in sequence.
     The definition of variant here originates from Sequence ontology ([variant_
     of](http://www.sequenceontology.org/browser/current_svn/term/variant_of)).
@@ -1529,8 +1490,6 @@ class MolecularSequenceVariant(backboneelement.BackboneElement):
         element_property=True,
         # note: Listed Resource Type(s) should be allowed as Reference.
         enum_reference_types=["Observation"],
-        backref="molecular_sequence_variant",
-        parent_name="molecular_sequence_variant",
     )
 
     @classmethod

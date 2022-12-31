@@ -16,10 +16,7 @@ from . import backboneelement, domainresource, fhirtypes
 
 
 class Subscription(domainresource.DomainResource):
-    """Disclaimer: Any field name ends with ``__ext`` doesn't part of
-    Resource StructureDefinition, instead used to enable Extensibility feature
-    for FHIR Primitive Data Types.
-
+    """
     Server push subscription criteria.
     The subscription resource is used to define a push-based subscription from
     a server to another system. Once a subscription is registered with the
@@ -224,10 +221,7 @@ class Subscription(domainresource.DomainResource):
 
 
 class SubscriptionChannel(backboneelement.BackboneElement):
-    """Disclaimer: Any field name ends with ``__ext`` doesn't part of
-    Resource StructureDefinition, instead used to enable Extensibility feature
-    for FHIR Primitive Data Types.
-
+    """
     The channel on which to report matches to the criteria.
     Details where to send notifications when resources are received that meet
     the criteria.

@@ -16,10 +16,7 @@ from . import backboneelement, domainresource, fhirtypes
 
 
 class SubstanceDefinition(domainresource.DomainResource):
-    """Disclaimer: Any field name ends with ``__ext`` doesn't part of
-    Resource StructureDefinition, instead used to enable Extensibility feature
-    for FHIR Primitive Data Types.
-
+    """
     The detailed description of a substance, typically at a level beyond what
     is used for prescribing.
     """
@@ -116,8 +113,6 @@ class SubstanceDefinition(domainresource.DomainResource):
         element_property=True,
         # note: Listed Resource Type(s) should be allowed as Reference.
         enum_reference_types=["Citation"],
-        backref="substance_definition",
-        parent_name="substance_definition",
     )
 
     manufacturer: typing.List[fhirtypes.ReferenceType] = Field(
@@ -133,8 +128,6 @@ class SubstanceDefinition(domainresource.DomainResource):
         element_property=True,
         # note: Listed Resource Type(s) should be allowed as Reference.
         enum_reference_types=["Organization"],
-        backref="substance_definition",
-        parent_name="substance_definition",
     )
 
     moiety: typing.List[fhirtypes.SubstanceDefinitionMoietyType] = Field(
@@ -245,8 +238,6 @@ class SubstanceDefinition(domainresource.DomainResource):
         element_property=True,
         # note: Listed Resource Type(s) should be allowed as Reference.
         enum_reference_types=["Organization"],
-        backref="substance_definition",
-        parent_name="substance_definition",
     )
 
     version: fhirtypes.String = Field(
@@ -299,10 +290,7 @@ class SubstanceDefinition(domainresource.DomainResource):
 
 
 class SubstanceDefinitionCode(backboneelement.BackboneElement):
-    """Disclaimer: Any field name ends with ``__ext`` doesn't part of
-    Resource StructureDefinition, instead used to enable Extensibility feature
-    for FHIR Primitive Data Types.
-
+    """
     Codes associated with the substance.
     """
 
@@ -335,8 +323,6 @@ class SubstanceDefinitionCode(backboneelement.BackboneElement):
         element_property=True,
         # note: Listed Resource Type(s) should be allowed as Reference.
         enum_reference_types=["DocumentReference"],
-        backref="substance_definition_code",
-        parent_name="substance_definition_code",
     )
 
     status: fhirtypes.CodeableConceptType = Field(
@@ -386,10 +372,7 @@ class SubstanceDefinitionCode(backboneelement.BackboneElement):
 
 
 class SubstanceDefinitionMoiety(backboneelement.BackboneElement):
-    """Disclaimer: Any field name ends with ``__ext`` doesn't part of
-    Resource StructureDefinition, instead used to enable Extensibility feature
-    for FHIR Primitive Data Types.
-
+    """
     Moiety, for structural modifications.
     """
 
@@ -575,10 +558,7 @@ class SubstanceDefinitionMoiety(backboneelement.BackboneElement):
 
 
 class SubstanceDefinitionMolecularWeight(backboneelement.BackboneElement):
-    """Disclaimer: Any field name ends with ``__ext`` doesn't part of
-    Resource StructureDefinition, instead used to enable Extensibility feature
-    for FHIR Primitive Data Types.
-
+    """
     The molecular weight or weight range.
     The molecular weight or weight range (for proteins, polymers or nucleic
     acids).
@@ -643,10 +623,7 @@ class SubstanceDefinitionMolecularWeight(backboneelement.BackboneElement):
 
 
 class SubstanceDefinitionName(backboneelement.BackboneElement):
-    """Disclaimer: Any field name ends with ``__ext`` doesn't part of
-    Resource StructureDefinition, instead used to enable Extensibility feature
-    for FHIR Primitive Data Types.
-
+    """
     Names applicable to this substance.
     """
 
@@ -741,8 +718,6 @@ class SubstanceDefinitionName(backboneelement.BackboneElement):
         element_property=True,
         # note: Listed Resource Type(s) should be allowed as Reference.
         enum_reference_types=["DocumentReference"],
-        backref="substance_definition_name",
-        parent_name="substance_definition_name",
     )
 
     status: fhirtypes.CodeableConceptType = Field(
@@ -881,10 +856,7 @@ class SubstanceDefinitionName(backboneelement.BackboneElement):
 
 
 class SubstanceDefinitionNameOfficial(backboneelement.BackboneElement):
-    """Disclaimer: Any field name ends with ``__ext`` doesn't part of
-    Resource StructureDefinition, instead used to enable Extensibility feature
-    for FHIR Primitive Data Types.
-
+    """
     Details of the official nature of this name.
     """
 
@@ -941,10 +913,7 @@ class SubstanceDefinitionNameOfficial(backboneelement.BackboneElement):
 
 
 class SubstanceDefinitionProperty(backboneelement.BackboneElement):
-    """Disclaimer: Any field name ends with ``__ext`` doesn't part of
-    Resource StructureDefinition, instead used to enable Extensibility feature
-    for FHIR Primitive Data Types.
-
+    """
     General specifications for this substance.
     """
 
@@ -1095,10 +1064,7 @@ class SubstanceDefinitionProperty(backboneelement.BackboneElement):
 
 
 class SubstanceDefinitionRelationship(backboneelement.BackboneElement):
-    """Disclaimer: Any field name ends with ``__ext`` doesn't part of
-    Resource StructureDefinition, instead used to enable Extensibility feature
-    for FHIR Primitive Data Types.
-
+    """
     A link between this substance and another.
     A link between this substance and another, with details of the
     relationship.
@@ -1220,8 +1186,6 @@ class SubstanceDefinitionRelationship(backboneelement.BackboneElement):
         element_property=True,
         # note: Listed Resource Type(s) should be allowed as Reference.
         enum_reference_types=["DocumentReference"],
-        backref="substance_definition_relationship",
-        parent_name="substance_definition_relationship",
     )
 
     substanceDefinitionCodeableConcept: fhirtypes.CodeableConceptType = Field(
@@ -1260,8 +1224,6 @@ class SubstanceDefinitionRelationship(backboneelement.BackboneElement):
         one_of_many_required=False,
         # note: Listed Resource Type(s) should be allowed as Reference.
         enum_reference_types=["SubstanceDefinition"],
-        backref="substance_definition_relationship",
-        parent_name="substance_definition_relationship",
     )
 
     type: fhirtypes.CodeableConceptType = Field(
@@ -1349,10 +1311,7 @@ class SubstanceDefinitionRelationship(backboneelement.BackboneElement):
 
 
 class SubstanceDefinitionSourceMaterial(backboneelement.BackboneElement):
-    """Disclaimer: Any field name ends with ``__ext`` doesn't part of
-    Resource StructureDefinition, instead used to enable Extensibility feature
-    for FHIR Primitive Data Types.
-
+    """
     Material or taxonomic/anatomical source.
     Material or taxonomic/anatomical source for the substance.
     """
@@ -1465,10 +1424,7 @@ class SubstanceDefinitionSourceMaterial(backboneelement.BackboneElement):
 
 
 class SubstanceDefinitionStructure(backboneelement.BackboneElement):
-    """Disclaimer: Any field name ends with ``__ext`` doesn't part of
-    Resource StructureDefinition, instead used to enable Extensibility feature
-    for FHIR Primitive Data Types.
-
+    """
     Structural information.
     """
 
@@ -1550,8 +1506,6 @@ class SubstanceDefinitionStructure(backboneelement.BackboneElement):
         element_property=True,
         # note: Listed Resource Type(s) should be allowed as Reference.
         enum_reference_types=["DocumentReference"],
-        backref="substance_definition_structure",
-        parent_name="substance_definition_structure",
     )
 
     stereochemistry: fhirtypes.CodeableConceptType = Field(
@@ -1607,10 +1561,7 @@ class SubstanceDefinitionStructure(backboneelement.BackboneElement):
 
 
 class SubstanceDefinitionStructureRepresentation(backboneelement.BackboneElement):
-    """Disclaimer: Any field name ends with ``__ext`` doesn't part of
-    Resource StructureDefinition, instead used to enable Extensibility feature
-    for FHIR Primitive Data Types.
-
+    """
     A depiction of the structure or characterization of the substance.
     """
 
@@ -1632,8 +1583,6 @@ class SubstanceDefinitionStructureRepresentation(backboneelement.BackboneElement
         element_property=True,
         # note: Listed Resource Type(s) should be allowed as Reference.
         enum_reference_types=["DocumentReference"],
-        backref="substance_definition_structure_representation",
-        parent_name="substance_definition_structure_representation",
     )
 
     format: fhirtypes.CodeableConceptType = Field(

@@ -16,10 +16,7 @@ from . import backboneelement, domainresource, fhirtypes
 
 
 class NutritionOrder(domainresource.DomainResource):
-    """Disclaimer: Any field name ends with ``__ext`` doesn't part of
-    Resource StructureDefinition, instead used to enable Extensibility feature
-    for FHIR Primitive Data Types.
-
+    """
     Diet, formula or nutritional supplement request.
     A request to supply a diet, formula feeding (enteral) or oral nutritional
     supplement to a patient/resident.
@@ -42,8 +39,6 @@ class NutritionOrder(domainresource.DomainResource):
         element_property=True,
         # note: Listed Resource Type(s) should be allowed as Reference.
         enum_reference_types=["AllergyIntolerance"],
-        backref="nutrition_order",
-        parent_name="nutrition_order",
     )
 
     dateTime: fhirtypes.DateTime = Field(
@@ -71,8 +66,6 @@ class NutritionOrder(domainresource.DomainResource):
         element_property=True,
         # note: Listed Resource Type(s) should be allowed as Reference.
         enum_reference_types=["Encounter"],
-        backref="nutrition_order",
-        parent_name="nutrition_order",
     )
 
     enteralFormula: fhirtypes.NutritionOrderEnteralFormulaType = Field(
@@ -177,8 +170,6 @@ class NutritionOrder(domainresource.DomainResource):
         element_property=True,
         # note: Listed Resource Type(s) should be allowed as Reference.
         enum_reference_types=["ActivityDefinition", "PlanDefinition"],
-        backref="nutrition_order",
-        parent_name="nutrition_order",
     )
     instantiatesCanonical__ext: typing.List[
         typing.Union[fhirtypes.FHIRPrimitiveExtensionType, None]
@@ -277,8 +268,6 @@ class NutritionOrder(domainresource.DomainResource):
         element_property=True,
         # note: Listed Resource Type(s) should be allowed as Reference.
         enum_reference_types=["Practitioner", "PractitionerRole"],
-        backref="nutrition_order",
-        parent_name="nutrition_order",
     )
 
     patient: fhirtypes.ReferenceType = Field(
@@ -293,8 +282,6 @@ class NutritionOrder(domainresource.DomainResource):
         element_property=True,
         # note: Listed Resource Type(s) should be allowed as Reference.
         enum_reference_types=["Patient"],
-        backref="nutrition_order",
-        parent_name="nutrition_order",
     )
 
     status: fhirtypes.Code = Field(
@@ -443,10 +430,7 @@ class NutritionOrder(domainresource.DomainResource):
 
 
 class NutritionOrderEnteralFormula(backboneelement.BackboneElement):
-    """Disclaimer: Any field name ends with ``__ext`` doesn't part of
-    Resource StructureDefinition, instead used to enable Extensibility feature
-    for FHIR Primitive Data Types.
-
+    """
     Enteral formula components.
     Feeding provided through the gastrointestinal tract via a tube, catheter,
     or stoma that delivers nutrition distal to the oral cavity.
@@ -623,10 +607,7 @@ class NutritionOrderEnteralFormula(backboneelement.BackboneElement):
 
 
 class NutritionOrderEnteralFormulaAdministration(backboneelement.BackboneElement):
-    """Disclaimer: Any field name ends with ``__ext`` doesn't part of
-    Resource StructureDefinition, instead used to enable Extensibility feature
-    for FHIR Primitive Data Types.
-
+    """
     Formula feeding instruction as structured data.
     Formula administration instructions as structured data.  This repeating
     structure allows for changing the administration rate or volume over time
@@ -746,10 +727,7 @@ class NutritionOrderEnteralFormulaAdministration(backboneelement.BackboneElement
 
 
 class NutritionOrderOralDiet(backboneelement.BackboneElement):
-    """Disclaimer: Any field name ends with ``__ext`` doesn't part of
-    Resource StructureDefinition, instead used to enable Extensibility feature
-    for FHIR Primitive Data Types.
-
+    """
     Oral diet components.
     Diet given orally in contrast to enteral (tube) feeding.
     """
@@ -865,10 +843,7 @@ class NutritionOrderOralDiet(backboneelement.BackboneElement):
 
 
 class NutritionOrderOralDietNutrient(backboneelement.BackboneElement):
-    """Disclaimer: Any field name ends with ``__ext`` doesn't part of
-    Resource StructureDefinition, instead used to enable Extensibility feature
-    for FHIR Primitive Data Types.
-
+    """
     Required  nutrient modifications.
     Class that defines the quantity and type of nutrient modifications (for
     example carbohydrate, fiber or sodium) required for the oral diet.
@@ -911,10 +886,7 @@ class NutritionOrderOralDietNutrient(backboneelement.BackboneElement):
 
 
 class NutritionOrderOralDietTexture(backboneelement.BackboneElement):
-    """Disclaimer: Any field name ends with ``__ext`` doesn't part of
-    Resource StructureDefinition, instead used to enable Extensibility feature
-    for FHIR Primitive Data Types.
-
+    """
     Required  texture modifications.
     Class that describes any texture modifications required for the patient to
     safely consume various types of solid foods.
@@ -969,10 +941,7 @@ class NutritionOrderOralDietTexture(backboneelement.BackboneElement):
 
 
 class NutritionOrderSupplement(backboneelement.BackboneElement):
-    """Disclaimer: Any field name ends with ``__ext`` doesn't part of
-    Resource StructureDefinition, instead used to enable Extensibility feature
-    for FHIR Primitive Data Types.
-
+    """
     Supplement components.
     Oral nutritional products given in order to add further nutritional value
     to the patient's diet.

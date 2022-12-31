@@ -16,10 +16,7 @@ from . import backboneelement, domainresource, fhirtypes
 
 
 class MeasureReport(domainresource.DomainResource):
-    """Disclaimer: Any field name ends with ``__ext`` doesn't part of
-    Resource StructureDefinition, instead used to enable Extensibility feature
-    for FHIR Primitive Data Types.
-
+    """
     Results of a measure evaluation.
     The MeasureReport resource contains the results of the calculation of a
     measure; and optionally a reference to the resources involved in that
@@ -52,8 +49,6 @@ class MeasureReport(domainresource.DomainResource):
         element_property=True,
         # note: Listed Resource Type(s) should be allowed as Reference.
         enum_reference_types=["Resource"],
-        backref="measure_report",
-        parent_name="measure_report",
     )
 
     group: typing.List[fhirtypes.MeasureReportGroupType] = Field(
@@ -112,8 +107,6 @@ class MeasureReport(domainresource.DomainResource):
         element_required=True,
         # note: Listed Resource Type(s) should be allowed as Reference.
         enum_reference_types=["Measure"],
-        backref="measure_report",
-        parent_name="measure_report",
     )
     measure__ext: fhirtypes.FHIRPrimitiveExtensionType = Field(
         None, alias="_measure", title="Extension field for ``measure``."
@@ -142,8 +135,6 @@ class MeasureReport(domainresource.DomainResource):
             "Location",
             "Organization",
         ],
-        backref="measure_report",
-        parent_name="measure_report",
     )
 
     status: fhirtypes.Code = Field(
@@ -191,8 +182,6 @@ class MeasureReport(domainresource.DomainResource):
             "RelatedPerson",
             "Group",
         ],
-        backref="measure_report",
-        parent_name="measure_report",
     )
 
     type: fhirtypes.Code = Field(
@@ -318,10 +307,7 @@ class MeasureReport(domainresource.DomainResource):
 
 
 class MeasureReportGroup(backboneelement.BackboneElement):
-    """Disclaimer: Any field name ends with ``__ext`` doesn't part of
-    Resource StructureDefinition, instead used to enable Extensibility feature
-    for FHIR Primitive Data Types.
-
+    """
     Measure results for each group.
     The results of the calculation, one for each population group in the
     measure.
@@ -400,10 +386,7 @@ class MeasureReportGroup(backboneelement.BackboneElement):
 
 
 class MeasureReportGroupPopulation(backboneelement.BackboneElement):
-    """Disclaimer: Any field name ends with ``__ext`` doesn't part of
-    Resource StructureDefinition, instead used to enable Extensibility feature
-    for FHIR Primitive Data Types.
-
+    """
     The populations in the group.
     The populations that make up the population group, one for each type of
     population appropriate for the measure.
@@ -468,8 +451,6 @@ class MeasureReportGroupPopulation(backboneelement.BackboneElement):
         element_property=True,
         # note: Listed Resource Type(s) should be allowed as Reference.
         enum_reference_types=["List"],
-        backref="measure_report_group_population",
-        parent_name="measure_report_group_population",
     )
 
     @classmethod
@@ -489,10 +470,7 @@ class MeasureReportGroupPopulation(backboneelement.BackboneElement):
 
 
 class MeasureReportGroupStratifier(backboneelement.BackboneElement):
-    """Disclaimer: Any field name ends with ``__ext`` doesn't part of
-    Resource StructureDefinition, instead used to enable Extensibility feature
-    for FHIR Primitive Data Types.
-
+    """
     Stratification results.
     When a measure includes multiple stratifiers, there will be a stratifier
     group for each stratifier defined by the measure.
@@ -542,10 +520,7 @@ class MeasureReportGroupStratifier(backboneelement.BackboneElement):
 
 
 class MeasureReportGroupStratifierStratum(backboneelement.BackboneElement):
-    """Disclaimer: Any field name ends with ``__ext`` doesn't part of
-    Resource StructureDefinition, instead used to enable Extensibility feature
-    for FHIR Primitive Data Types.
-
+    """
     Stratum results, one for each unique value, or set of values, in the
     stratifier, or stratifier components.
     This element contains the results for a single stratum within the
@@ -630,10 +605,7 @@ class MeasureReportGroupStratifierStratum(backboneelement.BackboneElement):
 
 
 class MeasureReportGroupStratifierStratumComponent(backboneelement.BackboneElement):
-    """Disclaimer: Any field name ends with ``__ext`` doesn't part of
-    Resource StructureDefinition, instead used to enable Extensibility feature
-    for FHIR Primitive Data Types.
-
+    """
     Stratifier component values.
     A stratifier component value.
     """
@@ -682,10 +654,7 @@ class MeasureReportGroupStratifierStratumComponent(backboneelement.BackboneEleme
 
 
 class MeasureReportGroupStratifierStratumPopulation(backboneelement.BackboneElement):
-    """Disclaimer: Any field name ends with ``__ext`` doesn't part of
-    Resource StructureDefinition, instead used to enable Extensibility feature
-    for FHIR Primitive Data Types.
-
+    """
     Population results in this stratum.
     The populations that make up the stratum, one for each type of population
     appropriate to the measure.
@@ -750,8 +719,6 @@ class MeasureReportGroupStratifierStratumPopulation(backboneelement.BackboneElem
         element_property=True,
         # note: Listed Resource Type(s) should be allowed as Reference.
         enum_reference_types=["List"],
-        backref="measure_report_group_stratifier_stratum_population",
-        parent_name="measure_report_group_stratifier_stratum_population",
     )
 
     @classmethod

@@ -14,10 +14,7 @@ from . import backboneelement, fhirtypes
 
 
 class Population(backboneelement.BackboneElement):
-    """Disclaimer: Any field name ends with ``__ext`` doesn't part of
-    Resource StructureDefinition, instead used to enable Extensibility feature
-    for FHIR Primitive Data Types.
-
+    """
     A definition of a set of people that apply to some clinically related
     context, for example people contraindicated for a certain medication.
     A populatioof people with some set of grouping criteria.

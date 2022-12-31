@@ -16,10 +16,7 @@ from . import backboneelement, domainresource, fhirtypes
 
 
 class ClinicalUseDefinition(domainresource.DomainResource):
-    """Disclaimer: Any field name ends with ``__ext`` doesn't part of
-    Resource StructureDefinition, instead used to enable Extensibility feature
-    for FHIR Primitive Data Types.
-
+    """
     A single issue - either an indication, contraindication, interaction or an
     undesirable effect for a medicinal product, medication, device or procedure.
     """
@@ -92,8 +89,6 @@ class ClinicalUseDefinition(domainresource.DomainResource):
         element_property=True,
         # note: Listed Resource Type(s) should be allowed as Reference.
         enum_reference_types=["Group"],
-        backref="clinical_use_definition",
-        parent_name="clinical_use_definition",
     )
 
     status: fhirtypes.CodeableConceptType = Field(
@@ -126,8 +121,6 @@ class ClinicalUseDefinition(domainresource.DomainResource):
             "DeviceDefinition",
             "Substance",
         ],
-        backref="clinical_use_definition",
-        parent_name="clinical_use_definition",
     )
 
     type: fhirtypes.Code = Field(
@@ -278,10 +271,7 @@ class ClinicalUseDefinition(domainresource.DomainResource):
 
 
 class ClinicalUseDefinitionContraindication(backboneelement.BackboneElement):
-    """Disclaimer: Any field name ends with ``__ext`` doesn't part of
-    Resource StructureDefinition, instead used to enable Extensibility feature
-    for FHIR Primitive Data Types.
-
+    """
     Specifics for when this is a contraindication.
     """
 
@@ -300,8 +290,6 @@ class ClinicalUseDefinitionContraindication(backboneelement.BackboneElement):
         binding_uri="http://hl7.org/fhir/ValueSet/disease-symptom-procedure",
         # note: Listed Resource Type(s) should be allowed as Reference.
         enum_reference_types=["ObservationDefinition"],
-        backref="clinical_use_definition_contraindication",
-        parent_name="clinical_use_definition_contraindication",
     )
 
     diseaseStatus: fhirtypes.CodeableReferenceType = Field(
@@ -321,8 +309,6 @@ class ClinicalUseDefinitionContraindication(backboneelement.BackboneElement):
         binding_uri="http://hl7.org/fhir/ValueSet/disease-status",
         # note: Listed Resource Type(s) should be allowed as Reference.
         enum_reference_types=["ObservationDefinition"],
-        backref="clinical_use_definition_contraindication",
-        parent_name="clinical_use_definition_contraindication",
     )
 
     diseaseSymptomProcedure: fhirtypes.CodeableReferenceType = Field(
@@ -341,8 +327,6 @@ class ClinicalUseDefinitionContraindication(backboneelement.BackboneElement):
         binding_uri="http://hl7.org/fhir/ValueSet/disease-symptom-procedure",
         # note: Listed Resource Type(s) should be allowed as Reference.
         enum_reference_types=["ObservationDefinition"],
-        backref="clinical_use_definition_contraindication",
-        parent_name="clinical_use_definition_contraindication",
     )
 
     indication: typing.List[fhirtypes.ReferenceType] = Field(
@@ -354,8 +338,6 @@ class ClinicalUseDefinitionContraindication(backboneelement.BackboneElement):
         element_property=True,
         # note: Listed Resource Type(s) should be allowed as Reference.
         enum_reference_types=["ClinicalUseDefinition"],
-        backref="clinical_use_definition_contraindication",
-        parent_name="clinical_use_definition_contraindication",
     )
 
     otherTherapy: typing.List[
@@ -396,10 +378,7 @@ class ClinicalUseDefinitionContraindication(backboneelement.BackboneElement):
 class ClinicalUseDefinitionContraindicationOtherTherapy(
     backboneelement.BackboneElement
 ):
-    """Disclaimer: Any field name ends with ``__ext`` doesn't part of
-    Resource StructureDefinition, instead used to enable Extensibility feature
-    for FHIR Primitive Data Types.
-
+    """
     Information about use of the product in relation to other therapies
     described as part of the contraindication.
     Information about the use of the medicinal product in relation to other
@@ -456,8 +435,6 @@ class ClinicalUseDefinitionContraindicationOtherTherapy(
             "SubstanceDefinition",
             "ActivityDefinition",
         ],
-        backref="clinical_use_definition_contraindication_other_therapy",
-        parent_name="clinical_use_definition_contraindication_other_therapy",
     )
 
     @classmethod
@@ -470,10 +447,7 @@ class ClinicalUseDefinitionContraindicationOtherTherapy(
 
 
 class ClinicalUseDefinitionIndication(backboneelement.BackboneElement):
-    """Disclaimer: Any field name ends with ``__ext`` doesn't part of
-    Resource StructureDefinition, instead used to enable Extensibility feature
-    for FHIR Primitive Data Types.
-
+    """
     Specifics for when this is an indication.
     """
 
@@ -495,8 +469,6 @@ class ClinicalUseDefinitionIndication(backboneelement.BackboneElement):
         binding_uri="http://hl7.org/fhir/ValueSet/disease-symptom-procedure",
         # note: Listed Resource Type(s) should be allowed as Reference.
         enum_reference_types=["ObservationDefinition"],
-        backref="clinical_use_definition_indication",
-        parent_name="clinical_use_definition_indication",
     )
 
     diseaseStatus: fhirtypes.CodeableReferenceType = Field(
@@ -516,8 +488,6 @@ class ClinicalUseDefinitionIndication(backboneelement.BackboneElement):
         binding_uri="http://hl7.org/fhir/ValueSet/disease-status",
         # note: Listed Resource Type(s) should be allowed as Reference.
         enum_reference_types=["ObservationDefinition"],
-        backref="clinical_use_definition_indication",
-        parent_name="clinical_use_definition_indication",
     )
 
     diseaseSymptomProcedure: fhirtypes.CodeableReferenceType = Field(
@@ -533,8 +503,6 @@ class ClinicalUseDefinitionIndication(backboneelement.BackboneElement):
         binding_uri="http://hl7.org/fhir/ValueSet/disease-symptom-procedure",
         # note: Listed Resource Type(s) should be allowed as Reference.
         enum_reference_types=["ObservationDefinition"],
-        backref="clinical_use_definition_indication",
-        parent_name="clinical_use_definition_indication",
     )
 
     durationRange: fhirtypes.RangeType = Field(
@@ -587,8 +555,6 @@ class ClinicalUseDefinitionIndication(backboneelement.BackboneElement):
         binding_uri="http://hl7.org/fhir/ValueSet/product-intended-use",
         # note: Listed Resource Type(s) should be allowed as Reference.
         enum_reference_types=["ObservationDefinition"],
-        backref="clinical_use_definition_indication",
-        parent_name="clinical_use_definition_indication",
     )
 
     otherTherapy: typing.List[
@@ -623,8 +589,6 @@ class ClinicalUseDefinitionIndication(backboneelement.BackboneElement):
         element_property=True,
         # note: Listed Resource Type(s) should be allowed as Reference.
         enum_reference_types=["ClinicalUseDefinition"],
-        backref="clinical_use_definition_indication",
-        parent_name="clinical_use_definition_indication",
     )
 
     @classmethod
@@ -687,10 +651,7 @@ class ClinicalUseDefinitionIndication(backboneelement.BackboneElement):
 
 
 class ClinicalUseDefinitionInteraction(backboneelement.BackboneElement):
-    """Disclaimer: Any field name ends with ``__ext`` doesn't part of
-    Resource StructureDefinition, instead used to enable Extensibility feature
-    for FHIR Primitive Data Types.
-
+    """
     Specifics for when this is an interaction.
     """
 
@@ -712,8 +673,6 @@ class ClinicalUseDefinitionInteraction(backboneelement.BackboneElement):
         binding_uri="http://hl7.org/fhir/ValueSet/interaction-effect",
         # note: Listed Resource Type(s) should be allowed as Reference.
         enum_reference_types=["ObservationDefinition"],
-        backref="clinical_use_definition_interaction",
-        parent_name="clinical_use_definition_interaction",
     )
 
     incidence: fhirtypes.CodeableConceptType = Field(
@@ -795,10 +754,7 @@ class ClinicalUseDefinitionInteraction(backboneelement.BackboneElement):
 
 
 class ClinicalUseDefinitionInteractionInteractant(backboneelement.BackboneElement):
-    """Disclaimer: Any field name ends with ``__ext`` doesn't part of
-    Resource StructureDefinition, instead used to enable Extensibility feature
-    for FHIR Primitive Data Types.
-
+    """
     The specific medication, food, substance or laboratory test that interacts.
     """
 
@@ -841,8 +797,6 @@ class ClinicalUseDefinitionInteractionInteractant(backboneelement.BackboneElemen
             "Substance",
             "ObservationDefinition",
         ],
-        backref="clinical_use_definition_interaction_interactant",
-        parent_name="clinical_use_definition_interaction_interactant",
     )
 
     @classmethod
@@ -899,10 +853,7 @@ class ClinicalUseDefinitionInteractionInteractant(backboneelement.BackboneElemen
 
 
 class ClinicalUseDefinitionUndesirableEffect(backboneelement.BackboneElement):
-    """Disclaimer: Any field name ends with ``__ext`` doesn't part of
-    Resource StructureDefinition, instead used to enable Extensibility feature
-    for FHIR Primitive Data Types.
-
+    """
     A possible negative outcome from the use of this treatment.
     Describe the possible undesirable effects (negative outcomes) from the use
     of the medicinal product as treatment.
@@ -949,8 +900,6 @@ class ClinicalUseDefinitionUndesirableEffect(backboneelement.BackboneElement):
         binding_uri="http://hl7.org/fhir/ValueSet/undesirable-effect-symptom",
         # note: Listed Resource Type(s) should be allowed as Reference.
         enum_reference_types=["ObservationDefinition"],
-        backref="clinical_use_definition_undesirable_effect",
-        parent_name="clinical_use_definition_undesirable_effect",
     )
 
     @classmethod
@@ -970,10 +919,7 @@ class ClinicalUseDefinitionUndesirableEffect(backboneelement.BackboneElement):
 
 
 class ClinicalUseDefinitionWarning(backboneelement.BackboneElement):
-    """Disclaimer: Any field name ends with ``__ext`` doesn't part of
-    Resource StructureDefinition, instead used to enable Extensibility feature
-    for FHIR Primitive Data Types.
-
+    """
     Critical environmental, health or physical risks or hazards. For example
     'Do not operate heavy machinery', 'May cause drowsiness'.
     A critical piece of information about environmental, health or physical

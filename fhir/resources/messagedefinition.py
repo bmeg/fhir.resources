@@ -16,10 +16,7 @@ from . import backboneelement, domainresource, fhirtypes
 
 
 class MessageDefinition(domainresource.DomainResource):
-    """Disclaimer: Any field name ends with ``__ext`` doesn't part of
-    Resource StructureDefinition, instead used to enable Extensibility feature
-    for FHIR Primitive Data Types.
-
+    """
     A resource that defines a type of message that can be exchanged between
     systems.
     Defines the characteristics of a message that can be shared between
@@ -55,8 +52,6 @@ class MessageDefinition(domainresource.DomainResource):
         element_property=True,
         # note: Listed Resource Type(s) should be allowed as Reference.
         enum_reference_types=["MessageDefinition"],
-        backref="message_definition",
-        parent_name="message_definition",
     )
     base__ext: fhirtypes.FHIRPrimitiveExtensionType = Field(
         None, alias="_base", title="Extension field for ``base``."
@@ -231,8 +226,6 @@ class MessageDefinition(domainresource.DomainResource):
         element_property=True,
         # note: Listed Resource Type(s) should be allowed as Reference.
         enum_reference_types=["GraphDefinition"],
-        backref="message_definition",
-        parent_name="message_definition",
     )
     graph__ext: typing.List[
         typing.Union[fhirtypes.FHIRPrimitiveExtensionType, None]
@@ -295,8 +288,6 @@ class MessageDefinition(domainresource.DomainResource):
         element_property=True,
         # note: Listed Resource Type(s) should be allowed as Reference.
         enum_reference_types=["ActivityDefinition", "PlanDefinition"],
-        backref="message_definition",
-        parent_name="message_definition",
     )
     parent__ext: typing.List[
         typing.Union[fhirtypes.FHIRPrimitiveExtensionType, None]
@@ -341,8 +332,6 @@ class MessageDefinition(domainresource.DomainResource):
         element_property=True,
         # note: Listed Resource Type(s) should be allowed as Reference.
         enum_reference_types=["MessageDefinition"],
-        backref="message_definition",
-        parent_name="message_definition",
     )
     replaces__ext: typing.List[
         typing.Union[fhirtypes.FHIRPrimitiveExtensionType, None]
@@ -602,10 +591,7 @@ class MessageDefinition(domainresource.DomainResource):
 
 
 class MessageDefinitionAllowedResponse(backboneelement.BackboneElement):
-    """Disclaimer: Any field name ends with ``__ext`` doesn't part of
-    Resource StructureDefinition, instead used to enable Extensibility feature
-    for FHIR Primitive Data Types.
-
+    """
     Responses to this message.
     Indicates what types of messages may be sent as an application-level
     response to this message.
@@ -626,8 +612,6 @@ class MessageDefinitionAllowedResponse(backboneelement.BackboneElement):
         element_required=True,
         # note: Listed Resource Type(s) should be allowed as Reference.
         enum_reference_types=["MessageDefinition"],
-        backref="message_definition_allowed_response",
-        parent_name="message_definition_allowed_response",
     )
     message__ext: fhirtypes.FHIRPrimitiveExtensionType = Field(
         None, alias="_message", title="Extension field for ``message``."
@@ -717,10 +701,7 @@ class MessageDefinitionAllowedResponse(backboneelement.BackboneElement):
 
 
 class MessageDefinitionFocus(backboneelement.BackboneElement):
-    """Disclaimer: Any field name ends with ``__ext`` doesn't part of
-    Resource StructureDefinition, instead used to enable Extensibility feature
-    for FHIR Primitive Data Types.
-
+    """
     Resource(s) that are the subject of the event.
     Identifies the resource (or resources) that are being addressed by the
     event.  For example, the Encounter for an admit message or two Account
@@ -795,8 +776,6 @@ class MessageDefinitionFocus(backboneelement.BackboneElement):
         element_property=True,
         # note: Listed Resource Type(s) should be allowed as Reference.
         enum_reference_types=["StructureDefinition"],
-        backref="message_definition_focus",
-        parent_name="message_definition_focus",
     )
     profile__ext: fhirtypes.FHIRPrimitiveExtensionType = Field(
         None, alias="_profile", title="Extension field for ``profile``."

@@ -16,10 +16,7 @@ from . import backboneelement, domainresource, fhirtypes
 
 
 class EvidenceVariable(domainresource.DomainResource):
-    """Disclaimer: Any field name ends with ``__ext`` doesn't part of
-    Resource StructureDefinition, instead used to enable Extensibility feature
-    for FHIR Primitive Data Types.
-
+    """
     A definition of an exposure, outcome, or other variable.
     The EvidenceVariable resource describes an element that knowledge
     (Evidence) is about.
@@ -505,10 +502,7 @@ class EvidenceVariable(domainresource.DomainResource):
 
 
 class EvidenceVariableCategory(backboneelement.BackboneElement):
-    """Disclaimer: Any field name ends with ``__ext`` doesn't part of
-    Resource StructureDefinition, instead used to enable Extensibility feature
-    for FHIR Primitive Data Types.
-
+    """
     A grouping for ordinal or polychotomous variables.
     A grouping (or set of values) described along with other groupings to
     specify the set of groupings allowed for the variable.
@@ -622,10 +616,7 @@ class EvidenceVariableCategory(backboneelement.BackboneElement):
 
 
 class EvidenceVariableCharacteristic(backboneelement.BackboneElement):
-    """Disclaimer: Any field name ends with ``__ext`` doesn't part of
-    Resource StructureDefinition, instead used to enable Extensibility feature
-    for FHIR Primitive Data Types.
-
+    """
     What defines the members of the evidence element.
     A characteristic that defines the members of the evidence element. Multiple
     characteristics are applied with "and" semantics.
@@ -650,8 +641,6 @@ class EvidenceVariableCharacteristic(backboneelement.BackboneElement):
         one_of_many_required=True,
         # note: Listed Resource Type(s) should be allowed as Reference.
         enum_reference_types=["Resource"],
-        backref="evidence_variable_characteristic",
-        parent_name="evidence_variable_characteristic",
     )
     definitionCanonical__ext: fhirtypes.FHIRPrimitiveExtensionType = Field(
         None,
@@ -710,8 +699,6 @@ class EvidenceVariableCharacteristic(backboneelement.BackboneElement):
         one_of_many_required=True,
         # note: Listed Resource Type(s) should be allowed as Reference.
         enum_reference_types=["Group", "EvidenceVariable"],
-        backref="evidence_variable_characteristic",
-        parent_name="evidence_variable_characteristic",
     )
 
     description: fhirtypes.String = Field(
@@ -738,8 +725,6 @@ class EvidenceVariableCharacteristic(backboneelement.BackboneElement):
         element_property=True,
         # note: Listed Resource Type(s) should be allowed as Reference.
         enum_reference_types=["Device", "DeviceMetric"],
-        backref="evidence_variable_characteristic",
-        parent_name="evidence_variable_characteristic",
     )
 
     exclude: bool = Field(
@@ -884,10 +869,7 @@ class EvidenceVariableCharacteristic(backboneelement.BackboneElement):
 
 
 class EvidenceVariableCharacteristicTimeFromStart(backboneelement.BackboneElement):
-    """Disclaimer: Any field name ends with ``__ext`` doesn't part of
-    Resource StructureDefinition, instead used to enable Extensibility feature
-    for FHIR Primitive Data Types.
-
+    """
     Observation time from study start.
     Indicates duration, period, or point of observation from the participant's
     study entry.

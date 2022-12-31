@@ -16,10 +16,7 @@ from . import backboneelement, domainresource, fhirtypes
 
 
 class DocumentManifest(domainresource.DomainResource):
-    """Disclaimer: Any field name ends with ``__ext`` doesn't part of
-    Resource StructureDefinition, instead used to enable Extensibility feature
-    for FHIR Primitive Data Types.
-
+    """
     A list that defines a set of documents.
     A collection of documents compiled for a purpose together with metadata
     that applies to the collection.
@@ -46,8 +43,6 @@ class DocumentManifest(domainresource.DomainResource):
             "Patient",
             "RelatedPerson",
         ],
-        backref="document_manifest",
-        parent_name="document_manifest",
     )
 
     content: typing.List[fhirtypes.ReferenceType] = Field(
@@ -59,8 +54,6 @@ class DocumentManifest(domainresource.DomainResource):
         element_property=True,
         # note: Listed Resource Type(s) should be allowed as Reference.
         enum_reference_types=["Resource"],
-        backref="document_manifest",
-        parent_name="document_manifest",
     )
 
     created: fhirtypes.DateTime = Field(
@@ -136,8 +129,6 @@ class DocumentManifest(domainresource.DomainResource):
             "RelatedPerson",
             "Organization",
         ],
-        backref="document_manifest",
-        parent_name="document_manifest",
     )
 
     related: typing.List[fhirtypes.DocumentManifestRelatedType] = Field(
@@ -204,8 +195,6 @@ class DocumentManifest(domainresource.DomainResource):
         element_property=True,
         # note: Listed Resource Type(s) should be allowed as Reference.
         enum_reference_types=["Patient", "Practitioner", "Group", "Device"],
-        backref="document_manifest",
-        parent_name="document_manifest",
     )
 
     type: fhirtypes.CodeableConceptType = Field(
@@ -315,10 +304,7 @@ class DocumentManifest(domainresource.DomainResource):
 
 
 class DocumentManifestRelated(backboneelement.BackboneElement):
-    """Disclaimer: Any field name ends with ``__ext`` doesn't part of
-    Resource StructureDefinition, instead used to enable Extensibility feature
-    for FHIR Primitive Data Types.
-
+    """
     Related things.
     Related identifiers or resources associated with the DocumentManifest.
     """
@@ -349,8 +335,6 @@ class DocumentManifestRelated(backboneelement.BackboneElement):
         element_property=True,
         # note: Listed Resource Type(s) should be allowed as Reference.
         enum_reference_types=["Resource"],
-        backref="document_manifest_related",
-        parent_name="document_manifest_related",
     )
 
     @classmethod

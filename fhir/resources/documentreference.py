@@ -16,10 +16,7 @@ from . import backboneelement, domainresource, fhirtypes
 
 
 class DocumentReference(domainresource.DomainResource):
-    """Disclaimer: Any field name ends with ``__ext`` doesn't part of
-    Resource StructureDefinition, instead used to enable Extensibility feature
-    for FHIR Primitive Data Types.
-
+    """
     A reference to a document.
     A reference to a document of any kind for any purpose. Provides metadata
     about the document so that the document can be discovered and managed. The
@@ -41,8 +38,6 @@ class DocumentReference(domainresource.DomainResource):
         element_property=True,
         # note: Listed Resource Type(s) should be allowed as Reference.
         enum_reference_types=["Practitioner", "PractitionerRole", "Organization"],
-        backref="document_reference",
-        parent_name="document_reference",
     )
 
     author: typing.List[fhirtypes.ReferenceType] = Field(
@@ -64,8 +59,6 @@ class DocumentReference(domainresource.DomainResource):
             "Patient",
             "RelatedPerson",
         ],
-        backref="document_reference",
-        parent_name="document_reference",
     )
 
     category: typing.List[fhirtypes.CodeableConceptType] = Field(
@@ -119,8 +112,6 @@ class DocumentReference(domainresource.DomainResource):
         element_property=True,
         # note: Listed Resource Type(s) should be allowed as Reference.
         enum_reference_types=["Organization"],
-        backref="document_reference",
-        parent_name="document_reference",
     )
 
     date: fhirtypes.Instant = Field(
@@ -266,8 +257,6 @@ class DocumentReference(domainresource.DomainResource):
         element_property=True,
         # note: Listed Resource Type(s) should be allowed as Reference.
         enum_reference_types=["Patient", "Practitioner", "Group", "Device"],
-        backref="document_reference",
-        parent_name="document_reference",
     )
 
     type: fhirtypes.CodeableConceptType = Field(
@@ -382,10 +371,7 @@ class DocumentReference(domainresource.DomainResource):
 
 
 class DocumentReferenceContent(backboneelement.BackboneElement):
-    """Disclaimer: Any field name ends with ``__ext`` doesn't part of
-    Resource StructureDefinition, instead used to enable Extensibility feature
-    for FHIR Primitive Data Types.
-
+    """
     Document referenced.
     The document and format referenced. There may be multiple content element
     repetitions, each with a different format.
@@ -432,10 +418,7 @@ class DocumentReferenceContent(backboneelement.BackboneElement):
 
 
 class DocumentReferenceContext(backboneelement.BackboneElement):
-    """Disclaimer: Any field name ends with ``__ext`` doesn't part of
-    Resource StructureDefinition, instead used to enable Extensibility feature
-    for FHIR Primitive Data Types.
-
+    """
     Clinical context of document.
     The clinical context in which the document was prepared.
     """
@@ -454,8 +437,6 @@ class DocumentReferenceContext(backboneelement.BackboneElement):
         element_property=True,
         # note: Listed Resource Type(s) should be allowed as Reference.
         enum_reference_types=["Encounter", "EpisodeOfCare"],
-        backref="document_reference_context",
-        parent_name="document_reference_context",
     )
 
     event: typing.List[fhirtypes.CodeableConceptType] = Field(
@@ -537,8 +518,6 @@ class DocumentReferenceContext(backboneelement.BackboneElement):
         element_property=True,
         # note: Listed Resource Type(s) should be allowed as Reference.
         enum_reference_types=["Resource"],
-        backref="document_reference_context",
-        parent_name="document_reference_context",
     )
 
     sourcePatientInfo: fhirtypes.ReferenceType = Field(
@@ -553,8 +532,6 @@ class DocumentReferenceContext(backboneelement.BackboneElement):
         element_property=True,
         # note: Listed Resource Type(s) should be allowed as Reference.
         enum_reference_types=["Patient"],
-        backref="document_reference_context",
-        parent_name="document_reference_context",
     )
 
     @classmethod
@@ -578,10 +555,7 @@ class DocumentReferenceContext(backboneelement.BackboneElement):
 
 
 class DocumentReferenceRelatesTo(backboneelement.BackboneElement):
-    """Disclaimer: Any field name ends with ``__ext`` doesn't part of
-    Resource StructureDefinition, instead used to enable Extensibility feature
-    for FHIR Primitive Data Types.
-
+    """
     Relationships to other documents.
     Relationships that this document has with other document references that
     already exist.
@@ -622,8 +596,6 @@ class DocumentReferenceRelatesTo(backboneelement.BackboneElement):
         element_property=True,
         # note: Listed Resource Type(s) should be allowed as Reference.
         enum_reference_types=["DocumentReference"],
-        backref="document_reference_relates_to",
-        parent_name="document_reference_relates_to",
     )
 
     @classmethod

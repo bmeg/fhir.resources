@@ -14,10 +14,7 @@ from . import domainresource, fhirtypes
 
 
 class Schedule(domainresource.DomainResource):
-    """Disclaimer: Any field name ends with ``__ext`` doesn't part of
-    Resource StructureDefinition, instead used to enable Extensibility feature
-    for FHIR Primitive Data Types.
-
+    """
     A container for slots of time that may be available for booking
     appointments.
     """
@@ -59,8 +56,6 @@ class Schedule(domainresource.DomainResource):
             "HealthcareService",
             "Location",
         ],
-        backref="schedule",
-        parent_name="schedule",
     )
 
     comment: fhirtypes.String = Field(

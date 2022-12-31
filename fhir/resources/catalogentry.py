@@ -16,10 +16,7 @@ from . import backboneelement, domainresource, fhirtypes
 
 
 class CatalogEntry(domainresource.DomainResource):
-    """Disclaimer: Any field name ends with ``__ext`` doesn't part of
-    Resource StructureDefinition, instead used to enable Extensibility feature
-    for FHIR Primitive Data Types.
-
+    """
     An entry in a catalog.
     Catalog entries are wrappers that contextualize items included in a
     catalog.
@@ -127,8 +124,6 @@ class CatalogEntry(domainresource.DomainResource):
             "ObservationDefinition",
             "Binary",
         ],
-        backref="catalog_entry",
-        parent_name="catalog_entry",
     )
 
     relatedEntry: typing.List[fhirtypes.CatalogEntryRelatedEntryType] = Field(
@@ -288,10 +283,7 @@ class CatalogEntry(domainresource.DomainResource):
 
 
 class CatalogEntryRelatedEntry(backboneelement.BackboneElement):
-    """Disclaimer: Any field name ends with ``__ext`` doesn't part of
-    Resource StructureDefinition, instead used to enable Extensibility feature
-    for FHIR Primitive Data Types.
-
+    """
     An item that this catalog entry is related to.
     Used for example, to point to a substance, or to a device used to
     administer a medication.
@@ -308,8 +300,6 @@ class CatalogEntryRelatedEntry(backboneelement.BackboneElement):
         element_property=True,
         # note: Listed Resource Type(s) should be allowed as Reference.
         enum_reference_types=["CatalogEntry"],
-        backref="catalog_entry_related_entry",
-        parent_name="catalog_entry_related_entry",
     )
 
     relationtype: fhirtypes.Code = Field(

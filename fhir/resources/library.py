@@ -16,10 +16,7 @@ from . import domainresource, fhirtypes
 
 
 class Library(domainresource.DomainResource):
-    """Disclaimer: Any field name ends with ``__ext`` doesn't part of
-    Resource StructureDefinition, instead used to enable Extensibility feature
-    for FHIR Primitive Data Types.
-
+    """
     Represents a library of quality improvement components.
     The Library resource is a general-purpose container for knowledge asset
     definitions. It can be used to describe and expose existing knowledge
@@ -380,8 +377,6 @@ class Library(domainresource.DomainResource):
         binding_uri="http://hl7.org/fhir/ValueSet/subject-type",
         # note: Listed Resource Type(s) should be allowed as Reference.
         enum_reference_types=["Group"],
-        backref="library",
-        parent_name="library",
     )
 
     subtitle: fhirtypes.String = Field(

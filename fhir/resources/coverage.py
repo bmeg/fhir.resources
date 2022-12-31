@@ -16,10 +16,7 @@ from . import backboneelement, domainresource, fhirtypes
 
 
 class Coverage(domainresource.DomainResource):
-    """Disclaimer: Any field name ends with ``__ext`` doesn't part of
-    Resource StructureDefinition, instead used to enable Extensibility feature
-    for FHIR Primitive Data Types.
-
+    """
     Insurance or medical plan or a payment agreement.
     Financial instrument which may be used to reimburse or pay for health care
     products and services. Includes both insurance and self-payment.
@@ -39,8 +36,6 @@ class Coverage(domainresource.DomainResource):
         element_property=True,
         # note: Listed Resource Type(s) should be allowed as Reference.
         enum_reference_types=["Patient"],
-        backref="coverage",
-        parent_name="coverage",
     )
 
     class_fhir: typing.List[fhirtypes.CoverageClassType] = Field(
@@ -61,8 +56,6 @@ class Coverage(domainresource.DomainResource):
         element_property=True,
         # note: Listed Resource Type(s) should be allowed as Reference.
         enum_reference_types=["Contract"],
-        backref="coverage",
-        parent_name="coverage",
     )
 
     costToBeneficiary: typing.List[fhirtypes.CoverageCostToBeneficiaryType] = Field(
@@ -145,8 +138,6 @@ class Coverage(domainresource.DomainResource):
         element_property=True,
         # note: Listed Resource Type(s) should be allowed as Reference.
         enum_reference_types=["Organization", "Patient", "RelatedPerson"],
-        backref="coverage",
-        parent_name="coverage",
     )
 
     period: fhirtypes.PeriodType = Field(
@@ -171,8 +162,6 @@ class Coverage(domainresource.DomainResource):
         element_property=True,
         # note: Listed Resource Type(s) should be allowed as Reference.
         enum_reference_types=["Patient", "RelatedPerson", "Organization"],
-        backref="coverage",
-        parent_name="coverage",
     )
 
     relationship: fhirtypes.CodeableConceptType = Field(
@@ -244,8 +233,6 @@ class Coverage(domainresource.DomainResource):
         element_property=True,
         # note: Listed Resource Type(s) should be allowed as Reference.
         enum_reference_types=["Patient", "RelatedPerson"],
-        backref="coverage",
-        parent_name="coverage",
     )
 
     subscriberId: fhirtypes.String = Field(
@@ -372,10 +359,7 @@ class Coverage(domainresource.DomainResource):
 
 
 class CoverageClass(backboneelement.BackboneElement):
-    """Disclaimer: Any field name ends with ``__ext`` doesn't part of
-    Resource StructureDefinition, instead used to enable Extensibility feature
-    for FHIR Primitive Data Types.
-
+    """
     Additional coverage classifications.
     A suite of underwriter specific classifiers.
     """
@@ -496,10 +480,7 @@ class CoverageClass(backboneelement.BackboneElement):
 
 
 class CoverageCostToBeneficiary(backboneelement.BackboneElement):
-    """Disclaimer: Any field name ends with ``__ext`` doesn't part of
-    Resource StructureDefinition, instead used to enable Extensibility feature
-    for FHIR Primitive Data Types.
-
+    """
     Patient payments for services/products.
     A suite of codes indicating the cost category and associated amount which
     have been detailed in the policy and may have been  included on the health
@@ -616,10 +597,7 @@ class CoverageCostToBeneficiary(backboneelement.BackboneElement):
 
 
 class CoverageCostToBeneficiaryException(backboneelement.BackboneElement):
-    """Disclaimer: Any field name ends with ``__ext`` doesn't part of
-    Resource StructureDefinition, instead used to enable Extensibility feature
-    for FHIR Primitive Data Types.
-
+    """
     Exceptions for patient payments.
     A suite of codes indicating exceptions or reductions to patient costs and
     their effective periods.

@@ -14,10 +14,7 @@ from . import backboneelement, domainresource, fhirtypes
 
 
 class InsurancePlan(domainresource.DomainResource):
-    """Disclaimer: Any field name ends with ``__ext`` doesn't part of
-    Resource StructureDefinition, instead used to enable Extensibility feature
-    for FHIR Primitive Data Types.
-
+    """
     Details of a Health Insurance product/plan provided by an organization.
     """
 
@@ -36,8 +33,6 @@ class InsurancePlan(domainresource.DomainResource):
         element_property=True,
         # note: Listed Resource Type(s) should be allowed as Reference.
         enum_reference_types=["Organization"],
-        backref="insurance_plan",
-        parent_name="insurance_plan",
     )
 
     alias: typing.List[typing.Optional[fhirtypes.String]] = Field(
@@ -85,8 +80,6 @@ class InsurancePlan(domainresource.DomainResource):
         element_property=True,
         # note: Listed Resource Type(s) should be allowed as Reference.
         enum_reference_types=["Location"],
-        backref="insurance_plan",
-        parent_name="insurance_plan",
     )
 
     endpoint: typing.List[fhirtypes.ReferenceType] = Field(
@@ -101,8 +94,6 @@ class InsurancePlan(domainresource.DomainResource):
         element_property=True,
         # note: Listed Resource Type(s) should be allowed as Reference.
         enum_reference_types=["Endpoint"],
-        backref="insurance_plan",
-        parent_name="insurance_plan",
     )
 
     identifier: typing.List[fhirtypes.IdentifierType] = Field(
@@ -142,8 +133,6 @@ class InsurancePlan(domainresource.DomainResource):
         element_property=True,
         # note: Listed Resource Type(s) should be allowed as Reference.
         enum_reference_types=["Organization"],
-        backref="insurance_plan",
-        parent_name="insurance_plan",
     )
 
     ownedBy: fhirtypes.ReferenceType = Field(
@@ -160,8 +149,6 @@ class InsurancePlan(domainresource.DomainResource):
         element_property=True,
         # note: Listed Resource Type(s) should be allowed as Reference.
         enum_reference_types=["Organization"],
-        backref="insurance_plan",
-        parent_name="insurance_plan",
     )
 
     period: fhirtypes.PeriodType = Field(
@@ -254,10 +241,7 @@ class InsurancePlan(domainresource.DomainResource):
 
 
 class InsurancePlanContact(backboneelement.BackboneElement):
-    """Disclaimer: Any field name ends with ``__ext`` doesn't part of
-    Resource StructureDefinition, instead used to enable Extensibility feature
-    for FHIR Primitive Data Types.
-
+    """
     Contact for the product.
     The contact for the health insurance product for a certain purpose.
     """
@@ -328,10 +312,7 @@ class InsurancePlanContact(backboneelement.BackboneElement):
 
 
 class InsurancePlanCoverage(backboneelement.BackboneElement):
-    """Disclaimer: Any field name ends with ``__ext`` doesn't part of
-    Resource StructureDefinition, instead used to enable Extensibility feature
-    for FHIR Primitive Data Types.
-
+    """
     Coverage details.
     Details about the coverage offered by the insurance product.
     """
@@ -356,8 +337,6 @@ class InsurancePlanCoverage(backboneelement.BackboneElement):
         element_property=True,
         # note: Listed Resource Type(s) should be allowed as Reference.
         enum_reference_types=["Organization"],
-        backref="insurance_plan_coverage",
-        parent_name="insurance_plan_coverage",
     )
 
     type: fhirtypes.CodeableConceptType = Field(
@@ -382,10 +361,7 @@ class InsurancePlanCoverage(backboneelement.BackboneElement):
 
 
 class InsurancePlanCoverageBenefit(backboneelement.BackboneElement):
-    """Disclaimer: Any field name ends with ``__ext`` doesn't part of
-    Resource StructureDefinition, instead used to enable Extensibility feature
-    for FHIR Primitive Data Types.
-
+    """
     List of benefits.
     Specific benefits under this type of coverage.
     """
@@ -434,10 +410,7 @@ class InsurancePlanCoverageBenefit(backboneelement.BackboneElement):
 
 
 class InsurancePlanCoverageBenefitLimit(backboneelement.BackboneElement):
-    """Disclaimer: Any field name ends with ``__ext`` doesn't part of
-    Resource StructureDefinition, instead used to enable Extensibility feature
-    for FHIR Primitive Data Types.
-
+    """
     Benefit limits.
     The specific limits on the benefit.
     """
@@ -475,10 +448,7 @@ class InsurancePlanCoverageBenefitLimit(backboneelement.BackboneElement):
 
 
 class InsurancePlanPlan(backboneelement.BackboneElement):
-    """Disclaimer: Any field name ends with ``__ext`` doesn't part of
-    Resource StructureDefinition, instead used to enable Extensibility feature
-    for FHIR Primitive Data Types.
-
+    """
     Plan details.
     Details about an insurance plan.
     """
@@ -497,8 +467,6 @@ class InsurancePlanPlan(backboneelement.BackboneElement):
         element_property=True,
         # note: Listed Resource Type(s) should be allowed as Reference.
         enum_reference_types=["Location"],
-        backref="insurance_plan_plan",
-        parent_name="insurance_plan_plan",
     )
 
     generalCost: typing.List[fhirtypes.InsurancePlanPlanGeneralCostType] = Field(
@@ -532,8 +500,6 @@ class InsurancePlanPlan(backboneelement.BackboneElement):
         element_property=True,
         # note: Listed Resource Type(s) should be allowed as Reference.
         enum_reference_types=["Organization"],
-        backref="insurance_plan_plan",
-        parent_name="insurance_plan_plan",
     )
 
     specificCost: typing.List[fhirtypes.InsurancePlanPlanSpecificCostType] = Field(
@@ -574,10 +540,7 @@ class InsurancePlanPlan(backboneelement.BackboneElement):
 
 
 class InsurancePlanPlanGeneralCost(backboneelement.BackboneElement):
-    """Disclaimer: Any field name ends with ``__ext`` doesn't part of
-    Resource StructureDefinition, instead used to enable Extensibility feature
-    for FHIR Primitive Data Types.
-
+    """
     Overall costs.
     Overall costs associated with the plan.
     """
@@ -647,10 +610,7 @@ class InsurancePlanPlanGeneralCost(backboneelement.BackboneElement):
 
 
 class InsurancePlanPlanSpecificCost(backboneelement.BackboneElement):
-    """Disclaimer: Any field name ends with ``__ext`` doesn't part of
-    Resource StructureDefinition, instead used to enable Extensibility feature
-    for FHIR Primitive Data Types.
-
+    """
     Specific costs.
     Costs associated with the coverage provided by the product.
     """
@@ -688,10 +648,7 @@ class InsurancePlanPlanSpecificCost(backboneelement.BackboneElement):
 
 
 class InsurancePlanPlanSpecificCostBenefit(backboneelement.BackboneElement):
-    """Disclaimer: Any field name ends with ``__ext`` doesn't part of
-    Resource StructureDefinition, instead used to enable Extensibility feature
-    for FHIR Primitive Data Types.
-
+    """
     Benefits list.
     List of the specific benefits under this category of benefit.
     """
@@ -730,10 +687,7 @@ class InsurancePlanPlanSpecificCostBenefit(backboneelement.BackboneElement):
 
 
 class InsurancePlanPlanSpecificCostBenefitCost(backboneelement.BackboneElement):
-    """Disclaimer: Any field name ends with ``__ext`` doesn't part of
-    Resource StructureDefinition, instead used to enable Extensibility feature
-    for FHIR Primitive Data Types.
-
+    """
     List of the costs.
     List of the costs associated with a specific benefit.
     """

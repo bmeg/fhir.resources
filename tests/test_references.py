@@ -4,7 +4,6 @@ from collections import defaultdict
 import pathlib
 from dataclasses import dataclass
 from typing import List, Optional
-import networkx as nx
 import csv
 
 import inflection
@@ -25,9 +24,13 @@ class EdgeInfo:
     """Parent of src_property"""
     backref: Optional[str] = None
     """Suggested backref"""
+    src_docstring: Optional[str] = None
+    """Docstring for source class"""
+    src_property_docstring: Optional[str] = None
+    """Docstring for property in source class."""
 
 
-def _collect_backref():
+def _collect_edges():
     """Traverse the schemas for all fhir classes, create a dict of edges."""
     # load all the generated classes
     submodules = sorted([fn.stem for fn in pathlib.Path('fhir/resources').glob('*.py') if not fn.stem.startswith('_')])
@@ -44,7 +47,9 @@ def _collect_backref():
                             edge_info = EdgeInfo(**{
                                 'dst_name': enum_reference_type,
                                 'src_name': klass.__name__,
+                                'src_docstring': klass.__doc__,
                                 'src_property': k,
+                                'src_property_docstring': v.field_info.title,
                                 'src_parent': v.field_info.extra.get('parent_name', None),
                                 'backref': v.field_info.extra.get('backref', None),
                             })
@@ -64,11 +69,11 @@ class BackRefAnalysis:
     """Unique list of source vertex names."""
 
 
-def _analyze_backrefs(backrefs: List[EdgeInfo]) -> BackRefAnalysis:
+def _analyze_edges(edge_info_list: List[EdgeInfo]) -> BackRefAnalysis:
     sources = []
     edges = []
     destinations = []
-    for edge in backrefs:
+    for edge in edge_info_list:
         sources.append(edge.src_name)
         destinations.append(edge.dst_name)
         edges.append(edge)
@@ -84,12 +89,46 @@ def _analyze_backrefs(backrefs: List[EdgeInfo]) -> BackRefAnalysis:
 
 def test_collect_backrefs():
     """Ensure we can collect backrefs."""
-    backrefs = _collect_backref()
+    backrefs = _collect_edges()
     assert backrefs
 
 
+def test_analyze_incoming():
+    analysis = _analyze_edges(_collect_edges())
+    incoming_edges = defaultdict(dict)
+    # loop through edges, determine incoming counts
+    for edge in analysis.edges:
+        if edge.src_name not in incoming_edges[edge.dst_name]:
+            incoming_edges[edge.dst_name][edge.src_name] = {'count': 0, 'backrefs': [], 'docstrings': {}}
+        incoming_edges[edge.dst_name][edge.src_name]['count'] += 1
+    # loop through edges again, determine backref
+    for edge in analysis.edges:
+        backref = inflection.underscore(edge.src_name)
+        if incoming_edges[edge.dst_name][edge.src_name]['count'] > 1:
+            backref = f"{edge.src_property}_{inflection.underscore(edge.src_name)}"
+        incoming_edges[edge.dst_name][edge.src_name]['backrefs'].append(backref)
+        incoming_edges[edge.dst_name][edge.src_name]['docstrings'][backref] = edge.src_property_docstring
+
+    from pprint import pprint as pp
+    print()
+
+    print('# single edge')
+    vertex_name = 'Patient'
+    for klass, edge in incoming_edges[vertex_name].items():
+        if edge['count'] == 1:
+            for backref in edge['backrefs']:
+                print(f"{backref}: {klass}, doc: {edge['docstrings'][backref]}")
+    print('# multiple edges')
+    for klass, edge in incoming_edges[vertex_name].items():
+        for backref in edge['backrefs']:
+            if edge['count'] > 1:
+                print(f"{backref}: {klass}, doc: {edge['docstrings'][backref]}")
+
+    assert False
+
+
 def test_analyze_backrefs():
-    analysis = _analyze_backrefs(_collect_backref())
+    analysis = _analyze_edges(_collect_edges())
     assert analysis
     assert len(analysis.destinations) == 114, "Expected lots of Destinations"
     assert len(analysis.sources) == 338, "Expected even more Sources"
@@ -132,11 +171,11 @@ def test_uniq_backref():
     """Examine all classes, ensure that all backrefs are unique.
     fhir-parser/templates/template-resource.jinja2:94
     # unique but ugly: from source's point of view: field's parent name flattened and in snake_case contcatened with fields' name
-	    `backref="{{ prop.parent_name|replace(".","_")|underscore}}_{{ prop.name }}"`
+      backref="{{ prop.parent_name|replace(".","_")|underscore}}_{{ prop.name }}"`
     # most readable: but a) causes collisions and b) rest of fhir's properties that are lists are singular
-	    `backref="{{ prop.parent_name|replace(".","_")|underscore}}_{{ prop.name }}"`
+      `backref="{{ prop.parent_name|replace(".","_")|underscore}}_{{ prop.name }}"`
     # readable: but a) causes collisions
-	    `backref="{{ prop.parent_name|replace(".","_")|underscore}}"`
+       `backref="{{ prop.parent_name|replace(".","_")|underscore}}"`
     """
     # fhir_resources = importlib.import_module('fhir.resources')
     print()
@@ -155,13 +194,11 @@ def test_uniq_backref():
                             if v.field_info.extra['backref'] not in backrefs[enum_reference_type]:
                                 backrefs[enum_reference_type][backref] = []
                             assert backref not in backrefs[enum_reference_type][backref], (
-                                    'backref collision!', 'destination',
-                                    f"{enum_reference_type}.{v.field_info.extra['backref']}", 'source',
-                                    backref, k
+                                'backref collision!', 'destination',
+                                f"{enum_reference_type}.{v.field_info.extra['backref']}", 'source',
+                                backref, k
                             )
                             backrefs[enum_reference_type][backref].append(backref)
-                            # print('destination', f"{enum_reference_type}.{v.field_info.extra['backref']}", 'source',
-                            #       backref, k)
 
 
 def test_serialize_all_references():

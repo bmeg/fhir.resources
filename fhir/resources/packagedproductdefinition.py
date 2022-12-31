@@ -14,10 +14,7 @@ from . import backboneelement, domainresource, fhirtypes
 
 
 class PackagedProductDefinition(domainresource.DomainResource):
-    """Disclaimer: Any field name ends with ``__ext`` doesn't part of
-    Resource StructureDefinition, instead used to enable Extensibility feature
-    for FHIR Primitive Data Types.
-
+    """
     A medically related item or items, in a container or package.
     """
 
@@ -148,8 +145,6 @@ class PackagedProductDefinition(domainresource.DomainResource):
         element_property=True,
         # note: Listed Resource Type(s) should be allowed as Reference.
         enum_reference_types=["Organization"],
-        backref="packaged_product_definition",
-        parent_name="packaged_product_definition",
     )
 
     marketingStatus: typing.List[fhirtypes.MarketingStatusType] = Field(
@@ -208,8 +203,6 @@ class PackagedProductDefinition(domainresource.DomainResource):
         element_property=True,
         # note: Listed Resource Type(s) should be allowed as Reference.
         enum_reference_types=["MedicinalProductDefinition"],
-        backref="packaged_product_definition",
-        parent_name="packaged_product_definition",
     )
 
     status: fhirtypes.CodeableConceptType = Field(
@@ -299,10 +292,7 @@ class PackagedProductDefinition(domainresource.DomainResource):
 
 
 class PackagedProductDefinitionLegalStatusOfSupply(backboneelement.BackboneElement):
-    """Disclaimer: Any field name ends with ``__ext`` doesn't part of
-    Resource StructureDefinition, instead used to enable Extensibility feature
-    for FHIR Primitive Data Types.
-
+    """
     The legal status of supply of the packaged item as classified by the
     regulator.
     """
@@ -356,10 +346,7 @@ class PackagedProductDefinitionLegalStatusOfSupply(backboneelement.BackboneEleme
 
 
 class PackagedProductDefinitionPackage(backboneelement.BackboneElement):
-    """Disclaimer: Any field name ends with ``__ext`` doesn't part of
-    Resource StructureDefinition, instead used to enable Extensibility feature
-    for FHIR Primitive Data Types.
-
+    """
     A packaging item, as a container for medically related items, possibly with
     other packaging items within, or a packaging component, such as bottle cap.
     A packaging item, as a container for medically related items, possibly with
@@ -431,8 +418,6 @@ class PackagedProductDefinitionPackage(backboneelement.BackboneElement):
         element_property=True,
         # note: Listed Resource Type(s) should be allowed as Reference.
         enum_reference_types=["Organization"],
-        backref="packaged_product_definition_package",
-        parent_name="packaged_product_definition_package",
     )
 
     material: typing.List[fhirtypes.CodeableConceptType] = Field(
@@ -541,10 +526,7 @@ class PackagedProductDefinitionPackage(backboneelement.BackboneElement):
 
 
 class PackagedProductDefinitionPackageContainedItem(backboneelement.BackboneElement):
-    """Disclaimer: Any field name ends with ``__ext`` doesn't part of
-    Resource StructureDefinition, instead used to enable Extensibility feature
-    for FHIR Primitive Data Types.
-
+    """
     The item(s) within the packaging.
     """
 
@@ -587,8 +569,6 @@ class PackagedProductDefinitionPackageContainedItem(backboneelement.BackboneElem
             "BiologicallyDerivedProduct",
             "NutritionProduct",
         ],
-        backref="packaged_product_definition_package_contained_item",
-        parent_name="packaged_product_definition_package_contained_item",
     )
 
     @classmethod
@@ -601,10 +581,7 @@ class PackagedProductDefinitionPackageContainedItem(backboneelement.BackboneElem
 
 
 class PackagedProductDefinitionPackageProperty(backboneelement.BackboneElement):
-    """Disclaimer: Any field name ends with ``__ext`` doesn't part of
-    Resource StructureDefinition, instead used to enable Extensibility feature
-    for FHIR Primitive Data Types.
-
+    """
     General characteristics of this item.
     """
 
@@ -755,10 +732,7 @@ class PackagedProductDefinitionPackageProperty(backboneelement.BackboneElement):
 
 
 class PackagedProductDefinitionPackageShelfLifeStorage(backboneelement.BackboneElement):
-    """Disclaimer: Any field name ends with ``__ext`` doesn't part of
-    Resource StructureDefinition, instead used to enable Extensibility feature
-    for FHIR Primitive Data Types.
-
+    """
     Shelf Life and storage information.
     """
 

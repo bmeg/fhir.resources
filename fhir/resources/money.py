@@ -12,10 +12,7 @@ from . import element, fhirtypes
 
 
 class Money(element.Element):
-    """Disclaimer: Any field name ends with ``__ext`` doesn't part of
-    Resource StructureDefinition, instead used to enable Extensibility feature
-    for FHIR Primitive Data Types.
-
+    """
     An amount of economic utility in some recognized currency.
     """
 

@@ -16,10 +16,7 @@ from . import domainresource, fhirtypes
 
 
 class Slot(domainresource.DomainResource):
-    """Disclaimer: Any field name ends with ``__ext`` doesn't part of
-    Resource StructureDefinition, instead used to enable Extensibility feature
-    for FHIR Primitive Data Types.
-
+    """
     A slot of time on a schedule that may be available for booking appointments.
     """
 
@@ -104,8 +101,6 @@ class Slot(domainresource.DomainResource):
         element_property=True,
         # note: Listed Resource Type(s) should be allowed as Reference.
         enum_reference_types=["Schedule"],
-        backref="slot",
-        parent_name="slot",
     )
 
     serviceCategory: typing.List[fhirtypes.CodeableConceptType] = Field(

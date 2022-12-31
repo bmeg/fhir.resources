@@ -16,10 +16,7 @@ from . import backboneelement, domainresource, fhirtypes
 
 
 class Questionnaire(domainresource.DomainResource):
-    """Disclaimer: Any field name ends with ``__ext`` doesn't part of
-    Resource StructureDefinition, instead used to enable Extensibility feature
-    for FHIR Primitive Data Types.
-
+    """
     A structured set of questions.
     A structured set of questions intended to guide the collection of answers
     from end-users. Questionnaires provide detailed control over order,
@@ -116,8 +113,6 @@ class Questionnaire(domainresource.DomainResource):
         element_property=True,
         # note: Listed Resource Type(s) should be allowed as Reference.
         enum_reference_types=["Questionnaire"],
-        backref="questionnaire",
-        parent_name="questionnaire",
     )
     derivedFrom__ext: typing.List[
         typing.Union[fhirtypes.FHIRPrimitiveExtensionType, None]
@@ -483,10 +478,7 @@ class Questionnaire(domainresource.DomainResource):
 
 
 class QuestionnaireItem(backboneelement.BackboneElement):
-    """Disclaimer: Any field name ends with ``__ext`` doesn't part of
-    Resource StructureDefinition, instead used to enable Extensibility feature
-    for FHIR Primitive Data Types.
-
+    """
     Questions and sections within the Questionnaire.
     A particular question, question grouping or display text that is part of
     the questionnaire.
@@ -515,8 +507,6 @@ class QuestionnaireItem(backboneelement.BackboneElement):
         element_property=True,
         # note: Listed Resource Type(s) should be allowed as Reference.
         enum_reference_types=["ValueSet"],
-        backref="questionnaire_item",
-        parent_name="questionnaire_item",
     )
     answerValueSet__ext: fhirtypes.FHIRPrimitiveExtensionType = Field(
         None, alias="_answerValueSet", title="Extension field for ``answerValueSet``."
@@ -858,10 +848,7 @@ class QuestionnaireItem(backboneelement.BackboneElement):
 
 
 class QuestionnaireItemAnswerOption(backboneelement.BackboneElement):
-    """Disclaimer: Any field name ends with ``__ext`` doesn't part of
-    Resource StructureDefinition, instead used to enable Extensibility feature
-    for FHIR Primitive Data Types.
-
+    """
     Permitted answer.
     One of the permitted answers for a "choice" or "open-choice" question.
     """
@@ -965,8 +952,6 @@ class QuestionnaireItemAnswerOption(backboneelement.BackboneElement):
         binding_uri="http://hl7.org/fhir/ValueSet/questionnaire-answers",
         # note: Listed Resource Type(s) should be allowed as Reference.
         enum_reference_types=["Resource"],
-        backref="questionnaire_item_answer_option",
-        parent_name="questionnaire_item_answer_option",
     )
 
     valueString: fhirtypes.String = Field(
@@ -1081,10 +1066,7 @@ class QuestionnaireItemAnswerOption(backboneelement.BackboneElement):
 
 
 class QuestionnaireItemEnableWhen(backboneelement.BackboneElement):
-    """Disclaimer: Any field name ends with ``__ext`` doesn't part of
-    Resource StructureDefinition, instead used to enable Extensibility feature
-    for FHIR Primitive Data Types.
-
+    """
     Only allow data when.
     A constraint indicating that this item should only be enabled
     (displayed/allow answers to be captured) when the specified condition is
@@ -1268,8 +1250,6 @@ class QuestionnaireItemEnableWhen(backboneelement.BackboneElement):
         binding_uri="http://hl7.org/fhir/ValueSet/questionnaire-answers",
         # note: Listed Resource Type(s) should be allowed as Reference.
         enum_reference_types=["Resource"],
-        backref="questionnaire_item_enable_when",
-        parent_name="questionnaire_item_enable_when",
     )
 
     answerString: fhirtypes.String = Field(
@@ -1494,10 +1474,7 @@ class QuestionnaireItemEnableWhen(backboneelement.BackboneElement):
 
 
 class QuestionnaireItemInitial(backboneelement.BackboneElement):
-    """Disclaimer: Any field name ends with ``__ext`` doesn't part of
-    Resource StructureDefinition, instead used to enable Extensibility feature
-    for FHIR Primitive Data Types.
-
+    """
     Initial value(s) when item is first rendered.
     One or more values that should be pre-populated in the answer when
     initially rendering the questionnaire for user input.
@@ -1691,8 +1668,6 @@ class QuestionnaireItemInitial(backboneelement.BackboneElement):
         binding_uri="http://hl7.org/fhir/ValueSet/questionnaire-answers",
         # note: Listed Resource Type(s) should be allowed as Reference.
         enum_reference_types=["Resource"],
-        backref="questionnaire_item_initial",
-        parent_name="questionnaire_item_initial",
     )
 
     valueString: fhirtypes.String = Field(

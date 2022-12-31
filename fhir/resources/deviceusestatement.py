@@ -16,10 +16,7 @@ from . import domainresource, fhirtypes
 
 
 class DeviceUseStatement(domainresource.DomainResource):
-    """Disclaimer: Any field name ends with ``__ext`` doesn't part of
-    Resource StructureDefinition, instead used to enable Extensibility feature
-    for FHIR Primitive Data Types.
-
+    """
     Record of use of a device.
     A record of a device being used by a patient where the record is the result
     of a report from the patient or another clinician.
@@ -39,8 +36,6 @@ class DeviceUseStatement(domainresource.DomainResource):
         element_property=True,
         # note: Listed Resource Type(s) should be allowed as Reference.
         enum_reference_types=["ServiceRequest"],
-        backref="device_use_statement",
-        parent_name="device_use_statement",
     )
 
     bodySite: fhirtypes.CodeableConceptType = Field(
@@ -80,8 +75,6 @@ class DeviceUseStatement(domainresource.DomainResource):
             "QuestionnaireResponse",
             "DocumentReference",
         ],
-        backref="device_use_statement",
-        parent_name="device_use_statement",
     )
 
     device: fhirtypes.ReferenceType = Field(
@@ -93,8 +86,6 @@ class DeviceUseStatement(domainresource.DomainResource):
         element_property=True,
         # note: Listed Resource Type(s) should be allowed as Reference.
         enum_reference_types=["Device"],
-        backref="device_use_statement",
-        parent_name="device_use_statement",
     )
 
     identifier: typing.List[fhirtypes.IdentifierType] = Field(
@@ -147,8 +138,6 @@ class DeviceUseStatement(domainresource.DomainResource):
             "DocumentReference",
             "Media",
         ],
-        backref="device_use_statement",
-        parent_name="device_use_statement",
     )
 
     recordedOn: fhirtypes.DateTime = Field(
@@ -177,8 +166,6 @@ class DeviceUseStatement(domainresource.DomainResource):
             "PractitionerRole",
             "RelatedPerson",
         ],
-        backref="device_use_statement",
-        parent_name="device_use_statement",
     )
 
     status: fhirtypes.Code = Field(
@@ -216,8 +203,6 @@ class DeviceUseStatement(domainresource.DomainResource):
         element_property=True,
         # note: Listed Resource Type(s) should be allowed as Reference.
         enum_reference_types=["Patient", "Group"],
-        backref="device_use_statement",
-        parent_name="device_use_statement",
     )
 
     timingDateTime: fhirtypes.DateTime = Field(

@@ -16,10 +16,7 @@ from . import backboneelement, domainresource, fhirtypes
 
 
 class Patient(domainresource.DomainResource):
-    """Disclaimer: Any field name ends with ``__ext`` doesn't part of
-    Resource StructureDefinition, instead used to enable Extensibility feature
-    for FHIR Primitive Data Types.
-
+    """
     Information about an individual or animal receiving health care services.
     Demographics and other administrative information about an individual or
     animal receiving care or other health-related services.
@@ -153,8 +150,6 @@ class Patient(domainresource.DomainResource):
         element_property=True,
         # note: Listed Resource Type(s) should be allowed as Reference.
         enum_reference_types=["Organization", "Practitioner", "PractitionerRole"],
-        backref="patient",
-        parent_name="patient",
     )
 
     identifier: typing.List[fhirtypes.IdentifierType] = Field(
@@ -186,8 +181,6 @@ class Patient(domainresource.DomainResource):
         element_property=True,
         # note: Listed Resource Type(s) should be allowed as Reference.
         enum_reference_types=["Organization"],
-        backref="patient",
-        parent_name="patient",
     )
 
     maritalStatus: fhirtypes.CodeableConceptType = Field(
@@ -354,10 +347,7 @@ class Patient(domainresource.DomainResource):
 
 
 class PatientCommunication(backboneelement.BackboneElement):
-    """Disclaimer: Any field name ends with ``__ext`` doesn't part of
-    Resource StructureDefinition, instead used to enable Extensibility feature
-    for FHIR Primitive Data Types.
-
+    """
     A language which may be used to communicate with the patient about his or
     her health.
     """
@@ -411,10 +401,7 @@ class PatientCommunication(backboneelement.BackboneElement):
 
 
 class PatientContact(backboneelement.BackboneElement):
-    """Disclaimer: Any field name ends with ``__ext`` doesn't part of
-    Resource StructureDefinition, instead used to enable Extensibility feature
-    for FHIR Primitive Data Types.
-
+    """
     A contact party (e.g. guardian, partner, friend) for the patient.
     """
 
@@ -474,8 +461,6 @@ class PatientContact(backboneelement.BackboneElement):
         element_property=True,
         # note: Listed Resource Type(s) should be allowed as Reference.
         enum_reference_types=["Organization"],
-        backref="patient_contact",
-        parent_name="patient_contact",
     )
 
     period: fhirtypes.PeriodType = Field(
@@ -539,10 +524,7 @@ class PatientContact(backboneelement.BackboneElement):
 
 
 class PatientLink(backboneelement.BackboneElement):
-    """Disclaimer: Any field name ends with ``__ext`` doesn't part of
-    Resource StructureDefinition, instead used to enable Extensibility feature
-    for FHIR Primitive Data Types.
-
+    """
     Link to another patient resource that concerns the same actual person.
     Link to another patient resource that concerns the same actual patient.
     """
@@ -558,8 +540,6 @@ class PatientLink(backboneelement.BackboneElement):
         element_property=True,
         # note: Listed Resource Type(s) should be allowed as Reference.
         enum_reference_types=["Patient", "RelatedPerson"],
-        backref="patient_link",
-        parent_name="patient_link",
     )
 
     type: fhirtypes.Code = Field(

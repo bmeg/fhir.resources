@@ -16,10 +16,7 @@ from . import backboneelement, domainresource, fhirtypes
 
 
 class CodeSystem(domainresource.DomainResource):
-    """Disclaimer: Any field name ends with ``__ext`` doesn't part of
-    Resource StructureDefinition, instead used to enable Extensibility feature
-    for FHIR Primitive Data Types.
-
+    """
     Declares the existence of and describes a code system or code system
     supplement.
     The CodeSystem resource is used to declare the existence of and describe a
@@ -348,8 +345,6 @@ class CodeSystem(domainresource.DomainResource):
         element_property=True,
         # note: Listed Resource Type(s) should be allowed as Reference.
         enum_reference_types=["CodeSystem"],
-        backref="code_system",
-        parent_name="code_system",
     )
     supplements__ext: fhirtypes.FHIRPrimitiveExtensionType = Field(
         None, alias="_supplements", title="Extension field for ``supplements``."
@@ -418,8 +413,6 @@ class CodeSystem(domainresource.DomainResource):
         element_property=True,
         # note: Listed Resource Type(s) should be allowed as Reference.
         enum_reference_types=["ValueSet"],
-        backref="code_system",
-        parent_name="code_system",
     )
     valueSet__ext: fhirtypes.FHIRPrimitiveExtensionType = Field(
         None, alias="_valueSet", title="Extension field for ``valueSet``."
@@ -566,10 +559,7 @@ class CodeSystem(domainresource.DomainResource):
 
 
 class CodeSystemConcept(backboneelement.BackboneElement):
-    """Disclaimer: Any field name ends with ``__ext`` doesn't part of
-    Resource StructureDefinition, instead used to enable Extensibility feature
-    for FHIR Primitive Data Types.
-
+    """
     Concepts in the code system.
     Concepts that are in the code system. The concept definitions are
     inherently hierarchical, but the definitions must be consulted to determine
@@ -739,10 +729,7 @@ class CodeSystemConcept(backboneelement.BackboneElement):
 
 
 class CodeSystemConceptDesignation(backboneelement.BackboneElement):
-    """Disclaimer: Any field name ends with ``__ext`` doesn't part of
-    Resource StructureDefinition, instead used to enable Extensibility feature
-    for FHIR Primitive Data Types.
-
+    """
     Additional representations for the concept.
     Additional representations for the concept - other languages, aliases,
     specialized purposes, used for particular purposes, etc.
@@ -867,10 +854,7 @@ class CodeSystemConceptDesignation(backboneelement.BackboneElement):
 
 
 class CodeSystemConceptProperty(backboneelement.BackboneElement):
-    """Disclaimer: Any field name ends with ``__ext`` doesn't part of
-    Resource StructureDefinition, instead used to enable Extensibility feature
-    for FHIR Primitive Data Types.
-
+    """
     Property value for the concept.
     A property value for this concept.
     """
@@ -1121,10 +1105,7 @@ class CodeSystemConceptProperty(backboneelement.BackboneElement):
 
 
 class CodeSystemFilter(backboneelement.BackboneElement):
-    """Disclaimer: Any field name ends with ``__ext`` doesn't part of
-    Resource StructureDefinition, instead used to enable Extensibility feature
-    for FHIR Primitive Data Types.
-
+    """
     Filter that can be used in a value set.
     A filter that can be used in a value set compose statement when selecting
     concepts using a filter.
@@ -1291,10 +1272,7 @@ class CodeSystemFilter(backboneelement.BackboneElement):
 
 
 class CodeSystemProperty(backboneelement.BackboneElement):
-    """Disclaimer: Any field name ends with ``__ext`` doesn't part of
-    Resource StructureDefinition, instead used to enable Extensibility feature
-    for FHIR Primitive Data Types.
-
+    """
     Additional information supplied about each concept.
     A property defines an additional slot through which additional information
     can be provided about a concept.

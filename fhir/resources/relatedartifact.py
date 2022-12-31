@@ -16,10 +16,7 @@ from . import element, fhirtypes
 
 
 class RelatedArtifact(element.Element):
-    """Disclaimer: Any field name ends with ``__ext`` doesn't part of
-    Resource StructureDefinition, instead used to enable Extensibility feature
-    for FHIR Primitive Data Types.
-
+    """
     Related artifacts for a knowledge resource.
     Related artifacts such as additional documentation, justification, or
     bibliographic references.
@@ -96,8 +93,6 @@ class RelatedArtifact(element.Element):
         element_property=True,
         # note: Listed Resource Type(s) should be allowed as Reference.
         enum_reference_types=["Resource"],
-        backref="related_artifact",
-        parent_name="related_artifact",
     )
     resource__ext: fhirtypes.FHIRPrimitiveExtensionType = Field(
         None, alias="_resource", title="Extension field for ``resource``."

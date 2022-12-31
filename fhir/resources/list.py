@@ -16,10 +16,7 @@ from . import backboneelement, domainresource, fhirtypes
 
 
 class List(domainresource.DomainResource):
-    """Disclaimer: Any field name ends with ``__ext`` doesn't part of
-    Resource StructureDefinition, instead used to enable Extensibility feature
-    for FHIR Primitive Data Types.
-
+    """
     A list is a curated collection of resources.
     """
 
@@ -78,8 +75,6 @@ class List(domainresource.DomainResource):
         element_property=True,
         # note: Listed Resource Type(s) should be allowed as Reference.
         enum_reference_types=["Encounter"],
-        backref="list",
-        parent_name="list",
     )
 
     entry: typing.List[fhirtypes.ListEntryType] = Field(
@@ -168,8 +163,6 @@ class List(domainresource.DomainResource):
         element_property=True,
         # note: Listed Resource Type(s) should be allowed as Reference.
         enum_reference_types=["Practitioner", "PractitionerRole", "Patient", "Device"],
-        backref="list",
-        parent_name="list",
     )
 
     status: fhirtypes.Code = Field(
@@ -208,8 +201,6 @@ class List(domainresource.DomainResource):
         element_property=True,
         # note: Listed Resource Type(s) should be allowed as Reference.
         enum_reference_types=["Patient", "Group", "Device", "Location"],
-        backref="list",
-        parent_name="list",
     )
 
     title: fhirtypes.String = Field(
@@ -315,10 +306,7 @@ class List(domainresource.DomainResource):
 
 
 class ListEntry(backboneelement.BackboneElement):
-    """Disclaimer: Any field name ends with ``__ext`` doesn't part of
-    Resource StructureDefinition, instead used to enable Extensibility feature
-    for FHIR Primitive Data Types.
-
+    """
     Entries in the list.
     Entries in this list.
     """
@@ -375,8 +363,6 @@ class ListEntry(backboneelement.BackboneElement):
         element_property=True,
         # note: Listed Resource Type(s) should be allowed as Reference.
         enum_reference_types=["Resource"],
-        backref="list_entry",
-        parent_name="list_entry",
     )
 
     @classmethod

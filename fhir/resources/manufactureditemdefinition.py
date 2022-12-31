@@ -16,10 +16,7 @@ from . import backboneelement, domainresource, fhirtypes
 
 
 class ManufacturedItemDefinition(domainresource.DomainResource):
-    """Disclaimer: Any field name ends with ``__ext`` doesn't part of
-    Resource StructureDefinition, instead used to enable Extensibility feature
-    for FHIR Primitive Data Types.
-
+    """
     The definition and characteristics of a medicinal manufactured item, such
     as a tablet or capsule, as contained in a packaged medicinal product.
     """
@@ -84,8 +81,6 @@ class ManufacturedItemDefinition(domainresource.DomainResource):
         element_property=True,
         # note: Listed Resource Type(s) should be allowed as Reference.
         enum_reference_types=["Organization"],
-        backref="manufactured_item_definition",
-        parent_name="manufactured_item_definition",
     )
 
     property: typing.List[fhirtypes.ManufacturedItemDefinitionPropertyType] = Field(
@@ -222,10 +217,7 @@ class ManufacturedItemDefinition(domainresource.DomainResource):
 
 
 class ManufacturedItemDefinitionProperty(backboneelement.BackboneElement):
-    """Disclaimer: Any field name ends with ``__ext`` doesn't part of
-    Resource StructureDefinition, instead used to enable Extensibility feature
-    for FHIR Primitive Data Types.
-
+    """
     General characteristics of this item.
     """
 

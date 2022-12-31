@@ -12,10 +12,7 @@ from . import element, fhirtypes
 
 
 class Period(element.Element):
-    """Disclaimer: Any field name ends with ``__ext`` doesn't part of
-    Resource StructureDefinition, instead used to enable Extensibility feature
-    for FHIR Primitive Data Types.
-
+    """
     Time range defined by start and end date/time.
     A time period defined by a start and end date and optionally time.
     """

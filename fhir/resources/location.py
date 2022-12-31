@@ -16,10 +16,7 @@ from . import backboneelement, domainresource, fhirtypes
 
 
 class Location(domainresource.DomainResource):
-    """Disclaimer: Any field name ends with ``__ext`` doesn't part of
-    Resource StructureDefinition, instead used to enable Extensibility feature
-    for FHIR Primitive Data Types.
-
+    """
     Details and position information for a physical place.
     Details and position information for a physical place where services are
     provided and resources and participants may be stored, found, contained, or
@@ -101,8 +98,6 @@ class Location(domainresource.DomainResource):
         element_property=True,
         # note: Listed Resource Type(s) should be allowed as Reference.
         enum_reference_types=["Endpoint"],
-        backref="location",
-        parent_name="location",
     )
 
     hoursOfOperation: typing.List[fhirtypes.LocationHoursOfOperationType] = Field(
@@ -135,8 +130,6 @@ class Location(domainresource.DomainResource):
         element_property=True,
         # note: Listed Resource Type(s) should be allowed as Reference.
         enum_reference_types=["Organization"],
-        backref="location",
-        parent_name="location",
     )
 
     mode: fhirtypes.Code = Field(
@@ -203,8 +196,6 @@ class Location(domainresource.DomainResource):
         element_property=True,
         # note: Listed Resource Type(s) should be allowed as Reference.
         enum_reference_types=["Location"],
-        backref="location",
-        parent_name="location",
     )
 
     physicalType: fhirtypes.CodeableConceptType = Field(
@@ -325,10 +316,7 @@ class Location(domainresource.DomainResource):
 
 
 class LocationHoursOfOperation(backboneelement.BackboneElement):
-    """Disclaimer: Any field name ends with ``__ext`` doesn't part of
-    Resource StructureDefinition, instead used to enable Extensibility feature
-    for FHIR Primitive Data Types.
-
+    """
     What days/times during a week is this location usually open.
     """
 
@@ -411,10 +399,7 @@ class LocationHoursOfOperation(backboneelement.BackboneElement):
 
 
 class LocationPosition(backboneelement.BackboneElement):
-    """Disclaimer: Any field name ends with ``__ext`` doesn't part of
-    Resource StructureDefinition, instead used to enable Extensibility feature
-    for FHIR Primitive Data Types.
-
+    """
     The absolute geographic location.
     The absolute geographic location of the Location, expressed using the WGS84
     datum (This is the same co-ordinate system used in KML).

@@ -16,10 +16,7 @@ from . import backboneelement, domainresource, fhirtypes
 
 
 class Citation(domainresource.DomainResource):
-    """Disclaimer: Any field name ends with ``__ext`` doesn't part of
-    Resource StructureDefinition, instead used to enable Extensibility feature
-    for FHIR Primitive Data Types.
-
+    """
     A description of identification, location, or contributorship of a
     publication (article or artifact).
     The Citation Resource enables reference to any knowledge artifact for
@@ -528,10 +525,7 @@ class Citation(domainresource.DomainResource):
 
 
 class CitationCitedArtifact(backboneelement.BackboneElement):
-    """Disclaimer: Any field name ends with ``__ext`` doesn't part of
-    Resource StructureDefinition, instead used to enable Extensibility feature
-    for FHIR Primitive Data Types.
-
+    """
     The article or artifact being described.
     """
 
@@ -724,10 +718,7 @@ class CitationCitedArtifact(backboneelement.BackboneElement):
 
 
 class CitationCitedArtifactAbstract(backboneelement.BackboneElement):
-    """Disclaimer: Any field name ends with ``__ext`` doesn't part of
-    Resource StructureDefinition, instead used to enable Extensibility feature
-    for FHIR Primitive Data Types.
-
+    """
     Summary of the article or artifact.
     """
 
@@ -862,10 +853,7 @@ class CitationCitedArtifactAbstract(backboneelement.BackboneElement):
 
 
 class CitationCitedArtifactClassification(backboneelement.BackboneElement):
-    """Disclaimer: Any field name ends with ``__ext`` doesn't part of
-    Resource StructureDefinition, instead used to enable Extensibility feature
-    for FHIR Primitive Data Types.
-
+    """
     The assignment to an organizing scheme.
     """
 
@@ -921,10 +909,7 @@ class CitationCitedArtifactClassification(backboneelement.BackboneElement):
 
 
 class CitationCitedArtifactClassificationWhoClassified(backboneelement.BackboneElement):
-    """Disclaimer: Any field name ends with ``__ext`` doesn't part of
-    Resource StructureDefinition, instead used to enable Extensibility feature
-    for FHIR Primitive Data Types.
-
+    """
     Provenance and copyright of classification.
     """
 
@@ -967,8 +952,6 @@ class CitationCitedArtifactClassificationWhoClassified(backboneelement.BackboneE
         element_property=True,
         # note: Listed Resource Type(s) should be allowed as Reference.
         enum_reference_types=["Organization"],
-        backref="citation_cited_artifact_classification_who_classified",
-        parent_name="citation_cited_artifact_classification_who_classified",
     )
 
     person: fhirtypes.ReferenceType = Field(
@@ -980,8 +963,6 @@ class CitationCitedArtifactClassificationWhoClassified(backboneelement.BackboneE
         element_property=True,
         # note: Listed Resource Type(s) should be allowed as Reference.
         enum_reference_types=["Person", "Practitioner"],
-        backref="citation_cited_artifact_classification_who_classified",
-        parent_name="citation_cited_artifact_classification_who_classified",
     )
 
     publisher: fhirtypes.ReferenceType = Field(
@@ -996,8 +977,6 @@ class CitationCitedArtifactClassificationWhoClassified(backboneelement.BackboneE
         element_property=True,
         # note: Listed Resource Type(s) should be allowed as Reference.
         enum_reference_types=["Organization"],
-        backref="citation_cited_artifact_classification_who_classified",
-        parent_name="citation_cited_artifact_classification_who_classified",
     )
 
     @classmethod
@@ -1019,10 +998,7 @@ class CitationCitedArtifactClassificationWhoClassified(backboneelement.BackboneE
 
 
 class CitationCitedArtifactContributorship(backboneelement.BackboneElement):
-    """Disclaimer: Any field name ends with ``__ext`` doesn't part of
-    Resource StructureDefinition, instead used to enable Extensibility feature
-    for FHIR Primitive Data Types.
-
+    """
     Attribution of authors and other contributors.
     This element is used to list authors and other contributors, their contact
     information, specific contributions, and summary statements.
@@ -1075,10 +1051,7 @@ class CitationCitedArtifactContributorship(backboneelement.BackboneElement):
 
 
 class CitationCitedArtifactContributorshipEntry(backboneelement.BackboneElement):
-    """Disclaimer: Any field name ends with ``__ext`` doesn't part of
-    Resource StructureDefinition, instead used to enable Extensibility feature
-    for FHIR Primitive Data Types.
-
+    """
     An individual entity named in the list.
     An individual entity named in the author list or contributor list.
     """
@@ -1252,10 +1225,7 @@ class CitationCitedArtifactContributorshipEntry(backboneelement.BackboneElement)
 class CitationCitedArtifactContributorshipEntryAffiliationInfo(
     backboneelement.BackboneElement
 ):
-    """Disclaimer: Any field name ends with ``__ext`` doesn't part of
-    Resource StructureDefinition, instead used to enable Extensibility feature
-    for FHIR Primitive Data Types.
-
+    """
     Organizational affiliation.
     Organization affiliated with the entity.
     """
@@ -1316,10 +1286,7 @@ class CitationCitedArtifactContributorshipEntryAffiliationInfo(
 class CitationCitedArtifactContributorshipEntryContributionInstance(
     backboneelement.BackboneElement
 ):
-    """Disclaimer: Any field name ends with ``__ext`` doesn't part of
-    Resource StructureDefinition, instead used to enable Extensibility feature
-    for FHIR Primitive Data Types.
-
+    """
     Contributions with accounting for time or number.
     """
 
@@ -1361,10 +1328,7 @@ class CitationCitedArtifactContributorshipEntryContributionInstance(
 
 
 class CitationCitedArtifactContributorshipSummary(backboneelement.BackboneElement):
-    """Disclaimer: Any field name ends with ``__ext`` doesn't part of
-    Resource StructureDefinition, instead used to enable Extensibility feature
-    for FHIR Primitive Data Types.
-
+    """
     Used to record a display of the author/contributor list without separate
     coding for each list member.
     """
@@ -1503,10 +1467,7 @@ class CitationCitedArtifactContributorshipSummary(backboneelement.BackboneElemen
 
 
 class CitationCitedArtifactPart(backboneelement.BackboneElement):
-    """Disclaimer: Any field name ends with ``__ext`` doesn't part of
-    Resource StructureDefinition, instead used to enable Extensibility feature
-    for FHIR Primitive Data Types.
-
+    """
     The component of the article or artifact.
     """
 
@@ -1521,8 +1482,6 @@ class CitationCitedArtifactPart(backboneelement.BackboneElement):
         element_property=True,
         # note: Listed Resource Type(s) should be allowed as Reference.
         enum_reference_types=["Citation"],
-        backref="citation_cited_artifact_part",
-        parent_name="citation_cited_artifact_part",
     )
 
     type: fhirtypes.CodeableConceptType = Field(
@@ -1559,10 +1518,7 @@ class CitationCitedArtifactPart(backboneelement.BackboneElement):
 
 
 class CitationCitedArtifactPublicationForm(backboneelement.BackboneElement):
-    """Disclaimer: Any field name ends with ``__ext`` doesn't part of
-    Resource StructureDefinition, instead used to enable Extensibility feature
-    for FHIR Primitive Data Types.
-
+    """
     If multiple, used to represent alternative forms of the article that are
     not separate citations.
     """
@@ -1731,10 +1687,7 @@ class CitationCitedArtifactPublicationForm(backboneelement.BackboneElement):
 class CitationCitedArtifactPublicationFormPeriodicRelease(
     backboneelement.BackboneElement
 ):
-    """Disclaimer: Any field name ends with ``__ext`` doesn't part of
-    Resource StructureDefinition, instead used to enable Extensibility feature
-    for FHIR Primitive Data Types.
-
+    """
     The specific issue in which the cited article resides.
     """
 
@@ -1810,10 +1763,7 @@ class CitationCitedArtifactPublicationFormPeriodicRelease(
 class CitationCitedArtifactPublicationFormPeriodicReleaseDateOfPublication(
     backboneelement.BackboneElement
 ):
-    """Disclaimer: Any field name ends with ``__ext`` doesn't part of
-    Resource StructureDefinition, instead used to enable Extensibility feature
-    for FHIR Primitive Data Types.
-
+    """
     Defining the date on which the issue of the journal was published.
     """
 
@@ -1917,10 +1867,7 @@ class CitationCitedArtifactPublicationFormPeriodicReleaseDateOfPublication(
 
 
 class CitationCitedArtifactPublicationFormPublishedIn(backboneelement.BackboneElement):
-    """Disclaimer: Any field name ends with ``__ext`` doesn't part of
-    Resource StructureDefinition, instead used to enable Extensibility feature
-    for FHIR Primitive Data Types.
-
+    """
     The collection the cited article or artifact is published in.
     """
 
@@ -1947,8 +1894,6 @@ class CitationCitedArtifactPublicationFormPublishedIn(backboneelement.BackboneEl
         element_property=True,
         # note: Listed Resource Type(s) should be allowed as Reference.
         enum_reference_types=["Organization"],
-        backref="citation_cited_artifact_publication_form_published_in",
-        parent_name="citation_cited_artifact_publication_form_published_in",
     )
 
     publisherLocation: fhirtypes.String = Field(
@@ -2008,10 +1953,7 @@ class CitationCitedArtifactPublicationFormPublishedIn(backboneelement.BackboneEl
 
 
 class CitationCitedArtifactRelatesTo(backboneelement.BackboneElement):
-    """Disclaimer: Any field name ends with ``__ext`` doesn't part of
-    Resource StructureDefinition, instead used to enable Extensibility feature
-    for FHIR Primitive Data Types.
-
+    """
     The artifact related to the cited artifact.
     """
 
@@ -2077,8 +2019,6 @@ class CitationCitedArtifactRelatesTo(backboneelement.BackboneElement):
         one_of_many_required=True,
         # note: Listed Resource Type(s) should be allowed as Reference.
         enum_reference_types=["Resource"],
-        backref="citation_cited_artifact_relates_to",
-        parent_name="citation_cited_artifact_relates_to",
     )
 
     targetUri: fhirtypes.Uri = Field(
@@ -2161,10 +2101,7 @@ class CitationCitedArtifactRelatesTo(backboneelement.BackboneElement):
 
 
 class CitationCitedArtifactStatusDate(backboneelement.BackboneElement):
-    """Disclaimer: Any field name ends with ``__ext`` doesn't part of
-    Resource StructureDefinition, instead used to enable Extensibility feature
-    for FHIR Primitive Data Types.
-
+    """
     An effective date or period for a status of the cited artifact.
     """
 
@@ -2213,10 +2150,7 @@ class CitationCitedArtifactStatusDate(backboneelement.BackboneElement):
 
 
 class CitationCitedArtifactTitle(backboneelement.BackboneElement):
-    """Disclaimer: Any field name ends with ``__ext`` doesn't part of
-    Resource StructureDefinition, instead used to enable Extensibility feature
-    for FHIR Primitive Data Types.
-
+    """
     The title details of the article or artifact.
     """
 
@@ -2331,10 +2265,7 @@ class CitationCitedArtifactTitle(backboneelement.BackboneElement):
 
 
 class CitationCitedArtifactVersion(backboneelement.BackboneElement):
-    """Disclaimer: Any field name ends with ``__ext`` doesn't part of
-    Resource StructureDefinition, instead used to enable Extensibility feature
-    for FHIR Primitive Data Types.
-
+    """
     The defined version of the cited artifact.
     """
 
@@ -2349,8 +2280,6 @@ class CitationCitedArtifactVersion(backboneelement.BackboneElement):
         element_property=True,
         # note: Listed Resource Type(s) should be allowed as Reference.
         enum_reference_types=["Citation"],
-        backref="citation_cited_artifact_version",
-        parent_name="citation_cited_artifact_version",
     )
 
     value: fhirtypes.String = Field(
@@ -2435,10 +2364,7 @@ class CitationCitedArtifactVersion(backboneelement.BackboneElement):
 
 
 class CitationCitedArtifactWebLocation(backboneelement.BackboneElement):
-    """Disclaimer: Any field name ends with ``__ext`` doesn't part of
-    Resource StructureDefinition, instead used to enable Extensibility feature
-    for FHIR Primitive Data Types.
-
+    """
     Used for any URL for the article or artifact cited.
     """
 
@@ -2478,10 +2404,7 @@ class CitationCitedArtifactWebLocation(backboneelement.BackboneElement):
 
 
 class CitationClassification(backboneelement.BackboneElement):
-    """Disclaimer: Any field name ends with ``__ext`` doesn't part of
-    Resource StructureDefinition, instead used to enable Extensibility feature
-    for FHIR Primitive Data Types.
-
+    """
     The assignment to an organizing scheme.
     """
 
@@ -2521,10 +2444,7 @@ class CitationClassification(backboneelement.BackboneElement):
 
 
 class CitationRelatesTo(backboneelement.BackboneElement):
-    """Disclaimer: Any field name ends with ``__ext`` doesn't part of
-    Resource StructureDefinition, instead used to enable Extensibility feature
-    for FHIR Primitive Data Types.
-
+    """
     Artifact related to the Citation Resource.
     """
 
@@ -2590,8 +2510,6 @@ class CitationRelatesTo(backboneelement.BackboneElement):
         one_of_many_required=True,
         # note: Listed Resource Type(s) should be allowed as Reference.
         enum_reference_types=["Resource"],
-        backref="citation_relates_to",
-        parent_name="citation_relates_to",
     )
 
     targetUri: fhirtypes.Uri = Field(
@@ -2674,10 +2592,7 @@ class CitationRelatesTo(backboneelement.BackboneElement):
 
 
 class CitationStatusDate(backboneelement.BackboneElement):
-    """Disclaimer: Any field name ends with ``__ext`` doesn't part of
-    Resource StructureDefinition, instead used to enable Extensibility feature
-    for FHIR Primitive Data Types.
-
+    """
     An effective date or period for a status of the citation.
     """
 
@@ -2726,10 +2641,7 @@ class CitationStatusDate(backboneelement.BackboneElement):
 
 
 class CitationSummary(backboneelement.BackboneElement):
-    """Disclaimer: Any field name ends with ``__ext`` doesn't part of
-    Resource StructureDefinition, instead used to enable Extensibility feature
-    for FHIR Primitive Data Types.
-
+    """
     A human-readable display of the citation.
     """
 

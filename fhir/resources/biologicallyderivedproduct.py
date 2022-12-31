@@ -14,10 +14,7 @@ from . import backboneelement, domainresource, fhirtypes
 
 
 class BiologicallyDerivedProduct(domainresource.DomainResource):
-    """Disclaimer: Any field name ends with ``__ext`` doesn't part of
-    Resource StructureDefinition, instead used to enable Extensibility feature
-    for FHIR Primitive Data Types.
-
+    """
     A material substance originating from a biological entity.
     A material substance originating from a biological entity intended to be
     transplanted or infused
@@ -72,8 +69,6 @@ class BiologicallyDerivedProduct(domainresource.DomainResource):
         element_property=True,
         # note: Listed Resource Type(s) should be allowed as Reference.
         enum_reference_types=["BiologicallyDerivedProduct"],
-        backref="biologically_derived_product",
-        parent_name="biologically_derived_product",
     )
 
     processing: typing.List[fhirtypes.BiologicallyDerivedProductProcessingType] = Field(
@@ -148,8 +143,6 @@ class BiologicallyDerivedProduct(domainresource.DomainResource):
         element_property=True,
         # note: Listed Resource Type(s) should be allowed as Reference.
         enum_reference_types=["ServiceRequest"],
-        backref="biologically_derived_product",
-        parent_name="biologically_derived_product",
     )
 
     status: fhirtypes.Code = Field(
@@ -214,10 +207,7 @@ class BiologicallyDerivedProduct(domainresource.DomainResource):
 
 
 class BiologicallyDerivedProductCollection(backboneelement.BackboneElement):
-    """Disclaimer: Any field name ends with ``__ext`` doesn't part of
-    Resource StructureDefinition, instead used to enable Extensibility feature
-    for FHIR Primitive Data Types.
-
+    """
     How this product was collected.
     """
 
@@ -261,8 +251,6 @@ class BiologicallyDerivedProductCollection(backboneelement.BackboneElement):
         element_property=True,
         # note: Listed Resource Type(s) should be allowed as Reference.
         enum_reference_types=["Practitioner", "PractitionerRole"],
-        backref="biologically_derived_product_collection",
-        parent_name="biologically_derived_product_collection",
     )
 
     source: fhirtypes.ReferenceType = Field(
@@ -277,8 +265,6 @@ class BiologicallyDerivedProductCollection(backboneelement.BackboneElement):
         element_property=True,
         # note: Listed Resource Type(s) should be allowed as Reference.
         enum_reference_types=["Patient", "Organization"],
-        backref="biologically_derived_product_collection",
-        parent_name="biologically_derived_product_collection",
     )
 
     @classmethod
@@ -337,10 +323,7 @@ class BiologicallyDerivedProductCollection(backboneelement.BackboneElement):
 
 
 class BiologicallyDerivedProductManipulation(backboneelement.BackboneElement):
-    """Disclaimer: Any field name ends with ``__ext`` doesn't part of
-    Resource StructureDefinition, instead used to enable Extensibility feature
-    for FHIR Primitive Data Types.
-
+    """
     Any manipulation of product post-collection.
     Any manipulation of product post-collection that is intended to alter the
     product.  For example a buffy-coat enrichment or CD8 reduction of
@@ -443,10 +426,7 @@ class BiologicallyDerivedProductManipulation(backboneelement.BackboneElement):
 
 
 class BiologicallyDerivedProductProcessing(backboneelement.BackboneElement):
-    """Disclaimer: Any field name ends with ``__ext`` doesn't part of
-    Resource StructureDefinition, instead used to enable Extensibility feature
-    for FHIR Primitive Data Types.
-
+    """
     Any processing of the product during collection.
     Any processing of the product during collection that does not change the
     fundamental nature of the product. For example adding anti-coagulants
@@ -464,8 +444,6 @@ class BiologicallyDerivedProductProcessing(backboneelement.BackboneElement):
         element_property=True,
         # note: Listed Resource Type(s) should be allowed as Reference.
         enum_reference_types=["Substance"],
-        backref="biologically_derived_product_processing",
-        parent_name="biologically_derived_product_processing",
     )
 
     description: fhirtypes.String = Field(
@@ -577,10 +555,7 @@ class BiologicallyDerivedProductProcessing(backboneelement.BackboneElement):
 
 
 class BiologicallyDerivedProductStorage(backboneelement.BackboneElement):
-    """Disclaimer: Any field name ends with ``__ext`` doesn't part of
-    Resource StructureDefinition, instead used to enable Extensibility feature
-    for FHIR Primitive Data Types.
-
+    """
     Product storage.
     """
 

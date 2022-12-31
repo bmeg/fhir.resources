@@ -16,10 +16,7 @@ from . import backboneelement, domainresource, fhirtypes
 
 
 class GraphDefinition(domainresource.DomainResource):
-    """Disclaimer: Any field name ends with ``__ext`` doesn't part of
-    Resource StructureDefinition, instead used to enable Extensibility feature
-    for FHIR Primitive Data Types.
-
+    """
     Definition of a graph of resources.
     A formal computable definition of a graph of resources - that is, a
     coherent set of resources that form a graph by following references. The
@@ -139,8 +136,6 @@ class GraphDefinition(domainresource.DomainResource):
         element_property=True,
         # note: Listed Resource Type(s) should be allowed as Reference.
         enum_reference_types=["StructureDefinition"],
-        backref="graph_definition",
-        parent_name="graph_definition",
     )
     profile__ext: fhirtypes.FHIRPrimitiveExtensionType = Field(
         None, alias="_profile", title="Extension field for ``profile``."
@@ -376,10 +371,7 @@ class GraphDefinition(domainresource.DomainResource):
 
 
 class GraphDefinitionLink(backboneelement.BackboneElement):
-    """Disclaimer: Any field name ends with ``__ext`` doesn't part of
-    Resource StructureDefinition, instead used to enable Extensibility feature
-    for FHIR Primitive Data Types.
-
+    """
     Links this graph makes rules about.
     """
 
@@ -480,10 +472,7 @@ class GraphDefinitionLink(backboneelement.BackboneElement):
 
 
 class GraphDefinitionLinkTarget(backboneelement.BackboneElement):
-    """Disclaimer: Any field name ends with ``__ext`` doesn't part of
-    Resource StructureDefinition, instead used to enable Extensibility feature
-    for FHIR Primitive Data Types.
-
+    """
     Potential target for the link.
     """
 
@@ -530,8 +519,6 @@ class GraphDefinitionLinkTarget(backboneelement.BackboneElement):
         element_property=True,
         # note: Listed Resource Type(s) should be allowed as Reference.
         enum_reference_types=["StructureDefinition"],
-        backref="graph_definition_link_target",
-        parent_name="graph_definition_link_target",
     )
     profile__ext: fhirtypes.FHIRPrimitiveExtensionType = Field(
         None, alias="_profile", title="Extension field for ``profile``."
@@ -633,10 +620,7 @@ class GraphDefinitionLinkTarget(backboneelement.BackboneElement):
 
 
 class GraphDefinitionLinkTargetCompartment(backboneelement.BackboneElement):
-    """Disclaimer: Any field name ends with ``__ext`` doesn't part of
-    Resource StructureDefinition, instead used to enable Extensibility feature
-    for FHIR Primitive Data Types.
-
+    """
     Compartment Consistency Rules.
     """
 

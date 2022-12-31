@@ -12,10 +12,7 @@ from . import element, fhirtypes
 
 
 class RatioRange(element.Element):
-    """Disclaimer: Any field name ends with ``__ext`` doesn't part of
-    Resource StructureDefinition, instead used to enable Extensibility feature
-    for FHIR Primitive Data Types.
-
+    """
     Range of ratio values.
     A range of ratios expressed as a low and high numerator and a denominator.
     """

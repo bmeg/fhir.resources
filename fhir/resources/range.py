@@ -12,10 +12,7 @@ from . import element, fhirtypes
 
 
 class Range(element.Element):
-    """Disclaimer: Any field name ends with ``__ext`` doesn't part of
-    Resource StructureDefinition, instead used to enable Extensibility feature
-    for FHIR Primitive Data Types.
-
+    """
     Set of values bounded by low and high.
     A set of ordered Quantities defined by a low and high limit.
     """

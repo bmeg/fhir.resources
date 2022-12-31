@@ -16,10 +16,7 @@ from . import element, fhirtypes
 
 
 class TriggerDefinition(element.Element):
-    """Disclaimer: Any field name ends with ``__ext`` doesn't part of
-    Resource StructureDefinition, instead used to enable Extensibility feature
-    for FHIR Primitive Data Types.
-
+    """
     Defines an expected trigger for a module.
     A description of a triggering event. Triggering events can be named events,
     data events, or periodic, as determined by the type element.
@@ -111,8 +108,6 @@ class TriggerDefinition(element.Element):
         one_of_many_required=False,
         # note: Listed Resource Type(s) should be allowed as Reference.
         enum_reference_types=["Schedule"],
-        backref="trigger_definition",
-        parent_name="trigger_definition",
     )
 
     timingTiming: fhirtypes.TimingType = Field(

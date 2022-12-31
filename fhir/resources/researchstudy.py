@@ -16,10 +16,7 @@ from . import backboneelement, domainresource, fhirtypes
 
 
 class ResearchStudy(domainresource.DomainResource):
-    """Disclaimer: Any field name ends with ``__ext`` doesn't part of
-    Resource StructureDefinition, instead used to enable Extensibility feature
-    for FHIR Primitive Data Types.
-
+    """
     Investigation to increase healthcare-related patient-independent knowledge.
     A process where a researcher or organization plans and then executes a
     series of steps intended to increase the field of healthcare-related
@@ -115,8 +112,6 @@ class ResearchStudy(domainresource.DomainResource):
         element_property=True,
         # note: Listed Resource Type(s) should be allowed as Reference.
         enum_reference_types=["Group"],
-        backref="research_study",
-        parent_name="research_study",
     )
 
     focus: typing.List[fhirtypes.CodeableConceptType] = Field(
@@ -212,8 +207,6 @@ class ResearchStudy(domainresource.DomainResource):
         element_property=True,
         # note: Listed Resource Type(s) should be allowed as Reference.
         enum_reference_types=["ResearchStudy"],
-        backref="research_study",
-        parent_name="research_study",
     )
 
     period: fhirtypes.PeriodType = Field(
@@ -306,8 +299,6 @@ class ResearchStudy(domainresource.DomainResource):
         element_property=True,
         # note: Listed Resource Type(s) should be allowed as Reference.
         enum_reference_types=["Practitioner", "PractitionerRole"],
-        backref="research_study",
-        parent_name="research_study",
     )
 
     protocol: typing.List[fhirtypes.ReferenceType] = Field(
@@ -322,8 +313,6 @@ class ResearchStudy(domainresource.DomainResource):
         element_property=True,
         # note: Listed Resource Type(s) should be allowed as Reference.
         enum_reference_types=["PlanDefinition"],
-        backref="research_study",
-        parent_name="research_study",
     )
 
     reasonStopped: fhirtypes.CodeableConceptType = Field(
@@ -371,8 +360,6 @@ class ResearchStudy(domainresource.DomainResource):
         element_property=True,
         # note: Listed Resource Type(s) should be allowed as Reference.
         enum_reference_types=["Location"],
-        backref="research_study",
-        parent_name="research_study",
     )
 
     sponsor: fhirtypes.ReferenceType = Field(
@@ -387,8 +374,6 @@ class ResearchStudy(domainresource.DomainResource):
         element_property=True,
         # note: Listed Resource Type(s) should be allowed as Reference.
         enum_reference_types=["Organization"],
-        backref="research_study",
-        parent_name="research_study",
     )
 
     status: fhirtypes.Code = Field(
@@ -546,10 +531,7 @@ class ResearchStudy(domainresource.DomainResource):
 
 
 class ResearchStudyArm(backboneelement.BackboneElement):
-    """Disclaimer: Any field name ends with ``__ext`` doesn't part of
-    Resource StructureDefinition, instead used to enable Extensibility feature
-    for FHIR Primitive Data Types.
-
+    """
     Defined path through the study for a subject.
     Describes an expected sequence of events for one of the participants of a
     study.  E.g. Exposure to drug A, wash-out, exposure to drug B, wash-out,
@@ -667,10 +649,7 @@ class ResearchStudyArm(backboneelement.BackboneElement):
 
 
 class ResearchStudyObjective(backboneelement.BackboneElement):
-    """Disclaimer: Any field name ends with ``__ext`` doesn't part of
-    Resource StructureDefinition, instead used to enable Extensibility feature
-    for FHIR Primitive Data Types.
-
+    """
     A goal for the study.
     A goal that the study is aiming to achieve in terms of a scientific
     question to be answered by the analysis of data collected during the study.

@@ -16,10 +16,7 @@ from . import backboneelement, domainresource, fhirtypes
 
 
 class MedicinalProductDefinition(domainresource.DomainResource):
-    """Disclaimer: Any field name ends with ``__ext`` doesn't part of
-    Resource StructureDefinition, instead used to enable Extensibility feature
-    for FHIR Primitive Data Types.
-
+    """
     Detailed definition of a medicinal product.
     A medicinal product, being a substance or combination of substances that is
     intended to treat, prevent or diagnose a disease, or to restore, correct or
@@ -63,8 +60,6 @@ class MedicinalProductDefinition(domainresource.DomainResource):
         element_property=True,
         # note: Listed Resource Type(s) should be allowed as Reference.
         enum_reference_types=["DocumentReference"],
-        backref="medicinal_product_definition",
-        parent_name="medicinal_product_definition",
     )
 
     characteristic: typing.List[
@@ -106,8 +101,6 @@ class MedicinalProductDefinition(domainresource.DomainResource):
         element_property=True,
         # note: Listed Resource Type(s) should be allowed as Reference.
         enum_reference_types=["ResearchStudy"],
-        backref="medicinal_product_definition",
-        parent_name="medicinal_product_definition",
     )
 
     code: typing.List[fhirtypes.CodingType] = Field(
@@ -244,8 +237,6 @@ class MedicinalProductDefinition(domainresource.DomainResource):
         binding_uri="http://hl7.org/fhir/ValueSet/substance-codes",
         # note: Listed Resource Type(s) should be allowed as Reference.
         enum_reference_types=["SubstanceDefinition"],
-        backref="medicinal_product_definition",
-        parent_name="medicinal_product_definition",
     )
 
     indication: fhirtypes.Markdown = Field(
@@ -344,8 +335,6 @@ class MedicinalProductDefinition(domainresource.DomainResource):
         element_property=True,
         # note: Listed Resource Type(s) should be allowed as Reference.
         enum_reference_types=["DocumentReference"],
-        backref="medicinal_product_definition",
-        parent_name="medicinal_product_definition",
     )
 
     name: typing.List[fhirtypes.MedicinalProductDefinitionNameType] = Field(
@@ -551,10 +540,7 @@ class MedicinalProductDefinition(domainresource.DomainResource):
 
 
 class MedicinalProductDefinitionCharacteristic(backboneelement.BackboneElement):
-    """Disclaimer: Any field name ends with ``__ext`` doesn't part of
-    Resource StructureDefinition, instead used to enable Extensibility feature
-    for FHIR Primitive Data Types.
-
+    """
     Key product features such as "sugar free", "modified release".
     Allows the key product features to be recorded, such as "sugar free",
     "modified release", "parallel import".
@@ -707,10 +693,7 @@ class MedicinalProductDefinitionCharacteristic(backboneelement.BackboneElement):
 
 
 class MedicinalProductDefinitionContact(backboneelement.BackboneElement):
-    """Disclaimer: Any field name ends with ``__ext`` doesn't part of
-    Resource StructureDefinition, instead used to enable Extensibility feature
-    for FHIR Primitive Data Types.
-
+    """
     A product specific contact, person (in a role), or an organization.
     """
 
@@ -725,8 +708,6 @@ class MedicinalProductDefinitionContact(backboneelement.BackboneElement):
         element_property=True,
         # note: Listed Resource Type(s) should be allowed as Reference.
         enum_reference_types=["Organization", "PractitionerRole"],
-        backref="medicinal_product_definition_contact",
-        parent_name="medicinal_product_definition_contact",
     )
 
     type: fhirtypes.CodeableConceptType = Field(
@@ -755,10 +736,7 @@ class MedicinalProductDefinitionContact(backboneelement.BackboneElement):
 
 
 class MedicinalProductDefinitionCrossReference(backboneelement.BackboneElement):
-    """Disclaimer: Any field name ends with ``__ext`` doesn't part of
-    Resource StructureDefinition, instead used to enable Extensibility feature
-    for FHIR Primitive Data Types.
-
+    """
     Reference to another product, e.g. for linking authorised to
     investigational product.
     Reference to another product, e.g. for linking authorised to
@@ -779,8 +757,6 @@ class MedicinalProductDefinitionCrossReference(backboneelement.BackboneElement):
         element_property=True,
         # note: Listed Resource Type(s) should be allowed as Reference.
         enum_reference_types=["MedicinalProductDefinition"],
-        backref="medicinal_product_definition_cross_reference",
-        parent_name="medicinal_product_definition_cross_reference",
     )
 
     type: fhirtypes.CodeableConceptType = Field(
@@ -814,10 +790,7 @@ class MedicinalProductDefinitionCrossReference(backboneelement.BackboneElement):
 
 
 class MedicinalProductDefinitionName(backboneelement.BackboneElement):
-    """Disclaimer: Any field name ends with ``__ext`` doesn't part of
-    Resource StructureDefinition, instead used to enable Extensibility feature
-    for FHIR Primitive Data Types.
-
+    """
     The product's name, including full name and possibly coded parts.
     """
 
@@ -949,10 +922,7 @@ class MedicinalProductDefinitionName(backboneelement.BackboneElement):
 
 
 class MedicinalProductDefinitionNameCountryLanguage(backboneelement.BackboneElement):
-    """Disclaimer: Any field name ends with ``__ext`` doesn't part of
-    Resource StructureDefinition, instead used to enable Extensibility feature
-    for FHIR Primitive Data Types.
-
+    """
     Country and jurisdiction where the name applies.
     Country and jurisdiction where the name applies, and associated language.
     """
@@ -1019,10 +989,7 @@ class MedicinalProductDefinitionNameCountryLanguage(backboneelement.BackboneElem
 
 
 class MedicinalProductDefinitionNameNamePart(backboneelement.BackboneElement):
-    """Disclaimer: Any field name ends with ``__ext`` doesn't part of
-    Resource StructureDefinition, instead used to enable Extensibility feature
-    for FHIR Primitive Data Types.
-
+    """
     Coding words or phrases of the name.
     """
 
@@ -1123,10 +1090,7 @@ class MedicinalProductDefinitionNameNamePart(backboneelement.BackboneElement):
 
 
 class MedicinalProductDefinitionOperation(backboneelement.BackboneElement):
-    """Disclaimer: Any field name ends with ``__ext`` doesn't part of
-    Resource StructureDefinition, instead used to enable Extensibility feature
-    for FHIR Primitive Data Types.
-
+    """
     A manufacturing or administrative process for the medicinal product.
     A manufacturing or administrative process or step associated with (or
     performed on) the medicinal product.
@@ -1179,8 +1143,6 @@ class MedicinalProductDefinitionOperation(backboneelement.BackboneElement):
         element_property=True,
         # note: Listed Resource Type(s) should be allowed as Reference.
         enum_reference_types=["Organization"],
-        backref="medicinal_product_definition_operation",
-        parent_name="medicinal_product_definition_operation",
     )
 
     type: fhirtypes.CodeableReferenceType = Field(
@@ -1199,8 +1161,6 @@ class MedicinalProductDefinitionOperation(backboneelement.BackboneElement):
         element_property=True,
         # note: Listed Resource Type(s) should be allowed as Reference.
         enum_reference_types=["ActivityDefinition", "PlanDefinition"],
-        backref="medicinal_product_definition_operation",
-        parent_name="medicinal_product_definition_operation",
     )
 
     @classmethod

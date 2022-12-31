@@ -16,10 +16,7 @@ from . import backboneelement, domainresource, fhirtypes
 
 
 class AuditEvent(domainresource.DomainResource):
-    """Disclaimer: Any field name ends with ``__ext`` doesn't part of
-    Resource StructureDefinition, instead used to enable Extensibility feature
-    for FHIR Primitive Data Types.
-
+    """
     Event record kept for security purposes.
     A record of an event made for purposes of maintaining a security log.
     Typical uses include detection of intrusion attempts and monitoring for
@@ -270,10 +267,7 @@ class AuditEvent(domainresource.DomainResource):
 
 
 class AuditEventAgent(backboneelement.BackboneElement):
-    """Disclaimer: Any field name ends with ``__ext`` doesn't part of
-    Resource StructureDefinition, instead used to enable Extensibility feature
-    for FHIR Primitive Data Types.
-
+    """
     Actor involved in the event.
     An actor taking an active role in the event or activity that is logged.
     """
@@ -306,8 +300,6 @@ class AuditEventAgent(backboneelement.BackboneElement):
         element_property=True,
         # note: Listed Resource Type(s) should be allowed as Reference.
         enum_reference_types=["Location"],
-        backref="audit_event_agent",
-        parent_name="audit_event_agent",
     )
 
     media: fhirtypes.CodingType = Field(
@@ -451,8 +443,6 @@ class AuditEventAgent(backboneelement.BackboneElement):
             "Patient",
             "RelatedPerson",
         ],
-        backref="audit_event_agent",
-        parent_name="audit_event_agent",
     )
 
     @classmethod
@@ -539,10 +529,7 @@ class AuditEventAgent(backboneelement.BackboneElement):
 
 
 class AuditEventAgentNetwork(backboneelement.BackboneElement):
-    """Disclaimer: Any field name ends with ``__ext`` doesn't part of
-    Resource StructureDefinition, instead used to enable Extensibility feature
-    for FHIR Primitive Data Types.
-
+    """
     Logical network location for application activity.
     Logical network location for application activity, if the activity has a
     network location.
@@ -595,10 +582,7 @@ class AuditEventAgentNetwork(backboneelement.BackboneElement):
 
 
 class AuditEventEntity(backboneelement.BackboneElement):
-    """Disclaimer: Any field name ends with ``__ext`` doesn't part of
-    Resource StructureDefinition, instead used to enable Extensibility feature
-    for FHIR Primitive Data Types.
-
+    """
     Data or objects used.
     Specific instances of data or objects that have been accessed.
     """
@@ -729,8 +713,6 @@ class AuditEventEntity(backboneelement.BackboneElement):
         element_property=True,
         # note: Listed Resource Type(s) should be allowed as Reference.
         enum_reference_types=["Resource"],
-        backref="audit_event_entity",
-        parent_name="audit_event_entity",
     )
 
     @classmethod
@@ -756,10 +738,7 @@ class AuditEventEntity(backboneelement.BackboneElement):
 
 
 class AuditEventEntityDetail(backboneelement.BackboneElement):
-    """Disclaimer: Any field name ends with ``__ext`` doesn't part of
-    Resource StructureDefinition, instead used to enable Extensibility feature
-    for FHIR Primitive Data Types.
-
+    """
     Additional Information about the entity.
     Tagged value pairs for conveying additional information about the entity.
     """
@@ -925,10 +904,7 @@ class AuditEventEntityDetail(backboneelement.BackboneElement):
 
 
 class AuditEventSource(backboneelement.BackboneElement):
-    """Disclaimer: Any field name ends with ``__ext`` doesn't part of
-    Resource StructureDefinition, instead used to enable Extensibility feature
-    for FHIR Primitive Data Types.
-
+    """
     Audit Event Reporter.
     The system that is reporting the event.
     """
@@ -951,8 +927,6 @@ class AuditEventSource(backboneelement.BackboneElement):
             "Patient",
             "RelatedPerson",
         ],
-        backref="audit_event_source",
-        parent_name="audit_event_source",
     )
 
     site: fhirtypes.String = Field(

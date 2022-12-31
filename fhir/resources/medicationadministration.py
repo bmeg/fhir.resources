@@ -16,10 +16,7 @@ from . import backboneelement, domainresource, fhirtypes
 
 
 class MedicationAdministration(domainresource.DomainResource):
-    """Disclaimer: Any field name ends with ``__ext`` doesn't part of
-    Resource StructureDefinition, instead used to enable Extensibility feature
-    for FHIR Primitive Data Types.
-
+    """
     Administration of medication to a patient.
     Describes the event of a patient consuming or otherwise being administered
     a medication.  This may be as simple as swallowing a tablet or it may be a
@@ -59,8 +56,6 @@ class MedicationAdministration(domainresource.DomainResource):
         element_property=True,
         # note: Listed Resource Type(s) should be allowed as Reference.
         enum_reference_types=["Encounter", "EpisodeOfCare"],
-        backref="medication_administration",
-        parent_name="medication_administration",
     )
 
     device: typing.List[fhirtypes.ReferenceType] = Field(
@@ -75,8 +70,6 @@ class MedicationAdministration(domainresource.DomainResource):
         element_property=True,
         # note: Listed Resource Type(s) should be allowed as Reference.
         enum_reference_types=["Device"],
-        backref="medication_administration",
-        parent_name="medication_administration",
     )
 
     dosage: fhirtypes.MedicationAdministrationDosageType = Field(
@@ -142,8 +135,6 @@ class MedicationAdministration(domainresource.DomainResource):
         element_property=True,
         # note: Listed Resource Type(s) should be allowed as Reference.
         enum_reference_types=["Provenance"],
-        backref="medication_administration",
-        parent_name="medication_administration",
     )
 
     identifier: typing.List[fhirtypes.IdentifierType] = Field(
@@ -221,8 +212,6 @@ class MedicationAdministration(domainresource.DomainResource):
         binding_uri="http://hl7.org/fhir/ValueSet/medication-codes",
         # note: Listed Resource Type(s) should be allowed as Reference.
         enum_reference_types=["Medication"],
-        backref="medication_administration",
-        parent_name="medication_administration",
     )
 
     note: typing.List[fhirtypes.AnnotationType] = Field(
@@ -246,8 +235,6 @@ class MedicationAdministration(domainresource.DomainResource):
         element_property=True,
         # note: Listed Resource Type(s) should be allowed as Reference.
         enum_reference_types=["MedicationAdministration", "Procedure"],
-        backref="medication_administration",
-        parent_name="medication_administration",
     )
 
     performer: typing.List[fhirtypes.MedicationAdministrationPerformerType] = Field(
@@ -290,8 +277,6 @@ class MedicationAdministration(domainresource.DomainResource):
         element_property=True,
         # note: Listed Resource Type(s) should be allowed as Reference.
         enum_reference_types=["Condition", "Observation", "DiagnosticReport"],
-        backref="medication_administration",
-        parent_name="medication_administration",
     )
 
     request: fhirtypes.ReferenceType = Field(
@@ -306,8 +291,6 @@ class MedicationAdministration(domainresource.DomainResource):
         element_property=True,
         # note: Listed Resource Type(s) should be allowed as Reference.
         enum_reference_types=["MedicationRequest"],
-        backref="medication_administration",
-        parent_name="medication_administration",
     )
 
     status: fhirtypes.Code = Field(
@@ -373,8 +356,6 @@ class MedicationAdministration(domainresource.DomainResource):
         element_property=True,
         # note: Listed Resource Type(s) should be allowed as Reference.
         enum_reference_types=["Patient", "Group"],
-        backref="medication_administration",
-        parent_name="medication_administration",
     )
 
     supportingInformation: typing.List[fhirtypes.ReferenceType] = Field(
@@ -389,8 +370,6 @@ class MedicationAdministration(domainresource.DomainResource):
         element_property=True,
         # note: Listed Resource Type(s) should be allowed as Reference.
         enum_reference_types=["Resource"],
-        backref="medication_administration",
-        parent_name="medication_administration",
     )
 
     @classmethod
@@ -533,10 +512,7 @@ class MedicationAdministration(domainresource.DomainResource):
 
 
 class MedicationAdministrationDosage(backboneelement.BackboneElement):
-    """Disclaimer: Any field name ends with ``__ext`` doesn't part of
-    Resource StructureDefinition, instead used to enable Extensibility feature
-    for FHIR Primitive Data Types.
-
+    """
     Details of how medication was taken.
     Describes the medication dosage information details e.g. dose, rate, site,
     route, etc.
@@ -723,10 +699,7 @@ class MedicationAdministrationDosage(backboneelement.BackboneElement):
 
 
 class MedicationAdministrationPerformer(backboneelement.BackboneElement):
-    """Disclaimer: Any field name ends with ``__ext`` doesn't part of
-    Resource StructureDefinition, instead used to enable Extensibility feature
-    for FHIR Primitive Data Types.
-
+    """
     Who performed the medication administration and what they did.
     Indicates who or what performed the medication administration and how they
     were involved.
@@ -749,8 +722,6 @@ class MedicationAdministrationPerformer(backboneelement.BackboneElement):
             "RelatedPerson",
             "Device",
         ],
-        backref="medication_administration_performer",
-        parent_name="medication_administration_performer",
     )
 
     function: fhirtypes.CodeableConceptType = Field(

@@ -16,10 +16,7 @@ from . import backboneelement, domainresource, fhirtypes
 
 
 class ExplanationOfBenefit(domainresource.DomainResource):
-    """Disclaimer: Any field name ends with ``__ext`` doesn't part of
-    Resource StructureDefinition, instead used to enable Extensibility feature
-    for FHIR Primitive Data Types.
-
+    """
     Explanation of Benefit resource.
     This resource provides: the claim details; adjudication details from the
     processing of a Claim; and optionally account balance information, for
@@ -116,8 +113,6 @@ class ExplanationOfBenefit(domainresource.DomainResource):
         element_property=True,
         # note: Listed Resource Type(s) should be allowed as Reference.
         enum_reference_types=["Claim"],
-        backref="explanation_of_benefit",
-        parent_name="explanation_of_benefit",
     )
 
     claimResponse: fhirtypes.ReferenceType = Field(
@@ -132,8 +127,6 @@ class ExplanationOfBenefit(domainresource.DomainResource):
         element_property=True,
         # note: Listed Resource Type(s) should be allowed as Reference.
         enum_reference_types=["ClaimResponse"],
-        backref="explanation_of_benefit",
-        parent_name="explanation_of_benefit",
     )
 
     created: fhirtypes.DateTime = Field(
@@ -181,8 +174,6 @@ class ExplanationOfBenefit(domainresource.DomainResource):
         element_property=True,
         # note: Listed Resource Type(s) should be allowed as Reference.
         enum_reference_types=["Practitioner", "PractitionerRole"],
-        backref="explanation_of_benefit",
-        parent_name="explanation_of_benefit",
     )
 
     facility: fhirtypes.ReferenceType = Field(
@@ -194,8 +185,6 @@ class ExplanationOfBenefit(domainresource.DomainResource):
         element_property=True,
         # note: Listed Resource Type(s) should be allowed as Reference.
         enum_reference_types=["Location"],
-        backref="explanation_of_benefit",
-        parent_name="explanation_of_benefit",
     )
 
     form: fhirtypes.AttachmentType = Field(
@@ -292,8 +281,6 @@ class ExplanationOfBenefit(domainresource.DomainResource):
         element_property=True,
         # note: Listed Resource Type(s) should be allowed as Reference.
         enum_reference_types=["Organization"],
-        backref="explanation_of_benefit",
-        parent_name="explanation_of_benefit",
     )
 
     item: typing.List[fhirtypes.ExplanationOfBenefitItemType] = Field(
@@ -321,8 +308,6 @@ class ExplanationOfBenefit(domainresource.DomainResource):
         element_property=True,
         # note: Listed Resource Type(s) should be allowed as Reference.
         enum_reference_types=["MedicationRequest"],
-        backref="explanation_of_benefit",
-        parent_name="explanation_of_benefit",
     )
 
     outcome: fhirtypes.Code = Field(
@@ -362,8 +347,6 @@ class ExplanationOfBenefit(domainresource.DomainResource):
         element_property=True,
         # note: Listed Resource Type(s) should be allowed as Reference.
         enum_reference_types=["Patient"],
-        backref="explanation_of_benefit",
-        parent_name="explanation_of_benefit",
     )
 
     payee: fhirtypes.ExplanationOfBenefitPayeeType = Field(
@@ -441,8 +424,6 @@ class ExplanationOfBenefit(domainresource.DomainResource):
         element_property=True,
         # note: Listed Resource Type(s) should be allowed as Reference.
         enum_reference_types=["MedicationRequest", "VisionPrescription"],
-        backref="explanation_of_benefit",
-        parent_name="explanation_of_benefit",
     )
 
     priority: fhirtypes.CodeableConceptType = Field(
@@ -498,8 +479,6 @@ class ExplanationOfBenefit(domainresource.DomainResource):
         element_property=True,
         # note: Listed Resource Type(s) should be allowed as Reference.
         enum_reference_types=["Practitioner", "PractitionerRole", "Organization"],
-        backref="explanation_of_benefit",
-        parent_name="explanation_of_benefit",
     )
 
     referral: fhirtypes.ReferenceType = Field(
@@ -511,8 +490,6 @@ class ExplanationOfBenefit(domainresource.DomainResource):
         element_property=True,
         # note: Listed Resource Type(s) should be allowed as Reference.
         enum_reference_types=["ServiceRequest"],
-        backref="explanation_of_benefit",
-        parent_name="explanation_of_benefit",
     )
 
     related: typing.List[fhirtypes.ExplanationOfBenefitRelatedType] = Field(
@@ -761,10 +738,7 @@ class ExplanationOfBenefit(domainresource.DomainResource):
 
 
 class ExplanationOfBenefitAccident(backboneelement.BackboneElement):
-    """Disclaimer: Any field name ends with ``__ext`` doesn't part of
-    Resource StructureDefinition, instead used to enable Extensibility feature
-    for FHIR Primitive Data Types.
-
+    """
     Details of the event.
     Details of a accident which resulted in injuries which required the
     products and services listed in the claim.
@@ -811,8 +785,6 @@ class ExplanationOfBenefitAccident(backboneelement.BackboneElement):
         one_of_many_required=False,
         # note: Listed Resource Type(s) should be allowed as Reference.
         enum_reference_types=["Location"],
-        backref="explanation_of_benefit_accident",
-        parent_name="explanation_of_benefit_accident",
     )
 
     type: fhirtypes.CodeableConceptType = Field(
@@ -889,10 +861,7 @@ class ExplanationOfBenefitAccident(backboneelement.BackboneElement):
 
 
 class ExplanationOfBenefitAddItem(backboneelement.BackboneElement):
-    """Disclaimer: Any field name ends with ``__ext`` doesn't part of
-    Resource StructureDefinition, instead used to enable Extensibility feature
-    for FHIR Primitive Data Types.
-
+    """
     Insurer added line items.
     The first-tier service adjudications for payor added product or service
     lines.
@@ -1041,8 +1010,6 @@ class ExplanationOfBenefitAddItem(backboneelement.BackboneElement):
         binding_uri="http://hl7.org/fhir/ValueSet/service-place",
         # note: Listed Resource Type(s) should be allowed as Reference.
         enum_reference_types=["Location"],
-        backref="explanation_of_benefit_add_item",
-        parent_name="explanation_of_benefit_add_item",
     )
 
     modifier: typing.List[fhirtypes.CodeableConceptType] = Field(
@@ -1135,8 +1102,6 @@ class ExplanationOfBenefitAddItem(backboneelement.BackboneElement):
         element_property=True,
         # note: Listed Resource Type(s) should be allowed as Reference.
         enum_reference_types=["Practitioner", "PractitionerRole", "Organization"],
-        backref="explanation_of_benefit_add_item",
-        parent_name="explanation_of_benefit_add_item",
     )
 
     quantity: fhirtypes.QuantityType = Field(
@@ -1309,10 +1274,7 @@ class ExplanationOfBenefitAddItem(backboneelement.BackboneElement):
 
 
 class ExplanationOfBenefitAddItemDetail(backboneelement.BackboneElement):
-    """Disclaimer: Any field name ends with ``__ext`` doesn't part of
-    Resource StructureDefinition, instead used to enable Extensibility feature
-    for FHIR Primitive Data Types.
-
+    """
     Insurer added line items.
     The second-tier service adjudications for payor added services.
     """
@@ -1465,10 +1427,7 @@ class ExplanationOfBenefitAddItemDetail(backboneelement.BackboneElement):
 
 
 class ExplanationOfBenefitAddItemDetailSubDetail(backboneelement.BackboneElement):
-    """Disclaimer: Any field name ends with ``__ext`` doesn't part of
-    Resource StructureDefinition, instead used to enable Extensibility feature
-    for FHIR Primitive Data Types.
-
+    """
     Insurer added line items.
     The third-tier service adjudications for payor added services.
     """
@@ -1609,10 +1568,7 @@ class ExplanationOfBenefitAddItemDetailSubDetail(backboneelement.BackboneElement
 
 
 class ExplanationOfBenefitBenefitBalance(backboneelement.BackboneElement):
-    """Disclaimer: Any field name ends with ``__ext`` doesn't part of
-    Resource StructureDefinition, instead used to enable Extensibility feature
-    for FHIR Primitive Data Types.
-
+    """
     Balance by Benefit Category.
     """
 
@@ -1758,10 +1714,7 @@ class ExplanationOfBenefitBenefitBalance(backboneelement.BackboneElement):
 
 
 class ExplanationOfBenefitBenefitBalanceFinancial(backboneelement.BackboneElement):
-    """Disclaimer: Any field name ends with ``__ext`` doesn't part of
-    Resource StructureDefinition, instead used to enable Extensibility feature
-    for FHIR Primitive Data Types.
-
+    """
     Benefit Summary.
     Benefits Used to date.
     """
@@ -1916,10 +1869,7 @@ class ExplanationOfBenefitBenefitBalanceFinancial(backboneelement.BackboneElemen
 
 
 class ExplanationOfBenefitCareTeam(backboneelement.BackboneElement):
-    """Disclaimer: Any field name ends with ``__ext`` doesn't part of
-    Resource StructureDefinition, instead used to enable Extensibility feature
-    for FHIR Primitive Data Types.
-
+    """
     Care Team members.
     The members of the team who provided the products and services.
     """
@@ -1935,8 +1885,6 @@ class ExplanationOfBenefitCareTeam(backboneelement.BackboneElement):
         element_property=True,
         # note: Listed Resource Type(s) should be allowed as Reference.
         enum_reference_types=["Practitioner", "PractitionerRole", "Organization"],
-        backref="explanation_of_benefit_care_team",
-        parent_name="explanation_of_benefit_care_team",
     )
 
     qualification: fhirtypes.CodeableConceptType = Field(
@@ -2078,10 +2026,7 @@ class ExplanationOfBenefitCareTeam(backboneelement.BackboneElement):
 
 
 class ExplanationOfBenefitDiagnosis(backboneelement.BackboneElement):
-    """Disclaimer: Any field name ends with ``__ext`` doesn't part of
-    Resource StructureDefinition, instead used to enable Extensibility feature
-    for FHIR Primitive Data Types.
-
+    """
     Pertinent diagnosis information.
     Information about diagnoses relevant to the claim items.
     """
@@ -2126,8 +2071,6 @@ class ExplanationOfBenefitDiagnosis(backboneelement.BackboneElement):
         binding_uri="http://hl7.org/fhir/ValueSet/icd-10",
         # note: Listed Resource Type(s) should be allowed as Reference.
         enum_reference_types=["Condition"],
-        backref="explanation_of_benefit_diagnosis",
-        parent_name="explanation_of_benefit_diagnosis",
     )
 
     onAdmission: fhirtypes.CodeableConceptType = Field(
@@ -2312,10 +2255,7 @@ class ExplanationOfBenefitDiagnosis(backboneelement.BackboneElement):
 
 
 class ExplanationOfBenefitInsurance(backboneelement.BackboneElement):
-    """Disclaimer: Any field name ends with ``__ext`` doesn't part of
-    Resource StructureDefinition, instead used to enable Extensibility feature
-    for FHIR Primitive Data Types.
-
+    """
     Patient insurance information.
     Financial instruments for reimbursement for the health care products and
     services specified on the claim.
@@ -2337,8 +2277,6 @@ class ExplanationOfBenefitInsurance(backboneelement.BackboneElement):
         element_property=True,
         # note: Listed Resource Type(s) should be allowed as Reference.
         enum_reference_types=["Coverage"],
-        backref="explanation_of_benefit_insurance",
-        parent_name="explanation_of_benefit_insurance",
     )
 
     focal: bool = Field(
@@ -2449,10 +2387,7 @@ class ExplanationOfBenefitInsurance(backboneelement.BackboneElement):
 
 
 class ExplanationOfBenefitItem(backboneelement.BackboneElement):
-    """Disclaimer: Any field name ends with ``__ext`` doesn't part of
-    Resource StructureDefinition, instead used to enable Extensibility feature
-    for FHIR Primitive Data Types.
-
+    """
     Product or service provided.
     A claim line. Either a simple (a product or service) or a 'group' of
     details which can also be a simple items or groups of sub-details.
@@ -2561,8 +2496,6 @@ class ExplanationOfBenefitItem(backboneelement.BackboneElement):
         element_property=True,
         # note: Listed Resource Type(s) should be allowed as Reference.
         enum_reference_types=["Encounter"],
-        backref="explanation_of_benefit_item",
-        parent_name="explanation_of_benefit_item",
     )
 
     factor: fhirtypes.Decimal = Field(
@@ -2658,8 +2591,6 @@ class ExplanationOfBenefitItem(backboneelement.BackboneElement):
         binding_uri="http://hl7.org/fhir/ValueSet/service-place",
         # note: Listed Resource Type(s) should be allowed as Reference.
         enum_reference_types=["Location"],
-        backref="explanation_of_benefit_item",
-        parent_name="explanation_of_benefit_item",
     )
 
     modifier: typing.List[fhirtypes.CodeableConceptType] = Field(
@@ -2852,8 +2783,6 @@ class ExplanationOfBenefitItem(backboneelement.BackboneElement):
         element_property=True,
         # note: Listed Resource Type(s) should be allowed as Reference.
         enum_reference_types=["Device"],
-        backref="explanation_of_benefit_item",
-        parent_name="explanation_of_benefit_item",
     )
 
     unitPrice: fhirtypes.MoneyType = Field(
@@ -3013,10 +2942,7 @@ class ExplanationOfBenefitItem(backboneelement.BackboneElement):
 
 
 class ExplanationOfBenefitItemAdjudication(backboneelement.BackboneElement):
-    """Disclaimer: Any field name ends with ``__ext`` doesn't part of
-    Resource StructureDefinition, instead used to enable Extensibility feature
-    for FHIR Primitive Data Types.
-
+    """
     Adjudication details.
     If this item is a group then the values here are a summary of the
     adjudication of the detail items. If this item is a simple product or
@@ -3104,10 +3030,7 @@ class ExplanationOfBenefitItemAdjudication(backboneelement.BackboneElement):
 
 
 class ExplanationOfBenefitItemDetail(backboneelement.BackboneElement):
-    """Disclaimer: Any field name ends with ``__ext`` doesn't part of
-    Resource StructureDefinition, instead used to enable Extensibility feature
-    for FHIR Primitive Data Types.
-
+    """
     Additional items.
     Second-tier of goods and services.
     """
@@ -3298,8 +3221,6 @@ class ExplanationOfBenefitItemDetail(backboneelement.BackboneElement):
         element_property=True,
         # note: Listed Resource Type(s) should be allowed as Reference.
         enum_reference_types=["Device"],
-        backref="explanation_of_benefit_item_detail",
-        parent_name="explanation_of_benefit_item_detail",
     )
 
     unitPrice: fhirtypes.MoneyType = Field(
@@ -3402,10 +3323,7 @@ class ExplanationOfBenefitItemDetail(backboneelement.BackboneElement):
 
 
 class ExplanationOfBenefitItemDetailSubDetail(backboneelement.BackboneElement):
-    """Disclaimer: Any field name ends with ``__ext`` doesn't part of
-    Resource StructureDefinition, instead used to enable Extensibility feature
-    for FHIR Primitive Data Types.
-
+    """
     Additional items.
     Third-tier of goods and services.
     """
@@ -3585,8 +3503,6 @@ class ExplanationOfBenefitItemDetailSubDetail(backboneelement.BackboneElement):
         element_property=True,
         # note: Listed Resource Type(s) should be allowed as Reference.
         enum_reference_types=["Device"],
-        backref="explanation_of_benefit_item_detail_sub_detail",
-        parent_name="explanation_of_benefit_item_detail_sub_detail",
     )
 
     unitPrice: fhirtypes.MoneyType = Field(
@@ -3688,10 +3604,7 @@ class ExplanationOfBenefitItemDetailSubDetail(backboneelement.BackboneElement):
 
 
 class ExplanationOfBenefitPayee(backboneelement.BackboneElement):
-    """Disclaimer: Any field name ends with ``__ext`` doesn't part of
-    Resource StructureDefinition, instead used to enable Extensibility feature
-    for FHIR Primitive Data Types.
-
+    """
     Recipient of benefits payable.
     The party to be reimbursed for cost of the products and services according
     to the terms of the policy.
@@ -3717,8 +3630,6 @@ class ExplanationOfBenefitPayee(backboneelement.BackboneElement):
             "Patient",
             "RelatedPerson",
         ],
-        backref="explanation_of_benefit_payee",
-        parent_name="explanation_of_benefit_payee",
     )
 
     type: fhirtypes.CodeableConceptType = Field(
@@ -3747,10 +3658,7 @@ class ExplanationOfBenefitPayee(backboneelement.BackboneElement):
 
 
 class ExplanationOfBenefitPayment(backboneelement.BackboneElement):
-    """Disclaimer: Any field name ends with ``__ext`` doesn't part of
-    Resource StructureDefinition, instead used to enable Extensibility feature
-    for FHIR Primitive Data Types.
-
+    """
     Payment Details.
     Payment details for the adjudication of the claim.
     """
@@ -3854,10 +3762,7 @@ class ExplanationOfBenefitPayment(backboneelement.BackboneElement):
 
 
 class ExplanationOfBenefitProcedure(backboneelement.BackboneElement):
-    """Disclaimer: Any field name ends with ``__ext`` doesn't part of
-    Resource StructureDefinition, instead used to enable Extensibility feature
-    for FHIR Primitive Data Types.
-
+    """
     Clinical procedures performed.
     Procedures performed on the patient relevant to the billing items with the
     claim.
@@ -3917,8 +3822,6 @@ class ExplanationOfBenefitProcedure(backboneelement.BackboneElement):
         binding_uri="http://hl7.org/fhir/ValueSet/icd-10-procedures",
         # note: Listed Resource Type(s) should be allowed as Reference.
         enum_reference_types=["Procedure"],
-        backref="explanation_of_benefit_procedure",
-        parent_name="explanation_of_benefit_procedure",
     )
 
     sequence: fhirtypes.PositiveInt = Field(
@@ -3959,8 +3862,6 @@ class ExplanationOfBenefitProcedure(backboneelement.BackboneElement):
         element_property=True,
         # note: Listed Resource Type(s) should be allowed as Reference.
         enum_reference_types=["Device"],
-        backref="explanation_of_benefit_procedure",
-        parent_name="explanation_of_benefit_procedure",
     )
 
     @classmethod
@@ -4082,10 +3983,7 @@ class ExplanationOfBenefitProcedure(backboneelement.BackboneElement):
 
 
 class ExplanationOfBenefitProcessNote(backboneelement.BackboneElement):
-    """Disclaimer: Any field name ends with ``__ext`` doesn't part of
-    Resource StructureDefinition, instead used to enable Extensibility feature
-    for FHIR Primitive Data Types.
-
+    """
     Note concerning adjudication.
     A note that describes or explains adjudication results in a human readable
     form.
@@ -4174,10 +4072,7 @@ class ExplanationOfBenefitProcessNote(backboneelement.BackboneElement):
 
 
 class ExplanationOfBenefitRelated(backboneelement.BackboneElement):
-    """Disclaimer: Any field name ends with ``__ext`` doesn't part of
-    Resource StructureDefinition, instead used to enable Extensibility feature
-    for FHIR Primitive Data Types.
-
+    """
     Prior or corollary claims.
     Other claims which are related to this claim such as prior submissions or
     claims for related services or for the same event.
@@ -4194,8 +4089,6 @@ class ExplanationOfBenefitRelated(backboneelement.BackboneElement):
         element_property=True,
         # note: Listed Resource Type(s) should be allowed as Reference.
         enum_reference_types=["Claim"],
-        backref="explanation_of_benefit_related",
-        parent_name="explanation_of_benefit_related",
     )
 
     reference: fhirtypes.IdentifierType = Field(
@@ -4243,10 +4136,7 @@ class ExplanationOfBenefitRelated(backboneelement.BackboneElement):
 
 
 class ExplanationOfBenefitSupportingInfo(backboneelement.BackboneElement):
-    """Disclaimer: Any field name ends with ``__ext`` doesn't part of
-    Resource StructureDefinition, instead used to enable Extensibility feature
-    for FHIR Primitive Data Types.
-
+    """
     Supporting information.
     Additional information codes regarding exceptions, special considerations,
     the condition, situation, prior or concurrent issues.
@@ -4412,8 +4302,6 @@ class ExplanationOfBenefitSupportingInfo(backboneelement.BackboneElement):
         one_of_many_required=False,
         # note: Listed Resource Type(s) should be allowed as Reference.
         enum_reference_types=["Resource"],
-        backref="explanation_of_benefit_supporting_info",
-        parent_name="explanation_of_benefit_supporting_info",
     )
 
     valueString: fhirtypes.String = Field(
@@ -4566,10 +4454,7 @@ class ExplanationOfBenefitSupportingInfo(backboneelement.BackboneElement):
 
 
 class ExplanationOfBenefitTotal(backboneelement.BackboneElement):
-    """Disclaimer: Any field name ends with ``__ext`` doesn't part of
-    Resource StructureDefinition, instead used to enable Extensibility feature
-    for FHIR Primitive Data Types.
-
+    """
     Adjudication totals.
     Categorized monetary totals for the adjudication.
     """

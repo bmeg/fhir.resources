@@ -16,10 +16,7 @@ from . import backboneelement, fhirtypes, resource
 
 
 class Parameters(resource.Resource):
-    """Disclaimer: Any field name ends with ``__ext`` doesn't part of
-    Resource StructureDefinition, instead used to enable Extensibility feature
-    for FHIR Primitive Data Types.
-
+    """
     Operation Request or Response.
     This resource is a non-persisted resource used to pass information into and
     back from an [operation](operations.html). It has no other use, and there
@@ -47,10 +44,7 @@ class Parameters(resource.Resource):
 
 
 class ParametersParameter(backboneelement.BackboneElement):
-    """Disclaimer: Any field name ends with ``__ext`` doesn't part of
-    Resource StructureDefinition, instead used to enable Extensibility feature
-    for FHIR Primitive Data Types.
-
+    """
     Operation Parameter.
     A parameter passed to or received from the operation.
     """

@@ -16,10 +16,7 @@ from . import backboneelement, domainresource, fhirtypes
 
 
 class VisionPrescription(domainresource.DomainResource):
-    """Disclaimer: Any field name ends with ``__ext`` doesn't part of
-    Resource StructureDefinition, instead used to enable Extensibility feature
-    for FHIR Primitive Data Types.
-
+    """
     Prescription for vision correction products for a patient.
     An authorization for the provision of glasses and/or contact lenses to a
     patient.
@@ -66,8 +63,6 @@ class VisionPrescription(domainresource.DomainResource):
         element_property=True,
         # note: Listed Resource Type(s) should be allowed as Reference.
         enum_reference_types=["Encounter"],
-        backref="vision_prescription",
-        parent_name="vision_prescription",
     )
 
     identifier: typing.List[fhirtypes.IdentifierType] = Field(
@@ -105,8 +100,6 @@ class VisionPrescription(domainresource.DomainResource):
         element_property=True,
         # note: Listed Resource Type(s) should be allowed as Reference.
         enum_reference_types=["Patient"],
-        backref="vision_prescription",
-        parent_name="vision_prescription",
     )
 
     prescriber: fhirtypes.ReferenceType = Field(
@@ -121,8 +114,6 @@ class VisionPrescription(domainresource.DomainResource):
         element_property=True,
         # note: Listed Resource Type(s) should be allowed as Reference.
         enum_reference_types=["Practitioner", "PractitionerRole"],
-        backref="vision_prescription",
-        parent_name="vision_prescription",
     )
 
     status: fhirtypes.Code = Field(
@@ -239,10 +230,7 @@ class VisionPrescription(domainresource.DomainResource):
 
 
 class VisionPrescriptionLensSpecification(backboneelement.BackboneElement):
-    """Disclaimer: Any field name ends with ``__ext`` doesn't part of
-    Resource StructureDefinition, instead used to enable Extensibility feature
-    for FHIR Primitive Data Types.
-
+    """
     Vision lens authorization.
     Contain the details of  the individual lens specifications and serves as
     the authorization for the fullfillment by certified professionals.
@@ -515,10 +503,7 @@ class VisionPrescriptionLensSpecification(backboneelement.BackboneElement):
 
 
 class VisionPrescriptionLensSpecificationPrism(backboneelement.BackboneElement):
-    """Disclaimer: Any field name ends with ``__ext`` doesn't part of
-    Resource StructureDefinition, instead used to enable Extensibility feature
-    for FHIR Primitive Data Types.
-
+    """
     Eye alignment compensation.
     Allows for adjustment on two axis.
     """

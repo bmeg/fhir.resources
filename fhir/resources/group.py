@@ -16,10 +16,7 @@ from . import backboneelement, domainresource, fhirtypes
 
 
 class Group(domainresource.DomainResource):
-    """Disclaimer: Any field name ends with ``__ext`` doesn't part of
-    Resource StructureDefinition, instead used to enable Extensibility feature
-    for FHIR Primitive Data Types.
-
+    """
     Group of multiple entities.
     Represents a defined collection of entities that may be discussed or acted
     upon collectively but which are not expected to act collectively, and are
@@ -114,8 +111,6 @@ class Group(domainresource.DomainResource):
             "Practitioner",
             "PractitionerRole",
         ],
-        backref="group",
-        parent_name="group",
     )
 
     member: typing.List[fhirtypes.GroupMemberType] = Field(
@@ -275,10 +270,7 @@ class Group(domainresource.DomainResource):
 
 
 class GroupCharacteristic(backboneelement.BackboneElement):
-    """Disclaimer: Any field name ends with ``__ext`` doesn't part of
-    Resource StructureDefinition, instead used to enable Extensibility feature
-    for FHIR Primitive Data Types.
-
+    """
     Include / Exclude group members by Trait.
     Identifies traits whose presence r absence is shared by members of the
     group.
@@ -546,10 +538,7 @@ class GroupCharacteristic(backboneelement.BackboneElement):
 
 
 class GroupMember(backboneelement.BackboneElement):
-    """Disclaimer: Any field name ends with ``__ext`` doesn't part of
-    Resource StructureDefinition, instead used to enable Extensibility feature
-    for FHIR Primitive Data Types.
-
+    """
     Who or what is in group.
     Identifies the resource instances that are members of the group.
     """
@@ -578,8 +567,6 @@ class GroupMember(backboneelement.BackboneElement):
             "Substance",
             "Group",
         ],
-        backref="group_member",
-        parent_name="group_member",
     )
 
     inactive: bool = Field(

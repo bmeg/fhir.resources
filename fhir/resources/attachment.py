@@ -12,10 +12,7 @@ from . import element, fhirtypes
 
 
 class Attachment(element.Element):
-    """Disclaimer: Any field name ends with ``__ext`` doesn't part of
-    Resource StructureDefinition, instead used to enable Extensibility feature
-    for FHIR Primitive Data Types.
-
+    """
     Content in a format defined elsewhere.
     For referring to data content defined in other formats.
     """

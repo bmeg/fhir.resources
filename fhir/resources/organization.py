@@ -14,10 +14,7 @@ from . import backboneelement, domainresource, fhirtypes
 
 
 class Organization(domainresource.DomainResource):
-    """Disclaimer: Any field name ends with ``__ext`` doesn't part of
-    Resource StructureDefinition, instead used to enable Extensibility feature
-    for FHIR Primitive Data Types.
-
+    """
     A grouping of people or organizations with a common purpose.
     A formally or informally recognized grouping of people or organizations
     formed for the purpose of achieving some form of collective action.
@@ -84,8 +81,6 @@ class Organization(domainresource.DomainResource):
         element_property=True,
         # note: Listed Resource Type(s) should be allowed as Reference.
         enum_reference_types=["Endpoint"],
-        backref="organization",
-        parent_name="organization",
     )
 
     identifier: typing.List[fhirtypes.IdentifierType] = Field(
@@ -121,8 +116,6 @@ class Organization(domainresource.DomainResource):
         element_property=True,
         # note: Listed Resource Type(s) should be allowed as Reference.
         enum_reference_types=["Organization"],
-        backref="organization",
-        parent_name="organization",
     )
 
     telecom: typing.List[fhirtypes.ContactPointType] = Field(
@@ -179,10 +172,7 @@ class Organization(domainresource.DomainResource):
 
 
 class OrganizationContact(backboneelement.BackboneElement):
-    """Disclaimer: Any field name ends with ``__ext`` doesn't part of
-    Resource StructureDefinition, instead used to enable Extensibility feature
-    for FHIR Primitive Data Types.
-
+    """
     Contact for the organization for a certain purpose.
     """
 

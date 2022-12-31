@@ -14,10 +14,7 @@ from . import backboneelement, domainresource, fhirtypes
 
 
 class RelatedPerson(domainresource.DomainResource):
-    """Disclaimer: Any field name ends with ``__ext`` doesn't part of
-    Resource StructureDefinition, instead used to enable Extensibility feature
-    for FHIR Primitive Data Types.
-
+    """
     A person that is related to a patient, but who is not a direct target of
     care.
     Information about a person that is involved in the care for a patient, but
@@ -123,8 +120,6 @@ class RelatedPerson(domainresource.DomainResource):
         element_property=True,
         # note: Listed Resource Type(s) should be allowed as Reference.
         enum_reference_types=["Patient"],
-        backref="related_person",
-        parent_name="related_person",
     )
 
     period: fhirtypes.PeriodType = Field(
@@ -208,10 +203,7 @@ class RelatedPerson(domainresource.DomainResource):
 
 
 class RelatedPersonCommunication(backboneelement.BackboneElement):
-    """Disclaimer: Any field name ends with ``__ext`` doesn't part of
-    Resource StructureDefinition, instead used to enable Extensibility feature
-    for FHIR Primitive Data Types.
-
+    """
     A language which may be used to communicate with about the patient's health.
     """
 

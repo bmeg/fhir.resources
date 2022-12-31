@@ -16,10 +16,7 @@ from . import domainresource, fhirtypes
 
 
 class Endpoint(domainresource.DomainResource):
-    """Disclaimer: Any field name ends with ``__ext`` doesn't part of
-    Resource StructureDefinition, instead used to enable Extensibility feature
-    for FHIR Primitive Data Types.
-
+    """
     The technical details of an endpoint that can be used for electronic
     services.
     The technical details of an endpoint that can be used for electronic
@@ -111,8 +108,6 @@ class Endpoint(domainresource.DomainResource):
         element_property=True,
         # note: Listed Resource Type(s) should be allowed as Reference.
         enum_reference_types=["Organization"],
-        backref="endpoint",
-        parent_name="endpoint",
     )
 
     name: fhirtypes.String = Field(

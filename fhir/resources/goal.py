@@ -16,10 +16,7 @@ from . import backboneelement, domainresource, fhirtypes
 
 
 class Goal(domainresource.DomainResource):
-    """Disclaimer: Any field name ends with ``__ext`` doesn't part of
-    Resource StructureDefinition, instead used to enable Extensibility feature
-    for FHIR Primitive Data Types.
-
+    """
     Describes the intended objective(s) for a patient, group or organization.
     Describes the intended objective(s) for a patient, group or organization
     care, for example, weight loss, restoring an activity of daily living,
@@ -80,8 +77,6 @@ class Goal(domainresource.DomainResource):
             "ServiceRequest",
             "RiskAssessment",
         ],
-        backref="goal",
-        parent_name="goal",
     )
 
     category: typing.List[fhirtypes.CodeableConceptType] = Field(
@@ -132,8 +127,6 @@ class Goal(domainresource.DomainResource):
             "PractitionerRole",
             "RelatedPerson",
         ],
-        backref="goal",
-        parent_name="goal",
     )
 
     identifier: typing.List[fhirtypes.IdentifierType] = Field(
@@ -221,8 +214,6 @@ class Goal(domainresource.DomainResource):
         element_property=True,
         # note: Listed Resource Type(s) should be allowed as Reference.
         enum_reference_types=["Observation"],
-        backref="goal",
-        parent_name="goal",
     )
 
     priority: fhirtypes.CodeableConceptType = Field(
@@ -325,8 +316,6 @@ class Goal(domainresource.DomainResource):
         element_property=True,
         # note: Listed Resource Type(s) should be allowed as Reference.
         enum_reference_types=["Patient", "Group", "Organization"],
-        backref="goal",
-        parent_name="goal",
     )
 
     target: typing.List[fhirtypes.GoalTargetType] = Field(
@@ -471,10 +460,7 @@ class Goal(domainresource.DomainResource):
 
 
 class GoalTarget(backboneelement.BackboneElement):
-    """Disclaimer: Any field name ends with ``__ext`` doesn't part of
-    Resource StructureDefinition, instead used to enable Extensibility feature
-    for FHIR Primitive Data Types.
-
+    """
     Target outcome for the goal.
     Indicates what should be done by when.
     """

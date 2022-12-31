@@ -16,10 +16,7 @@ from . import backboneelement, domainresource, fhirtypes
 
 
 class FamilyMemberHistory(domainresource.DomainResource):
-    """Disclaimer: Any field name ends with ``__ext`` doesn't part of
-    Resource StructureDefinition, instead used to enable Extensibility feature
-    for FHIR Primitive Data Types.
-
+    """
     Information about patient's relatives, relevant for patient.
     Significant health conditions for a person related to the patient relevant
     in the context of care for the patient.
@@ -293,8 +290,6 @@ class FamilyMemberHistory(domainresource.DomainResource):
             "Measure",
             "OperationDefinition",
         ],
-        backref="family_member_history",
-        parent_name="family_member_history",
     )
     instantiatesCanonical__ext: typing.List[
         typing.Union[fhirtypes.FHIRPrimitiveExtensionType, None]
@@ -359,8 +354,6 @@ class FamilyMemberHistory(domainresource.DomainResource):
         element_property=True,
         # note: Listed Resource Type(s) should be allowed as Reference.
         enum_reference_types=["Patient"],
-        backref="family_member_history",
-        parent_name="family_member_history",
     )
 
     reasonCode: typing.List[fhirtypes.CodeableConceptType] = Field(
@@ -398,8 +391,6 @@ class FamilyMemberHistory(domainresource.DomainResource):
             "DiagnosticReport",
             "DocumentReference",
         ],
-        backref="family_member_history",
-        parent_name="family_member_history",
     )
 
     relationship: fhirtypes.CodeableConceptType = Field(
@@ -615,10 +606,7 @@ class FamilyMemberHistory(domainresource.DomainResource):
 
 
 class FamilyMemberHistoryCondition(backboneelement.BackboneElement):
-    """Disclaimer: Any field name ends with ``__ext`` doesn't part of
-    Resource StructureDefinition, instead used to enable Extensibility feature
-    for FHIR Primitive Data Types.
-
+    """
     Condition that the related person had.
     The significant Conditions (or condition) that the family member had. This
     is a repeating section to allow a system to represent more than one

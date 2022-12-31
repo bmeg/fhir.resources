@@ -14,10 +14,7 @@ from . import backboneelement, domainresource, fhirtypes
 
 
 class Condition(domainresource.DomainResource):
-    """Disclaimer: Any field name ends with ``__ext`` doesn't part of
-    Resource StructureDefinition, instead used to enable Extensibility feature
-    for FHIR Primitive Data Types.
-
+    """
     Detailed information about conditions, problems or diagnoses.
     A clinical condition, problem, diagnosis, or other event, situation, issue,
     or clinical concept that has risen to a level of concern.
@@ -132,8 +129,6 @@ class Condition(domainresource.DomainResource):
             "Patient",
             "RelatedPerson",
         ],
-        backref="condition",
-        parent_name="condition",
     )
 
     bodySite: typing.List[fhirtypes.CodeableConceptType] = Field(
@@ -223,8 +218,6 @@ class Condition(domainresource.DomainResource):
         element_property=True,
         # note: Listed Resource Type(s) should be allowed as Reference.
         enum_reference_types=["Encounter"],
-        backref="condition",
-        parent_name="condition",
     )
 
     evidence: typing.List[fhirtypes.ConditionEvidenceType] = Field(
@@ -379,8 +372,6 @@ class Condition(domainresource.DomainResource):
             "Patient",
             "RelatedPerson",
         ],
-        backref="condition",
-        parent_name="condition",
     )
 
     severity: fhirtypes.CodeableConceptType = Field(
@@ -423,8 +414,6 @@ class Condition(domainresource.DomainResource):
         element_property=True,
         # note: Listed Resource Type(s) should be allowed as Reference.
         enum_reference_types=["Patient", "Group"],
-        backref="condition",
-        parent_name="condition",
     )
 
     verificationStatus: fhirtypes.CodeableConceptType = Field(
@@ -554,10 +543,7 @@ class Condition(domainresource.DomainResource):
 
 
 class ConditionEvidence(backboneelement.BackboneElement):
-    """Disclaimer: Any field name ends with ``__ext`` doesn't part of
-    Resource StructureDefinition, instead used to enable Extensibility feature
-    for FHIR Primitive Data Types.
-
+    """
     Supporting evidence.
     Supporting evidence / manifestations that are the basis of the Condition's
     verification status, such as evidence that confirmed or refuted the
@@ -591,8 +577,6 @@ class ConditionEvidence(backboneelement.BackboneElement):
         element_property=True,
         # note: Listed Resource Type(s) should be allowed as Reference.
         enum_reference_types=["Resource"],
-        backref="condition_evidence",
-        parent_name="condition_evidence",
     )
 
     @classmethod
@@ -605,10 +589,7 @@ class ConditionEvidence(backboneelement.BackboneElement):
 
 
 class ConditionStage(backboneelement.BackboneElement):
-    """Disclaimer: Any field name ends with ``__ext`` doesn't part of
-    Resource StructureDefinition, instead used to enable Extensibility feature
-    for FHIR Primitive Data Types.
-
+    """
     Stage/grade, usually assessed formally.
     Clinical stage or grade of a condition. May include formal severity
     assessments.
@@ -628,8 +609,6 @@ class ConditionStage(backboneelement.BackboneElement):
         element_property=True,
         # note: Listed Resource Type(s) should be allowed as Reference.
         enum_reference_types=["ClinicalImpression", "DiagnosticReport", "Observation"],
-        backref="condition_stage",
-        parent_name="condition_stage",
     )
 
     summary: fhirtypes.CodeableConceptType = Field(

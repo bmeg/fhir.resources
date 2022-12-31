@@ -16,10 +16,7 @@ from . import element, fhirtypes
 
 
 class Narrative(element.Element):
-    """Disclaimer: Any field name ends with ``__ext`` doesn't part of
-    Resource StructureDefinition, instead used to enable Extensibility feature
-    for FHIR Primitive Data Types.
-
+    """
     Human-readable summary of the resource (essential clinical and business
     information).
     A human-readable summary of the resource conveying the essential clinical

@@ -16,10 +16,7 @@ from . import backboneelement, domainresource, fhirtypes
 
 
 class QuestionnaireResponse(domainresource.DomainResource):
-    """Disclaimer: Any field name ends with ``__ext`` doesn't part of
-    Resource StructureDefinition, instead used to enable Extensibility feature
-    for FHIR Primitive Data Types.
-
+    """
     A structured set of questions and their answers.
     A structured set of questions and their answers. The questions are ordered
     and grouped into coherent subsets, corresponding to the structure of the
@@ -47,8 +44,6 @@ class QuestionnaireResponse(domainresource.DomainResource):
             "RelatedPerson",
             "Organization",
         ],
-        backref="questionnaire_response",
-        parent_name="questionnaire_response",
     )
 
     authored: fhirtypes.DateTime = Field(
@@ -77,8 +72,6 @@ class QuestionnaireResponse(domainresource.DomainResource):
         element_property=True,
         # note: Listed Resource Type(s) should be allowed as Reference.
         enum_reference_types=["CarePlan", "ServiceRequest"],
-        backref="questionnaire_response",
-        parent_name="questionnaire_response",
     )
 
     encounter: fhirtypes.ReferenceType = Field(
@@ -93,8 +86,6 @@ class QuestionnaireResponse(domainresource.DomainResource):
         element_property=True,
         # note: Listed Resource Type(s) should be allowed as Reference.
         enum_reference_types=["Encounter"],
-        backref="questionnaire_response",
-        parent_name="questionnaire_response",
     )
 
     identifier: fhirtypes.IdentifierType = Field(
@@ -134,8 +125,6 @@ class QuestionnaireResponse(domainresource.DomainResource):
         element_property=True,
         # note: Listed Resource Type(s) should be allowed as Reference.
         enum_reference_types=["Observation", "Procedure"],
-        backref="questionnaire_response",
-        parent_name="questionnaire_response",
     )
 
     questionnaire: fhirtypes.Canonical = Field(
@@ -150,8 +139,6 @@ class QuestionnaireResponse(domainresource.DomainResource):
         element_property=True,
         # note: Listed Resource Type(s) should be allowed as Reference.
         enum_reference_types=["Questionnaire"],
-        backref="questionnaire_response",
-        parent_name="questionnaire_response",
     )
     questionnaire__ext: fhirtypes.FHIRPrimitiveExtensionType = Field(
         None, alias="_questionnaire", title="Extension field for ``questionnaire``."
@@ -171,8 +158,6 @@ class QuestionnaireResponse(domainresource.DomainResource):
             "PractitionerRole",
             "RelatedPerson",
         ],
-        backref="questionnaire_response",
-        parent_name="questionnaire_response",
     )
 
     status: fhirtypes.Code = Field(
@@ -219,8 +204,6 @@ class QuestionnaireResponse(domainresource.DomainResource):
         element_property=True,
         # note: Listed Resource Type(s) should be allowed as Reference.
         enum_reference_types=["Resource"],
-        backref="questionnaire_response",
-        parent_name="questionnaire_response",
     )
 
     @classmethod
@@ -312,10 +295,7 @@ class QuestionnaireResponse(domainresource.DomainResource):
 
 
 class QuestionnaireResponseItem(backboneelement.BackboneElement):
-    """Disclaimer: Any field name ends with ``__ext`` doesn't part of
-    Resource StructureDefinition, instead used to enable Extensibility feature
-    for FHIR Primitive Data Types.
-
+    """
     Groups and questions.
     A group or question item from the original questionnaire for which answers
     are provided.
@@ -465,10 +445,7 @@ class QuestionnaireResponseItem(backboneelement.BackboneElement):
 
 
 class QuestionnaireResponseItemAnswer(backboneelement.BackboneElement):
-    """Disclaimer: Any field name ends with ``__ext`` doesn't part of
-    Resource StructureDefinition, instead used to enable Extensibility feature
-    for FHIR Primitive Data Types.
-
+    """
     The response(s) to the question.
     The respondent's answer(s) to the question.
     """
@@ -670,8 +647,6 @@ class QuestionnaireResponseItemAnswer(backboneelement.BackboneElement):
         binding_uri="http://hl7.org/fhir/ValueSet/questionnaire-answers",
         # note: Listed Resource Type(s) should be allowed as Reference.
         enum_reference_types=["Resource"],
-        backref="questionnaire_response_item_answer",
-        parent_name="questionnaire_response_item_answer",
     )
 
     valueString: fhirtypes.String = Field(

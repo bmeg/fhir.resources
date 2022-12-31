@@ -16,10 +16,7 @@ from . import backboneelement, domainresource, fhirtypes
 
 
 class DeviceRequest(domainresource.DomainResource):
-    """Disclaimer: Any field name ends with ``__ext`` doesn't part of
-    Resource StructureDefinition, instead used to enable Extensibility feature
-    for FHIR Primitive Data Types.
-
+    """
     Medical device request.
     Represents a request for a patient to employ a medical device. The device
     may be an implantable device, or an external assistive device, such as a
@@ -49,8 +46,6 @@ class DeviceRequest(domainresource.DomainResource):
         element_property=True,
         # note: Listed Resource Type(s) should be allowed as Reference.
         enum_reference_types=["Resource"],
-        backref="device_request",
-        parent_name="device_request",
     )
 
     codeCodeableConcept: fhirtypes.CodeableConceptType = Field(
@@ -91,8 +86,6 @@ class DeviceRequest(domainresource.DomainResource):
         binding_uri="http://hl7.org/fhir/ValueSet/device-kind",
         # note: Listed Resource Type(s) should be allowed as Reference.
         enum_reference_types=["Device"],
-        backref="device_request",
-        parent_name="device_request",
     )
 
     encounter: fhirtypes.ReferenceType = Field(
@@ -107,8 +100,6 @@ class DeviceRequest(domainresource.DomainResource):
         element_property=True,
         # note: Listed Resource Type(s) should be allowed as Reference.
         enum_reference_types=["Encounter"],
-        backref="device_request",
-        parent_name="device_request",
     )
 
     groupIdentifier: fhirtypes.IdentifierType = Field(
@@ -142,8 +133,6 @@ class DeviceRequest(domainresource.DomainResource):
         element_property=True,
         # note: Listed Resource Type(s) should be allowed as Reference.
         enum_reference_types=["ActivityDefinition", "PlanDefinition"],
-        backref="device_request",
-        parent_name="device_request",
     )
     instantiatesCanonical__ext: typing.List[
         typing.Union[fhirtypes.FHIRPrimitiveExtensionType, None]
@@ -184,8 +173,6 @@ class DeviceRequest(domainresource.DomainResource):
         element_property=True,
         # note: Listed Resource Type(s) should be allowed as Reference.
         enum_reference_types=["Coverage", "ClaimResponse"],
-        backref="device_request",
-        parent_name="device_request",
     )
 
     intent: fhirtypes.Code = Field(
@@ -325,8 +312,6 @@ class DeviceRequest(domainresource.DomainResource):
             "Device",
             "RelatedPerson",
         ],
-        backref="device_request",
-        parent_name="device_request",
     )
 
     performerType: fhirtypes.CodeableConceptType = Field(
@@ -357,8 +342,6 @@ class DeviceRequest(domainresource.DomainResource):
         element_property=True,
         # note: Listed Resource Type(s) should be allowed as Reference.
         enum_reference_types=["Resource"],
-        backref="device_request",
-        parent_name="device_request",
     )
 
     priority: fhirtypes.Code = Field(
@@ -414,8 +397,6 @@ class DeviceRequest(domainresource.DomainResource):
             "DiagnosticReport",
             "DocumentReference",
         ],
-        backref="device_request",
-        parent_name="device_request",
     )
 
     relevantHistory: typing.List[fhirtypes.ReferenceType] = Field(
@@ -427,8 +408,6 @@ class DeviceRequest(domainresource.DomainResource):
         element_property=True,
         # note: Listed Resource Type(s) should be allowed as Reference.
         enum_reference_types=["Provenance"],
-        backref="device_request",
-        parent_name="device_request",
     )
 
     requester: fhirtypes.ReferenceType = Field(
@@ -448,8 +427,6 @@ class DeviceRequest(domainresource.DomainResource):
             "PractitionerRole",
             "Organization",
         ],
-        backref="device_request",
-        parent_name="device_request",
     )
 
     status: fhirtypes.Code = Field(
@@ -495,8 +472,6 @@ class DeviceRequest(domainresource.DomainResource):
         element_property=True,
         # note: Listed Resource Type(s) should be allowed as Reference.
         enum_reference_types=["Patient", "Group", "Location", "Device"],
-        backref="device_request",
-        parent_name="device_request",
     )
 
     supportingInfo: typing.List[fhirtypes.ReferenceType] = Field(
@@ -512,8 +487,6 @@ class DeviceRequest(domainresource.DomainResource):
         element_property=True,
         # note: Listed Resource Type(s) should be allowed as Reference.
         enum_reference_types=["Resource"],
-        backref="device_request",
-        parent_name="device_request",
     )
 
     @classmethod
@@ -666,10 +639,7 @@ class DeviceRequest(domainresource.DomainResource):
 
 
 class DeviceRequestParameter(backboneelement.BackboneElement):
-    """Disclaimer: Any field name ends with ``__ext`` doesn't part of
-    Resource StructureDefinition, instead used to enable Extensibility feature
-    for FHIR Primitive Data Types.
-
+    """
     Device details.
     Specific parameters for the ordered item.  For example, the prism value for
     lenses.

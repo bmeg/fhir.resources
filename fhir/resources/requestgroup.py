@@ -16,10 +16,7 @@ from . import backboneelement, domainresource, fhirtypes
 
 
 class RequestGroup(domainresource.DomainResource):
-    """Disclaimer: Any field name ends with ``__ext`` doesn't part of
-    Resource StructureDefinition, instead used to enable Extensibility feature
-    for FHIR Primitive Data Types.
-
+    """
     A group of related requests.
     A group of related requests that can be used to capture intended activities
     that have inter-dependencies such as "give this medication after that one".
@@ -45,8 +42,6 @@ class RequestGroup(domainresource.DomainResource):
         element_property=True,
         # note: Listed Resource Type(s) should be allowed as Reference.
         enum_reference_types=["Device", "Practitioner", "PractitionerRole"],
-        backref="request_group",
-        parent_name="request_group",
     )
 
     authoredOn: fhirtypes.DateTime = Field(
@@ -73,8 +68,6 @@ class RequestGroup(domainresource.DomainResource):
         element_property=True,
         # note: Listed Resource Type(s) should be allowed as Reference.
         enum_reference_types=["Resource"],
-        backref="request_group",
-        parent_name="request_group",
     )
 
     code: fhirtypes.CodeableConceptType = Field(
@@ -95,8 +88,6 @@ class RequestGroup(domainresource.DomainResource):
         element_property=True,
         # note: Listed Resource Type(s) should be allowed as Reference.
         enum_reference_types=["Encounter"],
-        backref="request_group",
-        parent_name="request_group",
     )
 
     groupIdentifier: fhirtypes.IdentifierType = Field(
@@ -261,8 +252,6 @@ class RequestGroup(domainresource.DomainResource):
             "DiagnosticReport",
             "DocumentReference",
         ],
-        backref="request_group",
-        parent_name="request_group",
     )
 
     replaces: typing.List[fhirtypes.ReferenceType] = Field(
@@ -277,8 +266,6 @@ class RequestGroup(domainresource.DomainResource):
         element_property=True,
         # note: Listed Resource Type(s) should be allowed as Reference.
         enum_reference_types=["Resource"],
-        backref="request_group",
-        parent_name="request_group",
     )
 
     status: fhirtypes.Code = Field(
@@ -326,8 +313,6 @@ class RequestGroup(domainresource.DomainResource):
         element_property=True,
         # note: Listed Resource Type(s) should be allowed as Reference.
         enum_reference_types=["Patient", "Group"],
-        backref="request_group",
-        parent_name="request_group",
     )
 
     @classmethod
@@ -426,10 +411,7 @@ class RequestGroup(domainresource.DomainResource):
 
 
 class RequestGroupAction(backboneelement.BackboneElement):
-    """Disclaimer: Any field name ends with ``__ext`` doesn't part of
-    Resource StructureDefinition, instead used to enable Extensibility feature
-    for FHIR Primitive Data Types.
-
+    """
     Proposed actions, if any.
     The actions, if any, produced by the evaluation of the artifact.
     """
@@ -563,8 +545,6 @@ class RequestGroupAction(backboneelement.BackboneElement):
             "RelatedPerson",
             "Device",
         ],
-        backref="request_group_action",
-        parent_name="request_group_action",
     )
 
     precheckBehavior: fhirtypes.Code = Field(
@@ -676,8 +656,6 @@ class RequestGroupAction(backboneelement.BackboneElement):
         element_property=True,
         # note: Listed Resource Type(s) should be allowed as Reference.
         enum_reference_types=["Resource"],
-        backref="request_group_action",
-        parent_name="request_group_action",
     )
 
     selectionBehavior: fhirtypes.Code = Field(
@@ -923,10 +901,7 @@ class RequestGroupAction(backboneelement.BackboneElement):
 
 
 class RequestGroupActionCondition(backboneelement.BackboneElement):
-    """Disclaimer: Any field name ends with ``__ext`` doesn't part of
-    Resource StructureDefinition, instead used to enable Extensibility feature
-    for FHIR Primitive Data Types.
-
+    """
     Whether or not the action is applicable.
     An expression that describes applicability criteria, or start/stop
     conditions for the action.
@@ -1039,10 +1014,7 @@ class RequestGroupActionCondition(backboneelement.BackboneElement):
 
 
 class RequestGroupActionRelatedAction(backboneelement.BackboneElement):
-    """Disclaimer: Any field name ends with ``__ext`` doesn't part of
-    Resource StructureDefinition, instead used to enable Extensibility feature
-    for FHIR Primitive Data Types.
-
+    """
     Relationship to another action.
     A relationship to another action such as "before" or "30-60 minutes after
     start of".

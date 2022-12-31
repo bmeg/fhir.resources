@@ -16,10 +16,7 @@ from . import backboneelement, domainresource, fhirtypes
 
 
 class Observation(domainresource.DomainResource):
-    """Disclaimer: Any field name ends with ``__ext`` doesn't part of
-    Resource StructureDefinition, instead used to enable Extensibility feature
-    for FHIR Primitive Data Types.
-
+    """
     Measurements and simple assertions.
     Measurements and simple assertions made about a patient, device or other
     subject.
@@ -47,8 +44,6 @@ class Observation(domainresource.DomainResource):
             "NutritionOrder",
             "ServiceRequest",
         ],
-        backref="observation",
-        parent_name="observation",
     )
 
     bodySite: fhirtypes.CodeableConceptType = Field(
@@ -152,8 +147,6 @@ class Observation(domainresource.DomainResource):
             "Observation",
             "MolecularSequence",
         ],
-        backref="observation",
-        parent_name="observation",
     )
 
     device: fhirtypes.ReferenceType = Field(
@@ -165,8 +158,6 @@ class Observation(domainresource.DomainResource):
         element_property=True,
         # note: Listed Resource Type(s) should be allowed as Reference.
         enum_reference_types=["Device", "DeviceMetric"],
-        backref="observation",
-        parent_name="observation",
     )
 
     effectiveDateTime: fhirtypes.DateTime = Field(
@@ -263,8 +254,6 @@ class Observation(domainresource.DomainResource):
         element_property=True,
         # note: Listed Resource Type(s) should be allowed as Reference.
         enum_reference_types=["Encounter"],
-        backref="observation",
-        parent_name="observation",
     )
 
     focus: typing.List[fhirtypes.ReferenceType] = Field(
@@ -290,8 +279,6 @@ class Observation(domainresource.DomainResource):
         element_property=True,
         # note: Listed Resource Type(s) should be allowed as Reference.
         enum_reference_types=["Resource"],
-        backref="observation",
-        parent_name="observation",
     )
 
     hasMember: typing.List[fhirtypes.ReferenceType] = Field(
@@ -311,8 +298,6 @@ class Observation(domainresource.DomainResource):
             "QuestionnaireResponse",
             "MolecularSequence",
         ],
-        backref="observation",
-        parent_name="observation",
     )
 
     identifier: typing.List[fhirtypes.IdentifierType] = Field(
@@ -401,8 +386,6 @@ class Observation(domainresource.DomainResource):
             "Immunization",
             "ImagingStudy",
         ],
-        backref="observation",
-        parent_name="observation",
     )
 
     performer: typing.List[fhirtypes.ReferenceType] = Field(
@@ -421,8 +404,6 @@ class Observation(domainresource.DomainResource):
             "Patient",
             "RelatedPerson",
         ],
-        backref="observation",
-        parent_name="observation",
     )
 
     referenceRange: typing.List[fhirtypes.ObservationReferenceRangeType] = Field(
@@ -448,8 +429,6 @@ class Observation(domainresource.DomainResource):
         element_property=True,
         # note: Listed Resource Type(s) should be allowed as Reference.
         enum_reference_types=["Specimen"],
-        backref="observation",
-        parent_name="observation",
     )
 
     status: fhirtypes.Code = Field(
@@ -501,8 +480,6 @@ class Observation(domainresource.DomainResource):
             "Medication",
             "Substance",
         ],
-        backref="observation",
-        parent_name="observation",
     )
 
     valueBoolean: bool = Field(
@@ -858,10 +835,7 @@ class Observation(domainresource.DomainResource):
 
 
 class ObservationComponent(backboneelement.BackboneElement):
-    """Disclaimer: Any field name ends with ``__ext`` doesn't part of
-    Resource StructureDefinition, instead used to enable Extensibility feature
-    for FHIR Primitive Data Types.
-
+    """
     Component results.
     Some observations have multiple component observations.  These component
     observations are expressed as separate code value pairs that share the same
@@ -1195,10 +1169,7 @@ class ObservationComponent(backboneelement.BackboneElement):
 
 
 class ObservationReferenceRange(backboneelement.BackboneElement):
-    """Disclaimer: Any field name ends with ``__ext`` doesn't part of
-    Resource StructureDefinition, instead used to enable Extensibility feature
-    for FHIR Primitive Data Types.
-
+    """
     Provides guide for interpretation.
     Guidance on how to interpret the value by comparison to a normal or
     recommended range.  Multiple reference ranges are interpreted as an "OR".

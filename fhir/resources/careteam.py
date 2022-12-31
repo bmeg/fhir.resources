@@ -14,10 +14,7 @@ from . import backboneelement, domainresource, fhirtypes
 
 
 class CareTeam(domainresource.DomainResource):
-    """Disclaimer: Any field name ends with ``__ext`` doesn't part of
-    Resource StructureDefinition, instead used to enable Extensibility feature
-    for FHIR Primitive Data Types.
-
+    """
     Planned participants in the coordination and delivery of care for a patient
     or group.
     The Care Team includes all the people and organizations who plan to
@@ -56,8 +53,6 @@ class CareTeam(domainresource.DomainResource):
         element_property=True,
         # note: Listed Resource Type(s) should be allowed as Reference.
         enum_reference_types=["Encounter"],
-        backref="care_team",
-        parent_name="care_team",
     )
 
     identifier: typing.List[fhirtypes.IdentifierType] = Field(
@@ -82,8 +77,6 @@ class CareTeam(domainresource.DomainResource):
         element_property=True,
         # note: Listed Resource Type(s) should be allowed as Reference.
         enum_reference_types=["Organization"],
-        backref="care_team",
-        parent_name="care_team",
     )
 
     name: fhirtypes.String = Field(
@@ -159,8 +152,6 @@ class CareTeam(domainresource.DomainResource):
         element_property=True,
         # note: Listed Resource Type(s) should be allowed as Reference.
         enum_reference_types=["Condition"],
-        backref="care_team",
-        parent_name="care_team",
     )
 
     status: fhirtypes.Code = Field(
@@ -198,8 +189,6 @@ class CareTeam(domainresource.DomainResource):
         element_property=True,
         # note: Listed Resource Type(s) should be allowed as Reference.
         enum_reference_types=["Patient", "Group"],
-        backref="care_team",
-        parent_name="care_team",
     )
 
     telecom: typing.List[fhirtypes.ContactPointType] = Field(
@@ -246,10 +235,7 @@ class CareTeam(domainresource.DomainResource):
 
 
 class CareTeamParticipant(backboneelement.BackboneElement):
-    """Disclaimer: Any field name ends with ``__ext`` doesn't part of
-    Resource StructureDefinition, instead used to enable Extensibility feature
-    for FHIR Primitive Data Types.
-
+    """
     Members of the team.
     Identifies all people and organizations who are expected to be involved in
     the care team.
@@ -276,8 +262,6 @@ class CareTeamParticipant(backboneelement.BackboneElement):
             "Organization",
             "CareTeam",
         ],
-        backref="care_team_participant",
-        parent_name="care_team_participant",
     )
 
     onBehalfOf: fhirtypes.ReferenceType = Field(
@@ -289,8 +273,6 @@ class CareTeamParticipant(backboneelement.BackboneElement):
         element_property=True,
         # note: Listed Resource Type(s) should be allowed as Reference.
         enum_reference_types=["Organization"],
-        backref="care_team_participant",
-        parent_name="care_team_participant",
     )
 
     period: fhirtypes.PeriodType = Field(

@@ -12,10 +12,7 @@ from . import fhirresourcemodel, fhirtypes
 
 
 class Resource(fhirresourcemodel.FHIRResourceModel):
-    """Disclaimer: Any field name ends with ``__ext`` doesn't part of
-    Resource StructureDefinition, instead used to enable Extensibility feature
-    for FHIR Primitive Data Types.
-
+    """
     Base Resource.
     This is the base resource type for everything.
     """

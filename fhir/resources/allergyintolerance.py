@@ -14,10 +14,7 @@ from . import backboneelement, domainresource, fhirtypes
 
 
 class AllergyIntolerance(domainresource.DomainResource):
-    """Disclaimer: Any field name ends with ``__ext`` doesn't part of
-    Resource StructureDefinition, instead used to enable Extensibility feature
-    for FHIR Primitive Data Types.
-
+    """
     Allergy or Intolerance (generally: Risk of adverse reaction to a substance).
     Risk of harmful or undesirable, physiological response which is unique to
     an individual and associated with exposure to a substance.
@@ -39,8 +36,6 @@ class AllergyIntolerance(domainresource.DomainResource):
             "Practitioner",
             "PractitionerRole",
         ],
-        backref="allergy_intolerance",
-        parent_name="allergy_intolerance",
     )
 
     category: typing.List[typing.Optional[fhirtypes.Code]] = Field(
@@ -151,8 +146,6 @@ class AllergyIntolerance(domainresource.DomainResource):
         element_property=True,
         # note: Listed Resource Type(s) should be allowed as Reference.
         enum_reference_types=["Encounter"],
-        backref="allergy_intolerance",
-        parent_name="allergy_intolerance",
     )
 
     identifier: typing.List[fhirtypes.IdentifierType] = Field(
@@ -285,8 +278,6 @@ class AllergyIntolerance(domainresource.DomainResource):
         element_property=True,
         # note: Listed Resource Type(s) should be allowed as Reference.
         enum_reference_types=["Patient"],
-        backref="allergy_intolerance",
-        parent_name="allergy_intolerance",
     )
 
     reaction: typing.List[fhirtypes.AllergyIntoleranceReactionType] = Field(
@@ -334,8 +325,6 @@ class AllergyIntolerance(domainresource.DomainResource):
             "Patient",
             "RelatedPerson",
         ],
-        backref="allergy_intolerance",
-        parent_name="allergy_intolerance",
     )
 
     type: fhirtypes.Code = Field(
@@ -469,10 +458,7 @@ class AllergyIntolerance(domainresource.DomainResource):
 
 
 class AllergyIntoleranceReaction(backboneelement.BackboneElement):
-    """Disclaimer: Any field name ends with ``__ext`` doesn't part of
-    Resource StructureDefinition, instead used to enable Extensibility feature
-    for FHIR Primitive Data Types.
-
+    """
     Adverse Reaction Events linked to exposure to substance.
     Details about each adverse reaction event linked to exposure to the
     identified substance.

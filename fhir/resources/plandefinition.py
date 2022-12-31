@@ -16,10 +16,7 @@ from . import backboneelement, domainresource, fhirtypes
 
 
 class PlanDefinition(domainresource.DomainResource):
-    """Disclaimer: Any field name ends with ``__ext`` doesn't part of
-    Resource StructureDefinition, instead used to enable Extensibility feature
-    for FHIR Primitive Data Types.
-
+    """
     The definition of a plan for a series of actions, independent of any
     specific patient or context.
     This resource allows for the definition of various types of plans as a
@@ -259,8 +256,6 @@ class PlanDefinition(domainresource.DomainResource):
         element_property=True,
         # note: Listed Resource Type(s) should be allowed as Reference.
         enum_reference_types=["Library"],
-        backref="plan_definition",
-        parent_name="plan_definition",
     )
     library__ext: typing.List[
         typing.Union[fhirtypes.FHIRPrimitiveExtensionType, None]
@@ -391,8 +386,6 @@ class PlanDefinition(domainresource.DomainResource):
             "ManufacturedItemDefinition",
             "PackagedProductDefinition",
         ],
-        backref="plan_definition",
-        parent_name="plan_definition",
     )
     subjectCanonical__ext: fhirtypes.FHIRPrimitiveExtensionType = Field(
         None,
@@ -450,8 +443,6 @@ class PlanDefinition(domainresource.DomainResource):
         binding_uri="http://hl7.org/fhir/ValueSet/subject-type",
         # note: Listed Resource Type(s) should be allowed as Reference.
         enum_reference_types=["Group"],
-        backref="plan_definition",
-        parent_name="plan_definition",
     )
 
     subtitle: fhirtypes.String = Field(
@@ -757,10 +748,7 @@ class PlanDefinition(domainresource.DomainResource):
 
 
 class PlanDefinitionAction(backboneelement.BackboneElement):
-    """Disclaimer: Any field name ends with ``__ext`` doesn't part of
-    Resource StructureDefinition, instead used to enable Extensibility feature
-    for FHIR Primitive Data Types.
-
+    """
     Action defined by the plan.
     An action or group of actions to be taken as part of the plan. For example,
     in clinical care, an action would be to prescribe a particular indicated
@@ -857,8 +845,6 @@ class PlanDefinitionAction(backboneelement.BackboneElement):
         one_of_many_required=False,
         # note: Listed Resource Type(s) should be allowed as Reference.
         enum_reference_types=["ActivityDefinition", "PlanDefinition", "Questionnaire"],
-        backref="plan_definition_action",
-        parent_name="plan_definition_action",
     )
     definitionCanonical__ext: fhirtypes.FHIRPrimitiveExtensionType = Field(
         None,
@@ -1223,8 +1209,6 @@ class PlanDefinitionAction(backboneelement.BackboneElement):
         binding_uri="http://hl7.org/fhir/ValueSet/subject-type",
         # note: Listed Resource Type(s) should be allowed as Reference.
         enum_reference_types=["Group"],
-        backref="plan_definition_action",
-        parent_name="plan_definition_action",
     )
 
     textEquivalent: fhirtypes.String = Field(
@@ -1351,8 +1335,6 @@ class PlanDefinitionAction(backboneelement.BackboneElement):
         element_property=True,
         # note: Listed Resource Type(s) should be allowed as Reference.
         enum_reference_types=["StructureMap"],
-        backref="plan_definition_action",
-        parent_name="plan_definition_action",
     )
     transform__ext: fhirtypes.FHIRPrimitiveExtensionType = Field(
         None, alias="_transform", title="Extension field for ``transform``."
@@ -1488,10 +1470,7 @@ class PlanDefinitionAction(backboneelement.BackboneElement):
 
 
 class PlanDefinitionActionCondition(backboneelement.BackboneElement):
-    """Disclaimer: Any field name ends with ``__ext`` doesn't part of
-    Resource StructureDefinition, instead used to enable Extensibility feature
-    for FHIR Primitive Data Types.
-
+    """
     Whether or not the action is applicable.
     An expression that describes applicability criteria or start/stop
     conditions for the action.
@@ -1604,10 +1583,7 @@ class PlanDefinitionActionCondition(backboneelement.BackboneElement):
 
 
 class PlanDefinitionActionDynamicValue(backboneelement.BackboneElement):
-    """Disclaimer: Any field name ends with ``__ext`` doesn't part of
-    Resource StructureDefinition, instead used to enable Extensibility feature
-    for FHIR Primitive Data Types.
-
+    """
     Dynamic aspects of the definition.
     Customizations that should be applied to the statically defined resource.
     For example, if the dosage of a medication must be computed based on the
@@ -1659,10 +1635,7 @@ class PlanDefinitionActionDynamicValue(backboneelement.BackboneElement):
 
 
 class PlanDefinitionActionParticipant(backboneelement.BackboneElement):
-    """Disclaimer: Any field name ends with ``__ext`` doesn't part of
-    Resource StructureDefinition, instead used to enable Extensibility feature
-    for FHIR Primitive Data Types.
-
+    """
     Who should participate in the action.
     Indicates who should participate in performing the action described.
     """
@@ -1779,10 +1752,7 @@ class PlanDefinitionActionParticipant(backboneelement.BackboneElement):
 
 
 class PlanDefinitionActionRelatedAction(backboneelement.BackboneElement):
-    """Disclaimer: Any field name ends with ``__ext`` doesn't part of
-    Resource StructureDefinition, instead used to enable Extensibility feature
-    for FHIR Primitive Data Types.
-
+    """
     Relationship to another action.
     A relationship to another action such as "before" or "30-60 minutes after
     start of".
@@ -1988,10 +1958,7 @@ class PlanDefinitionActionRelatedAction(backboneelement.BackboneElement):
 
 
 class PlanDefinitionGoal(backboneelement.BackboneElement):
-    """Disclaimer: Any field name ends with ``__ext`` doesn't part of
-    Resource StructureDefinition, instead used to enable Extensibility feature
-    for FHIR Primitive Data Types.
-
+    """
     What the plan is trying to accomplish.
     A goal describes an expected outcome that activities within the plan are
     intended to achieve. For example, weight loss, restoring an activity of
@@ -2132,10 +2099,7 @@ class PlanDefinitionGoal(backboneelement.BackboneElement):
 
 
 class PlanDefinitionGoalTarget(backboneelement.BackboneElement):
-    """Disclaimer: Any field name ends with ``__ext`` doesn't part of
-    Resource StructureDefinition, instead used to enable Extensibility feature
-    for FHIR Primitive Data Types.
-
+    """
     Target outcome for the goal.
     Indicates what should be done and within what timeframe.
     """

@@ -14,10 +14,7 @@ from . import backboneelement, domainresource, fhirtypes
 
 
 class Medication(domainresource.DomainResource):
-    """Disclaimer: Any field name ends with ``__ext`` doesn't part of
-    Resource StructureDefinition, instead used to enable Extensibility feature
-    for FHIR Primitive Data Types.
-
+    """
     Definition of a Medication.
     This resource is primarily used for the identification and definition of a
     medication for the purposes of prescribing, dispensing, and administering a
@@ -120,8 +117,6 @@ class Medication(domainresource.DomainResource):
         element_property=True,
         # note: Listed Resource Type(s) should be allowed as Reference.
         enum_reference_types=["Organization"],
-        backref="medication",
-        parent_name="medication",
     )
 
     status: fhirtypes.Code = Field(
@@ -174,10 +169,7 @@ class Medication(domainresource.DomainResource):
 
 
 class MedicationBatch(backboneelement.BackboneElement):
-    """Disclaimer: Any field name ends with ``__ext`` doesn't part of
-    Resource StructureDefinition, instead used to enable Extensibility feature
-    for FHIR Primitive Data Types.
-
+    """
     Details about packaged medications.
     Information that only applies to packages (not products).
     """
@@ -218,10 +210,7 @@ class MedicationBatch(backboneelement.BackboneElement):
 
 
 class MedicationIngredient(backboneelement.BackboneElement):
-    """Disclaimer: Any field name ends with ``__ext`` doesn't part of
-    Resource StructureDefinition, instead used to enable Extensibility feature
-    for FHIR Primitive Data Types.
-
+    """
     Active or inactive ingredient.
     Identifies a particular constituent of interest in the product.
     """
@@ -273,8 +262,6 @@ class MedicationIngredient(backboneelement.BackboneElement):
         one_of_many_required=True,
         # note: Listed Resource Type(s) should be allowed as Reference.
         enum_reference_types=["Substance", "Medication"],
-        backref="medication_ingredient",
-        parent_name="medication_ingredient",
     )
 
     strength: fhirtypes.RatioType = Field(

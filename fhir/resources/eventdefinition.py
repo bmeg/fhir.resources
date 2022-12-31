@@ -16,10 +16,7 @@ from . import domainresource, fhirtypes
 
 
 class EventDefinition(domainresource.DomainResource):
-    """Disclaimer: Any field name ends with ``__ext`` doesn't part of
-    Resource StructureDefinition, instead used to enable Extensibility feature
-    for FHIR Primitive Data Types.
-
+    """
     A description of when an event can occur.
     The EventDefinition resource provides a reusable description of when a
     particular event can occur.
@@ -344,8 +341,6 @@ class EventDefinition(domainresource.DomainResource):
         binding_uri="http://hl7.org/fhir/ValueSet/subject-type",
         # note: Listed Resource Type(s) should be allowed as Reference.
         enum_reference_types=["Group"],
-        backref="event_definition",
-        parent_name="event_definition",
     )
 
     subtitle: fhirtypes.String = Field(

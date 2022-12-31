@@ -14,10 +14,7 @@ from . import domainresource, fhirtypes
 
 
 class EnrollmentResponse(domainresource.DomainResource):
-    """Disclaimer: Any field name ends with ``__ext`` doesn't part of
-    Resource StructureDefinition, instead used to enable Extensibility feature
-    for FHIR Primitive Data Types.
-
+    """
     EnrollmentResponse resource.
     This resource provides enrollment and plan details from the processing of
     an EnrollmentRequest resource.
@@ -70,8 +67,6 @@ class EnrollmentResponse(domainresource.DomainResource):
         element_property=True,
         # note: Listed Resource Type(s) should be allowed as Reference.
         enum_reference_types=["Organization"],
-        backref="enrollment_response",
-        parent_name="enrollment_response",
     )
 
     outcome: fhirtypes.Code = Field(
@@ -106,8 +101,6 @@ class EnrollmentResponse(domainresource.DomainResource):
         element_property=True,
         # note: Listed Resource Type(s) should be allowed as Reference.
         enum_reference_types=["EnrollmentRequest"],
-        backref="enrollment_response",
-        parent_name="enrollment_response",
     )
 
     requestProvider: fhirtypes.ReferenceType = Field(
@@ -122,8 +115,6 @@ class EnrollmentResponse(domainresource.DomainResource):
         element_property=True,
         # note: Listed Resource Type(s) should be allowed as Reference.
         enum_reference_types=["Practitioner", "PractitionerRole", "Organization"],
-        backref="enrollment_response",
-        parent_name="enrollment_response",
     )
 
     status: fhirtypes.Code = Field(

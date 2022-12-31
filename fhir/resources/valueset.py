@@ -16,10 +16,7 @@ from . import backboneelement, domainresource, fhirtypes
 
 
 class ValueSet(domainresource.DomainResource):
-    """Disclaimer: Any field name ends with ``__ext`` doesn't part of
-    Resource StructureDefinition, instead used to enable Extensibility feature
-    for FHIR Primitive Data Types.
-
+    """
     A set of codes drawn from one or more code systems.
     A ValueSet resource instance specifies a set of codes drawn from one or
     more code systems, intended for use in a particular context. Value sets
@@ -419,10 +416,7 @@ class ValueSet(domainresource.DomainResource):
 
 
 class ValueSetCompose(backboneelement.BackboneElement):
-    """Disclaimer: Any field name ends with ``__ext`` doesn't part of
-    Resource StructureDefinition, instead used to enable Extensibility feature
-    for FHIR Primitive Data Types.
-
+    """
     Content logical definition of the value set (CLD).
     A set of criteria that define the contents of the value set by including or
     excluding codes selected from the specified code system(s) that the value
@@ -507,10 +501,7 @@ class ValueSetCompose(backboneelement.BackboneElement):
 
 
 class ValueSetComposeInclude(backboneelement.BackboneElement):
-    """Disclaimer: Any field name ends with ``__ext`` doesn't part of
-    Resource StructureDefinition, instead used to enable Extensibility feature
-    for FHIR Primitive Data Types.
-
+    """
     Include one or more codes from a code system or other value set(s).
     """
 
@@ -568,8 +559,6 @@ class ValueSetComposeInclude(backboneelement.BackboneElement):
         element_property=True,
         # note: Listed Resource Type(s) should be allowed as Reference.
         enum_reference_types=["ValueSet"],
-        backref="value_set_compose_include",
-        parent_name="value_set_compose_include",
     )
     valueSet__ext: typing.List[
         typing.Union[fhirtypes.FHIRPrimitiveExtensionType, None]
@@ -609,10 +598,7 @@ class ValueSetComposeInclude(backboneelement.BackboneElement):
 
 
 class ValueSetComposeIncludeConcept(backboneelement.BackboneElement):
-    """Disclaimer: Any field name ends with ``__ext`` doesn't part of
-    Resource StructureDefinition, instead used to enable Extensibility feature
-    for FHIR Primitive Data Types.
-
+    """
     A concept defined in the system.
     Specifies a concept to be included or excluded.
     """
@@ -739,10 +725,7 @@ class ValueSetComposeIncludeConcept(backboneelement.BackboneElement):
 
 
 class ValueSetComposeIncludeConceptDesignation(backboneelement.BackboneElement):
-    """Disclaimer: Any field name ends with ``__ext`` doesn't part of
-    Resource StructureDefinition, instead used to enable Extensibility feature
-    for FHIR Primitive Data Types.
-
+    """
     Additional representations for this concept.
     Additional representations for this concept when used in this value set -
     other languages, aliases, specialized purposes, used for particular
@@ -868,10 +851,7 @@ class ValueSetComposeIncludeConceptDesignation(backboneelement.BackboneElement):
 
 
 class ValueSetComposeIncludeFilter(backboneelement.BackboneElement):
-    """Disclaimer: Any field name ends with ``__ext`` doesn't part of
-    Resource StructureDefinition, instead used to enable Extensibility feature
-    for FHIR Primitive Data Types.
-
+    """
     Select codes/concepts by their properties (including relationships).
     Select concepts by specify a matching criterion based on the properties
     (including relationships) defined by the system, or on filters defined by
@@ -1026,10 +1006,7 @@ class ValueSetComposeIncludeFilter(backboneelement.BackboneElement):
 
 
 class ValueSetExpansion(backboneelement.BackboneElement):
-    """Disclaimer: Any field name ends with ``__ext`` doesn't part of
-    Resource StructureDefinition, instead used to enable Extensibility feature
-    for FHIR Primitive Data Types.
-
+    """
     Used when the value set is "expanded".
     A value set can also be "expanded", where the value set is turned into a
     simple collection of enumerated codes. This element holds the expansion, if
@@ -1204,10 +1181,7 @@ class ValueSetExpansion(backboneelement.BackboneElement):
 
 
 class ValueSetExpansionContains(backboneelement.BackboneElement):
-    """Disclaimer: Any field name ends with ``__ext`` doesn't part of
-    Resource StructureDefinition, instead used to enable Extensibility feature
-    for FHIR Primitive Data Types.
-
+    """
     Codes in the value set.
     The codes that are contained in the value set expansion.
     """
@@ -1356,10 +1330,7 @@ class ValueSetExpansionContains(backboneelement.BackboneElement):
 
 
 class ValueSetExpansionParameter(backboneelement.BackboneElement):
-    """Disclaimer: Any field name ends with ``__ext`` doesn't part of
-    Resource StructureDefinition, instead used to enable Extensibility feature
-    for FHIR Primitive Data Types.
-
+    """
     Parameter that controlled the expansion process.
     A parameter that controlled the expansion process. These parameters may be
     used by users of expanded value sets to check whether the expansion is

@@ -16,10 +16,7 @@ from . import backboneelement, domainresource, fhirtypes
 
 
 class ActivityDefinition(domainresource.DomainResource):
-    """Disclaimer: Any field name ends with ``__ext`` doesn't part of
-    Resource StructureDefinition, instead used to enable Extensibility feature
-    for FHIR Primitive Data Types.
-
+    """
     The definition of a specific activity to be taken, independent of any
     particular patient or context.
     This resource allows for the definition of some activity to be performed,
@@ -365,8 +362,6 @@ class ActivityDefinition(domainresource.DomainResource):
         element_property=True,
         # note: Listed Resource Type(s) should be allowed as Reference.
         enum_reference_types=["Library"],
-        backref="activity_definition",
-        parent_name="activity_definition",
     )
     library__ext: typing.List[
         typing.Union[fhirtypes.FHIRPrimitiveExtensionType, None]
@@ -384,8 +379,6 @@ class ActivityDefinition(domainresource.DomainResource):
         element_property=True,
         # note: Listed Resource Type(s) should be allowed as Reference.
         enum_reference_types=["Location"],
-        backref="activity_definition",
-        parent_name="activity_definition",
     )
 
     name: fhirtypes.String = Field(
@@ -416,8 +409,6 @@ class ActivityDefinition(domainresource.DomainResource):
         element_property=True,
         # note: Listed Resource Type(s) should be allowed as Reference.
         enum_reference_types=["ObservationDefinition"],
-        backref="activity_definition",
-        parent_name="activity_definition",
     )
 
     observationResultRequirement: typing.List[fhirtypes.ReferenceType] = Field(
@@ -432,8 +423,6 @@ class ActivityDefinition(domainresource.DomainResource):
         element_property=True,
         # note: Listed Resource Type(s) should be allowed as Reference.
         enum_reference_types=["ObservationDefinition"],
-        backref="activity_definition",
-        parent_name="activity_definition",
     )
 
     participant: typing.List[fhirtypes.ActivityDefinitionParticipantType] = Field(
@@ -506,8 +495,6 @@ class ActivityDefinition(domainresource.DomainResource):
         binding_uri="http://hl7.org/fhir/ValueSet/medication-codes",
         # note: Listed Resource Type(s) should be allowed as Reference.
         enum_reference_types=["Medication", "Substance", "Ingredient"],
-        backref="activity_definition",
-        parent_name="activity_definition",
     )
 
     profile: fhirtypes.Canonical = Field(
@@ -522,8 +509,6 @@ class ActivityDefinition(domainresource.DomainResource):
         element_property=True,
         # note: Listed Resource Type(s) should be allowed as Reference.
         enum_reference_types=["StructureDefinition"],
-        backref="activity_definition",
-        parent_name="activity_definition",
     )
     profile__ext: fhirtypes.FHIRPrimitiveExtensionType = Field(
         None, alias="_profile", title="Extension field for ``profile``."
@@ -607,8 +592,6 @@ class ActivityDefinition(domainresource.DomainResource):
         element_property=True,
         # note: Listed Resource Type(s) should be allowed as Reference.
         enum_reference_types=["SpecimenDefinition"],
-        backref="activity_definition",
-        parent_name="activity_definition",
     )
 
     status: fhirtypes.Code = Field(
@@ -716,8 +699,6 @@ class ActivityDefinition(domainresource.DomainResource):
         binding_uri="http://hl7.org/fhir/ValueSet/subject-type",
         # note: Listed Resource Type(s) should be allowed as Reference.
         enum_reference_types=["Group"],
-        backref="activity_definition",
-        parent_name="activity_definition",
     )
 
     subtitle: fhirtypes.String = Field(
@@ -871,8 +852,6 @@ class ActivityDefinition(domainresource.DomainResource):
         element_property=True,
         # note: Listed Resource Type(s) should be allowed as Reference.
         enum_reference_types=["StructureMap"],
-        backref="activity_definition",
-        parent_name="activity_definition",
     )
     transform__ext: fhirtypes.FHIRPrimitiveExtensionType = Field(
         None, alias="_transform", title="Extension field for ``transform``."
@@ -1140,10 +1119,7 @@ class ActivityDefinition(domainresource.DomainResource):
 
 
 class ActivityDefinitionDynamicValue(backboneelement.BackboneElement):
-    """Disclaimer: Any field name ends with ``__ext`` doesn't part of
-    Resource StructureDefinition, instead used to enable Extensibility feature
-    for FHIR Primitive Data Types.
-
+    """
     Dynamic aspects of the definition.
     Dynamic values that will be evaluated to produce values for elements of the
     resulting resource. For example, if the dosage of a medication must be
@@ -1255,10 +1231,7 @@ class ActivityDefinitionDynamicValue(backboneelement.BackboneElement):
 
 
 class ActivityDefinitionParticipant(backboneelement.BackboneElement):
-    """Disclaimer: Any field name ends with ``__ext`` doesn't part of
-    Resource StructureDefinition, instead used to enable Extensibility feature
-    for FHIR Primitive Data Types.
-
+    """
     Who should participate in the action.
     Indicates who should participate in performing the action described.
     """

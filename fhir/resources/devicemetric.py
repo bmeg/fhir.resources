@@ -16,10 +16,7 @@ from . import backboneelement, domainresource, fhirtypes
 
 
 class DeviceMetric(domainresource.DomainResource):
-    """Disclaimer: Any field name ends with ``__ext`` doesn't part of
-    Resource StructureDefinition, instead used to enable Extensibility feature
-    for FHIR Primitive Data Types.
-
+    """
     Measurement, calculation or setting capability of a medical device.
     Describes a measurement, calculation or setting capability of a medical
     device.
@@ -174,8 +171,6 @@ class DeviceMetric(domainresource.DomainResource):
         element_property=True,
         # note: Listed Resource Type(s) should be allowed as Reference.
         enum_reference_types=["Device"],
-        backref="device_metric",
-        parent_name="device_metric",
     )
 
     source: fhirtypes.ReferenceType = Field(
@@ -191,8 +186,6 @@ class DeviceMetric(domainresource.DomainResource):
         element_property=True,
         # note: Listed Resource Type(s) should be allowed as Reference.
         enum_reference_types=["Device"],
-        backref="device_metric",
-        parent_name="device_metric",
     )
 
     type: fhirtypes.CodeableConceptType = Field(
@@ -316,10 +309,7 @@ class DeviceMetric(domainresource.DomainResource):
 
 
 class DeviceMetricCalibration(backboneelement.BackboneElement):
-    """Disclaimer: Any field name ends with ``__ext`` doesn't part of
-    Resource StructureDefinition, instead used to enable Extensibility feature
-    for FHIR Primitive Data Types.
-
+    """
     Describes the calibrations that have been performed or that are required to
     be performed.
     """

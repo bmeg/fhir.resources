@@ -14,10 +14,7 @@ from . import backboneelement, fhirtypes
 
 
 class ProductShelfLife(backboneelement.BackboneElement):
-    """Disclaimer: Any field name ends with ``__ext`` doesn't part of
-    Resource StructureDefinition, instead used to enable Extensibility feature
-    for FHIR Primitive Data Types.
-
+    """
     The shelf-life and storage information for a medicinal product item or
     container can be described using this class.
     """

@@ -12,10 +12,7 @@ from . import element, fhirtypes
 
 
 class Ratio(element.Element):
-    """Disclaimer: Any field name ends with ``__ext`` doesn't part of
-    Resource StructureDefinition, instead used to enable Extensibility feature
-    for FHIR Primitive Data Types.
-
+    """
     A ratio of two Quantity values - a numerator and a denominator.
     A relationship of two Quantity values - expressed as a numerator and a
     denominator.

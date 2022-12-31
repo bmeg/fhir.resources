@@ -14,10 +14,7 @@ from . import element, fhirtypes
 
 
 class Meta(element.Element):
-    """Disclaimer: Any field name ends with ``__ext`` doesn't part of
-    Resource StructureDefinition, instead used to enable Extensibility feature
-    for FHIR Primitive Data Types.
-
+    """
     Metadata about a resource.
     The metadata about a resource. This is content in the resource that is
     maintained by the infrastructure. Changes to the content might not always
@@ -53,8 +50,6 @@ class Meta(element.Element):
         element_property=True,
         # note: Listed Resource Type(s) should be allowed as Reference.
         enum_reference_types=["StructureDefinition"],
-        backref="meta",
-        parent_name="meta",
     )
     profile__ext: typing.List[
         typing.Union[fhirtypes.FHIRPrimitiveExtensionType, None]

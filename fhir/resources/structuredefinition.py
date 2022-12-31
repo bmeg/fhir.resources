@@ -16,10 +16,7 @@ from . import backboneelement, domainresource, fhirtypes
 
 
 class StructureDefinition(domainresource.DomainResource):
-    """Disclaimer: Any field name ends with ``__ext`` doesn't part of
-    Resource StructureDefinition, instead used to enable Extensibility feature
-    for FHIR Primitive Data Types.
-
+    """
     Structural Definition.
     A definition of a FHIR structure. This resource is used to describe the
     underlying resources, data types defined in FHIR, and also for describing
@@ -58,8 +55,6 @@ class StructureDefinition(domainresource.DomainResource):
         element_property=True,
         # note: Listed Resource Type(s) should be allowed as Reference.
         enum_reference_types=["StructureDefinition"],
-        backref="structure_definition",
-        parent_name="structure_definition",
     )
     baseDefinition__ext: fhirtypes.FHIRPrimitiveExtensionType = Field(
         None, alias="_baseDefinition", title="Extension field for ``baseDefinition``."
@@ -610,10 +605,7 @@ class StructureDefinition(domainresource.DomainResource):
 
 
 class StructureDefinitionContext(backboneelement.BackboneElement):
-    """Disclaimer: Any field name ends with ``__ext`` doesn't part of
-    Resource StructureDefinition, instead used to enable Extensibility feature
-    for FHIR Primitive Data Types.
-
+    """
     If an extension, where it can be used in instances.
     Identifies the types of resource or data type elements to which the
     extension can be applied.
@@ -730,10 +722,7 @@ class StructureDefinitionContext(backboneelement.BackboneElement):
 
 
 class StructureDefinitionDifferential(backboneelement.BackboneElement):
-    """Disclaimer: Any field name ends with ``__ext`` doesn't part of
-    Resource StructureDefinition, instead used to enable Extensibility feature
-    for FHIR Primitive Data Types.
-
+    """
     Differential view of the structure.
     A differential view is expressed relative to the base StructureDefinition -
     a statement of differences that it applies.
@@ -760,10 +749,7 @@ class StructureDefinitionDifferential(backboneelement.BackboneElement):
 
 
 class StructureDefinitionMapping(backboneelement.BackboneElement):
-    """Disclaimer: Any field name ends with ``__ext`` doesn't part of
-    Resource StructureDefinition, instead used to enable Extensibility feature
-    for FHIR Primitive Data Types.
-
+    """
     External specification that the content is mapped to.
     An external specification that the content is mapped to.
     """
@@ -905,10 +891,7 @@ class StructureDefinitionMapping(backboneelement.BackboneElement):
 
 
 class StructureDefinitionSnapshot(backboneelement.BackboneElement):
-    """Disclaimer: Any field name ends with ``__ext`` doesn't part of
-    Resource StructureDefinition, instead used to enable Extensibility feature
-    for FHIR Primitive Data Types.
-
+    """
     Snapshot view of the structure.
     A snapshot view is expressed in a standalone form that can be used and
     interpreted without considering the base StructureDefinition.

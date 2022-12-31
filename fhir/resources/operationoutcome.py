@@ -16,10 +16,7 @@ from . import backboneelement, domainresource, fhirtypes
 
 
 class OperationOutcome(domainresource.DomainResource):
-    """Disclaimer: Any field name ends with ``__ext`` doesn't part of
-    Resource StructureDefinition, instead used to enable Extensibility feature
-    for FHIR Primitive Data Types.
-
+    """
     Information about the success/failure of an action.
     A collection of error, warning, or information messages that result from a
     system action.
@@ -59,10 +56,7 @@ class OperationOutcome(domainresource.DomainResource):
 
 
 class OperationOutcomeIssue(backboneelement.BackboneElement):
-    """Disclaimer: Any field name ends with ``__ext`` doesn't part of
-    Resource StructureDefinition, instead used to enable Extensibility feature
-    for FHIR Primitive Data Types.
-
+    """
     A single issue associated with the action.
     An error, warning, or information message that results from a system
     action.

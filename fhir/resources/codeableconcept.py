@@ -14,10 +14,7 @@ from . import element, fhirtypes
 
 
 class CodeableConcept(element.Element):
-    """Disclaimer: Any field name ends with ``__ext`` doesn't part of
-    Resource StructureDefinition, instead used to enable Extensibility feature
-    for FHIR Primitive Data Types.
-
+    """
     Concept - reference to a terminology or just  text.
     A concept that may be defined by a formal reference to a terminology or
     ontology or may be provided by text.

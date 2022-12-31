@@ -16,10 +16,7 @@ from . import backboneelement, domainresource, fhirtypes
 
 
 class PractitionerRole(domainresource.DomainResource):
-    """Disclaimer: Any field name ends with ``__ext`` doesn't part of
-    Resource StructureDefinition, instead used to enable Extensibility feature
-    for FHIR Primitive Data Types.
-
+    """
     Roles/organizations the practitioner is associated with.
     A specific set of Roles/Locations/specialties/services that a practitioner
     may perform at an organization for a period of time.
@@ -98,8 +95,6 @@ class PractitionerRole(domainresource.DomainResource):
         element_property=True,
         # note: Listed Resource Type(s) should be allowed as Reference.
         enum_reference_types=["Endpoint"],
-        backref="practitioner_role",
-        parent_name="practitioner_role",
     )
 
     healthcareService: typing.List[fhirtypes.ReferenceType] = Field(
@@ -114,8 +109,6 @@ class PractitionerRole(domainresource.DomainResource):
         element_property=True,
         # note: Listed Resource Type(s) should be allowed as Reference.
         enum_reference_types=["HealthcareService"],
-        backref="practitioner_role",
-        parent_name="practitioner_role",
     )
 
     identifier: typing.List[fhirtypes.IdentifierType] = Field(
@@ -136,8 +129,6 @@ class PractitionerRole(domainresource.DomainResource):
         element_property=True,
         # note: Listed Resource Type(s) should be allowed as Reference.
         enum_reference_types=["Location"],
-        backref="practitioner_role",
-        parent_name="practitioner_role",
     )
 
     notAvailable: typing.List[fhirtypes.PractitionerRoleNotAvailableType] = Field(
@@ -161,8 +152,6 @@ class PractitionerRole(domainresource.DomainResource):
         element_property=True,
         # note: Listed Resource Type(s) should be allowed as Reference.
         enum_reference_types=["Organization"],
-        backref="practitioner_role",
-        parent_name="practitioner_role",
     )
 
     period: fhirtypes.PeriodType = Field(
@@ -192,8 +181,6 @@ class PractitionerRole(domainresource.DomainResource):
         element_property=True,
         # note: Listed Resource Type(s) should be allowed as Reference.
         enum_reference_types=["Practitioner"],
-        backref="practitioner_role",
-        parent_name="practitioner_role",
     )
 
     specialty: typing.List[fhirtypes.CodeableConceptType] = Field(
@@ -251,10 +238,7 @@ class PractitionerRole(domainresource.DomainResource):
 
 
 class PractitionerRoleAvailableTime(backboneelement.BackboneElement):
-    """Disclaimer: Any field name ends with ``__ext`` doesn't part of
-    Resource StructureDefinition, instead used to enable Extensibility feature
-    for FHIR Primitive Data Types.
-
+    """
     Times the Service Site is available.
     A collection of times the practitioner is available or performing this role
     at the location and/or healthcareservice.
@@ -352,10 +336,7 @@ class PractitionerRoleAvailableTime(backboneelement.BackboneElement):
 
 
 class PractitionerRoleNotAvailable(backboneelement.BackboneElement):
-    """Disclaimer: Any field name ends with ``__ext`` doesn't part of
-    Resource StructureDefinition, instead used to enable Extensibility feature
-    for FHIR Primitive Data Types.
-
+    """
     Not available during this time due to provided reason.
     The practitioner is not available or performing this role during this
     period of time due to the provided reason.

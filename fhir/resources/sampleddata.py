@@ -16,10 +16,7 @@ from . import element, fhirtypes
 
 
 class SampledData(element.Element):
-    """Disclaimer: Any field name ends with ``__ext`` doesn't part of
-    Resource StructureDefinition, instead used to enable Extensibility feature
-    for FHIR Primitive Data Types.
-
+    """
     A series of measurements taken by a device.
     A series of measurements taken by a device, with upper and lower limits.
     There may be more than one dimension in the data.

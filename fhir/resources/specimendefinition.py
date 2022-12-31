@@ -16,10 +16,7 @@ from . import backboneelement, domainresource, fhirtypes
 
 
 class SpecimenDefinition(domainresource.DomainResource):
-    """Disclaimer: Any field name ends with ``__ext`` doesn't part of
-    Resource StructureDefinition, instead used to enable Extensibility feature
-    for FHIR Primitive Data Types.
-
+    """
     Kind of specimen.
     A kind of specimen with associated set of requirements.
     """
@@ -132,10 +129,7 @@ class SpecimenDefinition(domainresource.DomainResource):
 
 
 class SpecimenDefinitionTypeTested(backboneelement.BackboneElement):
-    """Disclaimer: Any field name ends with ``__ext`` doesn't part of
-    Resource StructureDefinition, instead used to enable Extensibility feature
-    for FHIR Primitive Data Types.
-
+    """
     Specimen in container intended for testing by lab.
     Specimen conditioned in a container as expected by the testing laboratory.
     """
@@ -339,10 +333,7 @@ class SpecimenDefinitionTypeTested(backboneelement.BackboneElement):
 
 
 class SpecimenDefinitionTypeTestedContainer(backboneelement.BackboneElement):
-    """Disclaimer: Any field name ends with ``__ext`` doesn't part of
-    Resource StructureDefinition, instead used to enable Extensibility feature
-    for FHIR Primitive Data Types.
-
+    """
     The specimen's container.
     """
 
@@ -535,10 +526,7 @@ class SpecimenDefinitionTypeTestedContainer(backboneelement.BackboneElement):
 
 
 class SpecimenDefinitionTypeTestedContainerAdditive(backboneelement.BackboneElement):
-    """Disclaimer: Any field name ends with ``__ext`` doesn't part of
-    Resource StructureDefinition, instead used to enable Extensibility feature
-    for FHIR Primitive Data Types.
-
+    """
     Additive associated with container.
     Substance introduced in the kind of container to preserve, maintain or
     enhance the specimen. Examples: Formalin, Citrate, EDTA.
@@ -586,8 +574,6 @@ class SpecimenDefinitionTypeTestedContainerAdditive(backboneelement.BackboneElem
         binding_uri="http://terminology.hl7.org/ValueSet/v2-0371",
         # note: Listed Resource Type(s) should be allowed as Reference.
         enum_reference_types=["Substance"],
-        backref="specimen_definition_type_tested_container_additive",
-        parent_name="specimen_definition_type_tested_container_additive",
     )
 
     @classmethod
@@ -646,10 +632,7 @@ class SpecimenDefinitionTypeTestedContainerAdditive(backboneelement.BackboneElem
 
 
 class SpecimenDefinitionTypeTestedHandling(backboneelement.BackboneElement):
-    """Disclaimer: Any field name ends with ``__ext`` doesn't part of
-    Resource StructureDefinition, instead used to enable Extensibility feature
-    for FHIR Primitive Data Types.
-
+    """
     Specimen handling before testing.
     Set of instructions for preservation/transport of the specimen at a defined
     temperature interval, prior the testing process.

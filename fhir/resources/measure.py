@@ -16,10 +16,7 @@ from . import backboneelement, domainresource, fhirtypes
 
 
 class Measure(domainresource.DomainResource):
-    """Disclaimer: Any field name ends with ``__ext`` doesn't part of
-    Resource StructureDefinition, instead used to enable Extensibility feature
-    for FHIR Primitive Data Types.
-
+    """
     A quality measure definition.
     The Measure resource provides the definition of a quality measure.
     """
@@ -334,8 +331,6 @@ class Measure(domainresource.DomainResource):
         element_property=True,
         # note: Listed Resource Type(s) should be allowed as Reference.
         enum_reference_types=["Library"],
-        backref="measure",
-        parent_name="measure",
     )
     library__ext: typing.List[
         typing.Union[fhirtypes.FHIRPrimitiveExtensionType, None]
@@ -546,8 +541,6 @@ class Measure(domainresource.DomainResource):
         binding_uri="http://hl7.org/fhir/ValueSet/subject-type",
         # note: Listed Resource Type(s) should be allowed as Reference.
         enum_reference_types=["Group"],
-        backref="measure",
-        parent_name="measure",
     )
 
     subtitle: fhirtypes.String = Field(
@@ -872,10 +865,7 @@ class Measure(domainresource.DomainResource):
 
 
 class MeasureGroup(backboneelement.BackboneElement):
-    """Disclaimer: Any field name ends with ``__ext`` doesn't part of
-    Resource StructureDefinition, instead used to enable Extensibility feature
-    for FHIR Primitive Data Types.
-
+    """
     Population criteria group.
     A group of population criteria for the measure.
     """
@@ -952,10 +942,7 @@ class MeasureGroup(backboneelement.BackboneElement):
 
 
 class MeasureGroupPopulation(backboneelement.BackboneElement):
-    """Disclaimer: Any field name ends with ``__ext`` doesn't part of
-    Resource StructureDefinition, instead used to enable Extensibility feature
-    for FHIR Primitive Data Types.
-
+    """
     Population criteria.
     A population criteria for the measure.
     """
@@ -1036,10 +1023,7 @@ class MeasureGroupPopulation(backboneelement.BackboneElement):
 
 
 class MeasureGroupStratifier(backboneelement.BackboneElement):
-    """Disclaimer: Any field name ends with ``__ext`` doesn't part of
-    Resource StructureDefinition, instead used to enable Extensibility feature
-    for FHIR Primitive Data Types.
-
+    """
     Stratifier criteria for the measure.
     The stratifier criteria for the measure report, specified as either the
     name of a valid CQL expression defined within a referenced library or a
@@ -1123,10 +1107,7 @@ class MeasureGroupStratifier(backboneelement.BackboneElement):
 
 
 class MeasureGroupStratifierComponent(backboneelement.BackboneElement):
-    """Disclaimer: Any field name ends with ``__ext`` doesn't part of
-    Resource StructureDefinition, instead used to enable Extensibility feature
-    for FHIR Primitive Data Types.
-
+    """
     Stratifier criteria component for the measure.
     A component of the stratifier criteria for the measure report, specified as
     either the name of a valid CQL expression defined within a referenced
@@ -1197,10 +1178,7 @@ class MeasureGroupStratifierComponent(backboneelement.BackboneElement):
 
 
 class MeasureSupplementalData(backboneelement.BackboneElement):
-    """Disclaimer: Any field name ends with ``__ext`` doesn't part of
-    Resource StructureDefinition, instead used to enable Extensibility feature
-    for FHIR Primitive Data Types.
-
+    """
     What other data should be reported with the measure.
     The supplemental data criteria for the measure report, specified as either
     the name of a valid CQL expression within a referenced library, or a valid

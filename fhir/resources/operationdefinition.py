@@ -16,10 +16,7 @@ from . import backboneelement, domainresource, fhirtypes
 
 
 class OperationDefinition(domainresource.DomainResource):
-    """Disclaimer: Any field name ends with ``__ext`` doesn't part of
-    Resource StructureDefinition, instead used to enable Extensibility feature
-    for FHIR Primitive Data Types.
-
+    """
     Definition of an operation or a named query.
     A formal computable definition of an operation (on the RESTful interface)
     or a named query (using the search interaction).
@@ -54,8 +51,6 @@ class OperationDefinition(domainresource.DomainResource):
         element_property=True,
         # note: Listed Resource Type(s) should be allowed as Reference.
         enum_reference_types=["OperationDefinition"],
-        backref="operation_definition",
-        parent_name="operation_definition",
     )
     base__ext: fhirtypes.FHIRPrimitiveExtensionType = Field(
         None, alias="_base", title="Extension field for ``base``."
@@ -160,8 +155,6 @@ class OperationDefinition(domainresource.DomainResource):
         element_property=True,
         # note: Listed Resource Type(s) should be allowed as Reference.
         enum_reference_types=["StructureDefinition"],
-        backref="operation_definition",
-        parent_name="operation_definition",
     )
     inputProfile__ext: fhirtypes.FHIRPrimitiveExtensionType = Field(
         None, alias="_inputProfile", title="Extension field for ``inputProfile``."
@@ -253,8 +246,6 @@ class OperationDefinition(domainresource.DomainResource):
         element_property=True,
         # note: Listed Resource Type(s) should be allowed as Reference.
         enum_reference_types=["StructureDefinition"],
-        backref="operation_definition",
-        parent_name="operation_definition",
     )
     outputProfile__ext: fhirtypes.FHIRPrimitiveExtensionType = Field(
         None, alias="_outputProfile", title="Extension field for ``outputProfile``."
@@ -576,10 +567,7 @@ class OperationDefinition(domainresource.DomainResource):
 
 
 class OperationDefinitionOverload(backboneelement.BackboneElement):
-    """Disclaimer: Any field name ends with ``__ext`` doesn't part of
-    Resource StructureDefinition, instead used to enable Extensibility feature
-    for FHIR Primitive Data Types.
-
+    """
     Define overloaded variants for when  generating code.
     Defines an appropriate combination of parameters to use when invoking this
     operation, to help code generators when generating overloaded parameter
@@ -624,10 +612,7 @@ class OperationDefinitionOverload(backboneelement.BackboneElement):
 
 
 class OperationDefinitionParameter(backboneelement.BackboneElement):
-    """Disclaimer: Any field name ends with ``__ext`` doesn't part of
-    Resource StructureDefinition, instead used to enable Extensibility feature
-    for FHIR Primitive Data Types.
-
+    """
     Parameters for the operation/query.
     The parameters for the operation/query.
     """
@@ -782,8 +767,6 @@ class OperationDefinitionParameter(backboneelement.BackboneElement):
         element_property=True,
         # note: Listed Resource Type(s) should be allowed as Reference.
         enum_reference_types=["StructureDefinition"],
-        backref="operation_definition_parameter",
-        parent_name="operation_definition_parameter",
     )
     targetProfile__ext: typing.List[
         typing.Union[fhirtypes.FHIRPrimitiveExtensionType, None]
@@ -923,10 +906,7 @@ class OperationDefinitionParameter(backboneelement.BackboneElement):
 
 
 class OperationDefinitionParameterBinding(backboneelement.BackboneElement):
-    """Disclaimer: Any field name ends with ``__ext`` doesn't part of
-    Resource StructureDefinition, instead used to enable Extensibility feature
-    for FHIR Primitive Data Types.
-
+    """
     ValueSet details if this is coded.
     Binds to a value set if this parameter is coded (code, Coding,
     CodeableConcept).
@@ -973,8 +953,6 @@ class OperationDefinitionParameterBinding(backboneelement.BackboneElement):
         element_required=True,
         # note: Listed Resource Type(s) should be allowed as Reference.
         enum_reference_types=["ValueSet"],
-        backref="operation_definition_parameter_binding",
-        parent_name="operation_definition_parameter_binding",
     )
     valueSet__ext: fhirtypes.FHIRPrimitiveExtensionType = Field(
         None, alias="_valueSet", title="Extension field for ``valueSet``."
@@ -1049,10 +1027,7 @@ class OperationDefinitionParameterBinding(backboneelement.BackboneElement):
 
 
 class OperationDefinitionParameterReferencedFrom(backboneelement.BackboneElement):
-    """Disclaimer: Any field name ends with ``__ext`` doesn't part of
-    Resource StructureDefinition, instead used to enable Extensibility feature
-    for FHIR Primitive Data Types.
-
+    """
     References to this parameter.
     Identifies other resource parameters within the operation invocation that
     are expected to resolve to this resource.

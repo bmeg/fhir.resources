@@ -16,10 +16,7 @@ from . import backboneelement, fhirtypes, resource
 
 
 class Bundle(resource.Resource):
-    """Disclaimer: Any field name ends with ``__ext`` doesn't part of
-    Resource StructureDefinition, instead used to enable Extensibility feature
-    for FHIR Primitive Data Types.
-
+    """
     Contains a collection of resources.
     A container for a collection of resources.
     """
@@ -218,10 +215,7 @@ class Bundle(resource.Resource):
 
 
 class BundleEntry(backboneelement.BackboneElement):
-    """Disclaimer: Any field name ends with ``__ext`` doesn't part of
-    Resource StructureDefinition, instead used to enable Extensibility feature
-    for FHIR Primitive Data Types.
-
+    """
     Entry in the bundle - will have a resource or information.
     An entry in a bundle resource - will either contain a resource or
     information about a resource (transactions and history only).
@@ -329,10 +323,7 @@ class BundleEntry(backboneelement.BackboneElement):
 
 
 class BundleEntryRequest(backboneelement.BackboneElement):
-    """Disclaimer: Any field name ends with ``__ext`` doesn't part of
-    Resource StructureDefinition, instead used to enable Extensibility feature
-    for FHIR Primitive Data Types.
-
+    """
     Additional execution information (transaction/batch/history).
     Additional information about how this entry should be processed as part of
     a transaction or batch.  For history, it shows how the entry was processed
@@ -524,10 +515,7 @@ class BundleEntryRequest(backboneelement.BackboneElement):
 
 
 class BundleEntryResponse(backboneelement.BackboneElement):
-    """Disclaimer: Any field name ends with ``__ext`` doesn't part of
-    Resource StructureDefinition, instead used to enable Extensibility feature
-    for FHIR Primitive Data Types.
-
+    """
     Results of execution (transaction/batch/history).
     Indicates the results of processing the corresponding 'request' entry in
     the batch or transaction being responded to or what the results of an
@@ -687,10 +675,7 @@ class BundleEntryResponse(backboneelement.BackboneElement):
 
 
 class BundleEntrySearch(backboneelement.BackboneElement):
-    """Disclaimer: Any field name ends with ``__ext`` doesn't part of
-    Resource StructureDefinition, instead used to enable Extensibility feature
-    for FHIR Primitive Data Types.
-
+    """
     Search related information.
     Information about the search process that lead to the creation of this
     entry.
@@ -745,10 +730,7 @@ class BundleEntrySearch(backboneelement.BackboneElement):
 
 
 class BundleLink(backboneelement.BackboneElement):
-    """Disclaimer: Any field name ends with ``__ext`` doesn't part of
-    Resource StructureDefinition, instead used to enable Extensibility feature
-    for FHIR Primitive Data Types.
-
+    """
     Links related to this Bundle.
     A series of links that provide context to this bundle.
     """

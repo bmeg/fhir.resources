@@ -16,10 +16,7 @@ from . import domainresource, fhirtypes
 
 
 class AppointmentResponse(domainresource.DomainResource):
-    """Disclaimer: Any field name ends with ``__ext`` doesn't part of
-    Resource StructureDefinition, instead used to enable Extensibility feature
-    for FHIR Primitive Data Types.
-
+    """
     A reply to an appointment request for a patient and/or practitioner(s),
     such as a confirmation or rejection.
     """
@@ -46,8 +43,6 @@ class AppointmentResponse(domainresource.DomainResource):
             "HealthcareService",
             "Location",
         ],
-        backref="appointment_response",
-        parent_name="appointment_response",
     )
 
     appointment: fhirtypes.ReferenceType = Field(
@@ -59,8 +54,6 @@ class AppointmentResponse(domainresource.DomainResource):
         element_property=True,
         # note: Listed Resource Type(s) should be allowed as Reference.
         enum_reference_types=["Appointment"],
-        backref="appointment_response",
-        parent_name="appointment_response",
     )
 
     comment: fhirtypes.String = Field(

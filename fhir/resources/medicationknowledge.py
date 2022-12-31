@@ -16,10 +16,7 @@ from . import backboneelement, domainresource, fhirtypes
 
 
 class MedicationKnowledge(domainresource.DomainResource):
-    """Disclaimer: Any field name ends with ``__ext`` doesn't part of
-    Resource StructureDefinition, instead used to enable Extensibility feature
-    for FHIR Primitive Data Types.
-
+    """
     Definition of Medication Knowledge.
     Information about a medication that is used to support knowledge.
     """
@@ -66,8 +63,6 @@ class MedicationKnowledge(domainresource.DomainResource):
         element_property=True,
         # note: Listed Resource Type(s) should be allowed as Reference.
         enum_reference_types=["Medication"],
-        backref="medication_knowledge",
-        parent_name="medication_knowledge",
     )
 
     code: fhirtypes.CodeableConceptType = Field(
@@ -102,8 +97,6 @@ class MedicationKnowledge(domainresource.DomainResource):
         element_property=True,
         # note: Listed Resource Type(s) should be allowed as Reference.
         enum_reference_types=["DetectedIssue"],
-        backref="medication_knowledge",
-        parent_name="medication_knowledge",
     )
 
     cost: typing.List[fhirtypes.MedicationKnowledgeCostType] = Field(
@@ -195,8 +188,6 @@ class MedicationKnowledge(domainresource.DomainResource):
         element_property=True,
         # note: Listed Resource Type(s) should be allowed as Reference.
         enum_reference_types=["Organization"],
-        backref="medication_knowledge",
-        parent_name="medication_knowledge",
     )
 
     medicineClassification: typing.List[
@@ -370,10 +361,7 @@ class MedicationKnowledge(domainresource.DomainResource):
 
 
 class MedicationKnowledgeAdministrationGuidelines(backboneelement.BackboneElement):
-    """Disclaimer: Any field name ends with ``__ext`` doesn't part of
-    Resource StructureDefinition, instead used to enable Extensibility feature
-    for FHIR Primitive Data Types.
-
+    """
     Guidelines for administration of the medication.
     Guidelines for the administration of the medication.
     """
@@ -419,8 +407,6 @@ class MedicationKnowledgeAdministrationGuidelines(backboneelement.BackboneElemen
         one_of_many_required=False,
         # note: Listed Resource Type(s) should be allowed as Reference.
         enum_reference_types=["ObservationDefinition"],
-        backref="medication_knowledge_administration_guidelines",
-        parent_name="medication_knowledge_administration_guidelines",
     )
 
     patientCharacteristics: typing.List[
@@ -500,10 +486,7 @@ class MedicationKnowledgeAdministrationGuidelines(backboneelement.BackboneElemen
 class MedicationKnowledgeAdministrationGuidelinesDosage(
     backboneelement.BackboneElement
 ):
-    """Disclaimer: Any field name ends with ``__ext`` doesn't part of
-    Resource StructureDefinition, instead used to enable Extensibility feature
-    for FHIR Primitive Data Types.
-
+    """
     Dosage for the medication for the specific guidelines.
     """
 
@@ -544,10 +527,7 @@ class MedicationKnowledgeAdministrationGuidelinesDosage(
 class MedicationKnowledgeAdministrationGuidelinesPatientCharacteristics(
     backboneelement.BackboneElement
 ):
-    """Disclaimer: Any field name ends with ``__ext`` doesn't part of
-    Resource StructureDefinition, instead used to enable Extensibility feature
-    for FHIR Primitive Data Types.
-
+    """
     Characteristics of the patient that are relevant to the administration
     guidelines.
     Characteristics of the patient that are relevant to the administration
@@ -666,10 +646,7 @@ class MedicationKnowledgeAdministrationGuidelinesPatientCharacteristics(
 
 
 class MedicationKnowledgeCost(backboneelement.BackboneElement):
-    """Disclaimer: Any field name ends with ``__ext`` doesn't part of
-    Resource StructureDefinition, instead used to enable Extensibility feature
-    for FHIR Primitive Data Types.
-
+    """
     The pricing of the medication.
     The price of the medication.
     """
@@ -719,10 +696,7 @@ class MedicationKnowledgeCost(backboneelement.BackboneElement):
 
 
 class MedicationKnowledgeDrugCharacteristic(backboneelement.BackboneElement):
-    """Disclaimer: Any field name ends with ``__ext`` doesn't part of
-    Resource StructureDefinition, instead used to enable Extensibility feature
-    for FHIR Primitive Data Types.
-
+    """
     Specifies descriptive properties of the medicine.
     Specifies descriptive properties of the medicine, such as color, shape,
     imprints, etc.
@@ -867,10 +841,7 @@ class MedicationKnowledgeDrugCharacteristic(backboneelement.BackboneElement):
 
 
 class MedicationKnowledgeIngredient(backboneelement.BackboneElement):
-    """Disclaimer: Any field name ends with ``__ext`` doesn't part of
-    Resource StructureDefinition, instead used to enable Extensibility feature
-    for FHIR Primitive Data Types.
-
+    """
     Active or inactive ingredient.
     Identifies a particular constituent of interest in the product.
     """
@@ -922,8 +893,6 @@ class MedicationKnowledgeIngredient(backboneelement.BackboneElement):
         one_of_many_required=True,
         # note: Listed Resource Type(s) should be allowed as Reference.
         enum_reference_types=["Substance"],
-        backref="medication_knowledge_ingredient",
-        parent_name="medication_knowledge_ingredient",
     )
 
     strength: fhirtypes.RatioType = Field(
@@ -995,10 +964,7 @@ class MedicationKnowledgeIngredient(backboneelement.BackboneElement):
 
 
 class MedicationKnowledgeKinetics(backboneelement.BackboneElement):
-    """Disclaimer: Any field name ends with ``__ext`` doesn't part of
-    Resource StructureDefinition, instead used to enable Extensibility feature
-    for FHIR Primitive Data Types.
-
+    """
     The time course of drug absorption, distribution, metabolism and excretion
     of a medication from the body.
     """
@@ -1052,10 +1018,7 @@ class MedicationKnowledgeKinetics(backboneelement.BackboneElement):
 
 
 class MedicationKnowledgeMedicineClassification(backboneelement.BackboneElement):
-    """Disclaimer: Any field name ends with ``__ext`` doesn't part of
-    Resource StructureDefinition, instead used to enable Extensibility feature
-    for FHIR Primitive Data Types.
-
+    """
     Categorization of the medication within a formulary or classification
     system.
     """
@@ -1096,10 +1059,7 @@ class MedicationKnowledgeMedicineClassification(backboneelement.BackboneElement)
 
 
 class MedicationKnowledgeMonitoringProgram(backboneelement.BackboneElement):
-    """Disclaimer: Any field name ends with ``__ext`` doesn't part of
-    Resource StructureDefinition, instead used to enable Extensibility feature
-    for FHIR Primitive Data Types.
-
+    """
     Program under which a medication is reviewed.
     The program under which the medication is reviewed.
     """
@@ -1137,10 +1097,7 @@ class MedicationKnowledgeMonitoringProgram(backboneelement.BackboneElement):
 
 
 class MedicationKnowledgeMonograph(backboneelement.BackboneElement):
-    """Disclaimer: Any field name ends with ``__ext`` doesn't part of
-    Resource StructureDefinition, instead used to enable Extensibility feature
-    for FHIR Primitive Data Types.
-
+    """
     Associated documentation about the medication.
     """
 
@@ -1155,8 +1112,6 @@ class MedicationKnowledgeMonograph(backboneelement.BackboneElement):
         element_property=True,
         # note: Listed Resource Type(s) should be allowed as Reference.
         enum_reference_types=["DocumentReference", "Media"],
-        backref="medication_knowledge_monograph",
-        parent_name="medication_knowledge_monograph",
     )
 
     type: fhirtypes.CodeableConceptType = Field(
@@ -1181,10 +1136,7 @@ class MedicationKnowledgeMonograph(backboneelement.BackboneElement):
 
 
 class MedicationKnowledgePackaging(backboneelement.BackboneElement):
-    """Disclaimer: Any field name ends with ``__ext`` doesn't part of
-    Resource StructureDefinition, instead used to enable Extensibility feature
-    for FHIR Primitive Data Types.
-
+    """
     Details about packaged medications.
     Information that only applies to packages (not products).
     """
@@ -1230,10 +1182,7 @@ class MedicationKnowledgePackaging(backboneelement.BackboneElement):
 
 
 class MedicationKnowledgeRegulatory(backboneelement.BackboneElement):
-    """Disclaimer: Any field name ends with ``__ext`` doesn't part of
-    Resource StructureDefinition, instead used to enable Extensibility feature
-    for FHIR Primitive Data Types.
-
+    """
     Regulatory information about a medication.
     """
 
@@ -1260,8 +1209,6 @@ class MedicationKnowledgeRegulatory(backboneelement.BackboneElement):
         element_property=True,
         # note: Listed Resource Type(s) should be allowed as Reference.
         enum_reference_types=["Organization"],
-        backref="medication_knowledge_regulatory",
-        parent_name="medication_knowledge_regulatory",
     )
 
     schedule: typing.List[fhirtypes.MedicationKnowledgeRegulatoryScheduleType] = Field(
@@ -1305,10 +1252,7 @@ class MedicationKnowledgeRegulatory(backboneelement.BackboneElement):
 
 
 class MedicationKnowledgeRegulatoryMaxDispense(backboneelement.BackboneElement):
-    """Disclaimer: Any field name ends with ``__ext`` doesn't part of
-    Resource StructureDefinition, instead used to enable Extensibility feature
-    for FHIR Primitive Data Types.
-
+    """
     The maximum number of units of the medication that can be dispensed in a
     period.
     """
@@ -1343,10 +1287,7 @@ class MedicationKnowledgeRegulatoryMaxDispense(backboneelement.BackboneElement):
 
 
 class MedicationKnowledgeRegulatorySchedule(backboneelement.BackboneElement):
-    """Disclaimer: Any field name ends with ``__ext`` doesn't part of
-    Resource StructureDefinition, instead used to enable Extensibility feature
-    for FHIR Primitive Data Types.
-
+    """
     Specifies the schedule of a medication in jurisdiction.
     """
 
@@ -1371,10 +1312,7 @@ class MedicationKnowledgeRegulatorySchedule(backboneelement.BackboneElement):
 
 
 class MedicationKnowledgeRegulatorySubstitution(backboneelement.BackboneElement):
-    """Disclaimer: Any field name ends with ``__ext`` doesn't part of
-    Resource StructureDefinition, instead used to enable Extensibility feature
-    for FHIR Primitive Data Types.
-
+    """
     Specifies if changes are allowed when dispensing a medication from a
     regulatory perspective.
     """
@@ -1475,10 +1413,7 @@ class MedicationKnowledgeRegulatorySubstitution(backboneelement.BackboneElement)
 
 
 class MedicationKnowledgeRelatedMedicationKnowledge(backboneelement.BackboneElement):
-    """Disclaimer: Any field name ends with ``__ext`` doesn't part of
-    Resource StructureDefinition, instead used to enable Extensibility feature
-    for FHIR Primitive Data Types.
-
+    """
     Associated or related medication information.
     Associated or related knowledge about a medication.
     """
@@ -1494,8 +1429,6 @@ class MedicationKnowledgeRelatedMedicationKnowledge(backboneelement.BackboneElem
         element_property=True,
         # note: Listed Resource Type(s) should be allowed as Reference.
         enum_reference_types=["MedicationKnowledge"],
-        backref="medication_knowledge_related_medication_knowledge",
-        parent_name="medication_knowledge_related_medication_knowledge",
     )
 
     type: fhirtypes.CodeableConceptType = Field(

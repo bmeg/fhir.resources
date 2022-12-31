@@ -16,10 +16,7 @@ from . import backboneelement, domainresource, fhirtypes
 
 
 class CapabilityStatement(domainresource.DomainResource):
-    """Disclaimer: Any field name ends with ``__ext`` doesn't part of
-    Resource StructureDefinition, instead used to enable Extensibility feature
-    for FHIR Primitive Data Types.
-
+    """
     A statement of system capabilities.
     A Capability Statement documents a set of capabilities (behaviors) of a
     FHIR Server for a particular version of FHIR that may be used as a
@@ -191,8 +188,6 @@ class CapabilityStatement(domainresource.DomainResource):
         element_property=True,
         # note: Listed Resource Type(s) should be allowed as Reference.
         enum_reference_types=["ImplementationGuide"],
-        backref="capability_statement",
-        parent_name="capability_statement",
     )
     implementationGuide__ext: typing.List[
         typing.Union[fhirtypes.FHIRPrimitiveExtensionType, None]
@@ -217,8 +212,6 @@ class CapabilityStatement(domainresource.DomainResource):
         element_property=True,
         # note: Listed Resource Type(s) should be allowed as Reference.
         enum_reference_types=["CapabilityStatement"],
-        backref="capability_statement",
-        parent_name="capability_statement",
     )
     imports__ext: typing.List[
         typing.Union[fhirtypes.FHIRPrimitiveExtensionType, None]
@@ -240,8 +233,6 @@ class CapabilityStatement(domainresource.DomainResource):
         element_property=True,
         # note: Listed Resource Type(s) should be allowed as Reference.
         enum_reference_types=["CapabilityStatement"],
-        backref="capability_statement",
-        parent_name="capability_statement",
     )
     instantiates__ext: typing.List[
         typing.Union[fhirtypes.FHIRPrimitiveExtensionType, None]
@@ -596,10 +587,7 @@ class CapabilityStatement(domainresource.DomainResource):
 
 
 class CapabilityStatementDocument(backboneelement.BackboneElement):
-    """Disclaimer: Any field name ends with ``__ext`` doesn't part of
-    Resource StructureDefinition, instead used to enable Extensibility feature
-    for FHIR Primitive Data Types.
-
+    """
     Document definition.
     A document definition.
     """
@@ -659,8 +647,6 @@ class CapabilityStatementDocument(backboneelement.BackboneElement):
         element_required=True,
         # note: Listed Resource Type(s) should be allowed as Reference.
         enum_reference_types=["StructureDefinition"],
-        backref="capability_statement_document",
-        parent_name="capability_statement_document",
     )
     profile__ext: fhirtypes.FHIRPrimitiveExtensionType = Field(
         None, alias="_profile", title="Extension field for ``profile``."
@@ -742,10 +728,7 @@ class CapabilityStatementDocument(backboneelement.BackboneElement):
 
 
 class CapabilityStatementImplementation(backboneelement.BackboneElement):
-    """Disclaimer: Any field name ends with ``__ext`` doesn't part of
-    Resource StructureDefinition, instead used to enable Extensibility feature
-    for FHIR Primitive Data Types.
-
+    """
     If this describes a specific instance.
     Identifies a specific implementation instance that is described by the
     capability statement - i.e. a particular installation, rather than the
@@ -766,8 +749,6 @@ class CapabilityStatementImplementation(backboneelement.BackboneElement):
         element_property=True,
         # note: Listed Resource Type(s) should be allowed as Reference.
         enum_reference_types=["Organization"],
-        backref="capability_statement_implementation",
-        parent_name="capability_statement_implementation",
     )
 
     description: fhirtypes.String = Field(
@@ -877,10 +858,7 @@ class CapabilityStatementImplementation(backboneelement.BackboneElement):
 
 
 class CapabilityStatementMessaging(backboneelement.BackboneElement):
-    """Disclaimer: Any field name ends with ``__ext`` doesn't part of
-    Resource StructureDefinition, instead used to enable Extensibility feature
-    for FHIR Primitive Data Types.
-
+    """
     If messaging is supported.
     A description of the messaging capabilities of the solution.
     """
@@ -964,10 +942,7 @@ class CapabilityStatementMessaging(backboneelement.BackboneElement):
 
 
 class CapabilityStatementMessagingEndpoint(backboneelement.BackboneElement):
-    """Disclaimer: Any field name ends with ``__ext`` doesn't part of
-    Resource StructureDefinition, instead used to enable Extensibility feature
-    for FHIR Primitive Data Types.
-
+    """
     Where messages should be sent.
     An endpoint (network accessible address) to which messages and/or replies
     are to be sent.
@@ -1076,10 +1051,7 @@ class CapabilityStatementMessagingEndpoint(backboneelement.BackboneElement):
 
 
 class CapabilityStatementMessagingSupportedMessage(backboneelement.BackboneElement):
-    """Disclaimer: Any field name ends with ``__ext`` doesn't part of
-    Resource StructureDefinition, instead used to enable Extensibility feature
-    for FHIR Primitive Data Types.
-
+    """
     Messages supported by this system.
     References to message definitions for messages this system can send or
     receive.
@@ -1100,8 +1072,6 @@ class CapabilityStatementMessagingSupportedMessage(backboneelement.BackboneEleme
         element_required=True,
         # note: Listed Resource Type(s) should be allowed as Reference.
         enum_reference_types=["MessageDefinition"],
-        backref="capability_statement_messaging_supported_message",
-        parent_name="capability_statement_messaging_supported_message",
     )
     definition__ext: fhirtypes.FHIRPrimitiveExtensionType = Field(
         None, alias="_definition", title="Extension field for ``definition``."
@@ -1200,10 +1170,7 @@ class CapabilityStatementMessagingSupportedMessage(backboneelement.BackboneEleme
 
 
 class CapabilityStatementRest(backboneelement.BackboneElement):
-    """Disclaimer: Any field name ends with ``__ext`` doesn't part of
-    Resource StructureDefinition, instead used to enable Extensibility feature
-    for FHIR Primitive Data Types.
-
+    """
     If the endpoint is a RESTful one.
     A definition of the restful capabilities of the solution, if any.
     """
@@ -1223,8 +1190,6 @@ class CapabilityStatementRest(backboneelement.BackboneElement):
         element_property=True,
         # note: Listed Resource Type(s) should be allowed as Reference.
         enum_reference_types=["CompartmentDefinition"],
-        backref="capability_statement_rest",
-        parent_name="capability_statement_rest",
     )
     compartment__ext: typing.List[
         typing.Union[fhirtypes.FHIRPrimitiveExtensionType, None]
@@ -1414,10 +1379,7 @@ class CapabilityStatementRest(backboneelement.BackboneElement):
 
 
 class CapabilityStatementRestInteraction(backboneelement.BackboneElement):
-    """Disclaimer: Any field name ends with ``__ext`` doesn't part of
-    Resource StructureDefinition, instead used to enable Extensibility feature
-    for FHIR Primitive Data Types.
-
+    """
     What operations are supported?.
     A specification of restful operations supported by the system.
     """
@@ -1533,10 +1495,7 @@ class CapabilityStatementRestInteraction(backboneelement.BackboneElement):
 
 
 class CapabilityStatementRestResource(backboneelement.BackboneElement):
-    """Disclaimer: Any field name ends with ``__ext`` doesn't part of
-    Resource StructureDefinition, instead used to enable Extensibility feature
-    for FHIR Primitive Data Types.
-
+    """
     Resource served on the REST interface.
     A specification of the restful capabilities of the solution for a specific
     resource type.
@@ -1675,8 +1634,6 @@ class CapabilityStatementRestResource(backboneelement.BackboneElement):
         element_property=True,
         # note: Listed Resource Type(s) should be allowed as Reference.
         enum_reference_types=["StructureDefinition"],
-        backref="capability_statement_rest_resource",
-        parent_name="capability_statement_rest_resource",
     )
     profile__ext: fhirtypes.FHIRPrimitiveExtensionType = Field(
         None, alias="_profile", title="Extension field for ``profile``."
@@ -1787,8 +1744,6 @@ class CapabilityStatementRestResource(backboneelement.BackboneElement):
         element_property=True,
         # note: Listed Resource Type(s) should be allowed as Reference.
         enum_reference_types=["StructureDefinition"],
-        backref="capability_statement_rest_resource",
-        parent_name="capability_statement_rest_resource",
     )
     supportedProfile__ext: typing.List[
         typing.Union[fhirtypes.FHIRPrimitiveExtensionType, None]
@@ -1955,10 +1910,7 @@ class CapabilityStatementRestResource(backboneelement.BackboneElement):
 
 
 class CapabilityStatementRestResourceInteraction(backboneelement.BackboneElement):
-    """Disclaimer: Any field name ends with ``__ext`` doesn't part of
-    Resource StructureDefinition, instead used to enable Extensibility feature
-    for FHIR Primitive Data Types.
-
+    """
     What operations are supported?.
     Identifies a restful operation supported by the solution.
     """
@@ -2087,10 +2039,7 @@ class CapabilityStatementRestResourceInteraction(backboneelement.BackboneElement
 
 
 class CapabilityStatementRestResourceOperation(backboneelement.BackboneElement):
-    """Disclaimer: Any field name ends with ``__ext`` doesn't part of
-    Resource StructureDefinition, instead used to enable Extensibility feature
-    for FHIR Primitive Data Types.
-
+    """
     Definition of a resource operation.
     Definition of an operation or a named query together with its parameters
     and their meaning and type. Consult the definition of the operation for
@@ -2119,8 +2068,6 @@ class CapabilityStatementRestResourceOperation(backboneelement.BackboneElement):
         element_required=True,
         # note: Listed Resource Type(s) should be allowed as Reference.
         enum_reference_types=["OperationDefinition"],
-        backref="capability_statement_rest_resource_operation",
-        parent_name="capability_statement_rest_resource_operation",
     )
     definition__ext: fhirtypes.FHIRPrimitiveExtensionType = Field(
         None, alias="_definition", title="Extension field for ``definition``."
@@ -2235,10 +2182,7 @@ class CapabilityStatementRestResourceOperation(backboneelement.BackboneElement):
 
 
 class CapabilityStatementRestResourceSearchParam(backboneelement.BackboneElement):
-    """Disclaimer: Any field name ends with ``__ext`` doesn't part of
-    Resource StructureDefinition, instead used to enable Extensibility feature
-    for FHIR Primitive Data Types.
-
+    """
     Search parameters supported by implementation.
     Search parameters for implementations to support and/or make use of -
     either references to ones defined in the specification, or additional ones
@@ -2264,8 +2208,6 @@ class CapabilityStatementRestResourceSearchParam(backboneelement.BackboneElement
         element_property=True,
         # note: Listed Resource Type(s) should be allowed as Reference.
         enum_reference_types=["SearchParameter"],
-        backref="capability_statement_rest_resource_search_param",
-        parent_name="capability_statement_rest_resource_search_param",
     )
     definition__ext: fhirtypes.FHIRPrimitiveExtensionType = Field(
         None, alias="_definition", title="Extension field for ``definition``."
@@ -2413,10 +2355,7 @@ class CapabilityStatementRestResourceSearchParam(backboneelement.BackboneElement
 
 
 class CapabilityStatementRestSecurity(backboneelement.BackboneElement):
-    """Disclaimer: Any field name ends with ``__ext`` doesn't part of
-    Resource StructureDefinition, instead used to enable Extensibility feature
-    for FHIR Primitive Data Types.
-
+    """
     Information about security of implementation.
     Information about security implementation from an interface perspective -
     what a client needs to know.
@@ -2494,10 +2433,7 @@ class CapabilityStatementRestSecurity(backboneelement.BackboneElement):
 
 
 class CapabilityStatementSoftware(backboneelement.BackboneElement):
-    """Disclaimer: Any field name ends with ``__ext`` doesn't part of
-    Resource StructureDefinition, instead used to enable Extensibility feature
-    for FHIR Primitive Data Types.
-
+    """
     Software that is covered by this capability statement.
     Software that is covered by this capability statement.  It is used when the
     capability statement describes the capabilities of a particular software

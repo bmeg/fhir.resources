@@ -16,10 +16,7 @@ from . import backboneelement, domainresource, fhirtypes
 
 
 class Communication(domainresource.DomainResource):
-    """Disclaimer: Any field name ends with ``__ext`` doesn't part of
-    Resource StructureDefinition, instead used to enable Extensibility feature
-    for FHIR Primitive Data Types.
-
+    """
     A record of information transmitted from a sender to a receiver.
     An occurrence of information being transmitted; e.g. an alert that was sent
     to a responsible provider, a public health agency that was notified about a
@@ -40,8 +37,6 @@ class Communication(domainresource.DomainResource):
         element_property=True,
         # note: Listed Resource Type(s) should be allowed as Reference.
         enum_reference_types=["Resource"],
-        backref="communication",
-        parent_name="communication",
     )
 
     basedOn: typing.List[fhirtypes.ReferenceType] = Field(
@@ -56,8 +51,6 @@ class Communication(domainresource.DomainResource):
         element_property=True,
         # note: Listed Resource Type(s) should be allowed as Reference.
         enum_reference_types=["Resource"],
-        backref="communication",
-        parent_name="communication",
     )
 
     category: typing.List[fhirtypes.CodeableConceptType] = Field(
@@ -89,8 +82,6 @@ class Communication(domainresource.DomainResource):
         element_property=True,
         # note: Listed Resource Type(s) should be allowed as Reference.
         enum_reference_types=["Encounter"],
-        backref="communication",
-        parent_name="communication",
     )
 
     identifier: typing.List[fhirtypes.IdentifierType] = Field(
@@ -115,8 +106,6 @@ class Communication(domainresource.DomainResource):
         element_property=True,
         # note: Listed Resource Type(s) should be allowed as Reference.
         enum_reference_types=["Communication"],
-        backref="communication",
-        parent_name="communication",
     )
 
     instantiatesCanonical: typing.List[typing.Optional[fhirtypes.Canonical]] = Field(
@@ -138,8 +127,6 @@ class Communication(domainresource.DomainResource):
             "OperationDefinition",
             "Questionnaire",
         ],
-        backref="communication",
-        parent_name="communication",
     )
     instantiatesCanonical__ext: typing.List[
         typing.Union[fhirtypes.FHIRPrimitiveExtensionType, None]
@@ -204,8 +191,6 @@ class Communication(domainresource.DomainResource):
         element_property=True,
         # note: Listed Resource Type(s) should be allowed as Reference.
         enum_reference_types=["Resource"],
-        backref="communication",
-        parent_name="communication",
     )
 
     payload: typing.List[fhirtypes.CommunicationPayloadType] = Field(
@@ -277,8 +262,6 @@ class Communication(domainresource.DomainResource):
             "DiagnosticReport",
             "DocumentReference",
         ],
-        backref="communication",
-        parent_name="communication",
     )
 
     received: fhirtypes.DateTime = Field(
@@ -320,8 +303,6 @@ class Communication(domainresource.DomainResource):
             "CareTeam",
             "HealthcareService",
         ],
-        backref="communication",
-        parent_name="communication",
     )
 
     sender: fhirtypes.ReferenceType = Field(
@@ -344,8 +325,6 @@ class Communication(domainresource.DomainResource):
             "RelatedPerson",
             "HealthcareService",
         ],
-        backref="communication",
-        parent_name="communication",
     )
 
     sent: fhirtypes.DateTime = Field(
@@ -421,8 +400,6 @@ class Communication(domainresource.DomainResource):
         element_property=True,
         # note: Listed Resource Type(s) should be allowed as Reference.
         enum_reference_types=["Patient", "Group"],
-        backref="communication",
-        parent_name="communication",
     )
 
     topic: fhirtypes.CodeableConceptType = Field(
@@ -542,10 +519,7 @@ class Communication(domainresource.DomainResource):
 
 
 class CommunicationPayload(backboneelement.BackboneElement):
-    """Disclaimer: Any field name ends with ``__ext`` doesn't part of
-    Resource StructureDefinition, instead used to enable Extensibility feature
-    for FHIR Primitive Data Types.
-
+    """
     Message payload.
     Text, attachment(s), or resource(s) that was communicated to the recipient.
     """
@@ -582,8 +556,6 @@ class CommunicationPayload(backboneelement.BackboneElement):
         one_of_many_required=True,
         # note: Listed Resource Type(s) should be allowed as Reference.
         enum_reference_types=["Resource"],
-        backref="communication_payload",
-        parent_name="communication_payload",
     )
 
     contentString: fhirtypes.String = Field(

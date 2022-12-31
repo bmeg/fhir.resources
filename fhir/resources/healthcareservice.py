@@ -16,10 +16,7 @@ from . import backboneelement, domainresource, fhirtypes
 
 
 class HealthcareService(domainresource.DomainResource):
-    """Disclaimer: Any field name ends with ``__ext`` doesn't part of
-    Resource StructureDefinition, instead used to enable Extensibility feature
-    for FHIR Primitive Data Types.
-
+    """
     The details of a healthcare service available at a location.
     """
 
@@ -165,8 +162,6 @@ class HealthcareService(domainresource.DomainResource):
         element_property=True,
         # note: Listed Resource Type(s) should be allowed as Reference.
         enum_reference_types=["Location"],
-        backref="healthcare_service",
-        parent_name="healthcare_service",
     )
 
     eligibility: typing.List[fhirtypes.HealthcareServiceEligibilityType] = Field(
@@ -196,8 +191,6 @@ class HealthcareService(domainresource.DomainResource):
         element_property=True,
         # note: Listed Resource Type(s) should be allowed as Reference.
         enum_reference_types=["Endpoint"],
-        backref="healthcare_service",
-        parent_name="healthcare_service",
     )
 
     extraDetails: fhirtypes.Markdown = Field(
@@ -233,8 +226,6 @@ class HealthcareService(domainresource.DomainResource):
         element_property=True,
         # note: Listed Resource Type(s) should be allowed as Reference.
         enum_reference_types=["Location"],
-        backref="healthcare_service",
-        parent_name="healthcare_service",
     )
 
     name: fhirtypes.String = Field(
@@ -299,8 +290,6 @@ class HealthcareService(domainresource.DomainResource):
         element_property=True,
         # note: Listed Resource Type(s) should be allowed as Reference.
         enum_reference_types=["Organization"],
-        backref="healthcare_service",
-        parent_name="healthcare_service",
     )
 
     referralMethod: typing.List[fhirtypes.CodeableConceptType] = Field(
@@ -421,10 +410,7 @@ class HealthcareService(domainresource.DomainResource):
 
 
 class HealthcareServiceAvailableTime(backboneelement.BackboneElement):
-    """Disclaimer: Any field name ends with ``__ext`` doesn't part of
-    Resource StructureDefinition, instead used to enable Extensibility feature
-    for FHIR Primitive Data Types.
-
+    """
     Times the Service Site is available.
     A collection of times that the Service Site is available.
     """
@@ -521,10 +507,7 @@ class HealthcareServiceAvailableTime(backboneelement.BackboneElement):
 
 
 class HealthcareServiceEligibility(backboneelement.BackboneElement):
-    """Disclaimer: Any field name ends with ``__ext`` doesn't part of
-    Resource StructureDefinition, instead used to enable Extensibility feature
-    for FHIR Primitive Data Types.
-
+    """
     Specific eligibility requirements required to use the service.
     Does this service have specific eligibility requirements that need to be
     met in order to use the service?
@@ -566,10 +549,7 @@ class HealthcareServiceEligibility(backboneelement.BackboneElement):
 
 
 class HealthcareServiceNotAvailable(backboneelement.BackboneElement):
-    """Disclaimer: Any field name ends with ``__ext`` doesn't part of
-    Resource StructureDefinition, instead used to enable Extensibility feature
-    for FHIR Primitive Data Types.
-
+    """
     Not available during this time due to provided reason.
     The HealthcareService is not available during this period of time due to
     the provided reason.

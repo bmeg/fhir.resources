@@ -16,10 +16,7 @@ from . import backboneelement, domainresource, fhirtypes
 
 
 class ResearchElementDefinition(domainresource.DomainResource):
-    """Disclaimer: Any field name ends with ``__ext`` doesn't part of
-    Resource StructureDefinition, instead used to enable Extensibility feature
-    for FHIR Primitive Data Types.
-
+    """
     A population, intervention, or exposure definition.
     The ResearchElementDefinition resource describes a "PICO" element that
     knowledge (evidence, assertion, recommendation) is about.
@@ -255,8 +252,6 @@ class ResearchElementDefinition(domainresource.DomainResource):
         element_property=True,
         # note: Listed Resource Type(s) should be allowed as Reference.
         enum_reference_types=["Library"],
-        backref="research_element_definition",
-        parent_name="research_element_definition",
     )
     library__ext: typing.List[
         typing.Union[fhirtypes.FHIRPrimitiveExtensionType, None]
@@ -420,8 +415,6 @@ class ResearchElementDefinition(domainresource.DomainResource):
         binding_uri="http://hl7.org/fhir/ValueSet/subject-type",
         # note: Listed Resource Type(s) should be allowed as Reference.
         enum_reference_types=["Group"],
-        backref="research_element_definition",
-        parent_name="research_element_definition",
     )
 
     subtitle: fhirtypes.String = Field(
@@ -753,10 +746,7 @@ class ResearchElementDefinition(domainresource.DomainResource):
 
 
 class ResearchElementDefinitionCharacteristic(backboneelement.BackboneElement):
-    """Disclaimer: Any field name ends with ``__ext`` doesn't part of
-    Resource StructureDefinition, instead used to enable Extensibility feature
-    for FHIR Primitive Data Types.
-
+    """
     What defines the members of the research element.
     A characteristic that defines the members of the research element. Multiple
     characteristics are applied with "and" semantics.
@@ -781,8 +771,6 @@ class ResearchElementDefinitionCharacteristic(backboneelement.BackboneElement):
         one_of_many_required=True,
         # note: Listed Resource Type(s) should be allowed as Reference.
         enum_reference_types=["ValueSet"],
-        backref="research_element_definition_characteristic",
-        parent_name="research_element_definition_characteristic",
     )
     definitionCanonical__ext: fhirtypes.FHIRPrimitiveExtensionType = Field(
         None,

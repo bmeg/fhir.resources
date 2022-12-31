@@ -14,10 +14,7 @@ from . import backboneelement, element, fhirtypes
 
 
 class Dosage(backboneelement.BackboneElement):
-    """Disclaimer: Any field name ends with ``__ext`` doesn't part of
-    Resource StructureDefinition, instead used to enable Extensibility feature
-    for FHIR Primitive Data Types.
-
+    """
     How the medication is/was taken or should be taken.
     Indicates how the medication is/was taken or should be taken by the
     patient.
@@ -280,10 +277,7 @@ class Dosage(backboneelement.BackboneElement):
 
 
 class DosageDoseAndRate(element.Element):
-    """Disclaimer: Any field name ends with ``__ext`` doesn't part of
-    Resource StructureDefinition, instead used to enable Extensibility feature
-    for FHIR Primitive Data Types.
-
+    """
     Amount of medication administered.
     The amount of medication administered.
     """

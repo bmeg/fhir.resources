@@ -16,10 +16,7 @@ from . import domainresource, fhirtypes
 
 
 class PaymentNotice(domainresource.DomainResource):
-    """Disclaimer: Any field name ends with ``__ext`` doesn't part of
-    Resource StructureDefinition, instead used to enable Extensibility feature
-    for FHIR Primitive Data Types.
-
+    """
     PaymentNotice request.
     This resource provides the status of the payment for goods and services
     rendered, and the request and response resource references.
@@ -70,8 +67,6 @@ class PaymentNotice(domainresource.DomainResource):
         element_property=True,
         # note: Listed Resource Type(s) should be allowed as Reference.
         enum_reference_types=["Practitioner", "PractitionerRole", "Organization"],
-        backref="payment_notice",
-        parent_name="payment_notice",
     )
 
     payment: fhirtypes.ReferenceType = Field(
@@ -83,8 +78,6 @@ class PaymentNotice(domainresource.DomainResource):
         element_property=True,
         # note: Listed Resource Type(s) should be allowed as Reference.
         enum_reference_types=["PaymentReconciliation"],
-        backref="payment_notice",
-        parent_name="payment_notice",
     )
 
     paymentDate: fhirtypes.Date = Field(
@@ -127,8 +120,6 @@ class PaymentNotice(domainresource.DomainResource):
         element_property=True,
         # note: Listed Resource Type(s) should be allowed as Reference.
         enum_reference_types=["Practitioner", "PractitionerRole", "Organization"],
-        backref="payment_notice",
-        parent_name="payment_notice",
     )
 
     recipient: fhirtypes.ReferenceType = Field(
@@ -140,8 +131,6 @@ class PaymentNotice(domainresource.DomainResource):
         element_property=True,
         # note: Listed Resource Type(s) should be allowed as Reference.
         enum_reference_types=["Organization"],
-        backref="payment_notice",
-        parent_name="payment_notice",
     )
 
     request: fhirtypes.ReferenceType = Field(
@@ -153,8 +142,6 @@ class PaymentNotice(domainresource.DomainResource):
         element_property=True,
         # note: Listed Resource Type(s) should be allowed as Reference.
         enum_reference_types=["Resource"],
-        backref="payment_notice",
-        parent_name="payment_notice",
     )
 
     response: fhirtypes.ReferenceType = Field(
@@ -166,8 +153,6 @@ class PaymentNotice(domainresource.DomainResource):
         element_property=True,
         # note: Listed Resource Type(s) should be allowed as Reference.
         enum_reference_types=["Resource"],
-        backref="payment_notice",
-        parent_name="payment_notice",
     )
 
     status: fhirtypes.Code = Field(

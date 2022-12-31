@@ -16,10 +16,7 @@ from . import backboneelement, domainresource, fhirtypes
 
 
 class TestReport(domainresource.DomainResource):
-    """Disclaimer: Any field name ends with ``__ext`` doesn't part of
-    Resource StructureDefinition, instead used to enable Extensibility feature
-    for FHIR Primitive Data Types.
-
+    """
     Describes the results of a TestScript execution.
     A summary of information based on the results of executing a TestScript.
     """
@@ -191,8 +188,6 @@ class TestReport(domainresource.DomainResource):
         element_property=True,
         # note: Listed Resource Type(s) should be allowed as Reference.
         enum_reference_types=["TestScript"],
-        backref="test_report",
-        parent_name="test_report",
     )
 
     tester: fhirtypes.String = Field(
@@ -297,10 +292,7 @@ class TestReport(domainresource.DomainResource):
 
 
 class TestReportParticipant(backboneelement.BackboneElement):
-    """Disclaimer: Any field name ends with ``__ext`` doesn't part of
-    Resource StructureDefinition, instead used to enable Extensibility feature
-    for FHIR Primitive Data Types.
-
+    """
     A participant in the test execution, either the execution engine, a client,
     or a server.
     """
@@ -425,10 +417,7 @@ class TestReportParticipant(backboneelement.BackboneElement):
 
 
 class TestReportSetup(backboneelement.BackboneElement):
-    """Disclaimer: Any field name ends with ``__ext`` doesn't part of
-    Resource StructureDefinition, instead used to enable Extensibility feature
-    for FHIR Primitive Data Types.
-
+    """
     The results of the series of required setup operations before the tests
     were executed.
     """
@@ -454,10 +443,7 @@ class TestReportSetup(backboneelement.BackboneElement):
 
 
 class TestReportSetupAction(backboneelement.BackboneElement):
-    """Disclaimer: Any field name ends with ``__ext`` doesn't part of
-    Resource StructureDefinition, instead used to enable Extensibility feature
-    for FHIR Primitive Data Types.
-
+    """
     A setup operation or assert that was executed.
     Action would contain either an operation or an assertion.
     """
@@ -492,10 +478,7 @@ class TestReportSetupAction(backboneelement.BackboneElement):
 
 
 class TestReportSetupActionAssert(backboneelement.BackboneElement):
-    """Disclaimer: Any field name ends with ``__ext`` doesn't part of
-    Resource StructureDefinition, instead used to enable Extensibility feature
-    for FHIR Primitive Data Types.
-
+    """
     The assertion to perform.
     The results of the assertion performed on the previous operations.
     """
@@ -619,10 +602,7 @@ class TestReportSetupActionAssert(backboneelement.BackboneElement):
 
 
 class TestReportSetupActionOperation(backboneelement.BackboneElement):
-    """Disclaimer: Any field name ends with ``__ext`` doesn't part of
-    Resource StructureDefinition, instead used to enable Extensibility feature
-    for FHIR Primitive Data Types.
-
+    """
     The operation to perform.
     The operation performed.
     """
@@ -746,10 +726,7 @@ class TestReportSetupActionOperation(backboneelement.BackboneElement):
 
 
 class TestReportTeardown(backboneelement.BackboneElement):
-    """Disclaimer: Any field name ends with ``__ext`` doesn't part of
-    Resource StructureDefinition, instead used to enable Extensibility feature
-    for FHIR Primitive Data Types.
-
+    """
     The results of running the series of required clean up steps.
     The results of the series of operations required to clean up after all the
     tests were executed (successfully or otherwise).
@@ -776,10 +753,7 @@ class TestReportTeardown(backboneelement.BackboneElement):
 
 
 class TestReportTeardownAction(backboneelement.BackboneElement):
-    """Disclaimer: Any field name ends with ``__ext`` doesn't part of
-    Resource StructureDefinition, instead used to enable Extensibility feature
-    for FHIR Primitive Data Types.
-
+    """
     One or more teardown operations performed.
     The teardown action will only contain an operation.
     """
@@ -805,10 +779,7 @@ class TestReportTeardownAction(backboneelement.BackboneElement):
 
 
 class TestReportTest(backboneelement.BackboneElement):
-    """Disclaimer: Any field name ends with ``__ext`` doesn't part of
-    Resource StructureDefinition, instead used to enable Extensibility feature
-    for FHIR Primitive Data Types.
-
+    """
     A test executed from the test script.
     """
 
@@ -863,10 +834,7 @@ class TestReportTest(backboneelement.BackboneElement):
 
 
 class TestReportTestAction(backboneelement.BackboneElement):
-    """Disclaimer: Any field name ends with ``__ext`` doesn't part of
-    Resource StructureDefinition, instead used to enable Extensibility feature
-    for FHIR Primitive Data Types.
-
+    """
     A test operation or assert that was performed.
     Action would contain either an operation or an assertion.
     """

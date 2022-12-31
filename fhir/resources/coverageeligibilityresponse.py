@@ -16,10 +16,7 @@ from . import backboneelement, domainresource, fhirtypes
 
 
 class CoverageEligibilityResponse(domainresource.DomainResource):
-    """Disclaimer: Any field name ends with ``__ext`` doesn't part of
-    Resource StructureDefinition, instead used to enable Extensibility feature
-    for FHIR Primitive Data Types.
-
+    """
     CoverageEligibilityResponse resource.
     This resource provides eligibility and plan details from the processing of
     an CoverageEligibilityRequest resource.
@@ -110,8 +107,6 @@ class CoverageEligibilityResponse(domainresource.DomainResource):
         element_property=True,
         # note: Listed Resource Type(s) should be allowed as Reference.
         enum_reference_types=["Organization"],
-        backref="coverage_eligibility_response",
-        parent_name="coverage_eligibility_response",
     )
 
     outcome: fhirtypes.Code = Field(
@@ -150,8 +145,6 @@ class CoverageEligibilityResponse(domainresource.DomainResource):
         element_property=True,
         # note: Listed Resource Type(s) should be allowed as Reference.
         enum_reference_types=["Patient"],
-        backref="coverage_eligibility_response",
-        parent_name="coverage_eligibility_response",
     )
 
     preAuthRef: fhirtypes.String = Field(
@@ -206,8 +199,6 @@ class CoverageEligibilityResponse(domainresource.DomainResource):
         element_property=True,
         # note: Listed Resource Type(s) should be allowed as Reference.
         enum_reference_types=["CoverageEligibilityRequest"],
-        backref="coverage_eligibility_response",
-        parent_name="coverage_eligibility_response",
     )
 
     requestor: fhirtypes.ReferenceType = Field(
@@ -219,8 +210,6 @@ class CoverageEligibilityResponse(domainresource.DomainResource):
         element_property=True,
         # note: Listed Resource Type(s) should be allowed as Reference.
         enum_reference_types=["Practitioner", "PractitionerRole", "Organization"],
-        backref="coverage_eligibility_response",
-        parent_name="coverage_eligibility_response",
     )
 
     servicedDate: fhirtypes.Date = Field(
@@ -417,10 +406,7 @@ class CoverageEligibilityResponse(domainresource.DomainResource):
 
 
 class CoverageEligibilityResponseError(backboneelement.BackboneElement):
-    """Disclaimer: Any field name ends with ``__ext`` doesn't part of
-    Resource StructureDefinition, instead used to enable Extensibility feature
-    for FHIR Primitive Data Types.
-
+    """
     Processing errors.
     Errors encountered during the processing of the request.
     """
@@ -454,10 +440,7 @@ class CoverageEligibilityResponseError(backboneelement.BackboneElement):
 
 
 class CoverageEligibilityResponseInsurance(backboneelement.BackboneElement):
-    """Disclaimer: Any field name ends with ``__ext`` doesn't part of
-    Resource StructureDefinition, instead used to enable Extensibility feature
-    for FHIR Primitive Data Types.
-
+    """
     Patient insurance information.
     Financial instruments for reimbursement for the health care products and
     services.
@@ -488,8 +471,6 @@ class CoverageEligibilityResponseInsurance(backboneelement.BackboneElement):
         element_property=True,
         # note: Listed Resource Type(s) should be allowed as Reference.
         enum_reference_types=["Coverage"],
-        backref="coverage_eligibility_response_insurance",
-        parent_name="coverage_eligibility_response_insurance",
     )
 
     inforce: bool = Field(
@@ -538,10 +519,7 @@ class CoverageEligibilityResponseInsurance(backboneelement.BackboneElement):
 
 
 class CoverageEligibilityResponseInsuranceItem(backboneelement.BackboneElement):
-    """Disclaimer: Any field name ends with ``__ext`` doesn't part of
-    Resource StructureDefinition, instead used to enable Extensibility feature
-    for FHIR Primitive Data Types.
-
+    """
     Benefits and authorization details.
     Benefits and optionally current balances, and authorization details by
     category or service.
@@ -731,8 +709,6 @@ class CoverageEligibilityResponseInsuranceItem(backboneelement.BackboneElement):
         element_property=True,
         # note: Listed Resource Type(s) should be allowed as Reference.
         enum_reference_types=["Practitioner", "PractitionerRole"],
-        backref="coverage_eligibility_response_insurance_item",
-        parent_name="coverage_eligibility_response_insurance_item",
     )
 
     term: fhirtypes.CodeableConceptType = Field(
@@ -796,10 +772,7 @@ class CoverageEligibilityResponseInsuranceItem(backboneelement.BackboneElement):
 
 
 class CoverageEligibilityResponseInsuranceItemBenefit(backboneelement.BackboneElement):
-    """Disclaimer: Any field name ends with ``__ext`` doesn't part of
-    Resource StructureDefinition, instead used to enable Extensibility feature
-    for FHIR Primitive Data Types.
-
+    """
     Benefit Summary.
     Benefits used to date.
     """

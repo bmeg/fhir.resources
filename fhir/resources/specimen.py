@@ -14,10 +14,7 @@ from . import backboneelement, domainresource, fhirtypes
 
 
 class Specimen(domainresource.DomainResource):
-    """Disclaimer: Any field name ends with ``__ext`` doesn't part of
-    Resource StructureDefinition, instead used to enable Extensibility feature
-    for FHIR Primitive Data Types.
-
+    """
     Sample for analysis.
     A sample to be used for analysis.
     """
@@ -108,8 +105,6 @@ class Specimen(domainresource.DomainResource):
         element_property=True,
         # note: Listed Resource Type(s) should be allowed as Reference.
         enum_reference_types=["Specimen"],
-        backref="specimen",
-        parent_name="specimen",
     )
 
     processing: typing.List[fhirtypes.SpecimenProcessingType] = Field(
@@ -145,8 +140,6 @@ class Specimen(domainresource.DomainResource):
         element_property=True,
         # note: Listed Resource Type(s) should be allowed as Reference.
         enum_reference_types=["ServiceRequest"],
-        backref="specimen",
-        parent_name="specimen",
     )
 
     status: fhirtypes.Code = Field(
@@ -185,8 +178,6 @@ class Specimen(domainresource.DomainResource):
         element_property=True,
         # note: Listed Resource Type(s) should be allowed as Reference.
         enum_reference_types=["Patient", "Group", "Device", "Substance", "Location"],
-        backref="specimen",
-        parent_name="specimen",
     )
 
     type: fhirtypes.CodeableConceptType = Field(
@@ -237,10 +228,7 @@ class Specimen(domainresource.DomainResource):
 
 
 class SpecimenCollection(backboneelement.BackboneElement):
-    """Disclaimer: Any field name ends with ``__ext`` doesn't part of
-    Resource StructureDefinition, instead used to enable Extensibility feature
-    for FHIR Primitive Data Types.
-
+    """
     Collection details.
     Details concerning the specimen collection.
     """
@@ -308,8 +296,6 @@ class SpecimenCollection(backboneelement.BackboneElement):
         element_property=True,
         # note: Listed Resource Type(s) should be allowed as Reference.
         enum_reference_types=["Practitioner", "PractitionerRole"],
-        backref="specimen_collection",
-        parent_name="specimen_collection",
     )
 
     duration: fhirtypes.DurationType = Field(
@@ -453,10 +439,7 @@ class SpecimenCollection(backboneelement.BackboneElement):
 
 
 class SpecimenContainer(backboneelement.BackboneElement):
-    """Disclaimer: Any field name ends with ``__ext`` doesn't part of
-    Resource StructureDefinition, instead used to enable Extensibility feature
-    for FHIR Primitive Data Types.
-
+    """
     Direct container of specimen (tube/slide, etc.).
     The container holding the specimen.  The recursive nature of containers;
     i.e. blood in tube in tray in rack is not addressed here.
@@ -504,8 +487,6 @@ class SpecimenContainer(backboneelement.BackboneElement):
         binding_uri="http://terminology.hl7.org/ValueSet/v2-0371",
         # note: Listed Resource Type(s) should be allowed as Reference.
         enum_reference_types=["Substance"],
-        backref="specimen_container",
-        parent_name="specimen_container",
     )
 
     capacity: fhirtypes.QuantityType = Field(
@@ -632,10 +613,7 @@ class SpecimenContainer(backboneelement.BackboneElement):
 
 
 class SpecimenProcessing(backboneelement.BackboneElement):
-    """Disclaimer: Any field name ends with ``__ext`` doesn't part of
-    Resource StructureDefinition, instead used to enable Extensibility feature
-    for FHIR Primitive Data Types.
-
+    """
     Processing and processing step details.
     Details concerning processing and processing steps for the specimen.
     """
@@ -651,8 +629,6 @@ class SpecimenProcessing(backboneelement.BackboneElement):
         element_property=True,
         # note: Listed Resource Type(s) should be allowed as Reference.
         enum_reference_types=["Substance"],
-        backref="specimen_processing",
-        parent_name="specimen_processing",
     )
 
     description: fhirtypes.String = Field(

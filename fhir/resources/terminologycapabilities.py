@@ -16,10 +16,7 @@ from . import backboneelement, domainresource, fhirtypes
 
 
 class TerminologyCapabilities(domainresource.DomainResource):
-    """Disclaimer: Any field name ends with ``__ext`` doesn't part of
-    Resource StructureDefinition, instead used to enable Extensibility feature
-    for FHIR Primitive Data Types.
-
+    """
     A statement of system capabilities.
     A TerminologyCapabilities resource documents a set of capabilities
     (behaviors) of a FHIR Terminology Server that may be used as a statement of
@@ -527,10 +524,7 @@ class TerminologyCapabilities(domainresource.DomainResource):
 
 
 class TerminologyCapabilitiesClosure(backboneelement.BackboneElement):
-    """Disclaimer: Any field name ends with ``__ext`` doesn't part of
-    Resource StructureDefinition, instead used to enable Extensibility feature
-    for FHIR Primitive Data Types.
-
+    """
     Information about the [ConceptMap/$closure](conceptmap-operation-
     closure.html) operation.
     Whether the $closure operation is supported.
@@ -560,10 +554,7 @@ class TerminologyCapabilitiesClosure(backboneelement.BackboneElement):
 
 
 class TerminologyCapabilitiesCodeSystem(backboneelement.BackboneElement):
-    """Disclaimer: Any field name ends with ``__ext`` doesn't part of
-    Resource StructureDefinition, instead used to enable Extensibility feature
-    for FHIR Primitive Data Types.
-
+    """
     A code system supported by the server.
     Identifies a code system that is supported by the server. If there is a no
     code system URL, then this declares the general assumptions a client can
@@ -593,8 +584,6 @@ class TerminologyCapabilitiesCodeSystem(backboneelement.BackboneElement):
         element_property=True,
         # note: Listed Resource Type(s) should be allowed as Reference.
         enum_reference_types=["CodeSystem"],
-        backref="terminology_capabilities_code_system",
-        parent_name="terminology_capabilities_code_system",
     )
     uri__ext: fhirtypes.FHIRPrimitiveExtensionType = Field(
         None, alias="_uri", title="Extension field for ``uri``."
@@ -624,10 +613,7 @@ class TerminologyCapabilitiesCodeSystem(backboneelement.BackboneElement):
 
 
 class TerminologyCapabilitiesCodeSystemVersion(backboneelement.BackboneElement):
-    """Disclaimer: Any field name ends with ``__ext`` doesn't part of
-    Resource StructureDefinition, instead used to enable Extensibility feature
-    for FHIR Primitive Data Types.
-
+    """
     Version of Code System supported.
     For the code system, a list of versions that are supported by the server.
     """
@@ -728,10 +714,7 @@ class TerminologyCapabilitiesCodeSystemVersion(backboneelement.BackboneElement):
 
 
 class TerminologyCapabilitiesCodeSystemVersionFilter(backboneelement.BackboneElement):
-    """Disclaimer: Any field name ends with ``__ext`` doesn't part of
-    Resource StructureDefinition, instead used to enable Extensibility feature
-    for FHIR Primitive Data Types.
-
+    """
     Filter Properties supported.
     """
 
@@ -832,10 +815,7 @@ class TerminologyCapabilitiesCodeSystemVersionFilter(backboneelement.BackboneEle
 
 
 class TerminologyCapabilitiesExpansion(backboneelement.BackboneElement):
-    """Disclaimer: Any field name ends with ``__ext`` doesn't part of
-    Resource StructureDefinition, instead used to enable Extensibility feature
-    for FHIR Primitive Data Types.
-
+    """
     Information about the [ValueSet/$expand](valueset-operation-expand.html)
     operation.
     """
@@ -920,10 +900,7 @@ class TerminologyCapabilitiesExpansion(backboneelement.BackboneElement):
 
 
 class TerminologyCapabilitiesExpansionParameter(backboneelement.BackboneElement):
-    """Disclaimer: Any field name ends with ``__ext`` doesn't part of
-    Resource StructureDefinition, instead used to enable Extensibility feature
-    for FHIR Primitive Data Types.
-
+    """
     Supported expansion parameter.
     """
 
@@ -1023,10 +1000,7 @@ class TerminologyCapabilitiesExpansionParameter(backboneelement.BackboneElement)
 
 
 class TerminologyCapabilitiesImplementation(backboneelement.BackboneElement):
-    """Disclaimer: Any field name ends with ``__ext`` doesn't part of
-    Resource StructureDefinition, instead used to enable Extensibility feature
-    for FHIR Primitive Data Types.
-
+    """
     If this describes a specific instance.
     Identifies a specific implementation instance that is described by the
     terminology capability statement - i.e. a particular installation, rather
@@ -1132,10 +1106,7 @@ class TerminologyCapabilitiesImplementation(backboneelement.BackboneElement):
 
 
 class TerminologyCapabilitiesSoftware(backboneelement.BackboneElement):
-    """Disclaimer: Any field name ends with ``__ext`` doesn't part of
-    Resource StructureDefinition, instead used to enable Extensibility feature
-    for FHIR Primitive Data Types.
-
+    """
     Software that is covered by this terminology capability statement.
     Software that is covered by this terminology capability statement.  It is
     used when the statement describes the capabilities of a particular software
@@ -1238,10 +1209,7 @@ class TerminologyCapabilitiesSoftware(backboneelement.BackboneElement):
 
 
 class TerminologyCapabilitiesTranslation(backboneelement.BackboneElement):
-    """Disclaimer: Any field name ends with ``__ext`` doesn't part of
-    Resource StructureDefinition, instead used to enable Extensibility feature
-    for FHIR Primitive Data Types.
-
+    """
     Information about the [ConceptMap/$translate](conceptmap-operation-
     translate.html) operation.
     """
@@ -1330,10 +1298,7 @@ class TerminologyCapabilitiesTranslation(backboneelement.BackboneElement):
 
 
 class TerminologyCapabilitiesValidateCode(backboneelement.BackboneElement):
-    """Disclaimer: Any field name ends with ``__ext`` doesn't part of
-    Resource StructureDefinition, instead used to enable Extensibility feature
-    for FHIR Primitive Data Types.
-
+    """
     Information about the [ValueSet/$validate-code](valueset-operation-
     validate-code.html) operation.
     """

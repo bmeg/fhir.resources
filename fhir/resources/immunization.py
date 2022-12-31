@@ -16,10 +16,7 @@ from . import backboneelement, domainresource, fhirtypes
 
 
 class Immunization(domainresource.DomainResource):
-    """Disclaimer: Any field name ends with ``__ext`` doesn't part of
-    Resource StructureDefinition, instead used to enable Extensibility feature
-    for FHIR Primitive Data Types.
-
+    """
     Immunization event information.
     Describes the event of a patient being administered a vaccine or a record
     of an immunization as reported by a patient, a clinician or another party.
@@ -60,8 +57,6 @@ class Immunization(domainresource.DomainResource):
         element_property=True,
         # note: Listed Resource Type(s) should be allowed as Reference.
         enum_reference_types=["Encounter"],
-        backref="immunization",
-        parent_name="immunization",
     )
 
     expirationDate: fhirtypes.Date = Field(
@@ -132,8 +127,6 @@ class Immunization(domainresource.DomainResource):
         element_property=True,
         # note: Listed Resource Type(s) should be allowed as Reference.
         enum_reference_types=["Location"],
-        backref="immunization",
-        parent_name="immunization",
     )
 
     lotNumber: fhirtypes.String = Field(
@@ -157,8 +150,6 @@ class Immunization(domainresource.DomainResource):
         element_property=True,
         # note: Listed Resource Type(s) should be allowed as Reference.
         enum_reference_types=["Organization"],
-        backref="immunization",
-        parent_name="immunization",
     )
 
     note: typing.List[fhirtypes.AnnotationType] = Field(
@@ -216,8 +207,6 @@ class Immunization(domainresource.DomainResource):
         element_property=True,
         # note: Listed Resource Type(s) should be allowed as Reference.
         enum_reference_types=["Patient"],
-        backref="immunization",
-        parent_name="immunization",
     )
 
     performer: typing.List[fhirtypes.ImmunizationPerformerType] = Field(
@@ -313,8 +302,6 @@ class Immunization(domainresource.DomainResource):
         element_property=True,
         # note: Listed Resource Type(s) should be allowed as Reference.
         enum_reference_types=["Condition", "Observation", "DiagnosticReport"],
-        backref="immunization",
-        parent_name="immunization",
     )
 
     recorded: fhirtypes.DateTime = Field(
@@ -598,10 +585,7 @@ class Immunization(domainresource.DomainResource):
 
 
 class ImmunizationEducation(backboneelement.BackboneElement):
-    """Disclaimer: Any field name ends with ``__ext`` doesn't part of
-    Resource StructureDefinition, instead used to enable Extensibility feature
-    for FHIR Primitive Data Types.
-
+    """
     Educational material presented to patient.
     Educational material presented to the patient (or guardian) at the time of
     vaccine administration.
@@ -680,10 +664,7 @@ class ImmunizationEducation(backboneelement.BackboneElement):
 
 
 class ImmunizationPerformer(backboneelement.BackboneElement):
-    """Disclaimer: Any field name ends with ``__ext`` doesn't part of
-    Resource StructureDefinition, instead used to enable Extensibility feature
-    for FHIR Primitive Data Types.
-
+    """
     Who performed event.
     Indicates who performed the immunization event.
     """
@@ -699,8 +680,6 @@ class ImmunizationPerformer(backboneelement.BackboneElement):
         element_property=True,
         # note: Listed Resource Type(s) should be allowed as Reference.
         enum_reference_types=["Practitioner", "PractitionerRole", "Organization"],
-        backref="immunization_performer",
-        parent_name="immunization_performer",
     )
 
     function: fhirtypes.CodeableConceptType = Field(
@@ -730,10 +709,7 @@ class ImmunizationPerformer(backboneelement.BackboneElement):
 
 
 class ImmunizationProtocolApplied(backboneelement.BackboneElement):
-    """Disclaimer: Any field name ends with ``__ext`` doesn't part of
-    Resource StructureDefinition, instead used to enable Extensibility feature
-    for FHIR Primitive Data Types.
-
+    """
     Protocol followed by the provider.
     The protocol (set of recommendations) being followed by the provider who
     administered the dose.
@@ -753,8 +729,6 @@ class ImmunizationProtocolApplied(backboneelement.BackboneElement):
         element_property=True,
         # note: Listed Resource Type(s) should be allowed as Reference.
         enum_reference_types=["Organization"],
-        backref="immunization_protocol_applied",
-        parent_name="immunization_protocol_applied",
     )
 
     doseNumberPositiveInt: fhirtypes.PositiveInt = Field(
@@ -918,10 +892,7 @@ class ImmunizationProtocolApplied(backboneelement.BackboneElement):
 
 
 class ImmunizationReaction(backboneelement.BackboneElement):
-    """Disclaimer: Any field name ends with ``__ext`` doesn't part of
-    Resource StructureDefinition, instead used to enable Extensibility feature
-    for FHIR Primitive Data Types.
-
+    """
     Details of a reaction that follows immunization.
     Categorical data indicating that an adverse event is associated in time to
     an immunization.
@@ -950,8 +921,6 @@ class ImmunizationReaction(backboneelement.BackboneElement):
         element_property=True,
         # note: Listed Resource Type(s) should be allowed as Reference.
         enum_reference_types=["Observation"],
-        backref="immunization_reaction",
-        parent_name="immunization_reaction",
     )
 
     reported: bool = Field(

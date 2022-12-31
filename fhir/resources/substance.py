@@ -14,10 +14,7 @@ from . import backboneelement, domainresource, fhirtypes
 
 
 class Substance(domainresource.DomainResource):
-    """Disclaimer: Any field name ends with ``__ext`` doesn't part of
-    Resource StructureDefinition, instead used to enable Extensibility feature
-    for FHIR Primitive Data Types.
-
+    """
     A homogeneous material with a definite composition.
     """
 
@@ -150,10 +147,7 @@ class Substance(domainresource.DomainResource):
 
 
 class SubstanceIngredient(backboneelement.BackboneElement):
-    """Disclaimer: Any field name ends with ``__ext`` doesn't part of
-    Resource StructureDefinition, instead used to enable Extensibility feature
-    for FHIR Primitive Data Types.
-
+    """
     Composition information about the substance.
     A substance can be composed of other substances.
     """
@@ -207,8 +201,6 @@ class SubstanceIngredient(backboneelement.BackboneElement):
         binding_uri="http://hl7.org/fhir/ValueSet/substance-code",
         # note: Listed Resource Type(s) should be allowed as Reference.
         enum_reference_types=["Substance"],
-        backref="substance_ingredient",
-        parent_name="substance_ingredient",
     )
 
     @classmethod
@@ -268,10 +260,7 @@ class SubstanceIngredient(backboneelement.BackboneElement):
 
 
 class SubstanceInstance(backboneelement.BackboneElement):
-    """Disclaimer: Any field name ends with ``__ext`` doesn't part of
-    Resource StructureDefinition, instead used to enable Extensibility feature
-    for FHIR Primitive Data Types.
-
+    """
     If this describes a specific package/container of the substance.
     Substance may be used to describe a kind of substance, or a specific
     package/container of the substance: an instance.

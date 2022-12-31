@@ -16,10 +16,7 @@ from . import backboneelement, domainresource, fhirtypes
 
 
 class SearchParameter(domainresource.DomainResource):
-    """Disclaimer: Any field name ends with ``__ext`` doesn't part of
-    Resource StructureDefinition, instead used to enable Extensibility feature
-    for FHIR Primitive Data Types.
-
+    """
     Search parameter for a resource.
     A search parameter that defines a named search item that can be used to
     search/filter on a resource.
@@ -160,8 +157,6 @@ class SearchParameter(domainresource.DomainResource):
         element_property=True,
         # note: Listed Resource Type(s) should be allowed as Reference.
         enum_reference_types=["SearchParameter"],
-        backref="search_parameter",
-        parent_name="search_parameter",
     )
     derivedFrom__ext: fhirtypes.FHIRPrimitiveExtensionType = Field(
         None, alias="_derivedFrom", title="Extension field for ``derivedFrom``."
@@ -636,10 +631,7 @@ class SearchParameter(domainresource.DomainResource):
 
 
 class SearchParameterComponent(backboneelement.BackboneElement):
-    """Disclaimer: Any field name ends with ``__ext`` doesn't part of
-    Resource StructureDefinition, instead used to enable Extensibility feature
-    for FHIR Primitive Data Types.
-
+    """
     For Composite resources to define the parts.
     Used to define the parts of a composite search parameter.
     """
@@ -656,8 +648,6 @@ class SearchParameterComponent(backboneelement.BackboneElement):
         element_required=True,
         # note: Listed Resource Type(s) should be allowed as Reference.
         enum_reference_types=["SearchParameter"],
-        backref="search_parameter_component",
-        parent_name="search_parameter_component",
     )
     definition__ext: fhirtypes.FHIRPrimitiveExtensionType = Field(
         None, alias="_definition", title="Extension field for ``definition``."

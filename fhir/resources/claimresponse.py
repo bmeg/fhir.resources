@@ -16,10 +16,7 @@ from . import backboneelement, domainresource, fhirtypes
 
 
 class ClaimResponse(domainresource.DomainResource):
-    """Disclaimer: Any field name ends with ``__ext`` doesn't part of
-    Resource StructureDefinition, instead used to enable Extensibility feature
-    for FHIR Primitive Data Types.
-
+    """
     Response to a claim predetermination or preauthorization.
     This resource provides the adjudication details from the processing of a
     Claim resource.
@@ -60,8 +57,6 @@ class ClaimResponse(domainresource.DomainResource):
         element_property=True,
         # note: Listed Resource Type(s) should be allowed as Reference.
         enum_reference_types=["CommunicationRequest"],
-        backref="claim_response",
-        parent_name="claim_response",
     )
 
     created: fhirtypes.DateTime = Field(
@@ -176,8 +171,6 @@ class ClaimResponse(domainresource.DomainResource):
         element_property=True,
         # note: Listed Resource Type(s) should be allowed as Reference.
         enum_reference_types=["Organization"],
-        backref="claim_response",
-        parent_name="claim_response",
     )
 
     item: typing.List[fhirtypes.ClaimResponseItemType] = Field(
@@ -229,8 +222,6 @@ class ClaimResponse(domainresource.DomainResource):
         element_property=True,
         # note: Listed Resource Type(s) should be allowed as Reference.
         enum_reference_types=["Patient"],
-        backref="claim_response",
-        parent_name="claim_response",
     )
 
     payeeType: fhirtypes.CodeableConceptType = Field(
@@ -303,8 +294,6 @@ class ClaimResponse(domainresource.DomainResource):
         element_property=True,
         # note: Listed Resource Type(s) should be allowed as Reference.
         enum_reference_types=["Claim"],
-        backref="claim_response",
-        parent_name="claim_response",
     )
 
     requestor: fhirtypes.ReferenceType = Field(
@@ -319,8 +308,6 @@ class ClaimResponse(domainresource.DomainResource):
         element_property=True,
         # note: Listed Resource Type(s) should be allowed as Reference.
         enum_reference_types=["Practitioner", "PractitionerRole", "Organization"],
-        backref="claim_response",
-        parent_name="claim_response",
     )
 
     status: fhirtypes.Code = Field(
@@ -528,10 +515,7 @@ class ClaimResponse(domainresource.DomainResource):
 
 
 class ClaimResponseAddItem(backboneelement.BackboneElement):
-    """Disclaimer: Any field name ends with ``__ext`` doesn't part of
-    Resource StructureDefinition, instead used to enable Extensibility feature
-    for FHIR Primitive Data Types.
-
+    """
     Insurer added line items.
     The first-tier service adjudications for payor added product or service
     lines.
@@ -678,8 +662,6 @@ class ClaimResponseAddItem(backboneelement.BackboneElement):
         binding_uri="http://hl7.org/fhir/ValueSet/service-place",
         # note: Listed Resource Type(s) should be allowed as Reference.
         enum_reference_types=["Location"],
-        backref="claim_response_add_item",
-        parent_name="claim_response_add_item",
     )
 
     modifier: typing.List[fhirtypes.CodeableConceptType] = Field(
@@ -772,8 +754,6 @@ class ClaimResponseAddItem(backboneelement.BackboneElement):
         element_property=True,
         # note: Listed Resource Type(s) should be allowed as Reference.
         enum_reference_types=["Practitioner", "PractitionerRole", "Organization"],
-        backref="claim_response_add_item",
-        parent_name="claim_response_add_item",
     )
 
     quantity: fhirtypes.QuantityType = Field(
@@ -946,10 +926,7 @@ class ClaimResponseAddItem(backboneelement.BackboneElement):
 
 
 class ClaimResponseAddItemDetail(backboneelement.BackboneElement):
-    """Disclaimer: Any field name ends with ``__ext`` doesn't part of
-    Resource StructureDefinition, instead used to enable Extensibility feature
-    for FHIR Primitive Data Types.
-
+    """
     Insurer added line details.
     The second-tier service adjudications for payor added services.
     """
@@ -1098,10 +1075,7 @@ class ClaimResponseAddItemDetail(backboneelement.BackboneElement):
 
 
 class ClaimResponseAddItemDetailSubDetail(backboneelement.BackboneElement):
-    """Disclaimer: Any field name ends with ``__ext`` doesn't part of
-    Resource StructureDefinition, instead used to enable Extensibility feature
-    for FHIR Primitive Data Types.
-
+    """
     Insurer added line items.
     The third-tier service adjudications for payor added services.
     """
@@ -1240,10 +1214,7 @@ class ClaimResponseAddItemDetailSubDetail(backboneelement.BackboneElement):
 
 
 class ClaimResponseError(backboneelement.BackboneElement):
-    """Disclaimer: Any field name ends with ``__ext`` doesn't part of
-    Resource StructureDefinition, instead used to enable Extensibility feature
-    for FHIR Primitive Data Types.
-
+    """
     Processing errors.
     Errors encountered during the processing of the adjudication.
     """
@@ -1335,10 +1306,7 @@ class ClaimResponseError(backboneelement.BackboneElement):
 
 
 class ClaimResponseInsurance(backboneelement.BackboneElement):
-    """Disclaimer: Any field name ends with ``__ext`` doesn't part of
-    Resource StructureDefinition, instead used to enable Extensibility feature
-    for FHIR Primitive Data Types.
-
+    """
     Patient insurance information.
     Financial instruments for reimbursement for the health care products and
     services specified on the claim.
@@ -1375,8 +1343,6 @@ class ClaimResponseInsurance(backboneelement.BackboneElement):
         element_property=True,
         # note: Listed Resource Type(s) should be allowed as Reference.
         enum_reference_types=["ClaimResponse"],
-        backref="claim_response_insurance",
-        parent_name="claim_response_insurance",
     )
 
     coverage: fhirtypes.ReferenceType = Field(
@@ -1393,8 +1359,6 @@ class ClaimResponseInsurance(backboneelement.BackboneElement):
         element_property=True,
         # note: Listed Resource Type(s) should be allowed as Reference.
         enum_reference_types=["Coverage"],
-        backref="claim_response_insurance",
-        parent_name="claim_response_insurance",
     )
 
     focal: bool = Field(
@@ -1507,10 +1471,7 @@ class ClaimResponseInsurance(backboneelement.BackboneElement):
 
 
 class ClaimResponseItem(backboneelement.BackboneElement):
-    """Disclaimer: Any field name ends with ``__ext`` doesn't part of
-    Resource StructureDefinition, instead used to enable Extensibility feature
-    for FHIR Primitive Data Types.
-
+    """
     Adjudication for claim line items.
     A claim line. Either a simple (a product or service) or a 'group' of
     details which can also be a simple items or groups of sub-details.
@@ -1648,10 +1609,7 @@ class ClaimResponseItem(backboneelement.BackboneElement):
 
 
 class ClaimResponseItemAdjudication(backboneelement.BackboneElement):
-    """Disclaimer: Any field name ends with ``__ext`` doesn't part of
-    Resource StructureDefinition, instead used to enable Extensibility feature
-    for FHIR Primitive Data Types.
-
+    """
     Adjudication details.
     If this item is a group then the values here are a summary of the
     adjudication of the detail items. If this item is a simple product or
@@ -1739,10 +1697,7 @@ class ClaimResponseItemAdjudication(backboneelement.BackboneElement):
 
 
 class ClaimResponseItemDetail(backboneelement.BackboneElement):
-    """Disclaimer: Any field name ends with ``__ext`` doesn't part of
-    Resource StructureDefinition, instead used to enable Extensibility feature
-    for FHIR Primitive Data Types.
-
+    """
     Adjudication for claim details.
     A claim detail. Either a simple (a product or service) or a 'group' of sub-
     details which are simple items.
@@ -1873,10 +1828,7 @@ class ClaimResponseItemDetail(backboneelement.BackboneElement):
 
 
 class ClaimResponseItemDetailSubDetail(backboneelement.BackboneElement):
-    """Disclaimer: Any field name ends with ``__ext`` doesn't part of
-    Resource StructureDefinition, instead used to enable Extensibility feature
-    for FHIR Primitive Data Types.
-
+    """
     Adjudication for claim sub-details.
     A sub-detail adjudication of a simple product or service.
     """
@@ -1998,10 +1950,7 @@ class ClaimResponseItemDetailSubDetail(backboneelement.BackboneElement):
 
 
 class ClaimResponsePayment(backboneelement.BackboneElement):
-    """Disclaimer: Any field name ends with ``__ext`` doesn't part of
-    Resource StructureDefinition, instead used to enable Extensibility feature
-    for FHIR Primitive Data Types.
-
+    """
     Payment Details.
     Payment details for the adjudication of the claim.
     """
@@ -2105,10 +2054,7 @@ class ClaimResponsePayment(backboneelement.BackboneElement):
 
 
 class ClaimResponseProcessNote(backboneelement.BackboneElement):
-    """Disclaimer: Any field name ends with ``__ext`` doesn't part of
-    Resource StructureDefinition, instead used to enable Extensibility feature
-    for FHIR Primitive Data Types.
-
+    """
     Note concerning adjudication.
     A note that describes or explains adjudication results in a human readable
     form.
@@ -2257,10 +2203,7 @@ class ClaimResponseProcessNote(backboneelement.BackboneElement):
 
 
 class ClaimResponseTotal(backboneelement.BackboneElement):
-    """Disclaimer: Any field name ends with ``__ext`` doesn't part of
-    Resource StructureDefinition, instead used to enable Extensibility feature
-    for FHIR Primitive Data Types.
-
+    """
     Adjudication totals.
     Categorized monetary totals for the adjudication.
     """

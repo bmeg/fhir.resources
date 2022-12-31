@@ -14,10 +14,7 @@ from . import domainresource, fhirtypes
 
 
 class BodyStructure(domainresource.DomainResource):
-    """Disclaimer: Any field name ends with ``__ext`` doesn't part of
-    Resource StructureDefinition, instead used to enable Extensibility feature
-    for FHIR Primitive Data Types.
-
+    """
     Specific and identified anatomical structure.
     Record details about an anatomical structure.  This resource may be used
     when a coded concept does not provide the necessary detail needed for the
@@ -127,8 +124,6 @@ class BodyStructure(domainresource.DomainResource):
         element_property=True,
         # note: Listed Resource Type(s) should be allowed as Reference.
         enum_reference_types=["Patient"],
-        backref="body_structure",
-        parent_name="body_structure",
     )
 
     @classmethod

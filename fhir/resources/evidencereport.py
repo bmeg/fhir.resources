@@ -16,10 +16,7 @@ from . import backboneelement, domainresource, fhirtypes
 
 
 class EvidenceReport(domainresource.DomainResource):
-    """Disclaimer: Any field name ends with ``__ext`` doesn't part of
-    Resource StructureDefinition, instead used to enable Extensibility feature
-    for FHIR Primitive Data Types.
-
+    """
     A EvidenceReport.
     The EvidenceReport Resource is a specialized container for a collection of
     resources and codable concepts, adapted to support compositions of
@@ -67,8 +64,6 @@ class EvidenceReport(domainresource.DomainResource):
         one_of_many_required=False,
         # note: Listed Resource Type(s) should be allowed as Reference.
         enum_reference_types=["Citation"],
-        backref="evidence_report",
-        parent_name="evidence_report",
     )
 
     contact: typing.List[fhirtypes.ContactDetailType] = Field(
@@ -427,10 +422,7 @@ class EvidenceReport(domainresource.DomainResource):
 
 
 class EvidenceReportRelatesTo(backboneelement.BackboneElement):
-    """Disclaimer: Any field name ends with ``__ext`` doesn't part of
-    Resource StructureDefinition, instead used to enable Extensibility feature
-    for FHIR Primitive Data Types.
-
+    """
     Relationships to other compositions/documents.
     Relationships that this composition has with other compositions or
     documents that already exist.
@@ -499,8 +491,6 @@ class EvidenceReportRelatesTo(backboneelement.BackboneElement):
         one_of_many_required=True,
         # note: Listed Resource Type(s) should be allowed as Reference.
         enum_reference_types=["EvidenceReport"],
-        backref="evidence_report_relates_to",
-        parent_name="evidence_report_relates_to",
     )
 
     @classmethod
@@ -617,10 +607,7 @@ class EvidenceReportRelatesTo(backboneelement.BackboneElement):
 
 
 class EvidenceReportSection(backboneelement.BackboneElement):
-    """Disclaimer: Any field name ends with ``__ext`` doesn't part of
-    Resource StructureDefinition, instead used to enable Extensibility feature
-    for FHIR Primitive Data Types.
-
+    """
     Composition is broken into sections.
     The root of the sections that make up the composition.
     """
@@ -639,8 +626,6 @@ class EvidenceReportSection(backboneelement.BackboneElement):
         element_property=True,
         # note: Listed Resource Type(s) should be allowed as Reference.
         enum_reference_types=["Person", "Device", "Group", "Organization"],
-        backref="evidence_report_section",
-        parent_name="evidence_report_section",
     )
 
     emptyReason: fhirtypes.CodeableConceptType = Field(
@@ -697,8 +682,6 @@ class EvidenceReportSection(backboneelement.BackboneElement):
         element_property=True,
         # note: Listed Resource Type(s) should be allowed as Reference.
         enum_reference_types=["Resource"],
-        backref="evidence_report_section",
-        parent_name="evidence_report_section",
     )
 
     focus: fhirtypes.CodeableConceptType = Field(
@@ -730,8 +713,6 @@ class EvidenceReportSection(backboneelement.BackboneElement):
         element_property=True,
         # note: Listed Resource Type(s) should be allowed as Reference.
         enum_reference_types=["Resource"],
-        backref="evidence_report_section",
-        parent_name="evidence_report_section",
     )
 
     mode: fhirtypes.Code = Field(
@@ -842,10 +823,7 @@ class EvidenceReportSection(backboneelement.BackboneElement):
 
 
 class EvidenceReportSubject(backboneelement.BackboneElement):
-    """Disclaimer: Any field name ends with ``__ext`` doesn't part of
-    Resource StructureDefinition, instead used to enable Extensibility feature
-    for FHIR Primitive Data Types.
-
+    """
     Focus of the report.
     Specifies the subject or focus of the report. Answers "What is this report
     about?".
@@ -883,10 +861,7 @@ class EvidenceReportSubject(backboneelement.BackboneElement):
 
 
 class EvidenceReportSubjectCharacteristic(backboneelement.BackboneElement):
-    """Disclaimer: Any field name ends with ``__ext`` doesn't part of
-    Resource StructureDefinition, instead used to enable Extensibility feature
-    for FHIR Primitive Data Types.
-
+    """
     Characteristic.
     """
 
@@ -989,8 +964,6 @@ class EvidenceReportSubjectCharacteristic(backboneelement.BackboneElement):
         one_of_many_required=True,
         # note: Listed Resource Type(s) should be allowed as Reference.
         enum_reference_types=["Resource"],
-        backref="evidence_report_subject_characteristic",
-        parent_name="evidence_report_subject_characteristic",
     )
 
     @classmethod

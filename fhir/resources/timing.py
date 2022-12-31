@@ -14,10 +14,7 @@ from . import backboneelement, element, fhirtypes
 
 
 class Timing(backboneelement.BackboneElement):
-    """Disclaimer: Any field name ends with ``__ext`` doesn't part of
-    Resource StructureDefinition, instead used to enable Extensibility feature
-    for FHIR Primitive Data Types.
-
+    """
     A timing schedule that specifies an event that may occur multiple times.
     Specifies an event that may occur multiple times. Timing schedules are used
     to record when things are planned, expected or requested to occur. The most
@@ -83,10 +80,7 @@ class Timing(backboneelement.BackboneElement):
 
 
 class TimingRepeat(element.Element):
-    """Disclaimer: Any field name ends with ``__ext`` doesn't part of
-    Resource StructureDefinition, instead used to enable Extensibility feature
-    for FHIR Primitive Data Types.
-
+    """
     When the event is to occur.
     A set of rules that describe when the event is scheduled.
     """

@@ -16,10 +16,7 @@ from . import backboneelement, domainresource, fhirtypes
 
 
 class ChargeItemDefinition(domainresource.DomainResource):
-    """Disclaimer: Any field name ends with ``__ext`` doesn't part of
-    Resource StructureDefinition, instead used to enable Extensibility feature
-    for FHIR Primitive Data Types.
-
+    """
     Definition of properties and rules about how the price and the
     applicability of a ChargeItem can be determined.
     The ChargeItemDefinition resource provides the properties that apply to the
@@ -203,8 +200,6 @@ class ChargeItemDefinition(domainresource.DomainResource):
         element_property=True,
         # note: Listed Resource Type(s) should be allowed as Reference.
         enum_reference_types=["Medication", "Substance", "Device"],
-        backref="charge_item_definition",
-        parent_name="charge_item_definition",
     )
 
     jurisdiction: typing.List[fhirtypes.CodeableConceptType] = Field(
@@ -251,8 +246,6 @@ class ChargeItemDefinition(domainresource.DomainResource):
         element_property=True,
         # note: Listed Resource Type(s) should be allowed as Reference.
         enum_reference_types=["ChargeItemDefinition"],
-        backref="charge_item_definition",
-        parent_name="charge_item_definition",
     )
     partOf__ext: typing.List[
         typing.Union[fhirtypes.FHIRPrimitiveExtensionType, None]
@@ -301,8 +294,6 @@ class ChargeItemDefinition(domainresource.DomainResource):
         element_property=True,
         # note: Listed Resource Type(s) should be allowed as Reference.
         enum_reference_types=["ChargeItemDefinition"],
-        backref="charge_item_definition",
-        parent_name="charge_item_definition",
     )
     replaces__ext: typing.List[
         typing.Union[fhirtypes.FHIRPrimitiveExtensionType, None]
@@ -513,10 +504,7 @@ class ChargeItemDefinition(domainresource.DomainResource):
 
 
 class ChargeItemDefinitionApplicability(backboneelement.BackboneElement):
-    """Disclaimer: Any field name ends with ``__ext`` doesn't part of
-    Resource StructureDefinition, instead used to enable Extensibility feature
-    for FHIR Primitive Data Types.
-
+    """
     Whether or not the billing code is applicable.
     Expressions that describe applicability criteria for the billing code.
     """
@@ -588,10 +576,7 @@ class ChargeItemDefinitionApplicability(backboneelement.BackboneElement):
 
 
 class ChargeItemDefinitionPropertyGroup(backboneelement.BackboneElement):
-    """Disclaimer: Any field name ends with ``__ext`` doesn't part of
-    Resource StructureDefinition, instead used to enable Extensibility feature
-    for FHIR Primitive Data Types.
-
+    """
     Group of properties which are applicable under the same conditions.
     Group of properties which are applicable under the same conditions. If no
     applicability rules are established for the group, then all properties
@@ -647,10 +632,7 @@ class ChargeItemDefinitionPropertyGroup(backboneelement.BackboneElement):
 
 
 class ChargeItemDefinitionPropertyGroupPriceComponent(backboneelement.BackboneElement):
-    """Disclaimer: Any field name ends with ``__ext`` doesn't part of
-    Resource StructureDefinition, instead used to enable Extensibility feature
-    for FHIR Primitive Data Types.
-
+    """
     Components of total line item price.
     The price for a ChargeItem may be calculated as a base price with
     surcharges/deductions that apply in certain conditions. A

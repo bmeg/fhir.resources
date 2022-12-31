@@ -16,10 +16,7 @@ from . import element, fhirtypes
 
 
 class DataRequirement(element.Element):
-    """Disclaimer: Any field name ends with ``__ext`` doesn't part of
-    Resource StructureDefinition, instead used to enable Extensibility feature
-    for FHIR Primitive Data Types.
-
+    """
     Describes a required data item.
     Describes a required data item for evaluation in terms of the type of data,
     and optional code or date-based filters of the data.
@@ -107,8 +104,6 @@ class DataRequirement(element.Element):
         element_property=True,
         # note: Listed Resource Type(s) should be allowed as Reference.
         enum_reference_types=["StructureDefinition"],
-        backref="data_requirement",
-        parent_name="data_requirement",
     )
     profile__ext: typing.List[
         typing.Union[fhirtypes.FHIRPrimitiveExtensionType, None]
@@ -167,8 +162,6 @@ class DataRequirement(element.Element):
         binding_uri="http://hl7.org/fhir/ValueSet/subject-type",
         # note: Listed Resource Type(s) should be allowed as Reference.
         enum_reference_types=["Group"],
-        backref="data_requirement",
-        parent_name="data_requirement",
     )
 
     type: fhirtypes.Code = Field(
@@ -311,10 +304,7 @@ class DataRequirement(element.Element):
 
 
 class DataRequirementCodeFilter(element.Element):
-    """Disclaimer: Any field name ends with ``__ext`` doesn't part of
-    Resource StructureDefinition, instead used to enable Extensibility feature
-    for FHIR Primitive Data Types.
-
+    """
     What codes are expected.
     Code filters specify additional constraints on the data, specifying the
     value set of interest for a particular element of the data. Each code
@@ -391,8 +381,6 @@ class DataRequirementCodeFilter(element.Element):
         element_property=True,
         # note: Listed Resource Type(s) should be allowed as Reference.
         enum_reference_types=["ValueSet"],
-        backref="data_requirement_code_filter",
-        parent_name="data_requirement_code_filter",
     )
     valueSet__ext: fhirtypes.FHIRPrimitiveExtensionType = Field(
         None, alias="_valueSet", title="Extension field for ``valueSet``."
@@ -408,10 +396,7 @@ class DataRequirementCodeFilter(element.Element):
 
 
 class DataRequirementDateFilter(element.Element):
-    """Disclaimer: Any field name ends with ``__ext`` doesn't part of
-    Resource StructureDefinition, instead used to enable Extensibility feature
-    for FHIR Primitive Data Types.
-
+    """
     What dates/date ranges are expected.
     Date filters specify additional constraints on the data in terms of the
     applicable date range for specific elements. Each date filter specifies an
@@ -579,10 +564,7 @@ class DataRequirementDateFilter(element.Element):
 
 
 class DataRequirementSort(element.Element):
-    """Disclaimer: Any field name ends with ``__ext`` doesn't part of
-    Resource StructureDefinition, instead used to enable Extensibility feature
-    for FHIR Primitive Data Types.
-
+    """
     Order of the results.
     Specifies the order of the results to be returned.
     """

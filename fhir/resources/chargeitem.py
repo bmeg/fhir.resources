@@ -16,10 +16,7 @@ from . import backboneelement, domainresource, fhirtypes
 
 
 class ChargeItem(domainresource.DomainResource):
-    """Disclaimer: Any field name ends with ``__ext`` doesn't part of
-    Resource StructureDefinition, instead used to enable Extensibility feature
-    for FHIR Primitive Data Types.
-
+    """
     Item containing charge code(s) associated with the provision of healthcare
     provider products.
     The resource ChargeItem describes the provision of healthcare provider
@@ -41,8 +38,6 @@ class ChargeItem(domainresource.DomainResource):
         element_property=True,
         # note: Listed Resource Type(s) should be allowed as Reference.
         enum_reference_types=["Account"],
-        backref="charge_item",
-        parent_name="charge_item",
     )
 
     bodysite: typing.List[fhirtypes.CodeableConceptType] = Field(
@@ -86,8 +81,6 @@ class ChargeItem(domainresource.DomainResource):
         element_property=True,
         # note: Listed Resource Type(s) should be allowed as Reference.
         enum_reference_types=["Encounter", "EpisodeOfCare"],
-        backref="charge_item",
-        parent_name="charge_item",
     )
 
     costCenter: fhirtypes.ReferenceType = Field(
@@ -99,8 +92,6 @@ class ChargeItem(domainresource.DomainResource):
         element_property=True,
         # note: Listed Resource Type(s) should be allowed as Reference.
         enum_reference_types=["Organization"],
-        backref="charge_item",
-        parent_name="charge_item",
     )
 
     definitionCanonical: typing.List[typing.Optional[fhirtypes.Canonical]] = Field(
@@ -115,8 +106,6 @@ class ChargeItem(domainresource.DomainResource):
         element_property=True,
         # note: Listed Resource Type(s) should be allowed as Reference.
         enum_reference_types=["ChargeItemDefinition"],
-        backref="charge_item",
-        parent_name="charge_item",
     )
     definitionCanonical__ext: typing.List[
         typing.Union[fhirtypes.FHIRPrimitiveExtensionType, None]
@@ -171,8 +160,6 @@ class ChargeItem(domainresource.DomainResource):
             "Device",
             "RelatedPerson",
         ],
-        backref="charge_item",
-        parent_name="charge_item",
     )
 
     factorOverride: fhirtypes.Decimal = Field(
@@ -280,8 +267,6 @@ class ChargeItem(domainresource.DomainResource):
         element_property=True,
         # note: Listed Resource Type(s) should be allowed as Reference.
         enum_reference_types=["ChargeItem"],
-        backref="charge_item",
-        parent_name="charge_item",
     )
 
     performer: typing.List[fhirtypes.ChargeItemPerformerType] = Field(
@@ -304,8 +289,6 @@ class ChargeItem(domainresource.DomainResource):
         element_property=True,
         # note: Listed Resource Type(s) should be allowed as Reference.
         enum_reference_types=["Organization"],
-        backref="charge_item",
-        parent_name="charge_item",
     )
 
     priceOverride: fhirtypes.MoneyType = Field(
@@ -360,8 +343,6 @@ class ChargeItem(domainresource.DomainResource):
         binding_uri="http://hl7.org/fhir/ValueSet/device-kind",
         # note: Listed Resource Type(s) should be allowed as Reference.
         enum_reference_types=["Device", "Medication", "Substance"],
-        backref="charge_item",
-        parent_name="charge_item",
     )
 
     quantity: fhirtypes.QuantityType = Field(
@@ -398,8 +379,6 @@ class ChargeItem(domainresource.DomainResource):
         element_property=True,
         # note: Listed Resource Type(s) should be allowed as Reference.
         enum_reference_types=["Organization"],
-        backref="charge_item",
-        parent_name="charge_item",
     )
 
     service: typing.List[fhirtypes.ReferenceType] = Field(
@@ -420,8 +399,6 @@ class ChargeItem(domainresource.DomainResource):
             "Procedure",
             "SupplyDelivery",
         ],
-        backref="charge_item",
-        parent_name="charge_item",
     )
 
     status: fhirtypes.Code = Field(
@@ -471,8 +448,6 @@ class ChargeItem(domainresource.DomainResource):
         element_property=True,
         # note: Listed Resource Type(s) should be allowed as Reference.
         enum_reference_types=["Patient", "Group"],
-        backref="charge_item",
-        parent_name="charge_item",
     )
 
     supportingInformation: typing.List[fhirtypes.ReferenceType] = Field(
@@ -484,8 +459,6 @@ class ChargeItem(domainresource.DomainResource):
         element_property=True,
         # note: Listed Resource Type(s) should be allowed as Reference.
         enum_reference_types=["Resource"],
-        backref="charge_item",
-        parent_name="charge_item",
     )
 
     @classmethod
@@ -640,10 +613,7 @@ class ChargeItem(domainresource.DomainResource):
 
 
 class ChargeItemPerformer(backboneelement.BackboneElement):
-    """Disclaimer: Any field name ends with ``__ext`` doesn't part of
-    Resource StructureDefinition, instead used to enable Extensibility feature
-    for FHIR Primitive Data Types.
-
+    """
     Who performed charged service.
     Indicates who or what performed or participated in the charged service.
     """
@@ -670,8 +640,6 @@ class ChargeItemPerformer(backboneelement.BackboneElement):
             "Device",
             "RelatedPerson",
         ],
-        backref="charge_item_performer",
-        parent_name="charge_item_performer",
     )
 
     function: fhirtypes.CodeableConceptType = Field(

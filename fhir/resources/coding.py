@@ -12,10 +12,7 @@ from . import element, fhirtypes
 
 
 class Coding(element.Element):
-    """Disclaimer: Any field name ends with ``__ext`` doesn't part of
-    Resource StructureDefinition, instead used to enable Extensibility feature
-    for FHIR Primitive Data Types.
-
+    """
     A reference to a code defined by a terminology system.
     """
 

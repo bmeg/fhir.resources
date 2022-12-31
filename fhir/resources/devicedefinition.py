@@ -16,10 +16,7 @@ from . import backboneelement, domainresource, fhirtypes
 
 
 class DeviceDefinition(domainresource.DomainResource):
-    """Disclaimer: Any field name ends with ``__ext`` doesn't part of
-    Resource StructureDefinition, instead used to enable Extensibility feature
-    for FHIR Primitive Data Types.
-
+    """
     An instance of a medical-related component of a medical device.
     The characteristics, operational status and capabilities of a medical-
     related component of a medical device.
@@ -93,8 +90,6 @@ class DeviceDefinition(domainresource.DomainResource):
         one_of_many_required=False,
         # note: Listed Resource Type(s) should be allowed as Reference.
         enum_reference_types=["Organization"],
-        backref="device_definition",
-        parent_name="device_definition",
     )
 
     manufacturerString: fhirtypes.String = Field(
@@ -173,8 +168,6 @@ class DeviceDefinition(domainresource.DomainResource):
         element_property=True,
         # note: Listed Resource Type(s) should be allowed as Reference.
         enum_reference_types=["Organization"],
-        backref="device_definition",
-        parent_name="device_definition",
     )
 
     parentDevice: fhirtypes.ReferenceType = Field(
@@ -186,8 +179,6 @@ class DeviceDefinition(domainresource.DomainResource):
         element_property=True,
         # note: Listed Resource Type(s) should be allowed as Reference.
         enum_reference_types=["DeviceDefinition"],
-        backref="device_definition",
-        parent_name="device_definition",
     )
 
     physicalCharacteristics: fhirtypes.ProdCharacteristicType = Field(
@@ -393,10 +384,7 @@ class DeviceDefinition(domainresource.DomainResource):
 
 
 class DeviceDefinitionCapability(backboneelement.BackboneElement):
-    """Disclaimer: Any field name ends with ``__ext`` doesn't part of
-    Resource StructureDefinition, instead used to enable Extensibility feature
-    for FHIR Primitive Data Types.
-
+    """
     Device capabilities.
     """
 
@@ -430,10 +418,7 @@ class DeviceDefinitionCapability(backboneelement.BackboneElement):
 
 
 class DeviceDefinitionDeviceName(backboneelement.BackboneElement):
-    """Disclaimer: Any field name ends with ``__ext`` doesn't part of
-    Resource StructureDefinition, instead used to enable Extensibility feature
-    for FHIR Primitive Data Types.
-
+    """
     A name given to the device to identify it.
     """
 
@@ -556,10 +541,7 @@ class DeviceDefinitionDeviceName(backboneelement.BackboneElement):
 
 
 class DeviceDefinitionMaterial(backboneelement.BackboneElement):
-    """Disclaimer: Any field name ends with ``__ext`` doesn't part of
-    Resource StructureDefinition, instead used to enable Extensibility feature
-    for FHIR Primitive Data Types.
-
+    """
     A substance used to create the material(s) of which the device is made.
     """
 
@@ -617,10 +599,7 @@ class DeviceDefinitionMaterial(backboneelement.BackboneElement):
 
 
 class DeviceDefinitionProperty(backboneelement.BackboneElement):
-    """Disclaimer: Any field name ends with ``__ext`` doesn't part of
-    Resource StructureDefinition, instead used to enable Extensibility feature
-    for FHIR Primitive Data Types.
-
+    """
     The actual configuration settings of a device as it actually operates,
     e.g., regulation status, time properties.
     """
@@ -674,10 +653,7 @@ class DeviceDefinitionProperty(backboneelement.BackboneElement):
 
 
 class DeviceDefinitionSpecialization(backboneelement.BackboneElement):
-    """Disclaimer: Any field name ends with ``__ext`` doesn't part of
-    Resource StructureDefinition, instead used to enable Extensibility feature
-    for FHIR Primitive Data Types.
-
+    """
     The capabilities supported on a  device, the standards to which the device
     conforms for a particular purpose, and used for the communication.
     """
@@ -778,10 +754,7 @@ class DeviceDefinitionSpecialization(backboneelement.BackboneElement):
 
 
 class DeviceDefinitionUdiDeviceIdentifier(backboneelement.BackboneElement):
-    """Disclaimer: Any field name ends with ``__ext`` doesn't part of
-    Resource StructureDefinition, instead used to enable Extensibility feature
-    for FHIR Primitive Data Types.
-
+    """
     Unique Device Identifier (UDI) Barcode string.
     Unique device identifier (UDI) assigned to device label or package.  Note
     that the Device may include multiple udiCarriers as it either may include

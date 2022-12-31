@@ -14,10 +14,7 @@ from . import backboneelement, domainresource, fhirtypes
 
 
 class Practitioner(domainresource.DomainResource):
-    """Disclaimer: Any field name ends with ``__ext`` doesn't part of
-    Resource StructureDefinition, instead used to enable Extensibility feature
-    for FHIR Primitive Data Types.
-
+    """
     A person with a  formal responsibility in the provisioning of healthcare or
     related services.
     A person who is directly or indirectly involved in the provisioning of
@@ -188,10 +185,7 @@ class Practitioner(domainresource.DomainResource):
 
 
 class PractitionerQualification(backboneelement.BackboneElement):
-    """Disclaimer: Any field name ends with ``__ext`` doesn't part of
-    Resource StructureDefinition, instead used to enable Extensibility feature
-    for FHIR Primitive Data Types.
-
+    """
     Certification, licenses, or training pertaining to the provision of care.
     The official certifications, training, and licenses that authorize or
     otherwise pertain to the provision of care by the practitioner.  For
@@ -234,8 +228,6 @@ class PractitionerQualification(backboneelement.BackboneElement):
         element_property=True,
         # note: Listed Resource Type(s) should be allowed as Reference.
         enum_reference_types=["Organization"],
-        backref="practitioner_qualification",
-        parent_name="practitioner_qualification",
     )
 
     period: fhirtypes.PeriodType = Field(

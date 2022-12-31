@@ -16,10 +16,7 @@ from . import backboneelement, domainresource, fhirtypes
 
 
 class Evidence(domainresource.DomainResource):
-    """Disclaimer: Any field name ends with ``__ext`` doesn't part of
-    Resource StructureDefinition, instead used to enable Extensibility feature
-    for FHIR Primitive Data Types.
-
+    """
     Single evidence bit.
     The Evidence Resource provides a machine-interpretable expression of an
     evidence concept including the evidence variables (eg population,
@@ -108,8 +105,6 @@ class Evidence(domainresource.DomainResource):
         one_of_many_required=False,
         # note: Listed Resource Type(s) should be allowed as Reference.
         enum_reference_types=["Citation"],
-        backref="evidence",
-        parent_name="evidence",
     )
 
     contact: typing.List[fhirtypes.ContactDetailType] = Field(
@@ -533,10 +528,7 @@ class Evidence(domainresource.DomainResource):
 
 
 class EvidenceCertainty(backboneelement.BackboneElement):
-    """Disclaimer: Any field name ends with ``__ext`` doesn't part of
-    Resource StructureDefinition, instead used to enable Extensibility feature
-    for FHIR Primitive Data Types.
-
+    """
     Certainty or quality of the evidence.
     Assessment of certainty, confidence in the estimates, or quality of the
     evidence.
@@ -632,10 +624,7 @@ class EvidenceCertainty(backboneelement.BackboneElement):
 
 
 class EvidenceStatistic(backboneelement.BackboneElement):
-    """Disclaimer: Any field name ends with ``__ext`` doesn't part of
-    Resource StructureDefinition, instead used to enable Extensibility feature
-    for FHIR Primitive Data Types.
-
+    """
     Values and parameters for a single statistic.
     """
 
@@ -784,10 +773,7 @@ class EvidenceStatistic(backboneelement.BackboneElement):
 
 
 class EvidenceStatisticAttributeEstimate(backboneelement.BackboneElement):
-    """Disclaimer: Any field name ends with ``__ext`` doesn't part of
-    Resource StructureDefinition, instead used to enable Extensibility feature
-    for FHIR Primitive Data Types.
-
+    """
     An attribute of the Statistic.
     A statistical attribute of the statistic such as a measure of
     heterogeneity.
@@ -897,10 +883,7 @@ class EvidenceStatisticAttributeEstimate(backboneelement.BackboneElement):
 
 
 class EvidenceStatisticModelCharacteristic(backboneelement.BackboneElement):
-    """Disclaimer: Any field name ends with ``__ext`` doesn't part of
-    Resource StructureDefinition, instead used to enable Extensibility feature
-    for FHIR Primitive Data Types.
-
+    """
     An aspect of the statistical model.
     A component of the method to generate the statistic.
     """
@@ -974,10 +957,7 @@ class EvidenceStatisticModelCharacteristic(backboneelement.BackboneElement):
 
 
 class EvidenceStatisticModelCharacteristicVariable(backboneelement.BackboneElement):
-    """Disclaimer: Any field name ends with ``__ext`` doesn't part of
-    Resource StructureDefinition, instead used to enable Extensibility feature
-    for FHIR Primitive Data Types.
-
+    """
     A variable adjusted for in the adjusted analysis.
     """
 
@@ -1041,8 +1021,6 @@ class EvidenceStatisticModelCharacteristicVariable(backboneelement.BackboneEleme
         element_property=True,
         # note: Listed Resource Type(s) should be allowed as Reference.
         enum_reference_types=["Group", "EvidenceVariable"],
-        backref="evidence_statistic_model_characteristic_variable",
-        parent_name="evidence_statistic_model_characteristic_variable",
     )
 
     @classmethod
@@ -1064,10 +1042,7 @@ class EvidenceStatisticModelCharacteristicVariable(backboneelement.BackboneEleme
 
 
 class EvidenceStatisticSampleSize(backboneelement.BackboneElement):
-    """Disclaimer: Any field name ends with ``__ext`` doesn't part of
-    Resource StructureDefinition, instead used to enable Extensibility feature
-    for FHIR Primitive Data Types.
-
+    """
     Number of samples in the statistic.
     """
 
@@ -1154,10 +1129,7 @@ class EvidenceStatisticSampleSize(backboneelement.BackboneElement):
 
 
 class EvidenceVariableDefinition(backboneelement.BackboneElement):
-    """Disclaimer: Any field name ends with ``__ext`` doesn't part of
-    Resource StructureDefinition, instead used to enable Extensibility feature
-    for FHIR Primitive Data Types.
-
+    """
     Evidence variable such as population, exposure, or outcome.
     """
 
@@ -1203,8 +1175,6 @@ class EvidenceVariableDefinition(backboneelement.BackboneElement):
         element_property=True,
         # note: Listed Resource Type(s) should be allowed as Reference.
         enum_reference_types=["Group", "EvidenceVariable"],
-        backref="evidence_variable_definition",
-        parent_name="evidence_variable_definition",
     )
 
     note: typing.List[fhirtypes.AnnotationType] = Field(
@@ -1225,8 +1195,6 @@ class EvidenceVariableDefinition(backboneelement.BackboneElement):
         element_property=True,
         # note: Listed Resource Type(s) should be allowed as Reference.
         enum_reference_types=["Group", "EvidenceVariable"],
-        backref="evidence_variable_definition",
-        parent_name="evidence_variable_definition",
     )
 
     variableRole: fhirtypes.CodeableConceptType = Field(

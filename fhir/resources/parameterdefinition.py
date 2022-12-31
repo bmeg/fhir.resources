@@ -16,10 +16,7 @@ from . import element, fhirtypes
 
 
 class ParameterDefinition(element.Element):
-    """Disclaimer: Any field name ends with ``__ext`` doesn't part of
-    Resource StructureDefinition, instead used to enable Extensibility feature
-    for FHIR Primitive Data Types.
-
+    """
     Definition of a parameter to a module.
     The parameters to the module. This collection specifies both the input and
     output parameters. Input parameters are provided by the caller as part of
@@ -101,8 +98,6 @@ class ParameterDefinition(element.Element):
         element_property=True,
         # note: Listed Resource Type(s) should be allowed as Reference.
         enum_reference_types=["StructureDefinition"],
-        backref="parameter_definition",
-        parent_name="parameter_definition",
     )
     profile__ext: fhirtypes.FHIRPrimitiveExtensionType = Field(
         None, alias="_profile", title="Extension field for ``profile``."

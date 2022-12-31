@@ -16,10 +16,7 @@ from . import backboneelement, domainresource, fhirtypes
 
 
 class Composition(domainresource.DomainResource):
-    """Disclaimer: Any field name ends with ``__ext`` doesn't part of
-    Resource StructureDefinition, instead used to enable Extensibility feature
-    for FHIR Primitive Data Types.
-
+    """
     A set of resources composed into a single coherent clinical statement with
     clinical attestation.
     A set of healthcare-related information that is assembled together into a
@@ -66,8 +63,6 @@ class Composition(domainresource.DomainResource):
             "RelatedPerson",
             "Organization",
         ],
-        backref="composition",
-        parent_name="composition",
     )
 
     category: typing.List[fhirtypes.CodeableConceptType] = Field(
@@ -120,8 +115,6 @@ class Composition(domainresource.DomainResource):
         element_property=True,
         # note: Listed Resource Type(s) should be allowed as Reference.
         enum_reference_types=["Organization"],
-        backref="composition",
-        parent_name="composition",
     )
 
     date: fhirtypes.DateTime = Field(
@@ -152,8 +145,6 @@ class Composition(domainresource.DomainResource):
         element_property=True,
         # note: Listed Resource Type(s) should be allowed as Reference.
         enum_reference_types=["Encounter"],
-        backref="composition",
-        parent_name="composition",
     )
 
     event: typing.List[fhirtypes.CompositionEventType] = Field(
@@ -240,8 +231,6 @@ class Composition(domainresource.DomainResource):
         element_property=True,
         # note: Listed Resource Type(s) should be allowed as Reference.
         enum_reference_types=["Resource"],
-        backref="composition",
-        parent_name="composition",
     )
 
     title: fhirtypes.String = Field(
@@ -372,10 +361,7 @@ class Composition(domainresource.DomainResource):
 
 
 class CompositionAttester(backboneelement.BackboneElement):
-    """Disclaimer: Any field name ends with ``__ext`` doesn't part of
-    Resource StructureDefinition, instead used to enable Extensibility feature
-    for FHIR Primitive Data Types.
-
+    """
     Attests to accuracy of composition.
     A participant who has attested to the accuracy of the composition/document.
     """
@@ -421,8 +407,6 @@ class CompositionAttester(backboneelement.BackboneElement):
             "PractitionerRole",
             "Organization",
         ],
-        backref="composition_attester",
-        parent_name="composition_attester",
     )
 
     time: fhirtypes.DateTime = Field(
@@ -506,10 +490,7 @@ class CompositionAttester(backboneelement.BackboneElement):
 
 
 class CompositionEvent(backboneelement.BackboneElement):
-    """Disclaimer: Any field name ends with ``__ext`` doesn't part of
-    Resource StructureDefinition, instead used to enable Extensibility feature
-    for FHIR Primitive Data Types.
-
+    """
     The clinical service(s) being documented.
     The clinical service, such as a colonoscopy or an appendectomy, being
     documented.
@@ -550,8 +531,6 @@ class CompositionEvent(backboneelement.BackboneElement):
         element_property=True,
         # note: Listed Resource Type(s) should be allowed as Reference.
         enum_reference_types=["Resource"],
-        backref="composition_event",
-        parent_name="composition_event",
     )
 
     period: fhirtypes.PeriodType = Field(
@@ -577,10 +556,7 @@ class CompositionEvent(backboneelement.BackboneElement):
 
 
 class CompositionRelatesTo(backboneelement.BackboneElement):
-    """Disclaimer: Any field name ends with ``__ext`` doesn't part of
-    Resource StructureDefinition, instead used to enable Extensibility feature
-    for FHIR Primitive Data Types.
-
+    """
     Relationships to other compositions/documents.
     Relationships that this composition has with other compositions or
     documents that already exist.
@@ -637,8 +613,6 @@ class CompositionRelatesTo(backboneelement.BackboneElement):
         one_of_many_required=True,
         # note: Listed Resource Type(s) should be allowed as Reference.
         enum_reference_types=["Composition"],
-        backref="composition_relates_to",
-        parent_name="composition_relates_to",
     )
 
     @classmethod
@@ -755,10 +729,7 @@ class CompositionRelatesTo(backboneelement.BackboneElement):
 
 
 class CompositionSection(backboneelement.BackboneElement):
-    """Disclaimer: Any field name ends with ``__ext`` doesn't part of
-    Resource StructureDefinition, instead used to enable Extensibility feature
-    for FHIR Primitive Data Types.
-
+    """
     Composition is broken into sections.
     The root of the sections that make up the composition.
     """
@@ -784,8 +755,6 @@ class CompositionSection(backboneelement.BackboneElement):
             "RelatedPerson",
             "Organization",
         ],
-        backref="composition_section",
-        parent_name="composition_section",
     )
 
     code: fhirtypes.CodeableConceptType = Field(
@@ -834,8 +803,6 @@ class CompositionSection(backboneelement.BackboneElement):
         element_property=True,
         # note: Listed Resource Type(s) should be allowed as Reference.
         enum_reference_types=["Resource"],
-        backref="composition_section",
-        parent_name="composition_section",
     )
 
     focus: fhirtypes.ReferenceType = Field(
@@ -860,8 +827,6 @@ class CompositionSection(backboneelement.BackboneElement):
         element_property=True,
         # note: Listed Resource Type(s) should be allowed as Reference.
         enum_reference_types=["Resource"],
-        backref="composition_section",
-        parent_name="composition_section",
     )
 
     mode: fhirtypes.Code = Field(

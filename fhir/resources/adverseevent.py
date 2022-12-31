@@ -16,10 +16,7 @@ from . import backboneelement, domainresource, fhirtypes
 
 
 class AdverseEvent(domainresource.DomainResource):
-    """Disclaimer: Any field name ends with ``__ext`` doesn't part of
-    Resource StructureDefinition, instead used to enable Extensibility feature
-    for FHIR Primitive Data Types.
-
+    """
     Medical care, research study or other healthcare event causing physical
     injury.
     Actual or  potential/avoided event causing unintended physical injury
@@ -113,8 +110,6 @@ class AdverseEvent(domainresource.DomainResource):
         element_property=True,
         # note: Listed Resource Type(s) should be allowed as Reference.
         enum_reference_types=["Practitioner", "PractitionerRole", "Device"],
-        backref="adverse_event",
-        parent_name="adverse_event",
     )
 
     date: fhirtypes.DateTime = Field(
@@ -156,8 +151,6 @@ class AdverseEvent(domainresource.DomainResource):
         element_property=True,
         # note: Listed Resource Type(s) should be allowed as Reference.
         enum_reference_types=["Encounter"],
-        backref="adverse_event",
-        parent_name="adverse_event",
     )
 
     event: fhirtypes.CodeableConceptType = Field(
@@ -199,8 +192,6 @@ class AdverseEvent(domainresource.DomainResource):
         element_property=True,
         # note: Listed Resource Type(s) should be allowed as Reference.
         enum_reference_types=["Location"],
-        backref="adverse_event",
-        parent_name="adverse_event",
     )
 
     outcome: fhirtypes.CodeableConceptType = Field(
@@ -264,8 +255,6 @@ class AdverseEvent(domainresource.DomainResource):
             "PractitionerRole",
             "RelatedPerson",
         ],
-        backref="adverse_event",
-        parent_name="adverse_event",
     )
 
     referenceDocument: typing.List[fhirtypes.ReferenceType] = Field(
@@ -277,8 +266,6 @@ class AdverseEvent(domainresource.DomainResource):
         element_property=True,
         # note: Listed Resource Type(s) should be allowed as Reference.
         enum_reference_types=["DocumentReference"],
-        backref="adverse_event",
-        parent_name="adverse_event",
     )
 
     resultingCondition: typing.List[fhirtypes.ReferenceType] = Field(
@@ -293,8 +280,6 @@ class AdverseEvent(domainresource.DomainResource):
         element_property=True,
         # note: Listed Resource Type(s) should be allowed as Reference.
         enum_reference_types=["Condition"],
-        backref="adverse_event",
-        parent_name="adverse_event",
     )
 
     seriousness: fhirtypes.CodeableConceptType = Field(
@@ -344,8 +329,6 @@ class AdverseEvent(domainresource.DomainResource):
         element_property=True,
         # note: Listed Resource Type(s) should be allowed as Reference.
         enum_reference_types=["ResearchStudy"],
-        backref="adverse_event",
-        parent_name="adverse_event",
     )
 
     subject: fhirtypes.ReferenceType = Field(
@@ -357,8 +340,6 @@ class AdverseEvent(domainresource.DomainResource):
         element_property=True,
         # note: Listed Resource Type(s) should be allowed as Reference.
         enum_reference_types=["Patient", "Group", "Practitioner", "RelatedPerson"],
-        backref="adverse_event",
-        parent_name="adverse_event",
     )
 
     subjectMedicalHistory: typing.List[fhirtypes.ReferenceType] = Field(
@@ -379,8 +360,6 @@ class AdverseEvent(domainresource.DomainResource):
             "Media",
             "DocumentReference",
         ],
-        backref="adverse_event",
-        parent_name="adverse_event",
     )
 
     suspectEntity: typing.List[fhirtypes.AdverseEventSuspectEntityType] = Field(
@@ -493,10 +472,7 @@ class AdverseEvent(domainresource.DomainResource):
 
 
 class AdverseEventSuspectEntity(backboneelement.BackboneElement):
-    """Disclaimer: Any field name ends with ``__ext`` doesn't part of
-    Resource StructureDefinition, instead used to enable Extensibility feature
-    for FHIR Primitive Data Types.
-
+    """
     The suspected agent causing the adverse event.
     Describes the entity that is suspected to have caused the adverse event.
     """
@@ -533,8 +509,6 @@ class AdverseEventSuspectEntity(backboneelement.BackboneElement):
             "MedicationStatement",
             "Device",
         ],
-        backref="adverse_event_suspect_entity",
-        parent_name="adverse_event_suspect_entity",
     )
 
     @classmethod
@@ -547,10 +521,7 @@ class AdverseEventSuspectEntity(backboneelement.BackboneElement):
 
 
 class AdverseEventSuspectEntityCausality(backboneelement.BackboneElement):
-    """Disclaimer: Any field name ends with ``__ext`` doesn't part of
-    Resource StructureDefinition, instead used to enable Extensibility feature
-    for FHIR Primitive Data Types.
-
+    """
     Information on the possible cause of the event.
     """
 
@@ -578,8 +549,6 @@ class AdverseEventSuspectEntityCausality(backboneelement.BackboneElement):
         element_property=True,
         # note: Listed Resource Type(s) should be allowed as Reference.
         enum_reference_types=["Practitioner", "PractitionerRole"],
-        backref="adverse_event_suspect_entity_causality",
-        parent_name="adverse_event_suspect_entity_causality",
     )
 
     method: fhirtypes.CodeableConceptType = Field(

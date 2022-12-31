@@ -14,10 +14,7 @@ from . import backboneelement, domainresource, fhirtypes
 
 
 class SupplyDelivery(domainresource.DomainResource):
-    """Disclaimer: Any field name ends with ``__ext`` doesn't part of
-    Resource StructureDefinition, instead used to enable Extensibility feature
-    for FHIR Primitive Data Types.
-
+    """
     Delivery of bulk Supplies.
     Record of delivery of what is supplied.
     """
@@ -36,8 +33,6 @@ class SupplyDelivery(domainresource.DomainResource):
         element_property=True,
         # note: Listed Resource Type(s) should be allowed as Reference.
         enum_reference_types=["SupplyRequest"],
-        backref="supply_delivery",
-        parent_name="supply_delivery",
     )
 
     destination: fhirtypes.ReferenceType = Field(
@@ -52,8 +47,6 @@ class SupplyDelivery(domainresource.DomainResource):
         element_property=True,
         # note: Listed Resource Type(s) should be allowed as Reference.
         enum_reference_types=["Location"],
-        backref="supply_delivery",
-        parent_name="supply_delivery",
     )
 
     identifier: typing.List[fhirtypes.IdentifierType] = Field(
@@ -118,8 +111,6 @@ class SupplyDelivery(domainresource.DomainResource):
         element_property=True,
         # note: Listed Resource Type(s) should be allowed as Reference.
         enum_reference_types=["SupplyDelivery", "Contract"],
-        backref="supply_delivery",
-        parent_name="supply_delivery",
     )
 
     patient: fhirtypes.ReferenceType = Field(
@@ -134,8 +125,6 @@ class SupplyDelivery(domainresource.DomainResource):
         element_property=True,
         # note: Listed Resource Type(s) should be allowed as Reference.
         enum_reference_types=["Patient"],
-        backref="supply_delivery",
-        parent_name="supply_delivery",
     )
 
     receiver: typing.List[fhirtypes.ReferenceType] = Field(
@@ -147,8 +136,6 @@ class SupplyDelivery(domainresource.DomainResource):
         element_property=True,
         # note: Listed Resource Type(s) should be allowed as Reference.
         enum_reference_types=["Practitioner", "PractitionerRole"],
-        backref="supply_delivery",
-        parent_name="supply_delivery",
     )
 
     status: fhirtypes.Code = Field(
@@ -195,8 +182,6 @@ class SupplyDelivery(domainresource.DomainResource):
         element_property=True,
         # note: Listed Resource Type(s) should be allowed as Reference.
         enum_reference_types=["Practitioner", "PractitionerRole", "Organization"],
-        backref="supply_delivery",
-        parent_name="supply_delivery",
     )
 
     type: fhirtypes.CodeableConceptType = Field(
@@ -290,10 +275,7 @@ class SupplyDelivery(domainresource.DomainResource):
 
 
 class SupplyDeliverySuppliedItem(backboneelement.BackboneElement):
-    """Disclaimer: Any field name ends with ``__ext`` doesn't part of
-    Resource StructureDefinition, instead used to enable Extensibility feature
-    for FHIR Primitive Data Types.
-
+    """
     The item that is delivered or supplied.
     The item that is being delivered or has been supplied.
     """
@@ -342,8 +324,6 @@ class SupplyDeliverySuppliedItem(backboneelement.BackboneElement):
         binding_uri="http://hl7.org/fhir/ValueSet/supply-item",
         # note: Listed Resource Type(s) should be allowed as Reference.
         enum_reference_types=["Medication", "Substance", "Device"],
-        backref="supply_delivery_supplied_item",
-        parent_name="supply_delivery_supplied_item",
     )
 
     quantity: fhirtypes.QuantityType = Field(

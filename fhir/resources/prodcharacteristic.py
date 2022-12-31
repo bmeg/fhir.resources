@@ -14,10 +14,7 @@ from . import backboneelement, fhirtypes
 
 
 class ProdCharacteristic(backboneelement.BackboneElement):
-    """Disclaimer: Any field name ends with ``__ext`` doesn't part of
-    Resource StructureDefinition, instead used to enable Extensibility feature
-    for FHIR Primitive Data Types.
-
+    """
     The marketing status describes the date when a medicinal product is
     actually put on the market or the date as of which it is no longer
     available.

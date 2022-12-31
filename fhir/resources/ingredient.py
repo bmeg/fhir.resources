@@ -16,10 +16,7 @@ from . import backboneelement, domainresource, fhirtypes
 
 
 class Ingredient(domainresource.DomainResource):
-    """Disclaimer: Any field name ends with ``__ext`` doesn't part of
-    Resource StructureDefinition, instead used to enable Extensibility feature
-    for FHIR Primitive Data Types.
-
+    """
     An ingredient of a manufactured item or pharmaceutical product.
     """
 
@@ -57,8 +54,6 @@ class Ingredient(domainresource.DomainResource):
             "AdministrableProductDefinition",
             "ManufacturedItemDefinition",
         ],
-        backref="ingredient",
-        parent_name="ingredient",
     )
 
     function: typing.List[fhirtypes.CodeableConceptType] = Field(
@@ -247,10 +242,7 @@ class Ingredient(domainresource.DomainResource):
 
 
 class IngredientManufacturer(backboneelement.BackboneElement):
-    """Disclaimer: Any field name ends with ``__ext`` doesn't part of
-    Resource StructureDefinition, instead used to enable Extensibility feature
-    for FHIR Primitive Data Types.
-
+    """
     An organization that manufactures this ingredient.
     The organization(s) that manufacture this ingredient. Can be used to
     indicate:         1) Organizations we are aware of that manufacture this
@@ -271,8 +263,6 @@ class IngredientManufacturer(backboneelement.BackboneElement):
         element_property=True,
         # note: Listed Resource Type(s) should be allowed as Reference.
         enum_reference_types=["Organization"],
-        backref="ingredient_manufacturer",
-        parent_name="ingredient_manufacturer",
     )
 
     role: fhirtypes.Code = Field(
@@ -311,10 +301,7 @@ class IngredientManufacturer(backboneelement.BackboneElement):
 
 
 class IngredientSubstance(backboneelement.BackboneElement):
-    """Disclaimer: Any field name ends with ``__ext`` doesn't part of
-    Resource StructureDefinition, instead used to enable Extensibility feature
-    for FHIR Primitive Data Types.
-
+    """
     The substance that comprises this ingredient.
     """
 
@@ -336,8 +323,6 @@ class IngredientSubstance(backboneelement.BackboneElement):
         binding_uri="http://hl7.org/fhir/ValueSet/substance-codes",
         # note: Listed Resource Type(s) should be allowed as Reference.
         enum_reference_types=["SubstanceDefinition"],
-        backref="ingredient_substance",
-        parent_name="ingredient_substance",
     )
 
     strength: typing.List[fhirtypes.IngredientSubstanceStrengthType] = Field(
@@ -368,10 +353,7 @@ class IngredientSubstance(backboneelement.BackboneElement):
 
 
 class IngredientSubstanceStrength(backboneelement.BackboneElement):
-    """Disclaimer: Any field name ends with ``__ext`` doesn't part of
-    Resource StructureDefinition, instead used to enable Extensibility feature
-    for FHIR Primitive Data Types.
-
+    """
     The quantity of substance, per presentation, or per volume or mass, and
     type of quantity.
     The quantity of substance in the unit of presentation, or in the volume (or
@@ -604,10 +586,7 @@ class IngredientSubstanceStrength(backboneelement.BackboneElement):
 
 
 class IngredientSubstanceStrengthReferenceStrength(backboneelement.BackboneElement):
-    """Disclaimer: Any field name ends with ``__ext`` doesn't part of
-    Resource StructureDefinition, instead used to enable Extensibility feature
-    for FHIR Primitive Data Types.
-
+    """
     Strength expressed in terms of a reference substance.
     Strength expressed in terms of a reference substance. For when the
     ingredient strength is additionally expressed as equivalent to the strength
@@ -687,8 +666,6 @@ class IngredientSubstanceStrengthReferenceStrength(backboneelement.BackboneEleme
         binding_uri="http://hl7.org/fhir/ValueSet/substance-codes",
         # note: Listed Resource Type(s) should be allowed as Reference.
         enum_reference_types=["SubstanceDefinition"],
-        backref="ingredient_substance_strength_reference_strength",
-        parent_name="ingredient_substance_strength_reference_strength",
     )
 
     @classmethod

@@ -16,10 +16,7 @@ from . import backboneelement, domainresource, fhirtypes
 
 
 class DiagnosticReport(domainresource.DomainResource):
-    """Disclaimer: Any field name ends with ``__ext`` doesn't part of
-    Resource StructureDefinition, instead used to enable Extensibility feature
-    for FHIR Primitive Data Types.
-
+    """
     A Diagnostic report - a combination of request information, atomic results,
     images, interpretation, as well as formatted reports.
     The findings and interpretation of diagnostic  tests performed on patients,
@@ -46,8 +43,6 @@ class DiagnosticReport(domainresource.DomainResource):
             "NutritionOrder",
             "ServiceRequest",
         ],
-        backref="diagnostic_report",
-        parent_name="diagnostic_report",
     )
 
     category: typing.List[fhirtypes.CodeableConceptType] = Field(
@@ -168,8 +163,6 @@ class DiagnosticReport(domainresource.DomainResource):
         element_property=True,
         # note: Listed Resource Type(s) should be allowed as Reference.
         enum_reference_types=["Encounter"],
-        backref="diagnostic_report",
-        parent_name="diagnostic_report",
     )
 
     identifier: typing.List[fhirtypes.IdentifierType] = Field(
@@ -199,8 +192,6 @@ class DiagnosticReport(domainresource.DomainResource):
         element_property=True,
         # note: Listed Resource Type(s) should be allowed as Reference.
         enum_reference_types=["ImagingStudy"],
-        backref="diagnostic_report",
-        parent_name="diagnostic_report",
     )
 
     issued: fhirtypes.Instant = Field(
@@ -245,8 +236,6 @@ class DiagnosticReport(domainresource.DomainResource):
             "Organization",
             "CareTeam",
         ],
-        backref="diagnostic_report",
-        parent_name="diagnostic_report",
     )
 
     presentedForm: typing.List[fhirtypes.AttachmentType] = Field(
@@ -274,8 +263,6 @@ class DiagnosticReport(domainresource.DomainResource):
         element_property=True,
         # note: Listed Resource Type(s) should be allowed as Reference.
         enum_reference_types=["Observation"],
-        backref="diagnostic_report",
-        parent_name="diagnostic_report",
     )
 
     resultsInterpreter: typing.List[fhirtypes.ReferenceType] = Field(
@@ -295,8 +282,6 @@ class DiagnosticReport(domainresource.DomainResource):
             "Organization",
             "CareTeam",
         ],
-        backref="diagnostic_report",
-        parent_name="diagnostic_report",
     )
 
     specimen: typing.List[fhirtypes.ReferenceType] = Field(
@@ -308,8 +293,6 @@ class DiagnosticReport(domainresource.DomainResource):
         element_property=True,
         # note: Listed Resource Type(s) should be allowed as Reference.
         enum_reference_types=["Specimen"],
-        backref="diagnostic_report",
-        parent_name="diagnostic_report",
     )
 
     status: fhirtypes.Code = Field(
@@ -359,8 +342,6 @@ class DiagnosticReport(domainresource.DomainResource):
             "Medication",
             "Substance",
         ],
-        backref="diagnostic_report",
-        parent_name="diagnostic_report",
     )
 
     @classmethod
@@ -498,10 +479,7 @@ class DiagnosticReport(domainresource.DomainResource):
 
 
 class DiagnosticReportMedia(backboneelement.BackboneElement):
-    """Disclaimer: Any field name ends with ``__ext`` doesn't part of
-    Resource StructureDefinition, instead used to enable Extensibility feature
-    for FHIR Primitive Data Types.
-
+    """
     Key images associated with this report.
     A list of key images associated with this report. The images are generally
     created during the diagnostic process, and may be directly of the patient,
@@ -535,8 +513,6 @@ class DiagnosticReportMedia(backboneelement.BackboneElement):
         element_property=True,
         # note: Listed Resource Type(s) should be allowed as Reference.
         enum_reference_types=["Media"],
-        backref="diagnostic_report_media",
-        parent_name="diagnostic_report_media",
     )
 
     @classmethod

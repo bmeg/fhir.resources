@@ -16,10 +16,7 @@ from . import backboneelement, domainresource, fhirtypes
 
 
 class Appointment(domainresource.DomainResource):
-    """Disclaimer: Any field name ends with ``__ext`` doesn't part of
-    Resource StructureDefinition, instead used to enable Extensibility feature
-    for FHIR Primitive Data Types.
-
+    """
     A booking of a healthcare event among patient(s), practitioner(s), related
     person(s) and/or device(s) for a specific date/time. This may result in one
     or more Encounter(s).
@@ -54,8 +51,6 @@ class Appointment(domainresource.DomainResource):
         element_property=True,
         # note: Listed Resource Type(s) should be allowed as Reference.
         enum_reference_types=["ServiceRequest"],
-        backref="appointment",
-        parent_name="appointment",
     )
 
     cancelationReason: fhirtypes.CodeableConceptType = Field(
@@ -247,8 +242,6 @@ class Appointment(domainresource.DomainResource):
             "Observation",
             "ImmunizationRecommendation",
         ],
-        backref="appointment",
-        parent_name="appointment",
     )
 
     requestedPeriod: typing.List[fhirtypes.PeriodType] = Field(
@@ -309,8 +302,6 @@ class Appointment(domainresource.DomainResource):
         element_property=True,
         # note: Listed Resource Type(s) should be allowed as Reference.
         enum_reference_types=["Slot"],
-        backref="appointment",
-        parent_name="appointment",
     )
 
     specialty: typing.List[fhirtypes.CodeableConceptType] = Field(
@@ -392,8 +383,6 @@ class Appointment(domainresource.DomainResource):
         element_property=True,
         # note: Listed Resource Type(s) should be allowed as Reference.
         enum_reference_types=["Resource"],
-        backref="appointment",
-        parent_name="appointment",
     )
 
     @classmethod
@@ -496,10 +485,7 @@ class Appointment(domainresource.DomainResource):
 
 
 class AppointmentParticipant(backboneelement.BackboneElement):
-    """Disclaimer: Any field name ends with ``__ext`` doesn't part of
-    Resource StructureDefinition, instead used to enable Extensibility feature
-    for FHIR Primitive Data Types.
-
+    """
     Participants involved in appointment.
     List of participants involved in the appointment.
     """
@@ -526,8 +512,6 @@ class AppointmentParticipant(backboneelement.BackboneElement):
             "HealthcareService",
             "Location",
         ],
-        backref="appointment_participant",
-        parent_name="appointment_participant",
     )
 
     period: fhirtypes.PeriodType = Field(

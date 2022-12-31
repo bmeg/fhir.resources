@@ -16,10 +16,7 @@ from . import domainresource, fhirtypes
 
 
 class GuidanceResponse(domainresource.DomainResource):
-    """Disclaimer: Any field name ends with ``__ext`` doesn't part of
-    Resource StructureDefinition, instead used to enable Extensibility feature
-    for FHIR Primitive Data Types.
-
+    """
     The formal response to a guidance request.
     A guidance response is the formal response to a guidance request, including
     any output parameters returned by the evaluation, as well as the
@@ -55,8 +52,6 @@ class GuidanceResponse(domainresource.DomainResource):
         element_property=True,
         # note: Listed Resource Type(s) should be allowed as Reference.
         enum_reference_types=["Encounter"],
-        backref="guidance_response",
-        parent_name="guidance_response",
     )
 
     evaluationMessage: typing.List[fhirtypes.ReferenceType] = Field(
@@ -73,8 +68,6 @@ class GuidanceResponse(domainresource.DomainResource):
         element_property=True,
         # note: Listed Resource Type(s) should be allowed as Reference.
         enum_reference_types=["OperationOutcome"],
-        backref="guidance_response",
-        parent_name="guidance_response",
     )
 
     identifier: typing.List[fhirtypes.IdentifierType] = Field(
@@ -182,8 +175,6 @@ class GuidanceResponse(domainresource.DomainResource):
         element_property=True,
         # note: Listed Resource Type(s) should be allowed as Reference.
         enum_reference_types=["Parameters"],
-        backref="guidance_response",
-        parent_name="guidance_response",
     )
 
     performer: fhirtypes.ReferenceType = Field(
@@ -195,8 +186,6 @@ class GuidanceResponse(domainresource.DomainResource):
         element_property=True,
         # note: Listed Resource Type(s) should be allowed as Reference.
         enum_reference_types=["Device"],
-        backref="guidance_response",
-        parent_name="guidance_response",
     )
 
     reasonCode: typing.List[fhirtypes.CodeableConceptType] = Field(
@@ -230,8 +219,6 @@ class GuidanceResponse(domainresource.DomainResource):
             "DiagnosticReport",
             "DocumentReference",
         ],
-        backref="guidance_response",
-        parent_name="guidance_response",
     )
 
     requestIdentifier: fhirtypes.IdentifierType = Field(
@@ -257,8 +244,6 @@ class GuidanceResponse(domainresource.DomainResource):
         element_property=True,
         # note: Listed Resource Type(s) should be allowed as Reference.
         enum_reference_types=["CarePlan", "RequestGroup"],
-        backref="guidance_response",
-        parent_name="guidance_response",
     )
 
     status: fhirtypes.Code = Field(
@@ -312,8 +297,6 @@ class GuidanceResponse(domainresource.DomainResource):
         element_property=True,
         # note: Listed Resource Type(s) should be allowed as Reference.
         enum_reference_types=["Patient", "Group"],
-        backref="guidance_response",
-        parent_name="guidance_response",
     )
 
     @classmethod

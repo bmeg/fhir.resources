@@ -16,10 +16,7 @@ from . import backboneelement, domainresource, fhirtypes
 
 
 class NutritionProduct(domainresource.DomainResource):
-    """Disclaimer: Any field name ends with ``__ext`` doesn't part of
-    Resource StructureDefinition, instead used to enable Extensibility feature
-    for FHIR Primitive Data Types.
-
+    """
     A product used for nutritional purposes.
     A food or fluid product that is consumed by patients.
     """
@@ -103,8 +100,6 @@ class NutritionProduct(domainresource.DomainResource):
         binding_uri="http://hl7.org/fhir/ValueSet/allergen-class",
         # note: Listed Resource Type(s) should be allowed as Reference.
         enum_reference_types=["Substance"],
-        backref="nutrition_product",
-        parent_name="nutrition_product",
     )
 
     manufacturer: typing.List[fhirtypes.ReferenceType] = Field(
@@ -119,8 +114,6 @@ class NutritionProduct(domainresource.DomainResource):
         element_property=True,
         # note: Listed Resource Type(s) should be allowed as Reference.
         enum_reference_types=["Organization"],
-        backref="nutrition_product",
-        parent_name="nutrition_product",
     )
 
     note: typing.List[fhirtypes.AnnotationType] = Field(
@@ -264,10 +257,7 @@ class NutritionProduct(domainresource.DomainResource):
 
 
 class NutritionProductIngredient(backboneelement.BackboneElement):
-    """Disclaimer: Any field name ends with ``__ext`` doesn't part of
-    Resource StructureDefinition, instead used to enable Extensibility feature
-    for FHIR Primitive Data Types.
-
+    """
     Ingredients contained in this product.
     """
 
@@ -291,8 +281,6 @@ class NutritionProductIngredient(backboneelement.BackboneElement):
         element_property=True,
         # note: Listed Resource Type(s) should be allowed as Reference.
         enum_reference_types=["NutritionProduct"],
-        backref="nutrition_product_ingredient",
-        parent_name="nutrition_product_ingredient",
     )
 
     @classmethod
@@ -305,10 +293,7 @@ class NutritionProductIngredient(backboneelement.BackboneElement):
 
 
 class NutritionProductInstance(backboneelement.BackboneElement):
-    """Disclaimer: Any field name ends with ``__ext`` doesn't part of
-    Resource StructureDefinition, instead used to enable Extensibility feature
-    for FHIR Primitive Data Types.
-
+    """
     One or several physical instances or occurrences of the nutrition product.
     Conveys instance-level information about this product item. One or several
     physical, countable instances or occurrences of the product.
@@ -400,10 +385,7 @@ class NutritionProductInstance(backboneelement.BackboneElement):
 
 
 class NutritionProductNutrient(backboneelement.BackboneElement):
-    """Disclaimer: Any field name ends with ``__ext`` doesn't part of
-    Resource StructureDefinition, instead used to enable Extensibility feature
-    for FHIR Primitive Data Types.
-
+    """
     The product's nutritional information expressed by the nutrients.
     """
 
@@ -434,8 +416,6 @@ class NutritionProductNutrient(backboneelement.BackboneElement):
         binding_uri="http://hl7.org/fhir/ValueSet/nutrition-product-nutrient",
         # note: Listed Resource Type(s) should be allowed as Reference.
         enum_reference_types=["Substance"],
-        backref="nutrition_product_nutrient",
-        parent_name="nutrition_product_nutrient",
     )
 
     @classmethod
@@ -448,10 +428,7 @@ class NutritionProductNutrient(backboneelement.BackboneElement):
 
 
 class NutritionProductProductCharacteristic(backboneelement.BackboneElement):
-    """Disclaimer: Any field name ends with ``__ext`` doesn't part of
-    Resource StructureDefinition, instead used to enable Extensibility feature
-    for FHIR Primitive Data Types.
-
+    """
     Specifies descriptive properties of the nutrition product.
     """
 

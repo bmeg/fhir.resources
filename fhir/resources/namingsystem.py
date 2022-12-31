@@ -16,10 +16,7 @@ from . import backboneelement, domainresource, fhirtypes
 
 
 class NamingSystem(domainresource.DomainResource):
-    """Disclaimer: Any field name ends with ``__ext`` doesn't part of
-    Resource StructureDefinition, instead used to enable Extensibility feature
-    for FHIR Primitive Data Types.
-
+    """
     System of unique identification.
     A curated namespace that issues unique symbols within that namespace for
     the identification of concepts, people, devices, etc.  Represents a
@@ -341,10 +338,7 @@ class NamingSystem(domainresource.DomainResource):
 
 
 class NamingSystemUniqueId(backboneelement.BackboneElement):
-    """Disclaimer: Any field name ends with ``__ext`` doesn't part of
-    Resource StructureDefinition, instead used to enable Extensibility feature
-    for FHIR Primitive Data Types.
-
+    """
     Unique identifiers used for system.
     Indicates how the system may be identified when referenced in electronic
     exchange.

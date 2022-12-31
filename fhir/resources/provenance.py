@@ -16,10 +16,7 @@ from . import backboneelement, domainresource, fhirtypes
 
 
 class Provenance(domainresource.DomainResource):
-    """Disclaimer: Any field name ends with ``__ext`` doesn't part of
-    Resource StructureDefinition, instead used to enable Extensibility feature
-    for FHIR Primitive Data Types.
-
+    """
     Who, What, When for a set of resources.
     Provenance of a resource is a record that describes entities and processes
     involved in producing and delivering or otherwise influencing that
@@ -83,8 +80,6 @@ class Provenance(domainresource.DomainResource):
         element_property=True,
         # note: Listed Resource Type(s) should be allowed as Reference.
         enum_reference_types=["Location"],
-        backref="provenance",
-        parent_name="provenance",
     )
 
     occurredDateTime: fhirtypes.DateTime = Field(
@@ -187,8 +182,6 @@ class Provenance(domainresource.DomainResource):
         element_property=True,
         # note: Listed Resource Type(s) should be allowed as Reference.
         enum_reference_types=["Resource"],
-        backref="provenance",
-        parent_name="provenance",
     )
 
     @classmethod
@@ -318,10 +311,7 @@ class Provenance(domainresource.DomainResource):
 
 
 class ProvenanceAgent(backboneelement.BackboneElement):
-    """Disclaimer: Any field name ends with ``__ext`` doesn't part of
-    Resource StructureDefinition, instead used to enable Extensibility feature
-    for FHIR Primitive Data Types.
-
+    """
     Actor involved.
     An actor taking a role in an activity  for which it can be assigned some
     degree of responsibility for the activity taking place.
@@ -345,8 +335,6 @@ class ProvenanceAgent(backboneelement.BackboneElement):
             "Device",
             "Organization",
         ],
-        backref="provenance_agent",
-        parent_name="provenance_agent",
     )
 
     role: typing.List[fhirtypes.CodeableConceptType] = Field(
@@ -398,8 +386,6 @@ class ProvenanceAgent(backboneelement.BackboneElement):
             "Device",
             "Organization",
         ],
-        backref="provenance_agent",
-        parent_name="provenance_agent",
     )
 
     @classmethod
@@ -420,10 +406,7 @@ class ProvenanceAgent(backboneelement.BackboneElement):
 
 
 class ProvenanceEntity(backboneelement.BackboneElement):
-    """Disclaimer: Any field name ends with ``__ext`` doesn't part of
-    Resource StructureDefinition, instead used to enable Extensibility feature
-    for FHIR Primitive Data Types.
-
+    """
     An entity used in this activity.
     """
 
@@ -479,8 +462,6 @@ class ProvenanceEntity(backboneelement.BackboneElement):
         element_property=True,
         # note: Listed Resource Type(s) should be allowed as Reference.
         enum_reference_types=["Resource"],
-        backref="provenance_entity",
-        parent_name="provenance_entity",
     )
 
     @classmethod

@@ -16,10 +16,7 @@ from . import backboneelement, domainresource, fhirtypes
 
 
 class CompartmentDefinition(domainresource.DomainResource):
-    """Disclaimer: Any field name ends with ``__ext`` doesn't part of
-    Resource StructureDefinition, instead used to enable Extensibility feature
-    for FHIR Primitive Data Types.
-
+    """
     Compartment Definition for a resource.
     A compartment definition that defines how resources are accessed on a
     server.
@@ -365,10 +362,7 @@ class CompartmentDefinition(domainresource.DomainResource):
 
 
 class CompartmentDefinitionResource(backboneelement.BackboneElement):
-    """Disclaimer: Any field name ends with ``__ext`` doesn't part of
-    Resource StructureDefinition, instead used to enable Extensibility feature
-    for FHIR Primitive Data Types.
-
+    """
     How a resource is related to the compartment.
     Information about how a resource is related to the compartment.
     """

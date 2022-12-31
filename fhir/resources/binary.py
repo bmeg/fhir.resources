@@ -16,10 +16,7 @@ from . import fhirtypes, resource
 
 
 class Binary(resource.Resource):
-    """Disclaimer: Any field name ends with ``__ext`` doesn't part of
-    Resource StructureDefinition, instead used to enable Extensibility feature
-    for FHIR Primitive Data Types.
-
+    """
     Pure binary content defined by a format other than FHIR.
     A resource that represents the data of a single raw artifact as digital
     content accessible in its native format.  A Binary resource can contain any
@@ -85,8 +82,6 @@ class Binary(resource.Resource):
         element_property=True,
         # note: Listed Resource Type(s) should be allowed as Reference.
         enum_reference_types=["Resource"],
-        backref="binary",
-        parent_name="binary",
     )
 
     @classmethod

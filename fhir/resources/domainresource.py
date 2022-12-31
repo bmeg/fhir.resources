@@ -14,10 +14,7 @@ from . import fhirtypes, resource
 
 
 class DomainResource(resource.Resource):
-    """Disclaimer: Any field name ends with ``__ext`` doesn't part of
-    Resource StructureDefinition, instead used to enable Extensibility feature
-    for FHIR Primitive Data Types.
-
+    """
     A resource with narrative, extensions, and contained resources.
     A resource that includes narrative, extensions, and contained resources.
     """

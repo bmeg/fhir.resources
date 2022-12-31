@@ -16,10 +16,7 @@ from . import backboneelement, domainresource, fhirtypes
 
 
 class MessageHeader(domainresource.DomainResource):
-    """Disclaimer: Any field name ends with ``__ext`` doesn't part of
-    Resource StructureDefinition, instead used to enable Extensibility feature
-    for FHIR Primitive Data Types.
-
+    """
     A resource that describes a message that is exchanged between systems.
     The header for a message exchange that is either requesting or responding
     to an action.  The reference(s) that are the subject of the action as well
@@ -44,8 +41,6 @@ class MessageHeader(domainresource.DomainResource):
         element_property=True,
         # note: Listed Resource Type(s) should be allowed as Reference.
         enum_reference_types=["Practitioner", "PractitionerRole"],
-        backref="message_header",
-        parent_name="message_header",
     )
 
     definition: fhirtypes.Canonical = Field(
@@ -57,8 +52,6 @@ class MessageHeader(domainresource.DomainResource):
         element_property=True,
         # note: Listed Resource Type(s) should be allowed as Reference.
         enum_reference_types=["MessageDefinition"],
-        backref="message_header",
-        parent_name="message_header",
     )
     definition__ext: fhirtypes.FHIRPrimitiveExtensionType = Field(
         None, alias="_definition", title="Extension field for ``definition``."
@@ -86,8 +79,6 @@ class MessageHeader(domainresource.DomainResource):
         element_property=True,
         # note: Listed Resource Type(s) should be allowed as Reference.
         enum_reference_types=["Practitioner", "PractitionerRole"],
-        backref="message_header",
-        parent_name="message_header",
     )
 
     eventCoding: fhirtypes.CodingType = Field(
@@ -149,8 +140,6 @@ class MessageHeader(domainresource.DomainResource):
         element_property=True,
         # note: Listed Resource Type(s) should be allowed as Reference.
         enum_reference_types=["Resource"],
-        backref="message_header",
-        parent_name="message_header",
     )
 
     reason: fhirtypes.CodeableConceptType = Field(
@@ -195,8 +184,6 @@ class MessageHeader(domainresource.DomainResource):
         element_property=True,
         # note: Listed Resource Type(s) should be allowed as Reference.
         enum_reference_types=["Practitioner", "PractitionerRole", "Organization"],
-        backref="message_header",
-        parent_name="message_header",
     )
 
     sender: fhirtypes.ReferenceType = Field(
@@ -210,8 +197,6 @@ class MessageHeader(domainresource.DomainResource):
         element_property=True,
         # note: Listed Resource Type(s) should be allowed as Reference.
         enum_reference_types=["Practitioner", "PractitionerRole", "Organization"],
-        backref="message_header",
-        parent_name="message_header",
     )
 
     source: fhirtypes.MessageHeaderSourceType = Field(
@@ -292,10 +277,7 @@ class MessageHeader(domainresource.DomainResource):
 
 
 class MessageHeaderDestination(backboneelement.BackboneElement):
-    """Disclaimer: Any field name ends with ``__ext`` doesn't part of
-    Resource StructureDefinition, instead used to enable Extensibility feature
-    for FHIR Primitive Data Types.
-
+    """
     Message destination application(s).
     The destination application which the message is intended for.
     """
@@ -340,8 +322,6 @@ class MessageHeaderDestination(backboneelement.BackboneElement):
         element_property=True,
         # note: Listed Resource Type(s) should be allowed as Reference.
         enum_reference_types=["Practitioner", "PractitionerRole", "Organization"],
-        backref="message_header_destination",
-        parent_name="message_header_destination",
     )
 
     target: fhirtypes.ReferenceType = Field(
@@ -356,8 +336,6 @@ class MessageHeaderDestination(backboneelement.BackboneElement):
         element_property=True,
         # note: Listed Resource Type(s) should be allowed as Reference.
         enum_reference_types=["Device"],
-        backref="message_header_destination",
-        parent_name="message_header_destination",
     )
 
     @classmethod
@@ -437,10 +415,7 @@ class MessageHeaderDestination(backboneelement.BackboneElement):
 
 
 class MessageHeaderResponse(backboneelement.BackboneElement):
-    """Disclaimer: Any field name ends with ``__ext`` doesn't part of
-    Resource StructureDefinition, instead used to enable Extensibility feature
-    for FHIR Primitive Data Types.
-
+    """
     If this is a reply to prior message.
     Information about the message that this message is a response to.  Only
     present if this message is a response.
@@ -482,8 +457,6 @@ class MessageHeaderResponse(backboneelement.BackboneElement):
         element_property=True,
         # note: Listed Resource Type(s) should be allowed as Reference.
         enum_reference_types=["OperationOutcome"],
-        backref="message_header_response",
-        parent_name="message_header_response",
     )
 
     identifier: fhirtypes.Id = Field(
@@ -571,10 +544,7 @@ class MessageHeaderResponse(backboneelement.BackboneElement):
 
 
 class MessageHeaderSource(backboneelement.BackboneElement):
-    """Disclaimer: Any field name ends with ``__ext`` doesn't part of
-    Resource StructureDefinition, instead used to enable Extensibility feature
-    for FHIR Primitive Data Types.
-
+    """
     Message source application.
     The source application from which this message originated.
     """

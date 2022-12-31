@@ -16,10 +16,7 @@ from . import backboneelement, domainresource, fhirtypes
 
 
 class AdministrableProductDefinition(domainresource.DomainResource):
-    """Disclaimer: Any field name ends with ``__ext`` doesn't part of
-    Resource StructureDefinition, instead used to enable Extensibility feature
-    for FHIR Primitive Data Types.
-
+    """
     A medicinal product in the final form, suitable for administration - after
     any mixing of multiple components.
     A medicinal product in the final form which is suitable for administering
@@ -69,8 +66,6 @@ class AdministrableProductDefinition(domainresource.DomainResource):
         element_property=True,
         # note: Listed Resource Type(s) should be allowed as Reference.
         enum_reference_types=["DeviceDefinition"],
-        backref="administrable_product_definition",
-        parent_name="administrable_product_definition",
     )
 
     formOf: typing.List[fhirtypes.ReferenceType] = Field(
@@ -95,8 +90,6 @@ class AdministrableProductDefinition(domainresource.DomainResource):
         element_property=True,
         # note: Listed Resource Type(s) should be allowed as Reference.
         enum_reference_types=["MedicinalProductDefinition"],
-        backref="administrable_product_definition",
-        parent_name="administrable_product_definition",
     )
 
     identifier: typing.List[fhirtypes.IdentifierType] = Field(
@@ -158,8 +151,6 @@ class AdministrableProductDefinition(domainresource.DomainResource):
         element_property=True,
         # note: Listed Resource Type(s) should be allowed as Reference.
         enum_reference_types=["ManufacturedItemDefinition"],
-        backref="administrable_product_definition",
-        parent_name="administrable_product_definition",
     )
 
     property: typing.List[fhirtypes.AdministrableProductDefinitionPropertyType] = Field(
@@ -324,10 +315,7 @@ class AdministrableProductDefinition(domainresource.DomainResource):
 
 
 class AdministrableProductDefinitionProperty(backboneelement.BackboneElement):
-    """Disclaimer: Any field name ends with ``__ext`` doesn't part of
-    Resource StructureDefinition, instead used to enable Extensibility feature
-    for FHIR Primitive Data Types.
-
+    """
     Characteristics e.g. a product's onset of action.
     """
 
@@ -495,10 +483,7 @@ class AdministrableProductDefinitionProperty(backboneelement.BackboneElement):
 class AdministrableProductDefinitionRouteOfAdministration(
     backboneelement.BackboneElement
 ):
-    """Disclaimer: Any field name ends with ``__ext`` doesn't part of
-    Resource StructureDefinition, instead used to enable Extensibility feature
-    for FHIR Primitive Data Types.
-
+    """
     The path by which the product is taken into or makes contact with the body.
     The path by which the product is taken into or makes contact with the body.
     In some regions this is referred to as the licenced or approved route.
@@ -617,10 +602,7 @@ class AdministrableProductDefinitionRouteOfAdministration(
 class AdministrableProductDefinitionRouteOfAdministrationTargetSpecies(
     backboneelement.BackboneElement
 ):
-    """Disclaimer: Any field name ends with ``__ext`` doesn't part of
-    Resource StructureDefinition, instead used to enable Extensibility feature
-    for FHIR Primitive Data Types.
-
+    """
     A species for which this route applies.
     """
 
@@ -667,10 +649,7 @@ class AdministrableProductDefinitionRouteOfAdministrationTargetSpecies(
 class AdministrableProductDefinitionRouteOfAdministrationTargetSpeciesWithdrawalPeriod(
     backboneelement.BackboneElement
 ):
-    """Disclaimer: Any field name ends with ``__ext`` doesn't part of
-    Resource StructureDefinition, instead used to enable Extensibility feature
-    for FHIR Primitive Data Types.
-
+    """
     A species specific time during which consumption of animal product is not
     appropriate.
     """

@@ -16,10 +16,7 @@ from . import backboneelement, domainresource, fhirtypes
 
 
 class StructureMap(domainresource.DomainResource):
-    """Disclaimer: Any field name ends with ``__ext`` doesn't part of
-    Resource StructureDefinition, instead used to enable Extensibility feature
-    for FHIR Primitive Data Types.
-
+    """
     A Map of relationships between 2 structures that can be used to transform
     data.
     """
@@ -136,8 +133,6 @@ class StructureMap(domainresource.DomainResource):
         element_property=True,
         # note: Listed Resource Type(s) should be allowed as Reference.
         enum_reference_types=["StructureMap"],
-        backref="structure_map",
-        parent_name="structure_map",
     )
     import__ext: typing.List[
         typing.Union[fhirtypes.FHIRPrimitiveExtensionType, None]
@@ -414,10 +409,7 @@ class StructureMap(domainresource.DomainResource):
 
 
 class StructureMapGroup(backboneelement.BackboneElement):
-    """Disclaimer: Any field name ends with ``__ext`` doesn't part of
-    Resource StructureDefinition, instead used to enable Extensibility feature
-    for FHIR Primitive Data Types.
-
+    """
     Named sections for reader convenience.
     Organizes the mapping into manageable chunks for human review/ease of
     maintenance.
@@ -590,10 +582,7 @@ class StructureMapGroup(backboneelement.BackboneElement):
 
 
 class StructureMapGroupInput(backboneelement.BackboneElement):
-    """Disclaimer: Any field name ends with ``__ext`` doesn't part of
-    Resource StructureDefinition, instead used to enable Extensibility feature
-    for FHIR Primitive Data Types.
-
+    """
     Named instance provided when invoking the map.
     A name assigned to an instance of data. The instance must be provided when
     the mapping is invoked.
@@ -739,10 +728,7 @@ class StructureMapGroupInput(backboneelement.BackboneElement):
 
 
 class StructureMapGroupRule(backboneelement.BackboneElement):
-    """Disclaimer: Any field name ends with ``__ext`` doesn't part of
-    Resource StructureDefinition, instead used to enable Extensibility feature
-    for FHIR Primitive Data Types.
-
+    """
     Transform Rule from source to target.
     """
 
@@ -888,10 +874,7 @@ class StructureMapGroupRule(backboneelement.BackboneElement):
 
 
 class StructureMapGroupRuleDependent(backboneelement.BackboneElement):
-    """Disclaimer: Any field name ends with ``__ext`` doesn't part of
-    Resource StructureDefinition, instead used to enable Extensibility feature
-    for FHIR Primitive Data Types.
-
+    """
     Which other rules to apply in the context of this rule.
     """
 
@@ -992,10 +975,7 @@ class StructureMapGroupRuleDependent(backboneelement.BackboneElement):
 
 
 class StructureMapGroupRuleSource(backboneelement.BackboneElement):
-    """Disclaimer: Any field name ends with ``__ext`` doesn't part of
-    Resource StructureDefinition, instead used to enable Extensibility feature
-    for FHIR Primitive Data Types.
-
+    """
     Source inputs to the mapping.
     """
 
@@ -2060,10 +2040,7 @@ class StructureMapGroupRuleSource(backboneelement.BackboneElement):
 
 
 class StructureMapGroupRuleTarget(backboneelement.BackboneElement):
-    """Disclaimer: Any field name ends with ``__ext`` doesn't part of
-    Resource StructureDefinition, instead used to enable Extensibility feature
-    for FHIR Primitive Data Types.
-
+    """
     Content to create because of this mapping rule.
     """
 
@@ -2217,10 +2194,7 @@ class StructureMapGroupRuleTarget(backboneelement.BackboneElement):
 
 
 class StructureMapGroupRuleTargetParameter(backboneelement.BackboneElement):
-    """Disclaimer: Any field name ends with ``__ext`` doesn't part of
-    Resource StructureDefinition, instead used to enable Extensibility feature
-    for FHIR Primitive Data Types.
-
+    """
     Parameters to the transform.
     """
 
@@ -2366,10 +2340,7 @@ class StructureMapGroupRuleTargetParameter(backboneelement.BackboneElement):
 
 
 class StructureMapStructure(backboneelement.BackboneElement):
-    """Disclaimer: Any field name ends with ``__ext`` doesn't part of
-    Resource StructureDefinition, instead used to enable Extensibility feature
-    for FHIR Primitive Data Types.
-
+    """
     Structure Definition used by this map.
     A structure definition used by this map. The structure definition may
     describe instances that are converted, or the instances that are produced.
@@ -2435,8 +2406,6 @@ class StructureMapStructure(backboneelement.BackboneElement):
         element_required=True,
         # note: Listed Resource Type(s) should be allowed as Reference.
         enum_reference_types=["StructureDefinition"],
-        backref="structure_map_structure",
-        parent_name="structure_map_structure",
     )
     url__ext: fhirtypes.FHIRPrimitiveExtensionType = Field(
         None, alias="_url", title="Extension field for ``url``."

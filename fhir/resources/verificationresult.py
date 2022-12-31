@@ -16,10 +16,7 @@ from . import backboneelement, domainresource, fhirtypes
 
 
 class VerificationResult(domainresource.DomainResource):
-    """Disclaimer: Any field name ends with ``__ext`` doesn't part of
-    Resource StructureDefinition, instead used to enable Extensibility feature
-    for FHIR Primitive Data Types.
-
+    """
     Describes validation requirements, source(s), status and dates for one or
     more elements.
     """
@@ -173,8 +170,6 @@ class VerificationResult(domainresource.DomainResource):
         element_property=True,
         # note: Listed Resource Type(s) should be allowed as Reference.
         enum_reference_types=["Resource"],
-        backref="verification_result",
-        parent_name="verification_result",
     )
 
     targetLocation: typing.List[typing.Optional[fhirtypes.String]] = Field(
@@ -328,10 +323,7 @@ class VerificationResult(domainresource.DomainResource):
 
 
 class VerificationResultAttestation(backboneelement.BackboneElement):
-    """Disclaimer: Any field name ends with ``__ext`` doesn't part of
-    Resource StructureDefinition, instead used to enable Extensibility feature
-    for FHIR Primitive Data Types.
-
+    """
     Information about the entity attesting to information.
     """
 
@@ -378,8 +370,6 @@ class VerificationResultAttestation(backboneelement.BackboneElement):
         element_property=True,
         # note: Listed Resource Type(s) should be allowed as Reference.
         enum_reference_types=["Organization", "Practitioner", "PractitionerRole"],
-        backref="verification_result_attestation",
-        parent_name="verification_result_attestation",
     )
 
     proxyIdentityCertificate: fhirtypes.String = Field(
@@ -447,8 +437,6 @@ class VerificationResultAttestation(backboneelement.BackboneElement):
         element_property=True,
         # note: Listed Resource Type(s) should be allowed as Reference.
         enum_reference_types=["Practitioner", "PractitionerRole", "Organization"],
-        backref="verification_result_attestation",
-        parent_name="verification_result_attestation",
     )
 
     @classmethod
@@ -473,10 +461,7 @@ class VerificationResultAttestation(backboneelement.BackboneElement):
 
 
 class VerificationResultPrimarySource(backboneelement.BackboneElement):
-    """Disclaimer: Any field name ends with ``__ext`` doesn't part of
-    Resource StructureDefinition, instead used to enable Extensibility feature
-    for FHIR Primitive Data Types.
-
+    """
     Information about the primary source(s) involved in validation.
     """
 
@@ -599,8 +584,6 @@ class VerificationResultPrimarySource(backboneelement.BackboneElement):
         element_property=True,
         # note: Listed Resource Type(s) should be allowed as Reference.
         enum_reference_types=["Organization", "Practitioner", "PractitionerRole"],
-        backref="verification_result_primary_source",
-        parent_name="verification_result_primary_source",
     )
 
     @classmethod
@@ -624,10 +607,7 @@ class VerificationResultPrimarySource(backboneelement.BackboneElement):
 
 
 class VerificationResultValidator(backboneelement.BackboneElement):
-    """Disclaimer: Any field name ends with ``__ext`` doesn't part of
-    Resource StructureDefinition, instead used to enable Extensibility feature
-    for FHIR Primitive Data Types.
-
+    """
     Information about the entity validating information.
     """
 
@@ -668,8 +648,6 @@ class VerificationResultValidator(backboneelement.BackboneElement):
         element_property=True,
         # note: Listed Resource Type(s) should be allowed as Reference.
         enum_reference_types=["Organization"],
-        backref="verification_result_validator",
-        parent_name="verification_result_validator",
     )
 
     @classmethod

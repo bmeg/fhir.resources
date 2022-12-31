@@ -16,10 +16,7 @@ from . import backboneelement, domainresource, fhirtypes
 
 
 class Consent(domainresource.DomainResource):
-    """Disclaimer: Any field name ends with ``__ext`` doesn't part of
-    Resource StructureDefinition, instead used to enable Extensibility feature
-    for FHIR Primitive Data Types.
-
+    """
     A healthcare consumer's  choices to permit or deny recipients or roles to
     perform actions for specific purposes and periods of time.
     A record of a healthcare consumer’s  choices, which permits or denies
@@ -79,8 +76,6 @@ class Consent(domainresource.DomainResource):
         element_property=True,
         # note: Listed Resource Type(s) should be allowed as Reference.
         enum_reference_types=["Organization"],
-        backref="consent",
-        parent_name="consent",
     )
 
     patient: fhirtypes.ReferenceType = Field(
@@ -92,8 +87,6 @@ class Consent(domainresource.DomainResource):
         element_property=True,
         # note: Listed Resource Type(s) should be allowed as Reference.
         enum_reference_types=["Patient"],
-        backref="consent",
-        parent_name="consent",
     )
 
     performer: typing.List[fhirtypes.ReferenceType] = Field(
@@ -117,8 +110,6 @@ class Consent(domainresource.DomainResource):
             "RelatedPerson",
             "PractitionerRole",
         ],
-        backref="consent",
-        parent_name="consent",
     )
 
     policy: typing.List[fhirtypes.ConsentPolicyType] = Field(
@@ -218,8 +209,6 @@ class Consent(domainresource.DomainResource):
             "Contract",
             "QuestionnaireResponse",
         ],
-        backref="consent",
-        parent_name="consent",
     )
 
     status: fhirtypes.Code = Field(
@@ -396,10 +385,7 @@ class Consent(domainresource.DomainResource):
 
 
 class ConsentPolicy(backboneelement.BackboneElement):
-    """Disclaimer: Any field name ends with ``__ext`` doesn't part of
-    Resource StructureDefinition, instead used to enable Extensibility feature
-    for FHIR Primitive Data Types.
-
+    """
     Policies covered by this consent.
     The references to the policies that are included in this consent scope.
     Policies may be organizational, but are often defined jurisdictionally, or
@@ -450,10 +436,7 @@ class ConsentPolicy(backboneelement.BackboneElement):
 
 
 class ConsentProvision(backboneelement.BackboneElement):
-    """Disclaimer: Any field name ends with ``__ext`` doesn't part of
-    Resource StructureDefinition, instead used to enable Extensibility feature
-    for FHIR Primitive Data Types.
-
+    """
     Constraints to the base Consent.policyRule.
     An exception to the base policy of this consent. An exception can be an
     addition or removal of access permissions.
@@ -648,10 +631,7 @@ class ConsentProvision(backboneelement.BackboneElement):
 
 
 class ConsentProvisionActor(backboneelement.BackboneElement):
-    """Disclaimer: Any field name ends with ``__ext`` doesn't part of
-    Resource StructureDefinition, instead used to enable Extensibility feature
-    for FHIR Primitive Data Types.
-
+    """
     Who|what controlled by this rule (or group, by role).
     Who or what is controlled by this rule. Use group to identify a set of
     actors by some property they share (e.g. 'admitting officers').
@@ -681,8 +661,6 @@ class ConsentProvisionActor(backboneelement.BackboneElement):
             "RelatedPerson",
             "PractitionerRole",
         ],
-        backref="consent_provision_actor",
-        parent_name="consent_provision_actor",
     )
 
     role: fhirtypes.CodeableConceptType = Field(
@@ -712,10 +690,7 @@ class ConsentProvisionActor(backboneelement.BackboneElement):
 
 
 class ConsentProvisionData(backboneelement.BackboneElement):
-    """Disclaimer: Any field name ends with ``__ext`` doesn't part of
-    Resource StructureDefinition, instead used to enable Extensibility feature
-    for FHIR Primitive Data Types.
-
+    """
     Data controlled by this rule.
     The resources controlled by this rule if specific resources are referenced.
     """
@@ -758,8 +733,6 @@ class ConsentProvisionData(backboneelement.BackboneElement):
         element_property=True,
         # note: Listed Resource Type(s) should be allowed as Reference.
         enum_reference_types=["Resource"],
-        backref="consent_provision_data",
-        parent_name="consent_provision_data",
     )
 
     @classmethod
@@ -831,10 +804,7 @@ class ConsentProvisionData(backboneelement.BackboneElement):
 
 
 class ConsentVerification(backboneelement.BackboneElement):
-    """Disclaimer: Any field name ends with ``__ext`` doesn't part of
-    Resource StructureDefinition, instead used to enable Extensibility feature
-    for FHIR Primitive Data Types.
-
+    """
     Consent Verified by patient or family.
     Whether a treatment instruction (e.g. artificial respiration yes or no) was
     verified with the patient, his/her family or another authorized person.
@@ -881,8 +851,6 @@ class ConsentVerification(backboneelement.BackboneElement):
         element_property=True,
         # note: Listed Resource Type(s) should be allowed as Reference.
         enum_reference_types=["Patient", "RelatedPerson"],
-        backref="consent_verification",
-        parent_name="consent_verification",
     )
 
     @classmethod

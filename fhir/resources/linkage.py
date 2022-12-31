@@ -16,10 +16,7 @@ from . import backboneelement, domainresource, fhirtypes
 
 
 class Linkage(domainresource.DomainResource):
-    """Disclaimer: Any field name ends with ``__ext`` doesn't part of
-    Resource StructureDefinition, instead used to enable Extensibility feature
-    for FHIR Primitive Data Types.
-
+    """
     Links records for 'same' item.
     Identifies two or more records (resource instances) that refer to the same
     real-world "occurrence".
@@ -55,8 +52,6 @@ class Linkage(domainresource.DomainResource):
         element_property=True,
         # note: Listed Resource Type(s) should be allowed as Reference.
         enum_reference_types=["Practitioner", "PractitionerRole", "Organization"],
-        backref="linkage",
-        parent_name="linkage",
     )
 
     item: typing.List[fhirtypes.LinkageItemType] = Field(
@@ -94,10 +89,7 @@ class Linkage(domainresource.DomainResource):
 
 
 class LinkageItem(backboneelement.BackboneElement):
-    """Disclaimer: Any field name ends with ``__ext`` doesn't part of
-    Resource StructureDefinition, instead used to enable Extensibility feature
-    for FHIR Primitive Data Types.
-
+    """
     Item to be linked.
     Identifies which record considered as the reference to the same real-world
     occurrence as well as how the items should be evaluated within the
@@ -115,8 +107,6 @@ class LinkageItem(backboneelement.BackboneElement):
         element_property=True,
         # note: Listed Resource Type(s) should be allowed as Reference.
         enum_reference_types=["Resource"],
-        backref="linkage_item",
-        parent_name="linkage_item",
     )
 
     type: fhirtypes.Code = Field(

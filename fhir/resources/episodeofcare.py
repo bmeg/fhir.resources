@@ -16,10 +16,7 @@ from . import backboneelement, domainresource, fhirtypes
 
 
 class EpisodeOfCare(domainresource.DomainResource):
-    """Disclaimer: Any field name ends with ``__ext`` doesn't part of
-    Resource StructureDefinition, instead used to enable Extensibility feature
-    for FHIR Primitive Data Types.
-
+    """
     An association of a Patient with an Organization and  Healthcare
     Provider(s) for a period of time that the Organization assumes some level
     of responsibility.
@@ -42,8 +39,6 @@ class EpisodeOfCare(domainresource.DomainResource):
         element_property=True,
         # note: Listed Resource Type(s) should be allowed as Reference.
         enum_reference_types=["Account"],
-        backref="episode_of_care",
-        parent_name="episode_of_care",
     )
 
     careManager: fhirtypes.ReferenceType = Field(
@@ -58,8 +53,6 @@ class EpisodeOfCare(domainresource.DomainResource):
         element_property=True,
         # note: Listed Resource Type(s) should be allowed as Reference.
         enum_reference_types=["Practitioner", "PractitionerRole"],
-        backref="episode_of_care",
-        parent_name="episode_of_care",
     )
 
     diagnosis: typing.List[fhirtypes.EpisodeOfCareDiagnosisType] = Field(
@@ -96,8 +89,6 @@ class EpisodeOfCare(domainresource.DomainResource):
         element_property=True,
         # note: Listed Resource Type(s) should be allowed as Reference.
         enum_reference_types=["Organization"],
-        backref="episode_of_care",
-        parent_name="episode_of_care",
     )
 
     patient: fhirtypes.ReferenceType = Field(
@@ -109,8 +100,6 @@ class EpisodeOfCare(domainresource.DomainResource):
         element_property=True,
         # note: Listed Resource Type(s) should be allowed as Reference.
         enum_reference_types=["Patient"],
-        backref="episode_of_care",
-        parent_name="episode_of_care",
     )
 
     period: fhirtypes.PeriodType = Field(
@@ -137,8 +126,6 @@ class EpisodeOfCare(domainresource.DomainResource):
         element_property=True,
         # note: Listed Resource Type(s) should be allowed as Reference.
         enum_reference_types=["ServiceRequest"],
-        backref="episode_of_care",
-        parent_name="episode_of_care",
     )
 
     status: fhirtypes.Code = Field(
@@ -203,8 +190,6 @@ class EpisodeOfCare(domainresource.DomainResource):
         element_property=True,
         # note: Listed Resource Type(s) should be allowed as Reference.
         enum_reference_types=["CareTeam"],
-        backref="episode_of_care",
-        parent_name="episode_of_care",
     )
 
     type: typing.List[fhirtypes.CodeableConceptType] = Field(
@@ -314,10 +299,7 @@ class EpisodeOfCare(domainresource.DomainResource):
 
 
 class EpisodeOfCareDiagnosis(backboneelement.BackboneElement):
-    """Disclaimer: Any field name ends with ``__ext`` doesn't part of
-    Resource StructureDefinition, instead used to enable Extensibility feature
-    for FHIR Primitive Data Types.
-
+    """
     The list of diagnosis relevant to this episode of care.
     """
 
@@ -335,8 +317,6 @@ class EpisodeOfCareDiagnosis(backboneelement.BackboneElement):
         element_property=True,
         # note: Listed Resource Type(s) should be allowed as Reference.
         enum_reference_types=["Condition"],
-        backref="episode_of_care_diagnosis",
-        parent_name="episode_of_care_diagnosis",
     )
 
     rank: fhirtypes.PositiveInt = Field(
@@ -377,10 +357,7 @@ class EpisodeOfCareDiagnosis(backboneelement.BackboneElement):
 
 
 class EpisodeOfCareStatusHistory(backboneelement.BackboneElement):
-    """Disclaimer: Any field name ends with ``__ext`` doesn't part of
-    Resource StructureDefinition, instead used to enable Extensibility feature
-    for FHIR Primitive Data Types.
-
+    """
     Past list of status codes (the current status may be included to cover the
     start date of the status).
     The history of statuses that the EpisodeOfCare has been through (without

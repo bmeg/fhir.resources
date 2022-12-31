@@ -16,10 +16,7 @@ from . import backboneelement, domainresource, fhirtypes
 
 
 class MedicationRequest(domainresource.DomainResource):
-    """Disclaimer: Any field name ends with ``__ext`` doesn't part of
-    Resource StructureDefinition, instead used to enable Extensibility feature
-    for FHIR Primitive Data Types.
-
+    """
     Ordering of medication for patient or group.
     An order or request for both supply of the medication and the instructions
     for administration of the medication to a patient. The resource is called
@@ -63,8 +60,6 @@ class MedicationRequest(domainresource.DomainResource):
             "ServiceRequest",
             "ImmunizationRecommendation",
         ],
-        backref="medication_request",
-        parent_name="medication_request",
     )
 
     category: typing.List[fhirtypes.CodeableConceptType] = Field(
@@ -115,8 +110,6 @@ class MedicationRequest(domainresource.DomainResource):
         element_property=True,
         # note: Listed Resource Type(s) should be allowed as Reference.
         enum_reference_types=["DetectedIssue"],
-        backref="medication_request",
-        parent_name="medication_request",
     )
 
     dispenseRequest: fhirtypes.MedicationRequestDispenseRequestType = Field(
@@ -171,8 +164,6 @@ class MedicationRequest(domainresource.DomainResource):
         element_property=True,
         # note: Listed Resource Type(s) should be allowed as Reference.
         enum_reference_types=["Encounter"],
-        backref="medication_request",
-        parent_name="medication_request",
     )
 
     eventHistory: typing.List[fhirtypes.ReferenceType] = Field(
@@ -189,8 +180,6 @@ class MedicationRequest(domainresource.DomainResource):
         element_property=True,
         # note: Listed Resource Type(s) should be allowed as Reference.
         enum_reference_types=["Provenance"],
-        backref="medication_request",
-        parent_name="medication_request",
     )
 
     groupIdentifier: fhirtypes.IdentifierType = Field(
@@ -273,8 +262,6 @@ class MedicationRequest(domainresource.DomainResource):
         element_property=True,
         # note: Listed Resource Type(s) should be allowed as Reference.
         enum_reference_types=["Coverage", "ClaimResponse"],
-        backref="medication_request",
-        parent_name="medication_request",
     )
 
     intent: fhirtypes.Code = Field(
@@ -357,8 +344,6 @@ class MedicationRequest(domainresource.DomainResource):
         binding_uri="http://hl7.org/fhir/ValueSet/medication-codes",
         # note: Listed Resource Type(s) should be allowed as Reference.
         enum_reference_types=["Medication"],
-        backref="medication_request",
-        parent_name="medication_request",
     )
 
     note: typing.List[fhirtypes.AnnotationType] = Field(
@@ -393,8 +378,6 @@ class MedicationRequest(domainresource.DomainResource):
             "RelatedPerson",
             "CareTeam",
         ],
-        backref="medication_request",
-        parent_name="medication_request",
     )
 
     performerType: fhirtypes.CodeableConceptType = Field(
@@ -425,8 +408,6 @@ class MedicationRequest(domainresource.DomainResource):
         element_property=True,
         # note: Listed Resource Type(s) should be allowed as Reference.
         enum_reference_types=["MedicationRequest"],
-        backref="medication_request",
-        parent_name="medication_request",
     )
 
     priority: fhirtypes.Code = Field(
@@ -481,8 +462,6 @@ class MedicationRequest(domainresource.DomainResource):
         element_property=True,
         # note: Listed Resource Type(s) should be allowed as Reference.
         enum_reference_types=["Condition", "Observation"],
-        backref="medication_request",
-        parent_name="medication_request",
     )
 
     recorder: fhirtypes.ReferenceType = Field(
@@ -497,8 +476,6 @@ class MedicationRequest(domainresource.DomainResource):
         element_property=True,
         # note: Listed Resource Type(s) should be allowed as Reference.
         enum_reference_types=["Practitioner", "PractitionerRole"],
-        backref="medication_request",
-        parent_name="medication_request",
     )
 
     reportedBoolean: bool = Field(
@@ -542,8 +519,6 @@ class MedicationRequest(domainresource.DomainResource):
             "RelatedPerson",
             "Organization",
         ],
-        backref="medication_request",
-        parent_name="medication_request",
     )
 
     requester: fhirtypes.ReferenceType = Field(
@@ -565,8 +540,6 @@ class MedicationRequest(domainresource.DomainResource):
             "RelatedPerson",
             "Device",
         ],
-        backref="medication_request",
-        parent_name="medication_request",
     )
 
     status: fhirtypes.Code = Field(
@@ -634,8 +607,6 @@ class MedicationRequest(domainresource.DomainResource):
         element_property=True,
         # note: Listed Resource Type(s) should be allowed as Reference.
         enum_reference_types=["Patient", "Group"],
-        backref="medication_request",
-        parent_name="medication_request",
     )
 
     substitution: fhirtypes.MedicationRequestSubstitutionType = Field(
@@ -664,8 +635,6 @@ class MedicationRequest(domainresource.DomainResource):
         element_property=True,
         # note: Listed Resource Type(s) should be allowed as Reference.
         enum_reference_types=["Resource"],
-        backref="medication_request",
-        parent_name="medication_request",
     )
 
     @classmethod
@@ -821,10 +790,7 @@ class MedicationRequest(domainresource.DomainResource):
 
 
 class MedicationRequestDispenseRequest(backboneelement.BackboneElement):
-    """Disclaimer: Any field name ends with ``__ext`` doesn't part of
-    Resource StructureDefinition, instead used to enable Extensibility feature
-    for FHIR Primitive Data Types.
-
+    """
     Medication supply authorization.
     Indicates the specific details for the dispense or medication supply part
     of a medication request (also known as a Medication Prescription or
@@ -907,8 +873,6 @@ class MedicationRequestDispenseRequest(backboneelement.BackboneElement):
         element_property=True,
         # note: Listed Resource Type(s) should be allowed as Reference.
         enum_reference_types=["Organization"],
-        backref="medication_request_dispense_request",
-        parent_name="medication_request_dispense_request",
     )
 
     quantity: fhirtypes.QuantityType = Field(
@@ -953,10 +917,7 @@ class MedicationRequestDispenseRequest(backboneelement.BackboneElement):
 
 
 class MedicationRequestDispenseRequestInitialFill(backboneelement.BackboneElement):
-    """Disclaimer: Any field name ends with ``__ext`` doesn't part of
-    Resource StructureDefinition, instead used to enable Extensibility feature
-    for FHIR Primitive Data Types.
-
+    """
     First fill details.
     Indicates the quantity or duration for the first dispense of the
     medication.
@@ -992,10 +953,7 @@ class MedicationRequestDispenseRequestInitialFill(backboneelement.BackboneElemen
 
 
 class MedicationRequestSubstitution(backboneelement.BackboneElement):
-    """Disclaimer: Any field name ends with ``__ext`` doesn't part of
-    Resource StructureDefinition, instead used to enable Extensibility feature
-    for FHIR Primitive Data Types.
-
+    """
     Any restrictions on medication substitution.
     Indicates whether or not substitution can or should be part of the
     dispense. In some cases, substitution must happen, in other cases

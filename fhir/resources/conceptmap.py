@@ -16,10 +16,7 @@ from . import backboneelement, domainresource, fhirtypes
 
 
 class ConceptMap(domainresource.DomainResource):
-    """Disclaimer: Any field name ends with ``__ext`` doesn't part of
-    Resource StructureDefinition, instead used to enable Extensibility feature
-    for FHIR Primitive Data Types.
-
+    """
     A map from one set of concepts to one or more other concepts.
     A statement of relationships from one set of concepts to one or more other
     concepts - either concepts in code systems, or data element/data element
@@ -203,8 +200,6 @@ class ConceptMap(domainresource.DomainResource):
         one_of_many_required=False,
         # note: Listed Resource Type(s) should be allowed as Reference.
         enum_reference_types=["ValueSet"],
-        backref="concept_map",
-        parent_name="concept_map",
     )
     sourceCanonical__ext: fhirtypes.FHIRPrimitiveExtensionType = Field(
         None, alias="_sourceCanonical", title="Extension field for ``sourceCanonical``."
@@ -269,8 +264,6 @@ class ConceptMap(domainresource.DomainResource):
         one_of_many_required=False,
         # note: Listed Resource Type(s) should be allowed as Reference.
         enum_reference_types=["ValueSet"],
-        backref="concept_map",
-        parent_name="concept_map",
     )
     targetCanonical__ext: fhirtypes.FHIRPrimitiveExtensionType = Field(
         None, alias="_targetCanonical", title="Extension field for ``targetCanonical``."
@@ -505,10 +498,7 @@ class ConceptMap(domainresource.DomainResource):
 
 
 class ConceptMapGroup(backboneelement.BackboneElement):
-    """Disclaimer: Any field name ends with ``__ext`` doesn't part of
-    Resource StructureDefinition, instead used to enable Extensibility feature
-    for FHIR Primitive Data Types.
-
+    """
     Same source and target systems.
     A group of mappings that all have the same source and target system.
     """
@@ -620,10 +610,7 @@ class ConceptMapGroup(backboneelement.BackboneElement):
 
 
 class ConceptMapGroupElement(backboneelement.BackboneElement):
-    """Disclaimer: Any field name ends with ``__ext`` doesn't part of
-    Resource StructureDefinition, instead used to enable Extensibility feature
-    for FHIR Primitive Data Types.
-
+    """
     Mappings for a concept from the source set.
     Mappings for an individual concept in the source to one or more concepts in
     the target.
@@ -677,10 +664,7 @@ class ConceptMapGroupElement(backboneelement.BackboneElement):
 
 
 class ConceptMapGroupElementTarget(backboneelement.BackboneElement):
-    """Disclaimer: Any field name ends with ``__ext`` doesn't part of
-    Resource StructureDefinition, instead used to enable Extensibility feature
-    for FHIR Primitive Data Types.
-
+    """
     Concept in target system for element.
     A concept from the target value set that this concept maps to.
     """
@@ -876,10 +860,7 @@ class ConceptMapGroupElementTarget(backboneelement.BackboneElement):
 
 
 class ConceptMapGroupElementTargetDependsOn(backboneelement.BackboneElement):
-    """Disclaimer: Any field name ends with ``__ext`` doesn't part of
-    Resource StructureDefinition, instead used to enable Extensibility feature
-    for FHIR Primitive Data Types.
-
+    """
     Other elements required for this mapping (from context).
     A set of additional dependencies for this mapping to hold. This mapping is
     only applicable if the specified element can be resolved, and it has the
@@ -933,8 +914,6 @@ class ConceptMapGroupElementTargetDependsOn(backboneelement.BackboneElement):
         element_property=True,
         # note: Listed Resource Type(s) should be allowed as Reference.
         enum_reference_types=["CodeSystem"],
-        backref="concept_map_group_element_target_depends_on",
-        parent_name="concept_map_group_element_target_depends_on",
     )
     system__ext: fhirtypes.FHIRPrimitiveExtensionType = Field(
         None, alias="_system", title="Extension field for ``system``."
@@ -1033,10 +1012,7 @@ class ConceptMapGroupElementTargetDependsOn(backboneelement.BackboneElement):
 
 
 class ConceptMapGroupUnmapped(backboneelement.BackboneElement):
-    """Disclaimer: Any field name ends with ``__ext`` doesn't part of
-    Resource StructureDefinition, instead used to enable Extensibility feature
-    for FHIR Primitive Data Types.
-
+    """
     What to do when there is no mapping for the source concept.
     What to do when there is no mapping for the source concept. "Unmapped" does
     not include codes that are unmatched, and the unmapped element is ignored
@@ -1120,8 +1096,6 @@ class ConceptMapGroupUnmapped(backboneelement.BackboneElement):
         element_property=True,
         # note: Listed Resource Type(s) should be allowed as Reference.
         enum_reference_types=["ConceptMap"],
-        backref="concept_map_group_unmapped",
-        parent_name="concept_map_group_unmapped",
     )
     url__ext: fhirtypes.FHIRPrimitiveExtensionType = Field(
         None, alias="_url", title="Extension field for ``url``."

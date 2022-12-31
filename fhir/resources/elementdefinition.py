@@ -16,10 +16,7 @@ from . import backboneelement, element, fhirtypes
 
 
 class ElementDefinition(backboneelement.BackboneElement):
-    """Disclaimer: Any field name ends with ``__ext`` doesn't part of
-    Resource StructureDefinition, instead used to enable Extensibility feature
-    for FHIR Primitive Data Types.
-
+    """
     Definition of an element in a resource or extension.
     Captures constraints on each element within the resource, profile, or
     extension.
@@ -4562,10 +4559,7 @@ class ElementDefinition(backboneelement.BackboneElement):
 
 
 class ElementDefinitionBase(element.Element):
-    """Disclaimer: Any field name ends with ``__ext`` doesn't part of
-    Resource StructureDefinition, instead used to enable Extensibility feature
-    for FHIR Primitive Data Types.
-
+    """
     Base definition information for tools.
     Information about the base definition of the element, provided to make it
     unnecessary for tools to trace the deviation of the element through the
@@ -4697,10 +4691,7 @@ class ElementDefinitionBase(element.Element):
 
 
 class ElementDefinitionBinding(element.Element):
-    """Disclaimer: Any field name ends with ``__ext`` doesn't part of
-    Resource StructureDefinition, instead used to enable Extensibility feature
-    for FHIR Primitive Data Types.
-
+    """
     ValueSet details if this is coded.
     Binds to a value set if this element is coded (code, Coding,
     CodeableConcept, Quantity), or the data types (string, uri).
@@ -4757,8 +4748,6 @@ class ElementDefinitionBinding(element.Element):
         element_property=True,
         # note: Listed Resource Type(s) should be allowed as Reference.
         enum_reference_types=["ValueSet"],
-        backref="element_definition_binding",
-        parent_name="element_definition_binding",
     )
     valueSet__ext: fhirtypes.FHIRPrimitiveExtensionType = Field(
         None, alias="_valueSet", title="Extension field for ``valueSet``."
@@ -4833,10 +4822,7 @@ class ElementDefinitionBinding(element.Element):
 
 
 class ElementDefinitionConstraint(element.Element):
-    """Disclaimer: Any field name ends with ``__ext`` doesn't part of
-    Resource StructureDefinition, instead used to enable Extensibility feature
-    for FHIR Primitive Data Types.
-
+    """
     Condition that must evaluate to true.
     Formal constraints such as co-occurrence and other constraints that can be
     computationally evaluated within the context of the instance.
@@ -4939,8 +4925,6 @@ class ElementDefinitionConstraint(element.Element):
         element_property=True,
         # note: Listed Resource Type(s) should be allowed as Reference.
         enum_reference_types=["StructureDefinition"],
-        backref="element_definition_constraint",
-        parent_name="element_definition_constraint",
     )
     source__ext: fhirtypes.FHIRPrimitiveExtensionType = Field(
         None, alias="_source", title="Extension field for ``source``."
@@ -5044,10 +5028,7 @@ class ElementDefinitionConstraint(element.Element):
 
 
 class ElementDefinitionExample(element.Element):
-    """Disclaimer: Any field name ends with ``__ext`` doesn't part of
-    Resource StructureDefinition, instead used to enable Extensibility feature
-    for FHIR Primitive Data Types.
-
+    """
     Example value (as defined for type).
     A sample value for this element demonstrating the type of information that
     would typically be found in the element.
@@ -6112,10 +6093,7 @@ class ElementDefinitionExample(element.Element):
 
 
 class ElementDefinitionMapping(element.Element):
-    """Disclaimer: Any field name ends with ``__ext`` doesn't part of
-    Resource StructureDefinition, instead used to enable Extensibility feature
-    for FHIR Primitive Data Types.
-
+    """
     Map element to another set of definitions.
     Identifies a concept from an external specification that roughly
     corresponds to this element.
@@ -6253,10 +6231,7 @@ class ElementDefinitionMapping(element.Element):
 
 
 class ElementDefinitionSlicing(element.Element):
-    """Disclaimer: Any field name ends with ``__ext`` doesn't part of
-    Resource StructureDefinition, instead used to enable Extensibility feature
-    for FHIR Primitive Data Types.
-
+    """
     This element is sliced - slices follow.
     Indicates that the element is sliced into a set of alternative definitions
     (i.e. in a structure definition, there are multiple different constraints
@@ -6412,10 +6387,7 @@ class ElementDefinitionSlicing(element.Element):
 
 
 class ElementDefinitionSlicingDiscriminator(element.Element):
-    """Disclaimer: Any field name ends with ``__ext`` doesn't part of
-    Resource StructureDefinition, instead used to enable Extensibility feature
-    for FHIR Primitive Data Types.
-
+    """
     Element values that are used to distinguish the slices.
     Designates which child elements are used to discriminate between the slices
     when processing an instance. If one or more discriminators are provided,
@@ -6535,10 +6507,7 @@ class ElementDefinitionSlicingDiscriminator(element.Element):
 
 
 class ElementDefinitionType(element.Element):
-    """Disclaimer: Any field name ends with ``__ext`` doesn't part of
-    Resource StructureDefinition, instead used to enable Extensibility feature
-    for FHIR Primitive Data Types.
-
+    """
     Data type and Profile for this element.
     The data type or resource that the value of this element is permitted to
     be.
@@ -6610,8 +6579,6 @@ class ElementDefinitionType(element.Element):
         element_property=True,
         # note: Listed Resource Type(s) should be allowed as Reference.
         enum_reference_types=["StructureDefinition", "ImplementationGuide"],
-        backref="element_definition_type",
-        parent_name="element_definition_type",
     )
     profile__ext: typing.List[
         typing.Union[fhirtypes.FHIRPrimitiveExtensionType, None]
@@ -6639,8 +6606,6 @@ class ElementDefinitionType(element.Element):
         element_property=True,
         # note: Listed Resource Type(s) should be allowed as Reference.
         enum_reference_types=["StructureDefinition", "ImplementationGuide"],
-        backref="element_definition_type",
-        parent_name="element_definition_type",
     )
     targetProfile__ext: typing.List[
         typing.Union[fhirtypes.FHIRPrimitiveExtensionType, None]

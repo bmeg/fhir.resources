@@ -16,10 +16,7 @@ from . import element, fhirtypes
 
 
 class Annotation(element.Element):
-    """Disclaimer: Any field name ends with ``__ext`` doesn't part of
-    Resource StructureDefinition, instead used to enable Extensibility feature
-    for FHIR Primitive Data Types.
-
+    """
     Text node with attribution.
     A  text note which also  contains information about who made the statement
     and when.
@@ -44,8 +41,6 @@ class Annotation(element.Element):
             "RelatedPerson",
             "Organization",
         ],
-        backref="annotation",
-        parent_name="annotation",
     )
 
     authorString: fhirtypes.String = Field(

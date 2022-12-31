@@ -16,10 +16,7 @@ from . import element, fhirtypes
 
 
 class Contributor(element.Element):
-    """Disclaimer: Any field name ends with ``__ext`` doesn't part of
-    Resource StructureDefinition, instead used to enable Extensibility feature
-    for FHIR Primitive Data Types.
-
+    """
     Contributor information.
     A contributor to the content of a knowledge asset, including authors,
     editors, reviewers, and endorsers.

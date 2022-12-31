@@ -16,10 +16,7 @@ from . import backboneelement, domainresource, fhirtypes
 
 
 class ImplementationGuide(domainresource.DomainResource):
-    """Disclaimer: Any field name ends with ``__ext`` doesn't part of
-    Resource StructureDefinition, instead used to enable Extensibility feature
-    for FHIR Primitive Data Types.
-
+    """
     A set of rules about how FHIR is used.
     A set of rules of how a particular interoperability or standards problem is
     solved - typically through the use of FHIR resources. This resource is used
@@ -469,10 +466,7 @@ class ImplementationGuide(domainresource.DomainResource):
 
 
 class ImplementationGuideDefinition(backboneelement.BackboneElement):
-    """Disclaimer: Any field name ends with ``__ext`` doesn't part of
-    Resource StructureDefinition, instead used to enable Extensibility feature
-    for FHIR Primitive Data Types.
-
+    """
     Information needed to build the IG.
     The information needed by an IG publisher tool to publish the whole
     implementation guide.
@@ -557,10 +551,7 @@ class ImplementationGuideDefinition(backboneelement.BackboneElement):
 
 
 class ImplementationGuideDefinitionGrouping(backboneelement.BackboneElement):
-    """Disclaimer: Any field name ends with ``__ext`` doesn't part of
-    Resource StructureDefinition, instead used to enable Extensibility feature
-    for FHIR Primitive Data Types.
-
+    """
     Grouping used to present related resources in the IG.
     A logical group of resources. Logical groups can be used when building
     pages.
@@ -665,10 +656,7 @@ class ImplementationGuideDefinitionGrouping(backboneelement.BackboneElement):
 
 
 class ImplementationGuideDefinitionPage(backboneelement.BackboneElement):
-    """Disclaimer: Any field name ends with ``__ext`` doesn't part of
-    Resource StructureDefinition, instead used to enable Extensibility feature
-    for FHIR Primitive Data Types.
-
+    """
     Page/Section in the Guide.
     A page / section in the implementation guide. The root page is the
     implementation guide home page.
@@ -712,8 +700,6 @@ class ImplementationGuideDefinitionPage(backboneelement.BackboneElement):
         one_of_many_required=True,
         # note: Listed Resource Type(s) should be allowed as Reference.
         enum_reference_types=["Binary"],
-        backref="implementation_guide_definition_page",
-        parent_name="implementation_guide_definition_page",
     )
 
     nameUrl: fhirtypes.Url = Field(
@@ -872,10 +858,7 @@ class ImplementationGuideDefinitionPage(backboneelement.BackboneElement):
 
 
 class ImplementationGuideDefinitionParameter(backboneelement.BackboneElement):
-    """Disclaimer: Any field name ends with ``__ext`` doesn't part of
-    Resource StructureDefinition, instead used to enable Extensibility feature
-    for FHIR Primitive Data Types.
-
+    """
     Defines how IG is built by tools.
     """
 
@@ -999,10 +982,7 @@ class ImplementationGuideDefinitionParameter(backboneelement.BackboneElement):
 
 
 class ImplementationGuideDefinitionResource(backboneelement.BackboneElement):
-    """Disclaimer: Any field name ends with ``__ext`` doesn't part of
-    Resource StructureDefinition, instead used to enable Extensibility feature
-    for FHIR Primitive Data Types.
-
+    """
     Resource in the implementation guide.
     A resource that is part of the implementation guide. Conformance resources
     (value set, structure definition, capability statements etc.) are obvious
@@ -1062,8 +1042,6 @@ class ImplementationGuideDefinitionResource(backboneelement.BackboneElement):
         one_of_many_required=False,
         # note: Listed Resource Type(s) should be allowed as Reference.
         enum_reference_types=["StructureDefinition"],
-        backref="implementation_guide_definition_resource",
-        parent_name="implementation_guide_definition_resource",
     )
     exampleCanonical__ext: fhirtypes.FHIRPrimitiveExtensionType = Field(
         None,
@@ -1130,8 +1108,6 @@ class ImplementationGuideDefinitionResource(backboneelement.BackboneElement):
         element_property=True,
         # note: Listed Resource Type(s) should be allowed as Reference.
         enum_reference_types=["Resource"],
-        backref="implementation_guide_definition_resource",
-        parent_name="implementation_guide_definition_resource",
     )
 
     @classmethod
@@ -1193,10 +1169,7 @@ class ImplementationGuideDefinitionResource(backboneelement.BackboneElement):
 
 
 class ImplementationGuideDefinitionTemplate(backboneelement.BackboneElement):
-    """Disclaimer: Any field name ends with ``__ext`` doesn't part of
-    Resource StructureDefinition, instead used to enable Extensibility feature
-    for FHIR Primitive Data Types.
-
+    """
     A template for building resources.
     """
 
@@ -1309,10 +1282,7 @@ class ImplementationGuideDefinitionTemplate(backboneelement.BackboneElement):
 
 
 class ImplementationGuideDependsOn(backboneelement.BackboneElement):
-    """Disclaimer: Any field name ends with ``__ext`` doesn't part of
-    Resource StructureDefinition, instead used to enable Extensibility feature
-    for FHIR Primitive Data Types.
-
+    """
     Another Implementation guide this depends on.
     Another implementation guide that this implementation depends on.
     Typically, an implementation guide uses value sets, profiles etc.defined in
@@ -1346,8 +1316,6 @@ class ImplementationGuideDependsOn(backboneelement.BackboneElement):
         element_required=True,
         # note: Listed Resource Type(s) should be allowed as Reference.
         enum_reference_types=["ImplementationGuide"],
-        backref="implementation_guide_depends_on",
-        parent_name="implementation_guide_depends_on",
     )
     uri__ext: fhirtypes.FHIRPrimitiveExtensionType = Field(
         None, alias="_uri", title="Extension field for ``uri``."
@@ -1437,10 +1405,7 @@ class ImplementationGuideDependsOn(backboneelement.BackboneElement):
 
 
 class ImplementationGuideGlobal(backboneelement.BackboneElement):
-    """Disclaimer: Any field name ends with ``__ext`` doesn't part of
-    Resource StructureDefinition, instead used to enable Extensibility feature
-    for FHIR Primitive Data Types.
-
+    """
     Profiles that apply globally.
     A set of profiles that all resources covered by this implementation guide
     must conform to.
@@ -1458,8 +1423,6 @@ class ImplementationGuideGlobal(backboneelement.BackboneElement):
         element_required=True,
         # note: Listed Resource Type(s) should be allowed as Reference.
         enum_reference_types=["StructureDefinition"],
-        backref="implementation_guide_global",
-        parent_name="implementation_guide_global",
     )
     profile__ext: fhirtypes.FHIRPrimitiveExtensionType = Field(
         None, alias="_profile", title="Extension field for ``profile``."
@@ -1555,10 +1518,7 @@ class ImplementationGuideGlobal(backboneelement.BackboneElement):
 
 
 class ImplementationGuideManifest(backboneelement.BackboneElement):
-    """Disclaimer: Any field name ends with ``__ext`` doesn't part of
-    Resource StructureDefinition, instead used to enable Extensibility feature
-    for FHIR Primitive Data Types.
-
+    """
     Information about an assembled IG.
     Information about an assembled implementation guide, created by the
     publication tooling.
@@ -1651,10 +1611,7 @@ class ImplementationGuideManifest(backboneelement.BackboneElement):
 
 
 class ImplementationGuideManifestPage(backboneelement.BackboneElement):
-    """Disclaimer: Any field name ends with ``__ext`` doesn't part of
-    Resource StructureDefinition, instead used to enable Extensibility feature
-    for FHIR Primitive Data Types.
-
+    """
     HTML page within the parent IG.
     Information about a page within the IG.
     """
@@ -1767,10 +1724,7 @@ class ImplementationGuideManifestPage(backboneelement.BackboneElement):
 
 
 class ImplementationGuideManifestResource(backboneelement.BackboneElement):
-    """Disclaimer: Any field name ends with ``__ext`` doesn't part of
-    Resource StructureDefinition, instead used to enable Extensibility feature
-    for FHIR Primitive Data Types.
-
+    """
     Resource in the implementation guide.
     A resource that is part of the implementation guide. Conformance resources
     (value set, structure definition, capability statements etc.) are obvious
@@ -1815,8 +1769,6 @@ class ImplementationGuideManifestResource(backboneelement.BackboneElement):
         one_of_many_required=False,
         # note: Listed Resource Type(s) should be allowed as Reference.
         enum_reference_types=["StructureDefinition"],
-        backref="implementation_guide_manifest_resource",
-        parent_name="implementation_guide_manifest_resource",
     )
     exampleCanonical__ext: fhirtypes.FHIRPrimitiveExtensionType = Field(
         None,
@@ -1833,8 +1785,6 @@ class ImplementationGuideManifestResource(backboneelement.BackboneElement):
         element_property=True,
         # note: Listed Resource Type(s) should be allowed as Reference.
         enum_reference_types=["Resource"],
-        backref="implementation_guide_manifest_resource",
-        parent_name="implementation_guide_manifest_resource",
     )
 
     relativePath: fhirtypes.Url = Field(

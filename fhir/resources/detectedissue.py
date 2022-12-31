@@ -16,10 +16,7 @@ from . import backboneelement, domainresource, fhirtypes
 
 
 class DetectedIssue(domainresource.DomainResource):
-    """Disclaimer: Any field name ends with ``__ext`` doesn't part of
-    Resource StructureDefinition, instead used to enable Extensibility feature
-    for FHIR Primitive Data Types.
-
+    """
     Clinical issue with action.
     Indicates an actual or potential clinical issue with or between one or more
     active or proposed clinical actions for a patient; e.g. Drug-drug
@@ -42,8 +39,6 @@ class DetectedIssue(domainresource.DomainResource):
         element_property=True,
         # note: Listed Resource Type(s) should be allowed as Reference.
         enum_reference_types=["Practitioner", "PractitionerRole", "Device"],
-        backref="detected_issue",
-        parent_name="detected_issue",
     )
 
     code: fhirtypes.CodeableConceptType = Field(
@@ -137,8 +132,6 @@ class DetectedIssue(domainresource.DomainResource):
         element_property=True,
         # note: Listed Resource Type(s) should be allowed as Reference.
         enum_reference_types=["Resource"],
-        backref="detected_issue",
-        parent_name="detected_issue",
     )
 
     mitigation: typing.List[fhirtypes.DetectedIssueMitigationType] = Field(
@@ -167,8 +160,6 @@ class DetectedIssue(domainresource.DomainResource):
         element_property=True,
         # note: Listed Resource Type(s) should be allowed as Reference.
         enum_reference_types=["Patient"],
-        backref="detected_issue",
-        parent_name="detected_issue",
     )
 
     reference: fhirtypes.Uri = Field(
@@ -363,10 +354,7 @@ class DetectedIssue(domainresource.DomainResource):
 
 
 class DetectedIssueEvidence(backboneelement.BackboneElement):
-    """Disclaimer: Any field name ends with ``__ext`` doesn't part of
-    Resource StructureDefinition, instead used to enable Extensibility feature
-    for FHIR Primitive Data Types.
-
+    """
     Supporting evidence.
     Supporting evidence or manifestations that provide the basis for
     identifying the detected issue such as a GuidanceResponse or MeasureReport.
@@ -402,8 +390,6 @@ class DetectedIssueEvidence(backboneelement.BackboneElement):
         element_property=True,
         # note: Listed Resource Type(s) should be allowed as Reference.
         enum_reference_types=["Resource"],
-        backref="detected_issue_evidence",
-        parent_name="detected_issue_evidence",
     )
 
     @classmethod
@@ -416,10 +402,7 @@ class DetectedIssueEvidence(backboneelement.BackboneElement):
 
 
 class DetectedIssueMitigation(backboneelement.BackboneElement):
-    """Disclaimer: Any field name ends with ``__ext`` doesn't part of
-    Resource StructureDefinition, instead used to enable Extensibility feature
-    for FHIR Primitive Data Types.
-
+    """
     Step taken to address.
     Indicates an action that has been taken or is committed to reduce or
     eliminate the likelihood of the risk identified by the detected issue from
@@ -458,8 +441,6 @@ class DetectedIssueMitigation(backboneelement.BackboneElement):
         element_property=True,
         # note: Listed Resource Type(s) should be allowed as Reference.
         enum_reference_types=["Practitioner", "PractitionerRole"],
-        backref="detected_issue_mitigation",
-        parent_name="detected_issue_mitigation",
     )
 
     date: fhirtypes.DateTime = Field(

@@ -16,10 +16,7 @@ from . import backboneelement, domainresource, fhirtypes
 
 
 class ImagingStudy(domainresource.DomainResource):
-    """Disclaimer: Any field name ends with ``__ext`` doesn't part of
-    Resource StructureDefinition, instead used to enable Extensibility feature
-    for FHIR Primitive Data Types.
-
+    """
     A set of images produced in single study (one or more series of references
     images).
     Representation of the content produced in a DICOM imaging study. A study
@@ -49,8 +46,6 @@ class ImagingStudy(domainresource.DomainResource):
             "AppointmentResponse",
             "Task",
         ],
-        backref="imaging_study",
-        parent_name="imaging_study",
     )
 
     description: fhirtypes.String = Field(
@@ -80,8 +75,6 @@ class ImagingStudy(domainresource.DomainResource):
         element_property=True,
         # note: Listed Resource Type(s) should be allowed as Reference.
         enum_reference_types=["Encounter"],
-        backref="imaging_study",
-        parent_name="imaging_study",
     )
 
     endpoint: typing.List[fhirtypes.ReferenceType] = Field(
@@ -99,8 +92,6 @@ class ImagingStudy(domainresource.DomainResource):
         element_property=True,
         # note: Listed Resource Type(s) should be allowed as Reference.
         enum_reference_types=["Endpoint"],
-        backref="imaging_study",
-        parent_name="imaging_study",
     )
 
     identifier: typing.List[fhirtypes.IdentifierType] = Field(
@@ -124,8 +115,6 @@ class ImagingStudy(domainresource.DomainResource):
         element_property=True,
         # note: Listed Resource Type(s) should be allowed as Reference.
         enum_reference_types=["Practitioner", "PractitionerRole"],
-        backref="imaging_study",
-        parent_name="imaging_study",
     )
 
     location: fhirtypes.ReferenceType = Field(
@@ -137,8 +126,6 @@ class ImagingStudy(domainresource.DomainResource):
         element_property=True,
         # note: Listed Resource Type(s) should be allowed as Reference.
         enum_reference_types=["Location"],
-        backref="imaging_study",
-        parent_name="imaging_study",
     )
 
     modality: typing.List[fhirtypes.CodingType] = Field(
@@ -234,8 +221,6 @@ class ImagingStudy(domainresource.DomainResource):
         element_property=True,
         # note: Listed Resource Type(s) should be allowed as Reference.
         enum_reference_types=["Procedure"],
-        backref="imaging_study",
-        parent_name="imaging_study",
     )
 
     reasonCode: typing.List[fhirtypes.CodeableConceptType] = Field(
@@ -269,8 +254,6 @@ class ImagingStudy(domainresource.DomainResource):
             "DiagnosticReport",
             "DocumentReference",
         ],
-        backref="imaging_study",
-        parent_name="imaging_study",
     )
 
     referrer: fhirtypes.ReferenceType = Field(
@@ -282,8 +265,6 @@ class ImagingStudy(domainresource.DomainResource):
         element_property=True,
         # note: Listed Resource Type(s) should be allowed as Reference.
         enum_reference_types=["Practitioner", "PractitionerRole"],
-        backref="imaging_study",
-        parent_name="imaging_study",
     )
 
     series: typing.List[fhirtypes.ImagingStudySeriesType] = Field(
@@ -346,8 +327,6 @@ class ImagingStudy(domainresource.DomainResource):
         element_property=True,
         # note: Listed Resource Type(s) should be allowed as Reference.
         enum_reference_types=["Patient", "Device", "Group"],
-        backref="imaging_study",
-        parent_name="imaging_study",
     )
 
     @classmethod
@@ -448,10 +427,7 @@ class ImagingStudy(domainresource.DomainResource):
 
 
 class ImagingStudySeries(backboneelement.BackboneElement):
-    """Disclaimer: Any field name ends with ``__ext`` doesn't part of
-    Resource StructureDefinition, instead used to enable Extensibility feature
-    for FHIR Primitive Data Types.
-
+    """
     Each study has one or more series of instances.
     Each study has one or more series of images or other content.
     """
@@ -504,8 +480,6 @@ class ImagingStudySeries(backboneelement.BackboneElement):
         element_property=True,
         # note: Listed Resource Type(s) should be allowed as Reference.
         enum_reference_types=["Endpoint"],
-        backref="imaging_study_series",
-        parent_name="imaging_study_series",
     )
 
     instance: typing.List[fhirtypes.ImagingStudySeriesInstanceType] = Field(
@@ -604,8 +578,6 @@ class ImagingStudySeries(backboneelement.BackboneElement):
         element_property=True,
         # note: Listed Resource Type(s) should be allowed as Reference.
         enum_reference_types=["Specimen"],
-        backref="imaging_study_series",
-        parent_name="imaging_study_series",
     )
 
     started: fhirtypes.DateTime = Field(
@@ -718,10 +690,7 @@ class ImagingStudySeries(backboneelement.BackboneElement):
 
 
 class ImagingStudySeriesInstance(backboneelement.BackboneElement):
-    """Disclaimer: Any field name ends with ``__ext`` doesn't part of
-    Resource StructureDefinition, instead used to enable Extensibility feature
-    for FHIR Primitive Data Types.
-
+    """
     A single SOP instance from the series.
     A single SOP instance within the series, e.g. an image, or presentation
     state.
@@ -859,10 +828,7 @@ class ImagingStudySeriesInstance(backboneelement.BackboneElement):
 
 
 class ImagingStudySeriesPerformer(backboneelement.BackboneElement):
-    """Disclaimer: Any field name ends with ``__ext`` doesn't part of
-    Resource StructureDefinition, instead used to enable Extensibility feature
-    for FHIR Primitive Data Types.
-
+    """
     Who performed the series.
     Indicates who or what performed the series and how they were involved.
     """
@@ -886,8 +852,6 @@ class ImagingStudySeriesPerformer(backboneelement.BackboneElement):
             "Device",
             "RelatedPerson",
         ],
-        backref="imaging_study_series_performer",
-        parent_name="imaging_study_series_performer",
     )
 
     function: fhirtypes.CodeableConceptType = Field(

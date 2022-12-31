@@ -16,10 +16,7 @@ from . import backboneelement, domainresource, fhirtypes
 
 
 class ExampleScenario(domainresource.DomainResource):
-    """Disclaimer: Any field name ends with ``__ext`` doesn't part of
-    Resource StructureDefinition, instead used to enable Extensibility feature
-    for FHIR Primitive Data Types.
-
+    """
     Example of workflow instance.
     """
 
@@ -281,8 +278,6 @@ class ExampleScenario(domainresource.DomainResource):
         element_property=True,
         # note: Listed Resource Type(s) should be allowed as Reference.
         enum_reference_types=["ExampleScenario"],
-        backref="example_scenario",
-        parent_name="example_scenario",
     )
     workflow__ext: typing.List[
         typing.Union[fhirtypes.FHIRPrimitiveExtensionType, None]
@@ -383,10 +378,7 @@ class ExampleScenario(domainresource.DomainResource):
 
 
 class ExampleScenarioActor(backboneelement.BackboneElement):
-    """Disclaimer: Any field name ends with ``__ext`` doesn't part of
-    Resource StructureDefinition, instead used to enable Extensibility feature
-    for FHIR Primitive Data Types.
-
+    """
     Actor participating in the resource.
     """
 
@@ -530,10 +522,7 @@ class ExampleScenarioActor(backboneelement.BackboneElement):
 
 
 class ExampleScenarioInstance(backboneelement.BackboneElement):
-    """Disclaimer: Any field name ends with ``__ext`` doesn't part of
-    Resource StructureDefinition, instead used to enable Extensibility feature
-    for FHIR Primitive Data Types.
-
+    """
     Each resource and each version that is present in the workflow.
     """
 
@@ -699,10 +688,7 @@ class ExampleScenarioInstance(backboneelement.BackboneElement):
 
 
 class ExampleScenarioInstanceContainedInstance(backboneelement.BackboneElement):
-    """Disclaimer: Any field name ends with ``__ext`` doesn't part of
-    Resource StructureDefinition, instead used to enable Extensibility feature
-    for FHIR Primitive Data Types.
-
+    """
     Resources contained in the instance.
     Resources contained in the instance (e.g. the observations contained in a
     bundle).
@@ -804,10 +790,7 @@ class ExampleScenarioInstanceContainedInstance(backboneelement.BackboneElement):
 
 
 class ExampleScenarioInstanceVersion(backboneelement.BackboneElement):
-    """Disclaimer: Any field name ends with ``__ext`` doesn't part of
-    Resource StructureDefinition, instead used to enable Extensibility feature
-    for FHIR Primitive Data Types.
-
+    """
     A specific version of the resource.
     """
 
@@ -911,10 +894,7 @@ class ExampleScenarioInstanceVersion(backboneelement.BackboneElement):
 
 
 class ExampleScenarioProcess(backboneelement.BackboneElement):
-    """Disclaimer: Any field name ends with ``__ext`` doesn't part of
-    Resource StructureDefinition, instead used to enable Extensibility feature
-    for FHIR Primitive Data Types.
-
+    """
     Each major process - a group of operations.
     """
 
@@ -1056,10 +1036,7 @@ class ExampleScenarioProcess(backboneelement.BackboneElement):
 
 
 class ExampleScenarioProcessStep(backboneelement.BackboneElement):
-    """Disclaimer: Any field name ends with ``__ext`` doesn't part of
-    Resource StructureDefinition, instead used to enable Extensibility feature
-    for FHIR Primitive Data Types.
-
+    """
     Each step of the process.
     """
 
@@ -1127,10 +1104,7 @@ class ExampleScenarioProcessStep(backboneelement.BackboneElement):
 
 
 class ExampleScenarioProcessStepAlternative(backboneelement.BackboneElement):
-    """Disclaimer: Any field name ends with ``__ext`` doesn't part of
-    Resource StructureDefinition, instead used to enable Extensibility feature
-    for FHIR Primitive Data Types.
-
+    """
     Alternate non-typical step action.
     Indicates an alternative step that can be taken instead of the operations
     on the base step in exceptional/atypical circumstances.
@@ -1247,10 +1221,7 @@ class ExampleScenarioProcessStepAlternative(backboneelement.BackboneElement):
 
 
 class ExampleScenarioProcessStepOperation(backboneelement.BackboneElement):
-    """Disclaimer: Any field name ends with ``__ext`` doesn't part of
-    Resource StructureDefinition, instead used to enable Extensibility feature
-    for FHIR Primitive Data Types.
-
+    """
     Each interaction or action.
     """
 

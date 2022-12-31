@@ -16,10 +16,7 @@ from . import element, fhirtypes
 
 
 class Expression(element.Element):
-    """Disclaimer: Any field name ends with ``__ext`` doesn't part of
-    Resource StructureDefinition, instead used to enable Extensibility feature
-    for FHIR Primitive Data Types.
-
+    """
     An expression that can be used to generate a value.
     A expression that is evaluated in a specified context and returns a value.
     The context of use of the expression must specify the context in which the

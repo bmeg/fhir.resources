@@ -12,10 +12,7 @@ from . import quantity
 
 
 class Count(quantity.Quantity):
-    """Disclaimer: Any field name ends with ``__ext`` doesn't part of
-    Resource StructureDefinition, instead used to enable Extensibility feature
-    for FHIR Primitive Data Types.
-
+    """
     A measured or measurable amount.
     A measured amount (or an amount that can potentially be measured). Note
     that measured amounts include amounts that are not precisely quantified,

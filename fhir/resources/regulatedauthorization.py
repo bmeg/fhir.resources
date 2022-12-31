@@ -14,10 +14,7 @@ from . import backboneelement, domainresource, fhirtypes
 
 
 class RegulatedAuthorization(domainresource.DomainResource):
-    """Disclaimer: Any field name ends with ``__ext`` doesn't part of
-    Resource StructureDefinition, instead used to enable Extensibility feature
-    for FHIR Primitive Data Types.
-
+    """
     Regulatory approval, clearance or licencing related to a regulated product,
     treatment, facility or activity e.g. Market Authorization for a Medicinal
     Product.
@@ -98,8 +95,6 @@ class RegulatedAuthorization(domainresource.DomainResource):
         element_property=True,
         # note: Listed Resource Type(s) should be allowed as Reference.
         enum_reference_types=["Organization"],
-        backref="regulated_authorization",
-        parent_name="regulated_authorization",
     )
 
     identifier: typing.List[fhirtypes.IdentifierType] = Field(
@@ -123,8 +118,6 @@ class RegulatedAuthorization(domainresource.DomainResource):
         element_property=True,
         # note: Listed Resource Type(s) should be allowed as Reference.
         enum_reference_types=["ClinicalUseDefinition"],
-        backref="regulated_authorization",
-        parent_name="regulated_authorization",
     )
 
     intendedUse: fhirtypes.CodeableConceptType = Field(
@@ -175,8 +168,6 @@ class RegulatedAuthorization(domainresource.DomainResource):
         element_property=True,
         # note: Listed Resource Type(s) should be allowed as Reference.
         enum_reference_types=["Organization"],
-        backref="regulated_authorization",
-        parent_name="regulated_authorization",
     )
 
     status: fhirtypes.CodeableConceptType = Field(
@@ -237,8 +228,6 @@ class RegulatedAuthorization(domainresource.DomainResource):
             "Organization",
             "Location",
         ],
-        backref="regulated_authorization",
-        parent_name="regulated_authorization",
     )
 
     type: fhirtypes.CodeableConceptType = Field(
@@ -307,10 +296,7 @@ class RegulatedAuthorization(domainresource.DomainResource):
 
 
 class RegulatedAuthorizationCase(backboneelement.BackboneElement):
-    """Disclaimer: Any field name ends with ``__ext`` doesn't part of
-    Resource StructureDefinition, instead used to enable Extensibility feature
-    for FHIR Primitive Data Types.
-
+    """
     The case or regulatory procedure for granting or amending a regulated
     authorization. Note: This area is subject to ongoing review and the
     workgroup is seeking implementer feedback on its use (see link at bottom of

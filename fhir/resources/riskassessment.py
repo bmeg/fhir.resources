@@ -16,10 +16,7 @@ from . import backboneelement, domainresource, fhirtypes
 
 
 class RiskAssessment(domainresource.DomainResource):
-    """Disclaimer: Any field name ends with ``__ext`` doesn't part of
-    Resource StructureDefinition, instead used to enable Extensibility feature
-    for FHIR Primitive Data Types.
-
+    """
     Potential outcomes for a subject with likelihood.
     An assessment of the likely outcome(s) for a patient or other subject as
     well as the likelihood of each outcome.
@@ -36,8 +33,6 @@ class RiskAssessment(domainresource.DomainResource):
         element_property=True,
         # note: Listed Resource Type(s) should be allowed as Reference.
         enum_reference_types=["Resource"],
-        backref="risk_assessment",
-        parent_name="risk_assessment",
     )
 
     basis: typing.List[fhirtypes.ReferenceType] = Field(
@@ -52,8 +47,6 @@ class RiskAssessment(domainresource.DomainResource):
         element_property=True,
         # note: Listed Resource Type(s) should be allowed as Reference.
         enum_reference_types=["Resource"],
-        backref="risk_assessment",
-        parent_name="risk_assessment",
     )
 
     code: fhirtypes.CodeableConceptType = Field(
@@ -77,8 +70,6 @@ class RiskAssessment(domainresource.DomainResource):
         element_property=True,
         # note: Listed Resource Type(s) should be allowed as Reference.
         enum_reference_types=["Condition"],
-        backref="risk_assessment",
-        parent_name="risk_assessment",
     )
 
     encounter: fhirtypes.ReferenceType = Field(
@@ -90,8 +81,6 @@ class RiskAssessment(domainresource.DomainResource):
         element_property=True,
         # note: Listed Resource Type(s) should be allowed as Reference.
         enum_reference_types=["Encounter"],
-        backref="risk_assessment",
-        parent_name="risk_assessment",
     )
 
     identifier: typing.List[fhirtypes.IdentifierType] = Field(
@@ -180,8 +169,6 @@ class RiskAssessment(domainresource.DomainResource):
         element_property=True,
         # note: Listed Resource Type(s) should be allowed as Reference.
         enum_reference_types=["Resource"],
-        backref="risk_assessment",
-        parent_name="risk_assessment",
     )
 
     performer: fhirtypes.ReferenceType = Field(
@@ -193,8 +180,6 @@ class RiskAssessment(domainresource.DomainResource):
         element_property=True,
         # note: Listed Resource Type(s) should be allowed as Reference.
         enum_reference_types=["Practitioner", "PractitionerRole", "Device"],
-        backref="risk_assessment",
-        parent_name="risk_assessment",
     )
 
     prediction: typing.List[fhirtypes.RiskAssessmentPredictionType] = Field(
@@ -229,8 +214,6 @@ class RiskAssessment(domainresource.DomainResource):
             "DiagnosticReport",
             "DocumentReference",
         ],
-        backref="risk_assessment",
-        parent_name="risk_assessment",
     )
 
     status: fhirtypes.Code = Field(
@@ -266,8 +249,6 @@ class RiskAssessment(domainresource.DomainResource):
         element_property=True,
         # note: Listed Resource Type(s) should be allowed as Reference.
         enum_reference_types=["Patient", "Group"],
-        backref="risk_assessment",
-        parent_name="risk_assessment",
     )
 
     @classmethod
@@ -404,10 +385,7 @@ class RiskAssessment(domainresource.DomainResource):
 
 
 class RiskAssessmentPrediction(backboneelement.BackboneElement):
-    """Disclaimer: Any field name ends with ``__ext`` doesn't part of
-    Resource StructureDefinition, instead used to enable Extensibility feature
-    for FHIR Primitive Data Types.
-
+    """
     Outcome predicted.
     Describes the expected outcome for the subject.
     """

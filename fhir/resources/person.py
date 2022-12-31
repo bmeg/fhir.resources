@@ -14,10 +14,7 @@ from . import backboneelement, domainresource, fhirtypes
 
 
 class Person(domainresource.DomainResource):
-    """Disclaimer: Any field name ends with ``__ext`` doesn't part of
-    Resource StructureDefinition, instead used to enable Extensibility feature
-    for FHIR Primitive Data Types.
-
+    """
     A generic person record.
     Demographics and administrative information about a person independent of a
     specific health-related context.
@@ -108,8 +105,6 @@ class Person(domainresource.DomainResource):
         element_property=True,
         # note: Listed Resource Type(s) should be allowed as Reference.
         enum_reference_types=["Organization"],
-        backref="person",
-        parent_name="person",
     )
 
     name: typing.List[fhirtypes.HumanNameType] = Field(
@@ -174,10 +169,7 @@ class Person(domainresource.DomainResource):
 
 
 class PersonLink(backboneelement.BackboneElement):
-    """Disclaimer: Any field name ends with ``__ext`` doesn't part of
-    Resource StructureDefinition, instead used to enable Extensibility feature
-    for FHIR Primitive Data Types.
-
+    """
     Link to a resource that concerns the same actual person.
     """
 
@@ -215,8 +207,6 @@ class PersonLink(backboneelement.BackboneElement):
         element_property=True,
         # note: Listed Resource Type(s) should be allowed as Reference.
         enum_reference_types=["Patient", "Practitioner", "RelatedPerson", "Person"],
-        backref="person_link",
-        parent_name="person_link",
     )
 
     @classmethod

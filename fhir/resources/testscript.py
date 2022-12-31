@@ -16,10 +16,7 @@ from . import backboneelement, domainresource, fhirtypes
 
 
 class TestScript(domainresource.DomainResource):
-    """Disclaimer: Any field name ends with ``__ext`` doesn't part of
-    Resource StructureDefinition, instead used to enable Extensibility feature
-    for FHIR Primitive Data Types.
-
+    """
     Describes a set of tests.
     A structured set of tests against a FHIR server or client implementation to
     determine compliance against the FHIR specification.
@@ -215,8 +212,6 @@ class TestScript(domainresource.DomainResource):
         element_property=True,
         # note: Listed Resource Type(s) should be allowed as Reference.
         enum_reference_types=["Resource"],
-        backref="test_script",
-        parent_name="test_script",
     )
 
     publisher: fhirtypes.String = Field(
@@ -492,10 +487,7 @@ class TestScript(domainresource.DomainResource):
 
 
 class TestScriptDestination(backboneelement.BackboneElement):
-    """Disclaimer: Any field name ends with ``__ext`` doesn't part of
-    Resource StructureDefinition, instead used to enable Extensibility feature
-    for FHIR Primitive Data Types.
-
+    """
     An abstract server representing a destination or receiver in a message
     exchange.
     An abstract server used in operations within this test script in the
@@ -608,10 +600,7 @@ class TestScriptDestination(backboneelement.BackboneElement):
 
 
 class TestScriptFixture(backboneelement.BackboneElement):
-    """Disclaimer: Any field name ends with ``__ext`` doesn't part of
-    Resource StructureDefinition, instead used to enable Extensibility feature
-    for FHIR Primitive Data Types.
-
+    """
     Fixture in the test script - by reference (uri).
     Fixture in the test script - by reference (uri). All fixtures are required
     for the test script to execute.
@@ -667,8 +656,6 @@ class TestScriptFixture(backboneelement.BackboneElement):
         element_property=True,
         # note: Listed Resource Type(s) should be allowed as Reference.
         enum_reference_types=["Resource"],
-        backref="test_script_fixture",
-        parent_name="test_script_fixture",
     )
 
     @classmethod
@@ -750,10 +737,7 @@ class TestScriptFixture(backboneelement.BackboneElement):
 
 
 class TestScriptMetadata(backboneelement.BackboneElement):
-    """Disclaimer: Any field name ends with ``__ext`` doesn't part of
-    Resource StructureDefinition, instead used to enable Extensibility feature
-    for FHIR Primitive Data Types.
-
+    """
     Required capability that is assumed to function correctly on the FHIR
     server being tested.
     The required capability must exist and are assumed to function correctly on
@@ -796,10 +780,7 @@ class TestScriptMetadata(backboneelement.BackboneElement):
 
 
 class TestScriptMetadataCapability(backboneelement.BackboneElement):
-    """Disclaimer: Any field name ends with ``__ext`` doesn't part of
-    Resource StructureDefinition, instead used to enable Extensibility feature
-    for FHIR Primitive Data Types.
-
+    """
     Capabilities  that are assumed to function correctly on the FHIR server
     being tested.
     Capabilities that must exist and are assumed to function correctly on the
@@ -822,8 +803,6 @@ class TestScriptMetadataCapability(backboneelement.BackboneElement):
         element_required=True,
         # note: Listed Resource Type(s) should be allowed as Reference.
         enum_reference_types=["CapabilityStatement"],
-        backref="test_script_metadata_capability",
-        parent_name="test_script_metadata_capability",
     )
     capabilities__ext: fhirtypes.FHIRPrimitiveExtensionType = Field(
         None, alias="_capabilities", title="Extension field for ``capabilities``."
@@ -999,10 +978,7 @@ class TestScriptMetadataCapability(backboneelement.BackboneElement):
 
 
 class TestScriptMetadataLink(backboneelement.BackboneElement):
-    """Disclaimer: Any field name ends with ``__ext`` doesn't part of
-    Resource StructureDefinition, instead used to enable Extensibility feature
-    for FHIR Primitive Data Types.
-
+    """
     Links to the FHIR specification.
     A link to the FHIR specification that this test is covering.
     """
@@ -1106,10 +1082,7 @@ class TestScriptMetadataLink(backboneelement.BackboneElement):
 
 
 class TestScriptOrigin(backboneelement.BackboneElement):
-    """Disclaimer: Any field name ends with ``__ext`` doesn't part of
-    Resource StructureDefinition, instead used to enable Extensibility feature
-    for FHIR Primitive Data Types.
-
+    """
     An abstract server representing a client or sender in a message exchange.
     An abstract server used in operations within this test script in the origin
     element.
@@ -1218,10 +1191,7 @@ class TestScriptOrigin(backboneelement.BackboneElement):
 
 
 class TestScriptSetup(backboneelement.BackboneElement):
-    """Disclaimer: Any field name ends with ``__ext`` doesn't part of
-    Resource StructureDefinition, instead used to enable Extensibility feature
-    for FHIR Primitive Data Types.
-
+    """
     A series of required setup operations before tests are executed.
     """
 
@@ -1246,10 +1216,7 @@ class TestScriptSetup(backboneelement.BackboneElement):
 
 
 class TestScriptSetupAction(backboneelement.BackboneElement):
-    """Disclaimer: Any field name ends with ``__ext`` doesn't part of
-    Resource StructureDefinition, instead used to enable Extensibility feature
-    for FHIR Primitive Data Types.
-
+    """
     A setup operation or assert to perform.
     Action would contain either an operation or an assertion.
     """
@@ -1287,10 +1254,7 @@ class TestScriptSetupAction(backboneelement.BackboneElement):
 
 
 class TestScriptSetupActionAssert(backboneelement.BackboneElement):
-    """Disclaimer: Any field name ends with ``__ext`` doesn't part of
-    Resource StructureDefinition, instead used to enable Extensibility feature
-    for FHIR Primitive Data Types.
-
+    """
     The assertion to perform.
     Evaluates the results of previous operations to determine if the server
     under test behaves appropriately.
@@ -1791,10 +1755,7 @@ class TestScriptSetupActionAssert(backboneelement.BackboneElement):
 
 
 class TestScriptSetupActionOperation(backboneelement.BackboneElement):
-    """Disclaimer: Any field name ends with ``__ext`` doesn't part of
-    Resource StructureDefinition, instead used to enable Extensibility feature
-    for FHIR Primitive Data Types.
-
+    """
     The setup operation to perform.
     The operation to perform.
     """
@@ -2158,10 +2119,7 @@ class TestScriptSetupActionOperation(backboneelement.BackboneElement):
 
 
 class TestScriptSetupActionOperationRequestHeader(backboneelement.BackboneElement):
-    """Disclaimer: Any field name ends with ``__ext`` doesn't part of
-    Resource StructureDefinition, instead used to enable Extensibility feature
-    for FHIR Primitive Data Types.
-
+    """
     Each operation can have one or more header elements.
     Header elements would be used to set HTTP headers.
     """
@@ -2263,10 +2221,7 @@ class TestScriptSetupActionOperationRequestHeader(backboneelement.BackboneElemen
 
 
 class TestScriptTeardown(backboneelement.BackboneElement):
-    """Disclaimer: Any field name ends with ``__ext`` doesn't part of
-    Resource StructureDefinition, instead used to enable Extensibility feature
-    for FHIR Primitive Data Types.
-
+    """
     A series of required clean up steps.
     A series of operations required to clean up after all the tests are
     executed (successfully or otherwise).
@@ -2293,10 +2248,7 @@ class TestScriptTeardown(backboneelement.BackboneElement):
 
 
 class TestScriptTeardownAction(backboneelement.BackboneElement):
-    """Disclaimer: Any field name ends with ``__ext`` doesn't part of
-    Resource StructureDefinition, instead used to enable Extensibility feature
-    for FHIR Primitive Data Types.
-
+    """
     One or more teardown operations to perform.
     The teardown action will only contain an operation.
     """
@@ -2322,10 +2274,7 @@ class TestScriptTeardownAction(backboneelement.BackboneElement):
 
 
 class TestScriptTest(backboneelement.BackboneElement):
-    """Disclaimer: Any field name ends with ``__ext`` doesn't part of
-    Resource StructureDefinition, instead used to enable Extensibility feature
-    for FHIR Primitive Data Types.
-
+    """
     A test in this script.
     """
 
@@ -2380,10 +2329,7 @@ class TestScriptTest(backboneelement.BackboneElement):
 
 
 class TestScriptTestAction(backboneelement.BackboneElement):
-    """Disclaimer: Any field name ends with ``__ext`` doesn't part of
-    Resource StructureDefinition, instead used to enable Extensibility feature
-    for FHIR Primitive Data Types.
-
+    """
     A test operation or assert to perform.
     Action would contain either an operation or an assertion.
     """
@@ -2421,10 +2367,7 @@ class TestScriptTestAction(backboneelement.BackboneElement):
 
 
 class TestScriptVariable(backboneelement.BackboneElement):
-    """Disclaimer: Any field name ends with ``__ext`` doesn't part of
-    Resource StructureDefinition, instead used to enable Extensibility feature
-    for FHIR Primitive Data Types.
-
+    """
     Placeholder for evaluated elements.
     Variable is set based either on element value in response body or on header
     field value in the response headers.

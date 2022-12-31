@@ -16,10 +16,7 @@ from . import backboneelement, domainresource, fhirtypes
 
 
 class Task(domainresource.DomainResource):
-    """Disclaimer: Any field name ends with ``__ext`` doesn't part of
-    Resource StructureDefinition, instead used to enable Extensibility feature
-    for FHIR Primitive Data Types.
-
+    """
     A task to be performed.
     """
 
@@ -54,8 +51,6 @@ class Task(domainresource.DomainResource):
         element_property=True,
         # note: Listed Resource Type(s) should be allowed as Reference.
         enum_reference_types=["Resource"],
-        backref="task",
-        parent_name="task",
     )
 
     businessStatus: fhirtypes.CodeableConceptType = Field(
@@ -110,8 +105,6 @@ class Task(domainresource.DomainResource):
         element_property=True,
         # note: Listed Resource Type(s) should be allowed as Reference.
         enum_reference_types=["Encounter"],
-        backref="task",
-        parent_name="task",
     )
 
     executionPeriod: fhirtypes.PeriodType = Field(
@@ -139,8 +132,6 @@ class Task(domainresource.DomainResource):
         element_property=True,
         # note: Listed Resource Type(s) should be allowed as Reference.
         enum_reference_types=["Resource"],
-        backref="task",
-        parent_name="task",
     )
 
     for_fhir: fhirtypes.ReferenceType = Field(
@@ -155,8 +146,6 @@ class Task(domainresource.DomainResource):
         element_property=True,
         # note: Listed Resource Type(s) should be allowed as Reference.
         enum_reference_types=["Resource"],
-        backref="task",
-        parent_name="task",
     )
 
     groupIdentifier: fhirtypes.IdentifierType = Field(
@@ -203,8 +192,6 @@ class Task(domainresource.DomainResource):
         element_property=True,
         # note: Listed Resource Type(s) should be allowed as Reference.
         enum_reference_types=["ActivityDefinition"],
-        backref="task",
-        parent_name="task",
     )
     instantiatesCanonical__ext: fhirtypes.FHIRPrimitiveExtensionType = Field(
         None,
@@ -240,8 +227,6 @@ class Task(domainresource.DomainResource):
         element_property=True,
         # note: Listed Resource Type(s) should be allowed as Reference.
         enum_reference_types=["Coverage", "ClaimResponse"],
-        backref="task",
-        parent_name="task",
     )
 
     intent: fhirtypes.Code = Field(
@@ -303,8 +288,6 @@ class Task(domainresource.DomainResource):
         element_property=True,
         # note: Listed Resource Type(s) should be allowed as Reference.
         enum_reference_types=["Location"],
-        backref="task",
-        parent_name="task",
     )
 
     note: typing.List[fhirtypes.AnnotationType] = Field(
@@ -346,8 +329,6 @@ class Task(domainresource.DomainResource):
             "Device",
             "RelatedPerson",
         ],
-        backref="task",
-        parent_name="task",
     )
 
     partOf: typing.List[fhirtypes.ReferenceType] = Field(
@@ -359,8 +340,6 @@ class Task(domainresource.DomainResource):
         element_property=True,
         # note: Listed Resource Type(s) should be allowed as Reference.
         enum_reference_types=["Task"],
-        backref="task",
-        parent_name="task",
     )
 
     performerType: typing.List[fhirtypes.CodeableConceptType] = Field(
@@ -423,8 +402,6 @@ class Task(domainresource.DomainResource):
         element_property=True,
         # note: Listed Resource Type(s) should be allowed as Reference.
         enum_reference_types=["Resource"],
-        backref="task",
-        parent_name="task",
     )
 
     relevantHistory: typing.List[fhirtypes.ReferenceType] = Field(
@@ -440,8 +417,6 @@ class Task(domainresource.DomainResource):
         element_property=True,
         # note: Listed Resource Type(s) should be allowed as Reference.
         enum_reference_types=["Provenance"],
-        backref="task",
-        parent_name="task",
     )
 
     requester: fhirtypes.ReferenceType = Field(
@@ -460,8 +435,6 @@ class Task(domainresource.DomainResource):
             "PractitionerRole",
             "RelatedPerson",
         ],
-        backref="task",
-        parent_name="task",
     )
 
     restriction: fhirtypes.TaskRestrictionType = Field(
@@ -623,10 +596,7 @@ class Task(domainresource.DomainResource):
 
 
 class TaskInput(backboneelement.BackboneElement):
-    """Disclaimer: Any field name ends with ``__ext`` doesn't part of
-    Resource StructureDefinition, instead used to enable Extensibility feature
-    for FHIR Primitive Data Types.
-
+    """
     Information used to perform task.
     Additional information that may be needed in the execution of the task.
     """
@@ -1467,10 +1437,7 @@ class TaskInput(backboneelement.BackboneElement):
 
 
 class TaskOutput(backboneelement.BackboneElement):
-    """Disclaimer: Any field name ends with ``__ext`` doesn't part of
-    Resource StructureDefinition, instead used to enable Extensibility feature
-    for FHIR Primitive Data Types.
-
+    """
     Information produced as part of task.
     Outputs produced by the Task.
     """
@@ -2308,10 +2275,7 @@ class TaskOutput(backboneelement.BackboneElement):
 
 
 class TaskRestriction(backboneelement.BackboneElement):
-    """Disclaimer: Any field name ends with ``__ext`` doesn't part of
-    Resource StructureDefinition, instead used to enable Extensibility feature
-    for FHIR Primitive Data Types.
-
+    """
     Constraints on fulfillment tasks.
     If the Task.focus is a request resource and the task is seeking fulfillment
     (i.e. is asking for the request to be actioned), this element identifies
@@ -2348,8 +2312,6 @@ class TaskRestriction(backboneelement.BackboneElement):
             "Group",
             "Organization",
         ],
-        backref="task_restriction",
-        parent_name="task_restriction",
     )
 
     repetitions: fhirtypes.PositiveInt = Field(

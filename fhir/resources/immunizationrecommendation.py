@@ -16,10 +16,7 @@ from . import backboneelement, domainresource, fhirtypes
 
 
 class ImmunizationRecommendation(domainresource.DomainResource):
-    """Disclaimer: Any field name ends with ``__ext`` doesn't part of
-    Resource StructureDefinition, instead used to enable Extensibility feature
-    for FHIR Primitive Data Types.
-
+    """
     Guidance or advice relating to an immunization.
     A patient's point-in-time set of recommendations (i.e. forecasting)
     according to a published schedule with optional supporting justification.
@@ -36,8 +33,6 @@ class ImmunizationRecommendation(domainresource.DomainResource):
         element_property=True,
         # note: Listed Resource Type(s) should be allowed as Reference.
         enum_reference_types=["Organization"],
-        backref="immunization_recommendation",
-        parent_name="immunization_recommendation",
     )
 
     date: fhirtypes.DateTime = Field(
@@ -71,8 +66,6 @@ class ImmunizationRecommendation(domainresource.DomainResource):
         element_property=True,
         # note: Listed Resource Type(s) should be allowed as Reference.
         enum_reference_types=["Patient"],
-        backref="immunization_recommendation",
-        parent_name="immunization_recommendation",
     )
 
     recommendation: typing.List[
@@ -169,10 +162,7 @@ class ImmunizationRecommendation(domainresource.DomainResource):
 
 
 class ImmunizationRecommendationRecommendation(backboneelement.BackboneElement):
-    """Disclaimer: Any field name ends with ``__ext`` doesn't part of
-    Resource StructureDefinition, instead used to enable Extensibility feature
-    for FHIR Primitive Data Types.
-
+    """
     Vaccine administration recommendations.
     """
 
@@ -357,8 +347,6 @@ class ImmunizationRecommendationRecommendation(backboneelement.BackboneElement):
         element_property=True,
         # note: Listed Resource Type(s) should be allowed as Reference.
         enum_reference_types=["Immunization", "ImmunizationEvaluation"],
-        backref="immunization_recommendation_recommendation",
-        parent_name="immunization_recommendation_recommendation",
     )
 
     supportingPatientInformation: typing.List[fhirtypes.ReferenceType] = Field(
@@ -374,8 +362,6 @@ class ImmunizationRecommendationRecommendation(backboneelement.BackboneElement):
         element_property=True,
         # note: Listed Resource Type(s) should be allowed as Reference.
         enum_reference_types=["Resource"],
-        backref="immunization_recommendation_recommendation",
-        parent_name="immunization_recommendation_recommendation",
     )
 
     targetDisease: fhirtypes.CodeableConceptType = Field(
@@ -482,10 +468,7 @@ class ImmunizationRecommendationRecommendation(backboneelement.BackboneElement):
 class ImmunizationRecommendationRecommendationDateCriterion(
     backboneelement.BackboneElement
 ):
-    """Disclaimer: Any field name ends with ``__ext`` doesn't part of
-    Resource StructureDefinition, instead used to enable Extensibility feature
-    for FHIR Primitive Data Types.
-
+    """
     Dates governing proposed immunization.
     Vaccine date recommendations.  For example, earliest date to administer,
     latest date to administer, etc.

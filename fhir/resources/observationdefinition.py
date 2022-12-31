@@ -14,10 +14,7 @@ from . import backboneelement, domainresource, fhirtypes
 
 
 class ObservationDefinition(domainresource.DomainResource):
-    """Disclaimer: Any field name ends with ``__ext`` doesn't part of
-    Resource StructureDefinition, instead used to enable Extensibility feature
-    for FHIR Primitive Data Types.
-
+    """
     Definition of an observation.
     Set of definitional characteristics for a kind of observation or
     measurement produced or consumed by an orderable health care service.
@@ -40,8 +37,6 @@ class ObservationDefinition(domainresource.DomainResource):
         element_property=True,
         # note: Listed Resource Type(s) should be allowed as Reference.
         enum_reference_types=["ValueSet"],
-        backref="observation_definition",
-        parent_name="observation_definition",
     )
 
     category: typing.List[fhirtypes.CodeableConceptType] = Field(
@@ -91,8 +86,6 @@ class ObservationDefinition(domainresource.DomainResource):
         element_property=True,
         # note: Listed Resource Type(s) should be allowed as Reference.
         enum_reference_types=["ValueSet"],
-        backref="observation_definition",
-        parent_name="observation_definition",
     )
 
     identifier: typing.List[fhirtypes.IdentifierType] = Field(
@@ -152,8 +145,6 @@ class ObservationDefinition(domainresource.DomainResource):
         element_property=True,
         # note: Listed Resource Type(s) should be allowed as Reference.
         enum_reference_types=["ValueSet"],
-        backref="observation_definition",
-        parent_name="observation_definition",
     )
 
     permittedDataType: typing.List[typing.Optional[fhirtypes.Code]] = Field(
@@ -255,8 +246,6 @@ class ObservationDefinition(domainresource.DomainResource):
         element_property=True,
         # note: Listed Resource Type(s) should be allowed as Reference.
         enum_reference_types=["ValueSet"],
-        backref="observation_definition",
-        parent_name="observation_definition",
     )
 
     @classmethod
@@ -291,10 +280,7 @@ class ObservationDefinition(domainresource.DomainResource):
 
 
 class ObservationDefinitionQualifiedInterval(backboneelement.BackboneElement):
-    """Disclaimer: Any field name ends with ``__ext`` doesn't part of
-    Resource StructureDefinition, instead used to enable Extensibility feature
-    for FHIR Primitive Data Types.
-
+    """
     Qualified range for continuous and ordinal observation results.
     Multiple  ranges of results qualified by different contexts for ordinal or
     continuous observations conforming to this ObservationDefinition.
@@ -452,10 +438,7 @@ class ObservationDefinitionQualifiedInterval(backboneelement.BackboneElement):
 
 
 class ObservationDefinitionQuantitativeDetails(backboneelement.BackboneElement):
-    """Disclaimer: Any field name ends with ``__ext`` doesn't part of
-    Resource StructureDefinition, instead used to enable Extensibility feature
-    for FHIR Primitive Data Types.
-
+    """
     Characteristics of quantitative results.
     Characteristics for quantitative results of this observation.
     """

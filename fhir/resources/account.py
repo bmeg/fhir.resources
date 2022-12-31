@@ -16,10 +16,7 @@ from . import backboneelement, domainresource, fhirtypes
 
 
 class Account(domainresource.DomainResource):
-    """Disclaimer: Any field name ends with ``__ext`` doesn't part of
-    Resource StructureDefinition, instead used to enable Extensibility feature
-    for FHIR Primitive Data Types.
-
+    """
     Tracks balance, charges, for patient or cost center.
     A financial tool for tracking value accrued for a particular purpose.  In
     the healthcare field, used to track charges for a patient, cost centers,
@@ -105,8 +102,6 @@ class Account(domainresource.DomainResource):
         element_property=True,
         # note: Listed Resource Type(s) should be allowed as Reference.
         enum_reference_types=["Organization"],
-        backref="account",
-        parent_name="account",
     )
 
     partOf: fhirtypes.ReferenceType = Field(
@@ -118,8 +113,6 @@ class Account(domainresource.DomainResource):
         element_property=True,
         # note: Listed Resource Type(s) should be allowed as Reference.
         enum_reference_types=["Account"],
-        backref="account",
-        parent_name="account",
     )
 
     servicePeriod: fhirtypes.PeriodType = Field(
@@ -177,8 +170,6 @@ class Account(domainresource.DomainResource):
             "HealthcareService",
             "Organization",
         ],
-        backref="account",
-        parent_name="account",
     )
 
     type: fhirtypes.CodeableConceptType = Field(
@@ -286,10 +277,7 @@ class Account(domainresource.DomainResource):
 
 
 class AccountCoverage(backboneelement.BackboneElement):
-    """Disclaimer: Any field name ends with ``__ext`` doesn't part of
-    Resource StructureDefinition, instead used to enable Extensibility feature
-    for FHIR Primitive Data Types.
-
+    """
     The party(s) that are responsible for covering the payment of this account,
     and what order should they be applied to the account.
     """
@@ -313,8 +301,6 @@ class AccountCoverage(backboneelement.BackboneElement):
         element_property=True,
         # note: Listed Resource Type(s) should be allowed as Reference.
         enum_reference_types=["Coverage"],
-        backref="account_coverage",
-        parent_name="account_coverage",
     )
 
     priority: fhirtypes.PositiveInt = Field(
@@ -339,10 +325,7 @@ class AccountCoverage(backboneelement.BackboneElement):
 
 
 class AccountGuarantor(backboneelement.BackboneElement):
-    """Disclaimer: Any field name ends with ``__ext`` doesn't part of
-    Resource StructureDefinition, instead used to enable Extensibility feature
-    for FHIR Primitive Data Types.
-
+    """
     The parties ultimately responsible for balancing the Account.
     The parties responsible for balancing the account if other payment options
     fall short.
@@ -374,8 +357,6 @@ class AccountGuarantor(backboneelement.BackboneElement):
         element_property=True,
         # note: Listed Resource Type(s) should be allowed as Reference.
         enum_reference_types=["Patient", "RelatedPerson", "Organization"],
-        backref="account_guarantor",
-        parent_name="account_guarantor",
     )
 
     period: fhirtypes.PeriodType = Field(

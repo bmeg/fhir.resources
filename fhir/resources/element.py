@@ -16,10 +16,7 @@ from . import fhirtypes
 
 
 class Element(fhirabstractmodel.FHIRAbstractModel):
-    """Disclaimer: Any field name ends with ``__ext`` doesn't part of
-    Resource StructureDefinition, instead used to enable Extensibility feature
-    for FHIR Primitive Data Types.
-
+    """
     Base for all elements.
     Base definition for all elements in a resource.
     """

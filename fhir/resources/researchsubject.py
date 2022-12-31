@@ -16,10 +16,7 @@ from . import domainresource, fhirtypes
 
 
 class ResearchSubject(domainresource.DomainResource):
-    """Disclaimer: Any field name ends with ``__ext`` doesn't part of
-    Resource StructureDefinition, instead used to enable Extensibility feature
-    for FHIR Primitive Data Types.
-
+    """
     Physical entity which is the primary unit of interest in the study.
     A physical entity which is the primary unit of operational and/or
     administrative interest in a study.
@@ -69,8 +66,6 @@ class ResearchSubject(domainresource.DomainResource):
         element_property=True,
         # note: Listed Resource Type(s) should be allowed as Reference.
         enum_reference_types=["Consent"],
-        backref="research_subject",
-        parent_name="research_subject",
     )
 
     identifier: typing.List[fhirtypes.IdentifierType] = Field(
@@ -91,8 +86,6 @@ class ResearchSubject(domainresource.DomainResource):
         element_property=True,
         # note: Listed Resource Type(s) should be allowed as Reference.
         enum_reference_types=["Patient"],
-        backref="research_subject",
-        parent_name="research_subject",
     )
 
     period: fhirtypes.PeriodType = Field(
@@ -157,8 +150,6 @@ class ResearchSubject(domainresource.DomainResource):
         element_property=True,
         # note: Listed Resource Type(s) should be allowed as Reference.
         enum_reference_types=["ResearchStudy"],
-        backref="research_subject",
-        parent_name="research_subject",
     )
 
     @classmethod

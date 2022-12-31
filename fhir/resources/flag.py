@@ -16,10 +16,7 @@ from . import domainresource, fhirtypes
 
 
 class Flag(domainresource.DomainResource):
-    """Disclaimer: Any field name ends with ``__ext`` doesn't part of
-    Resource StructureDefinition, instead used to enable Extensibility feature
-    for FHIR Primitive Data Types.
-
+    """
     Key information to flag to healthcare providers.
     Prospective warnings of potential issues when providing care to the
     patient.
@@ -42,8 +39,6 @@ class Flag(domainresource.DomainResource):
             "Practitioner",
             "PractitionerRole",
         ],
-        backref="flag",
-        parent_name="flag",
     )
 
     category: typing.List[fhirtypes.CodeableConceptType] = Field(
@@ -89,8 +84,6 @@ class Flag(domainresource.DomainResource):
         element_property=True,
         # note: Listed Resource Type(s) should be allowed as Reference.
         enum_reference_types=["Encounter"],
-        backref="flag",
-        parent_name="flag",
     )
 
     identifier: typing.List[fhirtypes.IdentifierType] = Field(
@@ -161,8 +154,6 @@ class Flag(domainresource.DomainResource):
             "Medication",
             "Procedure",
         ],
-        backref="flag",
-        parent_name="flag",
     )
 
     @classmethod

@@ -14,10 +14,7 @@ from . import domainresource, fhirtypes
 
 
 class Basic(domainresource.DomainResource):
-    """Disclaimer: Any field name ends with ``__ext`` doesn't part of
-    Resource StructureDefinition, instead used to enable Extensibility feature
-    for FHIR Primitive Data Types.
-
+    """
     Resource for non-supported content.
     Basic is used for handling concepts not yet defined in FHIR, narrative-only
     resources that don't map to an existing resource, and custom resources not
@@ -41,8 +38,6 @@ class Basic(domainresource.DomainResource):
             "RelatedPerson",
             "Organization",
         ],
-        backref="basic",
-        parent_name="basic",
     )
 
     code: fhirtypes.CodeableConceptType = Field(
@@ -98,8 +93,6 @@ class Basic(domainresource.DomainResource):
         element_property=True,
         # note: Listed Resource Type(s) should be allowed as Reference.
         enum_reference_types=["Resource"],
-        backref="basic",
-        parent_name="basic",
     )
 
     @classmethod

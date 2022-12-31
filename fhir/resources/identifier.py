@@ -12,10 +12,7 @@ from . import element, fhirtypes
 
 
 class Identifier(element.Element):
-    """Disclaimer: Any field name ends with ``__ext`` doesn't part of
-    Resource StructureDefinition, instead used to enable Extensibility feature
-    for FHIR Primitive Data Types.
-
+    """
     An identifier intended for computation.
     An identifier - identifies some entity uniquely and unambiguously.
     Typically this is used for business identifiers.
@@ -32,8 +29,6 @@ class Identifier(element.Element):
         element_property=True,
         # note: Listed Resource Type(s) should be allowed as Reference.
         enum_reference_types=["Organization"],
-        backref="identifier",
-        parent_name="identifier",
     )
 
     period: fhirtypes.PeriodType = Field(

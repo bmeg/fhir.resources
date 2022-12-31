@@ -16,10 +16,7 @@ from . import domainresource, fhirtypes
 
 
 class ServiceRequest(domainresource.DomainResource):
-    """Disclaimer: Any field name ends with ``__ext`` doesn't part of
-    Resource StructureDefinition, instead used to enable Extensibility feature
-    for FHIR Primitive Data Types.
-
+    """
     A request for a service to be performed.
     A record of a request for service such as diagnostic investigations,
     treatments, or operations to be performed.
@@ -91,8 +88,6 @@ class ServiceRequest(domainresource.DomainResource):
         element_property=True,
         # note: Listed Resource Type(s) should be allowed as Reference.
         enum_reference_types=["CarePlan", "ServiceRequest", "MedicationRequest"],
-        backref="service_request",
-        parent_name="service_request",
     )
 
     bodySite: typing.List[fhirtypes.CodeableConceptType] = Field(
@@ -172,8 +167,6 @@ class ServiceRequest(domainresource.DomainResource):
         element_property=True,
         # note: Listed Resource Type(s) should be allowed as Reference.
         enum_reference_types=["Encounter"],
-        backref="service_request",
-        parent_name="service_request",
     )
 
     identifier: typing.List[fhirtypes.IdentifierType] = Field(
@@ -201,8 +194,6 @@ class ServiceRequest(domainresource.DomainResource):
         element_property=True,
         # note: Listed Resource Type(s) should be allowed as Reference.
         enum_reference_types=["ActivityDefinition", "PlanDefinition"],
-        backref="service_request",
-        parent_name="service_request",
     )
     instantiatesCanonical__ext: typing.List[
         typing.Union[fhirtypes.FHIRPrimitiveExtensionType, None]
@@ -243,8 +234,6 @@ class ServiceRequest(domainresource.DomainResource):
         element_property=True,
         # note: Listed Resource Type(s) should be allowed as Reference.
         enum_reference_types=["Coverage", "ClaimResponse"],
-        backref="service_request",
-        parent_name="service_request",
     )
 
     intent: fhirtypes.Code = Field(
@@ -314,8 +303,6 @@ class ServiceRequest(domainresource.DomainResource):
         element_property=True,
         # note: Listed Resource Type(s) should be allowed as Reference.
         enum_reference_types=["Location"],
-        backref="service_request",
-        parent_name="service_request",
     )
 
     note: typing.List[fhirtypes.AnnotationType] = Field(
@@ -426,8 +413,6 @@ class ServiceRequest(domainresource.DomainResource):
             "Device",
             "RelatedPerson",
         ],
-        backref="service_request",
-        parent_name="service_request",
     )
 
     performerType: fhirtypes.CodeableConceptType = Field(
@@ -554,8 +539,6 @@ class ServiceRequest(domainresource.DomainResource):
             "DiagnosticReport",
             "DocumentReference",
         ],
-        backref="service_request",
-        parent_name="service_request",
     )
 
     relevantHistory: typing.List[fhirtypes.ReferenceType] = Field(
@@ -567,8 +550,6 @@ class ServiceRequest(domainresource.DomainResource):
         element_property=True,
         # note: Listed Resource Type(s) should be allowed as Reference.
         enum_reference_types=["Provenance"],
-        backref="service_request",
-        parent_name="service_request",
     )
 
     replaces: typing.List[fhirtypes.ReferenceType] = Field(
@@ -583,8 +564,6 @@ class ServiceRequest(domainresource.DomainResource):
         element_property=True,
         # note: Listed Resource Type(s) should be allowed as Reference.
         enum_reference_types=["ServiceRequest"],
-        backref="service_request",
-        parent_name="service_request",
     )
 
     requester: fhirtypes.ReferenceType = Field(
@@ -606,8 +585,6 @@ class ServiceRequest(domainresource.DomainResource):
             "RelatedPerson",
             "Device",
         ],
-        backref="service_request",
-        parent_name="service_request",
     )
 
     requisition: fhirtypes.IdentifierType = Field(
@@ -632,8 +609,6 @@ class ServiceRequest(domainresource.DomainResource):
         element_property=True,
         # note: Listed Resource Type(s) should be allowed as Reference.
         enum_reference_types=["Specimen"],
-        backref="service_request",
-        parent_name="service_request",
     )
 
     status: fhirtypes.Code = Field(
@@ -685,8 +660,6 @@ class ServiceRequest(domainresource.DomainResource):
         element_property=True,
         # note: Listed Resource Type(s) should be allowed as Reference.
         enum_reference_types=["Patient", "Group", "Location", "Device"],
-        backref="service_request",
-        parent_name="service_request",
     )
 
     supportingInfo: typing.List[fhirtypes.ReferenceType] = Field(
@@ -707,8 +680,6 @@ class ServiceRequest(domainresource.DomainResource):
         element_property=True,
         # note: Listed Resource Type(s) should be allowed as Reference.
         enum_reference_types=["Resource"],
-        backref="service_request",
-        parent_name="service_request",
     )
 
     @classmethod

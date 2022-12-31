@@ -14,10 +14,7 @@ from . import element, fhirtypes
 
 
 class Address(element.Element):
-    """Disclaimer: Any field name ends with ``__ext`` doesn't part of
-    Resource StructureDefinition, instead used to enable Extensibility feature
-    for FHIR Primitive Data Types.
-
+    """
     An address expressed using postal conventions (as opposed to GPS or other
     location definition formats).
     An address expressed using postal conventions (as opposed to GPS or other

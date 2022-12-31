@@ -16,10 +16,7 @@ from . import backboneelement, domainresource, fhirtypes
 
 
 class MedicationDispense(domainresource.DomainResource):
-    """Disclaimer: Any field name ends with ``__ext`` doesn't part of
-    Resource StructureDefinition, instead used to enable Extensibility feature
-    for FHIR Primitive Data Types.
-
+    """
     Dispensing a medication to a named patient.
     Indicates that a medication product is to be or has been dispensed for a
     named person/patient.  This includes a description of the medication
@@ -39,8 +36,6 @@ class MedicationDispense(domainresource.DomainResource):
         element_property=True,
         # note: Listed Resource Type(s) should be allowed as Reference.
         enum_reference_types=["MedicationRequest"],
-        backref="medication_dispense",
-        parent_name="medication_dispense",
     )
 
     category: fhirtypes.CodeableConceptType = Field(
@@ -73,8 +68,6 @@ class MedicationDispense(domainresource.DomainResource):
         element_property=True,
         # note: Listed Resource Type(s) should be allowed as Reference.
         enum_reference_types=["Encounter", "EpisodeOfCare"],
-        backref="medication_dispense",
-        parent_name="medication_dispense",
     )
 
     daysSupply: fhirtypes.QuantityType = Field(
@@ -98,8 +91,6 @@ class MedicationDispense(domainresource.DomainResource):
         element_property=True,
         # note: Listed Resource Type(s) should be allowed as Reference.
         enum_reference_types=["Location"],
-        backref="medication_dispense",
-        parent_name="medication_dispense",
     )
 
     detectedIssue: typing.List[fhirtypes.ReferenceType] = Field(
@@ -115,8 +106,6 @@ class MedicationDispense(domainresource.DomainResource):
         element_property=True,
         # note: Listed Resource Type(s) should be allowed as Reference.
         enum_reference_types=["DetectedIssue"],
-        backref="medication_dispense",
-        parent_name="medication_dispense",
     )
 
     dosageInstruction: typing.List[fhirtypes.DosageType] = Field(
@@ -143,8 +132,6 @@ class MedicationDispense(domainresource.DomainResource):
         element_property=True,
         # note: Listed Resource Type(s) should be allowed as Reference.
         enum_reference_types=["Provenance"],
-        backref="medication_dispense",
-        parent_name="medication_dispense",
     )
 
     identifier: typing.List[fhirtypes.IdentifierType] = Field(
@@ -172,8 +159,6 @@ class MedicationDispense(domainresource.DomainResource):
         element_property=True,
         # note: Listed Resource Type(s) should be allowed as Reference.
         enum_reference_types=["Location"],
-        backref="medication_dispense",
-        parent_name="medication_dispense",
     )
 
     medicationCodeableConcept: fhirtypes.CodeableConceptType = Field(
@@ -218,8 +203,6 @@ class MedicationDispense(domainresource.DomainResource):
         binding_uri="http://hl7.org/fhir/ValueSet/medication-codes",
         # note: Listed Resource Type(s) should be allowed as Reference.
         enum_reference_types=["Medication"],
-        backref="medication_dispense",
-        parent_name="medication_dispense",
     )
 
     note: typing.List[fhirtypes.AnnotationType] = Field(
@@ -243,8 +226,6 @@ class MedicationDispense(domainresource.DomainResource):
         element_property=True,
         # note: Listed Resource Type(s) should be allowed as Reference.
         enum_reference_types=["Procedure"],
-        backref="medication_dispense",
-        parent_name="medication_dispense",
     )
 
     performer: typing.List[fhirtypes.MedicationDispensePerformerType] = Field(
@@ -281,8 +262,6 @@ class MedicationDispense(domainresource.DomainResource):
         element_property=True,
         # note: Listed Resource Type(s) should be allowed as Reference.
         enum_reference_types=["Patient", "Practitioner"],
-        backref="medication_dispense",
-        parent_name="medication_dispense",
     )
 
     status: fhirtypes.Code = Field(
@@ -360,8 +339,6 @@ class MedicationDispense(domainresource.DomainResource):
         binding_uri="http://hl7.org/fhir/ValueSet/medicationdispense-status-reason",
         # note: Listed Resource Type(s) should be allowed as Reference.
         enum_reference_types=["DetectedIssue"],
-        backref="medication_dispense",
-        parent_name="medication_dispense",
     )
 
     subject: fhirtypes.ReferenceType = Field(
@@ -376,8 +353,6 @@ class MedicationDispense(domainresource.DomainResource):
         element_property=True,
         # note: Listed Resource Type(s) should be allowed as Reference.
         enum_reference_types=["Patient", "Group"],
-        backref="medication_dispense",
-        parent_name="medication_dispense",
     )
 
     substitution: fhirtypes.MedicationDispenseSubstitutionType = Field(
@@ -404,8 +379,6 @@ class MedicationDispense(domainresource.DomainResource):
         element_property=True,
         # note: Listed Resource Type(s) should be allowed as Reference.
         enum_reference_types=["Resource"],
-        backref="medication_dispense",
-        parent_name="medication_dispense",
     )
 
     type: fhirtypes.CodeableConceptType = Field(
@@ -598,10 +571,7 @@ class MedicationDispense(domainresource.DomainResource):
 
 
 class MedicationDispensePerformer(backboneelement.BackboneElement):
-    """Disclaimer: Any field name ends with ``__ext`` doesn't part of
-    Resource StructureDefinition, instead used to enable Extensibility feature
-    for FHIR Primitive Data Types.
-
+    """
     Who performed event.
     Indicates who or what performed the event.
     """
@@ -627,8 +597,6 @@ class MedicationDispensePerformer(backboneelement.BackboneElement):
             "Device",
             "RelatedPerson",
         ],
-        backref="medication_dispense_performer",
-        parent_name="medication_dispense_performer",
     )
 
     function: fhirtypes.CodeableConceptType = Field(
@@ -658,10 +626,7 @@ class MedicationDispensePerformer(backboneelement.BackboneElement):
 
 
 class MedicationDispenseSubstitution(backboneelement.BackboneElement):
-    """Disclaimer: Any field name ends with ``__ext`` doesn't part of
-    Resource StructureDefinition, instead used to enable Extensibility feature
-    for FHIR Primitive Data Types.
-
+    """
     Whether a substitution was performed on the dispense.
     Indicates whether or not substitution was made as part of the dispense.  In
     some cases, substitution will be expected but does not happen, in other
@@ -701,8 +666,6 @@ class MedicationDispenseSubstitution(backboneelement.BackboneElement):
         element_property=True,
         # note: Listed Resource Type(s) should be allowed as Reference.
         enum_reference_types=["Practitioner", "PractitionerRole"],
-        backref="medication_dispense_substitution",
-        parent_name="medication_dispense_substitution",
     )
 
     type: fhirtypes.CodeableConceptType = Field(

@@ -16,10 +16,7 @@ from . import domainresource, fhirtypes
 
 
 class ResearchDefinition(domainresource.DomainResource):
-    """Disclaimer: Any field name ends with ``__ext`` doesn't part of
-    Resource StructureDefinition, instead used to enable Extensibility feature
-    for FHIR Primitive Data Types.
-
+    """
     A research context or question.
     The ResearchDefinition resource describes the conditional state (population
     and any exposures being compared within the population) and outcome (if
@@ -197,8 +194,6 @@ class ResearchDefinition(domainresource.DomainResource):
         element_property=True,
         # note: Listed Resource Type(s) should be allowed as Reference.
         enum_reference_types=["ResearchElementDefinition"],
-        backref="research_definition",
-        parent_name="research_definition",
     )
 
     exposureAlternative: fhirtypes.ReferenceType = Field(
@@ -213,8 +208,6 @@ class ResearchDefinition(domainresource.DomainResource):
         element_property=True,
         # note: Listed Resource Type(s) should be allowed as Reference.
         enum_reference_types=["ResearchElementDefinition"],
-        backref="research_definition",
-        parent_name="research_definition",
     )
 
     identifier: typing.List[fhirtypes.IdentifierType] = Field(
@@ -274,8 +267,6 @@ class ResearchDefinition(domainresource.DomainResource):
         element_property=True,
         # note: Listed Resource Type(s) should be allowed as Reference.
         enum_reference_types=["Library"],
-        backref="research_definition",
-        parent_name="research_definition",
     )
     library__ext: typing.List[
         typing.Union[fhirtypes.FHIRPrimitiveExtensionType, None]
@@ -309,8 +300,6 @@ class ResearchDefinition(domainresource.DomainResource):
         element_property=True,
         # note: Listed Resource Type(s) should be allowed as Reference.
         enum_reference_types=["ResearchElementDefinition"],
-        backref="research_definition",
-        parent_name="research_definition",
     )
 
     population: fhirtypes.ReferenceType = Field(
@@ -325,8 +314,6 @@ class ResearchDefinition(domainresource.DomainResource):
         element_property=True,
         # note: Listed Resource Type(s) should be allowed as Reference.
         enum_reference_types=["ResearchElementDefinition"],
-        backref="research_definition",
-        parent_name="research_definition",
     )
 
     publisher: fhirtypes.String = Field(
@@ -471,8 +458,6 @@ class ResearchDefinition(domainresource.DomainResource):
         binding_uri="http://hl7.org/fhir/ValueSet/subject-type",
         # note: Listed Resource Type(s) should be allowed as Reference.
         enum_reference_types=["Group"],
-        backref="research_definition",
-        parent_name="research_definition",
     )
 
     subtitle: fhirtypes.String = Field(

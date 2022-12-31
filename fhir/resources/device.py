@@ -16,10 +16,7 @@ from . import backboneelement, domainresource, fhirtypes
 
 
 class Device(domainresource.DomainResource):
-    """Disclaimer: Any field name ends with ``__ext`` doesn't part of
-    Resource StructureDefinition, instead used to enable Extensibility feature
-    for FHIR Primitive Data Types.
-
+    """
     Item used in healthcare.
     A type of a manufactured item that is used in the provision of healthcare
     without being substantially changed through that activity. The device may
@@ -49,8 +46,6 @@ class Device(domainresource.DomainResource):
         element_property=True,
         # note: Listed Resource Type(s) should be allowed as Reference.
         enum_reference_types=["DeviceDefinition"],
-        backref="device",
-        parent_name="device",
     )
 
     deviceName: typing.List[fhirtypes.DeviceDeviceNameType] = Field(
@@ -121,8 +116,6 @@ class Device(domainresource.DomainResource):
         element_property=True,
         # note: Listed Resource Type(s) should be allowed as Reference.
         enum_reference_types=["Location"],
-        backref="device",
-        parent_name="device",
     )
 
     lotNumber: fhirtypes.String = Field(
@@ -197,8 +190,6 @@ class Device(domainresource.DomainResource):
         element_property=True,
         # note: Listed Resource Type(s) should be allowed as Reference.
         enum_reference_types=["Organization"],
-        backref="device",
-        parent_name="device",
     )
 
     parent: fhirtypes.ReferenceType = Field(
@@ -210,8 +201,6 @@ class Device(domainresource.DomainResource):
         element_property=True,
         # note: Listed Resource Type(s) should be allowed as Reference.
         enum_reference_types=["Device"],
-        backref="device",
-        parent_name="device",
     )
 
     partNumber: fhirtypes.String = Field(
@@ -235,8 +224,6 @@ class Device(domainresource.DomainResource):
         element_property=True,
         # note: Listed Resource Type(s) should be allowed as Reference.
         enum_reference_types=["Patient"],
-        backref="device",
-        parent_name="device",
     )
 
     property: typing.List[fhirtypes.DevicePropertyType] = Field(
@@ -441,10 +428,7 @@ class Device(domainresource.DomainResource):
 
 
 class DeviceDeviceName(backboneelement.BackboneElement):
-    """Disclaimer: Any field name ends with ``__ext`` doesn't part of
-    Resource StructureDefinition, instead used to enable Extensibility feature
-    for FHIR Primitive Data Types.
-
+    """
     The name of the device as given by the manufacturer.
     This represents the manufacturer's name of the device as provided by the
     device, from a UDI label, or by a person describing the Device.  This
@@ -571,10 +555,7 @@ class DeviceDeviceName(backboneelement.BackboneElement):
 
 
 class DeviceProperty(backboneelement.BackboneElement):
-    """Disclaimer: Any field name ends with ``__ext`` doesn't part of
-    Resource StructureDefinition, instead used to enable Extensibility feature
-    for FHIR Primitive Data Types.
-
+    """
     The actual configuration settings of a device as it actually operates,
     e.g., regulation status, time properties.
     """
@@ -628,10 +609,7 @@ class DeviceProperty(backboneelement.BackboneElement):
 
 
 class DeviceSpecialization(backboneelement.BackboneElement):
-    """Disclaimer: Any field name ends with ``__ext`` doesn't part of
-    Resource StructureDefinition, instead used to enable Extensibility feature
-    for FHIR Primitive Data Types.
-
+    """
     The capabilities supported on a  device, the standards to which the device
     conforms for a particular purpose, and used for the communication.
     """
@@ -669,10 +647,7 @@ class DeviceSpecialization(backboneelement.BackboneElement):
 
 
 class DeviceUdiCarrier(backboneelement.BackboneElement):
-    """Disclaimer: Any field name ends with ``__ext`` doesn't part of
-    Resource StructureDefinition, instead used to enable Extensibility feature
-    for FHIR Primitive Data Types.
-
+    """
     Unique Device Identifier (UDI) Barcode string.
     Unique device identifier (UDI) assigned to device label or package.  Note
     that the Device may include multiple udiCarriers as it either may include
@@ -813,10 +788,7 @@ class DeviceUdiCarrier(backboneelement.BackboneElement):
 
 
 class DeviceVersion(backboneelement.BackboneElement):
-    """Disclaimer: Any field name ends with ``__ext`` doesn't part of
-    Resource StructureDefinition, instead used to enable Extensibility feature
-    for FHIR Primitive Data Types.
-
+    """
     The actual design of the device or software version running on the device.
     """
 

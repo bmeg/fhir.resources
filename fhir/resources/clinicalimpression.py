@@ -16,10 +16,7 @@ from . import backboneelement, domainresource, fhirtypes
 
 
 class ClinicalImpression(domainresource.DomainResource):
-    """Disclaimer: Any field name ends with ``__ext`` doesn't part of
-    Resource StructureDefinition, instead used to enable Extensibility feature
-    for FHIR Primitive Data Types.
-
+    """
     A clinical assessment performed when planning treatments and management
     strategies for a patient.
     A record of a clinical assessment performed to determine what problem(s)
@@ -42,8 +39,6 @@ class ClinicalImpression(domainresource.DomainResource):
         element_property=True,
         # note: Listed Resource Type(s) should be allowed as Reference.
         enum_reference_types=["Practitioner", "PractitionerRole"],
-        backref="clinical_impression",
-        parent_name="clinical_impression",
     )
 
     code: fhirtypes.CodeableConceptType = Field(
@@ -126,8 +121,6 @@ class ClinicalImpression(domainresource.DomainResource):
         element_property=True,
         # note: Listed Resource Type(s) should be allowed as Reference.
         enum_reference_types=["Encounter"],
-        backref="clinical_impression",
-        parent_name="clinical_impression",
     )
 
     finding: typing.List[fhirtypes.ClinicalImpressionFindingType] = Field(
@@ -197,8 +190,6 @@ class ClinicalImpression(domainresource.DomainResource):
         element_property=True,
         # note: Listed Resource Type(s) should be allowed as Reference.
         enum_reference_types=["ClinicalImpression"],
-        backref="clinical_impression",
-        parent_name="clinical_impression",
     )
 
     problem: typing.List[fhirtypes.ReferenceType] = Field(
@@ -210,8 +201,6 @@ class ClinicalImpression(domainresource.DomainResource):
         element_property=True,
         # note: Listed Resource Type(s) should be allowed as Reference.
         enum_reference_types=["Condition", "AllergyIntolerance"],
-        backref="clinical_impression",
-        parent_name="clinical_impression",
     )
 
     prognosisCodeableConcept: typing.List[fhirtypes.CodeableConceptType] = Field(
@@ -236,8 +225,6 @@ class ClinicalImpression(domainresource.DomainResource):
         element_property=True,
         # note: Listed Resource Type(s) should be allowed as Reference.
         enum_reference_types=["RiskAssessment"],
-        backref="clinical_impression",
-        parent_name="clinical_impression",
     )
 
     protocol: typing.List[typing.Optional[fhirtypes.Uri]] = Field(
@@ -301,8 +288,6 @@ class ClinicalImpression(domainresource.DomainResource):
         element_property=True,
         # note: Listed Resource Type(s) should be allowed as Reference.
         enum_reference_types=["Patient", "Group"],
-        backref="clinical_impression",
-        parent_name="clinical_impression",
     )
 
     summary: fhirtypes.String = Field(
@@ -326,8 +311,6 @@ class ClinicalImpression(domainresource.DomainResource):
         element_property=True,
         # note: Listed Resource Type(s) should be allowed as Reference.
         enum_reference_types=["Resource"],
-        backref="clinical_impression",
-        parent_name="clinical_impression",
     )
 
     @classmethod
@@ -467,10 +450,7 @@ class ClinicalImpression(domainresource.DomainResource):
 
 
 class ClinicalImpressionFinding(backboneelement.BackboneElement):
-    """Disclaimer: Any field name ends with ``__ext`` doesn't part of
-    Resource StructureDefinition, instead used to enable Extensibility feature
-    for FHIR Primitive Data Types.
-
+    """
     Possible or likely findings and diagnoses.
     Specific findings or diagnoses that were considered likely or relevant to
     ongoing treatment.
@@ -519,8 +499,6 @@ class ClinicalImpressionFinding(backboneelement.BackboneElement):
         element_property=True,
         # note: Listed Resource Type(s) should be allowed as Reference.
         enum_reference_types=["Condition", "Observation", "Media"],
-        backref="clinical_impression_finding",
-        parent_name="clinical_impression_finding",
     )
 
     @classmethod
@@ -540,10 +518,7 @@ class ClinicalImpressionFinding(backboneelement.BackboneElement):
 
 
 class ClinicalImpressionInvestigation(backboneelement.BackboneElement):
-    """Disclaimer: Any field name ends with ``__ext`` doesn't part of
-    Resource StructureDefinition, instead used to enable Extensibility feature
-    for FHIR Primitive Data Types.
-
+    """
     One or more sets of investigations (signs, symptoms, etc.).
     One or more sets of investigations (signs, symptoms, etc.). The actual
     grouping of investigations varies greatly depending on the type and context
@@ -590,8 +565,6 @@ class ClinicalImpressionInvestigation(backboneelement.BackboneElement):
             "ImagingStudy",
             "Media",
         ],
-        backref="clinical_impression_investigation",
-        parent_name="clinical_impression_investigation",
     )
 
     @classmethod
